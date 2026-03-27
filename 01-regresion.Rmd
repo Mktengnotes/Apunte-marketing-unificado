@@ -2154,27 +2154,45 @@ keep it.
 
 ::: {.lang-es}
 
-Los modelos lineales generalizados mantienen la linealidad en los
-parámetros, pero la respuesta del modelo puede tener una forma funcional
-distinta. Dentro de esta familia se encuentran:
+Los modelos lineales generalizados (GLM) extienden la regresión clásica
+permitiendo que la variable dependiente siga distribuciones distintas de
+la normal y que la relación con los predictores opere a través de una
+función de enlace. Los parámetros se estiman típicamente por máxima
+verosimilitud. Tres casos frecuentes en marketing son:
 
--   Regresión de Poisson (variable dependiente positiva y discreta).
--   Regresión logística (se predice el número de sucesos de un total de
-    intentos).
--   Mínimos cuadrados generalizados.
+-   *Regresión de Poisson:* modela conteos no negativos (número de
+    visitas a una tienda, cantidad de reclamos por mes). Asume que la
+    media condicional es igual a la varianza; cuando esta condición no
+    se cumple se recurre a extensiones como el modelo binomial negativo.
+-   *Regresión logística:* modela proporciones o probabilidades de éxito
+    (tasa de conversión, respuesta a una campaña). La función de enlace
+    logit garantiza predicciones en el intervalo $[0,1]$.
+-   *Mínimos cuadrados generalizados (GLS):* relaja el supuesto de
+    errores i.i.d. del modelo clásico, permitiendo heterocedasticidad o
+    correlación serial en los residuos. Es especialmente útil en datos
+    de panel o series de tiempo.
 
 :::
 
 ::: {.lang-en}
 
-Generalized linear models maintain linearity in the parameters, but the
-model response can have a different functional form. Within this family
-we find:
+Generalized linear models (GLMs) extend classical regression by allowing
+the dependent variable to follow distributions other than the normal and
+by linking predictors to the response through a link function.
+Parameters are typically estimated by maximum likelihood. Three cases
+frequently encountered in marketing are:
 
--   Poisson regression (positive and discrete dependent variable).
--   Logistic regression (predicts the number of successes out of a total
-    number of trials).
--   Generalized least squares.
+-   *Poisson regression:* models non-negative counts (number of store
+    visits, complaints per month). It assumes the conditional mean
+    equals the variance; when this assumption fails, extensions such as
+    the negative binomial model are used.
+-   *Logistic regression:* models proportions or success probabilities
+    (conversion rate, campaign response). The logit link function
+    ensures predictions lie in the interval $[0,1]$.
+-   *Generalized least squares (GLS):* relaxes the i.i.d. error
+    assumption of the classical model, allowing heteroskedasticity or
+    serial correlation in the residuals. It is especially useful for
+    panel data or time series.
 
 :::
 
@@ -2226,55 +2244,33 @@ to estimate the model, and the nature of the dependent variable.
 
 ## Alternativas de Machine Learning para la regresión {data-en="Machine Learning Alternatives for Regression"}
 
-### ¿Qué es Machine Learning? {data-en="What Is Machine Learning?"}
-
 ::: {.lang-es}
 
-El aprendizaje automático es una rama de la inteligencia artificial que
-se centra en el desarrollo de algoritmos y modelos que permiten a las
-computadoras aprender patrones y realizar tareas específicas sin ser
-programadas explícitamente [@james2021; @hastie2009]. En lugar de seguir
-instrucciones detalladas, los sistemas de aprendizaje automático
-utilizan datos para mejorar su rendimiento en una tarea particular a lo
-largo del tiempo.
+El aprendizaje automático (*machine learning*, ML) agrupa algoritmos que
+aprenden patrones directamente de los datos sin requerir una
+especificación funcional explícita por parte del analista
+[@james2021; @hastie2009]. Si bien la regresión también aprende de los
+datos, la necesidad de seleccionar variables, aplicar transformaciones y
+verificar supuestos estadísticos la hace menos automática. Un
+acercamiento más próximo a ML se da al utilizar técnicas como Ridge o
+LASSO. En este curso se entenderá como ML cualquier modelo que pueda
+aprender automáticamente sobre el conjunto de variables predictivas y
+sus formas funcionales. A continuación se presentan las alternativas más
+relevantes.
 
 :::
 
 ::: {.lang-en}
 
-Machine learning is a branch of artificial intelligence that focuses on
-the development of algorithms and models that allow computers to learn
-patterns and perform specific tasks without being explicitly programmed
-[@james2021; @hastie2009]. Instead of following detailed instructions,
-machine learning systems use data to improve their performance on a
-particular task over time.
-
-:::
-
-### ¿La regresión cuenta como un modelo de ML? {data-en="Is Regression a Machine Learning Model?"}
-
-::: {.lang-es}
-
-Si bien la regresión utiliza datos para aprender a partir de ellos, no
-se suele considerar completamente un modelo de aprendizaje automático.
-El hecho de tener que seleccionar variables, aplicar transformaciones
-y verificar supuestos estadísticos la hace menos automática. Un
-acercamiento más próximo a ML se da al utilizar técnicas de selección
-automática como Ridge o LASSO. En este curso se entenderá como ML a
-cualquier modelo que pueda aprender automáticamente sobre el conjunto de
-variables predictivas y sus formas funcionales.
-
-:::
-
-::: {.lang-en}
-
-Although regression uses data to learn from them, it is not usually
-considered a fully-fledged machine learning model. The need to select
-variables, apply transformations, and verify statistical assumptions
-makes it less automatic. A closer approximation to ML arises when using
-automatic selection techniques such as Ridge or LASSO. In this course,
-ML will be understood as any model that can automatically learn about
-the set of predictive variables and their functional forms.
+Machine learning (ML) groups algorithms that learn patterns directly
+from data without requiring an explicit functional specification from
+the analyst [@james2021; @hastie2009]. Although regression also learns
+from data, the need to select variables, apply transformations, and
+verify statistical assumptions makes it less automatic. A closer
+approximation to ML arises when using techniques such as Ridge or LASSO.
+In this course, ML will be understood as any model that can
+automatically learn about the set of predictive variables and their
+functional forms. The most relevant alternatives are presented below.
 
 :::
 

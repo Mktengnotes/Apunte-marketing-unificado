@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-03-26" />
+<meta name="date" content="2026-03-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -202,12 +202,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="cap-regresion.html"><a href="cap-regresion.html#alternativas-de-machine-learning-para-la-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7</b> Alternativas de Machine Learning para la regresión</a>
 <ul>
-<li class="chapter" data-level="1.7.1" data-path="cap-regresion.html"><a href="cap-regresion.html#qu%C3%A9-es-machine-learning"><i class="fa fa-check"></i><b>1.7.1</b> ¿Qué es Machine Learning?</a></li>
-<li class="chapter" data-level="1.7.2" data-path="cap-regresion.html"><a href="cap-regresion.html#la-regresi%C3%B3n-cuenta-como-un-modelo-de-ml"><i class="fa fa-check"></i><b>1.7.2</b> ¿La regresión cuenta como un modelo de ML?</a></li>
-<li class="chapter" data-level="1.7.3" data-path="cap-regresion.html"><a href="cap-regresion.html#multivariate-adaptive-regression-splines-mars"><i class="fa fa-check"></i><b>1.7.3</b> Multivariate Adaptive Regression Splines (MARS)</a></li>
-<li class="chapter" data-level="1.7.4" data-path="cap-regresion.html"><a href="cap-regresion.html#k-nearest-neighbors-regression-knn"><i class="fa fa-check"></i><b>1.7.4</b> K Nearest Neighbors Regression (KNN)</a></li>
-<li class="chapter" data-level="1.7.5" data-path="cap-regresion.html"><a href="cap-regresion.html#%C3%A1rboles-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7.5</b> Árboles de regresión</a></li>
-<li class="chapter" data-level="1.7.6" data-path="cap-regresion.html"><a href="cap-regresion.html#bagging-y-random-forests"><i class="fa fa-check"></i><b>1.7.6</b> Bagging y Random Forests</a></li>
+<li class="chapter" data-level="1.7.1" data-path="cap-regresion.html"><a href="cap-regresion.html#multivariate-adaptive-regression-splines-mars"><i class="fa fa-check"></i><b>1.7.1</b> Multivariate Adaptive Regression Splines (MARS)</a></li>
+<li class="chapter" data-level="1.7.2" data-path="cap-regresion.html"><a href="cap-regresion.html#k-nearest-neighbors-regression-knn"><i class="fa fa-check"></i><b>1.7.2</b> K Nearest Neighbors Regression (KNN)</a></li>
+<li class="chapter" data-level="1.7.3" data-path="cap-regresion.html"><a href="cap-regresion.html#%C3%A1rboles-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7.3</b> Árboles de regresión</a></li>
+<li class="chapter" data-level="1.7.4" data-path="cap-regresion.html"><a href="cap-regresion.html#bagging-y-random-forests"><i class="fa fa-check"></i><b>1.7.4</b> Bagging y Random Forests</a></li>
 </ul></li>
 <li class="chapter" data-level="1.8" data-path="cap-regresion.html"><a href="cap-regresion.html#sumario-de-la-unidad"><i class="fa fa-check"></i><b>1.8</b> Sumario de la unidad</a></li>
 <li class="chapter" data-level="1.9" data-path="cap-regresion.html"><a href="cap-regresion.html#problemas"><i class="fa fa-check"></i><b>1.9</b> Problemas</a>
@@ -2414,25 +2412,43 @@ keep it.
 <div id="modelos-lineales-generalizados" class="section level3 hasAnchor" number="1.6.5" data-en="Generalized Linear Models">
 <h3><span class="header-section-number">1.6.5</span> Modelos lineales generalizados<a href="cap-regresion.html#modelos-lineales-generalizados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
-<p>Los modelos lineales generalizados mantienen la linealidad en los
-parámetros, pero la respuesta del modelo puede tener una forma funcional
-distinta. Dentro de esta familia se encuentran:</p>
+<p>Los modelos lineales generalizados (GLM) extienden la regresión clásica
+permitiendo que la variable dependiente siga distribuciones distintas de
+la normal y que la relación con los predictores opere a través de una
+función de enlace. Los parámetros se estiman típicamente por máxima
+verosimilitud. Tres casos frecuentes en marketing son:</p>
 <ul>
-<li>Regresión de Poisson (variable dependiente positiva y discreta).</li>
-<li>Regresión logística (se predice el número de sucesos de un total de
-intentos).</li>
-<li>Mínimos cuadrados generalizados.</li>
+<li><em>Regresión de Poisson:</em> modela conteos no negativos (número de
+visitas a una tienda, cantidad de reclamos por mes). Asume que la
+media condicional es igual a la varianza; cuando esta condición no
+se cumple se recurre a extensiones como el modelo binomial negativo.</li>
+<li><em>Regresión logística:</em> modela proporciones o probabilidades de éxito
+(tasa de conversión, respuesta a una campaña). La función de enlace
+logit garantiza predicciones en el intervalo <span class="math inline">\([0,1]\)</span>.</li>
+<li><em>Mínimos cuadrados generalizados (GLS):</em> relaja el supuesto de
+errores i.i.d. del modelo clásico, permitiendo heterocedasticidad o
+correlación serial en los residuos. Es especialmente útil en datos
+de panel o series de tiempo.</li>
 </ul>
 </div>
 <div class="lang-en">
-<p>Generalized linear models maintain linearity in the parameters, but the
-model response can have a different functional form. Within this family
-we find:</p>
+<p>Generalized linear models (GLMs) extend classical regression by allowing
+the dependent variable to follow distributions other than the normal and
+by linking predictors to the response through a link function.
+Parameters are typically estimated by maximum likelihood. Three cases
+frequently encountered in marketing are:</p>
 <ul>
-<li>Poisson regression (positive and discrete dependent variable).</li>
-<li>Logistic regression (predicts the number of successes out of a total
-number of trials).</li>
-<li>Generalized least squares.</li>
+<li><em>Poisson regression:</em> models non-negative counts (number of store
+visits, complaints per month). It assumes the conditional mean
+equals the variance; when this assumption fails, extensions such as
+the negative binomial model are used.</li>
+<li><em>Logistic regression:</em> models proportions or success probabilities
+(conversion rate, campaign response). The logit link function
+ensures predictions lie in the interval <span class="math inline">\([0,1]\)</span>.</li>
+<li><em>Generalized least squares (GLS):</em> relaxes the i.i.d. error
+assumption of the classical model, allowing heteroskedasticity or
+serial correlation in the residuals. It is especially useful for
+panel data or time series.</li>
 </ul>
 </div>
 <div class="lang-es">
@@ -2479,50 +2495,32 @@ to estimate the model, and the nature of the dependent variable.
 </div>
 <div id="alternativas-de-machine-learning-para-la-regresión" class="section level2 hasAnchor" number="1.7" data-en="Machine Learning Alternatives for Regression">
 <h2><span class="header-section-number">1.7</span> Alternativas de Machine Learning para la regresión<a href="cap-regresion.html#alternativas-de-machine-learning-para-la-regresi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="qué-es-machine-learning" class="section level3 hasAnchor" number="1.7.1" data-en="What Is Machine Learning?">
-<h3><span class="header-section-number">1.7.1</span> ¿Qué es Machine Learning?<a href="cap-regresion.html#qu%C3%A9-es-machine-learning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
-<p>El aprendizaje automático es una rama de la inteligencia artificial que
-se centra en el desarrollo de algoritmos y modelos que permiten a las
-computadoras aprender patrones y realizar tareas específicas sin ser
-programadas explícitamente <span class="citation">(<a href="referencias.html#ref-hastie2009">Hastie et al., 2009</a>; <a href="referencias.html#ref-james2021">James et al., 2021</a>)</span>. En lugar de seguir
-instrucciones detalladas, los sistemas de aprendizaje automático
-utilizan datos para mejorar su rendimiento en una tarea particular a lo
-largo del tiempo.</p>
+<p>El aprendizaje automático (<em>machine learning</em>, ML) agrupa algoritmos que
+aprenden patrones directamente de los datos sin requerir una
+especificación funcional explícita por parte del analista
+<span class="citation">(<a href="referencias.html#ref-hastie2009">Hastie et al., 2009</a>; <a href="referencias.html#ref-james2021">James et al., 2021</a>)</span>. Si bien la regresión también aprende de los
+datos, la necesidad de seleccionar variables, aplicar transformaciones y
+verificar supuestos estadísticos la hace menos automática. Un
+acercamiento más próximo a ML se da al utilizar técnicas como Ridge o
+LASSO. En este curso se entenderá como ML cualquier modelo que pueda
+aprender automáticamente sobre el conjunto de variables predictivas y
+sus formas funcionales. A continuación se presentan las alternativas más
+relevantes.</p>
 </div>
 <div class="lang-en">
-<p>Machine learning is a branch of artificial intelligence that focuses on
-the development of algorithms and models that allow computers to learn
-patterns and perform specific tasks without being explicitly programmed
-<span class="citation">(<a href="referencias.html#ref-hastie2009">Hastie et al., 2009</a>; <a href="referencias.html#ref-james2021">James et al., 2021</a>)</span>. Instead of following detailed instructions,
-machine learning systems use data to improve their performance on a
-particular task over time.</p>
+<p>Machine learning (ML) groups algorithms that learn patterns directly
+from data without requiring an explicit functional specification from
+the analyst <span class="citation">(<a href="referencias.html#ref-hastie2009">Hastie et al., 2009</a>; <a href="referencias.html#ref-james2021">James et al., 2021</a>)</span>. Although regression also learns
+from data, the need to select variables, apply transformations, and
+verify statistical assumptions makes it less automatic. A closer
+approximation to ML arises when using techniques such as Ridge or LASSO.
+In this course, ML will be understood as any model that can
+automatically learn about the set of predictive variables and their
+functional forms. The most relevant alternatives are presented below.</p>
 </div>
-</div>
-<div id="la-regresión-cuenta-como-un-modelo-de-ml" class="section level3 hasAnchor" number="1.7.2" data-en="Is Regression a Machine Learning Model?">
-<h3><span class="header-section-number">1.7.2</span> ¿La regresión cuenta como un modelo de ML?<a href="cap-regresion.html#la-regresi%C3%B3n-cuenta-como-un-modelo-de-ml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="lang-es">
-<p>Si bien la regresión utiliza datos para aprender a partir de ellos, no
-se suele considerar completamente un modelo de aprendizaje automático.
-El hecho de tener que seleccionar variables, aplicar transformaciones
-y verificar supuestos estadísticos la hace menos automática. Un
-acercamiento más próximo a ML se da al utilizar técnicas de selección
-automática como Ridge o LASSO. En este curso se entenderá como ML a
-cualquier modelo que pueda aprender automáticamente sobre el conjunto de
-variables predictivas y sus formas funcionales.</p>
-</div>
-<div class="lang-en">
-<p>Although regression uses data to learn from them, it is not usually
-considered a fully-fledged machine learning model. The need to select
-variables, apply transformations, and verify statistical assumptions
-makes it less automatic. A closer approximation to ML arises when using
-automatic selection techniques such as Ridge or LASSO. In this course,
-ML will be understood as any model that can automatically learn about
-the set of predictive variables and their functional forms.</p>
-</div>
-</div>
-<div id="multivariate-adaptive-regression-splines-mars" class="section level3 hasAnchor" number="1.7.3" data-en="Multivariate Adaptive Regression Splines (MARS)">
-<h3><span class="header-section-number">1.7.3</span> Multivariate Adaptive Regression Splines (MARS)<a href="cap-regresion.html#multivariate-adaptive-regression-splines-mars" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="multivariate-adaptive-regression-splines-mars" class="section level3 hasAnchor" number="1.7.1" data-en="Multivariate Adaptive Regression Splines (MARS)">
+<h3><span class="header-section-number">1.7.1</span> Multivariate Adaptive Regression Splines (MARS)<a href="cap-regresion.html#multivariate-adaptive-regression-splines-mars" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>MARS extiende OLS generando para cada variable independiente <span class="math inline">\(x\)</span> una
 función bisagra (<em>hinge</em>)
@@ -2583,8 +2581,8 @@ Figure 1.4: Regresión MARS para distinto número de bisagras
 </p>
 </div>
 </div>
-<div id="k-nearest-neighbors-regression-knn" class="section level3 hasAnchor" number="1.7.4" data-en="K Nearest Neighbors Regression (KNN)">
-<h3><span class="header-section-number">1.7.4</span> K Nearest Neighbors Regression (KNN)<a href="cap-regresion.html#k-nearest-neighbors-regression-knn" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="k-nearest-neighbors-regression-knn" class="section level3 hasAnchor" number="1.7.2" data-en="K Nearest Neighbors Regression (KNN)">
+<h3><span class="header-section-number">1.7.2</span> K Nearest Neighbors Regression (KNN)<a href="cap-regresion.html#k-nearest-neighbors-regression-knn" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>En la regresión con KNN, el objetivo es predecir un valor numérico
 basándose en la similitud entre los puntos de datos. A diferencia de la
@@ -2650,8 +2648,8 @@ standardize variables so that all contribute equally to
 the distance metric.</p>
 </div>
 </div>
-<div id="árboles-de-regresión" class="section level3 hasAnchor" number="1.7.5" data-en="Regression Trees">
-<h3><span class="header-section-number">1.7.5</span> Árboles de regresión<a href="cap-regresion.html#%C3%A1rboles-de-regresi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="árboles-de-regresión" class="section level3 hasAnchor" number="1.7.3" data-en="Regression Trees">
+<h3><span class="header-section-number">1.7.3</span> Árboles de regresión<a href="cap-regresion.html#%C3%A1rboles-de-regresi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Los árboles de regresión pertenecen a la familia de modelos de <em>función de base adaptativa</em> <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>, donde la predicción se expresa como <span class="math inline">\(f(\mathbf{x}) = \sum_{k=1}^K w_k \phi_k(\mathbf{x})\)</span> con funciones base <span class="math inline">\(\phi_k\)</span> que se adaptan a los datos. En el caso de un árbol, cada <span class="math inline">\(\phi_k\)</span> es una función indicadora de una región del espacio y <span class="math inline">\(w_k\)</span> es la media de <span class="math inline">\(y\)</span> en esa región.</p>
 <p>El <strong>algoritmo CART</strong> (<em>Classification and Regression Trees</em>) construye el árbol de forma recursiva: en cada nodo, busca la variable <span class="math inline">\(j\)</span> y el punto de corte <span class="math inline">\(t\)</span> que dividen los datos en dos regiones <span class="math inline">\(R_1 = \{(\mathbf{x}_i, y_i) : x_{ij} \leq t\}\)</span> y <span class="math inline">\(R_2 = \{(\mathbf{x}_i, y_i) : x_{ij} &gt; t\}\)</span>, minimizando la suma de costos:</p>
@@ -2683,8 +2681,8 @@ Figure 1.6: Árbol de ejemplo
 </p>
 </div>
 </div>
-<div id="bagging-y-random-forests" class="section level3 hasAnchor" number="1.7.6" data-en="Bagging and Random Forests">
-<h3><span class="header-section-number">1.7.6</span> Bagging y Random Forests<a href="cap-regresion.html#bagging-y-random-forests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="bagging-y-random-forests" class="section level3 hasAnchor" number="1.7.4" data-en="Bagging and Random Forests">
+<h3><span class="header-section-number">1.7.4</span> Bagging y Random Forests<a href="cap-regresion.html#bagging-y-random-forests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Un problema central de los árboles de regresión es su alta varianza: pequeños cambios en los datos pueden producir árboles muy distintos. La técnica de <em>Bagging</em> (Bootstrap Aggregation) <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span> aborda este problema promediando múltiples modelos entrenados sobre muestras bootstrap:</p>
 <ol style="list-style-type: decimal">
