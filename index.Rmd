@@ -1,0 +1,30 @@
+---
+title: "Apunte de Marketing Engineering"
+author: "Marcel Goic"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+classoption: openany
+bibliography: [book.bib, packages.bib]
+csl: apa.csl
+link-citations: true
+description: "Apunte unificado del curso de Ingeniería de Marketing, IN5162/IN5602, Universidad de Chile."
+
+---
+
+# Prólogo {-}
+
+Este apunte reúne los contenidos y ejercicios del curso de Ingeniería de Marketing, dictado en el Departamento de Ingeniería Industrial de la Universidad de Chile. El material ha sido elaborado a lo largo de varios años con la colaboración de distintos equipos docentes.
+
+El documento está organizado en tres unidades principales: modelos de regresión, modelos probabilísticos y modelos estructurales. Cada unidad integra la exposición teórica con ejercicios resueltos, de modo que el lector pueda transitar de la formulación conceptual a la aplicación práctica sin necesidad de consultar fuentes separadas.
+
+Cualquier sugerencia, corrección o comentario puede dirigirse a mktengnotes@gmail.com.
+
+-----
+
+```{r include=FALSE}
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

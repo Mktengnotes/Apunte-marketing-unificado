@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+_book
+_bookdown_files
+rsconnect
+Libros/
+apunte-marketing-engineering.tex
+apunte-marketing-engineering.knit.md
+apunte-marketing-engineering.utf8.md
