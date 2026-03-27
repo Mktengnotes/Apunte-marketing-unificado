@@ -1,0 +1,13 @@
+book_filename: "apunte-marketing-engineering"
+output_dir: "docs"
+language:
+  ui:
+    chapter_name: "Capítulo "
+delete_merged_file: true
+rmd_files:
+  - "index.Rmd"
+  - "01-regresion.Rmd"
+  - "02-probabilisticos.Rmd"
+  - "03-estructurales.Rmd"
+  - "99-anexo-formulas.Rmd"
+  - "references.Rmd"

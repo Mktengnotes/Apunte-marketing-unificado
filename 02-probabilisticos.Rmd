@@ -1,0 +1,4800 @@
+---
+editor_options:
+  markdown:
+    wrap: 72
+---
+
+# Modelos Probabilísticos {#cap-probabilisticos data-en="Probabilistic Models"}
+
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Para qué sirve esta unidad.** En marketing, resulta frecuente
+enfrentar situaciones en las que la información disponible sobre el
+comportamiento individual de los clientes es limitada o agregada:
+¿cuánto tiempo permanecerá un suscriptor?, ¿cuántas veces visitará un
+portal web?, ¿responderá o no a una campaña promocional? Los modelos
+probabilísticos permiten abordar estas preguntas asumiendo que las
+decisiones de los agentes provienen de un proceso estocástico, lo cual
+posibilita describir, predecir y gestionar el comportamiento de los
+clientes sin requerir grandes volúmenes de datos individuales.
+
+**Habilidades previas requeridas.** Variable aleatoria y distribuciones
+de probabilidad básicas (Bernoulli, Binomial, Poisson, Exponencial),
+cálculo integral elemental, noción de función de verosimilitud y
+estimación por máxima verosimilitud, conceptos de valor esperado y
+varianza.
+
+**Qué debería poder hacer el estudiante al terminar.**
+
+-   Identificar cuándo un fenómeno de marketing corresponde a un
+    problema de duración, conteo o elección binaria.
+-   Formular la distribución individual y la distribución de
+    heterogeneidad adecuadas para cada problema.
+-   Derivar la distribución agregada mediante integración (mezcla).
+-   Construir funciones de log-verosimilitud para estimar los parámetros
+    de los modelos propuestos.
+-   Calcular esperanzas condicionales (actualización bayesiana) para
+    personalizar predicciones a nivel individual.
+-   Incorporar heterogeneidad observable mediante regresiones sobre los
+    parámetros del modelo.
+-   Evaluar y comparar modelos mediante criterios de información (AIC,
+    BIC) y log-verosimilitud.
+
+**Conexión con ejercicios.** A lo largo del capítulo se intercalan
+ejercicios guiados (E1--E7) que permiten verificar la comprensión de
+cada concepto a medida que se avanza. Al final del capítulo se incluyen
+problemas aplicados (P1--P9) con soluciones completas.
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Purpose of this unit.** In marketing, it is common to face situations
+where the available information on individual customer behavior is
+limited or aggregated: how long will a subscriber stay?, how many times
+will they visit a web portal?, will they respond to a promotional
+campaign? Probabilistic models address these questions by assuming that
+agent decisions arise from a stochastic process, which makes it
+possible to describe, predict, and manage customer behavior without
+requiring large volumes of individual-level data.
+
+**Required prior skills.** Random variables and basic probability
+distributions (Bernoulli, Binomial, Poisson, Exponential), elementary
+integral calculus, notion of the likelihood function and maximum
+likelihood estimation, concepts of expected value and variance.
+
+**What the student should be able to do upon completion.**
+
+-   Identify when a marketing phenomenon corresponds to a duration,
+    count, or binary choice problem.
+-   Formulate the appropriate individual distribution and heterogeneity
+    distribution for each problem.
+-   Derive the aggregate distribution through integration (mixing).
+-   Construct log-likelihood functions to estimate the parameters of the
+    proposed models.
+-   Compute conditional expectations (Bayesian updating) to personalize
+    predictions at the individual level.
+-   Incorporate observable heterogeneity through regressions on model
+    parameters.
+-   Evaluate and compare models using information criteria (AIC, BIC)
+    and log-likelihood.
+
+**Connection with exercises.** Throughout the chapter, guided exercises
+(E1--E7) are interspersed to verify comprehension of each concept as
+the material progresses. At the end of the chapter, applied problems
+(P1--P9) with complete solutions are included.
+
+:::
+
+</div>
+
+## Definiciones clave {#prob-definiciones data-en="Key Definitions"}
+
+::: {.lang-es}
+
+Antes de introducir la notación formal, conviene precisar los conceptos
+centrales que se emplearán a lo largo de la unidad:
+
+:::
+
+::: {.lang-en}
+
+Before introducing the formal notation, it is useful to clarify the key
+concepts that will be used throughout this unit:
+
+:::
+
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Definiciones clave**
+
+-   *Modelo probabilístico*: representación de un fenómeno en la que el
+    comportamiento de los agentes se describe mediante distribuciones de
+    probabilidad, en contraste con el enfoque estructural que supone
+    maximización racional de utilidad.
+-   *Comportamiento individual*: conducta observable de un agente
+    (abandonar, comprar, responder), caracterizada por una distribución
+    con parámetro latente $\theta$.
+-   *Heterogeneidad no observable*: variación en los parámetros latentes
+    entre individuos de la población, representada por una distribución
+    de mezcla $g(\theta)$.
+-   *Distribución agregada*: distribución resultante de integrar el
+    comportamiento individual sobre la distribución de heterogeneidad;
+    es la que se confronta con los datos observados.
+-   *Función de supervivencia* $S(t)$: probabilidad de que un evento no
+    haya ocurrido hasta el instante $t$.
+-   *Tasa de riesgo* (*hazard rate*) $h(t)$: probabilidad instantánea
+    de que el evento ocurra en $t$, condicionada a que no ha ocurrido
+    hasta ese momento.
+-   *Esperanza condicional*: valor esperado del parámetro latente de un
+    individuo, actualizado a la luz de su comportamiento observado
+    (actualización bayesiana).
+-   *Customer Lifetime Value* (CLV): valor presente neto de los flujos
+    futuros esperados de un cliente, considerando su probabilidad de
+    permanencia [@fader2005rfm; @fader2010].
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Key definitions**
+
+-   *Probabilistic model*: a representation of a phenomenon in which
+    agent behavior is described by probability distributions, in
+    contrast with the structural approach that assumes rational utility
+    maximization.
+-   *Individual behavior*: observable conduct of an agent (churning,
+    purchasing, responding), characterized by a distribution with
+    latent parameter $\theta$.
+-   *Unobservable heterogeneity*: variation in the latent parameters
+    across individuals in the population, represented by a mixture
+    distribution $g(\theta)$.
+-   *Aggregate distribution*: the distribution resulting from
+    integrating individual behavior over the heterogeneity
+    distribution; it is the one confronted with observed data.
+-   *Survival function* $S(t)$: probability that an event has not
+    occurred by time $t$.
+-   *Hazard rate* $h(t)$: instantaneous probability that the event
+    occurs at $t$, conditional on it not having occurred up to that
+    point.
+-   *Conditional expectation*: expected value of an individual's latent
+    parameter, updated in light of their observed behavior (Bayesian
+    updating).
+-   *Customer Lifetime Value* (CLV): net present value of the expected
+    future cash flows of a customer, considering their probability of
+    retention [@fader2005rfm; @fader2010].
+
+:::
+
+</div>
+
+## Enfoque y metodología {#prob-metodologia data-en="Approach and Methodology"}
+
+::: {.lang-es}
+
+En el contexto de marketing, interesa estudiar el comportamiento de las
+personas para realizar acciones estratégicas. Es posible distinguir dos
+enfoques según los supuestos sobre el comportamiento de los agentes:
+
+-   *Enfoque estructural*: supone que los agentes se comportan de
+    manera racional, tomando decisiones que maximizan su utilidad.
+    Resulta apropiado cuando se dispone de grandes volúmenes de datos
+    individuales.
+-   *Modelos probabilísticos*: suponen que las decisiones de los agentes
+    pueden describirse como realizaciones de procesos aleatorios.
+    Resultan adecuados cuando la información disponible es reducida o
+    agregada.
+
+:::
+
+::: {.lang-en}
+
+In the marketing context, understanding consumer behavior is essential
+for making strategic decisions. Two approaches can be distinguished
+based on the assumptions about agent behavior:
+
+-   *Structural approach*: assumes that agents behave rationally, making
+    decisions that maximize their utility. It is appropriate when large
+    volumes of individual-level data are available.
+-   *Probabilistic models*: assume that agent decisions can be described
+    as realizations of random processes. They are suitable when the
+    available information is limited or aggregated.
+
+:::
+
+::: {.lang-es}
+
+La metodología de modelamiento probabilístico [@schmittlein1987;
+@fader2005] sigue una secuencia de siete pasos:
+
+1.  Determinar el problema de decisión a estudiar y la información
+    requerida.
+2.  Identificar el comportamiento observable de interés a nivel
+    individual.
+3.  Seleccionar la distribución de probabilidad que caracterice el
+    comportamiento individual. Los parámetros de esta distribución se
+    interpretan como *características latentes* a nivel individual.
+4.  Escoger la distribución que describa cómo las características
+    latentes están distribuidas en la población (*distribución de
+    mezcla* o *heterogénea*), típicamente denotada $g(\theta)$.
+5.  Derivar la *distribución agregada* del comportamiento de interés:
+
+:::
+
+::: {.lang-en}
+
+The probabilistic modeling methodology [@schmittlein1987; @fader2005]
+follows a sequence of seven steps:
+
+1.  Determine the decision problem to study and the required
+    information.
+2.  Identify the observable behavior of interest at the individual
+    level.
+3.  Select the probability distribution that characterizes individual
+    behavior. The parameters of this distribution are interpreted as
+    *latent characteristics* at the individual level.
+4.  Choose the distribution that describes how the latent
+    characteristics are distributed across the population (*mixture
+    distribution* or *heterogeneity distribution*), typically denoted
+    $g(\theta)$.
+5.  Derive the *aggregate distribution* of the behavior of interest:
+
+:::
+
+\[f(x) = \int f(x \mid \theta)\, g(\theta)\, d\theta
+\quad \text{(caso continuo)}
+\tag{2.1}\]
+\[p(x) = \sum_{i} f(x \mid \theta)\, \Pr(\theta = \theta_i)
+\quad \text{(caso discreto)}
+\tag{2.2}\]
+
+::: {.lang-es}
+
+6.  Estimar los parámetros del modelo mediante el ajuste de la
+    distribución agregada a los datos observados (máxima
+    verosimilitud).
+7.  Usar los resultados para tomar decisiones sobre el problema de
+    marketing en cuestión.
+
+:::
+
+::: {.lang-en}
+
+6.  Estimate the model parameters by fitting the aggregate distribution
+    to the observed data (maximum likelihood).
+7.  Use the results to make decisions about the marketing problem at
+    hand.
+
+:::
+
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejemplo 1 (Motivación).** Un cliente realizó 2 compras el año
+pasado. ¿Esto implica que mantendrá ese patrón de consumo? ¿Existe
+alguna posibilidad de que incremente o disminuya su nivel de compra?
+¿Cuál es el proceso subyacente? Los modelos probabilísticos permiten
+responder estas preguntas asumiendo que el número de compras proviene
+de una distribución (por ejemplo, Poisson) cuyo parámetro varía entre
+individuos.
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Example 1 (Motivation).** A customer made 2 purchases last year.
+Does this imply that the same purchasing pattern will continue? Is
+there any chance that the customer will increase or decrease the
+purchase level? What is the underlying process? Probabilistic models
+address these questions by assuming that the number of purchases comes
+from a distribution (for example, Poisson) whose parameter varies
+across individuals.
+
+:::
+
+</div>
+
+::: {.lang-es}
+
+El enfoque probabilístico permite abordar tres tipos fundamentales de
+problemas en marketing:
+
+-   *Duración*: ¿cuándo ocurre un evento? Situaciones ligadas a la
+    permanencia de un cliente en una compañía, al tiempo de adopción de
+    un producto innovador, entre otras.
+-   *Conteo*: ¿cuántas veces ocurre un evento? Situaciones ligadas al
+    número de visitas a un portal web, la cantidad de productos
+    comprados, el número de exposiciones publicitarias.
+-   *Elección binaria*: ¿ocurre o no el evento? Situaciones asociadas
+    a la decisión de responder a una campaña publicitaria, de comprar o
+    no un producto, de cambiar o no de proveedor.
+
+Comportamientos más complejos pueden describirse mediante combinaciones
+de estos modelos básicos.
+
+:::
+
+::: {.lang-en}
+
+The probabilistic approach allows addressing three fundamental types of
+problems in marketing:
+
+-   *Duration*: when does an event occur? Situations related to customer
+    retention in a company, time to adoption of an innovative product,
+    among others.
+-   *Count*: how many times does an event occur? Situations related to
+    the number of visits to a web portal, the quantity of products
+    purchased, the number of advertising exposures.
+-   *Binary choice*: does the event occur or not? Situations associated
+    with the decision to respond to an advertising campaign, to buy or
+    not buy a product, to switch providers or not.
+
+More complex behaviors can be described through combinations of these
+basic models.
+
+:::
+
+## Modelos de duración {#prob-duracion data-en="Duration Models"}
+
+::: {.lang-es}
+
+En años recientes, las mejoras en las tecnologías de información han
+generado un aumento en la disponibilidad de datos sobre el
+comportamiento individual de los consumidores. Muchos analistas
+describen y predicen dicho comportamiento utilizando variables
+observables --- transaccionales (monto gastado, tienda, fecha) y
+demográficas (edad, nivel socioeconómico, estado civil) --- mediante
+modelos de regresión o árboles de decisión.
+
+En este capítulo se considera un enfoque complementario en el cual las
+decisiones de los individuos se desprenden de un comportamiento
+*aleatorio*: las decisiones no dependen únicamente de variables
+descriptivas, sino que también provienen de un proceso estocástico no
+observable que opera intrínsecamente en los individuos.
+
+A continuación se presentan tres tipos de modelos de duración:
+
+1.  Modelos de duración en *tiempo discreto*.
+2.  Modelos de duración en *tiempo continuo sin dependencia en la
+    duración*.
+3.  Modelos de duración en *tiempo continuo con dependencia en la
+    duración*.
+
+:::
+
+::: {.lang-en}
+
+In recent years, improvements in information technologies have led to
+an increase in the availability of data on individual consumer behavior.
+Many analysts describe and predict such behavior using observable
+variables --- transactional (amount spent, store, date) and demographic
+(age, socioeconomic level, marital status) --- through regression models
+or decision trees.
+
+This chapter considers a complementary approach in which individual
+decisions arise from *random* behavior: decisions do not depend solely
+on descriptive variables but also stem from an unobservable stochastic
+process that operates intrinsically within individuals.
+
+Three types of duration models are presented below:
+
+1.  *Discrete-time* duration models.
+2.  *Continuous-time duration models without duration dependence*.
+3.  *Continuous-time duration models with duration dependence*.
+
+:::
+
+### Modelos de duración en tiempo discreto {#prob-duracion-discreta data-en="Discrete-Time Duration Models"}
+
+::: {.lang-es}
+
+Como ejemplo introductorio, considérese el siguiente escenario: a
+través de una propuesta de valor atractiva, una empresa consigue un
+cliente. ¿Durante cuántos períodos estará afiliado a la compañía?
+
+Se asume que cada período puede cuantificarse en términos discretos
+(días, semanas, meses, años). Algunos ejemplos:
+
+-   Un usuario descarga una aplicación para su teléfono inteligente.
+    ¿Por cuántos meses la utilizará?
+-   Se adquiere un cliente en un banco. ¿Durante cuántos años
+    permanecerá como cliente?
+-   Un cliente se suscribe a un plan telefónico o de internet. ¿Por
+    cuántos períodos se mantendrá suscrito?
+
+:::
+
+::: {.lang-en}
+
+As an introductory example, consider the following scenario: through an
+attractive value proposition, a company acquires a customer. For how
+many periods will the customer remain affiliated with the company?
+
+It is assumed that each period can be quantified in discrete terms
+(days, weeks, months, years). Some examples:
+
+-   A user downloads a smartphone application. For how many months will
+    they use it?
+-   A customer is acquired by a bank. For how many years will they
+    remain a customer?
+-   A customer subscribes to a phone or internet plan. For how many
+    periods will the subscription last?
+
+:::
+
+#### Modelo Geométrico Desplazado {.unnumbered}
+
+::: {.lang-es}
+
+Se asume una cartera de clientes que van abandonando la relación
+comercial para *nunca más retomarla* en cualquier período definido. Al
+final de cada período, un cliente decide de manera aleatoria si continúa
+afiliado. De acuerdo a un proceso de Bernoulli, existe una probabilidad
+$\theta$ de cancelar la relación comercial y, con probabilidad
+$1-\theta$, de permanecer.
+
+Para cada individuo, se asume que la probabilidad de abandono no cambia
+en el tiempo. Como primer acercamiento, se supone que dicha probabilidad
+es la misma para todos los individuos (caso homogéneo). Sea $T$ la
+variable aleatoria que describe la duración de la relación comercial.
+Entonces $T$ sigue una distribución *Geométrica Desplazada* (sG) con
+parámetro $\theta$:
+
+1.  Probabilidad de que un individuo abandone la relación comercial
+    exactamente en el período $t$:
+
+:::
+
+::: {.lang-en}
+
+Consider a customer portfolio where customers leave the business
+relationship *never to return* in any given period. At the end of each
+period, a customer randomly decides whether to continue the
+relationship. According to a Bernoulli process, there is a probability
+$\theta$ of canceling the business relationship and, with probability
+$1-\theta$, of staying.
+
+For each individual, the churn probability is assumed to be constant
+over time. As a first approximation, this probability is assumed to be
+the same for all individuals (homogeneous case). Let $T$ be the random
+variable describing the duration of the business relationship. Then $T$
+follows a *Shifted Geometric* (sG) distribution with parameter
+$\theta$:
+
+1.  Probability that an individual leaves the business relationship
+    exactly in period $t$:
+
+:::
+
+\[P(T=t \mid \theta) = \theta(1 - \theta)^{t-1}
+\tag{2.3}\]
+
+::: {.lang-es}
+
+2.  Probabilidad de que un individuo abandone en un período posterior
+    al período $t$ (*función de supervivencia*):
+
+:::
+
+::: {.lang-en}
+
+2.  Probability that an individual leaves in a period after period $t$
+    (*survival function*):
+
+:::
+
+\[P(T > t \mid \theta) = (1 - \theta)^{t}
+\tag{2.4}\]
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejemplo 2 (Modelo Geométrico Desplazado).** Se considera una cohorte
+inicial de 1.000 clientes (indexado por el año 0). Se asume que, año
+a año, un determinado número de clientes se retira del negocio de
+acuerdo a un proceso de Bernoulli con probabilidad $\theta$ de abandono.
+La data histórica se presenta a continuación:
+
+| Año | # de Clientes | % de Permanencia | % de Retención |
+|:---:|:-------------:|:----------------:|:--------------:|
+|  0  |     1.000     |      100%        |       --       |
+|  1  |      631      |       63%        |      63%       |
+|  2  |      468      |       47%        |      74%       |
+|  3  |      382      |       38%        |      82%       |
+|  4  |      326      |       33%        |      85%       |
+|  5  |      289      |       29%        |      89%       |
+|  6  |      262      |       26%        |      91%       |
+|  7  |      241      |       24%        |      92%       |
+
+El porcentaje de retención corresponde al porcentaje de clientes que se
+mantuvo en la relación comercial respecto al período anterior.
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Example 2 (Shifted Geometric Model).** Consider an initial cohort of
+1,000 customers (indexed at year 0). It is assumed that, year after
+year, a certain number of customers leave the business according to a
+Bernoulli process with churn probability $\theta$. The historical data
+are presented below:
+
+| Year | # Customers | % Remaining | % Retention |
+|:----:|:-----------:|:-----------:|:-----------:|
+|  0   |    1,000    |    100%     |     --      |
+|  1   |     631     |     63%     |    63%      |
+|  2   |     468     |     47%     |    74%      |
+|  3   |     382     |     38%     |    82%      |
+|  4   |     326     |     33%     |    85%      |
+|  5   |     289     |     29%     |    89%      |
+|  6   |     262     |     26%     |    91%      |
+|  7   |     241     |     24%     |    92%      |
+
+The retention percentage is the proportion of customers who remained in
+the business relationship relative to the previous period.
+
+:::
+
+</div>
+
+::: {.lang-es}
+
+El valor de $\theta$ es un parámetro poblacional desconocido que se
+estima mediante el método de *máxima verosimilitud*, buscando el valor
+del parámetro que mejor se ajusta a los datos observados bajo el
+supuesto de independencia entre individuos.
+
+La *función de verosimilitud* del modelo geométrico desplazado es:
+
+:::
+
+::: {.lang-en}
+
+The value of $\theta$ is an unknown population parameter estimated
+using the *maximum likelihood* method, seeking the parameter value that
+best fits the observed data under the assumption of independence across
+individuals.
+
+The *likelihood function* of the shifted geometric model is:
+
+:::
+
+\[L(\theta) = \left\{\prod_{t=1}^{\tau} P(T=t \mid \theta)^{n_t}\right\}
+P(T>\tau \mid \theta)^{n_\tau}
+= \left\{\prod_{t=1}^{\tau}
+\big[\theta(1-\theta)^{t-1}\big]^{n_t}\right\}
+\big[(1-\theta)^{\tau}\big]^{n_\tau}
+\tag{2.5}\]
+
+::: {.lang-es}
+
+donde $n_t$ es el número de abandonos en el período $t$, $n_\tau$ es
+el número de clientes activos después del máximo tiempo observable
+$\tau$, y $\tau$ corresponde al horizonte de observación.
+
+Dado que maximizar un producto resulta complicado, se aplica logaritmo
+para obtener la *función de log-verosimilitud*:
+
+:::
+
+::: {.lang-en}
+
+where $n_t$ is the number of churns in period $t$, $n_\tau$ is the
+number of active customers after the maximum observable time $\tau$,
+and $\tau$ is the observation horizon.
+
+Since maximizing a product is cumbersome, the logarithm is applied to
+obtain the *log-likelihood function*:
+
+:::
+
+\[\hat{\ell}(\theta) = \sum_{t=1}^{\tau} n_t
+\big[\ln \theta + (t-1)\ln(1-\theta)\big]
++ n_\tau \cdot \tau \cdot \ln(1-\theta)
+\tag{2.6}\]
+
+::: {.lang-es}
+
+Maximizando esta función se obtiene:
+
+:::
+
+::: {.lang-en}
+
+Maximizing this function yields:
+
+:::
+
+\[\hat{\theta} = 0{,}226 \qquad \hat{\ell} = -1794{,}62
+\tag{2.7}\]
+
+::: {.lang-es}
+
+El modelo homogéneo, si bien permite tomar medidas de gestión a
+partir de un modelo sencillo, resulta poco realista, pues se asume que
+toda la población posee la misma probabilidad de abandono.
+
+**Dos segmentos (mezcla finita).** Una manera de incorporar mayor
+complejidad consiste en asumir que la población no es homogénea, sino
+que existen segmentos de individuos con comportamientos distintos. La
+forma más sencilla es suponer dos segmentos con parámetros $\theta_1$ y
+$\theta_2$ respectivamente, donde $\pi$ representa la proporción de la
+población que pertenece al primer segmento:
+
+:::
+
+::: {.lang-en}
+
+The homogeneous model, while allowing management decisions based on a
+simple model, is unrealistic because it assumes that the entire
+population has the same churn probability.
+
+**Two segments (finite mixture).** One way to incorporate greater
+complexity is to assume that the population is not homogeneous but
+rather that there exist segments of individuals with different
+behaviors. The simplest form is to assume two segments with parameters
+$\theta_1$ and $\theta_2$ respectively, where $\pi$ represents the
+proportion of the population belonging to the first segment:
+
+:::
+
+\[P(T=t \mid \theta_1, \theta_2, \pi)
+= \theta_1(1-\theta_1)^{t-1}\pi
++ \theta_2(1-\theta_2)^{t-1}(1-\pi)
+\tag{2.8}\]
+\[P(T>t \mid \theta_1, \theta_2, \pi)
+= (1-\theta_1)^{t}\pi + (1-\theta_2)^{t}(1-\pi)
+\tag{2.9}\]
+
+::: {.lang-es}
+
+Cabe mencionar que este enfoque puede extenderse a más segmentos,
+siempre que se conozca la proporción $\pi$ correspondiente.
+
+:::
+
+::: {.lang-en}
+
+It is worth noting that this approach can be extended to more segments,
+provided the corresponding proportion $\pi$ is known.
+
+:::
+
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejercicio guiado E1: Tasa de respuesta.**
+
+Una compañía de venta de ropa por catálogo busca decidir a qué segmento
+enviar los catálogos de la próxima colección. Para ello analiza la tasa
+de respuesta de una muestra de clientes de cada segmento (el ratio
+entre número de clientes que compra y número de catálogos enviados). Al
+mirar el primer segmento observa que de los 18 clientes a quienes se
+les envió el catálogo, ninguno compró y, por tanto, decide no enviar
+catálogos a ningún cliente de ese segmento. Esta compañía:
+
+(a) Muy probablemente esté subestimando la tasa de respuesta de ese
+    segmento.
+(b) Debiera redefinir los criterios de segmentación para hacer grupos
+    más grandes y accionables.
+(c) Ha definido una política que da cuenta de su aversión al riesgo.
+(d) Debiera usar un modelo de duración en tiempo continuo con
+    dependencia en la duración.
+(e) Debiera incorporar variables explicativas en su modelo predictivo.
+
+<details>
+<summary>**Solución**</summary>
+Respuesta correcta: **(a)**.
+
+Con una muestra de solo 18 observaciones y cero respuestas, la
+estimación empírica $\hat{p} = 0/18 = 0$ resulta poco confiable. La
+probabilidad real de respuesta del segmento es muy probablemente mayor
+que cero; la observación de ninguna compra en una muestra tan pequeña
+no implica que la tasa de respuesta sea nula. Un enfoque bayesiano (por
+ejemplo, con un prior $\text{Beta}(\alpha, \beta)$) produciría una
+estimación positiva incluso con cero éxitos observados.
+</details>
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Guided exercise E1: Response rate.**
+
+A catalog clothing company wants to decide which segment to send next
+season's catalogs to. To this end, it analyzes the response rate of a
+sample of customers from each segment (the ratio between the number of
+customers who purchase and the number of catalogs sent). Looking at the
+first segment, the company observes that none of the 18 customers who
+received the catalog made a purchase, and therefore decides not to send
+catalogs to any customer in that segment. This company:
+
+(a) Is very likely underestimating the response rate of that segment.
+(b) Should redefine the segmentation criteria to create larger and more
+    actionable groups.
+(c) Has defined a policy that reflects its risk aversion.
+(d) Should use a continuous-time duration model with duration
+    dependence.
+(e) Should incorporate explanatory variables in its predictive model.
+
+<details>
+<summary>**Solution**</summary>
+Correct answer: **(a)**.
+
+With a sample of only 18 observations and zero responses, the empirical
+estimate $\hat{p} = 0/18 = 0$ is unreliable. The true response
+probability of the segment is very likely greater than zero; observing
+no purchases in such a small sample does not imply that the response
+rate is zero. A Bayesian approach (for example, with a
+$\text{Beta}(\alpha, \beta)$ prior) would yield a positive estimate
+even with zero observed successes.
+</details>
+
+:::
+
+</div>
+
+#### Modelo Beta-Geométrico Desplazado {.unnumbered}
+
+::: {.lang-es}
+
+Los modelos anteriores funcionan bien cuando la población se comporta
+de manera distinta entre clases latentes, pero similar al interior de
+cada clase. Sin embargo, puede resultar más realista asumir una
+*heterogeneidad continua* en la población, es decir, un número
+potencialmente infinito de segmentos, de modo de capturar las
+preferencias individuales de cada miembro.
+
+Para este propósito, ya no se asume que $\theta$ toma valores discretos,
+sino que proviene de una distribución continua
+$\text{Beta}(\alpha, \beta)$:
+
+:::
+
+::: {.lang-en}
+
+The previous models work well when the population behaves differently
+across latent classes but similarly within each class. However, it may
+be more realistic to assume *continuous heterogeneity* in the
+population, that is, a potentially infinite number of segments, so as
+to capture the individual preferences of each member.
+
+For this purpose, $\theta$ is no longer assumed to take discrete values
+but instead comes from a continuous
+$\text{Beta}(\alpha, \beta)$ distribution:
+
+:::
+
+\[B(\theta \mid \alpha, \beta)
+= \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha, \beta)},
+\quad
+B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}
+{\Gamma(\alpha + \beta)}
+\tag{2.10}\]
+
+::: {.lang-es}
+
+Aplicando la ley de probabilidades totales, las probabilidades se
+obtienen integrando sobre la distribución de heterogeneidad:
+
+:::
+
+::: {.lang-en}
+
+Applying the law of total probability, the probabilities are obtained
+by integrating over the heterogeneity distribution:
+
+:::
+
+\[P(T=t \mid \alpha, \beta)
+= \int_0^1 P(T=t \mid \theta)\,B(\theta \mid \alpha, \beta)\,d\theta
+= \frac{B(\alpha+1,\, t+\beta-1)}{B(\alpha, \beta)}
+\tag{2.11}\]
+\[P(T>t \mid \alpha, \beta)
+= \int_0^1 P(T>t \mid \theta)\,B(\theta \mid \alpha, \beta)\,d\theta
+= \frac{B(\alpha,\, t+\beta)}{B(\alpha, \beta)}
+\tag{2.12}\]
+<div class="lang-es">
+
+::: {.rmdwarning}
+
+**Notación importante.** Se utiliza $B(\alpha, \beta)$ indistintamente
+para referirse tanto a la *función Beta* como a la *distribución Beta*.
+Bajo ninguna circunstancia estos objetos son iguales: la función Beta
+es una constante de normalización, mientras que la distribución Beta es
+una función de densidad de probabilidad.
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdwarning}
+
+**Important notation.** $B(\alpha, \beta)$ is used interchangeably to
+refer to both the *Beta function* and the *Beta distribution*. Under no
+circumstances are these objects the same: the Beta function is a
+normalization constant, while the Beta distribution is a probability
+density function.
+
+:::
+
+</div>
+
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejemplo 3 (Recursividad en el modelo Beta-Geométrico).** Usando la
+misma cohorte del Ejemplo 2, pero asumiendo heterogeneidad continua,
+es posible identificar una recursividad en la fórmula de abandono:
+
+*Caso base* ($t=1$):
+\[P(T=1 \mid \alpha, \beta)
+= \frac{B(\alpha+1, \beta)}{B(\alpha, \beta)}
+= \frac{\alpha}{\alpha + \beta}\]
+*Paso recursivo* ($t > 1$):
+\[\frac{P(T=t \mid \alpha, \beta)}{P(T=t-1 \mid \alpha, \beta)}
+= \frac{\beta + t - 2}{\alpha + \beta + t - 1}\]
+Al estimar el modelo Beta-Geométrico Desplazado con los datos del
+Ejemplo 2, se obtiene:
+\[\hat{\alpha} = 0{,}7041 \qquad
+\hat{\beta} = 1{,}1820 \qquad
+\hat{\ell} = -1680{,}27
+\tag{2.13}\]
+La diferencia en log-verosimilitud respecto al modelo homogéneo
+($\hat{\ell} = -1794{,}62$) es notable. Si bien esto sugiere una
+mejora, la comparación rigurosa debe realizarse mediante criterios como
+AIC o BIC, que penalizan por el número de parámetros.
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Example 3 (Recursion in the Beta-Geometric model).** Using the same
+cohort from Example 2, but assuming continuous heterogeneity, a
+recursion in the churn formula can be identified:
+
+*Base case* ($t=1$):
+\[P(T=1 \mid \alpha, \beta)
+= \frac{B(\alpha+1, \beta)}{B(\alpha, \beta)}
+= \frac{\alpha}{\alpha + \beta}\]
+*Recursive step* ($t > 1$):
+\[\frac{P(T=t \mid \alpha, \beta)}{P(T=t-1 \mid \alpha, \beta)}
+= \frac{\beta + t - 2}{\alpha + \beta + t - 1}\]
+Estimating the Shifted Beta-Geometric model with the data from
+Example 2 yields:
+\[\hat{\alpha} = 0.7041 \qquad
+\hat{\beta} = 1.1820 \qquad
+\hat{\ell} = -1680.27
+\tag{2.13}\]
+The difference in log-likelihood relative to the homogeneous model
+($\hat{\ell} = -1794.62$) is notable. Although this suggests an
+improvement, a rigorous comparison should be performed using criteria
+such as AIC or BIC, which penalize for the number of parameters.
+
+:::
+
+</div>
+
+### Modelos de duración en tiempo continuo sin dependencia en la duración {#prob-duracion-continua data-en="Continuous-Time Duration Models Without Duration Dependence"}
+
+::: {.lang-es}
+
+En algunos casos resulta más apropiado medir el tiempo como una
+variable continua. Ejemplos relevantes incluyen:
+
+-   Tiempos de respuesta a una campaña promocional de marketing
+    directo.
+-   Tiempo entre visitas a un portal web.
+-   Tiempos entre llamadas en un *call center*.
+-   Tiempos de operación en la industria de servicios.
+
+:::
+
+::: {.lang-en}
+
+In some cases it is more appropriate to measure time as a continuous
+variable. Relevant examples include:
+
+-   Response times to a direct marketing promotional campaign.
+-   Time between visits to a web portal.
+-   Time between calls in a *call center*.
+-   Operation times in the services industry.
+
+:::
+
+#### Modelo Exponencial {.unnumbered}
+
+::: {.lang-es}
+
+Se define $T$ como el tiempo hasta que un cliente adquiere un producto
+por primera vez. Se asume que esta variable está exponencialmente
+distribuida con tasa $\lambda$:
+
+:::
+
+::: {.lang-en}
+
+Let $T$ be the time until a customer acquires a product for the first
+time. This variable is assumed to be exponentially distributed with
+rate $\lambda$:
+
+:::
+
+\[P(T \leq t) = 1 - e^{-\lambda t}
+\tag{2.14}\]
+\[P(T > t) = e^{-\lambda t}
+\tag{2.15}\]
+
+::: {.lang-es}
+
+La función de verosimilitud para tiempo continuo es:
+
+:::
+
+::: {.lang-en}
+
+The likelihood function for continuous time is:
+
+:::
+
+\[L(\theta) = \prod_{i \in A} f(t_i \mid \theta)
+\prod_{i \notin A} P(T > \tau_i \mid \theta)
+= \prod_{i \in A} \theta e^{-\theta t_i}
+\prod_{i \notin A} e^{-\theta \tau_i}
+\tag{2.16}\]
+
+::: {.lang-es}
+
+donde $f(t_i \mid \theta)$ es la función de densidad (derivada de la
+acumulada), $A$ es el conjunto de clientes que realizaron el evento, y
+$\tau_i$ es el tiempo máximo de observación.
+
+Una limitación de este modelo es que, para $t$ suficientemente grande,
+todos los consumidores terminarían experimentando el evento
+($\lim_{t \to \infty} e^{-\lambda t} = 0$), lo cual no siempre es
+realista. Para abordar esta limitación se pueden definir *dos clases
+latentes*:
+
+-   Segmento que eventualmente realiza el evento (tamaño $\pi$):
+    $P(T \leq t) = 1 - e^{-\theta t}$.
+-   Segmento que nunca realiza el evento (tamaño $1 - \pi$):
+    $P(T \leq t) = 0$.
+
+La probabilidad total resulta:
+
+:::
+
+::: {.lang-en}
+
+where $f(t_i \mid \theta)$ is the density function (derivative of the
+CDF), $A$ is the set of customers who experienced the event, and
+$\tau_i$ is the maximum observation time.
+
+A limitation of this model is that for sufficiently large $t$, all
+consumers would eventually experience the event
+($\lim_{t \to \infty} e^{-\lambda t} = 0$), which is not always
+realistic. To address this limitation, *two latent classes* can be
+defined:
+
+-   Segment that eventually experiences the event (size $\pi$):
+    $P(T \leq t) = 1 - e^{-\theta t}$.
+-   Segment that never experiences the event (size $1 - \pi$):
+    $P(T \leq t) = 0$.
+
+The total probability is:
+
+:::
+
+\[P(T \leq t) = \pi(1 - e^{-\theta t})
+\tag{2.17}\]
+<div class="lang-es">
+
+::: {.rstudio-tip}
+
+**Implementación práctica.** Aunque el modelo describe probabilidades
+en tiempo continuo, los datos suelen presentarse en intervalos discretos.
+La log-verosimilitud se construye calculando la probabilidad de que el
+evento ocurra dentro de cada intervalo temporal:
+$P(t_0 \leq T \leq t_1) = F(t_1) - F(t_0)$.
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rstudio-tip}
+
+**Practical implementation.** Although the model describes probabilities
+in continuous time, data are usually presented in discrete intervals.
+The log-likelihood is constructed by computing the probability that the
+event occurs within each time interval:
+$P(t_0 \leq T \leq t_1) = F(t_1) - F(t_0)$.
+
+:::
+
+</div>
+
+::: {.lang-es}
+
+**Propiedad fundamental (falta de memoria).** La distribución
+exponencial no tiene memoria: la información de que un elemento ha
+sobrevivido un tiempo $s$ no modifica la probabilidad de que sobreviva
+un período $t$ adicional. Formalmente:
+
+:::
+
+::: {.lang-en}
+
+**Fundamental property (memorylessness).** The exponential distribution
+is memoryless: knowing that an element has survived for a time $s$ does
+not change the probability of surviving an additional period $t$.
+Formally:
+
+:::
+
+\[P(T > s + t \mid T > s)
+= \frac{P(T > s+t)}{P(T > s)}
+= \frac{e^{-\lambda(s+t)}}{e^{-\lambda s}}
+= e^{-\lambda t}
+\tag{2.18}\]
+
+::: {.lang-es}
+
+Esta propiedad define lo que se entiende por *sin dependencia en la
+duración*: la probabilidad de que ocurra un suceso no depende del
+tiempo transcurrido.
+
+:::
+
+::: {.lang-en}
+
+This property defines what is meant by *no duration dependence*: the
+probability that an event occurs does not depend on the elapsed time.
+
+:::
+
+#### Modelo Gamma-Exponencial {.unnumbered}
+
+::: {.lang-es}
+
+Análogamente al caso discreto, es posible incorporar heterogeneidad
+continua. Se asume que la tasa $\lambda$ se distribuye
+$\text{Gamma}(r, \alpha)$ en la población:
+
+:::
+
+::: {.lang-en}
+
+Analogously to the discrete case, continuous heterogeneity can be
+incorporated. The rate $\lambda$ is assumed to follow a
+$\text{Gamma}(r, \alpha)$ distribution across the population:
+
+:::
+
+\[g(\lambda) = \frac{\alpha^r \lambda^{r-1} e^{-\alpha \lambda}}
+{\Gamma(r)}
+\tag{2.19}\]
+
+::: {.lang-es}
+
+donde $r$ es el parámetro de forma (con $r=1$ se reduce a una
+exponencial; a medida que crece, la forma se vuelve más simétrica) y
+$\alpha$ es el parámetro de escala.
+
+Al integrar sobre la heterogeneidad:
+
+:::
+
+::: {.lang-en}
+
+where $r$ is the shape parameter (with $r=1$ it reduces to an
+exponential; as it increases, the shape becomes more symmetric) and
+$\alpha$ is the scale parameter.
+
+Integrating over the heterogeneity:
+
+:::
+
+\[P(T \leq t) = \int_0^{\infty} (1 - e^{-\lambda t})\,g(\lambda)\,d\lambda
+= 1 - \left(\frac{\alpha}{\alpha + t}\right)^r
+\tag{2.20}\]
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejercicio guiado E3: Distribución Gamma y heterogeneidad.**
+
+¿Cuál de los siguientes factores motivan la utilización de una
+distribución Gamma para modelar la heterogeneidad de las tasas de
+adopción en un modelo de duración en tiempo continuo? (Es posible
+elegir más de un factor.)
+
+i.   Consistencia con el dominio de la probabilidad de abandono en cada
+     período.
+ii.  Para generar una fórmula recursiva de fácil implementación.
+iii. Flexibilidad para acomodar distintas formas de la distribución.
+iv.  Para generar una fórmula cerrada que pueda ser calculada de manera
+     computacionalmente eficiente.
+
+<details>
+<summary>**Solución**</summary>
+Respuestas correctas: **iii** y **iv**.
+
+La distribución Gamma se emplea como distribución de mezcla
+principalmente por dos razones: (iii) su flexibilidad para representar
+distintas formas de distribución (sesgadas, simétricas) según los
+valores de sus parámetros, y (iv) porque al combinarla con la
+distribución exponencial produce una fórmula cerrada
+($1 - (\alpha/(\alpha + t))^r$), lo que resulta computacionalmente
+eficiente. La opción (i) no aplica porque la Gamma modela tasas
+$\lambda \in (0, \infty)$, no probabilidades en $[0,1]$. La opción
+(ii) describe una propiedad del modelo Beta-Geométrico, no del
+Gamma-Exponencial.
+</details>
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Guided exercise E3: Gamma distribution and heterogeneity.**
+
+Which of the following factors motivate the use of a Gamma distribution
+to model heterogeneity in adoption rates in a continuous-time duration
+model? (More than one factor may apply.)
+
+i.   Consistency with the domain of the per-period churn probability.
+ii.  To generate a recursive formula that is easy to implement.
+iii. Flexibility to accommodate different distributional shapes.
+iv.  To produce a closed-form expression that can be computed
+     efficiently.
+
+<details>
+<summary>**Solution**</summary>
+Correct answers: **iii** and **iv**.
+
+The Gamma distribution is used as a mixture distribution primarily for
+two reasons: (iii) its flexibility to represent different distributional
+shapes (skewed, symmetric) depending on the parameter values, and (iv)
+because combining it with the exponential distribution produces a
+closed-form expression ($1 - (\alpha/(\alpha + t))^r$), which is
+computationally efficient. Option (i) does not apply because the Gamma
+models rates $\lambda \in (0, \infty)$, not probabilities in $[0,1]$.
+Option (ii) describes a property of the Beta-Geometric model, not the
+Gamma-Exponential.
+</details>
+
+:::
+
+</div>
+
+### Modelos de duración en tiempo continuo con dependencia en la duración {#prob-duracion-hazard data-en="Continuous-Time Duration Models With Duration Dependence"}
+
+::: {.lang-es}
+
+Una de las grandes limitaciones del modelo exponencial es la propiedad
+de falta de memoria. En muchas aplicaciones se requiere que la
+probabilidad de que un evento ocurra dependa del tiempo transcurrido
+desde que no ha ocurrido. Esto se captura mediante la *tasa de riesgo*
+(*hazard rate*):
+
+:::
+
+::: {.lang-en}
+
+One of the major limitations of the exponential model is the
+memorylessness property. In many applications, the probability of an
+event occurring must depend on the time elapsed since it has not
+occurred. This is captured by the *hazard rate*:
+
+:::
+
+\[h(t) = \frac{f(t)}{1 - F(t)}
+\tag{2.21}\]
+
+::: {.lang-es}
+
+A partir de la tasa de riesgo, se puede definir unívocamente la
+distribución de una variable aleatoria no negativa:
+
+:::
+
+::: {.lang-en}
+
+From the hazard rate, the distribution of a non-negative random
+variable can be uniquely defined:
+
+:::
+
+\[F(t) = 1 - \exp\left(-\int_0^t h(u)\,du\right)
+\tag{2.22}\]
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejemplo 4 (Interpretación de tasas de riesgo).** Distintos fenómenos
+exhiben patrones de riesgo cualitativamente diferentes:
+
+-   *Respuesta a un correo electrónico*: tasa de riesgo decreciente.
+    Si una persona no ha respondido, cada vez es menos probable que lo
+    haga, pues los correos antiguos tienden a ser ignorados.
+-   *Llegada de un autobús*: tasa de riesgo creciente. A medida que
+    más tiempo pasa sin que llegue, la espera remanente debería ser
+    menor.
+-   *Divorcio*: tasa de riesgo con forma de campana. Es poco probable
+    al inicio y al final del matrimonio, con mayor riesgo en los años
+    intermedios.
+-   *Falla de un disco duro*: tasa de riesgo en forma de bañera
+    (alta al inicio, baja en la mitad de la vida útil, alta al final).
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Example 4 (Hazard rate interpretation).** Different phenomena exhibit
+qualitatively different hazard patterns:
+
+-   *Response to an email*: decreasing hazard rate. If a person has not
+    responded, it becomes less likely that they will, since older emails
+    tend to be ignored.
+-   *Bus arrival*: increasing hazard rate. As more time passes without
+    arrival, the remaining wait should be shorter.
+-   *Divorce*: bell-shaped hazard rate. It is unlikely at the beginning
+    and end of a marriage, with higher risk in the intermediate years.
+-   *Hard drive failure*: bathtub-shaped hazard rate (high at the
+    beginning, low in the middle of the useful life, high at the end).
+
+:::
+
+</div>
+
+#### Modelo Weibull {.unnumbered}
+
+::: {.lang-es}
+
+La distribución Weibull proporciona una forma cerrada flexible para
+modelar dependencia en la duración. Para la variable aleatoria $T$:
+
+:::
+
+::: {.lang-en}
+
+The Weibull distribution provides a flexible closed-form expression for
+modeling duration dependence. For the random variable $T$:
+
+:::
+
+\[F(t) = P(T \leq t) = 1 - e^{-\lambda t^c}
+\tag{2.23}\]
+\[h(t) = c\lambda t^{c-1}
+\tag{2.24}\]
+
+::: {.lang-es}
+
+El parámetro $\lambda$ es un parámetro de escala y $c$ es el parámetro
+de forma. Resulta importante notar que:
+
+-   Para $c = 1$, la distribución se reduce a la exponencial (tasa de
+    riesgo constante).
+-   Para $c > 1$, la tasa de riesgo es creciente (dependencia positiva
+    en la duración).
+-   Para $c < 1$, la tasa de riesgo es decreciente (dependencia
+    negativa en la duración).
+
+En la distribución Weibull, la propiedad de falta de memoria *no* se
+cumple:
+
+:::
+
+::: {.lang-en}
+
+The parameter $\lambda$ is a scale parameter and $c$ is the shape
+parameter. It is important to note that:
+
+-   For $c = 1$, the distribution reduces to the exponential (constant
+    hazard rate).
+-   For $c > 1$, the hazard rate is increasing (positive duration
+    dependence).
+-   For $c < 1$, the hazard rate is decreasing (negative duration
+    dependence).
+
+In the Weibull distribution, the memorylessness property does *not*
+hold:
+
+:::
+
+\[P(T > s + t \mid T > s)
+= \frac{e^{-\lambda(s+t)^c}}{e^{-\lambda s^c}}
+\neq e^{-\lambda t^c}
+\tag{2.25}\]
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejercicio guiado E2: Distribución Weibull.**
+
+En relación a la distribución Weibull:
+
+a.  Es un caso particular de la Poisson.
+b.  Es una generalización de la Poisson.
+c.  Solo tiene un parámetro $c$.
+d.  Es muy flexible y permite incluso generar distribuciones bimodales.
+e.  Ninguna de las anteriores.
+
+<details>
+<summary>**Solución**</summary>
+Respuesta correcta: **(e)** (Ninguna de las anteriores).
+
+La distribución Weibull no guarda relación de caso particular ni de
+generalización con la distribución de Poisson; son distribuciones de
+naturaleza distinta (la Weibull modela tiempos, la Poisson modela
+conteos). Posee dos parámetros ($\lambda$ y $c$), no uno solo. Si bien
+es flexible, no genera distribuciones bimodales; la Weibull es una
+generalización de la *exponencial*.
+</details>
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Guided exercise E2: Weibull distribution.**
+
+Regarding the Weibull distribution:
+
+a.  It is a special case of the Poisson.
+b.  It is a generalization of the Poisson.
+c.  It has only one parameter $c$.
+d.  It is very flexible and can even generate bimodal distributions.
+e.  None of the above.
+
+<details>
+<summary>**Solution**</summary>
+Correct answer: **(e)** (None of the above).
+
+The Weibull distribution bears no special-case or generalization
+relationship to the Poisson distribution; they are distributions of
+different nature (the Weibull models times, the Poisson models counts).
+It has two parameters ($\lambda$ and $c$), not just one. Although it is
+flexible, it does not generate bimodal distributions; the Weibull is a
+generalization of the *exponential*.
+</details>
+
+:::
+
+</div>
+
+#### Modelo Gamma-Weibull {.unnumbered}
+
+::: {.lang-es}
+
+Una propiedad conveniente de la distribución Weibull es que permite
+introducir heterogeneidad sobre el parámetro de escala de manera
+análoga al modelo Gamma-Exponencial. Se asume que $\lambda$ se
+distribuye $\text{Gamma}(\alpha, r)$ en la población:
+
+:::
+
+::: {.lang-en}
+
+A convenient property of the Weibull distribution is that it allows
+introducing heterogeneity on the scale parameter analogously to the
+Gamma-Exponential model. The parameter $\lambda$ is assumed to follow a
+$\text{Gamma}(\alpha, r)$ distribution across the population:
+
+:::
+
+\[P(T \leq t \mid \alpha, r, c)
+= \int_0^{\infty} (1 - e^{-\lambda t^c})\,g(\lambda)\,d\lambda
+= 1 - \left(\frac{\alpha}{\alpha + t^c}\right)^r
+\tag{2.26}\]
+
+::: {.lang-es}
+
+Para $c = 1$, se recupera el modelo Gamma-Exponencial.
+
+:::
+
+::: {.lang-en}
+
+For $c = 1$, the Gamma-Exponential model is recovered.
+
+:::
+
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejercicio guiado E4: Modelos de duración.**
+
+¿Cuáles de los siguientes modelos NO describen la duración de la
+relación de los clientes con una firma?
+
+a.  Beta-Geométrica Desplazada.
+b.  Beta-Geométrica NBD.
+c.  Gamma-Weibull.
+d.  Binomial Negativa.
+e.  Ninguna de las anteriores.
+
+<details>
+<summary>**Solución**</summary>
+Respuesta correcta: **(d)**.
+
+La distribución Binomial Negativa (NBD) es un modelo de *conteo*, no
+de duración. Describe el número de veces que ocurre un evento (por
+ejemplo, número de compras), no el tiempo hasta que ocurre. Los modelos
+(a), (b) y (c) sí describen duraciones.
+</details>
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Guided exercise E4: Duration models.**
+
+Which of the following models do NOT describe the duration of the
+customer relationship with a firm?
+
+a.  Shifted Beta-Geometric.
+b.  Beta-Geometric NBD.
+c.  Gamma-Weibull.
+d.  Negative Binomial.
+e.  None of the above.
+
+<details>
+<summary>**Solution**</summary>
+Correct answer: **(d)**.
+
+The Negative Binomial Distribution (NBD) is a *count* model, not a
+duration model. It describes the number of times an event occurs (for
+example, number of purchases), not the time until an event occurs.
+Models (a), (b), and (c) do describe durations.
+</details>
+
+:::
+
+</div>
+
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejercicio guiado E7: Tiempo discreto en modelos de duración.**
+
+*"En la práctica, siempre es posible discretizar el tiempo y, por lo
+tanto, no hay motivos para usar modelos de duración en tiempo
+continuo."* Discuta la veracidad de esta afirmación.
+
+<details>
+<summary>**Solución**</summary>
+La afirmación es **incorrecta** por al menos dos razones:
+
+-   Para eventos con gran variabilidad en los tiempos de ocurrencia, un
+    modelo de tiempo discreto podría requerir un número muy grande de
+    períodos para describir apropiadamente el comportamiento, lo que
+    resulta poco parsimonioso.
+-   Si el comportamiento tiene *dependencia en la duración*, dichas
+    dependencias se incorporan de manera natural en modelos de tiempo
+    continuo mediante funciones de riesgo (*hazard*) dependientes del
+    tiempo (por ejemplo, la distribución Weibull), lo cual puede ser
+    más complejo de representar en tiempo discreto.
+</details>
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Guided exercise E7: Discrete time in duration models.**
+
+*"In practice, it is always possible to discretize time and, therefore,
+there is no reason to use continuous-time duration models."* Discuss the
+validity of this statement.
+
+<details>
+<summary>**Solution**</summary>
+The statement is **incorrect** for at least two reasons:
+
+-   For events with high variability in occurrence times, a discrete-time
+    model could require a very large number of periods to adequately
+    describe the behavior, which is not parsimonious.
+-   If the behavior exhibits *duration dependence*, such dependencies
+    are naturally incorporated in continuous-time models through
+    time-dependent hazard functions (for example, the Weibull
+    distribution), which can be more complex to represent in discrete
+    time.
+</details>
+
+:::
+
+</div>
+
+## Modelos de conteo {#prob-conteo data-en="Count Models"}
+
+::: {.lang-es}
+
+Los modelos de conteo permiten describir cuántas veces los consumidores
+incurrirán en un comportamiento determinado durante un período de
+tiempo. Un ejemplo clásico es el problema de exposición publicitaria.
+
+Algunas *medidas de efectividad* relevantes son:
+
+-   **Alcance**: proporción de la población expuesta al evento al menos
+    una vez durante el período: $1 - P(X_t = 0)$.
+-   **Frecuencia promedio**: número promedio de exposiciones entre
+    quienes han experimentado el evento:
+    $\mathbb{E}(X_t) / (1 - P(X_t = 0))$.
+-   **Puntos de rating brutos (GRPs)**: número promedio de exposiciones
+    por cada 100 personas: $100 \cdot \mathbb{E}(X_t)$.
+
+:::
+
+::: {.lang-en}
+
+Count models describe how many times consumers will engage in a given
+behavior during a time period. A classic example is the advertising
+exposure problem.
+
+Some relevant *effectiveness measures* are:
+
+-   **Reach**: proportion of the population exposed to the event at
+    least once during the period: $1 - P(X_t = 0)$.
+-   **Average frequency**: average number of exposures among those who
+    have experienced the event:
+    $\mathbb{E}(X_t) / (1 - P(X_t = 0))$.
+-   **Gross Rating Points (GRPs)**: average number of exposures per 100
+    people: $100 \cdot \mathbb{E}(X_t)$.
+
+:::
+
+#### Modelo Poisson {.unnumbered}
+
+::: {.lang-es}
+
+Se define el modelo individual Poisson para la probabilidad de que el
+número de exposiciones sea $m$ en un intervalo de largo $t$:
+
+:::
+
+::: {.lang-en}
+
+The individual Poisson model is defined for the probability that the
+number of exposures equals $m$ in an interval of length $t$:
+
+:::
+
+\[P(N_t = m \mid \lambda)
+= \frac{(\lambda t)^m e^{-\lambda t}}{m!}
+\tag{2.27}\]
+
+::: {.lang-es}
+
+Su log-verosimilitud es:
+
+:::
+
+::: {.lang-en}
+
+Its log-likelihood is:
+
+:::
+
+\[LL(\lambda) = \sum_m n_m \ln\left(
+\frac{(\lambda t)^m e^{-\lambda t}}{m!}\right)
+\tag{2.28}\]
+
+::: {.lang-es}
+
+donde $n_m$ es el número de individuos que experimentaron exactamente
+$m$ ocurrencias del evento. Cuando el tiempo es unitario, el modelo se
+simplifica con $t = 1$.
+
+**Mezcla finita (dos segmentos).** Al igual que en los modelos de
+duración, es posible asumir que las tasas de eventos son
+$\lambda_1$ o $\lambda_2$ con probabilidad $\pi$ y $1-\pi$
+respectivamente:
+
+:::
+
+::: {.lang-en}
+
+where $n_m$ is the number of individuals who experienced exactly $m$
+occurrences of the event. When the time horizon is unitary, the model
+simplifies with $t = 1$.
+
+**Finite mixture (two segments).** As in the duration models, it is
+possible to assume that event rates are $\lambda_1$ or $\lambda_2$ with
+probability $\pi$ and $1-\pi$ respectively:
+
+:::
+
+\[P(N_t = m \mid \lambda_1, \lambda_2, \pi)
+= \frac{(\lambda_1 t)^m e^{-\lambda_1 t}}{m!}\,\pi
++ \frac{(\lambda_2 t)^m e^{-\lambda_2 t}}{m!}\,(1-\pi)
+\tag{2.29}\]
+
+#### Modelo Gamma-Poisson (NBD) {.unnumbered}
+
+::: {.lang-es}
+
+Para la heterogeneidad continua, se asume que $\lambda$ se distribuye
+$\text{Gamma}(r, \alpha)$ en la población. La distribución resultante
+se conoce como *Gamma-Poisson* o *Binomial Negativa* (NBD):
+
+:::
+
+::: {.lang-en}
+
+For continuous heterogeneity, $\lambda$ is assumed to follow a
+$\text{Gamma}(r, \alpha)$ distribution across the population. The
+resulting distribution is known as the *Gamma-Poisson* or *Negative
+Binomial Distribution* (NBD):
+
+:::
+
+\[P(N_t = m \mid r, \alpha)
+= \left(\frac{\alpha}{\alpha + t}\right)^r
+\left(\frac{t}{\alpha + t}\right)^m
+\frac{\Gamma(r + m)}{\Gamma(r)\,m!}
+\tag{2.30}\]
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejercicio guiado E5: Modelo NBD.**
+
+Un modelo NBD describe la demanda de botellas de oporto en los últimos
+6 meses. Si con este modelo se estima la demanda del próximo mes:
+
+a.  Es necesario hacer un modelo de regresión que considere la dinámica
+    del problema.
+b.  El cálculo no se puede hacer directamente; sin embargo, es posible
+    recalibrar el modelo considerando un horizonte de un mes.
+c.  El histograma del número de botellas consumidas por cliente se
+    moverá a la izquierda.
+d.  La probabilidad de comprar $x$ botellas resulta ser simplemente
+    $1/6$ veces las probabilidades calculadas para el primer semestre.
+e.  Ninguna de las anteriores.
+
+<details>
+<summary>**Solución**</summary>
+Respuesta correcta: **(c)**.
+
+Al reducir el horizonte temporal de 6 meses a 1 mes, el parámetro $t$
+en la fórmula NBD disminuye. Esto produce que la distribución se
+desplace hacia la izquierda (menores conteos), ya que cada individuo
+tiene menos tiempo para acumular compras. La relación entre
+probabilidades no es simplemente lineal (opción d incorrecta), y el
+modelo NBD permite directamente cambiar el horizonte temporal
+(opción b incorrecta).
+</details>
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Guided exercise E5: NBD model.**
+
+An NBD model describes the demand for bottles of port wine over the
+last 6 months. If this model is used to estimate next month's demand:
+
+a.  A regression model that accounts for the dynamics of the problem is
+    needed.
+b.  The calculation cannot be done directly; however, it is possible to
+    recalibrate the model considering a one-month horizon.
+c.  The histogram of the number of bottles consumed per customer will
+    shift to the left.
+d.  The probability of buying $x$ bottles is simply $1/6$ times the
+    probabilities calculated for the first semester.
+e.  None of the above.
+
+<details>
+<summary>**Solution**</summary>
+Correct answer: **(c)**.
+
+By reducing the time horizon from 6 months to 1 month, the parameter
+$t$ in the NBD formula decreases. This causes the distribution to
+shift to the left (lower counts), since each individual has less time
+to accumulate purchases. The relationship between probabilities is not
+simply linear (option d is incorrect), and the NBD model directly
+allows changing the time horizon (option b is incorrect).
+</details>
+
+:::
+
+</div>
+
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejercicio guiado E6: Modelos de conteo.**
+
+Un analista propone el uso de modelos de conteo para describir la
+intensidad de la participación de los usuarios de una red social. Los
+parámetros han sido estimados usando datos de 4 días de actividad. El
+modelo ajusta extremadamente bien. Sin embargo, al usar las
+estimaciones para pronosticar la actividad del quinto día, el modelo no
+ajusta bien. Se debiera concluir que:
+
+a.  Se debe agregar la data para considerar la actividad agregada en
+    todo el horizonte.
+b.  Probablemente el comportamiento de los usuarios en el quinto día
+    esté afectado por factores que no están presentes en los primeros
+    cuatro días.
+c.  Es necesario calcular esperanzas condicionales.
+d.  Los supuestos de comportamiento son errados y se debe desechar el
+    modelo.
+e.  Todas las anteriores.
+
+<details>
+<summary>**Solución**</summary>
+Respuesta correcta: **(b)**.
+
+La explicación más plausible es que existan factores específicos del
+quinto día (por ejemplo, un evento especial, un día de la semana
+diferente, o un cambio estacional) que no están presentes en los datos
+de entrenamiento. Esto no implica que el modelo deba desecharse, sino
+que conviene investigar qué factores cambiaron. Las opciones (a), (c)
+y (d) no abordan directamente el problema de predicción fuera de
+muestra.
+</details>
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Guided exercise E6: Count models.**
+
+An analyst proposes the use of count models to describe the intensity
+of user participation on a social network. The parameters have been
+estimated using 4 days of activity data. The model fits extremely well.
+However, when using the estimates to forecast the fifth day's activity,
+the model does not fit well. One should conclude that:
+
+a.  The data should be aggregated to consider the total activity over
+    the entire horizon.
+b.  The behavior of users on the fifth day is probably affected by
+    factors not present in the first four days.
+c.  Conditional expectations need to be calculated.
+d.  The behavioral assumptions are wrong and the model should be
+    discarded.
+e.  All of the above.
+
+<details>
+<summary>**Solution**</summary>
+Correct answer: **(b)**.
+
+The most plausible explanation is that there are factors specific to the
+fifth day (for example, a special event, a different day of the week,
+or a seasonal change) that are not present in the training data. This
+does not imply that the model should be discarded, but rather that
+investigating what factors changed is warranted. Options (a), (c), and
+(d) do not directly address the out-of-sample prediction problem.
+</details>
+
+:::
+
+</div>
+
+## Modelos de elección binaria {#prob-eleccion data-en="Binary Choice Models"}
+
+::: {.lang-es}
+
+Los modelos de elección binaria permiten describir la probabilidad de
+que los individuos elijan un determinado comportamiento entre dos
+opciones. Son aplicables, por ejemplo, a la decisión de responder o no
+a una campaña de marketing, de comprar o no un producto, o de cambiar
+o no de proveedor.
+
+:::
+
+::: {.lang-en}
+
+Binary choice models describe the probability that individuals choose
+a given behavior between two options. They are applicable, for example,
+to the decision of whether or not to respond to a marketing campaign,
+to buy or not buy a product, or to switch providers.
+
+:::
+
+#### Modelo Binomial {.unnumbered}
+
+::: {.lang-es}
+
+Considérese la probabilidad de que un individuo perteneciente a un
+segmento $s$ responda positivamente a una campaña. Si $p_s$ es la
+probabilidad de respuesta del segmento, entonces $X_s$ (la cantidad de
+respuestas obtenidas de un total de $m_s$ enviadas) sigue una
+distribución Binomial:
+
+:::
+
+::: {.lang-en}
+
+Consider the probability that an individual belonging to segment $s$
+responds positively to a campaign. If $p_s$ is the segment's response
+probability, then $X_s$ (the number of responses obtained from a total
+of $m_s$ sent) follows a Binomial distribution:
+
+:::
+
+\[P(X_s = x_s \mid m_s, p_s)
+= \binom{m_s}{x_s} p_s^{x_s}(1 - p_s)^{m_s - x_s}
+\tag{2.31}\]
+
+::: {.lang-es}
+
+La log-verosimilitud para $S$ segmentos, asumiendo un parámetro
+$\theta$ común, es:
+
+:::
+
+::: {.lang-en}
+
+The log-likelihood for $S$ segments, assuming a common parameter
+$\theta$, is:
+
+:::
+
+\[LL(\theta) = \sum_{s=1}^{S}
+\left[\ln\binom{m_s}{x_s}
++ x_s\ln(\theta)
++ (m_s - x_s)\ln(1-\theta)\right]
+\tag{2.32}\]
+
+::: {.lang-es}
+
+**Mezcla finita (dos segmentos).** Con probabilidades $\theta_1$ y
+$\theta_2$ para dos clases latentes:
+
+:::
+
+::: {.lang-en}
+
+**Finite mixture (two segments).** With probabilities $\theta_1$ and
+$\theta_2$ for two latent classes:
+
+:::
+
+\[P(X_s = x_s \mid m_s, \theta_1, \theta_2, \pi)
+= \binom{m_s}{x_s}
+\big[\theta_1^{x_s}(1-\theta_1)^{m_s - x_s}\pi
++ \theta_2^{x_s}(1-\theta_2)^{m_s - x_s}(1-\pi)\big]
+\tag{2.33}\]
+
+#### Modelo Beta-Binomial {.unnumbered}
+
+::: {.lang-es}
+
+Para la heterogeneidad continua, se asume que $\theta_s$ se distribuye
+$\text{Beta}(\alpha, \beta)$:
+
+:::
+
+::: {.lang-en}
+
+For continuous heterogeneity, $\theta_s$ is assumed to follow a
+$\text{Beta}(\alpha, \beta)$ distribution:
+
+:::
+
+\[P(X_s = x_s \mid \alpha, \beta)
+= \binom{m_s}{x_s}
+\frac{B(\alpha + x_s,\, \beta + m_s - x_s)}{B(\alpha, \beta)}
+\tag{2.34}\]
+
+## Heterogeneidad observable {#prob-het-observable data-en="Observable Heterogeneity"}
+
+::: {.lang-es}
+
+Hasta este punto se han presentado modelos en que el comportamiento de
+los agentes se debe exclusivamente a factores aleatorios no observables.
+En esta sección se incorpora *heterogeneidad observable*, es decir,
+factores presentes en los datos (sexo, edad, nivel socioeconómico,
+entre otros) que diferencian a los individuos.
+
+:::
+
+::: {.lang-en}
+
+Up to this point, the models presented assume that agent behavior is
+due exclusively to unobservable random factors. This section
+incorporates *observable heterogeneity*, that is, factors present in the
+data (gender, age, socioeconomic level, among others) that
+differentiate individuals.
+
+:::
+
+### Modelos de duración en tiempo discreto con heterogeneidad observable {data-en="Discrete-Time Duration Models with Observable Heterogeneity"}
+
+::: {.lang-es}
+
+Sea $T_i$ la variable aleatoria que describe el instante en que el
+individuo $i$ termina su relación comercial, modelada con una
+distribución Geométrica Desplazada de parámetro $\theta_i$. Se modela
+la probabilidad de abandono utilizando una transformación logística:
+
+:::
+
+::: {.lang-en}
+
+Let $T_i$ be the random variable describing the time at which
+individual $i$ ends the business relationship, modeled with a Shifted
+Geometric distribution with parameter $\theta_i$. The churn probability
+is modeled using a logistic transformation:
+
+:::
+
+\[\theta_i = \frac{\exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)}
+{1 + \exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)}
+= \frac{1}{1 + \exp(-(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i))}
+\tag{2.35}\]
+
+::: {.lang-es}
+
+donde $\mathbf{x}_i$ es el vector de variables explicativas del
+individuo $i$ y $\boldsymbol{\beta}$ es el vector de coeficientes.
+
+La log-verosimilitud para un panel de $N$ individuos resulta:
+
+:::
+
+::: {.lang-en}
+
+where $\mathbf{x}_i$ is the vector of explanatory variables for
+individual $i$ and $\boldsymbol{\beta}$ is the coefficient vector.
+
+The log-likelihood for a panel of $N$ individuals is:
+
+:::
+
+\[LL(\beta_0, \boldsymbol{\beta})
+= \sum_{i \in \text{abandono}}
+\big[\ln(\theta_i) + (t_i - 1)\ln(1 - \theta_i)\big]
++ \sum_{i \in \text{activos}} t_i\ln(1 - \theta_i)
+\tag{2.36}\]
+
+::: {.lang-es}
+
+Para incorporar *simultáneamente* heterogeneidad observable y no
+observable, se modelan los parámetros $\alpha_i$ y $\beta_i$ de la
+distribución Beta como funciones exponenciales de las covariables:
+
+:::
+
+::: {.lang-en}
+
+To *simultaneously* incorporate observable and unobservable
+heterogeneity, the parameters $\alpha_i$ and $\beta_i$ of the Beta
+distribution are modeled as exponential functions of the covariates:
+
+:::
+
+\[\alpha_i = \exp(\mathbf{a}'\mathbf{x}_i), \quad
+\beta_i = \exp(\mathbf{b}'\mathbf{x}_i)
+\tag{2.37}\]
+
+::: {.lang-es}
+
+La log-verosimilitud para el modelo mixto resulta:
+
+:::
+
+::: {.lang-en}
+
+The log-likelihood for the mixed model is:
+
+:::
+
+\[LL(\mathbf{a}, \mathbf{b})
+= \sum_{i \in \text{abandono}}
+\ln\!\left(\frac{B(\alpha_i + 1,\, t_i + \beta_i - 1)}
+{B(\alpha_i, \beta_i)}\right)
++ \sum_{i \in \text{activos}}
+\ln\!\left(\frac{B(\alpha_i,\, \beta_i + t_i)}
+{B(\alpha_i, \beta_i)}\right)
+\tag{2.38}\]
+
+### Modelos de duración en tiempo continuo con heterogeneidad observable {data-en="Continuous-Time Duration Models with Observable Heterogeneity"}
+
+::: {.lang-es}
+
+Sea $T_i$ modelada con distribución exponencial de parámetro
+$\lambda_i$. Se incorpora la heterogeneidad observable mediante:
+
+:::
+
+::: {.lang-en}
+
+Let $T_i$ be modeled with an exponential distribution with parameter
+$\lambda_i$. Observable heterogeneity is incorporated through:
+
+:::
+
+\[\lambda_i = \exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)
+= \lambda_0\exp(\boldsymbol{\beta}'\mathbf{x}_i)
+\tag{2.39}\]
+
+::: {.lang-es}
+
+La log-verosimilitud (discretizando la observación entre $t_i^-$ y
+$t_i^+$) es:
+
+:::
+
+::: {.lang-en}
+
+The log-likelihood (discretizing the observation between $t_i^-$ and
+$t_i^+$) is:
+
+:::
+
+\[LL(\boldsymbol{\theta})
+= \sum_{i=1}^{N} \ln\!\left(
+e^{-\lambda_0\exp(\boldsymbol{\beta}'\mathbf{x}_i)t_i^-}
+- e^{-\lambda_0\exp(\boldsymbol{\beta}'\mathbf{x}_i)t_i^+}
+\right)
+\tag{2.40}\]
+
+::: {.lang-es}
+
+Para incorporar adicionalmente heterogeneidad no observable, se asume
+que $\lambda_0$ se distribuye $\text{Gamma}(\alpha, r)$:
+
+:::
+
+::: {.lang-en}
+
+To additionally incorporate unobservable heterogeneity, $\lambda_0$ is
+assumed to follow a $\text{Gamma}(\alpha, r)$ distribution:
+
+:::
+
+\[LL(\boldsymbol{\theta})
+= \sum_{i=1}^{N} \ln\!\left(
+\left(\frac{\alpha}
+{\alpha + \exp(\boldsymbol{\beta}'\mathbf{x}_i)t_i^-}\right)^r
+- \left(\frac{\alpha}
+{\alpha + \exp(\boldsymbol{\beta}'\mathbf{x}_i)t_i^+}\right)^r
+\right)
+\tag{2.41}\]
+
+### Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable {data-en="Continuous-Time Duration Models with Duration Dependence and Observable Heterogeneity"}
+
+::: {.lang-es}
+
+Cuando $T_i$ se distribuye según una ley Weibull:
+
+:::
+
+::: {.lang-en}
+
+When $T_i$ follows a Weibull distribution:
+
+:::
+
+\[P(T_i < t_i \mid \beta, \lambda_0, c)
+= 1 - e^{-\lambda_0\exp(\boldsymbol{\beta}'\mathbf{x}_i)(t_i)^c}
+\tag{2.42}\]
+
+::: {.lang-es}
+
+La log-verosimilitud y su extensión con heterogeneidad no observable
+Gamma son análogas a las del caso exponencial, reemplazando $t$ por
+$t^c$.
+
+:::
+
+::: {.lang-en}
+
+The log-likelihood and its extension with Gamma unobservable
+heterogeneity are analogous to the exponential case, replacing $t$ with
+$t^c$.
+
+:::
+
+### Modelos de conteo con heterogeneidad observable {data-en="Count Models with Observable Heterogeneity"}
+
+::: {.lang-es}
+
+Sea $Y_i$ el número de veces que el individuo $i$ incurre en un
+comportamiento durante un período, modelada con distribución Poisson de
+parámetro $\lambda_i = \exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)$.
+La log-verosimilitud es:
+
+:::
+
+::: {.lang-en}
+
+Let $Y_i$ be the number of times individual $i$ engages in a behavior
+during a period, modeled with a Poisson distribution with parameter
+$\lambda_i = \exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)$. The
+log-likelihood is:
+
+:::
+
+\[LL(\beta_0, \boldsymbol{\beta})
+= \sum_{i=1}^{N}
+\big[y_i(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)
+- \exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)
+- \ln(y_i!)\big]
+\tag{2.43}\]
+
+::: {.lang-es}
+
+Para incorporar heterogeneidad no observable (modelo de *Regresión
+Binomial Negativa*), se asume $\lambda_0 \sim \text{Gamma}(r, \alpha)$:
+
+:::
+
+::: {.lang-en}
+
+To incorporate unobservable heterogeneity (*Negative Binomial
+Regression* model), $\lambda_0 \sim \text{Gamma}(r, \alpha)$ is
+assumed:
+
+:::
+
+\[P(Y_i = y_i \mid r, \alpha, \boldsymbol{\beta})
+= \frac{\Gamma(r + y_i)}{\Gamma(r)\,y_i!}
+\left(\frac{\alpha}
+{\alpha + \exp(\boldsymbol{\beta}'\mathbf{x}_i)}\right)^r
+\left(\frac{\exp(\boldsymbol{\beta}'\mathbf{x}_i)}
+{\alpha + \exp(\boldsymbol{\beta}'\mathbf{x}_i)}\right)^{y_i}
+\tag{2.44}\]
+
+### Modelos de elección binaria con heterogeneidad observable {data-en="Binary Choice Models with Observable Heterogeneity"}
+
+::: {.lang-es}
+
+Sea $X_i$ el número de éxitos en $m_i$ intentos, con probabilidad
+$\theta_i$ modelada mediante transformación logística. La
+log-verosimilitud con heterogeneidad observable es:
+
+:::
+
+::: {.lang-en}
+
+Let $X_i$ be the number of successes in $m_i$ trials, with probability
+$\theta_i$ modeled via logistic transformation. The log-likelihood with
+observable heterogeneity is:
+
+:::
+
+\[LL(\beta_0, \boldsymbol{\beta})
+= \sum_{i=1}^{N}
+\left[\ln\binom{m_i}{x_i}
++ x_i\ln(\theta_i) + (m_i - x_i)\ln(1 - \theta_i)\right]
+\tag{2.45}\]
+
+::: {.lang-es}
+
+Para el modelo mixto (*Regresión Beta-Binomial*), con
+$\alpha_i = \exp(\mathbf{a}'\mathbf{x}_i)$ y
+$\beta_i = \exp(\mathbf{b}'\mathbf{x}_i)$:
+
+:::
+
+::: {.lang-en}
+
+For the mixed model (*Beta-Binomial Regression*), with
+$\alpha_i = \exp(\mathbf{a}'\mathbf{x}_i)$ and
+$\beta_i = \exp(\mathbf{b}'\mathbf{x}_i)$:
+
+:::
+
+\[P(X_i = x_i \mid \mathbf{a}, \mathbf{b})
+= \binom{m_i}{x_i}
+\frac{B(\alpha_i + x_i,\, \beta_i + m_i - x_i)}
+{B(\alpha_i, \beta_i)}
+\tag{2.46}\]
+
+## Esperanzas condicionales {#prob-esperanzas data-en="Conditional Expectations"}
+
+::: {.lang-es}
+
+Una de las aplicaciones más importantes de los modelos probabilísticos
+es la capacidad de actualizar las estimaciones del parámetro latente
+de un individuo a la luz de su comportamiento observado. Este proceso
+corresponde a la *actualización bayesiana*.
+
+:::
+
+::: {.lang-en}
+
+One of the most important applications of probabilistic models is the
+ability to update estimates of an individual's latent parameter in
+light of their observed behavior. This process corresponds to
+*Bayesian updating*.
+
+:::
+
+### Esperanzas de las distribuciones de mezcla {data-en="Expectations of Mixture Distributions"}
+
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Esperanza de la distribución Gamma.** Si
+$\lambda \sim \text{Gamma}(r, \alpha)$, entonces:
+\[\mathbb{E}[\lambda] = \frac{r}{\alpha}\]
+**Esperanza de la distribución Beta.** Si
+$\theta \sim \text{Beta}(\alpha, \beta)$, entonces:
+\[\mathbb{E}[\theta] = \frac{\alpha}{\alpha + \beta}\]
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Expectation of the Gamma distribution.** If
+$\lambda \sim \text{Gamma}(r, \alpha)$, then:
+\[\mathbb{E}[\lambda] = \frac{r}{\alpha}\]
+**Expectation of the Beta distribution.** If
+$\theta \sim \text{Beta}(\alpha, \beta)$, then:
+\[\mathbb{E}[\theta] = \frac{\alpha}{\alpha + \beta}\]
+
+:::
+
+</div>
+
+### Modelo de tiempo discreto (Beta-Geométrico) {data-en="Discrete-Time Model (Beta-Geometric)"}
+
+::: {.lang-es}
+
+Para un cliente que ha permanecido exactamente $t$ períodos antes de
+abandonar, la distribución posterior del parámetro $\theta$ se obtiene
+por el Teorema de Bayes:
+
+:::
+
+::: {.lang-en}
+
+For a customer who remained exactly $t$ periods before churning, the
+posterior distribution of parameter $\theta$ is obtained via Bayes'
+theorem:
+
+:::
+
+\[g(\theta \mid T=t)
+= \frac{P(T=t \mid \theta) \cdot g(\theta \mid \alpha, \beta)}
+{\int_0^1 P(T=t \mid \theta) \cdot g(\theta \mid \alpha, \beta)\,d\theta}
+= \frac{\theta^{\alpha}(1-\theta)^{\beta + t - 2}}
+{B(\alpha + 1,\, \beta + t - 1)}
+\tag{2.47}\]
+
+::: {.lang-es}
+
+Esta es una distribución $\text{Beta}(\alpha + 1, \beta + t - 1)$, de
+modo que la esperanza condicional es:
+
+:::
+
+::: {.lang-en}
+
+This is a $\text{Beta}(\alpha + 1, \beta + t - 1)$ distribution, so
+the conditional expectation is:
+
+:::
+
+\[\mathbb{E}(\theta \mid T = t) = \frac{\alpha + 1}{\alpha + \beta + t}
+\tag{2.48}\]
+
+::: {.lang-es}
+
+Para un cliente que sigue *activo* después de $t$ períodos (observación
+censurada):
+
+:::
+
+::: {.lang-en}
+
+For a customer who remains *active* after $t$ periods (censored
+observation):
+
+:::
+
+\[g(\theta \mid T > t) \sim \text{Beta}(\alpha, \beta + t)\]
+\[\mathbb{E}(\theta \mid T > t) = \frac{\alpha}{\alpha + \beta + t}
+\tag{2.49}\]
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejemplo 5 (Regla de decisión con esperanza condicional).** Es posible
+definir una regla de retención dirigiendo una campaña a los clientes
+activos después de $t$ períodos cuya probabilidad de abandono esperada
+supere cierto umbral:
+\[\mathbb{E}(\theta \mid T > t)
+= \frac{\alpha}{\alpha + \beta + t}
+> \frac{\text{Costo de retención}}{\text{Valor del cliente}}\]
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Example 5 (Decision rule with conditional expectation).** A retention
+rule can be defined by directing a campaign to customers who are active
+after $t$ periods and whose expected churn probability exceeds a
+certain threshold:
+\[\mathbb{E}(\theta \mid T > t)
+= \frac{\alpha}{\alpha + \beta + t}
+> \frac{\text{Retention cost}}{\text{Customer value}}\]
+
+:::
+
+</div>
+
+### Modelo de tiempo continuo (Gamma-Exponencial) {data-en="Continuous-Time Model (Gamma-Exponential)"}
+
+::: {.lang-es}
+
+Para un cliente cuyo evento ocurrió en el instante $t$:
+
+:::
+
+::: {.lang-en}
+
+For a customer whose event occurred at time $t$:
+
+:::
+
+\[g(\lambda \mid T = t) \sim \text{Gamma}(r + 1, \alpha + t)\]
+\[\mathbb{E}(\lambda \mid T = t) = \frac{r + 1}{\alpha + t}
+\tag{2.50}\]
+
+### Modelo de conteo (Gamma-Poisson) {data-en="Count Model (Gamma-Poisson)"}
+
+::: {.lang-es}
+
+Para un cliente que realizó $y$ eventos en un período $t$:
+
+:::
+
+::: {.lang-en}
+
+For a customer who experienced $y$ events in a period $t$:
+
+:::
+
+\[g(\lambda \mid Y_t = y) \sim \text{Gamma}(r + y, \alpha + t)\]
+\[\mathbb{E}(\lambda \mid Y_t = y) = \frac{r + y}{\alpha + t}
+\tag{2.51}\]
+
+### Modelo de elección binaria (Beta-Binomial) {data-en="Binary Choice Model (Beta-Binomial)"}
+
+::: {.lang-es}
+
+Para un segmento $s$ que obtuvo $x_s$ respuestas de $m_s$ envíos:
+
+:::
+
+::: {.lang-en}
+
+For a segment $s$ that obtained $x_s$ responses from $m_s$ mailings:
+
+:::
+
+\[g(\theta \mid X = x) \sim \text{Beta}(\alpha + x, \beta + m - x)\]
+\[\mathbb{E}(\theta \mid X = x) = \frac{\alpha + x}{\alpha + \beta + m}
+\tag{2.52}\]
+
+::: {.lang-es}
+
+Esta esperanza condicional admite una interpretación como promedio
+ponderado entre la tasa poblacional y la tasa observada:
+
+:::
+
+::: {.lang-en}
+
+This conditional expectation admits an interpretation as a weighted
+average between the population rate and the observed rate:
+
+:::
+
+\[\mathbb{E}(\theta_s \mid m_s, x_s)
+= \gamma\,\frac{\alpha}{\alpha + \beta}
++ (1 - \gamma)\,\frac{x_s}{m_s},
+\qquad
+\gamma = \frac{\alpha + \beta}{\alpha + \beta + m_s}
+\tag{2.53}\]
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejemplo 6 (Regla de decisión para campañas).** Es posible definir
+una regla de envío de catálogos al segmento $s$ cuando:
+\[\mathbb{E}(\theta_s \mid x_s)
+= \frac{\alpha + x_s}{\alpha + \beta + m_s}
+> \frac{\text{Costo de envío}}{\text{Margen unitario}}\]
+Esta regla mejora la decisión ingenua basada únicamente en la tasa
+observada $x_s / m_s$, ya que incorpora información previa sobre la
+distribución poblacional de las tasas de respuesta.
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Example 6 (Decision rule for campaigns).** A catalog-sending rule
+for segment $s$ can be defined as:
+\[\mathbb{E}(\theta_s \mid x_s)
+= \frac{\alpha + x_s}{\alpha + \beta + m_s}
+> \frac{\text{Mailing cost}}{\text{Unit margin}}\]
+This rule improves upon the naive decision based solely on the observed
+rate $x_s / m_s$, since it incorporates prior information about the
+population distribution of response rates.
+
+:::
+
+</div>
+
+## Customer Lifetime Value: caso contractual {#prob-clv data-en="Customer Lifetime Value: Contractual Setting"}
+
+::: {.lang-es}
+
+El *Customer Lifetime Value* (CLV) posee dos elementos esenciales: el
+*tiempo de permanencia* con la firma y la *intensidad de compra*
+mientras el cliente permanece activo.
+
+Para el caso determinista, el CLV se define como:
+
+:::
+
+::: {.lang-en}
+
+*Customer Lifetime Value* (CLV) has two essential elements: the
+*tenure* with the firm and the *purchase intensity* while the customer
+remains active.
+
+For the deterministic case, CLV is defined as:
+
+:::
+
+\[CLV = \sum_{t=0}^{T} m \cdot \frac{r^t}{(1+d)^t}
+\tag{2.54}\]
+
+::: {.lang-es}
+
+donde $m$ es el flujo neto por período (si el cliente está activo),
+$r$ es la tasa de retención, $d$ es la tasa de descuento y $T$ es el
+horizonte de evaluación.
+
+Para el caso estocástico:
+
+:::
+
+::: {.lang-en}
+
+where $m$ is the net cash flow per period (if the customer is active),
+$r$ is the retention rate, $d$ is the discount rate, and $T$ is the
+evaluation horizon.
+
+For the stochastic case:
+
+:::
+
+\[\mathbb{E}(CLV) = \int_0^{\infty}
+\mathbb{E}(v(t))\,S(t)\,d(t)\,dt
+\tag{2.55}\]
+
+::: {.lang-es}
+
+donde $\mathbb{E}(v(t))$ es el valor esperado de los flujos del cliente
+en el instante $t$ (asumiendo que está activo), $S(t)$ es la
+probabilidad de que el cliente siga activo en $t$, y $d(t)$ es el
+factor de descuento.
+
+Es importante distinguir entre situaciones:
+
+-   *Contractual*: se observa cuándo un cliente deja de estar activo
+    (suscripciones, planes).
+-   *No contractual*: no se observa directamente la deserción del
+    cliente.
+
+:::
+
+::: {.lang-en}
+
+where $\mathbb{E}(v(t))$ is the expected value of the customer's cash
+flows at time $t$ (assuming the customer is active), $S(t)$ is the
+probability that the customer remains active at $t$, and $d(t)$ is the
+discount factor.
+
+It is important to distinguish between settings:
+
+-   *Contractual*: it is observed when a customer becomes inactive
+    (subscriptions, plans).
+-   *Non-contractual*: customer defection is not directly observed.
+
+:::
+
+### Modelo contractual a tiempo discreto {data-en="Discrete-Time Contractual Model"}
+
+<div class="lang-es">
+
+::: {.rmdnote}
+
+**Ejemplo 7 (Rol de la heterogeneidad en CLV).** Considérese una
+cohorte de 10.000 clientes con gasto promedio de \$100 por período,
+compuesta por dos segmentos:
+
+-   *Segmento 1* (1/3 de los clientes): tasa de retención constante
+    de 0,9.
+-   *Segmento 2* (2/3 de los clientes): tasa de retención constante
+    de 0,5.
+
+Table: (\#tab:prob-p1-retencion) Clientes activos y tasa de retención por segmento.
+
+|     | # Clientes activos |       |       | Tasa de retención |       |           |
+|-----|:------------------:|:-----:|:-----:|:-----------------:|:-----:|:---------:|
+| Año |      Seg-1         | Seg-2 | Total |      Seg-1        | Seg-2 |   Total   |
+|  1  |      3.333         | 6.667 | 10.000|                   |       |           |
+|  2  |      3.000         | 3.334 | 6.334 |       0,9         |  0,5  |   0,633   |
+|  3  |      2.700         | 1.667 | 4.367 |       0,9         |  0,5  |   0,689   |
+|  4  |      2.430         |  834  | 3.264 |       0,9         |  0,5  |   0,747   |
+|  5  |      2.187         |  417  | 2.604 |       0,9         |  0,5  |   0,798   |
+
+La tasa de retención agregada *crece* aun cuando a nivel individual
+las retenciones son constantes. Esto se debe a un efecto de
+composición: los clientes con baja retención abandonan primero,
+dejando una proporción cada vez mayor de clientes leales.
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdnote}
+
+**Example 7 (Role of heterogeneity in CLV).** Consider a cohort of
+10,000 customers with an average spend of \$100 per period, composed
+of two segments:
+
+-   *Segment 1* (1/3 of customers): constant retention rate of 0.9.
+-   *Segment 2* (2/3 of customers): constant retention rate of 0.5.
+
+Table: (\#tab:prob-p1-retencion) Active customers and retention rate by segment.
+
+|      | # Active customers |       |       | Retention rate |       |           |
+|------|:------------------:|:-----:|:-----:|:--------------:|:-----:|:---------:|
+| Year |      Seg-1         | Seg-2 | Total |     Seg-1      | Seg-2 |   Total   |
+|  1   |      3,333         | 6,667 | 10,000|                |       |           |
+|  2   |      3,000         | 3,334 | 6,334 |      0.9       |  0.5  |   0.633   |
+|  3   |      2,700         | 1,667 | 4,367 |      0.9       |  0.5  |   0.689   |
+|  4   |      2,430         |  834  | 3,264 |      0.9       |  0.5  |   0.747   |
+|  5   |      2,187         |  417  | 2,604 |      0.9       |  0.5  |   0.798   |
+
+The aggregate retention rate *increases* even though individual-level
+retention rates are constant. This is due to a composition effect:
+customers with low retention churn first, leaving an ever-larger
+proportion of loyal customers.
+
+:::
+
+</div>
+
+::: {.lang-es}
+
+El valor residual de un cliente activo del segmento 1 es:
+
+:::
+
+::: {.lang-en}
+
+The residual value of an active customer from segment 1 is:
+
+:::
+
+\[\mathbb{E}(RLV_1) = \sum_{t=1}^{\infty}
+\$100 \cdot \frac{0{,}9^t}{(1 + 0{,}1)^{t-1}} = \$495\]
+
+::: {.lang-es}
+
+Para el segmento 2:
+
+:::
+
+::: {.lang-en}
+
+For segment 2:
+
+:::
+
+\[\mathbb{E}(RLV_2) = \sum_{t=1}^{\infty}
+\$100 \cdot \frac{0{,}5^t}{(1 + 0{,}1)^{t-1}} = \$92\]
+
+::: {.lang-es}
+
+Aplicando la regla de Bayes, condicional en estar activo tras 4
+renovaciones:
+
+:::
+
+::: {.lang-en}
+
+Applying Bayes' rule, conditional on being active after 4 renewals:
+
+:::
+
+\[P(\text{seg-1} \mid \text{renovar 4 veces})
+= \frac{0{,}9^4 \cdot 0{,}333}{0{,}9^4 \cdot 0{,}333
++ 0{,}5^4 \cdot 0{,}667} = 0{,}84\]
+
+::: {.lang-es}
+
+El *Lifetime Value Residual* resulta:
+
+:::
+
+::: {.lang-en}
+
+The *Residual Lifetime Value* is:
+
+:::
+
+\[\mathbb{E}(RLV) = 0{,}84 \cdot \$495 + 0{,}16 \cdot \$92 = \$430\]
+<div class="lang-es">
+
+::: {.rmdwarning}
+
+**Impacto de ignorar la heterogeneidad.** En mercados contractuales,
+si se utiliza la tasa de retención agregada, el valor de la base de
+clientes se subestima significativamente. Estudios con bases de datos
+reales muestran que el error en el CLV puede elevarse hasta un 50%
+cuando no se distingue por segmentos.
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdwarning}
+
+**Impact of ignoring heterogeneity.** In contractual markets, if the
+aggregate retention rate is used, the value of the customer base is
+significantly underestimated. Studies with real databases show that the
+error in CLV can reach up to 50% when segmentation is not taken into
+account.
+
+:::
+
+</div>
+
+::: {.lang-es}
+
+Para el modelo Beta-Geométrico Desplazado, la probabilidad de que el
+cliente siga activo en $t$ es:
+
+:::
+
+::: {.lang-en}
+
+For the Shifted Beta-Geometric model, the probability that the customer
+remains active at $t$ is:
+
+:::
+
+\[S(t \mid \alpha, \beta)
+= \frac{B(\alpha, \beta + t)}{B(\alpha, \beta)}
+\tag{2.56}\]
+
+::: {.lang-es}
+
+El valor esperado residual de un cliente activo en $n$ períodos es:
+
+:::
+
+::: {.lang-en}
+
+The expected residual value of a customer active for $n$ periods is:
+
+:::
+
+\[\mathbb{E}(\text{RLV}(d \mid \text{activo en } n \text{ períodos}))
+= \bar{v}\sum_{t=n+1}^{\infty} \frac{S(t \mid t > n)}{(1+d)^{t-n}}
+\tag{2.57}\]
+
+::: {.lang-es}
+
+Cuando $\theta$ no es observable, la función DERL (Discounted Expected
+Residual Lifetime) utiliza la distribución posterior condicional en la
+antigüedad:
+
+:::
+
+::: {.lang-en}
+
+When $\theta$ is not observable, the DERL (Discounted Expected Residual
+Lifetime) function uses the posterior distribution conditional on
+tenure:
+
+:::
+
+\[\text{DERL}(d \mid \alpha, \beta, \text{activo en } n)
+= \left(\frac{\beta + n - 1}{\alpha + \beta + n - 1}\right)
+\cdot {}_2F_1\!\left(1, \beta + n;\, \alpha + \beta + n;\,
+\frac{1}{1+d}\right)
+\tag{2.58}\]
+
+::: {.lang-es}
+
+donde ${}_2F_1$ es la *función hipergeométrica de Gauss*.
+
+:::
+
+::: {.lang-en}
+
+where ${}_2F_1$ is the *Gauss hypergeometric function*.
+
+:::
+
+## Sumario de la unidad {#prob-sumario data-en="Unit Summary"}
+
+<div class="lang-es">
+
+::: {.rmdwarning}
+
+**Conceptos clave.**
+
+-   Los modelos probabilísticos describen el comportamiento de los
+    agentes mediante distribuciones de probabilidad, asumiendo que las
+    decisiones provienen de procesos estocásticos.
+-   Se distinguen tres tipos de modelos básicos: *duración* (¿cuándo?),
+    *conteo* (¿cuántos?) y *elección binaria* (¿cuál?).
+-   La *heterogeneidad no observable* se captura mediante distribuciones
+    de mezcla (Beta para probabilidades, Gamma para tasas).
+-   La *heterogeneidad observable* se incorpora mediante regresiones
+    sobre los parámetros del modelo.
+-   Las *esperanzas condicionales* (actualización bayesiana) permiten
+    personalizar predicciones a nivel individual.
+
+**Decisiones de modelamiento.**
+
+-   *Distribución individual*: Geométrica/Exponencial/Weibull para
+    duración, Poisson para conteo, Binomial para elección.
+-   *Distribución de mezcla*: Beta para $\theta \in [0,1]$, Gamma para
+    $\lambda \in (0, \infty)$.
+-   *Dependencia en la duración*: parámetro $c$ de la Weibull ($c=1$
+    implica falta de memoria).
+
+**Métricas relevantes.**
+
+-   Log-verosimilitud, AIC y BIC para comparación de modelos.
+-   Alcance, frecuencia promedio y GRPs en modelos de conteo.
+-   CLV para valoración de clientes.
+
+**Errores comunes en esta unidad.**
+
+-   Confundir la *función Beta* $B(\alpha, \beta)$ con la
+    *distribución Beta*.
+-   Olvidar la contribución de los individuos censurados (activos al
+    final del período) en la verosimilitud.
+-   Asumir homogeneidad cuando la tasa de retención agregada varía en
+    el tiempo (efecto de composición).
+-   Usar la tasa observada $x/m$ en lugar de la esperanza condicional
+    para decisiones individuales.
+-   Extrapolar modelos sin dependencia en la duración a fenómenos donde
+    el tiempo transcurrido sí es relevante.
+
+:::
+
+</div>
+
+<div class="lang-en">
+
+::: {.rmdwarning}
+
+**Key concepts.**
+
+-   Probabilistic models describe agent behavior through probability
+    distributions, assuming that decisions arise from stochastic
+    processes.
+-   Three types of basic models are distinguished: *duration* (when?),
+    *count* (how many?), and *binary choice* (which?).
+-   *Unobservable heterogeneity* is captured through mixture
+    distributions (Beta for probabilities, Gamma for rates).
+-   *Observable heterogeneity* is incorporated through regressions on
+    the model parameters.
+-   *Conditional expectations* (Bayesian updating) allow personalizing
+    predictions at the individual level.
+
+**Modeling decisions.**
+
+-   *Individual distribution*: Geometric/Exponential/Weibull for
+    duration, Poisson for count, Binomial for choice.
+-   *Mixture distribution*: Beta for $\theta \in [0,1]$, Gamma for
+    $\lambda \in (0, \infty)$.
+-   *Duration dependence*: Weibull parameter $c$ ($c=1$ implies
+    memorylessness).
+
+**Relevant metrics.**
+
+-   Log-likelihood, AIC, and BIC for model comparison.
+-   Reach, average frequency, and GRPs in count models.
+-   CLV for customer valuation.
+
+**Common mistakes in this unit.**
+
+-   Confusing the *Beta function* $B(\alpha, \beta)$ with the *Beta
+    distribution*.
+-   Forgetting the contribution of censored individuals (active at the
+    end of the period) in the likelihood.
+-   Assuming homogeneity when the aggregate retention rate varies over
+    time (composition effect).
+-   Using the observed rate $x/m$ instead of the conditional expectation
+    for individual decisions.
+-   Extrapolating models without duration dependence to phenomena where
+    elapsed time is relevant.
+
+:::
+
+</div>
+
+::: {.lang-es}
+
+**Referencias principales:** @schmittlein1987, @fader2005, @fader2010,
+@fader2005rfm, @wooldridge2019.
+
+:::
+
+::: {.lang-en}
+
+**Main references:** @schmittlein1987, @fader2005, @fader2010,
+@fader2005rfm, @wooldridge2019.
+
+:::
+
+## Problemas {#prob-problemas data-en="Problems"}
+
+### Problema 1: VTV Seguros de Salud {.unnumbered}
+
+::: {.lang-es}
+
+VTV es una empresa aseguradora cuya principal línea de negocio
+consiste en la provisión de cobertura de segunda línea para clientes
+corporativos. VTV ofrece un seguro de salud que se activa después de
+que operen las coberturas obligatorias de Fonasa o Isapre. El servicio
+se vende a empresas de distintos rubros como beneficio complementario
+para sus trabajadores.
+
+Recientemente, VTV ha lanzado un nuevo servicio llamado *TuBienestar*,
+que ofrece a los empleados de las empresas clientes una batería de
+exámenes preventivos para detectar tempranamente problemas de salud y
+así reducir gastos a largo plazo. Se utilizarán modelos probabilísticos
+para tener una primera aproximación del valor de este programa.
+
+Se dispone de la base histórica de gastos que contiene $n_{ijkt}$,
+correspondiente al número de eventos de salud en el período $t$ del
+beneficiario $i$, que pertenece al grupo $j$ de la empresa $k$. Los
+eventos están agrupados por trimestres y los beneficiarios están
+separados por segmento. Además, $n_{jkt}$ es el número total de
+beneficiarios con gasto de salud en el trimestre $t$ dentro del
+segmento $j$ de la empresa $k$, y $m_{jkt}$ es el número total de
+beneficiarios dentro de ese segmento, empresa y trimestre.
+
+**Preguntas:**
+
+1.  VTV describe el número de eventos de cada beneficiario usando un
+    modelo de Poisson con ceros inflados. Escriba la log-verosimilitud
+    de este modelo.
+
+2.  Como alternativa, se postula un modelo de elección binaria para
+    describir la ocurrencia de eventos de salud.
+    a.  Escriba la log-verosimilitud de un modelo binomial con dos
+        clases latentes.
+    b.  Si los estimadores MV son
+        $(\theta_1, \theta_2, \pi) = (0{,}1;\, 0{,}6;\, 0{,}5)$,
+        para un segmento con 824 beneficiarios y 17 eventos, escriba
+        la probabilidad de pertenecer a la clase de mayor propensión.
+
+3.  Se estiman tres modelos beta-binomiales (ver tabla). Discuta si
+    *TuBienestar* ayuda a describir el comportamiento, y cómo testear
+    si los datos chilenos difieren de la media internacional de 0,16.
+
+:::
+
+::: {.lang-en}
+
+VTV is an insurance company whose main line of business consists of
+providing second-layer health coverage for corporate clients. VTV
+offers a health insurance plan that activates after the mandatory
+coverage from Fonasa or Isapre has been applied. The service is sold to
+companies across various industries as a supplementary benefit for
+their employees.
+
+Recently, VTV launched a new service called *TuBienestar*, which offers
+employees of client companies a battery of preventive exams to detect
+health problems early and reduce long-term costs. Probabilistic models
+will be used to obtain a first approximation of the value of this
+program.
+
+A historical expense database is available containing $n_{ijkt}$, the
+number of health events in period $t$ for beneficiary $i$, who belongs
+to group $j$ of company $k$. Events are grouped by quarter and
+beneficiaries are separated by segment. Additionally, $n_{jkt}$ is the
+total number of beneficiaries with health expenses in quarter $t$
+within segment $j$ of company $k$, and $m_{jkt}$ is the total number
+of beneficiaries within that segment, company, and quarter.
+
+**Questions:**
+
+1.  VTV describes the number of events per beneficiary using a
+    zero-inflated Poisson model. Write the log-likelihood of this model.
+
+2.  As an alternative, a binary choice model is proposed to describe the
+    occurrence of health events.
+    a.  Write the log-likelihood of a binomial model with two latent
+        classes.
+    b.  If the ML estimates are
+        $(\theta_1, \theta_2, \pi) = (0.1,\, 0.6,\, 0.5)$, for a
+        segment with 824 beneficiaries and 17 events, write the
+        probability of belonging to the higher-propensity class.
+
+3.  Three beta-binomial models are estimated (see table). Discuss
+    whether *TuBienestar* helps describe the behavior, and how to test
+    whether Chilean data differ from the international average of 0.16.
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p2-poisson) Resultados de modelos de Poisson con ceros inflados.
+
+| Variable            | Modelo 1     | Modelo 2     | Modelo 3     |
+|---------------------|--------------|--------------|--------------|
+| $\alpha$            | 0,127 \*\*   | 0,151 \*\*   | 0,149 \*     |
+| $\beta$             | 3,503 \*\*\* | 3,729 \*\*\* | 3,852 \*\*\* |
+| Sector:Minería      |              | 1,234 \*\*\* | 1,108 \*\*\* |
+| Sector:Construcción |              | 2,122 \*\*\* | 1,432 \*\*   |
+| Sector:Salud        |              | 1,784 \*\*\* | 1,665 \*\*\* |
+| Tamaño-Mediana      |              | 0,145        | -0,004       |
+| Tamaño-Grande       |              | 0,372 \*     | 0,401 \*     |
+| AntiguedadContrato  |              | 0,188 \*\*   | 0,193 \*\*   |
+| TuBienestar         |              |              | -0,089 \*\*  |
+| Invierno            |              | 2,921 \*\*\* | 2,955 \*\*\* |
+| Verano              |              | -0,539 \*    | -0,564 \*    |
+| Tendencia           |              | 0,278 \*\*   | 0,305 \*\*   |
+| **N. Obs**          | 34.825       | 34.825       | 34.825       |
+| **LL**              | -51.771,8    | -45.282,1    | -41.321,9    |
+| **AIC**             | 107.543,6    | 90.580,2     | 82.665,8     |
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p2-poisson) Zero-inflated Poisson model results.
+
+| Variable            | Model 1      | Model 2      | Model 3      |
+|---------------------|--------------|--------------|--------------|
+| $\alpha$            | 0.127 \*\*   | 0.151 \*\*   | 0.149 \*     |
+| $\beta$             | 3.503 \*\*\* | 3.729 \*\*\* | 3.852 \*\*\* |
+| Sector:Mining       |              | 1.234 \*\*\* | 1.108 \*\*\* |
+| Sector:Construction |              | 2.122 \*\*\* | 1.432 \*\*   |
+| Sector:Health       |              | 1.784 \*\*\* | 1.665 \*\*\* |
+| Size-Medium         |              | 0.145        | -0.004       |
+| Size-Large          |              | 0.372 \*     | 0.401 \*     |
+| ContractTenure      |              | 0.188 \*\*   | 0.193 \*\*   |
+| TuBienestar         |              |              | -0.089 \*\*  |
+| Winter              |              | 2.921 \*\*\* | 2.955 \*\*\* |
+| Summer              |              | -0.539 \*    | -0.564 \*    |
+| Trend               |              | 0.278 \*\*   | 0.305 \*\*   |
+| **N. Obs**          | 34,825       | 34,825       | 34,825       |
+| **LL**              | -51,771.8    | -45,282.1    | -41,321.9    |
+| **AIC**             | 107,543.6    | 90,580.2     | 82,665.8     |
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+**1.** La probabilidad de los eventos bajo un modelo de Poisson con
+ceros inflados es:
+
+:::
+
+::: {.lang-en}
+
+**1.** The probability of events under a zero-inflated Poisson model is:
+
+:::
+
+\[\Pr(N_{ijkt} = n \mid \lambda, \pi) =\begin{cases}
+\pi + (1 - \pi)e^{-\lambda} & n = 0 \\
+(1 - \pi)\dfrac{e^{-\lambda}\lambda^n}{n!} & n > 0
+\end{cases}\]
+
+::: {.lang-es}
+
+La log-verosimilitud es:
+
+:::
+
+::: {.lang-en}
+
+The log-likelihood is:
+
+:::
+
+\[LL = \sum_i \sum_j \sum_k \sum_t\left[
+\mathbf{1}_{n_{ijkt}=0}
+\ln\!\left(\pi + (1-\pi)e^{-\lambda}\right)
++ \mathbf{1}_{n_{ijkt}>0}
+\ln\!\left((1-\pi)\frac{e^{-\lambda}\lambda^n}{n!}\right)
+\right]\]
+
+::: {.lang-es}
+
+**2a.** La probabilidad de observar $n_{jkt}$ eventos con dos clases
+latentes:
+
+:::
+
+::: {.lang-en}
+
+**2a.** The probability of observing $n_{jkt}$ events with two latent
+classes:
+
+:::
+
+\[\Pr(n_{jkt} \mid \theta_1, \theta_2, \pi)= \pi\binom{m}{n_{jkt}}\theta_1^{n_{jkt}}(1-\theta_1)^{m-n_{jkt}}
++ (1-\pi)\binom{m}{n_{jkt}}\theta_2^{n_{jkt}}(1-\theta_2)^{m-n_{jkt}}\]
+\[LL = \sum_j \sum_k \sum_t\ln\!\big(\Pr(n_{jkt} \mid \theta_1, \theta_2, \pi)\big)\]
+
+::: {.lang-es}
+
+**2b.** Aplicando Bayes:
+
+:::
+
+::: {.lang-en}
+
+**2b.** Applying Bayes' rule:
+
+:::
+
+\[\Pr(\lambda = \lambda_2 \mid n_{jkt}=17)= \frac{\Pr(n_{jkt}=17 \mid \lambda_2)\,\Pr(\lambda_2)}
+{\Pr(n_{jkt}=17 \mid \lambda_1)\,\Pr(\lambda_1)
++ \Pr(n_{jkt}=17 \mid \lambda_2)\,\Pr(\lambda_2)}\]
+
+::: {.lang-es}
+
+con $\Pr(n_{jkt}=17 \mid \lambda_1)
+= \binom{824}{17}(0{,}1)^{17}(0{,}9)^{807}$,
+$\Pr(n_{jkt}=17 \mid \lambda_2)
+= \binom{824}{17}(0{,}6)^{17}(0{,}4)^{807}$,
+y $\Pr(\lambda_1) = \Pr(\lambda_2) = 0{,}5$.
+
+:::
+
+::: {.lang-en}
+
+with $\Pr(n_{jkt}=17 \mid \lambda_1)
+= \binom{824}{17}(0.1)^{17}(0.9)^{807}$,
+$\Pr(n_{jkt}=17 \mid \lambda_2)
+= \binom{824}{17}(0.6)^{17}(0.4)^{807}$,
+and $\Pr(\lambda_1) = \Pr(\lambda_2) = 0.5$.
+
+:::
+
+::: {.lang-es}
+
+**3a.** El AIC del Modelo 3 (82.665,8) es menor que el del Modelo 2
+(90.580,2), y la única variable adicional es *TuBienestar*, por lo que
+esta variable tiene valor explicativo. Dado que su coeficiente es
+significativo y negativo, los participantes del programa presentan
+menor probabilidad de generar eventos de salud, lo que sugiere que el
+programa es beneficioso (aunque no es posible establecer causalidad
+directamente).
+
+:::
+
+::: {.lang-en}
+
+**3a.** The AIC of Model 3 (82,665.8) is lower than that of Model 2
+(90,580.2), and the only additional variable is *TuBienestar*, so this
+variable has explanatory value. Since its coefficient is significant
+and negative, program participants have a lower probability of
+generating health events, suggesting that the program is beneficial
+(although causality cannot be established directly).
+
+:::
+
+::: {.lang-es}
+
+**3b.** La esperanza de una $\text{Beta}(\alpha, \beta)$ es
+$\alpha/(\alpha + \beta)$. Se requiere testear que
+$\alpha = 0{,}16(\alpha + \beta)$, lo cual es una restricción lineal
+que puede evaluarse mediante un test de razón de verosimilitudes.
+
+:::
+
+::: {.lang-en}
+
+**3b.** The expectation of a $\text{Beta}(\alpha, \beta)$ is
+$\alpha/(\alpha + \beta)$. The hypothesis to test is that
+$\alpha = 0.16(\alpha + \beta)$, which is a linear restriction that
+can be evaluated using a likelihood ratio test.
+
+:::
+
+</details>
+
+### Problema 2: Vectorix Marketing B2B {.unnumbered}
+
+::: {.lang-es}
+
+En el contexto del marketing B2B para servicios profesionales, Vectorix
+busca comprender cuáles componentes de su estrategia de marketing de
+contenidos resultan más efectivos para la generación y conversión de
+*leads*. La base de datos contiene las siguientes variables:
+
+-   *Idaccount*: identificador de la cuenta clave.
+-   *Zone*: área geográfica.
+-   *Industry*: industria a la que pertenece la cuenta.
+-   *Tenure*: años de relación con la cuenta.
+-   *Year*: año fiscal.
+-   *Leads*: oportunidades generadas.
+-   *ConvertedLeads*: oportunidades cerradas.
+-   *NEventOffline*: eventos presenciales.
+-   *NeventOnline*: eventos digitales.
+-   *NEmployeeAccess*: empleados con acceso a contenido digital.
+-   *NAccessMean*: promedio de accesos por empleado.
+
+**Preguntas:**
+
+1.  Proponga un modelo de conteo con heterogeneidad observable para
+    describir las oportunidades ganadas. Escriba la log-verosimilitud
+    y especifique el número de parámetros.
+
+2.  Construya un modelo de elección binaria con heterogeneidad
+    observable. Escriba la log-verosimilitud. ¿Qué ventajas tiene
+    frente al modelo de conteo?
+
+3.  Si se extiende el modelo para incluir heterogeneidad no observable
+    y la LL mejora de -10.145 a -9.855,4, ¿cuántos parámetros puede
+    tener el modelo Beta-Binomial para que sea preferido en AIC?
+
+:::
+
+::: {.lang-en}
+
+In the context of B2B marketing for professional services, Vectorix
+seeks to understand which components of its content marketing strategy
+are most effective for *lead* generation and conversion. The database
+contains the following variables:
+
+-   *Idaccount*: key account identifier.
+-   *Zone*: geographic area.
+-   *Industry*: industry to which the account belongs.
+-   *Tenure*: years of relationship with the account.
+-   *Year*: fiscal year.
+-   *Leads*: opportunities generated.
+-   *ConvertedLeads*: closed opportunities.
+-   *NEventOffline*: in-person events.
+-   *NeventOnline*: digital events.
+-   *NEmployeeAccess*: employees with access to digital content.
+-   *NAccessMean*: average accesses per employee.
+
+**Questions:**
+
+1.  Propose a count model with observable heterogeneity to describe won
+    opportunities. Write the log-likelihood and specify the number of
+    parameters.
+
+2.  Build a binary choice model with observable heterogeneity. Write the
+    log-likelihood. What advantages does it have over the count model?
+
+3.  If the model is extended to include unobservable heterogeneity and
+    the LL improves from -10,145 to -9,855.4, how many parameters can
+    the Beta-Binomial model have and still be preferred by AIC?
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+**1.** Se definen dummies para zonas ($\text{Zone}_{ih_1}$) e
+industrias ($\text{Industry}_{ih_2}$), variables de antigüedad
+($\text{Tenure2}_{it}$ y $\text{Tenure3}_{it}$), eventos presenciales
+y digitales con interacción, y el logaritmo de interacciones totales.
+La tasa de compra es:
+
+:::
+
+::: {.lang-en}
+
+**1.** Dummies are defined for zones ($\text{Zone}_{ih_1}$) and
+industries ($\text{Industry}_{ih_2}$), tenure variables
+($\text{Tenure2}_{it}$ and $\text{Tenure3}_{it}$), in-person and
+digital events with interaction, and the logarithm of total
+interactions. The purchase rate is:
+
+:::
+
+\[\lambda_{it} = \sum_{h_1}\alpha_{h_1}\text{Zone}_{ih_1}+ \sum_{h_2}\alpha_{h_2}\text{Industry}_{ih_2}
++ \beta_1\text{Tenure2}_{it}
++ \beta_2\text{Tenure3}_{it}
++ \beta_3\text{NEventOnline}_{it-1}
++ \beta_4\text{NEventOffline}_{it-1}
++ \beta_5\text{NEventOnline}_{it-1}\cdot\text{NEventOffline}_{it-1}
++ \beta_6\ln(\text{NEmployeeAccess}_{it-1}\cdot\text{NAccessMean}_{it-1})\]
+
+::: {.lang-es}
+
+Este modelo tiene $Z + I + 6$ parámetros, donde $Z$ es el número de
+zonas e $I$ el número de industrias. La log-verosimilitud es:
+
+:::
+
+::: {.lang-en}
+
+This model has $Z + I + 6$ parameters, where $Z$ is the number of
+zones and $I$ the number of industries. The log-likelihood is:
+
+:::
+
+\[LL = \sum_i \sum_t\ln\!\left(\frac{\lambda_{it}^{x_{it}}\,e^{-\lambda_{it}}}
+{x_{it}!}\right)\]
+
+::: {.lang-es}
+
+**2.** El modelo binomial utiliza la misma estructura lineal, pero la
+probabilidad de conversión es:
+
+:::
+
+::: {.lang-en}
+
+**2.** The binomial model uses the same linear structure, but the
+conversion probability is:
+
+:::
+
+\[p_{it} = \frac{e^{\lambda_{it}(\mathbf{x}_{it})}}{1 + e^{\lambda_{it}(\mathbf{x}_{it})}}\]
+\[LL = \sum_i \sum_t\ln\!\left(\binom{m_{it}}{n_{it}}
+p_{it}^{n_{it}}(1-p_{it})^{m_{it}-n_{it}}\right)\]
+
+::: {.lang-es}
+
+donde $m_{it}$ es el número de *leads* generados. Tiene el mismo
+número de parámetros. La ventaja del modelo binomial es que incorpora
+naturalmente una cota superior (el número de *leads*) para las
+oportunidades convertidas.
+
+:::
+
+::: {.lang-en}
+
+where $m_{it}$ is the number of *leads* generated. It has the same
+number of parameters. The advantage of the binomial model is that it
+naturally incorporates an upper bound (the number of *leads*) for
+converted opportunities.
+
+:::
+
+::: {.lang-es}
+
+**3.** Para que el modelo Beta-Binomial sea preferido en AIC:
+$2k_B - 2LL_B > 2k_{BB} - 2LL_{BB}$. Sustituyendo y despejando:
+$k_{BB} - k_B < LL_{BB} - LL_B = 290$. El modelo Beta-Binomial podría
+tener hasta 290 parámetros más y aún sería preferido.
+
+:::
+
+::: {.lang-en}
+
+**3.** For the Beta-Binomial model to be preferred by AIC:
+$2k_B - 2LL_B > 2k_{BB} - 2LL_{BB}$. Substituting and solving:
+$k_{BB} - k_B < LL_{BB} - LL_B = 290$. The Beta-Binomial model could
+have up to 290 more parameters and still be preferred.
+
+:::
+
+</details>
+
+### Problema 3: Harcor y El Club del Almacenero {.unnumbered}
+
+::: {.lang-es}
+
+Harcor es una firma latinoamericana de caramelos y snacks que ha creado
+un programa de capacitación (*El Club del Almacenero*) con 4 niveles de
+módulos secuenciales. La variable $x_{ikt}$ toma el valor 1 si el
+almacenero $i$ participó en el nivel $k$ en el año $t$.
+
+**Preguntas:**
+
+1.  Suponga un modelo Beta-Geométrico Desplazado de parámetros
+    $\alpha$ y $\beta$.
+    a.  Calcule la probabilidad de que un almacenero termine el
+        programa.
+    b.  Escriba la log-verosimilitud del problema.
+
+2.  Dado $\hat{\alpha} = 0{,}999$, $\hat{\beta} = 4{,}001$,
+    $N = 1.245$, $LL = -2.583$:
+    a.  Aproxime la probabilidad de que la tasa de no avance sea mayor
+        que 0,8 (usando áreas de triángulos y rectángulos en la
+        distribución Beta).
+    b.  Calcule el intervalo de confianza al 95% de $\beta$, dado que
+        el inverso del hessiano es
+        $\Sigma^{-1} = \begin{bmatrix} 0{,}16 & 0{,}04 \\
+        0{,}04 & 0{,}36 \end{bmatrix}$.
+
+3.  Si se rediseña el programa para que los módulos sean independientes
+    y se estima un modelo Beta-Binomial, escriba la verosimilitud para
+    un almacenero que atiende 3 módulos y otro que atiende solo 1.
+
+4.  Con $\hat{\alpha} = 3{,}543$ y $\hat{\beta} = 1{,}231$, escriba
+    la esperanza condicional de que un almacenero que ya atendió a los
+    tres primeros módulos atienda al último.
+
+:::
+
+::: {.lang-en}
+
+Harcor is a Latin American candy and snack company that has created a
+training program (*El Club del Almacenero*) with 4 sequential module
+levels. The variable $x_{ikt}$ takes the value 1 if shopkeeper $i$
+participated in level $k$ in year $t$.
+
+**Questions:**
+
+1.  Assume a Shifted Beta-Geometric model with parameters $\alpha$ and
+    $\beta$.
+    a.  Calculate the probability that a shopkeeper completes the
+        program.
+    b.  Write the log-likelihood of the problem.
+
+2.  Given $\hat{\alpha} = 0.999$, $\hat{\beta} = 4.001$,
+    $N = 1{,}245$, $LL = -2{,}583$:
+    a.  Approximate the probability that the non-advancement rate is
+        greater than 0.8 (using triangle and rectangle areas on the
+        Beta distribution).
+    b.  Calculate the 95% confidence interval for $\beta$, given that
+        the inverse of the Hessian is
+        $\Sigma^{-1} = \begin{bmatrix} 0.16 & 0.04 \\
+        0.04 & 0.36 \end{bmatrix}$.
+
+3.  If the program is redesigned so that modules are independent and a
+    Beta-Binomial model is estimated, write the likelihood for a
+    shopkeeper who attends 3 modules and another who attends only 1.
+
+4.  With $\hat{\alpha} = 3.543$ and $\hat{\beta} = 1.231$, write the
+    conditional expectation that a shopkeeper who already attended the
+    first three modules will attend the last one.
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+**1a.** Sea $D_{it}$ el número de niveles cursados. La probabilidad de
+completar exactamente $k$ niveles es:
+
+:::
+
+::: {.lang-en}
+
+**1a.** Let $D_{it}$ be the number of levels completed. The probability
+of completing exactly $k$ levels is:
+
+:::
+
+\[\Pr(D_{it} = k \mid \alpha, \beta)= \frac{B(\alpha + 1,\, \beta + k - 1)}{B(\alpha, \beta)}\]
+
+::: {.lang-es}
+
+La probabilidad de terminar el programa es $\Pr(D_{it} = 4)$, que
+corresponde a completar los 4 niveles sin abandonar antes.
+
+:::
+
+::: {.lang-en}
+
+The probability of completing the program is $\Pr(D_{it} = 4)$, which
+corresponds to completing all 4 levels without dropping out.
+
+:::
+
+::: {.lang-es}
+
+**1b.** Sea $n_{kt}$ el número de almaceneros que cursaron $k$ niveles.
+La log-verosimilitud es:
+
+:::
+
+::: {.lang-en}
+
+**1b.** Let $n_{kt}$ be the number of shopkeepers who completed $k$
+levels. The log-likelihood is:
+
+:::
+
+\[LL = \sum_t \sum_k n_{kt}\ln\!\left(\frac{B(\alpha + 1,\, \beta + k - 1)}
+{B(\alpha, \beta)}\right)\]
+
+::: {.lang-es}
+
+**2a.** La probabilidad se aproxima como el área bajo la curva de la
+distribución Beta evaluada en los estimadores, para $\theta > 0{,}8$:
+
+:::
+
+::: {.lang-en}
+
+**2a.** The probability is approximated as the area under the Beta
+distribution curve evaluated at the estimates, for $\theta > 0.8$:
+
+:::
+
+\[p \approx 0{,}2 \cdot 2 + 0{,}2 \cdot 2 / 2 = 0{,}6\]
+
+::: {.lang-es}
+
+**2b.** El intervalo de confianza al 95% de $\beta$ es:
+
+:::
+
+::: {.lang-en}
+
+**2b.** The 95% confidence interval for $\beta$ is:
+
+:::
+
+\[4{,}001 \pm 1{,}96\sqrt{0{,}36}= 4{,}001 \pm 1{,}176
+= [2{,}825;\, 5{,}177]\]
+
+::: {.lang-es}
+
+donde $0{,}36$ es la componente $\Sigma_{22}^{-1}$.
+
+:::
+
+::: {.lang-en}
+
+where $0.36$ is the $\Sigma_{22}^{-1}$ component.
+
+:::
+
+::: {.lang-es}
+
+**3.** La verosimilitud es el producto de las probabilidades de los
+dos eventos:
+
+:::
+
+::: {.lang-en}
+
+**3.** The likelihood is the product of the probabilities of the two
+events:
+
+:::
+
+\[L(\alpha, \beta)= \binom{3}{3}\frac{B(\alpha + 3, \beta)}{B(\alpha, \beta)}
+\cdot \binom{3}{1}\frac{B(\alpha + 1, \beta + 2)}{B(\alpha, \beta)}\]
+
+::: {.lang-es}
+
+**4.** La distribución condicional de haber observado 3 asistencias en
+3 módulos es $\text{Beta}(\alpha + 3, \beta)$. La esperanza condicional
+es:
+
+:::
+
+::: {.lang-en}
+
+**4.** The conditional distribution given 3 attendances in 3 modules is
+$\text{Beta}(\alpha + 3, \beta)$. The conditional expectation is:
+
+:::
+
+\[\frac{\alpha + 3}{\alpha + \beta + 3}= \frac{3{,}543 + 3}{3{,}543 + 1{,}231 + 3} = 0{,}842\]
+</details>
+
+### Problema 4: Discrepancias de precios en supermercados {.unnumbered}
+
+::: {.lang-es}
+
+Se investiga la duración de discrepancias entre el precio en góndola y
+el precio cobrado en caja. La base de datos contiene ~75.000
+observaciones durante 28 días en un supermercado, con las variables:
+*Id*, *Day*, *Type* (I = favorece al cliente, II = favorece al
+supermercado), *Section*, *Duration*, *Tag_price*, *Real_price*, *diff*.
+
+:::
+
+::: {.lang-en}
+
+The duration of discrepancies between the shelf price and the price
+charged at the register is investigated. The database contains ~75,000
+observations over 28 days in a supermarket, with the variables: *Id*,
+*Day*, *Type* (I = favors the customer, II = favors the supermarket),
+*Section*, *Duration*, *Tag_price*, *Real_price*, *diff*.
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p4-muestra) Muestra de discrepancias de precios en supermercados.
+
+|  Id | Día | Tipo | Sección   | Duración | Precio\_góndola | Precio\_real |  diff |
+|----:|----:|:----:|:----------|---------:|----------------:|-------------:|------:|
+|   1 |   1 |  I   | limpieza  |        1 |           1.668 |        1.467 |   201 |
+|   2 |   1 |  II  | abarrotes |        7 |           1.162 |        9.183 | -8.021|
+|   3 |   2 |  I   | bebidas   |        1 |           7.517 |        6.616 |   901 |
+|   4 |   1 |  I   | bebidas   |        1 |           1.319 |        1.160 |   158 |
+|   5 |   5 |  I   | galletas  |        3 |           1.411 |        1.241 |   169 |
+|   6 |   3 |  II  | galletas  |        2 |           1.411 |        1.641 |  -231 |
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p4-muestra) Sample of supermarket price discrepancies.
+
+|  Id | Day | Type | Section   | Duration | Tag\_price | Real\_price |  diff |
+|----:|----:|:----:|:----------|---------:|-----------:|------------:|------:|
+|   1 |   1 |  I   | cleaning  |        1 |      1,668 |       1,467 |   201 |
+|   2 |   1 |  II  | groceries |        7 |      1,162 |       9,183 | -8,021|
+|   3 |   2 |  I   | beverages |        1 |      7,517 |       6,616 |   901 |
+|   4 |   1 |  I   | beverages |        1 |      1,319 |       1,160 |   158 |
+|   5 |   5 |  I   | cookies   |        3 |      1,411 |       1,241 |   169 |
+|   6 |   3 |  II  | cookies   |        2 |      1,411 |       1,641 |  -231 |
+
+:::
+
+::: {.lang-es}
+
+**Preguntas:**
+
+1.  Describa un modelo de duración probabilístico y escriba la
+    log-verosimilitud.
+
+2.  Dados los resultados de dos modelos de regresión lineal (ver tabla),
+    ¿cuál resulta más adecuado?
+
+:::
+
+::: {.lang-en}
+
+**Questions:**
+
+1.  Describe a probabilistic duration model and write the
+    log-likelihood.
+
+2.  Given the results of two linear regression models (see table), which
+    is more adequate?
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p4-regresion) Resultados de regresión lineal para discrepancias de precios.
+
+| Variable         |  Coef. M1 | p-valor M1 |  Coef. M2 | p-valor M2 |
+|:-----------------|----------:|:----------:|----------:|:----------:|
+| intercepto       |      3,55 |   0,0901   |    -1,353 |   0,1607   |
+| diff             |   -0,0002 |   0,7830   |         – |     –      |
+| log(Tag\_price)  |   -0,2688 |   0,3661   |         – |     –      |
+| log(diff)        |         – |     –      |     0,563 |   0,0019   |
+| type.I           |      1,51 |   0,0210   |     2,168 |   0,0000   |
+| type.I:diff      |    0,0046 |   0,1165   |         – |     –      |
+| day.1            |         – |     –      |    -1,013 |   0,0061   |
+| section.limpieza |         – |     –      |     4,394 |   0,0000   |
+| section.cocktail |         – |     –      |    -1,329 |   0,0221   |
+| **R²**           | **0,096** |            | **0,136** |            |
+| **Adj. R²**      | **0,086** |            | **0,120** |            |
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p4-regresion) Linear regression results for price discrepancies.
+
+| Variable         |  Coef. M1 | p-value M1 |  Coef. M2 | p-value M2 |
+|:-----------------|----------:|:----------:|----------:|:----------:|
+| intercept        |      3.55 |   0.0901   |    -1.353 |   0.1607   |
+| diff             |   -0.0002 |   0.7830   |         – |     –      |
+| log(Tag\_price)  |   -0.2688 |   0.3661   |         – |     –      |
+| log(diff)        |         – |     –      |     0.563 |   0.0019   |
+| type.I           |      1.51 |   0.0210   |     2.168 |   0.0000   |
+| type.I:diff      |    0.0046 |   0.1165   |         – |     –      |
+| day.1            |         – |     –      |    -1.013 |   0.0061   |
+| section.cleaning |         – |     –      |     4.394 |   0.0000   |
+| section.cocktail |         – |     –      |    -1.329 |   0.0221   |
+| **R²**           | **0.096** |            | **0.136** |            |
+| **Adj. R²**      | **0.086** |            | **0.120** |            |
+
+:::
+
+::: {.lang-es}
+
+3.  Se estiman tres modelos de duración para discrepancias de tipo I.
+    Para dos de ellos, calcule la probabilidad de que una discrepancia
+    para un producto de limpieza con diff = 201 dure más de 3 días.
+
+:::
+
+::: {.lang-en}
+
+3.  Three duration models are estimated for type I discrepancies. For
+    two of them, calculate the probability that a discrepancy for a
+    cleaning product with diff = 201 lasts more than 3 days.
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p4-duracion) Parámetros estimados de modelos de duración.
+
+| Parámetros | Geométrico | Beta-Geométrico | Regresión Geométrica |
+|:-----------|----------:|-----------:|------------:|
+| $\theta_0$ |       0,33 |          – |        0,46 |
+| $\alpha$   |          – |       2,08 |           – |
+| $\beta$    |          – |       2,62 |           – |
+| Diff       |          – |          – |       -0,43 |
+| limpieza   |          – |          – |       -0,87 |
+| **LL**     |       -788 |       -761 |        -566 |
+| **AIC**    |      1.278 |      1.526 |       1.142 |
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p4-duracion) Estimated parameters of duration models.
+
+| Parameters | Geometric | Beta-Geometric | Geometric Regression |
+|:-----------|----------:|-----------:|------------:|
+| $\theta_0$ |       0.33 |          – |        0.46 |
+| $\alpha$   |          – |       2.08 |           – |
+| $\beta$    |          – |       2.62 |           – |
+| Diff       |          – |          – |       -0.43 |
+| cleaning   |          – |          – |       -0.87 |
+| **LL**     |       -788 |       -761 |        -566 |
+| **AIC**    |      1,278 |      1,526 |       1,142 |
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+**1.** Dado que la duración se observa en días, resulta natural
+considerar un modelo de duración en tiempo discreto. Sea $\theta$ la
+probabilidad de que una discrepancia se resuelva en un día dado,
+$T_i$ la duración de la discrepancia $i$, $\tau = 28$ el horizonte de
+observación, y $n_t$ el número de discrepancias que duran exactamente
+$t$ días:
+
+:::
+
+::: {.lang-en}
+
+**1.** Since the duration is observed in days, it is natural to
+consider a discrete-time duration model. Let $\theta$ be the
+probability that a discrepancy is resolved on a given day, $T_i$ the
+duration of discrepancy $i$, $\tau = 28$ the observation horizon, and
+$n_t$ the number of discrepancies lasting exactly $t$ days:
+
+:::
+
+\[LL = n_\tau\ln\!\big((1-\theta)^\tau\big)+ \sum_{t=1}^{\tau-1} n_t\ln\!\big((1-\theta)^{t-1}\theta\big)\]
+
+::: {.lang-es}
+
+El único parámetro es $\theta$. Los datos $n_t$ y $n_\tau$ se obtienen
+directamente contando los valores de la columna *Duration*.
+
+:::
+
+::: {.lang-en}
+
+The only parameter is $\theta$. The data $n_t$ and $n_\tau$ are
+obtained directly by counting the values in the *Duration* column.
+
+:::
+
+::: {.lang-es}
+
+**2.** El **Modelo 2** resulta más adecuado por al menos dos razones:
+
+-   `diff` no es significativa en el Modelo 1, pero `log(diff)` sí lo
+    es en el Modelo 2.
+-   La interacción `type.I:diff` del Modelo 1 no es significativa,
+    mientras que todas las variables adicionales del Modelo 2 sí lo son.
+
+:::
+
+::: {.lang-en}
+
+**2.** **Model 2** is more adequate for at least two reasons:
+
+-   `diff` is not significant in Model 1, but `log(diff)` is
+    significant in Model 2.
+-   The `type.I:diff` interaction in Model 1 is not significant,
+    while all additional variables in Model 2 are significant.
+
+:::
+
+::: {.lang-es}
+
+**3.** Las expresiones son:
+
+-   *Geométrica:* $\Pr(T > 3 \mid \theta_0) = (1 - 0{,}33)^3$.
+
+-   *Beta-Geométrica:*
+    $\Pr(T > 3 \mid \alpha, \beta) = B(2{,}08;\, 2{,}62 + 3) /
+    B(2{,}08;\, 2{,}62)$.
+
+-   *Regresión Geométrica:*
+    $\theta_i = \frac{1}{1 + \exp(0{,}46 + 0{,}43 \cdot 201 + 0{,}87)}$,
+    luego $\Pr(T > 3) = (1 - \theta_i)^3$.
+
+:::
+
+::: {.lang-en}
+
+**3.** The expressions are:
+
+-   *Geometric:* $\Pr(T > 3 \mid \theta_0) = (1 - 0.33)^3$.
+
+-   *Beta-Geometric:*
+    $\Pr(T > 3 \mid \alpha, \beta) = B(2.08;\, 2.62 + 3) /
+    B(2.08;\, 2.62)$.
+
+-   *Geometric Regression:*
+    $\theta_i = \frac{1}{1 + \exp(0.46 + 0.43 \cdot 201 + 0.87)}$,
+    then $\Pr(T > 3) = (1 - \theta_i)^3$.
+
+:::
+
+</details>
+
+### Problema 5: NotComida — Panel de compras {.unnumbered}
+
+::: {.lang-es}
+
+NotComida es una startup chilena que manufactura productos alimenticios
+basados en plantas. Se dispone de un panel de compras con las variables:
+*IdCliente*, *Mes*, *Año*, *Categoría* (Hamburguesas, Leche, Helados),
+*Tienda*, *Edad*, *Mujer*, *Ingreso*, *Zona Oriente* y *NCompras*
+(número de compras en esa categoría y mes).
+
+:::
+
+::: {.lang-en}
+
+NotComida is a Chilean startup that manufactures plant-based food
+products. A purchase panel is available with the variables: *IdCliente*
+(Customer ID), *Mes* (Month), *Año* (Year), *Categoría* (Category:
+Hamburgers, Milk, Ice cream), *Tienda* (Store), *Edad* (Age), *Mujer*
+(Female), *Ingreso* (Income), *Zona Oriente* (Eastern zone), and
+*NCompras* (number of purchases in that category and month).
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p5-variables) Variables del panel de compras de NotComida.
+
+| Variable     | Descripción                                             |   Media |
+|:-------------|:--------------------------------------------------------|--------:|
+| IdCliente    | Identificador de cliente                                |      -- |
+| Mes          | Mes                                                     |      -- |
+| Año          | Año                                                     |      -- |
+| Categoría    | Categoría de producto                                   |      -- |
+| Tienda       | Identificador de la tienda                              |      -- |
+| Edad         | Edad del panelista                                      |    31,3 |
+| Mujer        | 1 si la panelista se identifica como mujer              |    0,51 |
+| Ingreso      | Ingreso mensual [millones CLP]                          |    0,56 |
+| Zona Oriente | 1 si vive en la zona oriente                            |    0,11 |
+| NCompras     | Número de compras en esa categoría y mes                |    2,34 |
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p5-variables) NotComida purchase panel variables.
+
+| Variable     | Description                                             |    Mean |
+|:-------------|:--------------------------------------------------------|--------:|
+| IdCliente    | Customer identifier                                     |      -- |
+| Mes          | Month                                                   |      -- |
+| Año          | Year                                                    |      -- |
+| Categoría    | Product category                                        |      -- |
+| Tienda       | Store identifier                                        |      -- |
+| Edad         | Panelist's age                                          |    31.3 |
+| Mujer        | 1 if the panelist identifies as female                  |    0.51 |
+| Ingreso      | Monthly income [millions CLP]                           |    0.56 |
+| Zona Oriente | 1 if lives in the eastern zone                          |    0.11 |
+| NCompras     | Number of purchases in that category and month          |    2.34 |
+
+:::
+
+::: {.lang-es}
+
+**Preguntas:**
+
+1.  Proponga un modelo de regresión de Poisson con efectos fijos por
+    categoría y tienda, efecto de género con interacción por zona,
+    tendencia por año, y estacionalidad diferenciada (helados en
+    verano, hamburguesas en septiembre). Escriba la log-verosimilitud.
+
+2.  Para hamburguesas, con dos clases latentes donde
+    $\log(\lambda_i) = \beta_{0i} + \beta_1\text{MUJER}_i$, con
+    $\beta_{0i} = -1$ (probabilidad 0,4) y $\beta_{0i} = 0{,}5$
+    (probabilidad 0,6), ¿cuál es la probabilidad de que un hombre que
+    no compra en un mes pertenezca al segmento 1?
+
+3.  Definiendo $y_{icst} = 1$ si el cliente $i$ compra en la categoría
+    $c$ en la tienda $s$ el mes $t$, escriba la log-verosimilitud del
+    historial del cliente 321045 usando un modelo de elección binaria.
+
+:::
+
+::: {.lang-en}
+
+**Questions:**
+
+1.  Propose a Poisson regression model with fixed effects for category
+    and store, a gender effect with zone interaction, a year trend, and
+    differentiated seasonality (ice cream in summer, hamburgers in
+    September). Write the log-likelihood.
+
+2.  For hamburgers, with two latent classes where
+    $\log(\lambda_i) = \beta_{0i} + \beta_1\text{MUJER}_i$, with
+    $\beta_{0i} = -1$ (probability 0.4) and $\beta_{0i} = 0.5$
+    (probability 0.6), what is the probability that a man who makes no
+    purchases in a month belongs to segment 1?
+
+3.  Defining $y_{icst} = 1$ if customer $i$ buys in category $c$ at
+    store $s$ in month $t$, write the log-likelihood for customer
+    321045's history using a binary choice model.
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p5-historial) Historial de compras del cliente 321045.
+
+| IdCliente | Mes        | Año  | Tienda | Categoría   | NCompras |
+|:---------:|:----------:|:----:|:------:|:------------|:--------:|
+|  321045   | Julio      | 2021 |  S816  | Hamburguesa |    1     |
+|  321045   | Septiembre | 2021 |  S816  | Hamburguesa |    0     |
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p5-historial) Purchase history for customer 321045.
+
+| IdCliente | Month     | Year | Store  | Category    | NPurchases |
+|:---------:|:---------:|:----:|:------:|:------------|:----------:|
+|  321045   | July      | 2021 |  S816  | Hamburger   |     1      |
+|  321045   | September | 2021 |  S816  | Hamburger   |     0      |
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+**1.** Sea $\lambda_{icst}$ la tasa de compras. Se definen:
+
+-   $\delta_{ta} = 1$ si el mes $t$ pertenece al año $a$.
+-   $\Delta^1_{ct} = 1$ si $c = \text{Helado}$ y
+    $t \in \{\text{dic, ene, feb}\}$.
+-   $\Delta^2_{ct} = 1$ si $c = \text{Hamburguesa}$ y
+    $t = \text{septiembre}$.
+
+:::
+
+::: {.lang-en}
+
+**1.** Let $\lambda_{icst}$ be the purchase rate. Define:
+
+-   $\delta_{ta} = 1$ if month $t$ belongs to year $a$.
+-   $\Delta^1_{ct} = 1$ if $c = \text{Ice cream}$ and
+    $t \in \{\text{Dec, Jan, Feb}\}$.
+-   $\Delta^2_{ct} = 1$ if $c = \text{Hamburger}$ and
+    $t = \text{September}$.
+
+:::
+
+\[\lambda_{icst} = \alpha_c + \alpha_s+ \beta_1\text{MUJER}_i
++ \beta_2\text{MUJER}_i \cdot \text{ZORIENTE}_s
++ \sum_a \gamma_a\delta_{ta}
++ \theta_1\Delta^1_{ct}
++ \theta_2\Delta^2_{ct}\]
+
+::: {.lang-es}
+
+La log-verosimilitud es:
+
+:::
+
+::: {.lang-en}
+
+The log-likelihood is:
+
+:::
+
+\[LL = \sum_{i,c,s,t}\ln\!\left(\frac{\lambda_{icst}^{n_{icst}}
+e^{-\lambda_{icst}}}{n_{icst}!}\right)\]
+
+::: {.lang-es}
+
+**2.** Las tasas son $\lambda_{i1} = e^{-1}$ y
+$\lambda_{i2} = e^{0{,}5}$ (hombre, $\text{MUJER}_i = 0$).
+
+:::
+
+::: {.lang-en}
+
+**2.** The rates are $\lambda_{i1} = e^{-1}$ and
+$\lambda_{i2} = e^{0.5}$ (male, $\text{MUJER}_i = 0$).
+
+:::
+
+\[\Pr(n_i = 0 \mid s_1) = e^{-e^{-1}}, \qquad\Pr(n_i = 0 \mid s_2) = e^{-e^{0{,}5}}\]
+
+::: {.lang-es}
+
+Aplicando Bayes:
+
+:::
+
+::: {.lang-en}
+
+Applying Bayes' rule:
+
+:::
+
+\[\Pr(s_1 \mid n_i = 0)= \frac{e^{-e^{-1}} \cdot 0{,}4}
+{e^{-e^{-1}} \cdot 0{,}4 + e^{-e^{0{,}5}} \cdot 0{,}6}\]
+
+::: {.lang-es}
+
+**3.** La utilidad del cliente por comprar en la categoría $c$, tienda
+$s$, mes $t$ es:
+
+:::
+
+::: {.lang-en}
+
+**3.** The customer's utility from purchasing in category $c$, store
+$s$, month $t$ is:
+
+:::
+
+\[u_{icst} = \alpha_c + \alpha_s + \sum_a \gamma_a\delta_{ta}+ \theta_2\Delta^2_{ct}\]
+
+::: {.lang-es}
+
+(los términos con $\text{MUJER}_i = 0$ se anulan; $\Delta^1_{ct} = 0$
+porque no es helado en verano). La log-verosimilitud es:
+
+:::
+
+::: {.lang-en}
+
+(the terms with $\text{MUJER}_i = 0$ cancel out; $\Delta^1_{ct} = 0$
+because it is not ice cream in summer). The log-likelihood is:
+
+:::
+
+\[LL = \sum_{icst}y_{icst}\ln\!\left(\frac{e^{u_{icst}}}{1 + e^{u_{icst}}}\right)
++ (1 - y_{icst})\ln\!\left(\frac{1}{1 + e^{u_{icst}}}\right)\]
+</details>
+
+### Problema 6: Creadores de contenido {.unnumbered}
+
+::: {.lang-es}
+
+Un portal de creación de contenido desea entender los factores que
+inciden en el número de *me gusta* de las publicaciones. Las variables
+disponibles incluyen identificadores (IdCC, IdPost, DatePost), categoría
+(Information, Humour, News), características del contenido (Nchar, Npic,
+Tvid) y puntajes de IA (AIproduction, AIcontent, AInovelty).
+
+**Preguntas:**
+
+1.  Modele el número de *me gusta* como un proceso de conteo con
+    heterogeneidad observable.
+    a.  Justifique al menos dos variables explicativas con su signo
+        esperado.
+    b.  Escriba la log-verosimilitud e indique el número de parámetros.
+    c.  Escriba la probabilidad de recibir al menos un *me gusta*.
+
+2.  Se propone un modelo de elección Beta-Binomial usando la variable
+    $\text{NDisp}$ (número de exposiciones).
+    a.  Escriba la log-verosimilitud.
+    b.  Si $(\alpha, \beta) = (1, 2)$, ¿cuál es la probabilidad
+        promedio de que a un cliente le guste una publicación?
+    c.  Para una publicación con 100 exposiciones y 10 *me gusta*,
+        ¿cuántos *me gusta* se esperan tras 200 exposiciones?
+
+:::
+
+::: {.lang-en}
+
+A content creation platform wants to understand the factors affecting
+the number of *likes* on publications. Available variables include
+identifiers (IdCC, IdPost, DatePost), category (Information, Humour,
+News), content characteristics (Nchar, Npic, Tvid), and AI scores
+(AIproduction, AIcontent, AInovelty).
+
+**Questions:**
+
+1.  Model the number of *likes* as a count process with observable
+    heterogeneity.
+    a.  Justify at least two explanatory variables with their expected
+        sign.
+    b.  Write the log-likelihood and indicate the number of parameters.
+    c.  Write the probability of receiving at least one *like*.
+
+2.  A Beta-Binomial choice model is proposed using the variable
+    $\text{NDisp}$ (number of exposures).
+    a.  Write the log-likelihood.
+    b.  If $(\alpha, \beta) = (1, 2)$, what is the average probability
+        that a customer likes a publication?
+    c.  For a publication with 100 exposures and 10 *likes*, how many
+        *likes* are expected after 200 exposures?
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+**1a.** Dos justificaciones posibles:
+
+-   *AIproduction* (signo positivo esperado): material mejor producido
+    debería generar más *me gusta*.
+-   *Npic* (signo positivo esperado): publicaciones con más imágenes
+    tienden a ser más atractivas visualmente.
+
+:::
+
+::: {.lang-en}
+
+**1a.** Two possible justifications:
+
+-   *AIproduction* (expected positive sign): better-produced material
+    should generate more *likes*.
+-   *Npic* (expected positive sign): publications with more images
+    tend to be more visually appealing.
+
+:::
+
+::: {.lang-es}
+
+**1b.** Considerando la tasa:
+
+:::
+
+::: {.lang-en}
+
+**1b.** Considering the rate:
+
+:::
+
+\[\lambda_i = \lambda_0 \exp\!\big(\beta_1\text{Nchar}_i+ \beta_2\text{Npic}_i + \beta_3\text{Tvid}_i\big)\]
+
+::: {.lang-es}
+
+La log-verosimilitud es:
+
+:::
+
+::: {.lang-en}
+
+The log-likelihood is:
+
+:::
+
+\[LL = \sum_i\ln\!\left(\frac{\lambda_i^{\text{Nlikes}_i}\,e^{-\lambda_i}}
+{\text{Nlikes}_i!}\right)\]
+
+::: {.lang-es}
+
+El modelo tiene 4 parámetros ($\lambda_0, \beta_1, \beta_2, \beta_3$).
+
+:::
+
+::: {.lang-en}
+
+The model has 4 parameters ($\lambda_0, \beta_1, \beta_2, \beta_3$).
+
+:::
+
+::: {.lang-es}
+
+**1c.**
+$\Pr(\text{Nlikes}_i > 0)
+= 1 - \Pr(\text{Nlikes}_i = 0) = 1 - e^{-\lambda_i}$.
+
+:::
+
+::: {.lang-en}
+
+**1c.**
+$\Pr(\text{Nlikes}_i > 0)
+= 1 - \Pr(\text{Nlikes}_i = 0) = 1 - e^{-\lambda_i}$.
+
+:::
+
+
+::: {.lang-es}
+
+**2a.** Log-verosimilitud Beta-Binomial:
+
+:::
+
+::: {.lang-en}
+
+**2a.** Beta-Binomial log-likelihood:
+
+:::
+
+\[LL = \sum_i \ln\!\left(\binom{\text{NDisp}_i}{\text{Nlikes}_i}\;
+\frac{B(\alpha + \text{Nlikes}_i,\,
+\beta + \text{NDisp}_i - \text{Nlikes}_i)}
+{B(\alpha, \beta)}\right)\]
+
+::: {.lang-es}
+
+**2b.**
+$\mathbb{E}(\theta) = \alpha/(\alpha + \beta) = 1/3$.
+
+:::
+
+::: {.lang-en}
+
+**2b.**
+$\mathbb{E}(\theta) = \alpha/(\alpha + \beta) = 1/3$.
+
+:::
+
+
+::: {.lang-es}
+
+**2c.** La esperanza condicional es:
+
+:::
+
+::: {.lang-en}
+
+**2c.** The conditional expectation is:
+
+:::
+
+\[\mathbb{E}(\theta_i \mid \alpha, \beta, \text{NDisp}_i, \text{Nlikes}_i)= \frac{\alpha + \text{Nlikes}_i}{\alpha + \beta + \text{NDisp}_i}
+= \frac{1 + 10}{1 + 2 + 100} = \frac{11}{103}\]
+
+::: {.lang-es}
+
+El número esperado de *me gusta* tras 200 exposiciones es:
+
+:::
+
+::: {.lang-en}
+
+The expected number of *likes* after 200 exposures is:
+
+:::
+
+\[200 \times \frac{11}{103} \approx 21{,}36\]
+
+::: {.lang-es}
+
+Cabe notar que $11/103$ es la esperanza de la probabilidad individual,
+actualizada por la información observada. Al multiplicar por 200 se
+obtiene la predicción para el total de exposiciones.
+
+:::
+
+::: {.lang-en}
+
+Note that $11/103$ is the expectation of the individual probability,
+updated with observed information. Multiplying by 200 yields the
+prediction for the total number of exposures.
+
+:::
+
+</details>
+
+### Problema 7: Hippi — Parkas para alta montaña {.unnumbered}
+
+::: {.lang-es}
+
+Hippi fabrica productos para alta montaña y desea estudiar el número de
+parkas que los clientes comprarán en la temporada. El comportamiento se
+describe como:
+
+-   Cada cliente compra $X$ parkas según una distribución geométrica:
+    $\Pr(X = x \mid p) = p(1-p)^x$.
+-   El parámetro $p$ se distribuye $\text{Beta}(\alpha, \beta)$ en la
+    población.
+
+La distribución agregada y su esperanza son:
+
+:::
+
+::: {.lang-en}
+
+Hippi manufactures high-mountain products and wants to study the number
+of parkas customers will buy during the season. The behavior is
+described as:
+
+-   Each customer buys $X$ parkas according to a geometric distribution:
+    $\Pr(X = x \mid p) = p(1-p)^x$.
+-   The parameter $p$ follows a $\text{Beta}(\alpha, \beta)$
+    distribution across the population.
+
+The aggregate distribution and its expectation are:
+
+:::
+
+\[\Pr(X = x) = \frac{B(\alpha + 1, \beta + x)}{B(\alpha, \beta)},
+\qquad \mathbb{E}(X) = \frac{\alpha}{\beta - 1}\]
+
+::: {.lang-es}
+
+**Preguntas:**
+
+1.  Muestre que la penetración de mercado (fracción de clientes que
+    compró al menos una unidad) es $\beta/(\alpha + \beta)$.
+
+2.  Si la penetración es 60% y el promedio de compra es 2,5, estime
+    $\alpha$ y $\beta$.
+
+3.  Extienda el modelo para incluir un segmento de clientes que nunca
+    compra (proporción $\pi$). Deduzca la verosimilitud.
+
+:::
+
+::: {.lang-en}
+
+**Questions:**
+
+1.  Show that the market penetration (fraction of customers who bought
+    at least one unit) is $\beta/(\alpha + \beta)$.
+
+2.  If the penetration is 60% and the average purchase is 2.5, estimate
+    $\alpha$ and $\beta$.
+
+3.  Extend the model to include a segment of customers who never buy
+    (proportion $\pi$). Derive the likelihood.
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+**1.** La penetración $p_0$ es:
+
+:::
+
+::: {.lang-en}
+
+**1.** The market penetration $p_0$ is:
+
+:::
+
+\[p_0 = 1 - \Pr(X = 0)= 1 - \frac{B(\alpha + 1, \beta)}{B(\alpha, \beta)}
+= 1 - \frac{\Gamma(\alpha+1)\Gamma(\beta)}{\Gamma(\alpha+\beta+1)}
+\cdot \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}
+= 1 - \frac{\alpha}{\alpha + \beta}
+= \frac{\beta}{\alpha + \beta}\]
+
+::: {.lang-es}
+
+**2.** De la penetración:
+$0{,}6 = \beta/(\alpha + \beta) \Rightarrow \alpha = \tfrac{2}{3}\beta$.
+
+Del promedio: $2{,}5 = \alpha/(\beta - 1) = \tfrac{2}{3}\beta/(\beta - 1)$.
+
+Despejando: $\beta = 15/11 \approx 1{,}364$ y
+$\alpha = 10/11 \approx 0{,}909$.
+
+:::
+
+::: {.lang-en}
+
+**2.** From the penetration:
+$0.6 = \beta/(\alpha + \beta) \Rightarrow \alpha = \tfrac{2}{3}\beta$.
+
+From the average: $2.5 = \alpha/(\beta - 1) = \tfrac{2}{3}\beta/(\beta - 1)$.
+
+Solving: $\beta = 15/11 \approx 1.364$ and
+$\alpha = 10/11 \approx 0.909$.
+
+:::
+
+::: {.lang-es}
+
+**3.** Sea $n_x$ el número de clientes que compra $x$ parkas:
+
+:::
+
+::: {.lang-en}
+
+**3.** Let $n_x$ be the number of customers who buy $x$ parkas:
+
+:::
+
+\[L(\alpha, \beta, \pi \mid \mathbf{x})= \prod_{x=0}^{\infty}
+\Pr(X = x \mid \alpha, \beta, \pi)^{n_x}\]
+
+::: {.lang-es}
+
+donde:
+
+:::
+
+::: {.lang-en}
+
+where:
+
+:::
+
+\[\Pr(X = x \mid \alpha, \beta, \pi) =\begin{cases}
+\pi + (1-\pi)\dfrac{B(\alpha+1, \beta)}{B(\alpha, \beta)} & x = 0 \\[8pt]
+(1-\pi)\dfrac{B(\alpha+1, \beta+x)}{B(\alpha, \beta)} & x > 0
+\end{cases}\]
+</details>
+
+### Problema 8: Pokémon Go {.unnumbered}
+
+::: {.lang-es}
+
+Pokémon Go planea introducir 7 nuevos personajes en 8 comunas. Se
+dispone de datos sobre el número de veces que cada pokémon fue mostrado
+a jugadores y el número de intentos de captura.
+
+:::
+
+::: {.lang-en}
+
+Pokémon Go plans to introduce 7 new characters across 8 municipalities.
+Data are available on the number of times each pokémon was shown to
+players and the number of capture attempts.
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p8-mostrados) Número de veces que se mostró cada pokémon por comuna.
+
+| Pokémon    | Melipilla | Talagante | Pirque | Colina | Alhué | Paine | Lampa | Buin | Total |
+|:-----------|----------:|----------:|-------:|-------:|------:|------:|------:|-----:|------:|
+| Wigglytuff |         5 |       834 |    504 |    117 |   763 |   424 |   387 |  683 | 3.717 |
+| Slowbrow   |        24 |       975 |      8 |    342 |   715 |   362 |   788 |  793 | 4.007 |
+| Lickitung  |       101 |       651 |    200 |    993 |   562 |   614 |   691 |  595 | 4.407 |
+| Chansley   |       198 |       517 |    960 |    788 |   441 |   844 |   836 |  438 | 5.022 |
+| Tangela    |        79 |       990 |    756 |    868 |   210 |   944 |   509 |  233 | 4.589 |
+| Ditto      |        69 |       587 |     96 |    365 |   182 |   634 |   373 |  419 | 2.725 |
+| Phanpy     |       138 |       969 |    971 |    890 |   586 |   764 |   585 |  361 | 5.264 |
+
+*Número de veces que se mostró cada pokémon a un jugador.*
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p8-mostrados) Number of times each pokémon was shown per municipality.
+
+| Pokémon    | Melipilla | Talagante | Pirque | Colina | Alhué | Paine | Lampa | Buin | Total |
+|:-----------|----------:|----------:|-------:|-------:|------:|------:|------:|-----:|------:|
+| Wigglytuff |         5 |       834 |    504 |    117 |   763 |   424 |   387 |  683 | 3,717 |
+| Slowbrow   |        24 |       975 |      8 |    342 |   715 |   362 |   788 |  793 | 4,007 |
+| Lickitung  |       101 |       651 |    200 |    993 |   562 |   614 |   691 |  595 | 4,407 |
+| Chansley   |       198 |       517 |    960 |    788 |   441 |   844 |   836 |  438 | 5,022 |
+| Tangela    |        79 |       990 |    756 |    868 |   210 |   944 |   509 |  233 | 4,589 |
+| Ditto      |        69 |       587 |     96 |    365 |   182 |   634 |   373 |  419 | 2,725 |
+| Phanpy     |       138 |       969 |    971 |    890 |   586 |   764 |   585 |  361 | 5,264 |
+
+*Number of times each pokémon was shown to a player.*
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p8-capturas) Número de intentos de captura por pokémon y comuna.
+
+| Pokémon    | Melipilla | Talagante | Pirque | Colina | Alhué | Paine | Lampa | Buin | Total |
+|:-----------|----------:|----------:|-------:|-------:|------:|------:|------:|-----:|------:|
+| Wigglytuff |         0 |       218 |     98 |     39 |    31 |    63 |    26 |   43 |   518 |
+| Slowbrow   |         8 |       186 |      4 |    110 |   393 |    79 |   240 |  113 | 1.133 |
+| Lickitung  |         8 |        47 |     13 |     98 |   183 |   180 |   219 |   60 |   808 |
+| Chansley   |        49 |        31 |    274 |     24 |    48 |    91 |   205 |   42 |   764 |
+| Tangela    |        14 |       294 |     71 |     35 |    59 |   304 |   116 |    2 |   895 |
+| Ditto      |        14 |       180 |     14 |    110 |    33 |    84 |     0 |   10 |   445 |
+| Phanpy     |         4 |        19 |     66 |    189 |     9 |    37 |    92 |   33 |   449 |
+
+*Número de intentos de captura.*
+
+**Preguntas:**
+
+1.  Usando el método de los momentos, estime un modelo binomial sin
+    heterogeneidad para la probabilidad de que un usuario intente
+    atrapar a Wigglytuff.
+
+2.  Escriba un modelo Beta-Binomial que incorpore heterogeneidad para
+    cada pokémon $k$ y comuna $c$.
+
+3.  Escriba la log-verosimilitud del modelo anterior.
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p8-capturas) Number of capture attempts per pokémon and municipality.
+
+| Pokémon    | Melipilla | Talagante | Pirque | Colina | Alhué | Paine | Lampa | Buin | Total |
+|:-----------|----------:|----------:|-------:|-------:|------:|------:|------:|-----:|------:|
+| Wigglytuff |         0 |       218 |     98 |     39 |    31 |    63 |    26 |   43 |   518 |
+| Slowbrow   |         8 |       186 |      4 |    110 |   393 |    79 |   240 |  113 | 1,133 |
+| Lickitung  |         8 |        47 |     13 |     98 |   183 |   180 |   219 |   60 |   808 |
+| Chansley   |        49 |        31 |    274 |     24 |    48 |    91 |   205 |   42 |   764 |
+| Tangela    |        14 |       294 |     71 |     35 |    59 |   304 |   116 |    2 |   895 |
+| Ditto      |        14 |       180 |     14 |    110 |    33 |    84 |     0 |   10 |   445 |
+| Phanpy     |         4 |        19 |     66 |    189 |     9 |    37 |    92 |   33 |   449 |
+
+*Number of capture attempts.*
+
+**Questions:**
+
+1.  Using the method of moments, estimate a binomial model without
+    heterogeneity for the probability that a user attempts to catch
+    Wigglytuff.
+
+2.  Write a Beta-Binomial model that incorporates heterogeneity for
+    each pokémon $k$ and municipality $c$.
+
+3.  Write the log-likelihood of the previous model.
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+**1.** Sea $X_w$ el número de usuarios que intentan atrapar a
+Wigglytuff. Se tiene $X_w \sim \text{Bin}(n_w, p_w)$ con
+$n_w = 3.717$ (total de exposiciones). El primer momento de la
+distribución es $n_w p_w$, que se iguala al total de intentos
+observados:
+
+:::
+
+::: {.lang-en}
+
+**1.** Let $X_w$ be the number of users who attempt to catch
+Wigglytuff. We have $X_w \sim \text{Bin}(n_w, p_w)$ with
+$n_w = 3{,}717$ (total exposures). The first moment of the
+distribution is $n_w p_w$, which is set equal to the total observed
+attempts:
+
+:::
+
+\[518 = 3.717 \cdot p_w \implies p_w \approx 0{,}1393\]
+
+::: {.lang-es}
+
+**2.** Para cada pokémon $k$ y comuna $c$, con
+$p_k \sim \text{Beta}(\alpha_k, \beta_k)$:
+
+:::
+
+::: {.lang-en}
+
+**2.** For each pokémon $k$ and municipality $c$, with
+$p_k \sim \text{Beta}(\alpha_k, \beta_k)$:
+
+:::
+
+\[P(X_{k,c} = x_{k,c})= \binom{n_{k,c}}{x_{k,c}}
+\frac{B(\alpha_k + x_{k,c},\, \beta_k + n_{k,c} - x_{k,c})}
+{B(\alpha_k, \beta_k)}\]
+
+::: {.lang-es}
+
+**3.** Para cada pokémon $k$, la log-verosimilitud sobre las 8 comunas
+es:
+
+:::
+
+::: {.lang-en}
+
+**3.** For each pokémon $k$, the log-likelihood over the 8
+municipalities is:
+
+:::
+
+\[\ell(\alpha_k, \beta_k \mid x_{k,1}, \ldots, x_{k,8})= \sum_{c=1}^{8} \ln\!\left(
+\binom{n_{k,c}}{x_{k,c}}
+\frac{B(\alpha_k + x_{k,c},\, \beta_k + n_{k,c} - x_{k,c})}
+{B(\alpha_k, \beta_k)}\right)\]
+
+::: {.lang-es}
+
+Se asume independencia entre comunas.
+
+:::
+
+::: {.lang-en}
+
+Independence across municipalities is assumed.
+
+:::
+
+</details>
+
+### Problema 9: Aplicación móvil con promociones georreferenciadas {.unnumbered}
+
+::: {.lang-es}
+
+Una aplicación móvil envía $m_i$ mensajes promocionales al cliente $i$,
+de los cuales $x_i$ son efectivamente utilizados.
+
+**Preguntas:**
+
+1.  Plantee un modelo de elección para determinar la probabilidad de
+    respuesta.
+    a.  Escriba la log-verosimilitud.
+    b.  Si hay $N$ clientes, $T$ períodos y en promedio $M$ promociones
+        por cliente, ¿cuántos parámetros deben estimarse?
+
+2.  Reformule el modelo incorporando variables explicativas (edad,
+    ingreso, frecuencia de uso) y dos clases latentes (canjeadores y
+    no canjeadores). Escriba la log-verosimilitud.
+
+3.  Si los segmentos son del mismo tamaño y para un usuario $i$:
+    $\boldsymbol{\beta}'_C\mathbf{z}_i = \ln(2)$ y
+    $\boldsymbol{\beta}'_N\mathbf{z}_i = \ln(1/2)$. Si al usuario se
+    le enviaron 2 promociones y canjeó ambas, ¿cuál es la probabilidad
+    de pertenecer al segmento canjeador?
+
+4.  Si de $m_i$ mensajes el usuario lee $n_i$ y de esos canjea $x_i$,
+    modele el comportamiento como un modelo integrado
+    elección-elección. Escriba la probabilidad de canje y la
+    log-verosimilitud.
+
+:::
+
+::: {.lang-en}
+
+A mobile application sends $m_i$ promotional messages to customer $i$,
+of which $x_i$ are effectively redeemed.
+
+**Questions:**
+
+1.  Propose a choice model to determine the response probability.
+    a.  Write the log-likelihood.
+    b.  If there are $N$ customers, $T$ periods, and on average $M$
+        promotions per customer, how many parameters must be estimated?
+
+2.  Reformulate the model incorporating explanatory variables (age,
+    income, usage frequency) and two latent classes (redeemers and
+    non-redeemers). Write the log-likelihood.
+
+3.  If the segments are of equal size and for a user $i$:
+    $\boldsymbol{\beta}'_C\mathbf{z}_i = \ln(2)$ and
+    $\boldsymbol{\beta}'_N\mathbf{z}_i = \ln(1/2)$. If the user
+    received 2 promotions and redeemed both, what is the probability
+    of belonging to the redeemer segment?
+
+4.  If out of $m_i$ messages the user reads $n_i$ and redeems $x_i$
+    of those, model the behavior as an integrated choice-choice model.
+    Write the redemption probability and the log-likelihood.
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+**1a.** Sea $X_i$ el número de canjes del cliente $i$:
+
+:::
+
+::: {.lang-en}
+
+**1a.** Let $X_i$ be the number of redemptions by customer $i$:
+
+:::
+
+\[\Pr(X_i = x_i \mid p_i)= \binom{m_i}{x_i}p_i^{x_i}(1-p_i)^{m_i - x_i}\]
+\[LL(p) = \sum_i \ln\!\left(\binom{m_i}{x_i}p_i^{x_i}(1-p_i)^{m_i - x_i}\right)\]
+
+::: {.lang-es}
+
+**1b.** Se deben estimar $N$ parámetros (uno por cliente), lo que
+sugiere la necesidad de incorporar heterogeneidad.
+
+:::
+
+::: {.lang-en}
+
+**1b.** $N$ parameters must be estimated (one per customer), which
+suggests the need to incorporate heterogeneity.
+
+:::
+
+::: {.lang-es}
+
+**2.** Con dos segmentos (canjeadores $C$ y no canjeadores $N$), donde:
+
+:::
+
+::: {.lang-en}
+
+**2.** With two segments (redeemers $C$ and non-redeemers $N$), where:
+
+:::
+
+\[p_{iC} = \frac{\exp(\boldsymbol{\beta}'_C\mathbf{z}_i)}{1 + \exp(\boldsymbol{\beta}'_C\mathbf{z}_i)},
+\qquad
+p_{iN} = \frac{\exp(\boldsymbol{\beta}'_N\mathbf{z}_i)}
+{1 + \exp(\boldsymbol{\beta}'_N\mathbf{z}_i)}\]
+\[LL = \sum_i \ln\!\Big(\pi\binom{m_i}{x_i}p_{iC}^{x_i}(1-p_{iC})^{m_i-x_i}
++ (1-\pi)\binom{m_i}{x_i}p_{iN}^{x_i}(1-p_{iN})^{m_i-x_i}
+\Big)\]
+
+::: {.lang-es}
+
+**3.** Con $\boldsymbol{\beta}'_C\mathbf{z}_i = \ln 2$:
+$p_{iC} = 2/3$. Con $\boldsymbol{\beta}'_N\mathbf{z}_i = \ln(1/2)$:
+$p_{iN} = 1/3$.
+
+:::
+
+::: {.lang-en}
+
+**3.** With $\boldsymbol{\beta}'_C\mathbf{z}_i = \ln 2$:
+$p_{iC} = 2/3$. With $\boldsymbol{\beta}'_N\mathbf{z}_i = \ln(1/2)$:
+$p_{iN} = 1/3$.
+
+:::
+
+\[\Pr(X_i = 2 \mid C)= \binom{2}{2}\left(\frac{2}{3}\right)^2 = \frac{4}{9}\]
+\[\Pr(X_i = 2 \mid N)= \binom{2}{2}\left(\frac{1}{3}\right)^2 = \frac{1}{9}\]
+
+::: {.lang-es}
+
+Con $\Pr(C) = \Pr(N) = 1/2$:
+
+:::
+
+::: {.lang-en}
+
+With $\Pr(C) = \Pr(N) = 1/2$:
+
+:::
+
+\[\Pr(C \mid X_i = 2)= \frac{\frac{4}{9} \cdot \frac{1}{2}}
+{\frac{4}{9} \cdot \frac{1}{2}
++ \frac{1}{9} \cdot \frac{1}{2}}
+= \frac{4}{5}\]
+
+::: {.lang-es}
+
+**4.** Modelo integrado con dos etapas (lectura y canje):
+
+:::
+
+::: {.lang-en}
+
+**4.** Integrated model with two stages (reading and redemption):
+
+:::
+
+\[\Pr(X_i = x_i \mid p_{\text{canjear}}, p_{\text{leer}})= \sum_{n_i = x_i}^{m_i}
+\binom{n_i}{x_i}p_{\text{canjear}}^{x_i}
+(1-p_{\text{canjear}})^{n_i - x_i}
+\cdot \binom{m_i}{n_i}p_{\text{leer}}^{n_i}
+(1-p_{\text{leer}})^{m_i - n_i}\]
+
+::: {.lang-es}
+
+La log-verosimilitud es:
+
+:::
+
+::: {.lang-en}
+
+The log-likelihood is:
+
+:::
+
+\[LL = \sum_i \ln\!\big(\Pr(X_i = x_i \mid p_{\text{canjear}}, p_{\text{leer}})\big)\]
+</details>
+

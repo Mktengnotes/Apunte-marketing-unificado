@@ -1,0 +1,587 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Source+Code+Pro:wght@400;600&display=swap');
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+  text-align: center;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+/*----- Toolbar line at top----- */
+
+.summary > li:first-child {
+  height: 50px;
+  padding-top: 10px;
+  border-bottom: 1px solid transparent;
+}
+
+.book .book-summary ul.summary li.divider {
+  height: 0px;
+}
+
+/* TOC book title */
+
+.summary > li:first-child {
+    font-size: 1em;
+    height: auto;
+    padding: 1em 20px;
+    line-height: 2em;
+}
+
+.summary > li:first-child a {
+    font-size: 12.8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: normal !important;
+    color: #1565C0;
+    padding: 0 !important;
+    border-left: none;
+    letter-spacing: 2pt;
+}
+
+.summary > li:first-child a:hover {
+  border-left: none;
+}
+
+.book .book-summary > nav > ul > li > a {
+  border-left: 1pt solid white;
+}
+
+.book-summary .divider + .chapter > a {
+  white-space: normal !important;
+}
+
+li.part:first-child {
+   border-top: none;
+}
+
+.book .book-header.fixed {
+  border-bottom: 1px solid transparent;
+}
+
+.book .book-header .btn {
+  color: #1a162d99;
+}
+
+.book .book-header .btn:hover {
+  color: #1a162d;
+}
+
+
+/*------------- Body and header text---------------- */
+
+.book.font-family-1 {
+  font-family: 'Source Serif Pro', serif;
+  color: #404040;
+}
+
+/* Texto justificado */
+.book .book-body .page-wrapper .page-inner section.normal p {
+  text-align: justify;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Source Serif Pro', serif;
+  font-weight: normal;
+}
+
+h2, h3 {
+  font-family: 'Source Serif Pro', serif;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 1.5pt;
+}
+
+h1 {
+  color: #1565C0;
+  font-size: 41px !important;
+}
+
+h2 {
+  color: #1a162d;
+}
+
+h3 {
+  font-size: 1.1em;
+  color: #1a162d90;
+}
+
+h4 {
+  font-size: 1.1em;
+  color: #1a162d90;
+}
+
+h2 code,
+h3 code,
+h4 code {
+  text-transform: none !important;
+  font-size: 1em !important;
+}
+
+.title {
+  font-family: 'Source Serif Pro', serif;
+  font-size: 3em !important;
+  color: #1565C0;
+  text-transform: none !important;
+}
+
+.subtitle {
+  font-family: 'Source Serif Pro', serif;
+  color: #1565C0 !important;
+}
+
+.subtitle em {
+  font-style: normal !important;
+}
+
+.author {
+  color: #1A162D !important;
+  text-transform: uppercase;
+  letter-spacing: 2pt;
+}
+
+p.author em {
+  font-style: normal !important;
+}
+
+
+/*-----Body Links-------*/
+
+.book .book-body .page-wrapper .page-inner section.normal a {
+  color: #1976D2;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal a:hover {
+ color: #0D47A1;
+ text-decoration: underline;
+}
+
+
+/*------------ TOC --------------*/
+
+.book .book-summary {
+  background: white;
+  border-right: #d9d9d9 solid 1pt;
+}
+
+.summary{
+  font-family: 'Source Serif Pro', serif;
+}
+
+/* numbers */
+
+li a b  {
+  padding-right: 1em;
+}
+
+/* list items*/
+.book .book-summary ul.summary li a,
+.book .book-summary ul.summary li span {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #1a162dad;
+}
+
+.book:not(.color-theme-1):not(.color-theme-2) .summary a:hover {
+  color: #1a162dde !important;
+}
+
+.book:not(.color-theme-1):not(.color-theme-2) .book-summary ul.summary li.active>a {
+  color: #1565C0 !important;
+}
+
+/* parts */
+
+li.appendix span, li.part span {
+  margin-top: 1.5em;
+  color: #1A162D;
+  opacity: 1 !important;
+  text-transform: uppercase;
+  letter-spacing: 2pt;
+  font-size: 12.8px !important;
+  font-weight: bold;
+  white-space: normal !important;
+}
+
+
+/*------------- CODE --------------*/
+
+.book .book-body .page-wrapper .page-inner section.normal code,
+.book .book-body .page-wrapper .page-inner section.normal pre {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1em;
+}
+
+.sourceCode pre {
+  margin: 0 !important;
+}
+
+.sourceCode div {
+  margin: 1em 0;
+}
+
+.sourceCode {
+  margin-bottom: 1.5em;
+}
+
+/* for numbers in code blocks */
+pre.numberSource code > span > a:first-child::before {
+  left: -0.2em;
+}
+
+/*------------- block quotes --------------*/
+
+blockquote > p:last-child {
+  text-align: right;
+}
+
+blockquote > p:first-child {
+  text-align: inherit;
+}
+
+/* Div tips */
+
+div.rmdnote,
+div.rstudio-tip,
+div.rmdwarning {
+  padding: 1em;
+  margin: 1em 0;
+  padding-left: 100px;
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: 15px 1.5em;
+  min-height: 120px;
+  color: #1a162dcc;
+  background-color: #64B5F638;
+  border-top: 7pt solid #a19ea936;
+  max-width: 100%;
+  line-height: 1.75em;
+  font-size: 0.85em;
+  letter-spacing: 1pt;
+  margin-bottom: 1.5em;
+  text-align: justify;
+}
+
+div.rmdnote {
+  background-image: url("images/robot.png");
+}
+
+div.rstudio-tip {
+  background-image: url("images/rstudio.png");
+}
+
+div.rmdwarning {
+  background-image: url("images/error.png");
+  background-color: #eab0c41a !important;
+}
+
+div.rmdnote code,
+div.rstudio-tip code {
+  background-color: #64B5F665 !important;
+  font-size: 1em;
+}
+
+div.rmdwarning code {
+  background-color: #cb9faf52 !important;
+  font-size: 1em;
+}
+
+/* Tablas centradas */
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+table th {
+  text-align: center;
+}
+
+/* ----- For Large Screens -----*/
+
+@media (min-width: 1900px) {
+  .book .book-header.fixed {
+    left: 500px;
+  }
+  .book.with-summary .book-body {
+      left: 500px;
+  }
+  .book .book-summary {
+    width: 500px;
+    left: -500px;
+  }
+  .book.with-summary .book-header.fixed {
+      left: 500px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .book.with-summary .book-body {
+      left: 400px;
+  }
+  .book .book-summary {
+    width: 400px;
+    left: -400px;
+  }
+  .book.with-summary .book-header.fixed {
+      left: 400px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .book.with-summary .book-body {
+      left: 350px;
+  }
+  .book .book-summary {
+      width: 350px;
+      left: -400px;
+  }
+  .book.with-summary .book-header.fixed {
+      left: 350px;
+  }
+}
+
+/* ----References css bug fix----- */
+
+.page-inner+h3 {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 24px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.page-inner + h3 + .references,
+.page-inner + h3 + .references + .footnotes {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #333333;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 1.7em;
+  text-align: justify;
+}
+
+.page-inner + h3 + .references + .footnotes hr {
+  max-width: 800px;
+  margin: 27.2px auto;
+  background-color: #e7e7e7;
+  height: 4px;
+  border: none;
+}
+
+.page-inner + h3 + .references a,
+.page-inner + h3 + .references + .footnotes a {
+  color: #1976D2;
+}
+
+
+/* Package Names */
+
+span.pkg {
+  font-weight: bold;
+  letter-spacing: 0.5pt;
+  color: #1565C0;
+}
+
+/* White space */
+
+p, ul, ol, dl, blockquote, table, pre {
+  margin-bottom: 1.5em !important;
+}
+
+li p {
+  margin-bottom: 1em !important;
+}
+
+/* ---- Language toggle ---- */
+
+.lang-en {
+  display: none;
+}
+
+/* Lang toggle button in gitbook toolbar */
+.lang-toggle-btn a {
+  font-family: 'Source Serif Pro', serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+}
+
+/* ---- Applied problems: consistent alignment ---- */
+
+.section.level3.unnumbered h3 {
+  padding-left: 0;
+  margin-left: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 1.2em;
+  color: #1a162d;
+}
+
+.section.level3.unnumbered .lang-es,
+.section.level3.unnumbered .lang-en {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.section.level3.unnumbered ol {
+  padding-left: 1.5em;
+}
+
+.section.level3.unnumbered details {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* ---- Collapsible solutions ---- */
+
+details {
+  margin: 1em 0;
+}
+
+details summary {
+  cursor: pointer;
+  color: #1565C0;
+  font-weight: 600;
+  padding: 0.4em 0;
+}
+
+details summary:hover {
+  color: #0D47A1;
+}
+
+details[open] summary {
+  margin-bottom: 0.5em;
+}
+
+/* ---- Overflow for wide equations ---- */
+
+.page-inner section.normal {
+  overflow-x: auto;
+}
+
+/* MathJax display equations: allow horizontal scroll */
+.MathJax_Display,
+mjx-container[jax="CHTML"][display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* Figure captions centered */
+.figure p.caption,
+p.caption,
+figcaption {
+  text-align: center !important;
+}
+
+/* ============================================
+   Gitbook Night mode (color-theme-2) fixes
+   ============================================ */
+
+/* Div tips / definition boxes */
+.color-theme-2 div.rmdnote,
+.color-theme-2 div.rstudio-tip {
+  background-color: rgba(100, 160, 200, 0.10);
+  border-top-color: #3a3a3a;
+  color: #c8c8c8;
+}
+.color-theme-2 div.rmdwarning {
+  background-color: rgba(200, 140, 160, 0.10) !important;
+  border-top-color: #3a3a3a;
+  color: #c8c8c8;
+}
+.color-theme-2 div.rmdnote code,
+.color-theme-2 div.rstudio-tip code {
+  background-color: rgba(100, 160, 200, 0.18) !important;
+  color: #d4d4d8;
+}
+.color-theme-2 div.rmdwarning code {
+  background-color: rgba(200, 140, 160, 0.15) !important;
+  color: #d4d4d8;
+}
+
+/* Details / collapsible solutions */
+.color-theme-2 details summary { color: #7cacce; }
+.color-theme-2 details summary:hover { color: #a4cce6; }
+
+/* Tables */
+.color-theme-2 table th,
+.color-theme-2 table td { border-color: #3a3a3a; }
+
+/* Links */
+.color-theme-2 .book-body .page-wrapper .page-inner section.normal a { color: #7cacce; }
+.color-theme-2 .book-body .page-wrapper .page-inner section.normal a:hover { color: #a4cce6; }
+
+/* Headers */
+.color-theme-2 h1 { color: #7cacce; }
+.color-theme-2 h2 { color: #c0c0c6; }
+.color-theme-2 h3,
+.color-theme-2 h4 { color: #9a9aa0; }
+
+/* Package names */
+.color-theme-2 span.pkg { color: #7cacce; }
+
+/* Captions */
+.color-theme-2 p.caption { color: #808086; }
+
+/* ============================================
+   Gitbook Sepia mode (color-theme-1) fixes
+   ============================================ */
+.color-theme-1 div.rmdnote,
+.color-theme-1 div.rstudio-tip {
+  background-color: rgba(100, 140, 180, 0.10);
+  border-top-color: #c8b99a;
+}
+.color-theme-1 div.rmdwarning {
+  background-color: rgba(180, 120, 130, 0.10) !important;
+  border-top-color: #c8b99a;
+}
+.color-theme-1 h1 { color: #5a7a9a; }
+.color-theme-1 details summary { color: #5a7a9a; }
+.color-theme-1 .book-body .page-wrapper .page-inner section.normal a { color: #5a7a9a; }
+
+/* ============================================
+   TOC sidebar: hover/active in Night & Sepia
+   ============================================ */
+
+/* Night mode (color-theme-2) sidebar */
+.color-theme-2 .book-summary ul.summary li a,
+.color-theme-2 .book-summary ul.summary li span {
+  color: #9a9aa0 !important;
+}
+.color-theme-2 .book-summary ul.summary li a:hover {
+  color: #e0e0e4 !important;
+}
+.color-theme-2 .book-summary ul.summary li.active > a {
+  color: #7cacce !important;
+}
+.color-theme-2 .summary > li:first-child a {
+  color: #7cacce !important;
+}
+
+/* Sepia mode (color-theme-1) sidebar */
+.color-theme-1 .book-summary ul.summary li a,
+.color-theme-1 .book-summary ul.summary li span {
+  color: #6b5e4b !important;
+}
+.color-theme-1 .book-summary ul.summary li a:hover {
+  color: #3a3024 !important;
+}
+.color-theme-1 .book-summary ul.summary li.active > a {
+  color: #5a7a9a !important;
+}
+

@@ -1,0 +1,29 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage[breakable]{tcolorbox}
+\usepackage{titlesec}
+
+% Compact chapter titles: no separate page, content starts right after
+\titleformat{\chapter}[hang]
+  {\normalfont\huge\bfseries}
+  {\thechapter.}{10pt}{}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+
+% Hide English content in PDF (Spanish-only)
+\usepackage{comment}
+\excludecomment{lang-en}
+
+% Pass through Spanish content
+\newenvironment{lang-es}{}{}
+
+% Styled box for rmdnote (matches gitbook styling)
+\newtcolorbox{rmdnote}{
+  colback=gray!10,
+  colframe=gray!40,
+  fonttitle=\bfseries,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  boxrule=0.5pt,
+  arc=2pt,
+  breakable
+}
