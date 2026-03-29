@@ -421,7 +421,8 @@ En general, se utiliza OLS porque proporciona una estimación óptima de
 los parámetros de la recta de regresión, es decir, los valores que mejor
 se ajustan a los datos. El método OLS minimiza la suma de los cuadrados
 de las diferencias entre los valores reales y los valores estimados de
-la variable dependiente.
+la variable dependiente. Esto se logra al encontrar los valores de los
+parámetros de la recta que minimizan esta suma de cuadrados.
 
 :::
 
@@ -430,7 +431,9 @@ la variable dependiente.
 In general, OLS is used because it provides an optimal estimation of
 the regression line parameters, that is, the values that best fit the
 data. The OLS method minimizes the sum of squared differences between
-the actual and estimated values of the dependent variable.
+the actual and estimated values of the dependent variable. This is
+achieved by finding the values of the line parameters that minimize
+this sum of squares.
 
 :::
 
@@ -486,6 +489,12 @@ donde $\mathbf{X}$ es la matriz de variables independientes, $\mathbf{y}$ es el
 vector de la variable dependiente y $\hat{\boldsymbol{\beta}}$ es el vector de
 estimadores de mínimos cuadrados.
 
+La solución de este sistema entrega los valores de los parámetros
+$\beta_0, \beta_1, \ldots, \beta_n$ que minimizan la función de pérdida
+$S(\beta_0, \beta_1, \ldots, \beta_n)$. Estos valores se conocen como
+los estimadores de mínimos cuadrados de los parámetros de la recta de
+regresión.
+
 :::
 
 ::: {.lang-en}
@@ -493,6 +502,11 @@ estimadores de mínimos cuadrados.
 where $\mathbf{X}$ is the matrix of independent variables, $\mathbf{y}$ is the
 dependent variable vector, and $\hat{\boldsymbol{\beta}}$ is the vector of
 least squares estimators.
+
+The solution to this system yields the values of the parameters
+$\beta_0, \beta_1, \ldots, \beta_n$ that minimize the loss function
+$S(\beta_0, \beta_1, \ldots, \beta_n)$. These values are known as the
+least squares estimators of the regression line parameters.
 
 :::
 
@@ -651,6 +665,14 @@ defensores del procedimiento insisten en que la aplicación rigurosa de
 algoritmos y técnicas estadísticas es la única manera de garantizar la
 validez y precisión del modelo.
 
+Es importante tener en cuenta que el uso exclusivo de uno u otro enfoque
+puede llevar a resultados subóptimos. Por ejemplo, un modelo construido
+únicamente a través del arte puede ser difícil de replicar o explicar a
+otros, lo que limita su utilidad práctica. Por otro lado, un modelo
+construido únicamente a través del procedimiento puede pasar por alto
+aspectos importantes de los datos que son evidentes para un experto en
+el campo.
+
 En la práctica, los analistas suelen combinar ambos enfoques para
 construir modelos efectivos y útiles. Un aspecto clave en este proceso
 es la exploración exhaustiva de los datos y la definición de una lista
@@ -673,6 +695,13 @@ first glance. On the other hand, proponents of procedure insist that
 the rigorous application of algorithms and statistical techniques is
 the only way to ensure model validity and precision.
 
+It is important to keep in mind that using only one or the other
+approach may lead to suboptimal results. For example, a model built
+exclusively through art may be difficult to replicate or explain to
+others, which limits its practical usefulness. On the other hand, a
+model built exclusively through procedure may overlook important
+aspects of the data that are evident to a domain expert.
+
 In practice, analysts typically combine both approaches to build
 effective and useful models. A key aspect of this process is the
 exhaustive exploration of data and the definition of a list of
@@ -684,7 +713,7 @@ predictions.
 
 :::
 
-### Checklist de modelamiento {data-en="Modeling Checklist"}
+### Aprendizajes Preliminares {data-en="Preliminary Learnings"}
 
 ::: {.lang-es}
 
@@ -693,10 +722,24 @@ regresión, lo que hace imposible determinar cuál es el mejor en términos
 absolutos. Una forma de abordar este problema es equilibrar la
 complejidad del modelo con su capacidad explicativa.
 
+Esto significa que el modelo debe ser lo suficientemente simple como
+para ser fácilmente interpretable, pero lo suficientemente complejo como
+para capturar todas las relaciones relevantes entre las variables.
+
 Para seleccionar un modelo de regresión adecuado, es fundamental tener
 conocimientos previos del negocio y realizar una exploración exhaustiva
-de los datos antes de aplicar cualquier modelo. La siguiente lista
-organiza las decisiones clave:
+de los datos antes de aplicar cualquier modelo. Esta exploración ex-ante
+puede ayudar a identificar las variables más relevantes y las posibles
+relaciones entre ellas. Es importante evaluar cómo se relacionan las
+variables, qué variables tienen mayor dispersión y qué variables se
+mantienen relativamente constantes.
+
+Después de la exploración ex-ante, es necesario aplicar el modelo y
+evaluar su rendimiento mediante la evaluación ex-post. Esto implica
+evaluar el modelo en datos nuevos y comprobar si se comporta de manera
+similar a cómo lo hizo en los datos de entrenamiento.
+
+La siguiente lista organiza las decisiones clave:
 
 :::
 
@@ -707,10 +750,24 @@ models, making it impossible to determine which is the best in absolute
 terms. One way to address this problem is to balance model complexity
 with its explanatory capacity.
 
+This means that the model must be simple enough to be easily
+interpretable, yet complex enough to capture all the relevant
+relationships among the variables.
+
 To select an appropriate regression model, it is essential to have prior
 business knowledge and to conduct an exhaustive exploration of the data
-before applying any model. The following list organizes the key
-decisions:
+before applying any model. This ex-ante exploration can help identify
+the most relevant variables and the possible relationships among them.
+It is important to assess how the variables relate to one another,
+which variables display greater dispersion, and which variables remain
+relatively constant.
+
+After the ex-ante exploration, it is necessary to apply the model and
+evaluate its performance through ex-post evaluation. This involves
+assessing the model on new data and checking whether it behaves
+similarly to how it did on the training data.
+
+The following list organizes the key decisions:
 
 :::
 
@@ -725,12 +782,29 @@ semana, mes o año. También se puede considerar el análisis de ventas por
 SKU (código de identificación), marca, cadena o sala.
 
 Es importante tener en cuenta que el problema de gestión puede imponer
-restricciones al nivel de agregación mínimo. Agregar los datos a un
-nivel de agregación más alto puede ser más fácil, ya que se requiere
-menos detalle y se puede tener una visión más general. Sin embargo,
-puede llevar a una pérdida de precisión por underfitting. Por otro lado,
-si la cantidad de datos es limitada, reducir el nivel de agregación
-puede significar overfitting.
+restricciones al nivel de agregación mínimo. Por ejemplo, si un gerente
+de una cadena de supermercados necesita tomar decisiones en tiempo real
+sobre la reposición de un producto, es posible que necesite datos a
+nivel de hora o día. En este caso, analizar las ventas a nivel de semana
+o mes no sería útil.
+
+En el análisis de ventas, a menudo se enfrenta un trade-off entre la
+sensibilidad al precio y la programación de reposición. Si el análisis
+se realiza a nivel de SKU, se puede obtener una comprensión más
+detallada de cómo el precio afecta a las ventas. Sin embargo, si el
+análisis se realiza a nivel de cadena o sala, se puede obtener una mejor
+comprensión de los patrones de reposición.
+
+Agregar los datos a un nivel de agregación más alto puede ser más fácil,
+ya que se requiere menos detalle y se puede tener una visión más
+general. Sin embargo, puede llevar a una pérdida de precisión por
+underfitting. Por ejemplo, si se analiza las ventas a nivel de mes, se
+puede perder información valiosa sobre patrones diarios o semanales. Por
+otro lado, si la cantidad de datos es limitada, es posible que se
+necesite mantener un nivel de agregación más alto para obtener un modelo
+preciso. En este caso, reducir el nivel de agregación puede significar
+la pérdida de información importante y la reducción de la precisión del
+modelo por overfitting.
 
 :::
 
@@ -745,12 +819,28 @@ year. One can also consider analyzing sales by SKU (identification
 code), brand, chain, or store.
 
 It is important to note that the management problem may impose
-constraints on the minimum aggregation level. Aggregating data to a
-higher level can be easier, as less detail is required and a more
-general view can be obtained. However, it may lead to a loss of
-precision due to underfitting. On the other hand, if the amount of
-data is limited, reducing the aggregation level may result in
-overfitting.
+constraints on the minimum aggregation level. For example, if a
+supermarket chain manager needs to make real-time decisions about
+product replenishment, hourly or daily data may be required. In that
+case, analyzing sales at the weekly or monthly level would not be
+useful.
+
+In sales analysis, one often faces a trade-off between price
+sensitivity and replenishment scheduling. If the analysis is conducted
+at the SKU level, one can obtain a more detailed understanding of how
+price affects sales. However, if the analysis is conducted at the chain
+or store level, one can obtain a better understanding of replenishment
+patterns.
+
+Aggregating data to a higher level can be easier, since less detail is
+required and a more general view can be obtained. However, it may lead
+to a loss of precision due to underfitting. For example, if sales are
+analyzed at the monthly level, valuable information about daily or
+weekly patterns may be lost. On the other hand, if the amount of data
+is limited, it may be necessary to keep a higher aggregation level in
+order to obtain an accurate model. In that case, reducing the
+aggregation level may imply the loss of important information and a
+reduction in model accuracy due to overfitting.
 
 :::
 
@@ -761,21 +851,44 @@ overfitting.
 La descomposición en múltiples regresiones es una técnica que permite
 abordar problemas complejos y de alta dimensionalidad mediante la
 partición del problema en componentes más pequeños y manejables. Este
-enfoque puede adoptar diversas formas:
+enfoque puede adoptar diversas formas.
 
--   *Descomposición por índices:* Dividir el conjunto de datos en
-    subconjuntos según algún criterio y ajustar modelos de regresión
+-   *Descomposición por índices:* Aunque en general es preferible
+    utilizar una única regresión para analizar las relaciones entre las
+    variables, en ciertas situaciones, como en casos de complejidad
+    computacional elevada o cuando se abordan problemas con múltiples
+    niveles de jerarquía, la descomposición por índices puede ser una
+    solución adecuada. Esta técnica implica dividir el conjunto de datos
+    en subconjuntos según algún criterio y ajustar modelos de regresión
     separados para cada subconjunto.
 
--   *Descomposición por componentes latentes:* La variable dependiente
-    puede descomponerse de manera natural en componentes latentes. Un
-    ejemplo típico es la descomposición de las ventas en el número de
-    compras y el número de unidades por compra.
+-   *Regresión lineal y modelos más complejos:* La regresión lineal es
+    un enfoque simple y fácil de estimar que puede ser suficiente en
+    muchos casos. Sin embargo, en situaciones donde las relaciones entre
+    las variables no son lineales o donde se requiere una mayor
+    flexibilidad en el modelado, se pueden justificar modelos más
+    complejos, como regresiones polinómicas, regresiones no paramétricas
+    o modelos de regresión con variables categóricas.
 
--   *Caso del cero inflado (zero inflated):* Se distingue entre dos
-    procesos distintos: la incidencia de compra (probabilidad de que
-    ocurra) y el monto de compra (valor condicional a que se haya
-    realizado).
+-   *Descomposición por componentes latentes:* En ciertos casos, la
+    variable dependiente puede descomponerse de manera natural en
+    componentes latentes, lo que facilita la interpretación de los
+    resultados y la identificación de relaciones subyacentes entre las
+    variables. Un ejemplo típico es la descomposición de las ventas en
+    el número de compras y el número de unidades por compra. Al analizar
+    estos componentes por separado, se puede obtener una comprensión más
+    detallada de los factores que influyen en las ventas.
+
+-   *Caso del cero inflado (zero inflated):* En algunas situaciones, se
+    pueden observar una gran cantidad de ceros en los datos, lo que
+    indica una distribución inflada en cero. En estos casos, se puede
+    utilizar un modelo de regresión de ceros inflados que distingue
+    entre dos procesos distintos: la incidencia de compra (probabilidad
+    de que ocurra una compra) y el monto de compra (valor de la compra,
+    condicional a que se haya realizado una compra). Este enfoque
+    permite analizar de manera más efectiva los factores que afectan
+    tanto la propensión a comprar como la cantidad gastada en las
+    compras.
 
 :::
 
@@ -786,21 +899,43 @@ enfoque puede adoptar diversas formas:
 Decomposition into multiple regressions is a technique that allows
 complex and high-dimensional problems to be addressed by partitioning
 the problem into smaller, more manageable components. This approach
-can take various forms:
+can take various forms.
 
--   *Decomposition by indices:* Divide the dataset into subsets
-    according to some criterion and fit separate regression models
-    for each subset.
+-   *Decomposition by indices:* Although in general it is preferable to
+    use a single regression to analyze the relationships among
+    variables, in certain situations, such as cases of high
+    computational complexity or when dealing with problems involving
+    multiple levels of hierarchy, decomposition by indices may be an
+    appropriate solution. This technique involves dividing the dataset
+    into subsets according to some criterion and fitting separate
+    regression models for each subset.
 
--   *Decomposition by latent components:* The dependent variable can
-    be naturally decomposed into latent components. A typical example
-    is the decomposition of sales into the number of purchases and
-    the number of units per purchase.
+-   *Linear regression and more complex models:* Linear regression is a
+    simple and easy-to-estimate approach that may be sufficient in many
+    cases. However, in situations where relationships among variables
+    are nonlinear or where greater modeling flexibility is required,
+    more complex models may be justified, such as polynomial
+    regressions, nonparametric regressions, or regression models with
+    categorical variables.
 
--   *Zero-inflated case:* A distinction is made between two different
-    processes: purchase incidence (probability that it occurs) and
-    purchase amount (value conditional on the purchase having taken
-    place).
+-   *Decomposition by latent components:* In some cases, the dependent
+    variable can be naturally decomposed into latent components, which
+    facilitates interpretation of the results and the identification of
+    underlying relationships among variables. A typical example is the
+    decomposition of sales into the number of purchases and the number
+    of units per purchase. By analyzing these components separately,
+    one can obtain a more detailed understanding of the factors that
+    influence sales.
+
+-   *Zero-inflated case:* In some situations, one may observe a large
+    number of zeros in the data, indicating a zero-inflated
+    distribution. In these cases, a zero-inflated regression model can
+    be used to distinguish between two different processes: purchase
+    incidence (the probability that a purchase occurs) and purchase
+    amount (the value of the purchase, conditional on a purchase having
+    occurred). This approach allows a more effective analysis of the
+    factors that affect both the propensity to buy and the amount spent
+    on purchases.
 
 :::
 
@@ -809,10 +944,25 @@ can take various forms:
 *3. Transformación de variables*
 
 La transformación de variables es una técnica utilizada para mejorar la
-interpretación y el ajuste del modelo. Un ejemplo común es el modelo
-doble log, en el cual se aplican logaritmos a las variables dependientes
-e independientes para transformar la relación no lineal en una relación
-lineal.
+interpretación y el ajuste del modelo. Esta técnica consiste en aplicar
+funciones matemáticas a las variables con el objetivo de modificar su
+distribución y hacer que el modelo sea más interpretable y
+significativo.
+
+Un ejemplo común de transformación de variables es el modelo doble log,
+en el cual se aplican logaritmos a las variables dependientes e
+independientes para transformar la relación no lineal en una relación
+lineal. Esta técnica puede ser útil cuando se analizan datos que siguen
+una distribución log-normal o cuando se busca interpretar los
+coeficientes de manera logarítmica.
+
+Es importante tener en cuenta que, aunque la transformación de variables
+puede mejorar la bondad del ajuste y la precisión de las predicciones,
+no siempre es necesario aplicarla. En algunos casos, las variables ya
+están en una forma adecuada para el modelo y cualquier transformación
+adicional podría reducir la interpretabilidad del modelo. Por lo tanto,
+es importante tener una comprensión sólida de los datos y del problema a
+resolver antes de aplicar cualquier transformación de variables.
 
 :::
 
@@ -821,9 +971,24 @@ lineal.
 *3. Variable transformation*
 
 Variable transformation is a technique used to improve model
-interpretation and fit. A common example is the double-log model, in
+interpretation and fit. This technique consists of applying
+mathematical functions to variables in order to modify their
+distribution and make the model more interpretable and meaningful.
+
+A common example of variable transformation is the double-log model, in
 which logarithms are applied to both dependent and independent
 variables to transform the nonlinear relationship into a linear one.
+This technique can be useful when analyzing data that follow a
+log-normal distribution or when one seeks to interpret the coefficients
+in logarithmic terms.
+
+It is important to keep in mind that, although variable transformation
+can improve goodness of fit and predictive accuracy, it is not always
+necessary. In some cases, the variables are already in a form that is
+appropriate for the model, and any additional transformation could
+reduce interpretability. Therefore, it is important to have a solid
+understanding of both the data and the problem before applying any
+variable transformation.
 
 :::
 
@@ -1012,12 +1177,22 @@ de los métodos automáticos más utilizados es la regresión paso a paso
 eliminación de variables en función de algún criterio de bondad de
 ajuste.
 
--   *Forward*: las variables se agregan una por una, comenzando con la
-    que proporciona el mejor ajuste.
--   *Backward*: todas las variables se incluyen inicialmente y se
-    eliminan una por una.
+En el enfoque forward de la regresión paso a paso, las variables se van
+agregando al modelo una por una, comenzando con la variable que
+proporciona el mejor ajuste según el criterio establecido. En cada
+etapa, se evalúa si agregar una nueva variable mejora significativamente
+el ajuste del modelo.
 
-Otro enfoque es la penalización de uso de parámetros no nulos:
+Por otro lado, en el enfoque backward de la regresión paso a paso,
+todas las variables se incluyen inicialmente en el modelo y se van
+eliminando una por una, comenzando con la variable que menos contribuye
+al ajuste según el criterio establecido. En cada etapa, se evalúa si
+eliminar una variable mejora significativamente el ajuste del modelo.
+
+Otro enfoque de selección de variables es la penalización de uso de
+parámetros no nulos al momento de minimizar la función de error. Dentro
+de este enfoque se encuentra la regresión Ridge y LASSO (Least Absolute
+Shrinkage and Selection Operator)
 
 :::
 
@@ -1031,12 +1206,21 @@ widely used automatic methods is *stepwise regression*, which involves
 iteratively adding or removing variables based on some goodness-of-fit
 criterion.
 
--   *Forward*: variables are added one by one, starting with the one
-    that provides the best fit.
--   *Backward*: all variables are initially included and removed one
-    by one.
+In the forward stepwise approach, variables are added to the model one
+at a time, starting with the variable that provides the best fit
+according to the selected criterion. At each stage, one evaluates
+whether adding a new variable significantly improves model fit.
 
-Another approach is the penalization of nonzero parameters:
+In the backward stepwise approach, all variables are initially included
+in the model and then removed one by one, starting with the variable
+that contributes the least to fit according to the selected criterion.
+At each stage, one evaluates whether removing a variable significantly
+improves model fit.
+
+Another variable-selection approach is to penalize the use of nonzero
+parameters when minimizing the loss function. This approach includes
+Ridge regression and LASSO (Least Absolute Shrinkage and Selection
+Operator)
 
 :::
 
@@ -1049,21 +1233,45 @@ $$\text{LASSO: }\min_{\boldsymbol{\beta}}\sum_{i}\left(y_i - \beta_0 - \textstyl
 
 ::: {.lang-es}
 
-Aunque los enfoques automáticos son convenientes, no exploran todas las
-posibles combinaciones de variables y pueden generar conjuntos poco
-intuitivos. Una alternativa es utilizar una mixtura entre métodos
-automáticos y manuales, eligiendo aquellas variables que mejoran el
-modelo en ajuste y que igualmente tienen un sentido interpretativo.
+Aunque estos enfoques automáticos de selección de variables pueden ser
+convenientes y ahorrar tiempo, es importante tener en cuenta algunas
+limitaciones. En primer lugar, las implementaciones automáticas de
+selección de variables no exploran todas las posibles combinaciones de
+variables, lo que significa que podrían pasar por alto combinaciones
+óptimas que un enfoque manual más exhaustivo podría descubrir.
+
+Además, los resultados de la selección automática de variables pueden
+generar conjuntos de variables poco intuitivos y difíciles de
+interpretar. A veces, el algoritmo puede seleccionar variables que
+tienen una relación estadística con la variable de respuesta, pero
+carecen de una interpretación causal o intuitiva en el contexto del
+problema.
+
+Una alternativa es utilizar una mixtura entre métodos automáticos y
+manuales, eligiendo aquellas variables que mejoran el modelo en ajuste y
+que igualmente tienen un sentido interpretativo para la resolución de la
+pregunta a responder.
 
 :::
 
 ::: {.lang-en}
 
-Although automatic approaches are convenient, they do not explore all
-possible variable combinations and may produce unintuitive sets. An
-alternative is to use a mixture of automatic and manual methods,
-choosing those variables that improve model fit while also having
-interpretive meaning.
+Although these automatic variable-selection approaches can be
+convenient and save time, it is important to keep some limitations in
+mind. First, automatic variable-selection implementations do not
+explore all possible combinations of variables, meaning that they may
+overlook optimal combinations that a more exhaustive manual approach
+could discover.
+
+In addition, the results of automatic variable selection may generate
+sets of variables that are unintuitive and difficult to interpret. At
+times, the algorithm may select variables that have a statistical
+relationship with the response variable, but lack a causal or intuitive
+interpretation in the context of the problem.
+
+An alternative is to use a mixture of automatic and manual methods,
+selecting those variables that improve model fit while also having an
+interpretive meaning for answering the question of interest.
 
 :::
 
@@ -1145,23 +1353,37 @@ They do not consider all possible models.
 
 La selección de índices en el análisis de regresión es un proceso
 discrecional que puede influir significativamente en la interpretación y
-el rendimiento de los modelos. Es recomendable considerar la inclusión
-de un índice si se cumplen las siguientes condiciones:
+el rendimiento de los modelos. Para abordar este problema de manera
+efectiva, se pueden seguir algunas pautas generales que ayuden a
+identificar y justificar la inclusión de índices en el análisis.
 
-a)  *Relevancia para el problema de gestión*: el índice debe
-    proporcionar una distinción significativa entre diferentes aspectos
-    del problema.
+Condiciones para Indexar un Parámetro Es recomendable considerar la
+inclusión de un índice en un modelo de regresión si se cumplen las
+siguientes tres condiciones:
 
-b)  *Diferencias en el comportamiento de la variable dependiente*: la
+a)  Relevancia para el problema de gestión: El índice debe ser
+    importante para abordar el problema de gestión en cuestión,
+    proporcionando una distinción significativa entre diferentes
+    aspectos del problema.
+
+b)  Diferencias en el comportamiento de la variable dependiente: La
     variable dependiente debe mostrar comportamientos distintos para
-    cada índice.
+    cada índice, lo que sugiere que la desagregación aporta información
+    adicional útil.
 
-c)  *Suficiencia de datos*: deben estar disponibles suficientes datos
-    para estimar de manera confiable los parámetros desagregados.
+c)  Suficiencia de datos: Deben estar disponibles suficientes datos para
+    estimar de manera confiable los parámetros desagregados. La falta de
+    datos puede conducir a estimaciones poco fiables y a un mayor riesgo
+    de sobreajuste.
 
-d)  *Índices y variables binarias*: los índices pueden representarse
-    mediante variables dummy. La notación de índices suele ser más
-    compacta y se prefiere en la mayoría de los casos.
+d)  Índices y Variables Binarias: En el análisis de regresión, los
+    índices pueden representarse mediante variables binarias, también
+    conocidas como variables dummy. Estas variables toman el valor de 1
+    cuando se cumple una condición específica (por ejemplo, si un
+    producto pertenece a una categoría determinada) y 0 en caso
+    contrario. Aunque la representación de índices mediante variables
+    binarias es matemáticamente equivalente, la notación de índices
+    suele ser más compacta y se prefiere en la mayoría de los casos.
 
 :::
 
@@ -1170,22 +1392,35 @@ d)  *Índices y variables binarias*: los índices pueden representarse
 *5. Index selection*
 
 Index selection in regression analysis is a discretionary process that
-can significantly influence model interpretation and performance. It
-is advisable to consider including an index if the following conditions
-are met:
+can significantly influence model interpretation and performance. To
+address this problem effectively, one can follow some general
+guidelines that help identify and justify the inclusion of indices in
+the analysis.
 
-a)  *Relevance to the management problem*: the index must provide a
-    meaningful distinction between different aspects of the problem.
+Conditions for Indexing a Parameter It is advisable to consider the
+inclusion of an index in a regression model if the following three
+conditions are met:
 
-b)  *Differences in the behavior of the dependent variable*: the
-    dependent variable must exhibit distinct behaviors for each index.
+a)  Relevance to the management problem: The index must be important
+    for addressing the management problem at hand, providing a
+    meaningful distinction among different aspects of the problem.
 
-c)  *Data sufficiency*: enough data must be available to reliably
-    estimate the disaggregated parameters.
+b)  Differences in the behavior of the dependent variable: The
+    dependent variable should display different behaviors for each
+    index, suggesting that disaggregation provides additional useful
+    information.
 
-d)  *Indices and binary variables*: indices can be represented using
-    dummy variables. Index notation is usually more compact and is
-    preferred in most cases.
+c)  Sufficiency of data: Sufficient data must be available to reliably
+    estimate the disaggregated parameters. A lack of data may lead to
+    unreliable estimates and a higher risk of overfitting.
+
+d)  Indices and Binary Variables: In regression analysis, indices can
+    be represented by binary variables, also known as dummy variables.
+    These variables take the value 1 when a specific condition is met
+    (for example, if a product belongs to a certain category) and 0
+    otherwise. Although representing indices through binary variables
+    is mathematically equivalent, index notation is usually more
+    compact and is preferred in most cases.
 
 :::
 
@@ -1336,6 +1571,13 @@ determinar la calidad y utilidad de los modelos, es decir, para
 determinar si un modelo se ajusta adecuadamente a los datos y si es
 útil para hacer predicciones o inferencias.
 
+Es importante destacar que la evaluación de modelos estadísticos no es
+un proceso estático y que puede requerir ajustes y modificaciones a
+medida que se adquiere más información o se amplía el alcance del
+modelo. Por lo tanto, es fundamental seguir actualizando y refinando los
+modelos para asegurar su calidad y utilidad en la toma de decisiones
+basadas en datos.
+
 :::
 
 ::: {.lang-en}
@@ -1344,6 +1586,12 @@ The evaluation of statistical models is a fundamental process for
 determining the quality and usefulness of models, that is, for
 determining whether a model fits the data adequately and whether it
 is useful for making predictions or inferences.
+
+It is important to emphasize that statistical model evaluation is not a
+static process and may require adjustments and modifications as more
+information is acquired or as the scope of the model expands.
+Therefore, it is essential to continue updating and refining models to
+ensure their quality and usefulness in data-driven decision-making.
 
 :::
 
@@ -1356,6 +1604,9 @@ historia --- proporcionar información útil para tomar decisiones --- y
 que cuantitativamente ajuste bien a los datos, de tal manera que reduzca
 el error de predicción y pueda generar un pronóstico creíble.
 
+Con esto en mente, se busca un criterio bien definido para comparar
+modelos y determinar si un modelo dado es suficientemente bueno.
+
 La siguiente tabla resume las métricas más utilizadas:
 
 :::
@@ -1366,6 +1617,9 @@ What is desirable in a model is that it can qualitatively tell a good
 story --- provide useful information for decision-making --- and that
 it quantitatively fits the data well, so that it reduces prediction
 error and can generate a credible forecast.
+
+With this in mind, we want a well-defined criterion for comparing
+models and determining whether a given model is sufficiently good.
 
 The following table summarizes the most commonly used metrics:
 
@@ -1828,6 +2082,10 @@ Las preguntas clave son:
 -   ¿Son estadísticamente significativos?
 -   ¿Es relevante la magnitud de su efecto?
 
+Para responder a estas preguntas se hace necesario el uso de
+herramientas estadísticas tales como *t-test* para evaluaciones
+individuales o *F-test* para la evaluación de un conjunto de regresores.
+
 :::
 
 ::: {.lang-en}
@@ -1840,6 +2098,10 @@ questions are:
 -   Do the model variables have the expected sign?
 -   Are they statistically significant?
 -   Is the magnitude of their effect relevant?
+
+To answer these questions, it is necessary to use statistical tools
+such as the *t-test* for individual evaluations or the *F-test* for
+the evaluation of a set of regressors.
 
 :::
 
@@ -2054,12 +2316,33 @@ uncertainty in extrapolation.
 
 ::: {.lang-es}
 
+1.  Incluir todas las variables que se esperan que contribuyan al
+    pronóstico: A diferencia del enfoque anterior, no se está buscando
+    el entendimiento de los parámetros sino predecir.
+2.  Evaluar si algunas variables pueden ser agregadas para crear
+    índices: Puede suceder que varias variables capturan un mismo
+    fenómeno, y por ende causar ruido en la predicción. Para evitar
+    esto, se puede construir una variable que las agrupe a todas en una
+    sola componente.
+3.  Para variables importantes agregar interacciones: Puede que exista
+    un efecto conjunto no observado.
+
 La evaluación de la inclusión de variables explicativas según su signo
 esperado y significancia estadística sigue esta regla:
 
 :::
 
 ::: {.lang-en}
+
+1.  Include all variables expected to contribute to the forecast:
+    unlike the previous approach, the goal here is not to understand
+    the parameters but to predict.
+2.  Evaluate whether some variables can be aggregated to create
+    indices: several variables may capture the same phenomenon and
+    therefore create noise in prediction. To avoid this, one can build
+    a variable that groups them into a single component.
+3.  For important variables, add interactions: there may be an
+    unobserved joint effect.
 
 The evaluation of whether to include explanatory variables based on
 their expected sign and statistical significance follows this rule:
@@ -2456,17 +2739,17 @@ $$\min_{j, t} \left\{ \sum_{i \in R_1}(y_i - \bar{y}_{R_1})^2 + \sum_{i \in R_2}
 
 ::: {.lang-es}
 
-Este procedimiento se aplica recursivamente hasta alcanzar un criterio de parada (profundidad máxima, número mínimo de observaciones en un nodo, o reducción de costo insuficiente). Para evitar el sobreajuste, se emplea la **poda** (*pruning*): se construye un árbol grande y luego se eliminan ramas que contribuyen marginalmente, usando el criterio de costo-complejidad $R_\alpha(T) = R(T) + \alpha|T|$, donde $|T|$ es el número de hojas y $\alpha$ se calibra por validación cruzada [@tobar2024].
+Este procedimiento se aplica recursivamente hasta alcanzar un criterio de parada (profundidad máxima, número mínimo de observaciones en un nodo, o reducción de costo insuficiente).
 
-El resultado es un modelo altamente interpretable, donde cada nodo tiene una regla de decisión explícita, y que detecta automáticamente interacciones y no linealidades. Además, los árboles manejan variables numéricas y categóricas de forma nativa. No obstante, su principal limitación es la alta varianza: pequeños cambios en los datos pueden alterar significativamente la estructura del árbol. La búsqueda voraz tampoco garantiza encontrar el árbol óptimo global (problema NP-completo), y sin poda o restricciones de profundidad tienden al sobreajuste.
+El resultado es un modelo altamente interpretable, donde cada nodo tiene una regla de decisión explícita, y que detecta automáticamente interacciones y no linealidades. Además, los árboles manejan variables numéricas y categóricas de forma nativa. No obstante, su principal limitación es la alta varianza: pequeños cambios en los datos pueden alterar significativamente la estructura del árbol. La búsqueda voraz tampoco garantiza encontrar el árbol óptimo global (problema NP-completo), y sin restricciones de profundidad tienden al sobreajuste.
 
 :::
 
 ::: {.lang-en}
 
-This procedure is applied recursively until a stopping criterion is met (maximum depth, minimum number of observations in a node, or insufficient cost reduction). To avoid overfitting, **pruning** is used: a large tree is built and then branches that contribute marginally are removed, using the cost-complexity criterion $R_\alpha(T) = R(T) + \alpha|T|$, where $|T|$ is the number of leaves and $\alpha$ is calibrated by cross-validation [@tobar2024].
+This procedure is applied recursively until a stopping criterion is met (maximum depth, minimum number of observations in a node, or insufficient cost reduction).
 
-The result is a highly interpretable model where each node has an explicit decision rule, and which automatically detects interactions and non-linearities. Trees also handle numeric and categorical variables natively. However, their main limitation is high variance: small changes in the data can significantly alter the tree structure. The greedy search does not guarantee finding the globally optimal tree (an NP-complete problem), and without pruning or depth constraints, trees tend to overfit.
+The result is a highly interpretable model where each node has an explicit decision rule, and which automatically detects interactions and non-linearities. Trees also handle numeric and categorical variables natively. However, their main limitation is high variance: small changes in the data can significantly alter the tree structure. The greedy search does not guarantee finding the globally optimal tree (an NP-complete problem), and without depth constraints, trees tend to overfit.
 
 :::
 
@@ -2523,7 +2806,7 @@ The result is a significant variance reduction compared to a single tree, with r
 
 :::
 
-## Sumario de la unidad {data-en="Unit Summary"}
+## Resumen {data-en="Summary"}
 
 <div class="lang-es">
 
@@ -6314,5 +6597,3 @@ $$
 1 - pnorm(600, mean = 595.9, sd = 5.355)
 $$
 </details>
-
-

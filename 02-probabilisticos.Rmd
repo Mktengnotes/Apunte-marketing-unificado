@@ -565,7 +565,7 @@ estima mediante el método de *máxima verosimilitud*, buscando el valor
 del parámetro que mejor se ajusta a los datos observados bajo el
 supuesto de independencia entre individuos.
 
-La *función de verosimilitud* del modelo geométrico desplazado es:
+La densidad de probabilidades conjunta viene dada por:
 
 :::
 
@@ -575,6 +575,21 @@ The value of $\theta$ is an unknown population parameter estimated
 using the *maximum likelihood* method, seeking the parameter value that
 best fits the observed data under the assumption of independence across
 individuals.
+
+The joint probability density is given by:
+
+:::
+
+\[f(x_1,x_2,\ldots,x_n\mid\theta) = f(x_1\mid\theta) \cdot f(x_2\mid\theta) \cdot \ldots \cdot f(x_n\mid\theta)
+\tag{2.4a}\]
+
+::: {.lang-es}
+
+La *función de verosimilitud* del modelo geométrico desplazado es:
+
+:::
+
+::: {.lang-en}
 
 The *likelihood function* of the shifted geometric model is:
 
@@ -596,6 +611,13 @@ $\tau$, y $\tau$ corresponde al horizonte de observación.
 Dado que maximizar un producto resulta complicado, se aplica logaritmo
 para obtener la *función de log-verosimilitud*:
 
+Computacionalmente, suele ser más conveniente trabajar con la
+log-verosimilitud en vez de la verosimilitud. Esto porque la
+multiplicación de probabilidades genera muy rápidamente valores que
+computacionalmente son indistinguibles de cero. Recuérdese que el valor
+de los valores óptimos son invariantes a transformaciones monótonas
+como la del logaritmo.
+
 :::
 
 ::: {.lang-en}
@@ -606,6 +628,12 @@ and $\tau$ is the observation horizon.
 
 Since maximizing a product is cumbersome, the logarithm is applied to
 obtain the *log-likelihood function*:
+
+Computationally, it is usually more convenient to work with the
+log-likelihood instead of the likelihood. This is because multiplying
+probabilities very quickly produces values that are computationally
+indistinguishable from zero. Recall that the optimal values are
+invariant to monotone transformations such as the logarithm.
 
 :::
 
@@ -1620,13 +1648,42 @@ number of exposures equals $m$ in an interval of length $t$:
 
 ::: {.lang-es}
 
+Su verosimilitud corresponde a:
+
+:::
+
+::: {.lang-en}
+
+Its likelihood is:
+
+:::
+
+\[L(\lambda) = \prod_m P(N_t = m \mid \lambda)^{n_m}
+= \prod_m \left( \frac{(\lambda t)^m e^{-\lambda t}}{m!} \right)^{n_m}
+\tag{2.27a}\]
+
+::: {.lang-es}
+
 Su log-verosimilitud es:
+
+Computacionalmente, suele ser más conveniente trabajar con la
+log-verosimilitud en vez de la verosimilitud. Esto porque la
+multiplicación de probabilidades genera muy rápidamente valores que
+computacionalmente son indistinguibles de cero. Recuérdese que el valor
+de los valores óptimos son invariantes a transformaciones monótonas
+como la del logaritmo.
 
 :::
 
 ::: {.lang-en}
 
 Its log-likelihood is:
+
+Computationally, it is usually more convenient to work with the
+log-likelihood instead of the likelihood. This is because multiplying
+probabilities very quickly generates values that are computationally
+indistinguishable from zero. Recall that the values of the optima are
+invariant to monotone transformations such as the logarithm.
 
 :::
 
@@ -1637,8 +1694,14 @@ Its log-likelihood is:
 ::: {.lang-es}
 
 donde $n_m$ es el número de individuos que experimentaron exactamente
-$m$ ocurrencias del evento. Cuando el tiempo es unitario, el modelo se
-simplifica con $t = 1$.
+$m$ ocurrencias del evento. Donde $m$ corresponde al número de
+ocurrencias de un suceso (cuántas personas han visto un determinado
+número de anuncios), $n_m$ es el número de casos en donde hubieron
+$m$ ocurrencias de un suceso (cuántas veces un usuario ha visto un
+anuncio) y no se utiliza cuando las observaciones están desagregadas
+(datos en los cuales cada fila del conjunto de datos corresponde a una
+observación única y específica). Cuando el tiempo es unitario, el
+modelo se simplifica a $t = 1$.
 
 **Mezcla finita (dos segmentos).** Al igual que en los modelos de
 duración, es posible asumir que las tasas de eventos son
@@ -1650,8 +1713,13 @@ respectivamente:
 ::: {.lang-en}
 
 where $n_m$ is the number of individuals who experienced exactly $m$
-occurrences of the event. When the time horizon is unitary, the model
-simplifies with $t = 1$.
+occurrences of the event. Here, $m$ denotes the number of occurrences
+of an event (how many people have seen a given number of ads), and
+$n_m$ is the number of cases in which there were $m$ occurrences of
+that event (how many times a user has seen an ad); this grouped
+notation is not used when the observations are disaggregated (data in
+which each row corresponds to a unique and specific observation). When
+time is unitary, the model simplifies to $t = 1$.
 
 **Finite mixture (two segments).** As in the duration models, it is
 possible to assume that event rates are $\lambda_1$ or $\lambda_2$ with
@@ -1858,6 +1926,51 @@ to buy or not buy a product, or to switch providers.
 :::
 
 #### Modelo Binomial {.unnumbered}
+
+::: {.lang-es}
+
+Consideremos como variable de interés la probabilidad de que un
+individuo perteneciente a un segmento responda positivamente a una
+campaña de marketing.
+
+En el enfoque tradicional, se realiza una segmentación de clientes en
+grupos homogéneos, se envía mensajes a muestras aleatorias de cada
+segmento y se implementa una campaña en segmentos con tasa de respuesta
+(TR) sobre cierto corte, por ejemplo,
+$TR > \frac{\text{Costo de envío}}{\text{Margen unitario}}$.
+
+Sin embargo, es posible incorporar un enfoque de modelos
+probabilísticos para abordar el problema. Si se considera la
+probabilidad de responder de manera positiva que tiene un segmento $s$,
+en particular $p_s$, es posible interpretar de manera sencilla la
+cantidad de respuestas obtenidas. Recordando que la suma de
+experimentos de $\text{Bernoulli}$ corresponde a una variable aleatoria
+Binomial, es posible interpretar $X_s$ como la cantidad de respuestas
+obtenidas de un total de $m_s$ enviadas. Luego:
+
+:::
+
+::: {.lang-en}
+
+Let us consider as the variable of interest the probability that an
+individual belonging to a segment responds positively to a marketing
+campaign.
+
+In the traditional approach, customers are segmented into homogeneous
+groups, messages are sent to random samples from each segment, and a
+campaign is implemented only in segments whose response rate (RR)
+exceeds a threshold, for example,
+$RR > \frac{\text{Sending Cost}}{\text{Unit Margin}}$.
+
+However, it is possible to incorporate a probabilistic-model approach
+to address the problem. If one considers the probability of responding
+positively in segment $s$, denoted $p_s$, then the number of responses
+can be interpreted naturally. Recalling that the sum of
+$\text{Bernoulli}$ experiments corresponds to a Binomial random
+variable, $X_s$ can be interpreted as the number of responses obtained
+out of a total of $m_s$ messages sent. Then:
+
+:::
 
 ::: {.lang-es}
 
@@ -2556,12 +2669,28 @@ en el instante $t$ (asumiendo que está activo), $S(t)$ es la
 probabilidad de que el cliente siga activo en $t$, y $d(t)$ es el
 factor de descuento.
 
-Es importante distinguir entre situaciones:
+Esta definición es inútil a menos que se operacionalice
+$\mathbb{E}(v(t))$, $S(t)$ y $d(t)$ para la situación particular.
 
--   *Contractual*: se observa cuándo un cliente deja de estar activo
-    (suscripciones, planes).
--   *No contractual*: no se observa directamente la deserción del
-    cliente.
+Es importante distinguir entre situaciones contractuales y no
+contractuales:
+
+-   **Contractual:** Observamos cuando un cliente deja de estar activo.
+    Ejemplo: suscripción a una revista, plan VTR, etc.
+
+-   **No Contractual:** No observamos cuando un cliente deja de estarlo.
+
+El desafío de lo mercados contractuales: ¿Cómo diferenciamos aquellos
+clientes que han terminado su relación con la firma, de aquellos que
+simplemente están en un largo período de inactividad?
+
+También se debe distinguir según la oportunidad de hacer la
+transacción:
+
+-   *Discreta*: la acción puede realizarse en un número discreto de
+    ocasiones.
+-   *Continua*: la acción puede realizarse en cualquier momento.
+    Ejemplo, transacción con una tarjeta de crédito.
 
 :::
 
@@ -2572,11 +2701,29 @@ flows at time $t$ (assuming the customer is active), $S(t)$ is the
 probability that the customer remains active at $t$, and $d(t)$ is the
 discount factor.
 
-It is important to distinguish between settings:
+This definition is useless unless $\mathbb{E}(v(t))$, $S(t)$, and
+$d(t)$ are operationalized for the particular setting.
 
--   *Contractual*: it is observed when a customer becomes inactive
-    (subscriptions, plans).
--   *Non-contractual*: customer defection is not directly observed.
+It is important to distinguish between contractual and
+non-contractual settings:
+
+-   **Contractual:** We observe when a customer ceases to be active.
+    Example: a magazine subscription, a cable plan, etc.
+
+-   **Non-contractual:** We do not observe when a customer ceases to be
+    active.
+
+The challenge of contractual markets is: how do we distinguish those
+customers who have ended their relationship with the firm from those
+who are simply going through a long period of inactivity?
+
+One must also distinguish according to the opportunity to make the
+transaction:
+
+-   *Discrete*: the action can be taken at a discrete number of
+    occasions.
+-   *Continuous*: the action can be taken at any time. For example, a
+    credit-card transaction.
 
 :::
 
@@ -2606,10 +2753,9 @@ Table: (\#tab:prob-p1-retencion) Clientes activos y tasa de retención por segme
 |  4  |      2.430         |  834  | 3.264 |       0,9         |  0,5  |   0,747   |
 |  5  |      2.187         |  417  | 2.604 |       0,9         |  0,5  |   0,798   |
 
-La tasa de retención agregada *crece* aun cuando a nivel individual
-las retenciones son constantes. Esto se debe a un efecto de
-composición: los clientes con baja retención abandonan primero,
-dejando una proporción cada vez mayor de clientes leales.
+En el Cuadro 1.1 la tasa de retención agregada (en rojo en la tabla) es
+decreciente aún cuando a nivel individual las retenciones son constantes
+en el tiempo.
 
 :::
 
@@ -2637,10 +2783,9 @@ Table: (\#tab:prob-p1-retencion) Active customers and retention rate by segment.
 |  4   |      2,430         |  834  | 3,264 |      0.9       |  0.5  |   0.747   |
 |  5   |      2,187         |  417  | 2,604 |      0.9       |  0.5  |   0.798   |
 
-The aggregate retention rate *increases* even though individual-level
-retention rates are constant. This is due to a composition effect:
-customers with low retention churn first, leaving an ever-larger
-proportion of loyal customers.
+In Table 1.1, the aggregate retention rate (highlighted in red in the
+table) is decreasing even though individual-level retention rates are
+constant over time.
 
 :::
 
@@ -2705,7 +2850,35 @@ The *Residual Lifetime Value* is:
 
 :::
 
-\[\mathbb{E}(RLV) = 0{,}84 \cdot \$495 + 0{,}16 \cdot \$92 = \$430\]
+\[\mathbb{E}(RLV) = 0{,}84 \cdot \$495 + (0{,}84) \cdot \$92 = \$493{,}08\]
+
+::: {.lang-es}
+
+En mercados contractuales, ¿cuánto se pierde si no no se considera la
+heterogeneidad?. En este ejemplo, si se toma en cuenta la tasa de
+retención agregada, el valor de la base de clientes es \$4.945.049. En
+cambio, si se distingue por segmentos, este valor asciende a
+\$7.940.992.
+
+En estudios con bases de datos reales muestran que el error en el CLV se
+eleva hasta el 50%. El impacto sobre el CLV de aumentar las tasas de
+retención es hasta un 50%. Para calcular CLV hay que hacerlo condicional
+en la duración.
+
+:::
+
+::: {.lang-en}
+
+In contractual markets, how much is lost if heterogeneity is ignored?
+In this example, if the aggregate retention rate is used, the value of
+the customer base is \$4,945,049. In contrast, if one distinguishes by
+segments, this value rises to \$7,940,992.
+
+Studies with real customer databases show that the error in CLV can
+reach up to 50%. The impact on CLV of increasing retention rates is up
+to 50%. To calculate CLV, it must be done conditional on duration.
+
+:::
 <div class="lang-es">
 
 ::: {.rmdwarning}
@@ -2770,6 +2943,24 @@ The expected residual value of a customer active for $n$ periods is:
 
 ::: {.lang-es}
 
+DERL es el valor esperado residual del cliente (condicional en la
+antigüedad). Para el caso de la distribución geométrica desplazada:
+
+:::
+
+::: {.lang-en}
+
+DERL is the customer's discounted expected residual lifetime
+(conditional on tenure). For the shifted geometric distribution:
+
+:::
+
+\[\text{DERL}(d \mid \text{activo en } n \text{ períodos})
+= \frac{(1-\theta)(1+d)}{d+\theta}
+\tag{2.57a}\]
+
+::: {.lang-es}
+
 Cuando $\theta$ no es observable, la función DERL (Discounted Expected
 Residual Lifetime) utiliza la distribución posterior condicional en la
 antigüedad:
@@ -2802,7 +2993,120 @@ where ${}_2F_1$ is the *Gauss hypergeometric function*.
 
 :::
 
-## Sumario de la unidad {#prob-sumario data-en="Unit Summary"}
+### Modelo contractual a tiempo continuo {data-en="Continuous-Time Contractual Model"}
+
+::: {.lang-es}
+
+Algunos supuestos son:
+
+1.  La duración de la relación de un cliente con la firma está
+    caracterizada por una distribución exponencial, con densidad y
+    función de sobrevivencia dadas por:
+
+:::
+
+::: {.lang-en}
+
+Some assumptions are:
+
+1.  The duration of a customer's relationship with the firm is
+    characterized by an exponential distribution, with density and
+    survival function given by:
+
+:::
+
+\[
+f(t\mid\lambda) = \lambda e^{-\lambda t}
+\tag{2.59}\]
+
+\[
+S(t\mid\lambda) = e^{-\lambda t}
+\tag{2.60}\]
+
+::: {.lang-es}
+
+2.  La heterogeneidad en $\lambda$ es capturada por una distribución
+    $\text{Gamma}$:
+
+:::
+
+::: {.lang-en}
+
+2.  Heterogeneity in $\lambda$ is captured by a $\text{Gamma}$
+    distribution:
+
+:::
+
+\[
+g(\lambda\mid r,\alpha) =
+\frac{\alpha^r\lambda^{r-1}e^{-\alpha\lambda}}{\Gamma(r)}
+\tag{2.61}\]
+
+::: {.lang-es}
+
+Entonces, la probabilidad de seguir activo en $t$ es:
+
+:::
+
+::: {.lang-en}
+
+Then, the probability of remaining active at $t$ is:
+
+:::
+
+\[
+S(t\mid r,\alpha) = \int_0^{\infty} S(t\mid\lambda)g(\lambda\mid r,\alpha)\,d\lambda
+= \left(\frac{\alpha}{\alpha+t}\right)^r
+\tag{2.62}\]
+
+::: {.lang-es}
+
+El valor esperado de $\text{Residual Lifetime Value}$ es:
+
+:::
+
+::: {.lang-en}
+
+The expected value of the $\text{Residual Lifetime Value}$ is:
+
+:::
+
+\[
+\mathbb{E}(\text{RLV}(\delta\mid\text{activo en }s))
+= \int_s^{\infty} \mathbb{E}(v(t))S(t\mid t>s)\delta(t)\,dt
+= \bar{v}\cdot \text{DERL}(\delta\mid r,\alpha,\text{activo en }s)
+\tag{2.63}\]
+
+::: {.lang-es}
+
+donde
+
+:::
+
+::: {.lang-en}
+
+where
+
+:::
+
+\[
+\text{DERL}(\delta\mid r,\alpha,\text{activo en }s)
+= (\alpha+s)^r\delta \Psi(r;r;(\alpha+s)\delta)
+\tag{2.64}\]
+
+::: {.lang-es}
+
+$\Psi$ es la *función hiper geométrica confluyente del segundo tipo*.
+
+:::
+
+::: {.lang-en}
+
+$\Psi$ is the *confluent hypergeometric function of the second type*.
+
+:::
+
+## Resumen {#prob-sumario data-en="Summary"}
 
 <div class="lang-es">
 
@@ -4797,4 +5101,3 @@ The log-likelihood is:
 
 \[LL = \sum_i \ln\!\big(\Pr(X_i = x_i \mid p_{\text{canjear}}, p_{\text{leer}})\big)\]
 </details>
-

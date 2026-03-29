@@ -300,6 +300,14 @@ invariant parameters.
 
 ::: {.lang-es}
 
+El gran desafío de la aplicación de modelos econométricos a problemas
+comerciales es enriquecer el conocimiento respecto a cómo se comportan
+los agentes relevantes del negocio, para así tomar decisiones más
+consistentes y más rentables. Desde este punto de vista, se apunta a
+modelos que describan la lógica que determina el comportamiento de los
+clientes y firmas más allá de simples correlaciones estadísticas entre
+las variables observables.
+
 Se identifican al menos cuatro ventajas de los modelos
 estructurales frente a los de forma reducida:
 
@@ -331,6 +339,13 @@ estructurales frente a los de forma reducida:
 
 ::: {.lang-en}
 
+The great challenge in applying econometric models to commercial
+problems is to enrich our understanding of how the relevant agents of
+the business behave, so as to make more consistent and more profitable
+decisions. From this perspective, the aim is to build models that
+describe the logic determining the behavior of customers and firms
+beyond simple statistical correlations among observable variables.
+
 Structural models offer four key advantages: (1) richer behavioral
 narratives with directly interpretable parameters; (2) theory-
 consistent estimates; (3) ability to evaluate counterfactuals; and
@@ -349,6 +364,44 @@ estructura suele requerir rutinas de estimación más sofisticadas y
 computacionalmente intensivas. Un buen modelo debe balancear
 adecuadamente teoría, simplicidad y flexibilidad.
 
+Es importante destacar que no existe un modelo puramente estructural.
+Todo modelo requiere en algún momento suponer alguna forma funcional
+flexible sin fundamento teórico sólido. Por ejemplo, se puede asumir
+que los consumidores al elegir un producto están maximizando una
+utilidad subyacente, pero ¿cómo describir dicha función de utilidad?
+¿Qué variables explicativas usar y cuál forma funcional escoger?
+Ciertamente la especificidad de las teorías disponibles no alcanza a
+responder a estas preguntas y se debe por lo tanto escoger en base a la
+intuición y empíricamente entre aquellas que generen mejor ajuste y/o
+capacidad de pronóstico. De esta forma, un buen modelo debe balancear
+adecuadamente el uso de la teoría con la simpleza y flexibilidad del
+modelo.
+
+Para ser convincente, un modelo estructural debe al menos (i) entregar
+suficiente flexibilidad para aprender de la data, (ii) derivar las
+ecuaciones de comportamiento de supuestos razonables respecto de los
+agentes involucrados y (iii) incorporar explícitamente en la
+descripción la naturaleza no experimental de la data.
+
+**Observación:** En la discusión se ha hecho la distinción entre
+modelos probabilísticos y modelos estructurales. Aunque los modelos
+probabilísticos proveen una historia de comportamiento de los agentes,
+los supuestos básicos usados para derivarlos no se sustentan en ninguna
+teoría de comportamiento. Por ejemplo, en modelos de duración en tiempo
+discreto se suele suponer que los clientes dejan de estar activos con
+cierta probabilidad. Más que una teoría de comportamiento esto es
+simplemente una descripción probabilística de un fenómeno. En
+determinadas situaciones, especialmente en casos en que no se dispone
+de una descripción rica del ambiente en que los agentes toman sus
+decisiones, se conforma con esta descripción agregada del
+comportamiento. El enfoque estructural sobre el que se ahondará en esta
+parte resulta particularmente útil cuando se tiene suficiente
+información para investigar las motivaciones profundas de las
+elecciones. Al definir un modelo estructural, tanto las teorías de
+comportamiento como la descripción probabilística del sistema son
+fuentes válidas de estructura. Sin embargo, se considerará como modelo
+econométrico estructural a aquellos que se nutren de ambas fuentes.
+
 :::
 
 </div>
@@ -363,6 +416,39 @@ for exploratory analyses, and incorporating structure typically
 requires more sophisticated and computationally intensive estimation
 routines. A good model must strike an adequate balance among theory,
 parsimony, and flexibility.
+
+It is important to emphasize that there is no purely structural model.
+Every model requires, at some point, assuming a flexible functional
+form without solid theoretical grounding. For example, one may assume
+that consumers maximize an underlying utility when choosing a product,
+but how should that utility function be described? Which explanatory
+variables should be used, and which functional form should be chosen?
+Available theories are typically not specific enough to answer these
+questions, so one must choose based on intuition and empirical
+performance among those specifications delivering better fit and/or
+forecasting ability. In this way, a good model must properly balance
+theory, simplicity, and flexibility.
+
+To be convincing, a structural model must at least (i) provide
+sufficient flexibility to learn from the data, (ii) derive behavioral
+equations from reasonable assumptions about the agents involved, and
+(iii) explicitly incorporate the non-experimental nature of the data.
+
+**Remark:** The discussion has distinguished between probabilistic and
+structural models. Although probabilistic models provide a behavioral
+story, the basic assumptions used to derive them are not grounded in a
+behavioral theory. For example, in discrete-time duration models it is
+common to assume that customers become inactive with some probability.
+More than a behavioral theory, this is simply a probabilistic
+description of a phenomenon. In some situations, especially when a rich
+description of the environment in which agents make decisions is not
+available, this aggregate description of behavior may be sufficient.
+The structural approach developed in this chapter is particularly useful
+when there is enough information to investigate the deeper motivations
+behind choices. When defining a structural model, both behavioral
+theories and the probabilistic description of the system are valid
+sources of structure. However, we will regard as structural
+econometric models those drawing on both sources.
 
 :::
 
@@ -401,6 +487,19 @@ factores:
     consumidores, dada la disponibilidad de datos y la simpleza
     de las nociones de equilibrio requeridas.
 
+Metodológicamente es útil también distinguir los métodos de estimación
+de los modelos. La literatura reconoce dos grandes enfoques para
+estimar modelos estructurales como los aquí presentados: método de los
+momentos generalizados (GMM) y método de la máxima verosimilitud. Dada
+su eficiencia estadística (en el sentido que usa toda la información
+disponible), en esta primera versión se usará solo el método de la
+máxima verosimilitud. En lo que sigue se enfocará la discusión al
+estudio del comportamiento de clientes, en problemas estáticos (o con
+dinámica limitada a la incorporación del pasado) y con datos
+desagregados. Partiremos describiendo brevemente modelos de decisión
+continuos para luego iniciar una discusión más extensa en modelos de
+decisión discreta que tienen una tradición más larga en marketing.
+
 :::
 
 ::: {.lang-en}
@@ -427,6 +526,18 @@ It is useful to classify structural models along four dimensions:
     industrial organization) involves sophisticated equilibrium
     concepts. This chapter focuses on consumer behavior, given data
     availability and the simpler equilibrium notions required.
+
+Methodologically, it is also useful to distinguish the estimation
+methods used for these models. The literature recognizes two major
+approaches for estimating structural models such as those presented
+here: the generalized method of moments (GMM) and maximum likelihood.
+Given its statistical efficiency (in the sense that it uses all
+available information), this first version will use only maximum
+likelihood. The discussion that follows focuses on customer behavior,
+in static problems (or with dynamics limited to the incorporation of
+the past), and with disaggregated data. We begin by briefly describing
+continuous-decision models and then move to a more extensive discussion
+of discrete-choice models, which have a longer tradition in marketing.
 
 :::
 
@@ -585,8 +696,72 @@ $$u_{nit} = v_{nit} + \varepsilon_{nit}
 La componente sistemática se especifica como una función
 $v_{nit} = v(\mathbf{x}_{nit}, \boldsymbol{\theta})$, donde
 $\mathbf{x}_{nit}$ son las características observables y
-$\boldsymbol{\theta}$ el vector de parámetros a estimar. La
-probabilidad de elección de la alternativa $i$ es:
+$\boldsymbol{\theta}$ el vector de parámetros a estimar.
+
+**Ejemplo:** Supóngase que se quiere describir la elección del medio de
+pago que usan los usuarios de una tienda determinada, la que permite
+pagar en efectivo o con alguna tarjeta bancaria. El analista observa 3
+variables que intuye pueden ser relevantes en la elección del medio de
+pago: el género del cliente ($F_n = 1$ si cliente es de género
+femenino), su nivel de ingresos $(I_n)$ y el monto de la transacción
+$(M_{nt})$. Son precisamente estas características las que estarían
+incluidas en la matriz que se ha llamado $x_{nit}$. A partir de esta
+información pueden plantearse múltiples modelos para describir
+$v_{nit}$ (se asumirá que $i = 0$ corresponde al caso de pago con
+efectivo mientras que $i = 1$ al de pago con tarjeta).
+
+-   *Modelo Lineal Homogéneo:* Aquí, la utilidad para ambas
+    alternativas crece linealmente con las variables observables. En
+    este caso, los parámetros son los mismos para todos los tomadores
+    de decisión y por tanto el vector de parámetros viene dado por
+    $\theta = (\alpha_0, \alpha_1, \beta, \gamma, \delta)$
+
+$$v_{nit} = \alpha_i + \beta F_n + \gamma I_n + \delta M_{nt}$$
+
+-   *Modelo lineal heterogéneo:* Aquí, la utilidad para ambas
+    alternativas también crece linealmente con las variables
+    observables, pero ahora los parámetros varían por alternativa y por
+    agente, y por tanto el vector de parámetros viene dado por
+    $\theta = ( \{ \alpha_{1n} \} _{n=1}^{N}, \beta_0,\beta_1,\gamma_0,\gamma_1,\{ \delta_n \}_{n=1}^{N} )$
+
+$$v_{nit} = \alpha_{in} + \beta_i F_n + \gamma_i I_n + \delta_n M_{nt}$$
+
+La definición de que los interceptos dependen del cliente $n$
+simplemente indica que cada cliente tiene una preferencia intrínseca
+por cada medio de pago. Del mismo modo, se está imponiendo que la
+influencia que tiene el monto en el atractivo que tiene cada
+alternativa depende del cliente. Por ejemplo, mientras para algunos
+clientes el monto de la transacción puede jugar un rol importante en la
+decisión del medio de pago, para otros este efecto podría no ser
+relevante. Por último, la dependencia de la alternativa en los
+parámetros asociados a género e ingreso podrían usarse para por ejemplo
+situaciones en que el nivel de ingreso afecta el atractivo de un medio
+de pago pero no del otro (la intuición para el género es análoga).
+
+Por supuesto, también se pueden postular modelos no lineales u otras
+especificaciones de la heterogeneidad. Por ejemplo, que la influencia
+del ingreso varíe por medio de pago, pero que el efecto del género sea
+constante entre las alternativas. Descubrir la especificación que mejor
+describe el problema es precisamente la tarea del analista.
+
+**Observación:** En el ejemplo se ha introducido brevemente el concepto
+de heterogeneidad. Sin embargo, para facilitar la exposición de los
+temas básicos, en primera instancia se concentrará en modelos sin
+heterogeneidad. En marketing, los modelos que incluyen heterogeneidad
+en las preferencias son tan importantes que se postergará su discusión
+en un capítulo separado.
+
+En la práctica, aún en situaciones en que se observa con detalle el
+ambiente de decisión, no se podrá describir con exactitud todos los
+factores que gobiernan el comportamiento de los agentes. Por lo tanto,
+se definirá $\varepsilon_{nit}$ como el error (aditivo) que se comete
+al aproximar $u_{nit}$ a través de $v_{nit}$.
+
+La componente básica para estimar estadísticamente un modelo de elección
+discreta es la especificación de la probabilidad de elección de cada
+alternativa. Sea $P_{nit}$ la probabilidad de que el agente $n$ escoja
+la alternativa $i$ en la oportunidad de compra $t$. El supuesto de
+maximización de utilidades implica que $P_{nit}$ puede escribirse como:
 
 :::
 
@@ -595,8 +770,71 @@ probabilidad de elección de la alternativa $i$ es:
 The systematic component is specified as a function
 $v_{nit} = v(\mathbf{x}_{nit}, \boldsymbol{\theta})$, where
 $\mathbf{x}_{nit}$ denotes the observable characteristics and
-$\boldsymbol{\theta}$ the parameter vector to be estimated. The
-choice probability for alternative $i$ is:
+$\boldsymbol{\theta}$ the parameter vector to be estimated.
+
+**Example:** Suppose one wants to describe the choice of payment method
+used by customers in a given store, which allows payment in cash or
+with a bank card. The analyst observes 3 variables that seem likely to
+be relevant for the payment decision: the customer's gender
+($F_n = 1$ if the customer is female), income level $(I_n)$, and
+transaction amount $(M_{nt})$. These are precisely the characteristics
+that would be included in the matrix denoted $x_{nit}$. Based on this
+information, multiple models can be proposed to describe $v_{nit}$
+(assuming that $i = 0$ corresponds to cash payment and $i = 1$ to card
+payment).
+
+-   *Homogeneous linear model:* Here, utility for both alternatives
+    increases linearly with the observable variables. In this case, the
+    parameters are the same for all decision-makers, so the parameter
+    vector is given by
+    $\theta = (\alpha_0, \alpha_1, \beta, \gamma, \delta)$
+
+$$v_{nit} = \alpha_i + \beta F_n + \gamma I_n + \delta M_{nt}$$
+
+-   *Heterogeneous linear model:* Here, utility for both alternatives
+    also increases linearly with the observable variables, but now the
+    parameters vary by alternative and by agent, so the parameter
+    vector is given by
+    $\theta = ( \{ \alpha_{1n} \} _{n=1}^{N}, \beta_0,\beta_1,\gamma_0,\gamma_1,\{ \delta_n \}_{n=1}^{N} )$
+
+$$v_{nit} = \alpha_{in} + \beta_i F_n + \gamma_i I_n + \delta_n M_{nt}$$
+
+Allowing the intercepts to depend on customer $n$ simply indicates that
+each customer has an intrinsic preference for each payment method.
+Likewise, this specification imposes that the influence of the
+transaction amount on the attractiveness of each alternative depends on
+the customer. For example, for some customers the transaction amount
+may play an important role in the payment-method decision, while for
+others this effect may be irrelevant. Finally, allowing the
+gender- and income-related parameters to depend on the alternative
+could be useful, for instance, in situations where income affects the
+attractiveness of one payment method but not the other (the intuition
+for gender is analogous).
+
+Of course, nonlinear models or other heterogeneity specifications can
+also be proposed. For example, income may vary by payment method while
+the effect of gender remains constant across alternatives. Discovering
+the specification that best describes the problem is precisely the
+analyst's task.
+
+**Remark:** The example has briefly introduced the concept of
+heterogeneity. However, to facilitate the exposition of the basic
+topics, the initial discussion will focus on models without
+heterogeneity. In marketing, models that include heterogeneity in
+preferences are so important that their discussion is postponed to a
+separate chapter.
+
+In practice, even in situations where the decision environment is
+observed in detail, it is not possible to describe exactly all the
+factors governing agents' behavior. Therefore,
+$\varepsilon_{nit}$ is defined as the (additive) error committed when
+approximating $u_{nit}$ through $v_{nit}$.
+
+The basic component required to estimate a discrete-choice model
+statistically is the specification of the choice probability of each
+alternative. Let $P_{nit}$ be the probability that agent $n$ chooses
+alternative $i$ at purchase occasion $t$. The utility-maximization
+assumption implies that $P_{nit}$ can be written as:
 
 :::
 
@@ -703,6 +941,57 @@ alternatives.
 
 :::
 
+::: {.lang-es}
+
+En algunos libros de texto se justifica esta expresión simplemente como
+una regresión logística, esto es, una transformación lineal para
+normalizar la utilidad de modo de interpretarla directamente como una
+probabilidad de elección en el rango [0,1]. Aunque válido, resulta útil
+entender que, en efecto, dicha expresión puede derivarse a partir de
+supuestos de maximización de utilidades.
+
+Para ganar algo de intuición respecto a la expresión de la probabilidad
+de elección, es útil graficarla con respecto a la utilidad derivada por
+cada alternativa. Por ejemplo, supóngase que se tiene una decisión
+binaria que, por ejemplo, corresponde a la decisión de comprar o no
+comprar un producto. En este caso, la probabilidad de comprar el
+producto crece *sigmoidalmente* con la utilidad derivada de la compra.
+Esto es, al graficar la probabilidad de compra con respecto a la
+utilidad derivada, se obtiene una curva S como muestra la Figura 1. En
+la figura, se ha agregado también la curva de la probabilidad de
+elección en el caso en que, en vez de asumir que el error se
+distribuye valor extremo como demanda el modelo logit, se asume que el
+error está normalmente distribuido como tradicionalmente se hace en
+otros modelos econométricos.
+
+:::
+
+::: {.lang-en}
+
+In some textbooks, this expression is justified simply as a logistic
+regression, that is, as a linear transformation used to normalize
+utility so that it can be interpreted directly as a choice probability
+in the range [0,1]. Although valid, it is useful to understand that
+this expression can in fact be derived from utility-maximization
+assumptions.
+
+To build intuition for the choice-probability expression, it is useful
+to graph it with respect to the utility derived from each alternative.
+For example, suppose one has a binary decision such as whether or not
+to buy a product. In this case, the probability of purchase grows
+*sigmoidally* with the utility derived from buying. That is, graphing
+purchase probability against utility yields an S-shaped curve, as shown
+in Figure 1. The figure also includes the choice-probability curve that
+arises when, instead of assuming an extreme-value error as required by
+the logit model, one assumes a normally distributed error as is
+traditional in other econometric models.
+
+:::
+
+```{r probelec, fig.cap="Probabilidad de elección", out.width='50%', fig.align='center'}
+knitr::include_graphics(rep("images/probabilidad_eleccion.png"))
+```
+
 ### Elasticidades {#estr-logit-elasticidades data-en="Elasticities"}
 
 ::: {.lang-es}
@@ -712,6 +1001,14 @@ sustitución de forma directa. Si
 $v_{nit} = v(\mathbf{x}_{nit}, \boldsymbol{\theta})$, se obtienen
 las siguientes expresiones.
 
+Recuerde que una de las motivaciones para el uso de modelos
+estructurales es la posibilidad de analizar contrafactuales, esto es,
+ver qué pasaría con el mercado si hay cambio en alguna variable de
+control interesante. Por ejemplo que pasa con las participaciones de
+mercado si sube el precio de una alternativa, si se aumenta la
+frecuencia publicitaria, etc. Las métricas recién presentadas permiten
+precisamente hacer dichas evaluaciones de manera directa.
+
 :::
 
 ::: {.lang-en}
@@ -720,6 +1017,13 @@ The availability of a closed-form expression allows computing
 substitution metrics directly. If
 $v_{nit} = v(\mathbf{x}_{nit}, \boldsymbol{\theta})$, the
 following expressions are obtained.
+
+Recall that one of the motivations for using structural models is the
+possibility of analyzing counterfactuals, that is, asking what would
+happen in the market if some relevant control variable changed. For
+example, what happens to market shares if the price of an alternative
+increases, or if advertising frequency rises? The metrics presented
+here make those evaluations possible in a direct way.
 
 :::
 
@@ -941,18 +1245,31 @@ $$LL(\boldsymbol{\theta})
 ::: {.lang-es}
 
 Esta función es cóncava y puede maximizarse con rutinas estándar
-de optimización convexa. Si la utilidad es lineal,
-$v_{nit} = \mathbf{x}'_{nit}\boldsymbol{\theta}$, el gradiente
-adopta una forma particularmente sencilla:
+de optimización convexa.
+Computacionalmente, suele ser más conveniente trabajar con la
+log-verosimilitud en vez de la verosimilitud. Esto porque la
+multiplicación de probabilidades genera muy rápidamente valores que
+computacionalmente son indistinguibles de cero. Recuérdese que el valor
+de los valores óptimos son invariantes a transformaciones monótonas
+como la del logaritmo.
+
+Si la utilidad es lineal, $v_{nit} = \mathbf{x}'_{nit}\boldsymbol{\theta}$,
+el gradiente adopta una forma particularmente sencilla:
 
 :::
 
 ::: {.lang-en}
 
 This function is concave and can be maximized using standard convex
-optimization routines. If utility is linear,
-$v_{nit} = \mathbf{x}'_{nit}\boldsymbol{\theta}$, the gradient
-takes a particularly simple form:
+optimization routines.
+Computationally, it is usually more convenient to work with the
+log-likelihood instead of the likelihood. This is because multiplying
+probabilities very quickly generates values that are computationally
+indistinguishable from zero. Recall that the optimal values are
+invariant to monotone transformations such as the logarithm.
+
+If utility is linear, $v_{nit} = \mathbf{x}'_{nit}\boldsymbol{\theta}$,
+the gradient takes a particularly simple form:
 
 :::
 
@@ -963,6 +1280,20 @@ $$\frac{\partial LL}{\partial \boldsymbol{\theta}}
              {\sum_j e^{\mathbf{x}'_{njt}\boldsymbol{\theta}}}
     \right) \mathbf{x}_{nit}
 (\#eq:estr-gradiente)$$
+
+::: {.lang-es}
+
+Del mismo modo, se pueden calcular segundas derivadas que resultan
+útiles para el cálculo de errores estándares de los parámetros.
+
+:::
+
+::: {.lang-en}
+
+Likewise, second derivatives can be computed, which are useful for
+calculating standard errors of the parameters.
+
+:::
 
 ### Evaluación del modelo {#estr-logit-evaluacion data-en="Model Evaluation"}
 
@@ -1816,25 +2147,167 @@ $$u_{ni} = \mathbf{b}'\mathbf{x}_{ni} + \eta_{ni},
 
 ::: {.lang-es}
 
-donde las componentes de $\hat{\boldsymbol{\Sigma}}$ incorporan
-tanto la variabilidad original $\boldsymbol{\Sigma}$ como la
-heterogeneidad en preferencias $\sigma_\beta^2$. Por ejemplo, con
-dos alternativas y un único atributo, la covarianza entre errores
-resulta $\text{Cov}(\eta_{n1}, \eta_{n2})
-= x_{n1}\,x_{n2}\,\sigma_\beta$, lo que demuestra que la
-heterogeneidad aleatoria induce correlación entre alternativas.
+Las componentes de la matriz de varianza-covarianza resultante
+$\hat{\Sigma}$ pueden trazarse directamente a las componentes de la
+matriz $\Sigma$ original como lo indica el siguiente ejemplo:
+
+**Ejemplo:** Considérese un modelo de elección con dos alternativas y
+un modelo lineal con una única variable para describir la componente
+sistemática de la utilidad. En este caso, las utilidades por cada
+alternativa vienen dadas por:
+
+\[
+\begin{aligned}
+u_{n1} &= \beta_n x_{n1} + \varepsilon_{n1}\\
+u_{n2} &= \beta_n x_{n2} + \varepsilon_{n2}
+\end{aligned}
+\]
+
+donde $\varepsilon_{n1}$ y $\varepsilon_{n2}$ son términos
+independientes e idénticamente distribuidos con varianza
+$\sigma_\varepsilon$. Si se asume que el parámetro $\beta_n$ se
+distribuye normal con media $b$ y varianza $\sigma_\beta$, entonces se
+puede reescribir las utilidades como:
+
+\[
+\begin{aligned}
+u_{n1} &= b x_{n1} + \eta_{n1}\\
+u_{n2} &= b x_{n2} + \eta_{n2}
+\end{aligned}
+\]
+
+donde $\eta_{n1}$ y $\eta_{n2}$ están normalmente distribuidas. Cada
+una tiene esperanza cero:
+$\mathbb{E}(\eta_{ni}) = \mathbb{E}(\beta_nx_{ni} + \varepsilon_{ni}) = 0$,
+varianza igual a
+$\mathbb{V}ar(\eta_{ni}) = \mathbb{V}ar(\beta_n x_{ni} + \varepsilon_{ni}) = x^2_{ni}\sigma_\beta + \sigma_\varepsilon$
+y covarianzas
+$\mathbb{C}ov(\eta_{n1}, \eta_{n2}) = x_{n1}x_{n2}\sigma_\beta$. Así,
+la matriz de covarianza viene dada por:
+
+\[
+\begin{aligned}
+\Sigma &=
+\begin{bmatrix}
+x^2_{n1}\sigma_\beta + \sigma_\varepsilon & x_{n1}x_{n2}\sigma_\beta\\
+x_{n1}x_{n2}\sigma_\beta & x^2_{n2}\sigma_\beta + \sigma_\varepsilon
+\end{bmatrix} \\
+&=
+\sigma_\beta
+\begin{bmatrix}
+x^2_{n1} & x_{n1}x_{n2}\\
+x_{n1}x_{n2} & x^2_{n2}
+\end{bmatrix}
++
+\sigma_{\varepsilon}
+\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}
+\end{aligned}
+\]
+
+El siguiente paso es estimar. Recordando que el comportamiento no es
+afectado por transformaciones multiplicativas de la utilidad, es
+necesario escalar esta matriz. Lo recomendable es fijar
+$\sigma_\varepsilon = 1$, obteniendo así:
+
+\[
+\Sigma=
+\sigma_\beta
+\begin{bmatrix}
+x^2_{n1} & x_{n1}x_{n2}\\
+x_{n1}x_{n2} & x^2_{n2}
+\end{bmatrix}
++
+\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}
+\]
 
 :::
 
 ::: {.lang-en}
 
-where the components of $\hat{\boldsymbol{\Sigma}}$ incorporate both
-the original variability $\boldsymbol{\Sigma}$ and the preference
-heterogeneity $\sigma_\beta^2$. For instance, with two alternatives
-and a single attribute, the error covariance is
-$\text{Cov}(\eta_{n1}, \eta_{n2})
-= x_{n1}\,x_{n2}\,\sigma_\beta$, which shows that random
-heterogeneity induces correlation across alternatives.
+The components of the resulting variance-covariance matrix
+$\hat{\Sigma}$ can be traced directly back to the components of the
+original matrix $\Sigma$, as shown in the following example:
+
+**Example:** Consider a choice model with two alternatives and a linear
+specification with a single variable describing the systematic
+component of utility. In that case, the utilities for each alternative
+are given by:
+
+\[
+\begin{aligned}
+u_{n1} &= \beta_n x_{n1} + \varepsilon_{n1}\\
+u_{n2} &= \beta_n x_{n2} + \varepsilon_{n2}
+\end{aligned}
+\]
+
+where $\varepsilon_{n1}$ and $\varepsilon_{n2}$ are independent and
+identically distributed terms with variance $\sigma_\varepsilon$. If
+one assumes that the parameter $\beta_n$ is normally distributed with
+mean $b$ and variance $\sigma_\beta$, the utilities can be rewritten
+as:
+
+\[
+\begin{aligned}
+u_{n1} &= b x_{n1} + \eta_{n1}\\
+u_{n2} &= b x_{n2} + \eta_{n2}
+\end{aligned}
+\]
+
+where $\eta_{n1}$ and $\eta_{n2}$ are normally distributed. Each has
+zero mean,
+$\mathbb{E}(\eta_{ni}) = \mathbb{E}(\beta_nx_{ni} + \varepsilon_{ni}) = 0$,
+variance
+$\mathbb{V}ar(\eta_{ni}) = \mathbb{V}ar(\beta_n x_{ni} + \varepsilon_{ni}) = x^2_{ni}\sigma_\beta + \sigma_\varepsilon$,
+and covariance
+$\mathbb{C}ov(\eta_{n1}, \eta_{n2}) = x_{n1}x_{n2}\sigma_\beta$. Thus,
+the covariance matrix is:
+
+\[
+\begin{aligned}
+\Sigma &=
+\begin{bmatrix}
+x^2_{n1}\sigma_\beta + \sigma_\varepsilon & x_{n1}x_{n2}\sigma_\beta\\
+x_{n1}x_{n2}\sigma_\beta & x^2_{n2}\sigma_\beta + \sigma_\varepsilon
+\end{bmatrix} \\
+&=
+\sigma_\beta
+\begin{bmatrix}
+x^2_{n1} & x_{n1}x_{n2}\\
+x_{n1}x_{n2} & x^2_{n2}
+\end{bmatrix}
++
+\sigma_{\varepsilon}
+\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}
+\end{aligned}
+\]
+
+The next step is estimation. Since behavior is unaffected by
+multiplicative transformations of utility, it is necessary to scale
+this matrix. A standard recommendation is to fix
+$\sigma_\varepsilon = 1$, yielding:
+
+\[
+\Sigma=
+\sigma_\beta
+\begin{bmatrix}
+x^2_{n1} & x_{n1}x_{n2}\\
+x_{n1}x_{n2} & x^2_{n2}
+\end{bmatrix}
++
+\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}
+\]
 
 :::
 
@@ -1876,6 +2349,56 @@ observables. Para paneles largos, es necesario imponer estructura
 sobre $\boldsymbol{\Sigma}$ para mantener la tratabilidad del
 modelo.
 
+Se ha discutido que bajo un modelo *probit* se pueden estudiar
+relaciones no observables entre las alternativas de elección. En las
+bases disponibles para la función comercial, las observaciones suelen
+estar indexadas temporalmente generando estructuras de panel que
+permiten estudiar aspectos interesantes de los agentes. A continuación
+se discute cómo usar un modelo *probit* para explorar no solo la
+relación entre las utilidades de alternativas, sino que también, el
+comportamiento de las utilidades de las alternativas en el tiempo.
+
+Al igual que en la sección anterior, se busca encontrar patrones
+temporales en las componentes no observables de la utilidad, ya que las
+variaciones en la componente observable pueden ser fácilmente
+estudiadas incluyendo variables observables que describan la evolución
+temporal del sistema. Por ejemplo, si se cree que la utilidad de una de
+las alternativas es creciente en el tiempo, basta incluir el tiempo $t$
+entre las variables independientes en la descripción de la utilidad de
+la alternativa. En general, se debería esperar que las utilidades estén
+correlacionadas tanto en el tiempo como entre las alternativas, ya que
+los factores que no son observados por el analista suelen ser
+persistentes en el tiempo. Eventualmente un modelo *probit* también
+podría ayudar a identificar shocks en que hay variaciones instantáneas
+(o de unos pocos períodos) en las utilidades de varias de las
+alternativas.
+
+Supóngase que se observa un panel de $N$ clientes que deciden respecto
+de $I$ alternativas en $T$ períodos y que la utilidad del producto que
+el agente $n$ deriva sobre la alternativa $i$ en el período $t$ viene
+dada por:
+
+\[
+\begin{array}{cc}
+u_{ni} = v_{nit} + \varepsilon_{nit},  & [\varepsilon_{n11},...,\varepsilon_{nI1},\varepsilon_{n12}, ..., \varepsilon_{nI2},...,\varepsilon_{n1T},...,\varepsilon_{nIT}] \sim N(0,\Sigma)
+\end{array}
+\]
+
+La matriz de covarianza $\Sigma$ tiene dimensión $IT \times IT$ (como
+se verá, no todas las componentes son identificables y se deberá
+imponer ciertas restricciones). Para paneles típicos, $T$ es grande y
+genera matrices de varianza-covarianza muy grandes. Por ejemplo, si se
+tienen datos semanales de compras de 5 marcas por un período de 2 años,
+se enfrentará una matriz de varianza (sin normalizar) con
+5 × 104 = 520 filas y 520 columnas, lo que generaría no solo un modelo
+difícil de estimar numéricamente sino que, también, difícil de
+interpretar. Así, para usar un modelo *probit* con dependencia en el
+tiempo, típicamente se agregará estructura al modelo. Por ejemplo, se
+puede restringir el análisis a grupos de períodos que podría ser el
+caso de las decisiones antes y después de una intervención en el
+sistema (e.g., antes y después del lanzamiento de una campaña
+publicitaria).
+
 :::
 
 ::: {.lang-en}
@@ -1885,6 +2408,48 @@ structure, with $\sigma + 1$ on the diagonal and $\sigma$ off it,
 capturing the temporal persistence of unobservable factors. For long
 panels, structure must be imposed on $\boldsymbol{\Sigma}$ to
 maintain model tractability.
+
+Under a *probit* model, one can study unobservable relationships across
+alternatives. In commercial databases, observations are often indexed
+over time, generating panel structures that make it possible to study
+interesting aspects of agents. We can therefore use a *probit* model to
+explore not only the relationship among the utilities of alternatives,
+but also the temporal behavior of those utilities.
+
+As in the previous section, the aim is to uncover temporal patterns in
+the unobservable components of utility, since variation in the
+observable component can be studied by including observable variables
+that describe the temporal evolution of the system. For example, if one
+believes that the utility of one alternative increases over time, it is
+enough to include time $t$ among the independent variables in the
+utility specification. In general, utilities should be expected to be
+correlated both over time and across alternatives, since factors not
+observed by the analyst tend to persist over time. A *probit* model may
+also help identify shocks generating instantaneous (or short-lived)
+changes in the utilities of several alternatives.
+
+Suppose one observes a panel of $N$ customers deciding among $I$
+alternatives over $T$ periods, and that the utility derived by agent
+$n$ from alternative $i$ in period $t$ is given by:
+
+\[
+\begin{array}{cc}
+u_{ni} = v_{nit} + \varepsilon_{nit},  & [\varepsilon_{n11},...,\varepsilon_{nI1},\varepsilon_{n12}, ..., \varepsilon_{nI2},...,\varepsilon_{n1T},...,\varepsilon_{nIT}] \sim N(0,\Sigma)
+\end{array}
+\]
+
+The covariance matrix $\Sigma$ has dimension $IT \times IT$ (as will be
+seen, not all components are identifiable, so restrictions must be
+imposed). For typical panels, $T$ is large and produces very large
+variance-covariance matrices. For example, with weekly purchase data
+for 5 brands over 2 years, one faces an (unnormalized) variance matrix
+with 5 × 104 = 520 rows and 520 columns, generating a model that is
+not only difficult to estimate numerically but also hard to interpret.
+Thus, to use a *probit* model with temporal dependence, one typically
+adds structure to the model. For example, the analysis can be
+restricted to groups of periods, as in decisions before and after a
+system intervention (e.g., before and after the launch of an advertising
+campaign).
 
 :::
 
@@ -1945,13 +2510,61 @@ This approach imposes location and scale restrictions:
 
 ::: {.lang-es}
 
-**Ejemplo.** Para 4 alternativas, la normalización genera una
-matriz $\hat{\boldsymbol{\Sigma}}$ de dimensión $3 \times 3$ cuyas
-componentes son funciones de los $\sigma_{ij}$ originales. Por
-ejemplo:
-$\hat{\sigma}_{22} = \sigma_{22} + \sigma_{11} - 2\sigma_{12}$.
-Tras fijar $\hat{\sigma}_{22} = 1$, se dividen todas las
-componentes por $\hat{\sigma}_{22}$ original.
+**Ejemplo:** Considérese la normalización de una matriz $\Sigma$
+resultante de un problema de elección discreto de 4 alternativas.
+
+\[
+\Sigma =
+\begin{bmatrix}
+\sigma_{11} & \sigma_{12} & \sigma_{13} & \sigma_{13}\\
+\cdot & \sigma_{22} & \sigma_{23} & \sigma_{24}\\
+\cdot & \cdot & \sigma_{33} & \sigma_{34}\\
+\cdot & \cdot & \cdot & \sigma_{44}
+\end{bmatrix}
+\]
+
+El primer paso en la normalización es considerar diferencias de
+utilidades con respecto a una alternativa de referencia, la que por
+simplicidad se escogerá como la primera de la lista. Al fijar esta
+utilidad y tomar las diferencias, se ha reducido la dimensión del
+vector de errores, resultando en una matriz de varianza-covarianza
+$\hat{\Sigma} = \{\hat{\sigma}_{ij}\}^3_{i,j=1}$ cuyas componentes
+vienen dadas por:
+
+\[
+\begin{aligned}
+\hat{\sigma}_{22} &= \sigma_{22} + \sigma_{11} - 2\sigma_{12}\\
+\hat{\sigma}_{33} &= \sigma_{33} + \sigma_{11} - 2\sigma_{13}\\
+\hat{\sigma}_{44} &= \sigma_{44} + \sigma_{11} - 2\sigma_{14}\\
+\hat{\sigma}_{23} &= \sigma_{23} + \sigma_{11} - \sigma_{12} - \sigma_{13}\\
+\hat{\sigma}_{24} &= \sigma_{24} + \sigma_{11} - \sigma_{12} - \sigma_{14}\\
+\hat{\sigma}_{34} &= \sigma_{34} + \sigma_{11} - \sigma_{13} - \sigma_{14}
+\end{aligned}
+\]
+
+El segundo paso en la normalización es fijar en 1 (o cualquier otro
+real positivo) una de las componentes de la diagonal de la matriz de
+varianza covarianza para precisar la escala de la función de utilidad.
+Por simplicidad se escoge la primera componente de la diagonal. Para
+hacerla 1 basta con dividir toda la matriz por dicha componente,
+resultando en una matriz de varianza-covarianza
+$\hat{\Sigma} = \{\hat{\sigma}_{ij}\}^3_{i,j=1}$ cuyas componentes
+vienen dadas por:
+
+\[
+\begin{aligned}
+\hat{\sigma}_{33} &= \frac{\sigma_{33} + \sigma_{11} - 2\sigma_{13}}{\sigma_{22} + \sigma_{11} - 2\sigma_{12}}\\
+\hat{\sigma}_{44} &= \frac{\sigma_{44} + \sigma_{11} - 2\sigma_{14}}{\sigma_{22} + \sigma_{11} - 2\sigma_{12}}\\
+\hat{\sigma}_{23} &= \frac{\sigma_{23} + \sigma_{11} - \sigma_{12} - \sigma_{13}}{\sigma_{22} + \sigma_{11} - 2\sigma_{12}}\\
+\hat{\sigma}_{24} &= \frac{\sigma_{24} + \sigma_{11} - \sigma_{12} - \sigma_{14}}{\sigma_{22} + \sigma_{11} - 2\sigma_{12}}\\
+\hat{\sigma}_{34} &= \frac{\sigma_{34} + \sigma_{11} - \sigma_{13} - \sigma_{14}}{\sigma_{22} + \sigma_{11} - 2\sigma_{12}}
+\end{aligned}
+\]
+
+La matriz resultante $\hat{\Sigma}$ es identificable. En ella es
+importante trazar sus componentes originales de la matriz sigma porque
+ayudan a darle interpretación a los resultados obtenidos en la
+estimación.
 
 :::
 
@@ -1965,30 +2578,100 @@ $\hat{\sigma}_{22} = \sigma_{22} + \sigma_{11} - 2\sigma_{12}$.
 After fixing $\hat{\sigma}_{22} = 1$, all components are divided by
 the original $\hat{\sigma}_{22}$.
 
+\[
+\Sigma =
+\begin{bmatrix}
+\sigma_{11} & \sigma_{12} & \sigma_{13} & \sigma_{13}\\
+\cdot & \sigma_{22} & \sigma_{23} & \sigma_{24}\\
+\cdot & \cdot & \sigma_{33} & \sigma_{34}\\
+\cdot & \cdot & \cdot & \sigma_{44}
+\end{bmatrix}
+\]
+
+The first step in normalization is to consider utility differences with
+respect to a reference alternative, which for simplicity is chosen as
+the first one in the list. By fixing this utility and taking
+differences, the dimension of the error vector is reduced, resulting in
+a variance-covariance matrix
+$\hat{\Sigma} = \{\hat{\sigma}_{ij}\}^3_{i,j=1}$ whose components are:
+
+\[
+\begin{aligned}
+\hat{\sigma}_{22} &= \sigma_{22} + \sigma_{11} - 2\sigma_{12}\\
+\hat{\sigma}_{33} &= \sigma_{33} + \sigma_{11} - 2\sigma_{13}\\
+\hat{\sigma}_{44} &= \sigma_{44} + \sigma_{11} - 2\sigma_{14}\\
+\hat{\sigma}_{23} &= \sigma_{23} + \sigma_{11} - \sigma_{12} - \sigma_{13}\\
+\hat{\sigma}_{24} &= \sigma_{24} + \sigma_{11} - \sigma_{12} - \sigma_{14}\\
+\hat{\sigma}_{34} &= \sigma_{34} + \sigma_{11} - \sigma_{13} - \sigma_{14}
+\end{aligned}
+\]
+
+The second step in normalization is to fix one of the diagonal
+components of the variance-covariance matrix at 1 (or any other
+positive real number) in order to pin down the scale of the utility
+function. For simplicity, the first diagonal component is chosen. To
+make it equal to 1, it is enough to divide the whole matrix by that
+component, resulting in a variance-covariance matrix
+$\hat{\Sigma} = \{\hat{\sigma}_{ij}\}^3_{i,j=1}$ whose components are:
+
+\[
+\begin{aligned}
+\hat{\sigma}_{33} &= \frac{\sigma_{33} + \sigma_{11} - 2\sigma_{13}}{\sigma_{22} + \sigma_{11} - 2\sigma_{12}}\\
+\hat{\sigma}_{44} &= \frac{\sigma_{44} + \sigma_{11} - 2\sigma_{14}}{\sigma_{22} + \sigma_{11} - 2\sigma_{12}}\\
+\hat{\sigma}_{23} &= \frac{\sigma_{23} + \sigma_{11} - \sigma_{12} - \sigma_{13}}{\sigma_{22} + \sigma_{11} - 2\sigma_{12}}\\
+\hat{\sigma}_{24} &= \frac{\sigma_{24} + \sigma_{11} - \sigma_{12} - \sigma_{14}}{\sigma_{22} + \sigma_{11} - 2\sigma_{12}}\\
+\hat{\sigma}_{34} &= \frac{\sigma_{34} + \sigma_{11} - \sigma_{13} - \sigma_{14}}{\sigma_{22} + \sigma_{11} - 2\sigma_{12}}
+\end{aligned}
+\]
+
+The resulting matrix $\hat{\Sigma}$ is identifiable. It is important to
+trace its components back to those of the original sigma matrix because
+this helps give interpretation to the estimated results.
+
 :::
 
 #### Restricciones estructurales {-}
 
 ::: {.lang-es}
 
-Un enfoque alternativo consiste en imponer estructura sobre
-$\boldsymbol{\Sigma}$ basándose en supuestos de comportamiento
----por ejemplo, que ciertos pares de alternativas no están
-correlacionados o que un grupo de alternativas tiene la misma
-variabilidad no observable. Este enfoque permite interpretar
-directamente los parámetros estimados, a costa de menor
-generalidad.
+Aunque completamente general, la normalización descrita en la sección
+anterior, muchas veces puede ser algo inconveniente en cuanto los
+parámetros estimados no tienen interpretación directa. Un enfoque que
+permite interpretar directamente los parámetros se obtiene al imponer
+estructura sobre la matriz de varianza-covarianza a partir de
+supuestos de comportamiento. Por ejemplo, se puede imponer que las
+componentes aleatorias de algunos pares de alternativas no están
+correlacionadas o que algún grupo de alternativas tiene la misma
+variabilidad de la componente no observable.
+
+Otros modelos usados en la literatura y que están implementados en
+aplicaciones comerciales incluyen estructuras de bandas,
+Huynh-Feldt, autoregresivo heterogéneo y simetría compuesta. Como en
+otros aspectos de la modelación, la elección de la estructura a elegir
+para la matriz de varianza-covarianza dependerá de las hipótesis de
+comportamiento que se tengan a la mano y la dificultad numérica de
+estimar el modelo resultante.
 
 :::
 
 ::: {.lang-en}
 
-An alternative approach imposes structure on
-$\boldsymbol{\Sigma}$ based on behavioral assumptions ---for
-example, that certain pairs of alternatives are uncorrelated or that
-a group of alternatives shares the same unobservable variability.
-This approach allows direct interpretation of the estimated
-parameters, at the cost of reduced generality.
+Although completely general, the normalization described in the
+previous section can often be somewhat inconvenient because the
+estimated parameters do not have a direct interpretation. An approach
+that allows direct interpretation of the parameters is obtained by
+imposing structure on the variance-covariance matrix based on
+behavioral assumptions. For example, one may impose that the random
+components of some pairs of alternatives are uncorrelated or that some
+group of alternatives has the same variability in the unobservable
+component.
+
+Other models used in the literature and implemented in commercial
+applications include banded structures, Huynh-Feldt, heterogeneous
+autoregressive, and compound symmetry. As in other aspects of
+modeling, the choice of structure for the variance-covariance matrix
+will depend on the behavioral hypotheses at hand and on the numerical
+difficulty of estimating the resulting model.
 
 :::
 
@@ -3178,7 +3861,7 @@ preference distribution is smooth and continuous.
 :::
 
 
-## Sumario de la unidad {#estr-sumario data-en="Unit Summary"}
+## Resumen {#estr-sumario data-en="Summary"}
 
 ::: {.lang-es}
 
@@ -5666,5 +6349,3 @@ c) To model a Type II Tobit, two stages are defined. Let $g$ be the activity gro
 :::
 
 </details>
-
-
