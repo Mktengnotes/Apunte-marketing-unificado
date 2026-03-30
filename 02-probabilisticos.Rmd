@@ -3012,6 +3012,22 @@ Algunos supuestos son:
     caracterizada por una distribución exponencial, con densidad y
     función de sobrevivencia dadas por:
 
+    \[
+    f(t\mid\lambda) = \lambda e^{-\lambda t}
+    \tag{2.59}\]
+
+    \[
+    S(t\mid\lambda) = e^{-\lambda t}
+    \tag{2.60}\]
+
+2.  La heterogeneidad en $\lambda$ es capturada por una distribución
+    $\text{Gamma}$:
+
+    \[
+    g(\lambda\mid r,\alpha) =
+    \frac{\alpha^r\lambda^{r-1}e^{-\alpha\lambda}}{\Gamma(r)}
+    \tag{2.61}\]
+
 :::
 
 ::: {.lang-en}
@@ -3022,34 +3038,23 @@ Some assumptions are:
     characterized by an exponential distribution, with density and
     survival function given by:
 
-:::
+    \[
+    f(t\mid\lambda) = \lambda e^{-\lambda t}
+    \tag{2.59}\]
 
-\[
-f(t\mid\lambda) = \lambda e^{-\lambda t}
-\tag{2.59}\]
-
-\[
-S(t\mid\lambda) = e^{-\lambda t}
-\tag{2.60}\]
-
-::: {.lang-es}
-
-2.  La heterogeneidad en $\lambda$ es capturada por una distribución
-    $\text{Gamma}$:
-
-:::
-
-::: {.lang-en}
+    \[
+    S(t\mid\lambda) = e^{-\lambda t}
+    \tag{2.60}\]
 
 2.  Heterogeneity in $\lambda$ is captured by a $\text{Gamma}$
     distribution:
 
-:::
+    \[
+    g(\lambda\mid r,\alpha) =
+    \frac{\alpha^r\lambda^{r-1}e^{-\alpha\lambda}}{\Gamma(r)}
+    \tag{2.61}\]
 
-\[
-g(\lambda\mid r,\alpha) =
-\frac{\alpha^r\lambda^{r-1}e^{-\alpha\lambda}}{\Gamma(r)}
-\tag{2.61}\]
+:::
 
 ::: {.lang-es}
 

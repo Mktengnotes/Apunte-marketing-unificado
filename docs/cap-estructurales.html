@@ -4810,35 +4810,51 @@ Ver solución
 </summary>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li>Se calcula la probabilidad condicional de asistir al evento condicional en que esperó:
-<span class="math display">\[P_{A|E} = \frac{\exp(\alpha_3 - \beta p_2)}{\exp(\alpha_3 - \beta p_2) + 1}\]</span></li>
-</ol>
-<p>Luego, la probabilidad de esperar sin comprar en la preventa:
-<span class="math display">\[P_E = \frac{\exp(\lambda\, IV_E)}{\exp(\lambda\, IV_P) + \exp(\lambda\, IV_E)}\]</span></p>
-<p>donde <span class="math inline">\(IV_P\)</span> y <span class="math inline">\(IV_E\)</span> son los valores inclusivos:
-<span class="math display">\[IV_P = \ln(\exp(\alpha_1 - \beta p_1) + \exp(\alpha_2 - \beta p_1))\]</span>
-<span class="math display">\[IV_E = \ln(\exp(\alpha_3 - \beta p_2) + 1)\]</span></p>
-<p>Finalmente: <span class="math inline">\(P_{EA} = P_{A|E} \cdot P_E\)</span></p>
-<ol start="2" style="list-style-type: decimal">
-<li><p>Se aplica directamente la definición de la verosimilitud:
-<span class="math display">\[LL(\theta) = \sum_n \sum_{i \in I} y_{ni} \ln(P_i(\theta))\]</span></p></li>
+<li><p>Se calcula la probabilidad condicional de asistir al evento condicional en que esperó:</p>
+<p><span class="math display">\[
+P_{A|E} = \frac{\exp(\alpha_3 - \beta p_2)}{\exp(\alpha_3 - \beta p_2) + 1}
+\]</span></p>
+<p>Luego, la probabilidad de esperar sin comprar en la preventa:</p>
+<p><span class="math display">\[
+P_E = \frac{\exp(\lambda\, IV_E)}{\exp(\lambda\, IV_P) + \exp(\lambda\, IV_E)}
+\]</span></p>
+<p>donde <span class="math inline">\(IV_P\)</span> y <span class="math inline">\(IV_E\)</span> son los valores inclusivos:</p>
+<p><span class="math display">\[
+IV_P = \ln(\exp(\alpha_1 - \beta p_1) + \exp(\alpha_2 - \beta p_1))
+\]</span>
+<span class="math display">\[
+IV_E = \ln(\exp(\alpha_3 - \beta p_2) + 1)
+\]</span></p>
+<p>Finalmente: <span class="math inline">\(P_{EA} = P_{A|E} \cdot P_E\)</span></p></li>
+<li><p>Se aplica directamente la definición de la verosimilitud:</p>
+<p><span class="math display">\[
+LL(\theta) = \sum_n \sum_{i \in I} y_{ni} \ln(P_i(\theta))
+\]</span></p></li>
 <li><p>Imponer que <span class="math inline">\(\alpha_1 = \alpha_3\)</span> implicaría que la utilidad intrínseca que los clientes derivan por asistir al evento es la misma independiente de si compraron en la preventa o no. Imponer que <span class="math inline">\(\alpha_2 = 0\)</span> implicaría que no hay una pérdida de utilidad por comprar los boletos y no asistir más allá del precio pagado. Para testear cada hipótesis, se usa test de ratios de verosimilitud: (i) el cálculo de la log-verosimilitud de los modelos con (<span class="math inline">\(LL_A\)</span>) y sin (<span class="math inline">\(LL_B\)</span>) restricciones, (ii) el cálculo del estadístico <span class="math inline">\(LR = 2(LL_A - LL_B)\)</span> y (iii) la comparación contra el valor crítico de una <span class="math inline">\(\chi^2_1\)</span>.</p></li>
 </ol>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
-<li>The conditional probability of attending the event given that the customer waited is computed:
-<span class="math display">\[P_{A|E} = \frac{\exp(\alpha_3 - \beta p_2)}{\exp(\alpha_3 - \beta p_2) + 1}\]</span></li>
-</ol>
-<p>Then, the probability of waiting without buying in the pre-sale:
-<span class="math display">\[P_E = \frac{\exp(\lambda\, IV_E)}{\exp(\lambda\, IV_P) + \exp(\lambda\, IV_E)}\]</span></p>
-<p>where <span class="math inline">\(IV_P\)</span> and <span class="math inline">\(IV_E\)</span> are the inclusive values:
-<span class="math display">\[IV_P = \ln(\exp(\alpha_1 - \beta p_1) + \exp(\alpha_2 - \beta p_1))\]</span>
-<span class="math display">\[IV_E = \ln(\exp(\alpha_3 - \beta p_2) + 1)\]</span></p>
-<p>Finally: <span class="math inline">\(P_{EA} = P_{A|E} \cdot P_E\)</span></p>
-<ol start="2" style="list-style-type: decimal">
-<li><p>The likelihood definition is applied directly:
-<span class="math display">\[LL(\theta) = \sum_n \sum_{i \in I} y_{ni} \ln(P_i(\theta))\]</span></p></li>
+<li><p>The conditional probability of attending the event given that the customer waited is computed:</p>
+<p><span class="math display">\[
+P_{A|E} = \frac{\exp(\alpha_3 - \beta p_2)}{\exp(\alpha_3 - \beta p_2) + 1}
+\]</span></p>
+<p>Then, the probability of waiting without buying in the pre-sale:</p>
+<p><span class="math display">\[
+P_E = \frac{\exp(\lambda\, IV_E)}{\exp(\lambda\, IV_P) + \exp(\lambda\, IV_E)}
+\]</span></p>
+<p>where <span class="math inline">\(IV_P\)</span> and <span class="math inline">\(IV_E\)</span> are the inclusive values:</p>
+<p><span class="math display">\[
+IV_P = \ln(\exp(\alpha_1 - \beta p_1) + \exp(\alpha_2 - \beta p_1))
+\]</span>
+<span class="math display">\[
+IV_E = \ln(\exp(\alpha_3 - \beta p_2) + 1)
+\]</span></p>
+<p>Finally: <span class="math inline">\(P_{EA} = P_{A|E} \cdot P_E\)</span></p></li>
+<li><p>The likelihood definition is applied directly:</p>
+<p><span class="math display">\[
+LL(\theta) = \sum_n \sum_{i \in I} y_{ni} \ln(P_i(\theta))
+\]</span></p></li>
 <li><p>Imposing <span class="math inline">\(\alpha_1 = \alpha_3\)</span> would imply that the intrinsic utility customers derive from attending the event is the same regardless of whether they purchased in the pre-sale or not. Imposing <span class="math inline">\(\alpha_2 = 0\)</span> would imply that there is no utility loss from buying tickets and not attending beyond the price paid. To test each hypothesis, the likelihood ratio test is used: (i) compute the log-likelihood of models with (<span class="math inline">\(LL_A\)</span>) and without (<span class="math inline">\(LL_B\)</span>) restrictions, (ii) compute the statistic <span class="math inline">\(LR = 2(LL_A - LL_B)\)</span>, and (iii) compare against the critical value of a <span class="math inline">\(\chi^2_1\)</span>.</p></li>
 </ol>
 </div>
@@ -4858,26 +4874,23 @@ Ver solución
 </div>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li>Muestre que si <span class="math inline">\(s_t\)</span> es la participación de mercado del producto, los parámetros <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> y <span class="math inline">\(\gamma\)</span> pueden estimarse usando un enfoque de mínimos cuadrados ordinarios sobre la siguiente ecuación:</li>
+<li><p>Muestre que si <span class="math inline">\(s_t\)</span> es la participación de mercado del producto, los parámetros <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> y <span class="math inline">\(\gamma\)</span> pueden estimarse usando un enfoque de mínimos cuadrados ordinarios sobre la siguiente ecuación:</p>
+<p><span class="math display">\[
+\ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t
+\]</span></p></li>
 </ol>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
-<li>Show that if <span class="math inline">\(s_t\)</span> is the product’s market share, the parameters <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, and <span class="math inline">\(\gamma\)</span> can be estimated using an ordinary least squares approach on the following equation:</li>
-</ol>
-</div>
-<p><span class="math display">\[\ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t\]</span></p>
-<div class="lang-es">
-<ol start="2" style="list-style-type: decimal">
-<li>Usando un enfoque de regresión se ha estimado el modelo, obteniendo los siguientes resultados:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: decimal">
-<li>Using a regression approach, the model has been estimated, yielding the following results:</li>
+<li><p>Show that if <span class="math inline">\(s_t\)</span> is the product’s market share, the parameters <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span>, and <span class="math inline">\(\gamma\)</span> can be estimated using an ordinary least squares approach on the following equation:</p>
+<p><span class="math display">\[
+\ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t
+\]</span></p></li>
 </ol>
 </div>
 <div class="lang-es">
+<ol start="2" style="list-style-type: decimal">
+<li><p>Usando un enfoque de regresión se ha estimado el modelo, obteniendo los siguientes resultados:</p>
 <table>
 <caption><span id="tab:estr-p7-mle">Table 3.8: </span> Estimadores del modelo de gasto publicitario.</caption>
 <thead>
@@ -4905,8 +4918,12 @@ Ver solución
 </tr>
 </tbody>
 </table>
+<p>Si se mantiene el precio constante en 1 y el gasto publicitario sube de 10 a 20, ¿cuántos puntos porcentuales aumenta la demanda por el producto?</p></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol start="2" style="list-style-type: decimal">
+<li><p>Using a regression approach, the model has been estimated, yielding the following results:</p>
 <table>
 <caption><span id="tab:estr-p7-mle">Table 3.8: </span> Advertising expenditure model estimates.</caption>
 <thead>
@@ -4934,12 +4951,8 @@ Ver solución
 </tr>
 </tbody>
 </table>
-</div>
-<div class="lang-es">
-<p>Si se mantiene el precio constante en 1 y el gasto publicitario sube de 10 a 20, ¿cuántos puntos porcentuales aumenta la demanda por el producto?</p>
-</div>
-<div class="lang-en">
-<p>If the price is held constant at 1 and advertising expenditure increases from 10 to 20, by how many percentage points does demand for the product increase?</p>
+<p>If the price is held constant at 1 and advertising expenditure increases from 10 to 20, by how many percentage points does demand for the product increase?</p></li>
+</ol>
 </div>
 <details>
 <summary>
@@ -4947,39 +4960,59 @@ Ver solución
 </summary>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li>Aplicando la definición del modelo logit:
-<span class="math display">\[s_t = \frac{\exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}\]</span>
-<span class="math display">\[1 - s_t = \frac{1}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}\]</span></li>
+<li><p>Aplicando la definición del modelo logit:</p>
+<p><span class="math display">\[
+s_t = \frac{\exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}
+\]</span>
+<span class="math display">\[
+1 - s_t = \frac{1}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}
+\]</span></p>
+<p>Como los denominadores son iguales:</p>
+<p><span class="math display">\[
+\frac{s_t}{1-s_t} = \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)
+\]</span></p>
+<p>Aplicando logaritmo:</p>
+<p><span class="math display">\[
+\ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t
+\]</span></p>
+<p>Como <span class="math inline">\(\nu_t\)</span> está normalmente distribuido, se satisfacen las condiciones para aplicar mínimos cuadrados ordinarios.</p></li>
+<li><p>Se evalúa directamente:</p>
+<p><span class="math display">\[
+s_t(ADV_t = 10) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)} = 0.792
+\]</span>
+<span class="math display">\[
+s_t(ADV_t = 20) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)} = 0.988
+\]</span></p>
+<p>Por lo tanto hay un incremento de <span class="math inline">\(\Delta = 19.6\)</span> puntos porcentuales.</p></li>
 </ol>
-<p>Como los denominadores son iguales:
-<span class="math display">\[\frac{s_t}{1-s_t} = \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)\]</span></p>
-<p>Aplicando logaritmo:
-<span class="math display">\[\ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t\]</span></p>
-<p>Como <span class="math inline">\(\nu_t\)</span> está normalmente distribuido, se satisfacen las condiciones para aplicar mínimos cuadrados ordinarios.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Se evalúa directamente:
-<span class="math display">\[s_t(ADV_t = 10) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)} = 0.792\]</span>
-<span class="math display">\[s_t(ADV_t = 20) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)} = 0.988\]</span></li>
-</ol>
-<p>Por lo tanto hay un incremento de <span class="math inline">\(\Delta = 19.6\)</span> puntos porcentuales.</p>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
-<li>Applying the logit model definition:
-<span class="math display">\[s_t = \frac{\exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}\]</span>
-<span class="math display">\[1 - s_t = \frac{1}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}\]</span></li>
+<li><p>Applying the logit model definition:</p>
+<p><span class="math display">\[
+s_t = \frac{\exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}
+\]</span>
+<span class="math display">\[
+1 - s_t = \frac{1}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}
+\]</span></p>
+<p>Since the denominators are equal:</p>
+<p><span class="math display">\[
+\frac{s_t}{1-s_t} = \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)
+\]</span></p>
+<p>Taking logarithms:</p>
+<p><span class="math display">\[
+\ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t
+\]</span></p>
+<p>Since <span class="math inline">\(\nu_t\)</span> is normally distributed, the conditions for applying ordinary least squares are satisfied.</p></li>
+<li><p>Direct evaluation:</p>
+<p><span class="math display">\[
+s_t(ADV_t = 10) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)} = 0.792
+\]</span>
+<span class="math display">\[
+s_t(ADV_t = 20) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)} = 0.988
+\]</span></p>
+<p>Therefore, there is an increase of <span class="math inline">\(\Delta = 19.6\)</span> percentage points.</p></li>
 </ol>
-<p>Since the denominators are equal:
-<span class="math display">\[\frac{s_t}{1-s_t} = \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)\]</span></p>
-<p>Taking logarithms:
-<span class="math display">\[\ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t\]</span></p>
-<p>Since <span class="math inline">\(\nu_t\)</span> is normally distributed, the conditions for applying ordinary least squares are satisfied.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Direct evaluation:
-<span class="math display">\[s_t(ADV_t = 10) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)} = 0.792\]</span>
-<span class="math display">\[s_t(ADV_t = 20) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)} = 0.988\]</span></li>
-</ol>
-<p>Therefore, there is an increase of <span class="math inline">\(\Delta = 19.6\)</span> percentage points.</p>
 </div>
 </details>
 </div>
@@ -5013,65 +5046,29 @@ Ver solución
 </div>
 <div class="lang-es">
 <ol start="3" style="list-style-type: decimal">
-<li>Un largo debate en el ámbito de la planificación comercial es el rol que juega la publicidad en afectar el comportamiento del consumidor. El primer argumento indica que la publicidad afecta directamente la utilidad de elección. El segundo indica que la publicidad hace a los consumidores menos sensibles al precio. Siguiendo los pasos indicados, proponga un procedimiento para determinar cuál de estos argumentos describe mejor el comportamiento de los clientes:</li>
+<li>Un largo debate en el ámbito de la planificación comercial es el rol que juega la publicidad en afectar el comportamiento del consumidor. El primer argumento indica que la publicidad afecta directamente la utilidad de elección. El segundo indica que la publicidad hace a los consumidores menos sensibles al precio. Siguiendo los pasos indicados, proponga un procedimiento para determinar cuál de estos argumentos describe mejor el comportamiento de los clientes:
+<ol style="list-style-type: lower-alpha">
+<li>Proponga una métrica para capturar la intensidad acumulada de la publicidad.</li>
+<li>Usando una métrica de intensidad acumulada de publicidad, escriba la función de utilidad que ejemplifique el efecto directo.</li>
+<li>Usando una métrica de intensidad acumulada de publicidad, escriba la función de utilidad que ejemplifique el efecto indirecto a través de la sensibilidad al precio.</li>
+<li>Describa cómo evaluaría cuál de los dos modelos describe mejor el comportamiento de compra.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-en">
 <ol start="3" style="list-style-type: decimal">
-<li>A long-standing debate in commercial planning concerns the role advertising plays in affecting consumer behavior. The first argument holds that advertising directly affects choice utility. The second holds that advertising makes consumers less price sensitive. Following the steps indicated, propose a procedure to determine which of these arguments better describes customer behavior:</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol style="list-style-type: lower-alpha">
-<li>Proponga una métrica para capturar la intensidad acumulada de la publicidad.</li>
-</ol>
-</div>
-<div class="lang-en">
+<li>A long-standing debate in commercial planning concerns the role advertising plays in affecting consumer behavior. The first argument holds that advertising directly affects choice utility. The second holds that advertising makes consumers less price sensitive. Following the steps indicated, propose a procedure to determine which of these arguments better describes customer behavior:
 <ol style="list-style-type: lower-alpha">
 <li>Propose a metric to capture the cumulative intensity of advertising.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Usando una métrica de intensidad acumulada de publicidad, escriba la función de utilidad que ejemplifique el efecto directo.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: lower-alpha">
 <li>Using a cumulative advertising intensity metric, write the utility function that exemplifies the direct effect.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="3" style="list-style-type: lower-alpha">
-<li>Usando una métrica de intensidad acumulada de publicidad, escriba la función de utilidad que ejemplifique el efecto indirecto a través de la sensibilidad al precio.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="3" style="list-style-type: lower-alpha">
 <li>Using a cumulative advertising intensity metric, write the utility function that exemplifies the indirect effect through price sensitivity.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="4" style="list-style-type: lower-alpha">
-<li>Describa cómo evaluaría cuál de los dos modelos describe mejor el comportamiento de compra.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="4" style="list-style-type: lower-alpha">
 <li>Describe how you would evaluate which of the two models better describes purchasing behavior.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-es">
 <ol start="4" style="list-style-type: decimal">
-<li>Se ha acordado estimar dos modelos sin heterogeneidad. El primero (M1) considera solo un intercepto y una variable de lealtad. El segundo (M2) además considera precio, promoción y el efecto directo de la publicidad. Los estimadores máximo verosímiles son:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="4" style="list-style-type: decimal">
-<li>It has been agreed to estimate two models without heterogeneity. The first (M1) considers only an intercept and a loyalty variable. The second (M2) additionally considers price, promotion, and the direct effect of advertising. The maximum likelihood estimators are:</li>
-</ol>
-</div>
-<div class="lang-es">
+<li><p>Se ha acordado estimar dos modelos sin heterogeneidad. El primero (M1) considera solo un intercepto y una variable de lealtad. El segundo (M2) además considera precio, promoción y el efecto directo de la publicidad. Los estimadores máximo verosímiles son:</p>
 <table>
 <caption><span id="tab:estr-p8-modelos">Table 3.9: </span> Estimadores máximo verosímiles de los modelos M1 y M2.</caption>
 <thead>
@@ -5119,8 +5116,12 @@ Ver solución
 </tr>
 </tbody>
 </table>
+<p>Discuta si los valores de X, Y y Z deberían ser mayores o menores que los del M1.</p></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol start="4" style="list-style-type: decimal">
+<li><p>It has been agreed to estimate two models without heterogeneity. The first (M1) considers only an intercept and a loyalty variable. The second (M2) additionally considers price, promotion, and the direct effect of advertising. The maximum likelihood estimators are:</p>
 <table>
 <caption><span id="tab:estr-p8-modelos">Table 3.9: </span> Maximum likelihood estimates for models M1 and M2.</caption>
 <thead>
@@ -5168,12 +5169,8 @@ Ver solución
 </tr>
 </tbody>
 </table>
-</div>
-<div class="lang-es">
-<p>Discuta si los valores de X, Y y Z deberían ser mayores o menores que los del M1.</p>
-</div>
-<div class="lang-en">
-<p>Discuss whether the values of X, Y, and Z should be greater or less than those of M1.</p>
+<p>Discuss whether the values of X, Y, and Z should be greater or less than those of M1.</p></li>
+</ol>
 </div>
 <details>
 <summary>
@@ -5181,16 +5178,24 @@ Ver solución
 </summary>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li><p>Como la componente aleatoria se distribuye valor extremo tipo I, resulta un modelo logit:
-<span class="math display">\[LL = \sum_n \sum_t y_{nt} \ln\frac{\exp(\beta_0&#39; x_{nt})}{1 + \exp(\beta_0&#39; x_{nt})} + (1-y_{nt}) \ln\frac{1}{1 + \exp(\beta_0&#39; x_{nt})}\]</span></p></li>
+<li><p>Como la componente aleatoria se distribuye valor extremo tipo I, resulta un modelo logit:</p>
+<p><span class="math display">\[
+LL = \sum_n \sum_t y_{nt} \ln\frac{\exp(\beta_0&#39; x_{nt})}{1 + \exp(\beta_0&#39; x_{nt})} + (1-y_{nt}) \ln\frac{1}{1 + \exp(\beta_0&#39; x_{nt})}
+\]</span></p></li>
 <li><p>Si no hay variabilidad en el precio, no se puede estimar su efecto. Se podrían recolectar datos sobre actividades promocionales que hagan variar el precio de lista (cupones, promociones) o sobre precios de alternativas cercanas.</p></li>
 <li><ol style="list-style-type: lower-alpha">
-<li><p>Se puede usar una media móvil. Sea <span class="math inline">\(a_t = 1\)</span> si la firma repartió volantes en la semana <span class="math inline">\(t\)</span> y <span class="math inline">\(\lambda \in (0,1)\)</span>:
-<span class="math display">\[ADV_t = \lambda\, ADV_{t-1} + (1-\lambda)\, a_{t-1}\]</span></p></li>
-<li><p>La publicidad acumulada entra aditivamente en la utilidad:
-<span class="math display">\[u_{nt} = \beta_0&#39; x_{nt} + \delta\, ADV_t + \varepsilon_{nt}\]</span></p></li>
-<li><p>La publicidad acumulada entra en la sensibilidad al precio:
-<span class="math display">\[u_{nt} = \beta_0&#39; w_{nt} + (\beta_1 + \delta\, ADV_t)\, PRICE_{nt} + \varepsilon_{nt}\]</span></p></li>
+<li><p>Se puede usar una media móvil. Sea <span class="math inline">\(a_t = 1\)</span> si la firma repartió volantes en la semana <span class="math inline">\(t\)</span> y <span class="math inline">\(\lambda \in (0,1)\)</span>:</p>
+<p><span class="math display">\[
+ADV_t = \lambda\, ADV_{t-1} + (1-\lambda)\, a_{t-1}
+\]</span></p></li>
+<li><p>La publicidad acumulada entra aditivamente en la utilidad:</p>
+<p><span class="math display">\[
+u_{nt} = \beta_0&#39; x_{nt} + \delta\, ADV_t + \varepsilon_{nt}
+\]</span></p></li>
+<li><p>La publicidad acumulada entra en la sensibilidad al precio:</p>
+<p><span class="math display">\[
+u_{nt} = \beta_0&#39; w_{nt} + (\beta_1 + \delta\, ADV_t)\, PRICE_{nt} + \varepsilon_{nt}
+\]</span></p></li>
 <li><p>Se estiman ambos modelos y se comparan métricas como pseudo-<span class="math inline">\(R^2\)</span>, AIC, BIC y MAPE.</p></li>
 </ol></li>
 <li><p>Como hay más variables explicativas, <span class="math inline">\(-2LL\)</span> debiera ser menor o igual (Y &lt; 20.17). Como BIC penaliza usar más variables, Z puede subir o bajar. Por último, X debiera subir, porque al no controlar por promoción y publicidad, no se pueden identificar variaciones en la oferta que expliquen que clientes leales dejen de comprar.</p></li>
@@ -5198,16 +5203,24 @@ Ver solución
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
-<li><p>Since the random component follows an extreme value type I distribution, the result is a logit model:
-<span class="math display">\[LL = \sum_n \sum_t y_{nt} \ln\frac{\exp(\beta_0&#39; x_{nt})}{1 + \exp(\beta_0&#39; x_{nt})} + (1-y_{nt}) \ln\frac{1}{1 + \exp(\beta_0&#39; x_{nt})}\]</span></p></li>
+<li><p>Since the random component follows an extreme value type I distribution, the result is a logit model:</p>
+<p><span class="math display">\[
+LL = \sum_n \sum_t y_{nt} \ln\frac{\exp(\beta_0&#39; x_{nt})}{1 + \exp(\beta_0&#39; x_{nt})} + (1-y_{nt}) \ln\frac{1}{1 + \exp(\beta_0&#39; x_{nt})}
+\]</span></p></li>
 <li><p>If there is no price variability, its effect cannot be estimated. Data could be collected on promotional activities that vary the list price (coupons, promotions) or on prices of close substitutes.</p></li>
 <li><ol style="list-style-type: lower-alpha">
-<li><p>A moving average can be used. Let <span class="math inline">\(a_t = 1\)</span> if the firm distributed flyers in week <span class="math inline">\(t\)</span> and <span class="math inline">\(\lambda \in (0,1)\)</span>:
-<span class="math display">\[ADV_t = \lambda\, ADV_{t-1} + (1-\lambda)\, a_{t-1}\]</span></p></li>
-<li><p>Accumulated advertising enters the utility additively:
-<span class="math display">\[u_{nt} = \beta_0&#39; x_{nt} + \delta\, ADV_t + \varepsilon_{nt}\]</span></p></li>
-<li><p>Accumulated advertising enters through price sensitivity:
-<span class="math display">\[u_{nt} = \beta_0&#39; w_{nt} + (\beta_1 + \delta\, ADV_t)\, PRICE_{nt} + \varepsilon_{nt}\]</span></p></li>
+<li><p>A moving average can be used. Let <span class="math inline">\(a_t = 1\)</span> if the firm distributed flyers in week <span class="math inline">\(t\)</span> and <span class="math inline">\(\lambda \in (0,1)\)</span>:</p>
+<p><span class="math display">\[
+ADV_t = \lambda\, ADV_{t-1} + (1-\lambda)\, a_{t-1}
+\]</span></p></li>
+<li><p>Accumulated advertising enters the utility additively:</p>
+<p><span class="math display">\[
+u_{nt} = \beta_0&#39; x_{nt} + \delta\, ADV_t + \varepsilon_{nt}
+\]</span></p></li>
+<li><p>Accumulated advertising enters through price sensitivity:</p>
+<p><span class="math display">\[
+u_{nt} = \beta_0&#39; w_{nt} + (\beta_1 + \delta\, ADV_t)\, PRICE_{nt} + \varepsilon_{nt}
+\]</span></p></li>
 <li><p>Both models are estimated and metrics such as pseudo-<span class="math inline">\(R^2\)</span>, AIC, BIC, and MAPE are compared.</p></li>
 </ol></li>
 <li><p>With more explanatory variables, <span class="math inline">\(-2LL\)</span> should be less than or equal (Y &lt; 20.17). Since BIC penalizes using more variables, Z may increase or decrease. Finally, X should increase, because without controlling for promotion and advertising, variations in the offer that explain why loyal customers stop buying cannot be identified.</p></li>
@@ -5277,30 +5290,38 @@ Ver solución
 </summary>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li>Bajo un modelo logit, la probabilidad de que el cliente <span class="math inline">\(n\)</span> compre el producto <span class="math inline">\(i\)</span> en el día <span class="math inline">\(t\)</span> viene dada por:
-<span class="math display">\[p_{nit} = \frac{\exp(v_{nit})}{1 + \exp(v_{nit})}\]</span></li>
-</ol>
-<p>Si <span class="math inline">\(y_{nit}\)</span> toma el valor 1 si el cliente <span class="math inline">\(n\)</span> compró el producto <span class="math inline">\(i\)</span> en <span class="math inline">\(t\)</span>:
-<span class="math display">\[LL = \sum_i \sum_t \sum_{n=1}^{N_t} y_{nit} \ln(p_{nit}) + (1-y_{nit}) \ln(1-p_{nit})\]</span></p>
-<ol start="2" style="list-style-type: decimal">
+<li><p>Bajo un modelo logit, la probabilidad de que el cliente <span class="math inline">\(n\)</span> compre el producto <span class="math inline">\(i\)</span> en el día <span class="math inline">\(t\)</span> viene dada por:</p>
+<p><span class="math display">\[
+p_{nit} = \frac{\exp(v_{nit})}{1 + \exp(v_{nit})}
+\]</span></p>
+<p>Si <span class="math inline">\(y_{nit}\)</span> toma el valor 1 si el cliente <span class="math inline">\(n\)</span> compró el producto <span class="math inline">\(i\)</span> en <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[
+LL = \sum_i \sum_t \sum_{n=1}^{N_t} y_{nit} \ln(p_{nit}) + (1-y_{nit}) \ln(1-p_{nit})
+\]</span></p></li>
 <li><p>La elección es binaria, por lo que la matriz de varianza-covarianza tiene dos filas y dos columnas. Se puede argumentar también que por temas de identificación hay solo un parámetro identificable.</p></li>
 <li><p>El número esperado es directamente <span class="math inline">\(\sum_{n=1}^{N_t} p_{nit}\)</span>.</p></li>
-<li><p>La expresión es idéntica, pero ahora se debe aproximar <span class="math inline">\(p_{nit}\)</span>:
-<span class="math display">\[p_{nit} \approx \frac{1}{R} \sum_{r=1}^R \frac{\exp(v_{nit}(\theta^r))}{1 + \exp(v_{nit}(\theta^r))}\]</span></p></li>
+<li><p>La expresión es idéntica, pero ahora se debe aproximar <span class="math inline">\(p_{nit}\)</span>:</p>
+<p><span class="math display">\[
+p_{nit} \approx \frac{1}{R} \sum_{r=1}^R \frac{\exp(v_{nit}(\theta^r))}{1 + \exp(v_{nit}(\theta^r))}
+\]</span></p></li>
 </ol>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
-<li>Under a logit model, the probability that customer <span class="math inline">\(n\)</span> buys product <span class="math inline">\(i\)</span> on day <span class="math inline">\(t\)</span> is given by:
-<span class="math display">\[p_{nit} = \frac{\exp(v_{nit})}{1 + \exp(v_{nit})}\]</span></li>
-</ol>
-<p>If <span class="math inline">\(y_{nit}\)</span> takes the value 1 if customer <span class="math inline">\(n\)</span> bought product <span class="math inline">\(i\)</span> on day <span class="math inline">\(t\)</span>:
-<span class="math display">\[LL = \sum_i \sum_t \sum_{n=1}^{N_t} y_{nit} \ln(p_{nit}) + (1-y_{nit}) \ln(1-p_{nit})\]</span></p>
-<ol start="2" style="list-style-type: decimal">
+<li><p>Under a logit model, the probability that customer <span class="math inline">\(n\)</span> buys product <span class="math inline">\(i\)</span> on day <span class="math inline">\(t\)</span> is given by:</p>
+<p><span class="math display">\[
+p_{nit} = \frac{\exp(v_{nit})}{1 + \exp(v_{nit})}
+\]</span></p>
+<p>If <span class="math inline">\(y_{nit}\)</span> takes the value 1 if customer <span class="math inline">\(n\)</span> bought product <span class="math inline">\(i\)</span> on day <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[
+LL = \sum_i \sum_t \sum_{n=1}^{N_t} y_{nit} \ln(p_{nit}) + (1-y_{nit}) \ln(1-p_{nit})
+\]</span></p></li>
 <li><p>The choice is binary, so the variance-covariance matrix has two rows and two columns. One can also argue that for identification purposes there is only one identifiable parameter.</p></li>
 <li><p>The expected number is directly <span class="math inline">\(\sum_{n=1}^{N_t} p_{nit}\)</span>.</p></li>
-<li><p>The expression is identical, but now <span class="math inline">\(p_{nit}\)</span> must be approximated:
-<span class="math display">\[p_{nit} \approx \frac{1}{R} \sum_{r=1}^R \frac{\exp(v_{nit}(\theta^r))}{1 + \exp(v_{nit}(\theta^r))}\]</span></p></li>
+<li><p>The expression is identical, but now <span class="math inline">\(p_{nit}\)</span> must be approximated:</p>
+<p><span class="math display">\[
+p_{nit} \approx \frac{1}{R} \sum_{r=1}^R \frac{\exp(v_{nit}(\theta^r))}{1 + \exp(v_{nit}(\theta^r))}
+\]</span></p></li>
 </ol>
 </div>
 </details>

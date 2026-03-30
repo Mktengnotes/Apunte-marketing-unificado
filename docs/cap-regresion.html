@@ -7020,20 +7020,10 @@ restrictions in the training strategy?</p></li>
 </summary>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li>La respuesta más clara es la satisfacción de los usuarios
+<li><p>La respuesta más clara es la satisfacción de los usuarios
 (Experience). Sin embargo, resulta a todas luces insuficiente. Es
 necesario tener un acercamiento hacia la reflexión de los siguientes
-puntos:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol style="list-style-type: decimal">
-<li>The clearest answer is user satisfaction (Experience). However, this
-is clearly insufficient. It is necessary to reflect on the following
-points:</li>
-</ol>
-</div>
-<div class="lang-es">
+puntos:</p>
 <ol style="list-style-type: lower-alpha">
 <li>El agente debe seguir un conjunto de procedimientos definidos
 institucionalmente y por tanto es necesario mirar los errores
@@ -7042,32 +7032,32 @@ podrían dejar satisfecho al usuario entregándole respuestas que
 son inconvenientes por la firma.</li>
 <li>Uno de los motivos de la automatización es que el agente pueda
 resolver sin la necesidad de derivar los casos a un agente
-humano. Desde el punto de vista de la costo-efectividad, también
-es importante mirar su resolutividad.</li>
+humano. Desde el punto de vista de la costo-efectividad,
+también es importante mirar su resolutividad.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-en">
+<ol style="list-style-type: decimal">
+<li><p>The clearest answer is user satisfaction (Experience). However, this
+is clearly insufficient. It is necessary to reflect on the
+following points:</p>
 <ol style="list-style-type: lower-alpha">
-<li>The agent must follow a set of institutionally defined procedures,
-and therefore it is necessary to examine the errors committed. AI
-agents are known to hallucinate and could leave users satisfied
-by providing responses that are inconvenient for the firm.</li>
+<li>The agent must follow a set of institutionally defined
+procedures, and therefore it is necessary to examine the errors
+committed. AI agents are known to hallucinate and could leave
+users satisfied by providing responses that are inconvenient
+for the firm.</li>
 <li>One of the reasons for automation is that the agent can resolve
-issues without the need to escalate cases to a human agent. From
-a cost-effectiveness standpoint, it is also important to examine
-its resolutivity.</li>
+issues without the need to escalate cases to a human agent.
+From a cost-effectiveness standpoint, it is also important to
+examine its resolutivity.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-es">
 <ol start="2" style="list-style-type: decimal">
-<li>El modelo de regresión puede expresarse como:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: decimal">
-<li>The regression model can be expressed as:</li>
-</ol>
-</div>
+<li><p>El modelo de regresión puede expresarse como:</p>
 <p><span class="math display">\[
 \begin{aligned}
 y_{ik} &amp;= \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i \\
@@ -7075,37 +7065,42 @@ y_{ik} &amp;= \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i 
        &amp;\quad + \beta_{5} NW_{ik} Sex_i + \varepsilon_{ik}
 \end{aligned}
 \]</span></p>
-<div class="lang-es">
-<p>Donde</p>
-</div>
-<div class="lang-en">
-<p>Where</p>
-</div>
-<div class="lang-es">
+<p>Donde:</p>
 <ol style="list-style-type: lower-alpha">
-<li>La variable <span class="math inline">\(1_{ei}\)</span> toma el valor 1 si el usuario i es asignado
-a la estrategia de entrenamiento e y por tanto <span class="math inline">\(\theta_e\)</span>
-captura el efecto que tiene la estrategia de entrenamiento e.
-Notar que, para que el modelo sea identificable se requiere
-excluir una estrategia.</li>
+<li>La variable <span class="math inline">\(1_{ei}\)</span> toma el valor 1 si el usuario i es
+asignado a la estrategia de entrenamiento e y por tanto
+<span class="math inline">\(\theta_e\)</span> captura el efecto que tiene la estrategia de
+entrenamiento e. Notar que, para que el modelo sea
+identificable se requiere excluir una estrategia.</li>
 <li>El efecto fijo <span class="math inline">\(\alpha_k\)</span> controla por diferencias entre tipos
 de escenarios.</li>
 <li>El término <span class="math inline">\(\beta_{1}\)</span> permite controlar que la evaluación
 dependa de la edad.</li>
 <li>Los términos <span class="math inline">\(\beta_{2}\)</span> y <span class="math inline">\(\beta_{3}\)</span> permiten capturar el
 efecto no lineal del largo de la interacción. En esta
-especificación se utiliza el número de palabras (<span class="math inline">\(NW_{ik}\)</span>), pero el
-número de mensajes es una alternativa posible.</li>
+especificación se utiliza el número de palabras (<span class="math inline">\(NW_{ik}\)</span>),
+pero el número de mensajes es una alternativa posible.</li>
 <li>El término <span class="math inline">\(\beta_4\)</span> captura el efecto de ser hombre, sumando al
-efecto de <span class="math inline">\(\beta_5\)</span> que captura la interacción entre el largo de
-la interacción y el sexo hombre.</li>
+efecto de <span class="math inline">\(\beta_5\)</span> que captura la interacción entre el largo
+de la interacción y el sexo hombre.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-en">
+<ol start="2" style="list-style-type: decimal">
+<li><p>The regression model can be expressed as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_{ik} &amp;= \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i \\
+       &amp;\quad + \beta_{2} NW_{ik} + \beta_{3} NW_{ik}^2 + \beta_{4} Sex_i \\
+       &amp;\quad + \beta_{5} NW_{ik} Sex_i + \varepsilon_{ik}
+\end{aligned}
+\]</span></p>
+<p>Where:</p>
 <ol style="list-style-type: lower-alpha">
-<li>The variable <span class="math inline">\(1_{ei}\)</span> takes the value 1 if user i is assigned to
-training strategy e, and therefore <span class="math inline">\(\theta_e\)</span> captures the effect
-of training strategy e. Note that, for the model to be
+<li>The variable <span class="math inline">\(1_{ei}\)</span> takes the value 1 if user i is assigned
+to training strategy e, and therefore <span class="math inline">\(\theta_e\)</span> captures the
+effect of training strategy e. Note that, for the model to be
 identifiable, one strategy must be excluded.</li>
 <li>The fixed effect <span class="math inline">\(\alpha_k\)</span> controls for differences across
 scenario types.</li>
@@ -7118,31 +7113,28 @@ possible alternative.</li>
 <li>The term <span class="math inline">\(\beta_4\)</span> captures the effect of being male, adding to
 the effect of <span class="math inline">\(\beta_5\)</span>, which captures the interaction between
 interaction length and male sex.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-es">
 <ol start="3" style="list-style-type: decimal">
-<li>Hay varias limitaciones, pero probablemente se puedan agrupar en las
-dos siguientes líneas:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="3" style="list-style-type: decimal">
-<li>There are several limitations, but they can probably be grouped into
-the following two lines:</li>
-</ol>
-</div>
-<div class="lang-es">
+<li><p>Hay varias limitaciones, pero probablemente se puedan agrupar en las
+dos siguientes líneas:</p>
 <ol style="list-style-type: lower-alpha">
-<li>Respecto al diseño de investigación. Por ejemplo, el diseño solo
-compara tres estrategias específicas, pero no se sabe cuál sería
-el desempeño de una nueva estrategia de entrenamiento.</li>
+<li>Respecto al diseño de investigación. Por ejemplo, el diseño
+solo compara tres estrategias específicas, pero no se sabe cuál
+sería el desempeño de una nueva estrategia de entrenamiento.</li>
 <li>Respecto al modelo de regresión. Por ejemplo, hay factores que
 no se controlan como el NSE o, si se considera más de una
-variable de desempeño, cuál es la relación entre estos factores.</li>
+variable de desempeño, cuál es la relación entre estos
+factores.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-en">
+<ol start="3" style="list-style-type: decimal">
+<li><p>There are several limitations, but they can probably be grouped
+into the following two lines:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Regarding the research design. For example, the design only
 compares three specific strategies, but it is unknown what the
@@ -7151,19 +7143,12 @@ performance of a new training strategy would be.</li>
 uncontrolled factors such as socioeconomic level (NSE), or if
 more than one performance variable is considered, what the
 relationship between these factors is.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-es">
 <ol start="4" style="list-style-type: decimal">
-<li>Las respuestas se derivan directo de las tablas.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="4" style="list-style-type: decimal">
-<li>The answers are derived directly from the tables.</li>
-</ol>
-</div>
-<div class="lang-es">
+<li><p>Las respuestas se derivan directo de las tablas.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Los coeficientes del Prompt 2 es significativo en las tres
 variables de desempeño consideradas y por tanto esa estrategia
@@ -7178,9 +7163,12 @@ implicaría que incluir restricciones en la estrategia de
 entrenamiento empeora la evaluación. Como el objeto a testear
 son restricciones lineales, entonces puede hacerse con una
 prueba F.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-en">
+<ol start="4" style="list-style-type: decimal">
+<li><p>The answers are derived directly from the tables.</p>
 <ol style="list-style-type: lower-alpha">
 <li>The Prompt 2 coefficients are significant across all three
 performance variables considered, and therefore that training
@@ -7195,6 +7183,7 @@ equation, it would imply that including restrictions in the
 training strategy worsens the evaluation). Since the object to
 test consists of linear restrictions, this can be done with an
 F-test.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-es">
@@ -7289,51 +7278,37 @@ Top 50.</li>
 </div>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li>Considere un modelo de regresión lineal genérico</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol style="list-style-type: decimal">
-<li>Consider a generic linear regression model</li>
-</ol>
-</div>
+<li><p>Considere un modelo de regresión lineal genérico</p>
 <p><span class="math display">\[
-    y_i = \beta&#39; x_i + \varepsilon_i
-    \]</span></p>
-<div class="lang-es">
+y_i = \beta&#39; x_i + \varepsilon_i
+\]</span></p>
 <p>que cuantifica la relación de una medida de la popularidad de una
 canción <span class="math inline">\(i\)</span> (<span class="math inline">\(y_i\)</span>), con un conjunto de variables observables de esa
 canción (<span class="math inline">\(x_i\)</span>). Proponga dos métricas de popularidad. Para cada una
 de ellas indique una limitación de usar esa variable como indicador
 del éxito de audiencia de una canción.</p>
+<p><strong>Observación:</strong> Notar que la base está indexada por la canción y el tiempo, mientras la métrica pedida depende solo de la canción.</p></li>
+</ol>
 </div>
 <div class="lang-en">
-<p>that quantifies the relationship between a measure of the popularity
-of song <span class="math inline">\(i\)</span> (<span class="math inline">\(y_i\)</span>) and a set of observable variables of that song
-(<span class="math inline">\(x_i\)</span>). Propose two popularity metrics. For each one, indicate a
-limitation of using that variable as an indicator of a song’s
-audience success.</p>
-</div>
-<div class="lang-es">
-<p><strong>Observación:</strong> Notar que la base está indexada por la canción y el tiempo, mientras la métrica pedida depende solo de la canción.</p>
-</div>
-<div class="lang-en">
-<p><strong>Note:</strong> Observe that the database is indexed by song and time, while the requested metric depends only on the song.</p>
+<ol style="list-style-type: decimal">
+<li><p>Consider a generic linear regression model</p>
+<p><span class="math display">\[
+y_i = \beta&#39; x_i + \varepsilon_i
+\]</span></p>
+<p>that quantifies the relationship between a measure of the
+popularity of song <span class="math inline">\(i\)</span> (<span class="math inline">\(y_i\)</span>) and a set of observable variables of
+that song (<span class="math inline">\(x_i\)</span>). Propose two popularity metrics. For each one,
+indicate a limitation of using that variable as an indicator of a
+song’s audience success.</p>
+<p><strong>Note:</strong> Observe that the database is indexed by song and time, while the requested metric depends only on the song.</p></li>
+</ol>
 </div>
 <div class="lang-es">
 <ol start="2" style="list-style-type: decimal">
 <li>Describa un modelo de regresión lineal para estimar la popularidad
 de una canción. Para la construcción de este modelo de regresión
-considere que:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: decimal">
-<li>Describe a linear regression model to estimate the popularity of a
-song. For the construction of this regression model, consider that:</li>
-</ol>
-</div>
-<div class="lang-es">
+considere que:
 <ol style="list-style-type: lower-alpha">
 <li>Es importante controlar por la popularidad que típicamente tiene
 cada artista y que las canciones lanzadas más recientemente
@@ -7348,8 +7323,14 @@ popularidad: mientras temas muy cortos raramente son muy
 populares, los temas demasiado largos también tienen
 dificultades en generar audiencias.</li>
 </ol>
+Defina cuidadosamente las variables e indique cómo se obtienen a
+partir de los registros disponibles.</li>
+</ol>
 </div>
 <div class="lang-en">
+<ol start="2" style="list-style-type: decimal">
+<li>Describe a linear regression model to estimate the popularity of a
+song. For the construction of this regression model, consider that:
 <ol style="list-style-type: lower-alpha">
 <li>It is important to control for the typical popularity of each
 artist and for the fact that more recently released songs have
@@ -7362,14 +7343,9 @@ genres but negative for others.</li>
 short tracks are rarely very popular, excessively long tracks
 also have difficulty generating audiences.</li>
 </ol>
-</div>
-<div class="lang-es">
-<p>Defina cuidadosamente las variables e indique cómo se obtienen a
-partir de los registros disponibles.</p>
-</div>
-<div class="lang-en">
-<p>Carefully define the variables and indicate how they are obtained
-from the available records.</p>
+Carefully define the variables and indicate how they are obtained
+from the available records.</li>
+</ol>
 </div>
 <div class="lang-es">
 <ol start="3" style="list-style-type: decimal">
@@ -7709,30 +7685,13 @@ these models are reported in the following table.</p>
 </summary>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li>Algunas posibilidades:
+<li><p>Algunas posibilidades:</p>
 <ul>
 <li><span class="math inline">\(y_i^0 = \max\{NPlay_{it}\}_t\)</span>, que corresponde al máximo de
 veces que ha sido escuchada una canción.
 Una limitación de esta métrica es que las canciones se lanzan en
 instantes distintos del tiempo y las canciones más antiguas
 tendrán más escuchas, aunque no sean tan populares.</li>
-</ul></li>
-</ol>
-</div>
-<div class="lang-en">
-<ol style="list-style-type: decimal">
-<li>Some possibilities:
-<ul>
-<li><span class="math inline">\(y_i^0 = \max\{NPlay_{it}\}_t\)</span>, which corresponds to the
-maximum number of times a song has been played. A limitation of
-this metric is that songs are released at different points in
-time, and older songs will have more plays even if they are not
-as popular.</li>
-</ul></li>
-</ol>
-</div>
-<div class="lang-es">
-<ul>
 <li><span class="math inline">\(y_i^1 = \max\{NPlay_{it}\}_t/(LaunchDate_i)\)</span>. Acá, el
 denominador corresponde al tiempo transcurrido desde el
 lanzamiento y, por lo tanto, la métrica mide el número de
@@ -7741,10 +7700,37 @@ métrica es que no considera el ciclo de vida del producto (ciclo
 de reproducción de las canciones). Las canciones recién lanzadas
 suelen ser muy escuchadas, pero algunas pasan rápidamente de
 moda.</li>
+<li><span class="math inline">\(y_i^2 = NPlay_{i, LaunchDate_i + 365}\)</span>, que corresponde al
+número de reproducciones un año después de haber sido lanzada la
+canción. Una limitación de esta métrica es que las plataformas
+aumentan sus audiencias y, por tanto, favorece a canciones que
+han sido lanzadas más recientemente.</li>
 </ul>
+<p>Hay varias otras posibilidades. Por ejemplo, usar el <em>share</em> de
+reproducciones dentro de la categoría, la desviación de
+reproducciones con respecto a la canción anterior del artista,
+etc. Notar que hay algunas métricas que no capturan precisamente
+popularidad. Por ejemplo:</p>
+<ul>
+<li><span class="math inline">\(y_i^3 = \max\{NPlay_{it}\}/\sum_t Promo_{it}\)</span>, que mide
+eficiencia promocional y se indefine para canciones que no han
+sido promocionadas.</li>
+<li><span class="math inline">\(y_i^4 = \sum\{TProm_{it}\}/\text{mean}\{Length_i\}\)</span>, que mide
+el <em>envolvimiento o lealtad</em> con la canción. Una canción podría
+ser escuchada una vez completa y aunque no diríamos que es
+popular, tendría el máximo en esta métrica.</li>
+</ul></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol style="list-style-type: decimal">
+<li><p>Some possibilities:</p>
 <ul>
+<li><span class="math inline">\(y_i^0 = \max\{NPlay_{it}\}_t\)</span>, which corresponds to the
+maximum number of times a song has been played. A limitation of
+this metric is that songs are released at different points in
+time, and older songs will have more plays even if they are not
+as popular.</li>
 <li><span class="math inline">\(y_i^1 = \max\{NPlay_{it}\}_t/(LaunchDate_i)\)</span>. Here, the
 denominator corresponds to the time elapsed since release, and
 therefore the metric measures the number of plays per unit of
@@ -7752,80 +7738,30 @@ time. A limitation of this metric is that it does not account
 for the product life cycle (song play cycle). Newly released
 songs tend to be heavily played, but some quickly fall out of
 fashion.</li>
-</ul>
-</div>
-<div class="lang-es">
-<ul>
-<li><span class="math inline">\(y_i^2 = NPlay_{i, LaunchDate_i + 365}\)</span>, que corresponde al
-número de reproducciones un año después de haber sido lanzada la
-canción. Una limitación de esta métrica es que las plataformas
-aumentan sus audiencias y, por tanto, favorece a canciones que
-han sido lanzadas más recientemente.</li>
-</ul>
-</div>
-<div class="lang-en">
-<ul>
 <li><span class="math inline">\(y_i^2 = NPlay_{i, LaunchDate_i + 365}\)</span>, which corresponds to
 the number of plays one year after the song was released. A
 limitation of this metric is that platforms grow their audiences
 over time, and therefore it favors songs that have been released
 more recently.</li>
 </ul>
-</div>
-<div class="lang-es">
-<p>Hay varias otras posibilidades. Por ejemplo, usar el <em>share</em> de
-reproducciones dentro de la categoría, la desviación de
-reproducciones con respecto a la canción anterior del artista,
-etc. Notar que hay algunas métricas que no capturan precisamente
-popularidad. Por ejemplo:</p>
-</div>
-<div class="lang-en">
 <p>There are several other possibilities. For example, using the
 play <em>share</em> within the category, the deviation of plays
 relative to the artist’s previous song, etc. Note that some
 metrics do not precisely capture popularity. For example:</p>
-</div>
-<div class="lang-es">
-<ul>
-<li><span class="math inline">\(y_i^3 = \max\{NPlay_{it}\}/\sum_t Promo_{it}\)</span>, que mide
-eficiencia promocional y se indefine para canciones que no han
-sido promocionadas.</li>
-</ul>
-</div>
-<div class="lang-en">
 <ul>
 <li><span class="math inline">\(y_i^3 = \max\{NPlay_{it}\}/\sum_t Promo_{it}\)</span>, which measures
 promotional efficiency and is undefined for songs that have not
 been promoted.</li>
-</ul>
-</div>
-<div class="lang-es">
-<ul>
-<li><span class="math inline">\(y_i^4 = \sum\{TProm_{it}\}/\text{mean}\{Length_i\}\)</span>, que mide
-el <em>envolvimiento o lealtad</em> con la canción. Una canción podría
-ser escuchada una vez completa y aunque no diríamos que es
-popular, tendría el máximo en esta métrica.</li>
-</ul>
-</div>
-<div class="lang-en">
-<ul>
 <li><span class="math inline">\(y_i^4 = \sum\{TProm_{it}\}/\text{mean}\{Length_i\}\)</span>, which
 measures <em>engagement or loyalty</em> with the song. A song could be
 listened to once in its entirety, and although we would not say
 it is popular, it would score the maximum on this metric.</li>
-</ul>
-</div>
-<div class="lang-es">
-<ol start="2" style="list-style-type: decimal">
-<li>Todas las componentes se agregan más o menos directo en la ecuación:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: decimal">
-<li>All components are added more or less directly to the equation:</li>
+</ul></li>
 </ol>
 </div>
 <div class="lang-es">
+<ol start="2" style="list-style-type: decimal">
+<li><p>Todas las componentes se agregan más o menos directo en la ecuación:</p>
 <ul>
 <li>Hay que agregar controles de artista (<span class="math inline">\(Artist_i\)</span>) y tiempo de
 lanzamiento (<span class="math inline">\(LaunchDate_i\)</span>).</li>
@@ -7836,8 +7772,21 @@ lanzamiento (<span class="math inline">\(LaunchDate_i\)</span>).</li>
 <li>Hay que agregar tanto efectos lineales como cuadráticos
 (<span class="math inline">\(Length_i + Length_i^2\)</span>).</li>
 </ul>
+<p>Con esto el modelo puede expresarse como:</p>
+<p><span class="math display">\[
+\begin{aligned}
+y_i \;=\;&amp; \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2
++ \beta_1 \left( \sum_t PromoExpend_{it} \right) \\
+&amp;+ \beta_2\, Danceability_i + \beta_3\, Genre_i\\
+&amp;+ \sum_{g \in genero} \alpha_{g}\, Danceability_i\, Genre_{i}
++ \beta_4\, Length_i + \beta_5\, Length_i^2
+\end{aligned}
+\]</span></p></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol start="2" style="list-style-type: decimal">
+<li><p>All components are added more or less directly to the equation:</p>
 <ul>
 <li>Artist controls (<span class="math inline">\(Artist_i\)</span>) and launch date (<span class="math inline">\(LaunchDate_i\)</span>)
 must be added.</li>
@@ -7848,30 +7797,39 @@ be added.</li>
 <li>Both linear and quadratic effects must be added
 (<span class="math inline">\(Length_i + Length_i^2\)</span>).</li>
 </ul>
-</div>
-<div class="lang-es">
-<p>Con esto el modelo puede expresarse como:</p>
-</div>
-<div class="lang-en">
 <p>With this, the model can be expressed as:</p>
-</div>
-<p><span class="math display">\[\begin{aligned}
+<p><span class="math display">\[
+\begin{aligned}
 y_i \;=\;&amp; \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2
 + \beta_1 \left( \sum_t PromoExpend_{it} \right) \\
 &amp;+ \beta_2\, Danceability_i + \beta_3\, Genre_i\\
 &amp;+ \sum_{g \in genero} \alpha_{g}\, Danceability_i\, Genre_{i}
 + \beta_4\, Length_i + \beta_5\, Length_i^2
-\end{aligned}\]</span></p>
+\end{aligned}
+\]</span></p></li>
+</ol>
+</div>
 <div class="lang-es">
 <ol start="3" style="list-style-type: decimal">
 <li>Cada una de las partes tiene respuestas bastante directas:
 <ol style="list-style-type: lower-alpha">
-<li>Al comparar el Modelo 1 con el Modelo 2, se observa que el género
+<li><p>Al comparar el Modelo 1 con el Modelo 2, se observa que el género
 explica bastante variabilidad en la popularidad. Al comparar el
 Modelo 2 con el Modelo 3, se observa que la distinción de <span class="math inline">\(Top50\)</span>
 ayuda a explicar una fracción muy menor de la varianza en
-popularidad.</li>
-<li>El intervalo de confianza viene dado por:</li>
+popularidad.</p></li>
+<li><p>El intervalo de confianza viene dado por:</p>
+<p><span class="math display">\[
+(2.421 - 1.96 \cdot 0.016,\; 2.421 + 1.96 \cdot 0.016)
+\]</span></p></li>
+<li><p>En ambos casos una de las variables es significativa, pero la
+otra no. Aunque hay otras explicaciones posibles, la más directa
+es que estas dos variables estén altamente correlacionadas y,
+por tanto, el efecto conjunto es identificable. Es difícil
+separar el efecto de una con respecto a la otra.</p></li>
+<li><p>Se desea testear que <span class="math inline">\(\beta_{dance} = 0\)</span> y <span class="math inline">\(\beta_{Energy} = 0\)</span>.
+Este es un sistema de restricciones lineales que puede testearse
+directamente a través de una prueba F.</p></li>
 </ol></li>
 </ol>
 </div>
@@ -7879,40 +7837,24 @@ popularidad.</li>
 <ol start="3" style="list-style-type: decimal">
 <li>Each part has fairly straightforward answers:
 <ol style="list-style-type: lower-alpha">
-<li>Comparing Model 1 with Model 2, it is observed that genre
+<li><p>Comparing Model 1 with Model 2, it is observed that genre
 explains a substantial amount of variability in popularity.
 Comparing Model 2 with Model 3, it is observed that the <span class="math inline">\(Top50\)</span>
 distinction helps explain only a very small fraction of the
-variance in popularity.</li>
-<li>The confidence interval is given by:</li>
-</ol></li>
-</ol>
-</div>
+variance in popularity.</p></li>
+<li><p>The confidence interval is given by:</p>
 <p><span class="math display">\[
 (2.421 - 1.96 \cdot 0.016,\; 2.421 + 1.96 \cdot 0.016)
-\]</span></p>
-<div class="lang-es">
-<ol start="3" style="list-style-type: lower-alpha">
-<li>En ambos casos una de las variables es significativa, pero la
-otra no. Aunque hay otras explicaciones posibles, la más directa
-es que estas dos variables estén altamente correlacionadas y,
-por tanto, el efecto conjunto es identificable. Es difícil
-separar el efecto de una con respecto a la otra.</li>
-<li>Se desea testear que <span class="math inline">\(\beta_{dance} = 0\)</span> y <span class="math inline">\(\beta_{Energy} = 0\)</span>.
-Este es un sistema de restricciones lineales que puede testearse
-directamente a través de una prueba F.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="3" style="list-style-type: lower-alpha">
-<li>In both cases, one of the variables is significant while the
+\]</span></p></li>
+<li><p>In both cases, one of the variables is significant while the
 other is not. Although other explanations are possible, the most
 direct one is that these two variables are highly correlated,
 and therefore the joint effect is identifiable. It is difficult
-to separate the effect of one from the other.</li>
-<li>The goal is to test that <span class="math inline">\(\beta_{dance} = 0\)</span> and
+to separate the effect of one from the other.</p></li>
+<li><p>The goal is to test that <span class="math inline">\(\beta_{dance} = 0\)</span> and
 <span class="math inline">\(\beta_{Energy} = 0\)</span>. This is a system of linear restrictions
-that can be tested directly through an F-test.</li>
+that can be tested directly through an F-test.</p></li>
+</ol></li>
 </ol>
 </div>
 </details>
@@ -8196,111 +8138,63 @@ table.</p>
 <ol style="list-style-type: decimal">
 <li>Describa un modelo de regresión lineal para estimar la <strong>demanda
 total</strong> por servicios en cada zona y bloque horario que considere
-<strong>al menos cuatro</strong> de los siguientes elementos:</li>
+<strong>al menos cuatro</strong> de los siguientes elementos:
+<ol style="list-style-type: lower-alpha">
+<li>Efectos fijos geográficos para capturar que gran parte de la
+variabilidad de la demanda se explica por diferencias en los
+patrones de consumo de las distintas zonas.</li>
+<li>El patrón de demanda a lo largo del día es altamente estacional,
+por lo que es esperable que la inclusión de efectos fijos por
+hora sea relevante.</li>
+<li>Aunque hay alguna variación de la demanda dependiendo del día de
+semana, es despreciable en relación con la diferencia que hay
+entre días de semana y fin de semana, la que es muy relevante.</li>
+<li>El nivel de actividad económica parece estar positivamente
+correlacionado con la demanda. Sin embargo, este efecto parece
+estar rezagado, por lo que parece razonable considerar los
+valores de actividad económica de los últimos 3 meses.</li>
+<li>La demanda ha ido creciendo sostenidamente a lo largo del
+tiempo, por lo que se necesita incluir un factor que capture una
+tendencia de crecimiento lineal de la demanda como función del
+tiempo.</li>
+<li>La demanda tiende a crecer en los bloques en que llueve. Sin
+embargo, la magnitud del crecimiento es distinta dependiendo de
+si es un día de semana o un fin de semana.</li>
+</ol>
+Defina cuidadosamente las variables dependientes e
+independientes e indique cómo se obtienen a partir de los
+registros disponibles en la base de datos.</li>
 </ol>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
 <li>Describe a linear regression model to estimate the <strong>total demand</strong>
 for services in each zone and time block that considers <strong>at least
-four</strong> of the following elements:</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol style="list-style-type: lower-alpha">
-<li>Efectos fijos geográficos para capturar que gran parte de la
-variabilidad de la demanda se explica por diferencias en los
-patrones de consumo de las distintas zonas.</li>
-</ol>
-</div>
-<div class="lang-en">
+four</strong> of the following elements:
 <ol style="list-style-type: lower-alpha">
 <li>Geographic fixed effects to capture the fact that a large part of
 demand variability is explained by differences in consumption
 patterns across zones.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="2" style="list-style-type: lower-alpha">
-<li>El patrón de demanda a lo largo del día es altamente estacional,
-por lo que es esperable que la inclusión de efectos fijos por
-hora sea relevante.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: lower-alpha">
 <li>The demand pattern throughout the day is highly seasonal, so the
 inclusion of hourly fixed effects is expected to be relevant.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="3" style="list-style-type: lower-alpha">
-<li>Aunque hay alguna variación de la demanda dependiendo del día de
-semana, es despreciable en relación con la diferencia que hay
-entre días de semana y fin de semana, la que es muy relevante.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="3" style="list-style-type: lower-alpha">
 <li>Although there is some demand variation depending on the day of
 the week, it is negligible compared to the difference between
 weekdays and weekends, which is very significant.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="4" style="list-style-type: lower-alpha">
-<li>El nivel de actividad económica parece estar positivamente
-correlacionado con la demanda. Sin embargo, este efecto parece
-estar rezagado, por lo que parece razonable considerar los
-valores de actividad económica de los últimos 3 meses.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="4" style="list-style-type: lower-alpha">
 <li>The level of economic activity appears to be positively
 correlated with demand. However, this effect appears to be
 lagged, so it seems reasonable to consider economic activity
 values from the last 3 months.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="5" style="list-style-type: lower-alpha">
-<li>La demanda ha ido creciendo sostenidamente a lo largo del
-tiempo, por lo que se necesita incluir un factor que capture una
-tendencia de crecimiento lineal de la demanda como función del
-tiempo.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="5" style="list-style-type: lower-alpha">
 <li>Demand has been growing steadily over time, so a factor that
 captures a linear growth trend in demand as a function of time
 needs to be included.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="6" style="list-style-type: lower-alpha">
-<li>La demanda tiende a crecer en los bloques en que llueve. Sin
-embargo, la magnitud del crecimiento es distinta dependiendo de
-si es un día de semana o un fin de semana.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="6" style="list-style-type: lower-alpha">
 <li>Demand tends to increase during time blocks when it rains.
 However, the magnitude of the increase differs depending on
 whether it is a weekday or a weekend.</li>
 </ol>
-</div>
-<div class="lang-es">
-<p>Defina cuidadosamente las variables dependientes e
-independientes e indique cómo se obtienen a partir de los
-registros disponibles en la base de datos.</p>
-</div>
-<div class="lang-en">
-<p>Carefully define the dependent and independent variables and
+Carefully define the dependent and independent variables and
 indicate how they are obtained from the records available in the
-database.</p>
+database.</li>
+</ol>
 </div>
 <div class="lang-es">
 <ol start="2" style="list-style-type: decimal">
@@ -8579,7 +8473,16 @@ in describing demand variability?</li>
 reducción de <em>shoppers</em> en la capacidad de responder a la demanda.
 Para esto, ha elaborado un plan preliminar en que quedarían
 <span class="math inline">\(N_{ith}\)</span> <em>shoppers</em> disponibles para trabajar en el bloque horario
-<span class="math inline">\(h\)</span> del día <span class="math inline">\(t\)</span> en la zona <span class="math inline">\(i\)</span>.</li>
+<span class="math inline">\(h\)</span> del día <span class="math inline">\(t\)</span> en la zona <span class="math inline">\(i\)</span>.
+<ol style="list-style-type: lower-alpha">
+<li>Usando el modelo 1, calcule el valor esperado de la demanda para
+un bloque en un día de semana, en que no llueve y en que hay una
+variabilidad en la actividad económica del 10% (<span class="math inline">\(IMACEC = 0.1\)</span>).</li>
+<li>Para el mismo bloque horario de la parte anterior, escriba una
+expresión para calcular la probabilidad de que la demanda total
+exceda la capacidad disponible expresada para ese bloque
+<span class="math inline">\(N_{ith} = 600\)</span>.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-en">
@@ -8588,36 +8491,15 @@ Para esto, ha elaborado un plan preliminar en que quedarían
 interested in evaluating how the reduction of <em>shoppers</em> could
 impact the ability to meet demand. To this end, it has developed a
 preliminary plan in which <span class="math inline">\(N_{ith}\)</span> <em>shoppers</em> would be available to
-work in time block <span class="math inline">\(h\)</span> on day <span class="math inline">\(t\)</span> in zone <span class="math inline">\(i\)</span>.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol style="list-style-type: lower-alpha">
-<li>Usando el modelo 1, calcule el valor esperado de la demanda para
-un bloque en un día de semana, en que no llueve y en que hay una
-variabilidad en la actividad económica del 10% (<span class="math inline">\(IMACEC = 0.1\)</span>).</li>
-</ol>
-</div>
-<div class="lang-en">
+work in time block <span class="math inline">\(h\)</span> on day <span class="math inline">\(t\)</span> in zone <span class="math inline">\(i\)</span>.
 <ol style="list-style-type: lower-alpha">
 <li>Using Model 1, compute the expected value of demand for a block
 on a weekday, when it does not rain, and when there is a 10%
 variation in economic activity (<span class="math inline">\(IMACEC = 0.1\)</span>).</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Para el mismo bloque horario de la parte anterior, escriba una
-expresión para calcular la probabilidad de que la demanda total
-exceda la capacidad disponible expresada para ese bloque
-<span class="math inline">\(N_{ith} = 600\)</span>.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: lower-alpha">
 <li>For the same time block as in the previous part, write an
 expression to calculate the probability that total demand
 exceeds the available capacity for that block, <span class="math inline">\(N_{ith} = 600\)</span>.</li>
+</ol></li>
 </ol>
 </div>
 <details>
@@ -8626,31 +8508,15 @@ exceeds the available capacity for that block, <span class="math inline">\(N_{it
 </summary>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li>Primero que todo, cabe clarificar que la variable dependiente
+<li><p>Primero que todo, cabe clarificar que la variable dependiente
 es la demanda total en una zona i, fecha t y hora h, que corresponde
 tanto a las órdenes completadas como aquellas que excedieron la
-capacidad:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol style="list-style-type: decimal">
-<li>First of all, it should be clarified that the dependent variable is
-total demand in zone i, date t, and hour h, which corresponds to
-both completed orders and those that exceeded capacity:</li>
-</ol>
-</div>
+capacidad:</p>
 <p><span class="math display">\[
 DT_{iht}=NOrdersC_{iht}+NOrdersN_{iht}
 \]</span></p>
-<div class="lang-es">
 <p>En el lado derecho de la regresión se pueden considerar cualquiera
 de los siguientes puntos:</p>
-</div>
-<div class="lang-en">
-<p>On the right-hand side of the regression, any of the following can
-be considered:</p>
-</div>
-<div class="lang-es">
 <ul>
 <li>Efectos fijos geográficos: <span class="math inline">\(\alpha_i^1\)</span></li>
 <li>Efectos fijos por hora: <span class="math inline">\(\alpha_h^2\)</span></li>
@@ -8665,8 +8531,26 @@ cada mes, se tiene un único para el promedio de los tres.</li>
 <li>Lluvia y fin de semana:
 <span class="math inline">\(\beta_6 RAIN_{th} + \beta_7 RAIN_{th}\,FDS_t\)</span></li>
 </ul>
+<p>Así, la ecuación de regresión que considera todos los factores viene
+dada por:</p>
+<p><span class="math display">\[
+\begin{align}
+DT_{iht} &amp;= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
+&amp;\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
+\end{align}
+\]</span></p></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol style="list-style-type: decimal">
+<li><p>First of all, it should be clarified that the dependent variable is
+total demand in zone i, date t, and hour h, which corresponds to
+both completed orders and those that exceeded capacity:</p>
+<p><span class="math display">\[
+DT_{iht}=NOrdersC_{iht}+NOrdersN_{iht}
+\]</span></p>
+<p>On the right-hand side of the regression, any of the following can
+be considered:</p>
 <ul>
 <li>Geographic fixed effects: <span class="math inline">\(\alpha_i^1\)</span></li>
 <li>Hourly fixed effects: <span class="math inline">\(\alpha_h^2\)</span></li>
@@ -8681,136 +8565,99 @@ month, a single parameter for the average of the three is used.</li>
 <li>Rain and weekend:
 <span class="math inline">\(\beta_6 RAIN_{th} + \beta_7 RAIN_{th}\,FDS_t\)</span></li>
 </ul>
-</div>
-<div class="lang-es">
-<p>Así, la ecuación de regresión que considera todos los factores viene
-dada por:</p>
-</div>
-<div class="lang-en">
 <p>Thus, the regression equation that considers all factors is given by:</p>
-</div>
-<p><span class="math display">\[\begin{align}    DT_{iht} &amp;= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
-    &amp;\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
-\end{align}\]</span></p>
-<div class="lang-es">
-<ol start="2" style="list-style-type: decimal">
-<li>Incluye:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: decimal">
-<li>Includes:</li>
+<p><span class="math display">\[
+\begin{align}
+DT_{iht} &amp;= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
+&amp;\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
+\end{align}
+\]</span></p></li>
 </ol>
 </div>
 <div class="lang-es">
+<ol start="2" style="list-style-type: decimal">
+<li>Incluye:
 <ol style="list-style-type: lower-alpha">
 <li>Los modelos 2 y 3 tienen efectos fijos y, por tanto, hay un
 intercepto distinto para cada hora (Modelo 2) o para cada
 (geografía-hora). En general, los efectos fijos no se reportan
 porque suelen ser una secuencia larga de dummies por las que
 solo se desea controlar.</li>
+<li>El <span class="math inline">\(R^2\)</span> captura la varianza explicada. En este caso el modelo
+con mayor <span class="math inline">\(R^2\)</span> es el modelo 3.</li>
+<li>Al agregar efectos fijos por región, el <span class="math inline">\(R^2\)</span> (varianza
+explicada) aumenta bastante, por lo que concluimos que una parte
+relevante de la variación en la demanda se explica porque hay
+regiones que tienen más demanda que en otras.</li>
+<li>En los tres modelos es positiva y significativa (p-valor &lt; 0.05),
+por lo que se puede afirmar que mayor actividad económica
+correlaciona positivamente con mayor demanda para KornerK.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-en">
+<ol start="2" style="list-style-type: decimal">
+<li>Includes:
 <ol style="list-style-type: lower-alpha">
 <li>Models 2 and 3 have fixed effects, and therefore there is a
 different intercept for each hour (Model 2) or for each
 (geography-hour) combination. In general, fixed effects are not
 reported because they are typically a long sequence of dummies
 that one only wishes to control for.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="2" style="list-style-type: lower-alpha">
-<li>El <span class="math inline">\(R^2\)</span> captura la varianza explicada. En este caso el modelo
-con mayor <span class="math inline">\(R^2\)</span> es el modelo 3.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: lower-alpha">
 <li><span class="math inline">\(R^2\)</span> captures the explained variance. In this case, the model
 with the highest <span class="math inline">\(R^2\)</span> is Model 3.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="3" style="list-style-type: lower-alpha">
-<li>Al agregar efectos fijos por región, el <span class="math inline">\(R^2\)</span> (varianza
-explicada) aumenta bastante, por lo que concluimos que una parte
-relevante de la variación en la demanda se explica porque hay
-regiones que tienen más demanda que en otras.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="3" style="list-style-type: lower-alpha">
 <li>When adding regional fixed effects, <span class="math inline">\(R^2\)</span> (explained variance)
 increases substantially, so we conclude that a significant part
 of demand variation is explained by the fact that some regions
 have higher demand than others.</li>
-</ol>
-</div>
-<div class="lang-es">
-<ol start="4" style="list-style-type: lower-alpha">
-<li>En los tres modelos es positiva y significativa (p-valor &lt; 0.05),
-por lo que se puede afirmar que mayor actividad económica
-correlaciona positivamente con mayor demanda para KornerK.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="4" style="list-style-type: lower-alpha">
 <li>In all three models, it is positive and significant (p-value
 &lt; 0.05), so it can be stated that higher economic activity is
 positively correlated with higher demand for KornerK.</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-es">
 <ol start="3" style="list-style-type: decimal">
-<li>Detalle:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="3" style="list-style-type: decimal">
-<li>Details:</li>
-</ol>
-</div>
-<div class="lang-es">
+<li>Detalle:
 <ol style="list-style-type: lower-alpha">
-<li>El valor esperado viene dado por:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol style="list-style-type: lower-alpha">
-<li>The expected value is given by:</li>
-</ol>
-</div>
+<li><p>El valor esperado viene dado por:</p>
 <p><span class="math display">\[
 \mu = 589.4 + 65.3 \cdot 0.1 = 595.9
-\]</span></p>
-<div class="lang-es">
-<ol start="2" style="list-style-type: lower-alpha">
-<li>La probabilidad viene dada por:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: lower-alpha">
-<li>The probability is given by:</li>
-</ol>
-</div>
+\]</span></p></li>
+<li><p>La probabilidad viene dada por:</p>
 <p><span class="math display">\[
 Pr(DT_{iht} \geq 600)
 \]</span></p>
-<div class="lang-es">
 <p>Donde <span class="math inline">\(DT_{iht}\)</span> se distribuye normal con media <span class="math inline">\(\mu = 595.9\)</span> y
 varianza <span class="math inline">\(\sigma^2 = (5.355)^2\)</span>. Este cálculo se puede hacer
 directamente en cualquier paquete estadístico. En R:</p>
+<p><span class="math display">\[
+1 - pnorm(600, mean = 595.9, sd = 5.355)
+\]</span></p></li>
+</ol></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol start="3" style="list-style-type: decimal">
+<li>Details:
+<ol style="list-style-type: lower-alpha">
+<li><p>The expected value is given by:</p>
+<p><span class="math display">\[
+\mu = 589.4 + 65.3 \cdot 0.1 = 595.9
+\]</span></p></li>
+<li><p>The probability is given by:</p>
+<p><span class="math display">\[
+Pr(DT_{iht} \geq 600)
+\]</span></p>
 <p>Where <span class="math inline">\(DT_{iht}\)</span> is normally distributed with mean <span class="math inline">\(\mu = 595.9\)</span> and
 variance <span class="math inline">\(\sigma^2 = (5.355)^2\)</span>. This calculation can be done
 directly in any statistical package. In R:</p>
-</div>
-<span class="math display">\[
+<p><span class="math display">\[
 1 - pnorm(600, mean = 595.9, sd = 5.355)
-\]</span>
+\]</span></p></li>
+</ol></li>
+</ol>
+</div>
 </details>
 
 </div>

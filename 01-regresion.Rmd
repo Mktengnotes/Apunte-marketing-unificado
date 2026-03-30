@@ -5544,41 +5544,33 @@ scenarios, resulting in a total of 1,929 rows in the database.
     necesario tener un acercamiento hacia la reflexión de los siguientes
     puntos:
 
+    a)  El agente debe seguir un conjunto de procedimientos definidos
+        institucionalmente y por tanto es necesario mirar los errores
+        cometidos. Los agentes de IA son conocidos por alucinar y
+        podrían dejar satisfecho al usuario entregándole respuestas que
+        son inconvenientes por la firma.
+    b)  Uno de los motivos de la automatización es que el agente pueda
+        resolver sin la necesidad de derivar los casos a un agente
+        humano. Desde el punto de vista de la costo-efectividad,
+        también es importante mirar su resolutividad.
+
 :::
 
 ::: {.lang-en}
 
 1)  The clearest answer is user satisfaction (Experience). However, this
-    is clearly insufficient. It is necessary to reflect on the following
-    points:
+    is clearly insufficient. It is necessary to reflect on the
+    following points:
 
-:::
-
-
-::: {.lang-es}
-
-a)  El agente debe seguir un conjunto de procedimientos definidos
-    institucionalmente y por tanto es necesario mirar los errores
-    cometidos. Los agentes de IA son conocidos por alucinar y
-    podrían dejar satisfecho al usuario entregándole respuestas que
-    son inconvenientes por la firma.
-b)  Uno de los motivos de la automatización es que el agente pueda
-    resolver sin la necesidad de derivar los casos a un agente
-    humano. Desde el punto de vista de la costo-efectividad, también
-    es importante mirar su resolutividad.
-
-:::
-
-::: {.lang-en}
-
-a)  The agent must follow a set of institutionally defined procedures,
-    and therefore it is necessary to examine the errors committed. AI
-    agents are known to hallucinate and could leave users satisfied
-    by providing responses that are inconvenient for the firm.
-b)  One of the reasons for automation is that the agent can resolve
-    issues without the need to escalate cases to a human agent. From
-    a cost-effectiveness standpoint, it is also important to examine
-    its resolutivity.
+    a)  The agent must follow a set of institutionally defined
+        procedures, and therefore it is necessary to examine the errors
+        committed. AI agents are known to hallucinate and could leave
+        users satisfied by providing responses that are inconvenient
+        for the firm.
+    b)  One of the reasons for automation is that the agent can resolve
+        issues without the need to escalate cases to a human agent.
+        From a cost-effectiveness standpoint, it is also important to
+        examine its resolutivity.
 
 :::
 
@@ -5587,73 +5579,64 @@ b)  One of the reasons for automation is that the agent can resolve
 
 2)  El modelo de regresión puede expresarse como:
 
+    $$
+    \begin{aligned}
+    y_{ik} &= \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i \\
+           &\quad + \beta_{2} NW_{ik} + \beta_{3} NW_{ik}^2 + \beta_{4} Sex_i \\
+           &\quad + \beta_{5} NW_{ik} Sex_i + \varepsilon_{ik}
+    \end{aligned}
+    $$
+
+    Donde:
+
+    a)  La variable $1_{ei}$ toma el valor 1 si el usuario i es
+        asignado a la estrategia de entrenamiento e y por tanto
+        $\theta_e$ captura el efecto que tiene la estrategia de
+        entrenamiento e. Notar que, para que el modelo sea
+        identificable se requiere excluir una estrategia.
+    b)  El efecto fijo $\alpha_k$ controla por diferencias entre tipos
+        de escenarios.
+    c)  El término $\beta_{1}$ permite controlar que la evaluación
+        dependa de la edad.
+    d)  Los términos $\beta_{2}$ y $\beta_{3}$ permiten capturar el
+        efecto no lineal del largo de la interacción. En esta
+        especificación se utiliza el número de palabras ($NW_{ik}$),
+        pero el número de mensajes es una alternativa posible.
+    e)  El término $\beta_4$ captura el efecto de ser hombre, sumando al
+        efecto de $\beta_5$ que captura la interacción entre el largo
+        de la interacción y el sexo hombre.
+
 :::
 
 ::: {.lang-en}
 
 2)  The regression model can be expressed as:
 
-:::
+    $$
+    \begin{aligned}
+    y_{ik} &= \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i \\
+           &\quad + \beta_{2} NW_{ik} + \beta_{3} NW_{ik}^2 + \beta_{4} Sex_i \\
+           &\quad + \beta_{5} NW_{ik} Sex_i + \varepsilon_{ik}
+    \end{aligned}
+    $$
 
-$$
-\begin{aligned}
-y_{ik} &= \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i \\
-       &\quad + \beta_{2} NW_{ik} + \beta_{3} NW_{ik}^2 + \beta_{4} Sex_i \\
-       &\quad + \beta_{5} NW_{ik} Sex_i + \varepsilon_{ik}
-\end{aligned}
-$$
+    Where:
 
-::: {.lang-es}
-
-Donde
-
-:::
-
-::: {.lang-en}
-
-Where
-
-:::
-
-
-::: {.lang-es}
-
-a)  La variable $1_{ei}$ toma el valor 1 si el usuario i es asignado
-    a la estrategia de entrenamiento e y por tanto $\theta_e$
-    captura el efecto que tiene la estrategia de entrenamiento e.
-    Notar que, para que el modelo sea identificable se requiere
-    excluir una estrategia.
-b)  El efecto fijo $\alpha_k$ controla por diferencias entre tipos
-    de escenarios.
-c)  El término $\beta_{1}$ permite controlar que la evaluación
-    dependa de la edad.
-d)  Los términos $\beta_{2}$ y $\beta_{3}$ permiten capturar el
-    efecto no lineal del largo de la interacción. En esta
-    especificación se utiliza el número de palabras ($NW_{ik}$), pero el
-    número de mensajes es una alternativa posible.
-e)  El término $\beta_4$ captura el efecto de ser hombre, sumando al
-    efecto de $\beta_5$ que captura la interacción entre el largo de
-    la interacción y el sexo hombre.
-
-:::
-
-::: {.lang-en}
-
-a)  The variable $1_{ei}$ takes the value 1 if user i is assigned to
-    training strategy e, and therefore $\theta_e$ captures the effect
-    of training strategy e. Note that, for the model to be
-    identifiable, one strategy must be excluded.
-b)  The fixed effect $\alpha_k$ controls for differences across
-    scenario types.
-c)  The term $\beta_{1}$ allows controlling for the evaluation's
-    dependence on age.
-d)  The terms $\beta_{2}$ and $\beta_{3}$ capture the nonlinear
-    effect of interaction length. In this specification, the number
-    of words ($NW_{ik}$) is used, but the number of messages is a
-    possible alternative.
-e)  The term $\beta_4$ captures the effect of being male, adding to
-    the effect of $\beta_5$, which captures the interaction between
-    interaction length and male sex.
+    a)  The variable $1_{ei}$ takes the value 1 if user i is assigned
+        to training strategy e, and therefore $\theta_e$ captures the
+        effect of training strategy e. Note that, for the model to be
+        identifiable, one strategy must be excluded.
+    b)  The fixed effect $\alpha_k$ controls for differences across
+        scenario types.
+    c)  The term $\beta_{1}$ allows controlling for the evaluation's
+        dependence on age.
+    d)  The terms $\beta_{2}$ and $\beta_{3}$ capture the nonlinear
+        effect of interaction length. In this specification, the number
+        of words ($NW_{ik}$) is used, but the number of messages is a
+        possible alternative.
+    e)  The term $\beta_4$ captures the effect of being male, adding to
+        the effect of $\beta_5$, which captures the interaction between
+        interaction length and male sex.
 
 :::
 
@@ -5663,36 +5646,28 @@ e)  The term $\beta_4$ captures the effect of being male, adding to
 3)  Hay varias limitaciones, pero probablemente se puedan agrupar en las
     dos siguientes líneas:
 
-:::
-
-::: {.lang-en}
-
-3)  There are several limitations, but they can probably be grouped into
-    the following two lines:
-
-:::
-
-
-::: {.lang-es}
-
-a)  Respecto al diseño de investigación. Por ejemplo, el diseño solo
-    compara tres estrategias específicas, pero no se sabe cuál sería
-    el desempeño de una nueva estrategia de entrenamiento.
-b)  Respecto al modelo de regresión. Por ejemplo, hay factores que
-    no se controlan como el NSE o, si se considera más de una
-    variable de desempeño, cuál es la relación entre estos factores.
+    a)  Respecto al diseño de investigación. Por ejemplo, el diseño
+        solo compara tres estrategias específicas, pero no se sabe cuál
+        sería el desempeño de una nueva estrategia de entrenamiento.
+    b)  Respecto al modelo de regresión. Por ejemplo, hay factores que
+        no se controlan como el NSE o, si se considera más de una
+        variable de desempeño, cuál es la relación entre estos
+        factores.
 
 :::
 
 ::: {.lang-en}
 
-a)  Regarding the research design. For example, the design only
-    compares three specific strategies, but it is unknown what the
-    performance of a new training strategy would be.
-b)  Regarding the regression model. For example, there are
-    uncontrolled factors such as socioeconomic level (NSE), or if
-    more than one performance variable is considered, what the
-    relationship between these factors is.
+3)  There are several limitations, but they can probably be grouped
+    into the following two lines:
+
+    a)  Regarding the research design. For example, the design only
+        compares three specific strategies, but it is unknown what the
+        performance of a new training strategy would be.
+    b)  Regarding the regression model. For example, there are
+        uncontrolled factors such as socioeconomic level (NSE), or if
+        more than one performance variable is considered, what the
+        relationship between these factors is.
 
 :::
 
@@ -5701,48 +5676,39 @@ b)  Regarding the regression model. For example, there are
 
 4)  Las respuestas se derivan directo de las tablas.
 
+    a)  Los coeficientes del Prompt 2 es significativo en las tres
+        variables de desempeño consideradas y por tanto esa estrategia
+        de entrenamiento tiene peor resolutividad y satisfacción, pero
+        también un menor número de errores procedurales. Similarmente,
+        el Prompt 3 tiene una mayor resolutividad que la estrategia de
+        entrenamiento base, pero las diferencias no son significativas
+        en la satisfacción ni en los errores procedurales.
+    b)  Habría que testear si $\theta_2 = \theta_3$ (por ejemplo, si
+        $\theta_2 > \theta_3$ en la ecuación de satisfacción usuaria,
+        implicaría que incluir restricciones en la estrategia de
+        entrenamiento empeora la evaluación. Como el objeto a testear
+        son restricciones lineales, entonces puede hacerse con una
+        prueba F.
+
 :::
 
 ::: {.lang-en}
 
 4)  The answers are derived directly from the tables.
 
-:::
-
-
-::: {.lang-es}
-
-a)  Los coeficientes del Prompt 2 es significativo en las tres
-    variables de desempeño consideradas y por tanto esa estrategia
-    de entrenamiento tiene peor resolutividad y satisfacción, pero
-    también un menor número de errores procedurales. Similarmente,
-    el Prompt 3 tiene una mayor resolutividad que la estrategia de
-    entrenamiento base, pero las diferencias no son significativas
-    en la satisfacción ni en los errores procedurales.
-b)  Habría que testear si $\theta_2 = \theta_3$ (por ejemplo, si
-    $\theta_2 > \theta_3$ en la ecuación de satisfacción usuaria,
-    implicaría que incluir restricciones en la estrategia de
-    entrenamiento empeora la evaluación. Como el objeto a testear
-    son restricciones lineales, entonces puede hacerse con una
-    prueba F.
-
-:::
-
-::: {.lang-en}
-
-a)  The Prompt 2 coefficients are significant across all three
-    performance variables considered, and therefore that training
-    strategy yields worse resolutivity and satisfaction, but also
-    fewer procedural errors. Similarly, Prompt 3 has higher
-    resolutivity than the baseline training strategy, but the
-    differences are not significant for satisfaction or procedural
-    errors.
-b)  One would need to test whether $\theta_2 = \theta_3$ (for
-    example, if $\theta_2 > \theta_3$ in the user satisfaction
-    equation, it would imply that including restrictions in the
-    training strategy worsens the evaluation). Since the object to
-    test consists of linear restrictions, this can be done with an
-    F-test.
+    a)  The Prompt 2 coefficients are significant across all three
+        performance variables considered, and therefore that training
+        strategy yields worse resolutivity and satisfaction, but also
+        fewer procedural errors. Similarly, Prompt 3 has higher
+        resolutivity than the baseline training strategy, but the
+        differences are not significant for satisfaction or procedural
+        errors.
+    b)  One would need to test whether $\theta_2 = \theta_3$ (for
+        example, if $\theta_2 > \theta_3$ in the user satisfaction
+        equation, it would imply that including restrictions in the
+        training strategy worsens the evaluation). Since the object to
+        test consists of linear restrictions, this can be done with an
+        F-test.
 
 :::
 
@@ -5859,48 +5825,35 @@ variables are observed:
 
 1.  Considere un modelo de regresión lineal genérico
 
+    \[
+    y_i = \beta' x_i + \varepsilon_i
+    \]
+
+    que cuantifica la relación de una medida de la popularidad de una
+    canción $i$ ($y_i$), con un conjunto de variables observables de esa
+    canción ($x_i$). Proponga dos métricas de popularidad. Para cada una
+    de ellas indique una limitación de usar esa variable como indicador
+    del éxito de audiencia de una canción.
+
+    **Observación:** Notar que la base está indexada por la canción y el tiempo, mientras la métrica pedida depende solo de la canción.
+
 :::
 
 ::: {.lang-en}
 
 1.  Consider a generic linear regression model
 
-:::
-
-\[
+    \[
     y_i = \beta' x_i + \varepsilon_i
     \]
 
-::: {.lang-es}
+    that quantifies the relationship between a measure of the
+    popularity of song $i$ ($y_i$) and a set of observable variables of
+    that song ($x_i$). Propose two popularity metrics. For each one,
+    indicate a limitation of using that variable as an indicator of a
+    song's audience success.
 
-que cuantifica la relación de una medida de la popularidad de una
-canción $i$ ($y_i$), con un conjunto de variables observables de esa
-canción ($x_i$). Proponga dos métricas de popularidad. Para cada una
-de ellas indique una limitación de usar esa variable como indicador
-del éxito de audiencia de una canción.
-
-:::
-
-::: {.lang-en}
-
-that quantifies the relationship between a measure of the popularity
-of song $i$ ($y_i$) and a set of observable variables of that song
-($x_i$). Propose two popularity metrics. For each one, indicate a
-limitation of using that variable as an indicator of a song's
-audience success.
-
-:::
-
-
-::: {.lang-es}
-
-**Observación:** Notar que la base está indexada por la canción y el tiempo, mientras la métrica pedida depende solo de la canción.
-
-:::
-
-::: {.lang-en}
-
-**Note:** Observe that the database is indexed by song and time, while the requested metric depends only on the song.
+    **Note:** Observe that the database is indexed by song and time, while the requested metric depends only on the song.
 
 :::
 
@@ -5910,6 +5863,21 @@ audience success.
 2.  Describa un modelo de regresión lineal para estimar la popularidad
     de una canción. Para la construcción de este modelo de regresión
     considere que:
+    a.  Es importante controlar por la popularidad que típicamente tiene
+        cada artista y que las canciones lanzadas más recientemente
+        tienen acceso a un mayor número de usuarios activos en la
+        plataforma.
+    b.  Las promociones aumentan la popularidad de las canciones, pero
+        este efecto es acumulativo en el tiempo.
+    c.  El efecto de la *danceability* de una canción puede ser positivo
+        para unos géneros, pero negativo para otros.
+    d.  El efecto del largo de una canción es no lineal en la
+        popularidad: mientras temas muy cortos raramente son muy
+        populares, los temas demasiado largos también tienen
+        dificultades en generar audiencias.
+
+    Defina cuidadosamente las variables e indique cómo se obtienen a
+    partir de los registros disponibles.
 
 :::
 
@@ -5917,54 +5885,19 @@ audience success.
 
 2.  Describe a linear regression model to estimate the popularity of a
     song. For the construction of this regression model, consider that:
+    a.  It is important to control for the typical popularity of each
+        artist and for the fact that more recently released songs have
+        access to a larger number of active users on the platform.
+    b.  Promotions increase song popularity, but this effect is
+        cumulative over time.
+    c.  The effect of a song's *danceability* may be positive for some
+        genres but negative for others.
+    d.  The effect of song length is nonlinear on popularity: while very
+        short tracks are rarely very popular, excessively long tracks
+        also have difficulty generating audiences.
 
-:::
-
-
-::: {.lang-es}
-
-a)  Es importante controlar por la popularidad que típicamente tiene
-    cada artista y que las canciones lanzadas más recientemente
-    tienen acceso a un mayor número de usuarios activos en la
-    plataforma.
-b)  Las promociones aumentan la popularidad de las canciones, pero
-    este efecto es acumulativo en el tiempo.
-c)  El efecto de la *danceability* de una canción puede ser positivo
-    para unos géneros, pero negativo para otros.
-d)  El efecto del largo de una canción es no lineal en la
-    popularidad: mientras temas muy cortos raramente son muy
-    populares, los temas demasiado largos también tienen
-    dificultades en generar audiencias.
-
-:::
-
-::: {.lang-en}
-
-a)  It is important to control for the typical popularity of each
-    artist and for the fact that more recently released songs have
-    access to a larger number of active users on the platform.
-b)  Promotions increase song popularity, but this effect is
-    cumulative over time.
-c)  The effect of a song's *danceability* may be positive for some
-    genres but negative for others.
-d)  The effect of song length is nonlinear on popularity: while very
-    short tracks are rarely very popular, excessively long tracks
-    also have difficulty generating audiences.
-
-:::
-
-
-::: {.lang-es}
-
-Defina cuidadosamente las variables e indique cómo se obtienen a
-partir de los registros disponibles.
-
-:::
-
-::: {.lang-en}
-
-Carefully define the variables and indicate how they are obtained
-from the available records.
+    Carefully define the variables and indicate how they are obtained
+    from the available records.
 
 :::
 
@@ -6075,6 +6008,33 @@ from the available records.
         Una limitación de esta métrica es que las canciones se lanzan en
         instantes distintos del tiempo y las canciones más antiguas
         tendrán más escuchas, aunque no sean tan populares.
+    -   $y_i^1 = \max\{NPlay_{it}\}_t/(LaunchDate_i)$. Acá, el
+        denominador corresponde al tiempo transcurrido desde el
+        lanzamiento y, por lo tanto, la métrica mide el número de
+        reproducciones por unidad de tiempo. Una limitación de esta
+        métrica es que no considera el ciclo de vida del producto (ciclo
+        de reproducción de las canciones). Las canciones recién lanzadas
+        suelen ser muy escuchadas, pero algunas pasan rápidamente de
+        moda.
+    -   $y_i^2 = NPlay_{i, LaunchDate_i + 365}$, que corresponde al
+        número de reproducciones un año después de haber sido lanzada la
+        canción. Una limitación de esta métrica es que las plataformas
+        aumentan sus audiencias y, por tanto, favorece a canciones que
+        han sido lanzadas más recientemente.
+
+    Hay varias otras posibilidades. Por ejemplo, usar el *share* de
+    reproducciones dentro de la categoría, la desviación de
+    reproducciones con respecto a la canción anterior del artista,
+    etc. Notar que hay algunas métricas que no capturan precisamente
+    popularidad. Por ejemplo:
+
+    -   $y_i^3 = \max\{NPlay_{it}\}/\sum_t Promo_{it}$, que mide
+        eficiencia promocional y se indefine para canciones que no han
+        sido promocionadas.
+    -   $y_i^4 = \sum\{TProm_{it}\}/\text{mean}\{Length_i\}$, que mide
+        el *envolvimiento o lealtad* con la canción. Una canción podría
+        ser escuchada una vez completa y aunque no diríamos que es
+        popular, tendría el máximo en esta métrica.
 
 :::
 
@@ -6086,172 +6046,85 @@ from the available records.
         this metric is that songs are released at different points in
         time, and older songs will have more plays even if they are not
         as popular.
+    -   $y_i^1 = \max\{NPlay_{it}\}_t/(LaunchDate_i)$. Here, the
+        denominator corresponds to the time elapsed since release, and
+        therefore the metric measures the number of plays per unit of
+        time. A limitation of this metric is that it does not account
+        for the product life cycle (song play cycle). Newly released
+        songs tend to be heavily played, but some quickly fall out of
+        fashion.
+    -   $y_i^2 = NPlay_{i, LaunchDate_i + 365}$, which corresponds to
+        the number of plays one year after the song was released. A
+        limitation of this metric is that platforms grow their audiences
+        over time, and therefore it favors songs that have been released
+        more recently.
+
+    There are several other possibilities. For example, using the
+    play *share* within the category, the deviation of plays
+    relative to the artist's previous song, etc. Note that some
+    metrics do not precisely capture popularity. For example:
+
+    -   $y_i^3 = \max\{NPlay_{it}\}/\sum_t Promo_{it}$, which measures
+        promotional efficiency and is undefined for songs that have not
+        been promoted.
+    -   $y_i^4 = \sum\{TProm_{it}\}/\text{mean}\{Length_i\}$, which
+        measures *engagement or loyalty* with the song. A song could be
+        listened to once in its entirety, and although we would not say
+        it is popular, it would score the maximum on this metric.
 
 :::
-
-
-::: {.lang-es}
-
--   $y_i^1 = \max\{NPlay_{it}\}_t/(LaunchDate_i)$. Acá, el
-    denominador corresponde al tiempo transcurrido desde el
-    lanzamiento y, por lo tanto, la métrica mide el número de
-    reproducciones por unidad de tiempo. Una limitación de esta
-    métrica es que no considera el ciclo de vida del producto (ciclo
-    de reproducción de las canciones). Las canciones recién lanzadas
-    suelen ser muy escuchadas, pero algunas pasan rápidamente de
-    moda.
-
-:::
-
-::: {.lang-en}
-
--   $y_i^1 = \max\{NPlay_{it}\}_t/(LaunchDate_i)$. Here, the
-    denominator corresponds to the time elapsed since release, and
-    therefore the metric measures the number of plays per unit of
-    time. A limitation of this metric is that it does not account
-    for the product life cycle (song play cycle). Newly released
-    songs tend to be heavily played, but some quickly fall out of
-    fashion.
-
-:::
-
-
-::: {.lang-es}
-
--   $y_i^2 = NPlay_{i, LaunchDate_i + 365}$, que corresponde al
-    número de reproducciones un año después de haber sido lanzada la
-    canción. Una limitación de esta métrica es que las plataformas
-    aumentan sus audiencias y, por tanto, favorece a canciones que
-    han sido lanzadas más recientemente.
-
-:::
-
-::: {.lang-en}
-
--   $y_i^2 = NPlay_{i, LaunchDate_i + 365}$, which corresponds to
-    the number of plays one year after the song was released. A
-    limitation of this metric is that platforms grow their audiences
-    over time, and therefore it favors songs that have been released
-    more recently.
-
-:::
-
-
-::: {.lang-es}
-
-Hay varias otras posibilidades. Por ejemplo, usar el *share* de
-reproducciones dentro de la categoría, la desviación de
-reproducciones con respecto a la canción anterior del artista,
-etc. Notar que hay algunas métricas que no capturan precisamente
-popularidad. Por ejemplo:
-
-:::
-
-::: {.lang-en}
-
-There are several other possibilities. For example, using the
-play *share* within the category, the deviation of plays
-relative to the artist's previous song, etc. Note that some
-metrics do not precisely capture popularity. For example:
-
-:::
-
-
-::: {.lang-es}
-
--   $y_i^3 = \max\{NPlay_{it}\}/\sum_t Promo_{it}$, que mide
-    eficiencia promocional y se indefine para canciones que no han
-    sido promocionadas.
-
-:::
-
-::: {.lang-en}
-
--   $y_i^3 = \max\{NPlay_{it}\}/\sum_t Promo_{it}$, which measures
-    promotional efficiency and is undefined for songs that have not
-    been promoted.
-
-:::
-
-
-::: {.lang-es}
-
--   $y_i^4 = \sum\{TProm_{it}\}/\text{mean}\{Length_i\}$, que mide
-    el *envolvimiento o lealtad* con la canción. Una canción podría
-    ser escuchada una vez completa y aunque no diríamos que es
-    popular, tendría el máximo en esta métrica.
-
-:::
-
-::: {.lang-en}
-
--   $y_i^4 = \sum\{TProm_{it}\}/\text{mean}\{Length_i\}$, which
-    measures *engagement or loyalty* with the song. A song could be
-    listened to once in its entirety, and although we would not say
-    it is popular, it would score the maximum on this metric.
-
-:::
-
 
 ::: {.lang-es}
 
 2.  Todas las componentes se agregan más o menos directo en la ecuación:
+    -   Hay que agregar controles de artista ($Artist_i$) y tiempo de
+        lanzamiento ($LaunchDate_i$).
+    -   Hay que agregar el gasto acumulado en promoción
+        ($\sum_t Promo_{it}$).
+    -   Hay que agregar las interacciones entre danzabilidad y género
+        ($Danceability_i \cdot Genre_i$).
+    -   Hay que agregar tanto efectos lineales como cuadráticos
+        ($Length_i + Length_i^2$).
+
+    Con esto el modelo puede expresarse como:
+
+    \[
+    \begin{aligned}
+    y_i \;=\;& \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2
+    + \beta_1 \left( \sum_t PromoExpend_{it} \right) \\
+    &+ \beta_2\, Danceability_i + \beta_3\, Genre_i\\
+    &+ \sum_{g \in genero} \alpha_{g}\, Danceability_i\, Genre_{i}
+    + \beta_4\, Length_i + \beta_5\, Length_i^2
+    \end{aligned}
+    \]
 
 :::
 
 ::: {.lang-en}
 
 2.  All components are added more or less directly to the equation:
+    -   Artist controls ($Artist_i$) and launch date ($LaunchDate_i$)
+        must be added.
+    -   Cumulative promotional expenditure ($\sum_t Promo_{it}$) must
+        be added.
+    -   Interactions between danceability and genre
+        ($Danceability_i \cdot Genre_i$) must be added.
+    -   Both linear and quadratic effects must be added
+        ($Length_i + Length_i^2$).
+
+    With this, the model can be expressed as:
+
+    \[
+    \begin{aligned}
+    y_i \;=\;& \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2
+    + \beta_1 \left( \sum_t PromoExpend_{it} \right) \\
+    &+ \beta_2\, Danceability_i + \beta_3\, Genre_i\\
+    &+ \sum_{g \in genero} \alpha_{g}\, Danceability_i\, Genre_{i}
+    + \beta_4\, Length_i + \beta_5\, Length_i^2
+    \end{aligned}
+    \]
 
 :::
-
-
-::: {.lang-es}
-
--   Hay que agregar controles de artista ($Artist_i$) y tiempo de
-    lanzamiento ($LaunchDate_i$).
--   Hay que agregar el gasto acumulado en promoción
-    ($\sum_t Promo_{it}$).
--   Hay que agregar las interacciones entre danzabilidad y género
-    ($Danceability_i \cdot Genre_i$).
--   Hay que agregar tanto efectos lineales como cuadráticos
-    ($Length_i + Length_i^2$).
-
-:::
-
-::: {.lang-en}
-
--   Artist controls ($Artist_i$) and launch date ($LaunchDate_i$)
-    must be added.
--   Cumulative promotional expenditure ($\sum_t Promo_{it}$) must
-    be added.
--   Interactions between danceability and genre
-    ($Danceability_i \cdot Genre_i$) must be added.
--   Both linear and quadratic effects must be added
-    ($Length_i + Length_i^2$).
-
-:::
-
-
-::: {.lang-es}
-
-Con esto el modelo puede expresarse como:
-
-:::
-
-::: {.lang-en}
-
-With this, the model can be expressed as:
-
-:::
-
-\[\begin{aligned}
-y_i \;=\;& \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2
-+ \beta_1 \left( \sum_t PromoExpend_{it} \right) \\
-&+ \beta_2\, Danceability_i + \beta_3\, Genre_i\\
-&+ \sum_{g \in genero} \alpha_{g}\, Danceability_i\, Genre_{i}
-+ \beta_4\, Length_i + \beta_5\, Length_i^2
-\end{aligned}\]
 
 ::: {.lang-es}
 
@@ -6262,6 +6135,19 @@ y_i \;=\;& \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2
         ayuda a explicar una fracción muy menor de la varianza en
         popularidad.
     b.  El intervalo de confianza viene dado por:
+
+        $$
+        (2.421 - 1.96 \cdot 0.016,\; 2.421 + 1.96 \cdot 0.016)
+        $$
+
+    c.  En ambos casos una de las variables es significativa, pero la
+        otra no. Aunque hay otras explicaciones posibles, la más directa
+        es que estas dos variables estén altamente correlacionadas y,
+        por tanto, el efecto conjunto es identificable. Es difícil
+        separar el efecto de una con respecto a la otra.
+    d.  Se desea testear que $\beta_{dance} = 0$ y $\beta_{Energy} = 0$.
+        Este es un sistema de restricciones lineales que puede testearse
+        directamente a través de una prueba F.
 
 :::
 
@@ -6275,35 +6161,18 @@ y_i \;=\;& \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2
         variance in popularity.
     b.  The confidence interval is given by:
 
-:::
+        $$
+        (2.421 - 1.96 \cdot 0.016,\; 2.421 + 1.96 \cdot 0.016)
+        $$
 
-$$
-(2.421 - 1.96 \cdot 0.016,\; 2.421 + 1.96 \cdot 0.016)
-$$
-
-::: {.lang-es}
-
-c.  En ambos casos una de las variables es significativa, pero la
-    otra no. Aunque hay otras explicaciones posibles, la más directa
-    es que estas dos variables estén altamente correlacionadas y,
-    por tanto, el efecto conjunto es identificable. Es difícil
-    separar el efecto de una con respecto a la otra.
-d.  Se desea testear que $\beta_{dance} = 0$ y $\beta_{Energy} = 0$.
-    Este es un sistema de restricciones lineales que puede testearse
-    directamente a través de una prueba F.
-
-:::
-
-::: {.lang-en}
-
-c.  In both cases, one of the variables is significant while the
-    other is not. Although other explanations are possible, the most
-    direct one is that these two variables are highly correlated,
-    and therefore the joint effect is identifiable. It is difficult
-    to separate the effect of one from the other.
-d.  The goal is to test that $\beta_{dance} = 0$ and
-    $\beta_{Energy} = 0$. This is a system of linear restrictions
-    that can be tested directly through an F-test.
+    c.  In both cases, one of the variables is significant while the
+        other is not. Although other explanations are possible, the most
+        direct one is that these two variables are highly correlated,
+        and therefore the joint effect is identifiable. It is difficult
+        to separate the effect of one from the other.
+    d.  The goal is to test that $\beta_{dance} = 0$ and
+        $\beta_{Energy} = 0$. This is a system of linear restrictions
+        that can be tested directly through an F-test.
 
 :::
 
@@ -6481,6 +6350,30 @@ Table: (\#tab:reg-p9-datos) Sample of the first 6 records from the database.
 1.  Describa un modelo de regresión lineal para estimar la **demanda
     total** por servicios en cada zona y bloque horario que considere
     **al menos cuatro** de los siguientes elementos:
+    a)  Efectos fijos geográficos para capturar que gran parte de la
+        variabilidad de la demanda se explica por diferencias en los
+        patrones de consumo de las distintas zonas.
+    b)  El patrón de demanda a lo largo del día es altamente estacional,
+        por lo que es esperable que la inclusión de efectos fijos por
+        hora sea relevante.
+    c)  Aunque hay alguna variación de la demanda dependiendo del día de
+        semana, es despreciable en relación con la diferencia que hay
+        entre días de semana y fin de semana, la que es muy relevante.
+    d)  El nivel de actividad económica parece estar positivamente
+        correlacionado con la demanda. Sin embargo, este efecto parece
+        estar rezagado, por lo que parece razonable considerar los
+        valores de actividad económica de los últimos 3 meses.
+    e)  La demanda ha ido creciendo sostenidamente a lo largo del
+        tiempo, por lo que se necesita incluir un factor que capture una
+        tendencia de crecimiento lineal de la demanda como función del
+        tiempo.
+    f)  La demanda tiende a crecer en los bloques en que llueve. Sin
+        embargo, la magnitud del crecimiento es distinta dependiendo de
+        si es un día de semana o un fin de semana.
+
+    Defina cuidadosamente las variables dependientes e
+    independientes e indique cómo se obtienen a partir de los
+    registros disponibles en la base de datos.
 
 :::
 
@@ -6489,130 +6382,30 @@ Table: (\#tab:reg-p9-datos) Sample of the first 6 records from the database.
 1.  Describe a linear regression model to estimate the **total demand**
     for services in each zone and time block that considers **at least
     four** of the following elements:
+    a)  Geographic fixed effects to capture the fact that a large part of
+        demand variability is explained by differences in consumption
+        patterns across zones.
+    b)  The demand pattern throughout the day is highly seasonal, so the
+        inclusion of hourly fixed effects is expected to be relevant.
+    c)  Although there is some demand variation depending on the day of
+        the week, it is negligible compared to the difference between
+        weekdays and weekends, which is very significant.
+    d)  The level of economic activity appears to be positively
+        correlated with demand. However, this effect appears to be
+        lagged, so it seems reasonable to consider economic activity
+        values from the last 3 months.
+    e)  Demand has been growing steadily over time, so a factor that
+        captures a linear growth trend in demand as a function of time
+        needs to be included.
+    f)  Demand tends to increase during time blocks when it rains.
+        However, the magnitude of the increase differs depending on
+        whether it is a weekday or a weekend.
+
+    Carefully define the dependent and independent variables and
+    indicate how they are obtained from the records available in the
+    database.
 
 :::
-
-
-::: {.lang-es}
-
-a)  Efectos fijos geográficos para capturar que gran parte de la
-    variabilidad de la demanda se explica por diferencias en los
-    patrones de consumo de las distintas zonas.
-
-:::
-
-::: {.lang-en}
-
-a)  Geographic fixed effects to capture the fact that a large part of
-    demand variability is explained by differences in consumption
-    patterns across zones.
-
-:::
-
-
-::: {.lang-es}
-
-b)  El patrón de demanda a lo largo del día es altamente estacional,
-    por lo que es esperable que la inclusión de efectos fijos por
-    hora sea relevante.
-
-:::
-
-::: {.lang-en}
-
-b)  The demand pattern throughout the day is highly seasonal, so the
-    inclusion of hourly fixed effects is expected to be relevant.
-
-:::
-
-
-::: {.lang-es}
-
-c)  Aunque hay alguna variación de la demanda dependiendo del día de
-    semana, es despreciable en relación con la diferencia que hay
-    entre días de semana y fin de semana, la que es muy relevante.
-
-:::
-
-::: {.lang-en}
-
-c)  Although there is some demand variation depending on the day of
-    the week, it is negligible compared to the difference between
-    weekdays and weekends, which is very significant.
-
-:::
-
-
-::: {.lang-es}
-
-d)  El nivel de actividad económica parece estar positivamente
-    correlacionado con la demanda. Sin embargo, este efecto parece
-    estar rezagado, por lo que parece razonable considerar los
-    valores de actividad económica de los últimos 3 meses.
-
-:::
-
-::: {.lang-en}
-
-d)  The level of economic activity appears to be positively
-    correlated with demand. However, this effect appears to be
-    lagged, so it seems reasonable to consider economic activity
-    values from the last 3 months.
-
-:::
-
-
-::: {.lang-es}
-
-e)  La demanda ha ido creciendo sostenidamente a lo largo del
-    tiempo, por lo que se necesita incluir un factor que capture una
-    tendencia de crecimiento lineal de la demanda como función del
-    tiempo.
-
-:::
-
-::: {.lang-en}
-
-e)  Demand has been growing steadily over time, so a factor that
-    captures a linear growth trend in demand as a function of time
-    needs to be included.
-
-:::
-
-
-::: {.lang-es}
-
-f)  La demanda tiende a crecer en los bloques en que llueve. Sin
-    embargo, la magnitud del crecimiento es distinta dependiendo de
-    si es un día de semana o un fin de semana.
-
-:::
-
-::: {.lang-en}
-
-f)  Demand tends to increase during time blocks when it rains.
-    However, the magnitude of the increase differs depending on
-    whether it is a weekday or a weekend.
-
-:::
-
-
-::: {.lang-es}
-
-Defina cuidadosamente las variables dependientes e
-independientes e indique cómo se obtienen a partir de los
-registros disponibles en la base de datos.
-
-:::
-
-::: {.lang-en}
-
-Carefully define the dependent and independent variables and
-indicate how they are obtained from the records available in the
-database.
-
-:::
-
 
 ::: {.lang-es}
 
@@ -6715,6 +6508,13 @@ database.
     Para esto, ha elaborado un plan preliminar en que quedarían
     $N_{ith}$ *shoppers* disponibles para trabajar en el bloque horario
     $h$ del día $t$ en la zona $i$.
+    a)  Usando el modelo 1, calcule el valor esperado de la demanda para
+        un bloque en un día de semana, en que no llueve y en que hay una
+        variabilidad en la actividad económica del 10% ($IMACEC = 0.1$).
+    b)  Para el mismo bloque horario de la parte anterior, escriba una
+        expresión para calcular la probabilidad de que la demanda total
+        exceda la capacidad disponible expresada para ese bloque
+        $N_{ith} = 600$.
 
 :::
 
@@ -6725,44 +6525,14 @@ database.
     impact the ability to meet demand. To this end, it has developed a
     preliminary plan in which $N_{ith}$ *shoppers* would be available to
     work in time block $h$ on day $t$ in zone $i$.
+    a)  Using Model 1, compute the expected value of demand for a block
+        on a weekday, when it does not rain, and when there is a 10%
+        variation in economic activity ($IMACEC = 0.1$).
+    b)  For the same time block as in the previous part, write an
+        expression to calculate the probability that total demand
+        exceeds the available capacity for that block, $N_{ith} = 600$.
 
 :::
-
-
-::: {.lang-es}
-
-a)  Usando el modelo 1, calcule el valor esperado de la demanda para
-    un bloque en un día de semana, en que no llueve y en que hay una
-    variabilidad en la actividad económica del 10% ($IMACEC = 0.1$).
-
-:::
-
-::: {.lang-en}
-
-a)  Using Model 1, compute the expected value of demand for a block
-    on a weekday, when it does not rain, and when there is a 10%
-    variation in economic activity ($IMACEC = 0.1$).
-
-:::
-
-
-::: {.lang-es}
-
-b)  Para el mismo bloque horario de la parte anterior, escriba una
-    expresión para calcular la probabilidad de que la demanda total
-    exceda la capacidad disponible expresada para ese bloque
-    $N_{ith} = 600$.
-
-:::
-
-::: {.lang-en}
-
-b)  For the same time block as in the previous part, write an
-    expression to calculate the probability that total demand
-    exceeds the available capacity for that block, $N_{ith} = 600$.
-
-:::
-
 
 <details>
 <summary>**Solución**</summary>
@@ -6774,6 +6544,36 @@ b)  For the same time block as in the previous part, write an
     tanto a las órdenes completadas como aquellas que excedieron la
     capacidad:
 
+    $$
+    DT_{iht}=NOrdersC_{iht}+NOrdersN_{iht}
+    $$
+
+    En el lado derecho de la regresión se pueden considerar cualquiera
+    de los siguientes puntos:
+
+    -   Efectos fijos geográficos: $\alpha_i^1$
+    -   Efectos fijos por hora: $\alpha_h^2$
+    -   Diferencia entre día de semana y fin de semana: $\beta_1 FDS_t$
+        donde $FDS_t = 1_{\{Day \in \{\text{Sábado},\text{Domingo}\}\}}$
+    -   El nivel de actividad económica de los últimos 3 meses
+        $\beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} + \beta_4 IMACEC_{t-2}$.
+        Un modelo admisible es suponer que
+        $\beta_2 = \beta_3 = \beta_4$. En vez de tener un parámetro por
+        cada mes, se tiene un único para el promedio de los tres.
+    -   La demanda ha ido creciendo sostenidamente: $\beta_5 MES_t$
+    -   Lluvia y fin de semana:
+        $\beta_6 RAIN_{th} + \beta_7 RAIN_{th}\,FDS_t$
+
+    Así, la ecuación de regresión que considera todos los factores viene
+    dada por:
+
+    \[
+    \begin{align}
+    DT_{iht} &= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
+    &\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
+    \end{align}
+    \]
+
 :::
 
 ::: {.lang-en}
@@ -6782,227 +6582,124 @@ b)  For the same time block as in the previous part, write an
     total demand in zone i, date t, and hour h, which corresponds to
     both completed orders and those that exceeded capacity:
 
-:::
+    $$
+    DT_{iht}=NOrdersC_{iht}+NOrdersN_{iht}
+    $$
 
-$$
-DT_{iht}=NOrdersC_{iht}+NOrdersN_{iht}
-$$
+    On the right-hand side of the regression, any of the following can
+    be considered:
 
-::: {.lang-es}
+    -   Geographic fixed effects: $\alpha_i^1$
+    -   Hourly fixed effects: $\alpha_h^2$
+    -   Weekday vs. weekend difference: $\beta_1 FDS_t$ where
+        $FDS_t = 1_{\{Day \in \{\text{Saturday}, \text{Sunday}\}\}}$
+    -   Economic activity level over the last 3 months:
+        $\beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} + \beta_4 IMACEC_{t-2}$.
+        An admissible model is to assume that
+        $\beta_2 = \beta_3 = \beta_4$. Instead of one parameter per
+        month, a single parameter for the average of the three is used.
+    -   Demand has been growing steadily: $\beta_5 MES_t$
+    -   Rain and weekend:
+        $\beta_6 RAIN_{th} + \beta_7 RAIN_{th}\,FDS_t$
 
-En el lado derecho de la regresión se pueden considerar cualquiera
-de los siguientes puntos:
+    Thus, the regression equation that considers all factors is given by:
 
-:::
-
-::: {.lang-en}
-
-On the right-hand side of the regression, any of the following can
-be considered:
-
-:::
-
-
-::: {.lang-es}
-
--   Efectos fijos geográficos: $\alpha_i^1$
--   Efectos fijos por hora: $\alpha_h^2$
--   Diferencia entre día de semana y fin de semana: $\beta_1 FDS_t$
-    donde $FDS_t = 1_{\{Day \in \{\text{Sábado},\text{Domingo}\}\}}$
--   El nivel de actividad económica de los últimos 3 meses
-    $\beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} + \beta_4 IMACEC_{t-2}$.
-    Un modelo admisible es suponer que
-    $\beta_2 = \beta_3 = \beta_4$. En vez de tener un parámetro por
-    cada mes, se tiene un único para el promedio de los tres.
--   La demanda ha ido creciendo sostenidamente: $\beta_5 MES_t$
--   Lluvia y fin de semana:
-    $\beta_6 RAIN_{th} + \beta_7 RAIN_{th}\,FDS_t$
-
-:::
-
-::: {.lang-en}
-
--   Geographic fixed effects: $\alpha_i^1$
--   Hourly fixed effects: $\alpha_h^2$
--   Weekday vs. weekend difference: $\beta_1 FDS_t$ where
-    $FDS_t = 1_{\{Day \in \{\text{Saturday}, \text{Sunday}\}\}}$
--   Economic activity level over the last 3 months:
-    $\beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} + \beta_4 IMACEC_{t-2}$.
-    An admissible model is to assume that
-    $\beta_2 = \beta_3 = \beta_4$. Instead of one parameter per
-    month, a single parameter for the average of the three is used.
--   Demand has been growing steadily: $\beta_5 MES_t$
--   Rain and weekend:
-    $\beta_6 RAIN_{th} + \beta_7 RAIN_{th}\,FDS_t$
-
-:::
-
-
-::: {.lang-es}
-
-Así, la ecuación de regresión que considera todos los factores viene
-dada por:
-
-:::
-
-::: {.lang-en}
-
-Thus, the regression equation that considers all factors is given by:
-
-:::
-
-
-\[\begin{align}    DT_{iht} &= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
+    \[
+    \begin{align}
+    DT_{iht} &= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
     &\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
-\end{align}\]
+    \end{align}
+    \]
+
+:::
 
 ::: {.lang-es}
 
 2.  Incluye:
+    a.  Los modelos 2 y 3 tienen efectos fijos y, por tanto, hay un
+        intercepto distinto para cada hora (Modelo 2) o para cada
+        (geografía-hora). En general, los efectos fijos no se reportan
+        porque suelen ser una secuencia larga de dummies por las que
+        solo se desea controlar.
+    b.  El $R^2$ captura la varianza explicada. En este caso el modelo
+        con mayor $R^2$ es el modelo 3.
+    c.  Al agregar efectos fijos por región, el $R^2$ (varianza
+        explicada) aumenta bastante, por lo que concluimos que una parte
+        relevante de la variación en la demanda se explica porque hay
+        regiones que tienen más demanda que en otras.
+    d.  En los tres modelos es positiva y significativa (p-valor < 0.05),
+        por lo que se puede afirmar que mayor actividad económica
+        correlaciona positivamente con mayor demanda para KornerK.
 
 :::
 
 ::: {.lang-en}
 
 2.  Includes:
+    a.  Models 2 and 3 have fixed effects, and therefore there is a
+        different intercept for each hour (Model 2) or for each
+        (geography-hour) combination. In general, fixed effects are not
+        reported because they are typically a long sequence of dummies
+        that one only wishes to control for.
+    b.  $R^2$ captures the explained variance. In this case, the model
+        with the highest $R^2$ is Model 3.
+    c.  When adding regional fixed effects, $R^2$ (explained variance)
+        increases substantially, so we conclude that a significant part
+        of demand variation is explained by the fact that some regions
+        have higher demand than others.
+    d.  In all three models, it is positive and significant (p-value
+        < 0.05), so it can be stated that higher economic activity is
+        positively correlated with higher demand for KornerK.
 
 :::
-
-
-::: {.lang-es}
-
-a.  Los modelos 2 y 3 tienen efectos fijos y, por tanto, hay un
-    intercepto distinto para cada hora (Modelo 2) o para cada
-    (geografía-hora). En general, los efectos fijos no se reportan
-    porque suelen ser una secuencia larga de dummies por las que
-    solo se desea controlar.
-
-:::
-
-::: {.lang-en}
-
-a.  Models 2 and 3 have fixed effects, and therefore there is a
-    different intercept for each hour (Model 2) or for each
-    (geography-hour) combination. In general, fixed effects are not
-    reported because they are typically a long sequence of dummies
-    that one only wishes to control for.
-
-:::
-
-
-::: {.lang-es}
-
-b.  El $R^2$ captura la varianza explicada. En este caso el modelo
-    con mayor $R^2$ es el modelo 3.
-
-:::
-
-::: {.lang-en}
-
-b.  $R^2$ captures the explained variance. In this case, the model
-    with the highest $R^2$ is Model 3.
-
-:::
-
-
-::: {.lang-es}
-
-c.  Al agregar efectos fijos por región, el $R^2$ (varianza
-    explicada) aumenta bastante, por lo que concluimos que una parte
-    relevante de la variación en la demanda se explica porque hay
-    regiones que tienen más demanda que en otras.
-
-:::
-
-::: {.lang-en}
-
-c.  When adding regional fixed effects, $R^2$ (explained variance)
-    increases substantially, so we conclude that a significant part
-    of demand variation is explained by the fact that some regions
-    have higher demand than others.
-
-:::
-
-
-::: {.lang-es}
-
-d.  En los tres modelos es positiva y significativa (p-valor < 0.05),
-    por lo que se puede afirmar que mayor actividad económica
-    correlaciona positivamente con mayor demanda para KornerK.
-
-:::
-
-::: {.lang-en}
-
-d.  In all three models, it is positive and significant (p-value
-    < 0.05), so it can be stated that higher economic activity is
-    positively correlated with higher demand for KornerK.
-
-:::
-
 
 ::: {.lang-es}
 
 3.  Detalle:
+    a.  El valor esperado viene dado por:
+
+        $$
+        \mu = 589.4 + 65.3 \cdot 0.1 = 595.9
+        $$
+
+    b.  La probabilidad viene dada por:
+
+        $$
+        Pr(DT_{iht} \geq 600)
+        $$
+
+        Donde $DT_{iht}$ se distribuye normal con media $\mu = 595.9$ y
+        varianza $\sigma^2 = (5.355)^2$. Este cálculo se puede hacer
+        directamente en cualquier paquete estadístico. En R:
+
+        $$
+        1 - pnorm(600, mean = 595.9, sd = 5.355)
+        $$
 
 :::
 
 ::: {.lang-en}
 
 3.  Details:
+    a.  The expected value is given by:
+
+        $$
+        \mu = 589.4 + 65.3 \cdot 0.1 = 595.9
+        $$
+
+    b.  The probability is given by:
+
+        $$
+        Pr(DT_{iht} \geq 600)
+        $$
+
+        Where $DT_{iht}$ is normally distributed with mean $\mu = 595.9$ and
+        variance $\sigma^2 = (5.355)^2$. This calculation can be done
+        directly in any statistical package. In R:
+
+        $$
+        1 - pnorm(600, mean = 595.9, sd = 5.355)
+        $$
 
 :::
-
-
-::: {.lang-es}
-
-a.  El valor esperado viene dado por:
-
-:::
-
-::: {.lang-en}
-
-a.  The expected value is given by:
-
-:::
-
-$$
-\mu = 589.4 + 65.3 \cdot 0.1 = 595.9
-$$
-
-::: {.lang-es}
-
-b.  La probabilidad viene dada por:
-
-:::
-
-::: {.lang-en}
-
-b.  The probability is given by:
-
-:::
-
-$$
-Pr(DT_{iht} \geq 600)
-$$
-
-::: {.lang-es}
-
-Donde $DT_{iht}$ se distribuye normal con media $\mu = 595.9$ y
-varianza $\sigma^2 = (5.355)^2$. Este cálculo se puede hacer
-directamente en cualquier paquete estadístico. En R:
-
-:::
-
-::: {.lang-en}
-
-Where $DT_{iht}$ is normally distributed with mean $\mu = 595.9$ and
-variance $\sigma^2 = (5.355)^2$. This calculation can be done
-directly in any statistical package. In R:
-
-:::
-
-$$
-1 - pnorm(600, mean = 595.9, sd = 5.355)
-$$
 </details>
