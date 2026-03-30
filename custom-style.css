@@ -89,6 +89,17 @@ li.part:first-child {
   text-align: justify;
 }
 
+.book .book-body .page-wrapper .page-inner section.normal table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 h1, h2, h3, h4 {
   font-family: 'Source Serif Pro', serif;
   font-weight: normal;
@@ -584,4 +595,3 @@ figcaption {
 .color-theme-1 .book-summary ul.summary li.active > a {
   color: #5a7a9a !important;
 }
-

@@ -1,8 +1,25 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{microtype}
+\usepackage{etoolbox}
 \usepackage[breakable]{tcolorbox}
 \usepackage{titlesec}
+
+\setlength{\emergencystretch}{2em}
+\setlength{\LTleft}{\fill}
+\setlength{\LTright}{\fill}
+\hfuzz=20pt
+\vfuzz=20pt
+\hbadness=10000
+\vbadness=10000
+\raggedbottom
+\AtBeginEnvironment{longtable}{%
+  \fontsize{6.8pt}{7.6pt}\selectfont
+  \setlength{\tabcolsep}{2pt}%
+  \renewcommand{\arraystretch}{0.93}%
+}
 
 % Compact chapter titles: no separate page, content starts right after
 \titleformat{\chapter}[hang]

@@ -595,12 +595,17 @@ The *likelihood function* of the shifted geometric model is:
 
 :::
 
-\[L(\theta) = \left\{\prod_{t=1}^{\tau} P(T=t \mid \theta)^{n_t}\right\}
-P(T>\tau \mid \theta)^{n_\tau}
-= \left\{\prod_{t=1}^{\tau}
+\[
+\begin{aligned}
+L(\theta)
+&= \left\{\prod_{t=1}^{\tau} P(T=t \mid \theta)^{n_t}\right\}
+P(T>\tau \mid \theta)^{n_\tau} \\
+&= \left\{\prod_{t=1}^{\tau}
 \big[\theta(1-\theta)^{t-1}\big]^{n_t}\right\}
 \big[(1-\theta)^{\tau}\big]^{n_\tau}
-\tag{2.5}\]
+\end{aligned}
+\tag{2.5}
+\]
 
 ::: {.lang-es}
 
@@ -2975,11 +2980,15 @@ tenure:
 
 :::
 
-\[\text{DERL}(d \mid \alpha, \beta, \text{activo en } n)
-= \left(\frac{\beta + n - 1}{\alpha + \beta + n - 1}\right)
-\cdot {}_2F_1\!\left(1, \beta + n;\, \alpha + \beta + n;\,
+\[
+\begin{aligned}
+\text{DERL}(d \mid \alpha, \beta, \text{activo en } n)
+&= \left(\frac{\beta + n - 1}{\alpha + \beta + n - 1}\right) \\
+&\quad \cdot {}_2F_1\!\left(1, \beta + n;\, \alpha + \beta + n;\,
 \frac{1}{1+d}\right)
-\tag{2.58}\]
+\end{aligned}
+\tag{2.58}
+\]
 
 ::: {.lang-es}
 
@@ -3072,10 +3081,13 @@ The expected value of the $\text{Residual Lifetime Value}$ is:
 :::
 
 \[
+\begin{aligned}
 \mathbb{E}(\text{RLV}(\delta\mid\text{activo en }s))
-= \int_s^{\infty} \mathbb{E}(v(t))S(t\mid t>s)\delta(t)\,dt
-= \bar{v}\cdot \text{DERL}(\delta\mid r,\alpha,\text{activo en }s)
-\tag{2.63}\]
+&= \int_s^{\infty} \mathbb{E}(v(t))S(t\mid t>s)\delta(t)\,dt \\
+&= \bar{v}\cdot \text{DERL}(\delta\mid r,\alpha,\text{activo en }s)
+\end{aligned}
+\tag{2.63}
+\]
 
 ::: {.lang-es}
 
@@ -3416,8 +3428,13 @@ classes:
 
 :::
 
-\[\Pr(n_{jkt} \mid \theta_1, \theta_2, \pi)= \pi\binom{m}{n_{jkt}}\theta_1^{n_{jkt}}(1-\theta_1)^{m-n_{jkt}}
-+ (1-\pi)\binom{m}{n_{jkt}}\theta_2^{n_{jkt}}(1-\theta_2)^{m-n_{jkt}}\]
+\[
+\begin{aligned}
+\Pr(n_{jkt} \mid \theta_1, \theta_2, \pi)
+&= \pi\binom{m}{n_{jkt}}\theta_1^{n_{jkt}}(1-\theta_1)^{m-n_{jkt}} \\
+&\quad + (1-\pi)\binom{m}{n_{jkt}}\theta_2^{n_{jkt}}(1-\theta_2)^{m-n_{jkt}}
+\end{aligned}
+\]
 \[LL = \sum_j \sum_k \sum_t\ln\!\big(\Pr(n_{jkt} \mid \theta_1, \theta_2, \pi)\big)\]
 
 ::: {.lang-es}
@@ -3432,9 +3449,12 @@ classes:
 
 :::
 
-\[\Pr(\lambda = \lambda_2 \mid n_{jkt}=17)= \frac{\Pr(n_{jkt}=17 \mid \lambda_2)\,\Pr(\lambda_2)}
+\[
+\Pr(\lambda = \lambda_2 \mid n_{jkt}=17)=
+\frac{\Pr(n_{jkt}=17 \mid \lambda_2)\,\Pr(\lambda_2)}
 {\Pr(n_{jkt}=17 \mid \lambda_1)\,\Pr(\lambda_1)
-+ \Pr(n_{jkt}=17 \mid \lambda_2)\,\Pr(\lambda_2)}\]
++ \Pr(n_{jkt}=17 \mid \lambda_2)\,\Pr(\lambda_2)}
+\]
 
 ::: {.lang-es}
 
@@ -3593,13 +3613,18 @@ interactions. The purchase rate is:
 
 :::
 
-\[\lambda_{it} = \sum_{h_1}\alpha_{h_1}\text{Zone}_{ih_1}+ \sum_{h_2}\alpha_{h_2}\text{Industry}_{ih_2}
+\[
+\begin{aligned}
+\lambda_{it} &= \sum_{h_1}\alpha_{h_1}\text{Zone}_{ih_1}
++ \sum_{h_2}\alpha_{h_2}\text{Industry}_{ih_2}
 + \beta_1\text{Tenure2}_{it}
-+ \beta_2\text{Tenure3}_{it}
-+ \beta_3\text{NEventOnline}_{it-1}
-+ \beta_4\text{NEventOffline}_{it-1}
-+ \beta_5\text{NEventOnline}_{it-1}\cdot\text{NEventOffline}_{it-1}
-+ \beta_6\ln(\text{NEmployeeAccess}_{it-1}\cdot\text{NAccessMean}_{it-1})\]
++ \beta_2\text{Tenure3}_{it} \\
+&\quad + \beta_3\text{NEventOnline}_{it-1}
++ \beta_4\text{NEventOffline}_{it-1} \\
+&\quad + \beta_5\text{NEventOnline}_{it-1}\cdot\text{NEventOffline}_{it-1} \\
+&\quad + \beta_6\ln(\text{NEmployeeAccess}_{it-1}\cdot\text{NAccessMean}_{it-1})
+\end{aligned}
+\]
 
 ::: {.lang-es}
 
@@ -4286,11 +4311,15 @@ Table: (\#tab:prob-p5-historial) Purchase history for customer 321045.
 
 :::
 
-\[\lambda_{icst} = \alpha_c + \alpha_s+ \beta_1\text{MUJER}_i
-+ \beta_2\text{MUJER}_i \cdot \text{ZORIENTE}_s
-+ \sum_a \gamma_a\delta_{ta}
-+ \theta_1\Delta^1_{ct}
-+ \theta_2\Delta^2_{ct}\]
+\[
+\begin{aligned}
+\lambda_{icst} &= \alpha_c + \alpha_s + \beta_1\text{MUJER}_i \\
+&\quad + \beta_2\text{MUJER}_i \cdot \text{ZORIENTE}_s
++ \sum_a \gamma_a\delta_{ta} \\
+&\quad + \theta_1\Delta^1_{ct}
++ \theta_2\Delta^2_{ct}
+\end{aligned}
+\]
 
 ::: {.lang-es}
 
@@ -4670,11 +4699,16 @@ The aggregate distribution and its expectation are:
 
 :::
 
-\[p_0 = 1 - \Pr(X = 0)= 1 - \frac{B(\alpha + 1, \beta)}{B(\alpha, \beta)}
-= 1 - \frac{\Gamma(\alpha+1)\Gamma(\beta)}{\Gamma(\alpha+\beta+1)}
-\cdot \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}
-= 1 - \frac{\alpha}{\alpha + \beta}
-= \frac{\beta}{\alpha + \beta}\]
+\[
+\begin{aligned}
+p_0 &= 1 - \Pr(X = 0)
+= 1 - \frac{B(\alpha + 1, \beta)}{B(\alpha, \beta)} \\
+&= 1 - \frac{\Gamma(\alpha+1)\Gamma(\beta)}{\Gamma(\alpha+\beta+1)}
+\cdot \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} \\
+&= 1 - \frac{\alpha}{\alpha + \beta}
+= \frac{\beta}{\alpha + \beta}
+\end{aligned}
+\]
 
 ::: {.lang-es}
 
@@ -5081,11 +5115,16 @@ With $\Pr(C) = \Pr(N) = 1/2$:
 
 :::
 
-\[\Pr(X_i = x_i \mid p_{\text{canjear}}, p_{\text{leer}})= \sum_{n_i = x_i}^{m_i}
+\[
+\begin{aligned}
+\Pr(X_i = x_i \mid p_{\text{canjear}}, p_{\text{leer}})
+&= \sum_{n_i = x_i}^{m_i}
 \binom{n_i}{x_i}p_{\text{canjear}}^{x_i}
-(1-p_{\text{canjear}})^{n_i - x_i}
-\cdot \binom{m_i}{n_i}p_{\text{leer}}^{n_i}
-(1-p_{\text{leer}})^{m_i - n_i}\]
+(1-p_{\text{canjear}})^{n_i - x_i} \\
+&\quad \cdot \binom{m_i}{n_i}p_{\text{leer}}^{n_i}
+(1-p_{\text{leer}})^{m_i - n_i}
+\end{aligned}
+\]
 
 ::: {.lang-es}
 

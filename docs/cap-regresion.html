@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-03-29" />
+<meta name="date" content="2026-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -275,8 +275,8 @@ div.csl-indent {
 <li class="chapter" data-level="3.1.1" data-path="cap-estructurales.html"><a href="cap-estructurales.html#modelos-estructurales-versus-forma-reducida"><i class="fa fa-check"></i><b>3.1.1</b> Modelos estructurales versus forma reducida</a></li>
 <li class="chapter" data-level="3.1.2" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-ejemplos"><i class="fa fa-check"></i><b>3.1.2</b> Ejemplos motivadores</a></li>
 <li class="chapter" data-level="3.1.3" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-ventajas"><i class="fa fa-check"></i><b>3.1.3</b> Ventajas de los modelos estructurales</a></li>
-<li class="chapter" data-level="3.1.4" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-taxonomia"><i class="fa fa-check"></i><b>3.1.4</b> Taxonomía de modelos estructurales</a></li>
-<li class="chapter" data-level="3.1.5" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-marketing"><i class="fa fa-check"></i><b>3.1.5</b> Modelos estructurales en marketing</a></li>
+<li class="chapter" data-level="3.1.4" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-marketing"><i class="fa fa-check"></i><b>3.1.4</b> Modelos estructurales en marketing</a></li>
+<li class="chapter" data-level="3.1.5" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-taxonomia"><i class="fa fa-check"></i><b>3.1.5</b> Taxonomía de modelos estructurales</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-logit"><i class="fa fa-check"></i><b>3.2</b> Modelo logit</a>
 <ul>
@@ -2906,7 +2906,7 @@ the distance metric.</p>
 <p>Regression trees belong to the family of <em>adaptive basis function</em> models <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>, where the prediction is expressed as <span class="math inline">\(f(\mathbf{x}) = \sum_{k=1}^K w_k \phi_k(\mathbf{x})\)</span> with basis functions <span class="math inline">\(\phi_k\)</span> that adapt to the data. In the case of a tree, each <span class="math inline">\(\phi_k\)</span> is an indicator function for a region of the space and <span class="math inline">\(w_k\)</span> is the mean of <span class="math inline">\(y\)</span> in that region.</p>
 <p>The <strong>CART algorithm</strong> (<em>Classification and Regression Trees</em>) builds the tree recursively: at each node, it searches for the variable <span class="math inline">\(j\)</span> and cutpoint <span class="math inline">\(t\)</span> that split the data into two regions <span class="math inline">\(R_1 = \{(\mathbf{x}_i, y_i) : x_{ij} \leq t\}\)</span> and <span class="math inline">\(R_2 = \{(\mathbf{x}_i, y_i) : x_{ij} &gt; t\}\)</span>, minimizing the sum of costs:</p>
 </div>
-<p><span class="math display" id="eq:reg-cart">\[\min_{j, t} \left\{ \sum_{i \in R_1}(y_i - \bar{y}_{R_1})^2 + \sum_{i \in R_2} (y_i - \bar{y}_{R_2})^2 \right\}
+<p><span class="math display" id="eq:reg-cart">\[\min_{j, t} \left\{ \sum_{i \in R_1(j,t)}(y_i - \bar{y}_{R_1(j,t)})^2 + \sum_{i \in R_2(j,t)} (y_i - \bar{y}_{R_2(j,t)})^2 \right\}
 \tag{1.18}\]</span></p>
 <div class="lang-es">
 <p>Este procedimiento se aplica recursivamente hasta alcanzar un criterio de parada (profundidad máxima, número mínimo de observaciones en un nodo, o reducción de costo insuficiente).</p>
@@ -2935,7 +2935,7 @@ Figure 1.6: Árbol de ejemplo
 <p>Un problema central de los árboles de regresión es su alta varianza: pequeños cambios en los datos pueden producir árboles muy distintos. La técnica de <em>Bagging</em> (Bootstrap Aggregation) <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span> aborda este problema promediando múltiples modelos entrenados sobre muestras bootstrap:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Bootstrap</strong>: se generan <span class="math inline">\(B\)</span> conjuntos de datos <span class="math inline">\(\{\mathcal{D}^{(b)}\}_{b=1}^B\)</span> mediante muestreo con reemplazo del conjunto original.</li>
-<li><strong>Entrenamiento independiente</strong>: se ajusta un árbol profundo (sin poda) a cada muestra <span class="math inline">\(\mathcal{D}^{(b)}\)</span>.</li>
+<li><strong>Entrenamiento independiente</strong>: se ajusta un árbol profundo a cada muestra <span class="math inline">\(\mathcal{D}^{(b)}\)</span>.</li>
 <li><strong>Agregación</strong>: la predicción final es el promedio de los <span class="math inline">\(B\)</span> árboles:</li>
 </ol>
 </div>
@@ -3222,12 +3222,16 @@ two models would you recommend using?</p></li>
 </div>
 <div class="lang-es">
 <ol start="3" style="list-style-type: decimal">
-<li>¿Cómo describiría el rol de las cuarentenas en las ventas?</li>
+<li>Inspeccionando los resultados del modelo de regresión lineal que
+consideró en la parte anterior, ¿cómo describiría el rol que han
+jugado las cuarentenas en las ventas de la firma?</li>
 </ol>
 </div>
 <div class="lang-en">
 <ol start="3" style="list-style-type: decimal">
-<li>How would you describe the role of quarantines in sales?</li>
+<li>Inspecting the results of the linear regression model considered
+in the previous part, how would you describe the role quarantines
+have played in the firm’s sales?</li>
 </ol>
 </div>
 <details>
@@ -3236,17 +3240,51 @@ two models would you recommend using?</p></li>
 </summary>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li>Se agregan progresivamente un término adicional a la regresión:</li>
+<li><p>Se agregan progresivamente un término adicional a la regresión:</p>
+<p><span class="math display">\[
+\begin{aligned}
+q_{ist} &amp;= \alpha_{is} + \beta_1 \cdot \mathbf{1}_{[q_{ist-1}= 0]} \\
+&amp;\quad + \beta_2 \cdot QUAR_{st} \times \mathbf{1}_{[i \notin \mathcal{PN}]} \\
+&amp;\quad + \beta_3 \cdot QUAR_{st} \times FDS_t \\
+&amp;\quad + \beta_4 \cdot InfMV_{st} + \beta_5 \cdot (InfMV_{st} - InfMV_{st-7})
+\end{aligned}
+\]</span></p>
+<p><strong>Observación:</strong> El modelo anterior puede permitir algunas
+variantes. Por ejemplo, aunque la condición (a) indique que existe
+un factor fijo por tienda y producto, una variante (no tan
+correcta) es considerar por separador los factores. Esto es, en vez
+de tomar <span class="math inline">\(\alpha_{is}\)</span> se elige <span class="math inline">\((\alpha_i + \alpha_s)\)</span>.</p>
+<p>También, al considerar la condición (c) al momento de abordar el
+factor en (d), se puede decir que el efecto de las cuarentenas en
+los fines de semana no afecta a los productos de primera necesidad
+(como lo dice la condición (c)). De este modo, este factor se puede
+considerar como
+<span class="math inline">\(\beta_3 \cdot QUAR_{st} \times FDS_t \times \mathbf{1}_{[i \notin \mathcal{PN}]}\)</span>.</p></li>
 </ol>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
-<li>Terms are progressively added to the regression:</li>
+<li><p>Terms are progressively added to the regression:</p>
+<p><span class="math display">\[
+\begin{aligned}
+q_{ist} &amp;= \alpha_{is} + \beta_1 \cdot \mathbf{1}_{[q_{ist-1}= 0]} \\
+&amp;\quad + \beta_2 \cdot QUAR_{st} \times \mathbf{1}_{[i \notin \mathcal{PN}]} \\
+&amp;\quad + \beta_3 \cdot QUAR_{st} \times FDS_t \\
+&amp;\quad + \beta_4 \cdot InfMV_{st} + \beta_5 \cdot (InfMV_{st} - InfMV_{st-7})
+\end{aligned}
+\]</span></p>
+<p><strong>Remark:</strong> The previous model admits some variants. For example,
+although condition (a) indicates that there is a fixed effect by
+store and product, one variant (not entirely correct) is to
+consider the factors separately. That is, instead of taking
+<span class="math inline">\(\alpha_{is}\)</span> one could use <span class="math inline">\((\alpha_i + \alpha_s)\)</span>.</p>
+<p>Also, when taking condition (c) into account while addressing
+factor (d), one may argue that the effect of quarantines on
+weekends does not affect essential goods (as stated in condition
+(c)). In that case, this factor can be written as
+<span class="math inline">\(\beta_3 \cdot QUAR_{st} \times FDS_t \times \mathbf{1}_{[i \notin \mathcal{PN}]}\)</span>.</p></li>
 </ol>
 </div>
-<p><span class="math display">\[\begin{aligned}q_{ist} &amp;= \alpha_{is} + \beta_1 \cdot \mathbf{1}_{[q_{ist-1}= 0]} + \beta_2 \cdot QUAR_{st} \times \mathbf{1}_{[i \notin \mathcal{PN}]} \\
-&amp;\quad + \beta_3 \cdot QUAR_{st} \times FDS_t + \beta_4 \cdot InfMV_{st} + \beta_5 \cdot (InfMV_{st} - InfMV_{st-7})
-\end{aligned}\]</span></p>
 <div class="lang-es">
 <ol start="2" style="list-style-type: decimal">
 <li><p>El modelo 1 es mejor que el modelo 2 en casi todas las métricas
@@ -3275,19 +3313,24 @@ marginally positive for holidays.</p></li>
 <h3>Problema 2: Ventas de un cine<a href="cap-regresion.html#problema-2-ventas-de-un-cine" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Un cine pequeño quiere impulsar la venta de entradas para este verano.
-Para ello, desea determinar las características de las películas que
-provocan un mayor ingreso. Se dispone de un panel de datos con 3,800
-funciones de 1,250 películas con las siguientes variables:</p>
+Para atraer de manera eficiente a los clientes deciden ser selectivos en
+las películas que tendrán en cartelera. Para ello, desean determinar
+las características de las películas que provocan un mayor ingreso. El
+equipo de ventas dispone de un panel de datos con el historial de las
+3,800 funciones del año de las 1,250 películas presentadas con los
+siguientes datos:</p>
 </div>
 <div class="lang-en">
 <p>A small movie theater wants to boost ticket sales for this summer. To
-do so, it wants to determine the characteristics of films that generate
-the highest revenue. A panel dataset with 3,800 screenings of 1,250
-movies is available with the following variables:</p>
+attract customers efficiently, they have decided to be selective about
+the films they will screen. To do so, they want to determine the
+characteristics of films that generate higher revenue. The sales team
+has a panel dataset with the history of the 3,800 screenings held
+during the year for 1,250 films, with the following variables:</p>
 </div>
 <div class="lang-es">
 <table>
-<caption><span id="tab:reg-p2-variables">Table 1.7: </span> Descripción de variables del dataset de películas.</caption>
+<caption><span id="tab:reg-p2-variables">Table 1.7: </span> Resumen de ventas para cada función.</caption>
 <thead>
 <tr class="header">
 <th align="center">Variable</th>
@@ -3351,7 +3394,7 @@ movies is available with the following variables:</p>
 </div>
 <div class="lang-en">
 <table>
-<caption><span id="tab:reg-p2-variables">Table 1.7: </span> Movie dataset variable descriptions.</caption>
+<caption><span id="tab:reg-p2-variables">Table 1.7: </span> Sales summary for each screening.</caption>
 <thead>
 <tr class="header">
 <th align="center">Variable</th>
@@ -3414,26 +3457,241 @@ movies is available with the following variables:</p>
 </table>
 </div>
 <div class="lang-es">
+<p>Para tener una mejor idea de cómo se ven los datos, se pueden observar
+estos 6 registros:</p>
+<table style="width:100%;">
+<caption><span id="tab:reg-p2-ejemplo">Table 1.8: </span> Ejemplo de 6 registros en Tabla de Ventas.</caption>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Id<sub>i</sub></th>
+<th align="center">Fecha<sub>i</sub></th>
+<th align="center">Hora<sub>i</sub></th>
+<th align="center">Pelíc.</th>
+<th align="center">Dur.</th>
+<th align="center">Tipo</th>
+<th align="center">Edad</th>
+<th align="center">Est.</th>
+<th align="center">Presup.</th>
+<th align="center">Ingr.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">14156</td>
+<td align="center">23/07/22</td>
+<td align="center">19:00</td>
+<td align="center">Odín 4</td>
+<td align="center">105</td>
+<td align="center">Acción</td>
+<td align="center">TE+7</td>
+<td align="center">Dis</td>
+<td align="center">354,97M</td>
+<td align="center">948,64k</td>
+</tr>
+<tr class="even">
+<td align="center">14157</td>
+<td align="center">23/07/22</td>
+<td align="center">22:00</td>
+<td align="center">Chillido 5</td>
+<td align="center">132</td>
+<td align="center">Terror</td>
+<td align="center">MA+18</td>
+<td align="center">Para</td>
+<td align="center">135,60M</td>
+<td align="center">804,30k</td>
+</tr>
+<tr class="odd">
+<td align="center">14158</td>
+<td align="center">24/07/22</td>
+<td align="center">11:00</td>
+<td align="center">Odín 4</td>
+<td align="center">105</td>
+<td align="center">Acción</td>
+<td align="center">TE+7</td>
+<td align="center">Dis</td>
+<td align="center">354,97M</td>
+<td align="center">893,00k</td>
+</tr>
+<tr class="even">
+<td align="center">14159</td>
+<td align="center">24/07/22</td>
+<td align="center">15:30</td>
+<td align="center">Desafiar B.</td>
+<td align="center">158</td>
+<td align="center">Romance</td>
+<td align="center">MA+14</td>
+<td align="center">WB</td>
+<td align="center">94,50M</td>
+<td align="center">569,20k</td>
+</tr>
+<tr class="odd">
+<td align="center">14160</td>
+<td align="center">24/07/22</td>
+<td align="center">20:15</td>
+<td align="center">Odín 4</td>
+<td align="center">105</td>
+<td align="center">Acción</td>
+<td align="center">TE+7</td>
+<td align="center">Dis</td>
+<td align="center">354,97M</td>
+<td align="center">832,15k</td>
+</tr>
+<tr class="even">
+<td align="center">14161</td>
+<td align="center">25/07/22</td>
+<td align="center">11:00</td>
+<td align="center">Desafiar B.</td>
+<td align="center">158</td>
+<td align="center">Romance</td>
+<td align="center">MA+14</td>
+<td align="center">WB</td>
+<td align="center">94,50M</td>
+<td align="center">452,90k</td>
+</tr>
+</tbody>
+</table>
 <ol style="list-style-type: decimal">
-<li><p>Elija un nivel de agregación y transforme las variables de forma que
-puedan modelar el éxito total en ventas para cada película.</p></li>
+<li><p>Nótese que una película puede tener varias funciones y que, debido a
+la naturaleza de las variables, el rango de valores y el tipo de
+variables son distintos. Debido a esto, elija un nivel de
+agregación y transforme las variables de forma que puedan modelar
+el éxito total en ventas para cada película.</p></li>
 <li><p>El equipo escogió como variable dependiente el logaritmo de la suma
-de ingresos por película y generó dos modelos. A partir de los datos
-de la tabla, elija cuál modelo es mejor y entregue 3 argumentos.</p></li>
+de los ingresos de las funciones para cada película y generó dos
+modelos distintos, entregando los siguientes resultados:</p></li>
 </ol>
 </div>
 <div class="lang-en">
+<p>To get a better idea of what the data look like, the following 6
+records can be observed:</p>
+<table style="width:100%;">
+<caption><span id="tab:reg-p2-ejemplo">Table 1.8: </span> Example of 6 records in the Sales Table.</caption>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">ID<sub>i</sub></th>
+<th align="center">Date<sub>i</sub></th>
+<th align="center">Time<sub>i</sub></th>
+<th align="center">Movie</th>
+<th align="center">Dur.</th>
+<th align="center">Type</th>
+<th align="center">Age</th>
+<th align="center">Studio</th>
+<th align="center">Budget</th>
+<th align="center">Revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">14156</td>
+<td align="center">23/07/22</td>
+<td align="center">19:00</td>
+<td align="center">Odín 4</td>
+<td align="center">105</td>
+<td align="center">Action</td>
+<td align="center">TE+7</td>
+<td align="center">Dis</td>
+<td align="center">354.97M</td>
+<td align="center">948.64k</td>
+</tr>
+<tr class="even">
+<td align="center">14157</td>
+<td align="center">23/07/22</td>
+<td align="center">22:00</td>
+<td align="center">Chillido 5</td>
+<td align="center">132</td>
+<td align="center">Horror</td>
+<td align="center">MA+18</td>
+<td align="center">Para</td>
+<td align="center">135.60M</td>
+<td align="center">804.30k</td>
+</tr>
+<tr class="odd">
+<td align="center">14158</td>
+<td align="center">24/07/22</td>
+<td align="center">11:00</td>
+<td align="center">Odín 4</td>
+<td align="center">105</td>
+<td align="center">Action</td>
+<td align="center">TE+7</td>
+<td align="center">Dis</td>
+<td align="center">354.97M</td>
+<td align="center">893.00k</td>
+</tr>
+<tr class="even">
+<td align="center">14159</td>
+<td align="center">24/07/22</td>
+<td align="center">15:30</td>
+<td align="center">Desafiar B.</td>
+<td align="center">158</td>
+<td align="center">Romance</td>
+<td align="center">MA+14</td>
+<td align="center">WB</td>
+<td align="center">94.50M</td>
+<td align="center">569.20k</td>
+</tr>
+<tr class="odd">
+<td align="center">14160</td>
+<td align="center">24/07/22</td>
+<td align="center">20:15</td>
+<td align="center">Odín 4</td>
+<td align="center">105</td>
+<td align="center">Action</td>
+<td align="center">TE+7</td>
+<td align="center">Dis</td>
+<td align="center">354.97M</td>
+<td align="center">832.15k</td>
+</tr>
+<tr class="even">
+<td align="center">14161</td>
+<td align="center">25/07/22</td>
+<td align="center">11:00</td>
+<td align="center">Desafiar B.</td>
+<td align="center">158</td>
+<td align="center">Romance</td>
+<td align="center">MA+14</td>
+<td align="center">WB</td>
+<td align="center">94.50M</td>
+<td align="center">452.90k</td>
+</tr>
+</tbody>
+</table>
 <ol style="list-style-type: decimal">
-<li><p>Choose a level of aggregation and transform the variables so that
-they can model total sales success for each movie.</p></li>
-<li><p>The team chose the logarithm of the sum of revenues per movie as
-the dependent variable and generated two models. Based on the data
-in the table, choose which model is better and provide 3 arguments.</p></li>
+<li><p>Note that one movie can have several screenings and, due to the
+nature of the variables, their value ranges and types differ.
+Because of this, choose an aggregation level and transform the
+variables so they can model total sales success for each movie.</p></li>
+<li><p>The team chose as the dependent variable the logarithm of the sum
+of screening revenues for each movie and generated two different
+models, obtaining the following results:</p></li>
 </ol>
 </div>
 <div class="lang-es">
 <table>
-<caption><span id="tab:reg-p2-modelos">Table 1.8: </span> Resultados de comparación de modelos.</caption>
+<caption><span id="tab:reg-p2-modelos">Table 1.9: </span> Resultados de comparación de modelos.</caption>
 <thead>
 <tr class="header">
 <th align="center"></th>
@@ -3582,7 +3840,7 @@ in the table, choose which model is better and provide 3 arguments.</p></li>
 </div>
 <div class="lang-en">
 <table>
-<caption><span id="tab:reg-p2-modelos">Table 1.8: </span> Model comparison results.</caption>
+<caption><span id="tab:reg-p2-modelos">Table 1.9: </span> Model comparison results.</caption>
 <thead>
 <tr class="header">
 <th align="center"></th>
@@ -3731,22 +3989,44 @@ in the table, choose which model is better and provide 3 arguments.</p></li>
 </div>
 <div class="lang-es">
 <ol start="3" style="list-style-type: decimal">
-<li><p>Interprete los coeficientes de cada modelo. ¿Qué tipo de películas
-debería presentar el cine?</p></li>
-<li><p>Proponga un modelo que considere: (a) efecto marginal de
-Presupuesto, Duración, Edad, Tipo, Estudio y <span class="math inline">\(NFun\)</span>; (b) interacción
-entre Estudio y Tipo; (c) el éxito de películas para niños
+<li><p>Interprete los coeficientes de cada modelo. Según cada modelo, ¿qué
+tipo de películas debería presentar el cine para tener mayores
+ingresos?</p></li>
+<li><p>Suponga que en su base de datos posee también la variable
+independiente <span class="math inline">\(NFun\)</span> que representa el número de funciones que
+recibió la película en el cine. Proponga un modelo de regresión
+lineal que considere las siguientes condiciones:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Se debe considerar el efecto marginal por parte de las
+variables Presupuesto, Duración, Edad, Tipo, Estudio y <span class="math inline">\(NFun\)</span>.</p></li>
+<li><p>Existe un efecto en las ventas que depende simultáneamente del
+estudio y el Tipo de película (por ejemplo, el estudio WB puede
+tener más éxito con películas de terror, mientras que Dis lo
+puede tener con aquellas de acción).</p></li>
+<li><p>El éxito de las películas apropiadas para niños
 (Edad <span class="math inline">\(\in\)</span> {TE, TE+7}) depende de su duración.</p></li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-en">
 <ol start="3" style="list-style-type: decimal">
-<li><p>Interpret the coefficients of each model. What type of movies
-should the theater screen?</p></li>
-<li><p>Propose a model that considers: (a) marginal effect of Budget,
-Duration, Age rating, Type, Studio, and <span class="math inline">\(NFun\)</span>; (b) interaction
-between Studio and Type; (c) the success of children’s movies
+<li><p>Interpret the coefficients of each model. According to each model,
+what type of movies should the theater screen to achieve higher
+revenue?</p></li>
+<li><p>Suppose that your dataset also contains the independent variable
+<span class="math inline">\(NFun\)</span>, representing the number of screenings the movie received in
+the theater. Propose a linear regression model that considers the
+following conditions:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>It should consider the marginal effect of Budget, Duration,
+Age rating, Type, Studio, and <span class="math inline">\(NFun\)</span>.</p></li>
+<li><p>There is an effect on revenue that depends simultaneously on
+the studio and the type of movie (for example, studio WB may be
+more successful with horror movies, while Dis may be more
+successful with action films).</p></li>
+<li><p>The success of movies appropriate for children
 (Age <span class="math inline">\(\in\)</span> {TE, TE+7}) depends on their duration.</p></li>
+</ol></li>
 </ol>
 </div>
 <details>
@@ -3755,92 +4035,622 @@ between Studio and Type; (c) the success of children’s movies
 </summary>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li><p>Se agrega a nivel de película:
-<span class="math inline">\(Ingreso_{j} = \sum_i Ingreso_i \cdot \mathbf{1}_{[Nombre_i = j]}\)</span>.
-Se trabaja con <span class="math inline">\(\log(Ingreso_j)\)</span> y <span class="math inline">\(\log(Presupuesto_j)\)</span> para
-normalizar escalas.</p></li>
-<li><p>El modelo 2 es mejor: (a) mejor BIC a pesar de log-verosimilitud
-ligeramente inferior; (b) menos parámetros (parsimonia); (c) mayor
-proporción de coeficientes significativos; (d) la duración es
-significativa en M2 pero no en M1.</p></li>
-<li><p>Para M1: películas con alto presupuesto, para mayores de 18,
-producidas por Dis. Para M2: películas de terror cortas con alto
-presupuesto.</p></li>
-<li><p>El modelo propuesto es:</p></li>
+<li><p>Nótese que una película puede tener varias funciones y que, debido
+a la naturaleza de las variables, el rango de valores y el tipo de
+variables son distintos. Para evaluar el ingreso total en ventas
+obtenido por una película, se deben considerar los ingresos a nivel
+película. De modo que se define el ingreso para la película <span class="math inline">\(j\)</span>
+como la suma del éxito de todas sus funciones <span class="math inline">\(i\)</span>:</p>
+<p><span class="math display">\[
+Ingreso_j = \sum_i Ingreso_i \cdot \mathbf{1}_{[Nombre_i = j]}
+\]</span></p>
+<p>Cabe notar que las características de la película
+(<span class="math inline">\(Presupuesto_i\)</span>, <span class="math inline">\(\text{Duración}_i\)</span>, <span class="math inline">\(Tipo_i\)</span>, <span class="math inline">\(Edad_i\)</span>, <span class="math inline">\(Estudio_i\)</span>) se
+mantienen para cada función <span class="math inline">\(i\)</span> de la película <span class="math inline">\(j\)</span>, de modo que
+<span class="math inline">\(Presupuesto_j = Presupuesto_i\)</span> para toda función de la película
+<span class="math inline">\(j\)</span> (lo mismo para las demás características). De este modo, se
+tiene un vector de características por película
+(<span class="math inline">\(Presupuesto_j\)</span>, <span class="math inline">\(\text{Duración}_j\)</span>, <span class="math inline">\(Tipo_j\)</span>, <span class="math inline">\(Edad_j\)</span>, <span class="math inline">\(Estudio_j\)</span>).</p>
+<p>Finalmente, nótese que los valores de <span class="math inline">\(Ingreso_j\)</span> y
+<span class="math inline">\(Presupuesto_j\)</span> son muy elevados en comparación con la variable
+<span class="math inline">\(\text{Duración}_j\)</span>. Similarmente, el rango no se compara con el valor de
+las variables dummy generadas por las categorías <span class="math inline">\(Tipo_j\)</span>, <span class="math inline">\(Edad_j\)</span>
+y <span class="math inline">\(Estudio_j\)</span>. Debido a esto, se decide estudiar el comportamiento
+del logaritmo de estos montos: <span class="math inline">\(\log(Ingreso_j)\)</span> y
+<span class="math inline">\(\log(Presupuesto_j)\)</span>.</p>
+<p>Para ser más claros, a partir de los 6 registros mostrados en la
+Tabla <a href="cap-regresion.html#tab:reg-p2-ejemplo">1.8</a>, la tabla con las transformaciones
+apropiadas tendría la siguiente forma:</p>
+<table style="width:100%;">
+<caption><span id="tab:reg-p2-transformadas">Table 1.10: </span> Transformaciones a nivel de película para los registros de ejemplo.</caption>
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Película<sub>j</sub></th>
+<th align="center">Duración<sub>j</sub></th>
+<th align="center">Tipo<sub>j</sub></th>
+<th align="center">Edad<sub>j</sub></th>
+<th align="center">Estudio<sub>j</sub></th>
+<th align="center">log(Pre<sub>j</sub>)</th>
+<th align="center">log(Ing<sub>j</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Odín 4</td>
+<td align="center">105</td>
+<td align="center">Acción</td>
+<td align="center">TE+7</td>
+<td align="center">Dis</td>
+<td align="center">8.55</td>
+<td align="center">6.43</td>
+</tr>
+<tr class="even">
+<td align="center">Chillido 5</td>
+<td align="center">132</td>
+<td align="center">Terror</td>
+<td align="center">MA+18</td>
+<td align="center">Para</td>
+<td align="center">8.13</td>
+<td align="center">5.91</td>
+</tr>
+<tr class="odd">
+<td align="center">Desafiar Barreras</td>
+<td align="center">158</td>
+<td align="center">Romance</td>
+<td align="center">MA+14</td>
+<td align="center">WB</td>
+<td align="center">7.97</td>
+<td align="center">6.01</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>El modelo que explica de manera más efectiva el comportamiento es
+el modelo 2. Se pueden considerar varias razones para esto:</p>
+<ul>
+<li>A pesar del modelo 1 tener una mejor log-verosimilitud, el BIC
+del modelo 2 es mejor que el del modelo 1.</li>
+<li>La cantidad de parámetros del modelo 1 es mayor (11 vs 8), por
+lo que se podría argumentar que se prefiere el modelo 2 por su
+parsimonia. Este argumento se refuerza al mirar la métrica BIC.</li>
+<li>Una gran parte de los coeficientes del modelo 1 son no
+significativos a un 5% de confianza, mientras que los
+coeficientes del modelo 2 tienden a ser menores a 5%.</li>
+<li>La significancia de las variables que ambos modelos comparten
+posee un <span class="math inline">\(p\)</span>-valor menor en el modelo 2, de modo que sus
+intervalos de confianza deberían ser más acotados. Lo anterior,
+a pesar de algunas variables no ser significativas al 5%, es
+un hecho positivo respecto al modelo 2.</li>
+<li>Pensando en la interpretación, el modelo 1 posee algunos
+comportamientos discutibles: se esperaría, por ejemplo, que la
+duración tenga un efecto negativo y significativo en los
+ingresos. Sin embargo, el modelo la considera no significativa.</li>
+<li>Los valores de intercepto en el modelo 1 están demasiado
+desviados en magnitud respecto al resto de coeficientes. Lo
+anterior podría dar indicios de algún error en cuanto al
+escalamiento de las variables al momento de calibrar el modelo.</li>
+</ul></li>
+<li><p>Primero, se observan aquellos coeficientes con mayor significancia
+estadística. Para eso se consideran aquellos cuyo <span class="math inline">\(p\)</span>-valor sea
+menor a 0.01.</p>
+<p>Para el modelo 1 se tienen las variables <span class="math inline">\(\log(Presupuesto)\)</span>,
+Edad.MA+18 y Estudio.Dis. De acuerdo al signo de los coeficientes,
+se puede concluir que las películas que generan un mayor ingreso
+son aquellas con un mayor presupuesto, para mayores de 18 años y
+producidas por Dis.</p>
+<p>En cambio, para el modelo 2, las variables a considerar son
+Duración, <span class="math inline">\(\log(Presupuesto)\)</span> y Tipo.Terror. Por el signo de los
+coeficientes, se deben proyectar películas de terror cortas con un
+alto presupuesto.</p>
+<p><strong>Observación:</strong> En el modelo 1 sería deseable considerar la
+variable Duración. Sin embargo, su <span class="math inline">\(p\)</span>-valor alto refleja que no es
+una variable significativa en este modelo.</p></li>
+<li><p>Las condiciones anteriores implican lo siguiente:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>La condición (a) muestra que se deben incluir las variables
+Presupuesto, Duración, Edad, Género, Estudio y <span class="math inline">\(NFun\)</span> en el
+modelo, con sus propios coeficientes.</p></li>
+<li><p>La condición (b) dice que se debe agregar, además, las
+variables de estudio condicionadas al género.</p></li>
+<li><p>Finalmente, la condición (c) dice que se quiere conocer el
+impacto de la duración en las películas cuya variable Edad es
+TE y TE+7.</p></li>
+</ol>
+<p>Recuérdese que, para variables categóricas, se deben generar
+variables dummy para cada categoría. Sea
+<span class="math inline">\(E = \{TE, TE+7, MA+14, MA+18\}\)</span>,
+<span class="math inline">\(T = \{\text{Acción}, \text{Comedia}, \text{Romance}, \text{Drama}, \text{Terror}\}\)</span> y
+<span class="math inline">\(S = \{Dis, WB, Uni, Para\}\)</span>. A partir de estos conjuntos, se
+pueden definir las variables dummy:</p>
+<ul>
+<li><p><span class="math inline">\(Edad_{j,e} = 1\)</span> si para la película <span class="math inline">\(j\)</span>, <span class="math inline">\(Edad_j = e\)</span> para
+<span class="math inline">\(e \in E\)</span>.</p></li>
+<li><p><span class="math inline">\(Tipo_{j,t} = 1\)</span> si para la película <span class="math inline">\(j\)</span>, <span class="math inline">\(Tipo_j = t\)</span> para
+<span class="math inline">\(t \in T\)</span>.</p></li>
+<li><p><span class="math inline">\(Estudio_{j,s} = 1\)</span> si para la película <span class="math inline">\(j\)</span>, <span class="math inline">\(Estudio_j = s\)</span>
+para <span class="math inline">\(s \in S\)</span>.</p></li>
+</ul>
+<p>De este modo, el modelo que cumple las condiciones mencionadas
+sería:</p></li>
 </ol>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
-<li><p>Aggregate at the movie level:
-<span class="math inline">\(Ingreso_{j} = \sum_i Ingreso_i \cdot \mathbf{1}_{[Nombre_i = j]}\)</span>.
-Work with <span class="math inline">\(\log(Ingreso_j)\)</span> and <span class="math inline">\(\log(Presupuesto_j)\)</span> to
-normalize scales.</p></li>
-<li><p>Model 2 is better: (a) better BIC despite a slightly lower
-log-likelihood; (b) fewer parameters (parsimony); (c) higher
-proportion of significant coefficients; (d) duration is significant
-in M2 but not in M1.</p></li>
-<li><p>For M1: high-budget films, rated 18+, produced by Dis. For M2:
-short horror films with high budgets.</p></li>
-<li><p>The proposed model is:</p></li>
+<li><p>Note that one movie can have several screenings and that, due to
+the nature of the variables, their ranges and types differ. To
+evaluate the total sales revenue obtained by a movie, revenue must
+be considered at the movie level. Thus, revenue for movie <span class="math inline">\(j\)</span> is
+defined as the sum of the success of all its screenings <span class="math inline">\(i\)</span>:</p>
+<p><span class="math display">\[
+Ingreso_j = \sum_i Ingreso_i \cdot \mathbf{1}_{[Nombre_i = j]}
+\]</span></p>
+<p>It should be noted that the movie characteristics
+(<span class="math inline">\(Presupuesto_i\)</span>, <span class="math inline">\(\text{Duración}_i\)</span>, <span class="math inline">\(Tipo_i\)</span>, <span class="math inline">\(Edad_i\)</span>, <span class="math inline">\(Estudio_i\)</span>)
+remain the same for each screening <span class="math inline">\(i\)</span> of movie <span class="math inline">\(j\)</span>, so that
+<span class="math inline">\(Presupuesto_j = Presupuesto_i\)</span> for every screening of movie <span class="math inline">\(j\)</span>
+(and likewise for the other characteristics). In this way, there is
+a characteristic vector for each movie
+(<span class="math inline">\(Presupuesto_j\)</span>, <span class="math inline">\(\text{Duración}_j\)</span>, <span class="math inline">\(Tipo_j\)</span>, <span class="math inline">\(Edad_j\)</span>, <span class="math inline">\(Estudio_j\)</span>).</p>
+<p>Finally, note that the values of <span class="math inline">\(Ingreso_j\)</span> and <span class="math inline">\(Presupuesto_j\)</span>
+are very large compared with the variable <span class="math inline">\(\text{Duración}_j\)</span>. Similarly,
+their range is not comparable to the value of the dummy variables
+generated by the categories <span class="math inline">\(Tipo_j\)</span>, <span class="math inline">\(Edad_j\)</span>, and <span class="math inline">\(Estudio_j\)</span>.
+Because of this, the logarithm of these amounts is studied:
+<span class="math inline">\(\log(Ingreso_j)\)</span> and <span class="math inline">\(\log(Presupuesto_j)\)</span>.</p>
+<p>To make this clearer, using the 6 records shown in Table
+<a href="cap-regresion.html#tab:reg-p2-ejemplo">1.8</a>, the table with the appropriate
+transformations would take the following form:</p>
+<table style="width:100%;">
+<caption><span id="tab:reg-p2-transformadas">Table 1.10: </span> Movie-level transformations for the example records.</caption>
+<colgroup>
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Movie<sub>j</sub></th>
+<th align="center">Duration<sub>j</sub></th>
+<th align="center">Type<sub>j</sub></th>
+<th align="center">Age<sub>j</sub></th>
+<th align="center">Studio<sub>j</sub></th>
+<th align="center">log(Bud<sub>j</sub>)</th>
+<th align="center">log(Rev<sub>j</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Odín 4</td>
+<td align="center">105</td>
+<td align="center">Action</td>
+<td align="center">TE+7</td>
+<td align="center">Dis</td>
+<td align="center">8.55</td>
+<td align="center">6.43</td>
+</tr>
+<tr class="even">
+<td align="center">Chillido 5</td>
+<td align="center">132</td>
+<td align="center">Horror</td>
+<td align="center">MA+18</td>
+<td align="center">Para</td>
+<td align="center">8.13</td>
+<td align="center">5.91</td>
+</tr>
+<tr class="odd">
+<td align="center">Desafiar Barreras</td>
+<td align="center">158</td>
+<td align="center">Romance</td>
+<td align="center">MA+14</td>
+<td align="center">WB</td>
+<td align="center">7.97</td>
+<td align="center">6.01</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>The model that explains behavior most effectively is model 2.
+Several reasons can be considered for this:</p>
+<ul>
+<li>Although model 1 has a better log-likelihood, the BIC of model
+2 is better than that of model 1.</li>
+<li>The number of parameters in model 1 is larger (11 vs 8), so
+one could argue that model 2 is preferred for its parsimony.
+This argument is reinforced by looking at the BIC metric.</li>
+<li>A large share of the coefficients in model 1 are not
+significant at a 5% confidence level, whereas the coefficients
+in model 2 tend to be below 5%.</li>
+<li>The significance of the variables shared by both models has a
+lower <span class="math inline">\(p\)</span>-value in model 2, so their confidence intervals
+should be narrower. Despite some variables not being
+significant at 5%, this is a positive feature of model 2.</li>
+<li>From an interpretive perspective, model 1 has some debatable
+behaviors: for example, duration would be expected to have a
+negative and significant effect on revenue. However, the model
+treats it as not significant.</li>
+<li>The intercept values in model 1 are too far in magnitude from
+the rest of the coefficients. This could indicate some error in
+the scaling of the variables when calibrating the model.</li>
+</ul></li>
+<li><p>First, the coefficients with greater statistical significance are
+examined. To do so, those whose <span class="math inline">\(p\)</span>-value is below 0.01 are
+considered.</p>
+<p>For model 1, the relevant variables are <span class="math inline">\(\log(Presupuesto)\)</span>,
+Edad.MA+18, and Estudio.Dis. According to the sign of the
+coefficients, it can be concluded that the movies generating higher
+revenue are those with larger budgets, aimed at viewers aged 18+
+and produced by Dis.</p>
+<p>In contrast, for model 2, the variables to consider are Duración,
+<span class="math inline">\(\log(Presupuesto)\)</span>, and Tipo.Terror. Based on the sign of the
+coefficients, the theater should screen short horror films with a
+high budget.</p>
+<p><strong>Remark:</strong> In model 1, it would be desirable to consider the
+variable Duración. However, its high <span class="math inline">\(p\)</span>-value reflects that it is
+not a significant variable in this model.</p></li>
+<li><p>The previous conditions imply the following:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Condition (a) shows that the variables Budget, Duration, Age,
+Genre, Studio, and <span class="math inline">\(NFun\)</span> should be included in the model, each
+with its own coefficient.</p></li>
+<li><p>Condition (b) says that studio variables conditioned on genre
+should also be added.</p></li>
+<li><p>Finally, condition (c) says that the goal is to know the impact
+of duration on movies whose Age variable is TE and TE+7.</p></li>
+</ol>
+<p>Recall that, for categorical variables, dummy variables must be
+generated for each category. Let
+<span class="math inline">\(E = \{TE, TE+7, MA+14, MA+18\}\)</span>,
+<span class="math inline">\(T = \{\text{Acción}, \text{Comedia}, \text{Romance}, \text{Drama}, \text{Terror}\}\)</span>, and
+<span class="math inline">\(S = \{Dis, WB, Uni, Para\}\)</span>. From these sets, the following dummy
+variables can be defined:</p>
+<ul>
+<li><p><span class="math inline">\(Edad_{j,e} = 1\)</span> if for movie <span class="math inline">\(j\)</span>, <span class="math inline">\(Edad_j = e\)</span>, for <span class="math inline">\(e \in E\)</span>.</p></li>
+<li><p><span class="math inline">\(Tipo_{j,t} = 1\)</span> if for movie <span class="math inline">\(j\)</span>, <span class="math inline">\(Tipo_j = t\)</span>, for <span class="math inline">\(t \in T\)</span>.</p></li>
+<li><p><span class="math inline">\(Estudio_{j,s} = 1\)</span> if for movie <span class="math inline">\(j\)</span>, <span class="math inline">\(Estudio_j = s\)</span>, for
+<span class="math inline">\(s \in S\)</span>.</p></li>
+</ul>
+<p>Thus, the model satisfying the stated conditions would be:</p></li>
 </ol>
 </div>
-<span class="math display">\[\begin{aligned}
-\log(Ingreso_j) \; &amp;= \; \beta_1 \log(Presupuesto_j) + \beta_2 Duración_j + \sum_{e \in E} \beta_e Edad_{j,e} \\
+<p><span class="math display">\[\begin{aligned}
+\log(Ingreso_j) \; &amp;= \; \beta_1 \log(Presupuesto_j) + \beta_2 \text{Duración}_j + \sum_{e \in E} \beta_e Edad_{j,e} \\
 &amp;\quad + \sum_{t \in T} \beta_t Tipo_{j,t} + \sum_{s \in S} \beta_s Estudio_{j,s} + \beta_3 NFun_j \\
 &amp;\quad + \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} \, (Tipo_{j,t} \times Estudio_{j,s}) \\
-&amp;\quad + \sum_{e \in \{TE,TE+7\}} \delta_e \, (Edad_{j,e} \times Duración_j)
-\end{aligned}\]</span>
+&amp;\quad + \sum_{e \in \{TE,TE+7\}} \delta_e \, (Edad_{j,e} \times \text{Duración}_j)
+\end{aligned}\]</span></p>
+<div class="lang-es">
+<p>Se puede realizar una notación vectorial de los coeficientes para tener
+una notación más concisa, pero se debe tener en cuenta los índices de
+estos coeficientes, de modo que el largo del vector sea la cantidad de
+coeficientes a buscar.</p>
+</div>
+<div class="lang-en">
+<p>A vector notation for the coefficients can be used to obtain a more
+concise expression, but the indices of these coefficients must be taken
+into account so that the length of the vector matches the number of
+coefficients to be estimated.</p>
+</div>
 </details>
 </div>
 <div id="problema-3-programa-de-recompensas" class="section level3 unnumbered hasAnchor">
 <h3>Problema 3: Programa de recompensas<a href="cap-regresion.html#problema-3-programa-de-recompensas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
-<p>Una cadena propone estudiar el comportamiento de los consumidores en un
-programa de recompensas donde se acumulan puntos al comprar en tiendas
-de la cadena, en alianzas comerciales o usando la tarjeta del banco
-aliado. Se modelan la acreditación (<span class="math inline">\(A_{it}\)</span>) y el canje (<span class="math inline">\(C_{it}\)</span>):</p>
+<p>Debido a la gran variedad de alternativas que tiene el consumidor para
+satisfacer sus necesidades, empresas de distintos sectores han buscado
+formas de fidelizar a sus clientes mediante programas de recompensas.
+Estos programas proponen premiar al consumidor con relación a su nivel
+de actividad, con el fin de que estos sean más leales a la firma. A
+continuación, nos proponemos estudiar el comportamiento de los
+consumidores que están inmersos en un programa de recompensas en el
+cual se acumulan puntos al comprar en alguna de las tiendas de la
+cadena, al comprar en alguna alianza comercial asociada, o utilizando
+la tarjeta del banco aliado a la cadena. Cuando el consumidor tiene una
+cantidad suficiente de puntos acumulados puede canjear algún producto
+que se ofrece en un catálogo, o puede hacer uso de sus puntos como
+medio de pago al momento de comprar cualquier producto disponible en
+tienda.</p>
+<p>Para modelar los comportamientos anteriores, se cuenta con información
+demográfica de cada consumidor que es actualmente parte del programa, y
+cada una de las transacciones que ha realizado desde su inicio, como se
+observa en las Tablas <a href="cap-regresion.html#tab:reg-p3-demo">1.11</a> y
+<a href="cap-regresion.html#tab:reg-p3-trans">1.12</a>:</p>
 </div>
 <div class="lang-en">
-<p>A retail chain proposes to study consumer behavior in a rewards program
-where points are accumulated by purchasing in the chain’s stores,
-through commercial partnerships, or by using the partner bank’s card.
-Accrual (<span class="math inline">\(A_{it}\)</span>) and redemption (<span class="math inline">\(C_{it}\)</span>) are modeled:</p>
+<p>Given the wide variety of alternatives consumers have to satisfy their
+needs, firms across different sectors have sought ways to build loyalty
+through rewards programs. These programs aim to reward consumers based
+on their level of activity, so that they become more loyal to the firm.
+We next study the behavior of consumers participating in a rewards
+program in which points are accumulated by buying in the chain’s stores,
+through partner commercial alliances, or by using the bank card
+associated with the chain. When the consumer has accumulated enough
+points, they may redeem a product offered in a catalog, or use their
+points as a means of payment when purchasing any product available in
+store.</p>
+<p>To model the previous behaviors, demographic information is available
+for each consumer currently enrolled in the program, together with each
+of the transactions carried out since enrollment, as shown in Tables
+<a href="cap-regresion.html#tab:reg-p3-demo">1.11</a> and <a href="cap-regresion.html#tab:reg-p3-trans">1.12</a>:</p>
 </div>
-<p><span class="math display">\[\begin{align}
-  A_{it}&amp;=\alpha+\alpha_{i}+\alpha_{t}+\boldsymbol{\beta}&#39; \mathbf{X}_{it}+\varepsilon_{it}\\
-  C_{it}&amp;=\gamma+\gamma_{i}+\gamma_{t}+\boldsymbol{\rho}&#39; \mathbf{Z}_{it}+\xi_{it}
-\end{align}\]</span></p>
+<div class="lang-es">
+<table>
+<caption><span id="tab:reg-p3-demo">Table 1.11: </span> Variables Demográficas.</caption>
+<thead>
+<tr class="header">
+<th align="center">Variable</th>
+<th align="center">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">IDCliente</td>
+<td align="center">Identificador del cliente</td>
+</tr>
+<tr class="even">
+<td align="center">Ingreso</td>
+<td align="center">Ingreso del cliente</td>
+</tr>
+<tr class="odd">
+<td align="center">AñoInicio</td>
+<td align="center">Año en el que el cliente se une al programa</td>
+</tr>
+<tr class="even">
+<td align="center">TamañoHogar</td>
+<td align="center">Número de personas que componen el hogar del cliente</td>
+</tr>
+<tr class="odd">
+<td align="center">Género</td>
+<td align="center">1 si el cliente es hombre</td>
+</tr>
+<tr class="even">
+<td align="center">Edad</td>
+<td align="center">Edad del cliente</td>
+</tr>
+<tr class="odd">
+<td align="center">Categoría</td>
+<td align="center">Silver, Gold o Premium</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="lang-en">
+<table>
+<caption><span id="tab:reg-p3-demo">Table 1.11: </span> Demographic Variables.</caption>
+<thead>
+<tr class="header">
+<th align="center">Variable</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">IDCliente</td>
+<td align="center">Customer identifier</td>
+</tr>
+<tr class="even">
+<td align="center">Ingreso</td>
+<td align="center">Customer income</td>
+</tr>
+<tr class="odd">
+<td align="center">AñoInicio</td>
+<td align="center">Year in which the customer joins the program</td>
+</tr>
+<tr class="even">
+<td align="center">TamañoHogar</td>
+<td align="center">Number of people in the customer’s household</td>
+</tr>
+<tr class="odd">
+<td align="center">Género</td>
+<td align="center">1 if the customer is male</td>
+</tr>
+<tr class="even">
+<td align="center">Edad</td>
+<td align="center">Customer age</td>
+</tr>
+<tr class="odd">
+<td align="center">Categoría</td>
+<td align="center">Silver, Gold, or Premium</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="lang-es">
+<table>
+<caption><span id="tab:reg-p3-trans">Table 1.12: </span> Variables Transaccionales.</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Variable</th>
+<th align="center">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">IDCliente</td>
+<td align="center">Identificador del cliente</td>
+</tr>
+<tr class="even">
+<td align="center">Año</td>
+<td align="center">Año de la observación</td>
+</tr>
+<tr class="odd">
+<td align="center">Mes</td>
+<td align="center">Mes de la observación</td>
+</tr>
+<tr class="even">
+<td align="center">Acreditación</td>
+<td align="center">Cantidad de puntos acreditados por el cliente en el mes <span class="math inline">\(t\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Canje</td>
+<td align="center">Cantidad de productos canjeados por el cliente en el mes <span class="math inline">\(t\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">TipoAcreditación</td>
+<td align="center">Tiendas Propias, Comercios Asociados o Tarjeta Bancaria</td>
+</tr>
+<tr class="odd">
+<td align="center">TipoCanje</td>
+<td align="center">Producto o Descuento</td>
+</tr>
+<tr class="even">
+<td align="center">Promoción</td>
+<td align="center">1 si hubo promo o descuentos adicionales en el mes <span class="math inline">\(t\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Mail</td>
+<td align="center">1 si se avisó estado de cuenta al cliente via mail en el mes <span class="math inline">\(t\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="lang-en">
+<table>
+<caption><span id="tab:reg-p3-trans">Table 1.12: </span> Transactional Variables.</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Variable</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">IDCliente</td>
+<td align="center">Customer identifier</td>
+</tr>
+<tr class="even">
+<td align="center">Año</td>
+<td align="center">Year of the observation</td>
+</tr>
+<tr class="odd">
+<td align="center">Mes</td>
+<td align="center">Month of the observation</td>
+</tr>
+<tr class="even">
+<td align="center">Acreditación</td>
+<td align="center">Number of points accrued by the customer in month <span class="math inline">\(t\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Canje</td>
+<td align="center">Number of products redeemed by the customer in month <span class="math inline">\(t\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">TipoAcreditación</td>
+<td align="center">Own Stores, Partner Retailers, or Bank Card</td>
+</tr>
+<tr class="odd">
+<td align="center">TipoCanje</td>
+<td align="center">Product or Discount</td>
+</tr>
+<tr class="even">
+<td align="center">Promoción</td>
+<td align="center">1 if there were promotions or additional discounts in month <span class="math inline">\(t\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Mail</td>
+<td align="center">1 if the account statement was sent to the customer by email in month <span class="math inline">\(t\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li><p>¿Cuál es la interpretación de los parámetros <span class="math inline">\(\alpha_{i}\)</span>,
-<span class="math inline">\(\alpha_{t}\)</span>, <span class="math inline">\(\gamma_{i}\)</span> y <span class="math inline">\(\gamma_{t}\)</span>? ¿Son los modelos
-identificables?</p></li>
-<li><p>Derive una expresión para el saldo esperado de puntos de un
-cliente <span class="math inline">\(i\)</span> en cualquier período <span class="math inline">\(t\)</span>.</p></li>
-<li><p>Proponga especificaciones que capturen: (a) el impacto de informar
-el estado de cuenta depende del género; (b) los niveles de actividad
-varían según categoría; (c) la actividad depende de la antigüedad,
-pero con rendimientos decrecientes.</p></li>
-<li><p>Se han estimado tres especificaciones. ¿Cuál es mejor?</p></li>
+<li><p>Como primera aproximación, se propone modelar la acreditación
+(<span class="math inline">\(A_{it}\)</span>) y canje (<span class="math inline">\(C_{it}\)</span>) de cada cliente <span class="math inline">\(i\)</span> en el mes <span class="math inline">\(t\)</span>
+como:</p>
+<p><span class="math display">\[\begin{align}
+  A_{it}&amp;=\alpha+\alpha_{i}+\alpha_{t}+\beta X_{it}+\dots+\epsilon_{it}\\
+  C_{it}&amp;=\gamma+\gamma_{i}+\gamma_{t}+\rho Z_{it}+\dots+\xi_{it}
+\end{align}\]</span></p>
+<p>Donde <span class="math inline">\(X_{it}\)</span> y <span class="math inline">\(Z_{it}\)</span> son covariables construidas a partir de la
+información disponible.</p>
+<ol style="list-style-type: lower-alpha">
+<li>¿Cuál es la interpretación de los parámetros <span class="math inline">\(\alpha_{i}\)</span>,
+<span class="math inline">\(\alpha_{t}\)</span>, <span class="math inline">\(\gamma_{i}\)</span> y <span class="math inline">\(\gamma_{t}\)</span>?</li>
+<li>¿Son los modelos anteriores identificables? En caso de ser su
+respuesta negativa, ¿cómo se corrige el problema?</li>
+</ol></li>
+<li><p>Suponga que se han identificado los modelos anteriores (de
+requerirlo, con las restricciones necesarias para alcanzar
+identificación). Derive una expresión que permita calcular el número
+esperado del saldo de punto de un cliente <span class="math inline">\(i\)</span> en cualquier período
+de tiempo <span class="math inline">\(t\)</span>.</p></li>
+<li><p>Proponga especificaciones de los modelos de regresión que permitan
+capturar que:</p>
+<ol style="list-style-type: lower-alpha">
+<li>El impacto que tiene informar el estado de cuenta de los puntos
+depende del género.</li>
+<li>Los niveles de actividad (acreditación y canje) de un cliente
+varían significativamente de acuerdo a su categoría.</li>
+<li>El nivel de actividad (acreditación y canje) depende de la
+antiguedad de los clientes en el programa, pero aquellos que
+llevan más años tienden a tener un comportamiento similar.</li>
+</ol></li>
+<li><p>Suponga ahora que se han estimado tres especificaciones para
+entender el comportamiento de acreditación (<span class="math inline">\(A_{it}\)</span>), donde <span class="math inline">\(f\)</span>
+representa alguna transformación o función de la información
+disponible, y cuyos resultados se encuentra en la tabla siguiente:</p></li>
 </ol>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
-<li><p>What is the interpretation of parameters <span class="math inline">\(\alpha_{i}\)</span>,
-<span class="math inline">\(\alpha_{t}\)</span>, <span class="math inline">\(\gamma_{i}\)</span>, and <span class="math inline">\(\gamma_{t}\)</span>? Are the models
-identifiable?</p></li>
-<li><p>Derive an expression for the expected point balance of customer
-<span class="math inline">\(i\)</span> in any period <span class="math inline">\(t\)</span>.</p></li>
-<li><p>Propose specifications that capture: (a) the impact of reporting
-the account statement depends on gender; (b) activity levels vary
-by category; (c) activity depends on tenure, but with decreasing
-returns.</p></li>
-<li><p>Three specifications have been estimated. Which is better?</p></li>
+<li><p>As a first approximation, it is proposed to model accrual
+(<span class="math inline">\(A_{it}\)</span>) and redemption (<span class="math inline">\(C_{it}\)</span>) for each customer <span class="math inline">\(i\)</span> in month
+<span class="math inline">\(t\)</span> as:</p>
+<p><span class="math display">\[\begin{align}
+  A_{it}&amp;=\alpha+\alpha_{i}+\alpha_{t}+\beta X_{it}+\dots+\epsilon_{it}\\
+  C_{it}&amp;=\gamma+\gamma_{i}+\gamma_{t}+\rho Z_{it}+\dots+\xi_{it}
+\end{align}\]</span></p>
+<p>Where <span class="math inline">\(X_{it}\)</span> and <span class="math inline">\(Z_{it}\)</span> are covariates constructed from the
+available information.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is the interpretation of parameters <span class="math inline">\(\alpha_{i}\)</span>,
+<span class="math inline">\(\alpha_{t}\)</span>, <span class="math inline">\(\gamma_{i}\)</span>, and <span class="math inline">\(\gamma_{t}\)</span>?</li>
+<li>Are the previous models identifiable? If your answer is
+negative, how is the problem corrected?</li>
+</ol></li>
+<li><p>Suppose the previous models have been identified (if required, with
+the restrictions needed to achieve identification). Derive an
+expression that allows the expected point balance of customer <span class="math inline">\(i\)</span> to
+be calculated in any time period <span class="math inline">\(t\)</span>.</p></li>
+<li><p>Propose specifications of the regression models that allow one to
+capture that:</p>
+<ol style="list-style-type: lower-alpha">
+<li>The impact of informing the customer about the point account
+statement depends on gender.</li>
+<li>The activity levels (accrual and redemption) of a customer vary
+significantly according to category.</li>
+<li>The activity level (accrual and redemption) depends on customer
+tenure in the program, but those who have been enrolled for
+more years tend to show similar behavior.</li>
+</ol></li>
+<li><p>Suppose now that three specifications have been estimated to
+understand accrual behavior (<span class="math inline">\(A_{it}\)</span>), where <span class="math inline">\(f\)</span> represents some
+transformation or function of the available information, and whose
+results are shown in the following table:</p></li>
 </ol>
 </div>
 <div class="lang-es">
 <table>
-<caption><span id="tab:reg-p3-modelos">Table 1.9: </span> Resultados de los tres modelos estimados del programa de recompensas.</caption>
+<caption><span id="tab:reg-p3-modelos">Table 1.13: </span> Resultados Modelos Regresión.</caption>
 <colgroup>
 <col width="34%" />
 <col width="22%" />
@@ -3912,10 +4722,17 @@ returns.</p></li>
 </tr>
 </tbody>
 </table>
+<ol style="list-style-type: lower-alpha">
+<li>¿Qué variables ayudan a explicar el comportamiento de
+acreditación de los consumidores?</li>
+<li>¿Cuál es el medio en que se acreditan o acumulan, en promedio,
+menos puntos?</li>
+<li>Justifique cuál de los modelos anteriores es mejor.</li>
+</ol>
 </div>
 <div class="lang-en">
 <table>
-<caption><span id="tab:reg-p3-modelos">Table 1.9: </span> Estimated results for the three reward program models.</caption>
+<caption><span id="tab:reg-p3-modelos">Table 1.13: </span> Regression Model Results.</caption>
 <colgroup>
 <col width="34%" />
 <col width="22%" />
@@ -3987,6 +4804,12 @@ returns.</p></li>
 </tr>
 </tbody>
 </table>
+<ol style="list-style-type: lower-alpha">
+<li>Which variables help explain consumers’ accrual behavior?</li>
+<li>Which is the channel in which, on average, fewer points are
+accrued?</li>
+<li>Justify which of the previous models is better.</li>
+</ol>
 </div>
 <details>
 <summary>
@@ -3994,37 +4817,120 @@ returns.</p></li>
 </summary>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
-<li><p>Los parámetros <span class="math inline">\(\alpha_{i}\)</span> y <span class="math inline">\(\gamma_{i}\)</span> representan el efecto
-fijo de cada consumidor. Los parámetros <span class="math inline">\(\alpha_{t}\)</span> y <span class="math inline">\(\gamma_{t}\)</span>
-representan un efecto fijo temporal. Al estar las constantes
-<span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\gamma\)</span> junto con los efectos fijos, se produce un
-problema de colinealidad. Para corregirlo, se debe omitir <span class="math inline">\(\alpha\)</span>
-y <span class="math inline">\(\gamma\)</span>, u omitir un individuo de referencia.</p></li>
-<li><p><span class="math inline">\(\mathbb{E}\left[\sum_{\tau=1}^{t}A_{\tau}-\sum_{\tau=1}^{t}C_{\tau}\mid \mathbf{X},\mathbf{Z}\right]=\sum_{\tau=1}^{t}(\alpha_{i}+\alpha_{\tau}+\mathbf{X}&#39;\boldsymbol{\beta})-\sum_{\tau=1}^{t}(\gamma_{i}+\gamma_{\tau}+\mathbf{Z}&#39;\boldsymbol{\rho})\)</span></p></li>
-<li><p>Se agrega: (a) interacción Mail <span class="math inline">\(\times\)</span> Género; (b) dummies por
-categoría (Gold, Premium, con Silver como base); (c)
-<span class="math inline">\(\ln(\text{Año}_t - \text{AñoIngreso})\)</span>.</p></li>
-<li><p>Las variables significativas son Ingreso, Promoción y
-TiendasPropias. El medio con menos acreditación es TarjetaBancaria
-(base, fijada en cero). Por <span class="math inline">\(R^2\)</span> ajustado, M3 es mejor; por MAPE,
-M2 es mejor.</p></li>
+<li><p>Incluye:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Los parámetros <span class="math inline">\(\alpha_{i}\)</span> y <span class="math inline">\(\gamma_{i}\)</span> representan el
+efecto fijo de cada consumidor, o el nivel promedio de
+actividad en creditación y canje, respectivamente,
+independiente de las demás covariables. Los parámetros
+<span class="math inline">\(\alpha_{t}\)</span> y <span class="math inline">\(\gamma_{t}\)</span> representan un efecto fijo temporal
+en los niveles de acreditación y canje, respectivamente, cuya
+interpretación dependerá de la definición de las variable que
+acompañe (si las covariables son meses representaría
+estacionalidad, mientras que si es fecha o año representaría
+alguna tendencia en los nvieles anteriores).</li>
+<li>Al estar las constantes <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\gamma\)</span>, junto con los
+parámetros anteriores, se produce un problema de colinealidad y
+por lo tanto los parámetros no son identificables. Para
+corregirlo, se debe omitir <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\gamma\)</span>, u omitir
+<span class="math inline">\(\alpha_{i}\)</span> y <span class="math inline">\(\gamma_{i}\)</span> para un individuo y especificar
+dummies desde <span class="math inline">\(i=1\)</span> hasta <span class="math inline">\(i=I-1\)</span>.</li>
+</ol></li>
+<li><p>Sabemos que <span class="math inline">\(\mathbb{E}(Y|X)=X&#39;\hat{\beta}_{OLS}\)</span>. Luego, el
+balance promedio se obtiene como:</p>
+<p><span class="math display">\[
+\mathbb{E}\left(\sum_{\tau=1}^{t}A_{\tau}-\sum_{\tau=1}^{t}C_{\tau}\mid X,Z\right)=\sum_{\tau=1}^{t}(\alpha_{i}+\alpha_{t}+X&#39;\beta)-\sum_{\tau=1}^{t}(\gamma_{i}+\gamma_{t}+Z&#39;\rho) + \epsilon_{i}
+\]</span></p></li>
+<li><p>Incluye:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Se debe incorporar una interacción entre las variables de
+<em>Mail</em> y <em>Género</em>.</p></li>
+<li><p>Se debe transformar la variable categórica en dummies y omitir
+uno de los niveles para no tener variables colineales.</p></li>
+<li><p>Se debe construir la variable logaritmo de antigüedad como
+<span class="math inline">\(\ln(\text{Año}_{t}-\text{AñoIngreso}_{t})\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+X&#39;\beta &amp;= \beta_1 Mail_i Genero_i + \beta_2 1_{[categoria_i = Gold]} \\
+&amp;\quad + \beta_3 1_{[categoria_i = Premium]} + \beta_4 \ln(\text{Año}_t - \text{AñoIngreso}_t) + \epsilon&#39;_i
+\end{aligned}
+\]</span></p></li>
+</ol></li>
+<li><p>Detalle:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Las variables que son significativas independiente del modelo
+en el que fueron estimadas, y que permiten explicar el
+comportamiento de interés, es decir, <em>Ingreso</em>, <em>Promoción</em>, y
+<em>TiendasPropias</em>.</li>
+<li>El parámetro asociado al medio <em>TarjetaBancaria</em> fue fijado en
+cero (para evitar problemas de colinealidad), y como el resto
+de los parámetros son positivos, es aquel en que menos puntos
+se acreditan.</li>
+<li>La respuesta dependerá del criterio de evaluación. Si se quiere
+evaluar en cuanto a la capacidad de ajuste, el mejor es aquel
+con mayor <span class="math inline">\(R^{2}\)</span> Ajustado (M3), pero si se evalúa en cuanto a
+la capacidad de pronóstico, se prefiere aquel con menor MAPE
+(M2).</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
-<li><p>The parameters <span class="math inline">\(\alpha_{i}\)</span> and <span class="math inline">\(\gamma_{i}\)</span> represent the fixed
-effect of each consumer. The parameters <span class="math inline">\(\alpha_{t}\)</span> and <span class="math inline">\(\gamma_{t}\)</span>
-represent a temporal fixed effect. Since the constants <span class="math inline">\(\alpha\)</span> and
-<span class="math inline">\(\gamma\)</span> coexist with the fixed effects, a collinearity problem
-arises. To correct it, one must omit <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\gamma\)</span>, or omit
-a reference individual.</p></li>
-<li><p><span class="math inline">\(\mathbb{E}\left[\sum_{\tau=1}^{t}A_{\tau}-\sum_{\tau=1}^{t}C_{\tau}\mid \mathbf{X},\mathbf{Z}\right]=\sum_{\tau=1}^{t}(\alpha_{i}+\alpha_{\tau}+\mathbf{X}&#39;\boldsymbol{\beta})-\sum_{\tau=1}^{t}(\gamma_{i}+\gamma_{\tau}+\mathbf{Z}&#39;\boldsymbol{\rho})\)</span></p></li>
-<li><p>Add: (a) Mail <span class="math inline">\(\times\)</span> Gender interaction; (b) category dummies
-(Gold, Premium, with Silver as base); (c)
-<span class="math inline">\(\ln(\text{Year}_t - \text{YearJoined})\)</span>.</p></li>
-<li><p>The significant variables are Income, Promotion, and OwnStores.
-The channel with the least accrual is BankCard (base, set to zero).
-By adjusted <span class="math inline">\(R^2\)</span>, M3 is better; by MAPE, M2 is better.</p></li>
+<li><p>Includes:</p>
+<ol style="list-style-type: lower-alpha">
+<li>The parameters <span class="math inline">\(\alpha_{i}\)</span> and <span class="math inline">\(\gamma_{i}\)</span> represent the
+fixed effect of each consumer, or the average level of
+accrual and redemption activity, respectively, independent of
+the other covariates. The parameters <span class="math inline">\(\alpha_{t}\)</span> and
+<span class="math inline">\(\gamma_{t}\)</span> represent a temporal fixed effect on accrual and
+redemption levels, respectively, whose interpretation depends
+on the definition of the accompanying variable (if the
+covariates are months, this would represent seasonality,
+whereas if it is date or year, this would represent some trend
+in the previous levels).</li>
+<li>Since the constants <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\gamma\)</span> are included
+together with the previous parameters, a collinearity problem
+arises and therefore the parameters are not identifiable. To
+correct it, one must omit <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\gamma\)</span>, or omit
+<span class="math inline">\(\alpha_{i}\)</span> and <span class="math inline">\(\gamma_{i}\)</span> for one individual and specify
+dummies from <span class="math inline">\(i=1\)</span> to <span class="math inline">\(i=I-1\)</span>.</li>
+</ol></li>
+<li><p>We know that <span class="math inline">\(\mathbb{E}(Y|X)=X&#39;\hat{\beta}_{OLS}\)</span>. Then, the
+average balance is obtained as:</p>
+<p><span class="math display">\[
+\mathbb{E}\left(\sum_{\tau=1}^{t}A_{\tau}-\sum_{\tau=1}^{t}C_{\tau}\mid X,Z\right)=\sum_{\tau=1}^{t}(\alpha_{i}+\alpha_{t}+X&#39;\beta)-\sum_{\tau=1}^{t}(\gamma_{i}+\gamma_{t}+Z&#39;\rho) + \epsilon_{i}
+\]</span></p></li>
+<li><p>Includes:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>An interaction between the variables <em>Mail</em> and <em>Gender</em> must
+be incorporated.</p></li>
+<li><p>The categorical variable must be transformed into dummies and
+one of the levels omitted so as not to have collinear
+variables.</p></li>
+<li><p>The logarithm of tenure must be constructed as
+<span class="math inline">\(\ln(\text{Año}_{t}-\text{AñoIngreso}_{t})\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+X&#39;\beta &amp;= \beta_1 Mail_i Genero_i + \beta_2 1_{[categoria_i = Gold]} \\
+&amp;\quad + \beta_3 1_{[categoria_i = Premium]} + \beta_4 \ln(\text{Año}_t - \text{AñoIngreso}_t) + \epsilon&#39;_i
+\end{aligned}
+\]</span></p></li>
+</ol></li>
+<li><p>Detail:</p>
+<ol style="list-style-type: lower-alpha">
+<li>The variables that are significant regardless of the model in
+which they were estimated, and that help explain the behavior
+of interest, namely, <em>Ingreso</em>, <em>Promoción</em>, and
+<em>TiendasPropias</em>.</li>
+<li>The parameter associated with the <em>TarjetaBancaria</em> channel was
+fixed at zero (to avoid collinearity problems), and since the
+rest of the parameters are positive, this is the channel in
+which fewer points are accrued.</li>
+<li>The answer depends on the evaluation criterion. If one wants
+to evaluate fit, the best model is the one with the highest
+Adjusted <span class="math inline">\(R^{2}\)</span> (M3), but if one evaluates forecasting
+ability, the preferred one is that with the lowest MAPE (M2).</li>
+</ol></li>
 </ol>
 </div>
 </details>
@@ -4156,7 +5062,49 @@ lineales, se postula que algunos modelos sencillos de aprendizaje de
 máquina podrían generar mejores resultados. Para ello se considera
 usar un modelo de k-vecinos más cercanos. Defina una métrica de
 distancia y determine si la propiedad B o la propiedad C es más
-cercana a la propiedad A.</p></li>
+cercana a la propiedad A.</p>
+<table>
+<caption><span id="tab:reg-p4-propiedades">Table 1.14: </span> Muestra de datos de 3 propiedades de arriendo en Chile.</caption>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Propiedad</th>
+<th align="center">Tiene Piscina</th>
+<th align="center">Tiene Calefacción Central</th>
+<th align="center">Tiene Estacionamiento</th>
+<th align="center">Ciudad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">A</td>
+<td align="center">Sí</td>
+<td align="center">Sí</td>
+<td align="center">Sí</td>
+<td align="center">Santiago</td>
+</tr>
+<tr class="even">
+<td align="center">B</td>
+<td align="center">No</td>
+<td align="center">No</td>
+<td align="center">Sí</td>
+<td align="center">Concepción</td>
+</tr>
+<tr class="odd">
+<td align="center">C</td>
+<td align="center">Sí</td>
+<td align="center">Sí</td>
+<td align="center">No</td>
+<td align="center">Antofagasta</td>
+</tr>
+</tbody>
+</table></li>
 </ol>
 </div>
 <div class="lang-en">
@@ -4202,56 +5150,9 @@ last 3 years.</p></li>
 models, it is proposed that some simple machine learning models
 could generate better results. To this end, a k-nearest neighbors
 model is considered. Define a distance metric and determine whether
-property B or property C is closer to property A.</p></li>
-</ol>
-</div>
-<div class="lang-es">
+property B or property C is closer to property A.</p>
 <table>
-<caption><span id="tab:reg-p4-propiedades">Table 1.10: </span> Muestra de datos de 3 propiedades de arriendo en Chile.</caption>
-<colgroup>
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center">Propiedad</th>
-<th align="center">Tiene Piscina</th>
-<th align="center">Tiene Calefacción Central</th>
-<th align="center">Tiene Estacionamiento</th>
-<th align="center">Ciudad</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">A</td>
-<td align="center">Sí</td>
-<td align="center">Sí</td>
-<td align="center">Sí</td>
-<td align="center">Santiago</td>
-</tr>
-<tr class="even">
-<td align="center">B</td>
-<td align="center">No</td>
-<td align="center">No</td>
-<td align="center">Sí</td>
-<td align="center">Concepción</td>
-</tr>
-<tr class="odd">
-<td align="center">C</td>
-<td align="center">Sí</td>
-<td align="center">Sí</td>
-<td align="center">No</td>
-<td align="center">Antofagasta</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="lang-en">
-<table>
-<caption><span id="tab:reg-p4-propiedades">Table 1.10: </span> Sample data for 3 rental properties in Chile.</caption>
+<caption><span id="tab:reg-p4-propiedades">Table 1.14: </span> Sample data for 3 rental properties in Chile.</caption>
 <thead>
 <tr class="header">
 <th align="center">Property</th>
@@ -4284,7 +5185,8 @@ property B or property C is closer to property A.</p></li>
 <td align="center">Antofagasta</td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ol>
 </div>
 <details>
 <summary>
@@ -4367,11 +5269,23 @@ los ingresos, i.e. usar:
 </ul></li>
 <li><p>Por definición <span class="math inline">\(\ln P_{kt} = \theta&#39; \bar{x}_{kt}\)</span>, en que
 <span class="math inline">\(\bar{x}_{kt}\)</span> son las características promedio de las propiedades
-del país k en el año t. De acá se infiere que <span class="math inline">\(\ln P_{kt}\)</span> es una
-función lineal de los parámetros y por tanto es posible testear
-directamente si
-<span class="math inline">\(\theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t} = 0\)</span>
-a través de un test F.</p></li>
+del país k en el año t. Por lo tanto, la diferencia promedio entre
+Chile y Argentina en el año <span class="math inline">\(t\)</span> puede escribirse como
+<span class="math inline">\(\theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t}\)</span>.
+Si se quiere evaluar si esta diferencia es estadísticamente
+distinta de cero, se puede plantear el contraste de hipótesis
+<span class="math inline">\(H_0: \theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t}
+= 0\)</span> contra <span class="math inline">\(H_1: \theta&#39; \bar{x}_{k=Chile,t} -
+\theta&#39; \bar{x}_{k=Argentina,t} \neq 0\)</span>.</p>
+<p>Para esto, se estima el modelo sin restricciones y luego el modelo
+restringido por la hipótesis nula. Con ambos modelos se construye
+el estadístico F de restricciones lineales conjuntas, el cual
+compara la pérdida de ajuste que se produce al imponer
+<span class="math inline">\(H_0\)</span>. Finalmente, se revisa el <span class="math inline">\(p\)</span>-valor asociado al estadístico:
+si este es suficientemente pequeño, se rechaza <span class="math inline">\(H_0\)</span> y se concluye
+que la diferencia
+<span class="math inline">\(\theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t}\)</span>
+es estadísticamente distinta de cero.</p></li>
 <li><p>La clave de la pregunta es notar que las variables
 categóricas siempre pueden transformarse a numéricas a través de la
 generación de variables dummies (e.g. <span class="math inline">\(Piscina_{ijkt} = 1\)</span>, si la
@@ -4416,12 +5330,23 @@ In this case, one could normalize by income, i.e., use:
 \]</span></li>
 </ul></li>
 <li><p>By definition <span class="math inline">\(\ln P_{kt} = \theta&#39; \bar{x}_{kt}\)</span>, where
-<span class="math inline">\(\bar{x}_{kt}\)</span> are the average characteristics of properties in
-country k in year t. From this it follows that <span class="math inline">\(\ln P_{kt}\)</span> is a
-linear function of the parameters and therefore it is possible to
-directly test whether
-<span class="math inline">\(\theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t} = 0\)</span>
-using an F-test.</p></li>
+<span class="math inline">\(\bar{x}_{kt}\)</span> are the average characteristics of the properties in
+country k in year t. Therefore, the average difference between
+Chile and Argentina in year <span class="math inline">\(t\)</span> can be written as
+<span class="math inline">\(\theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t}\)</span>.
+If the goal is to assess whether this difference is statistically
+different from zero, one can state the hypothesis test
+<span class="math inline">\(H_0: \theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t}
+= 0\)</span> against <span class="math inline">\(H_1: \theta&#39; \bar{x}_{k=Chile,t} -
+\theta&#39; \bar{x}_{k=Argentina,t} \neq 0\)</span>.</p>
+<p>To do so, one estimates the unrestricted model and then the model
+restricted by the null hypothesis. Using both models, one
+constructs the F-statistic for joint linear restrictions, which
+compares the loss of fit generated by imposing <span class="math inline">\(H_0\)</span>. Finally, the
+associated <span class="math inline">\(p\)</span>-value is examined: if it is sufficiently small,
+<span class="math inline">\(H_0\)</span> is rejected and one concludes that the difference
+<span class="math inline">\(\theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t}\)</span> is
+statistically different from zero.</p></li>
 <li><p>The key insight is that categorical variables can always be
 transformed into numerical ones by generating dummy variables (e.g.,
 <span class="math inline">\(Piscina_{ijkt} = 1\)</span> if the property has a pool, 0 otherwise). With
@@ -4586,74 +5511,10 @@ relativamente bien, como indican los resultados de la tabla.</p>
 contexto de esta aplicación?</p></li>
 <li><p>¿Cómo interpreta el dramático aumento en el valor de <span class="math inline">\(R^2_{adj}\)</span>
 entre las especificaciones (1) y (2)?</p></li>
-</ol></li>
 </ol>
-</div>
-<div class="lang-en">
-<ol style="list-style-type: decimal">
-<li><p>Propose a regression model to describe the number of clicks by
-user <em>i</em> on product <em>j</em> in search instance <em>k</em>, that allows
-understanding differences depending on whether the search is
-performed using images or text. Consider that:</p>
-<ul>
-<li><p>The <em>ranking</em> or position in the search listing affects clicks
-so that products listed first receive many more clicks than
-those listed later. Note that the rate at which clicks decay
-with <em>ranking</em> differs depending on whether the search is by
-image or text.</p></li>
-<li><p>Search complexity matters for the clicks generated. For text
-searches, complexity can be captured by text length. For images,
-it can be measured by image size.</p></li>
-<li><p>Each product has a different baseline click propensity. Some
-popular products tend to receive more clicks than less popular
-ones, regardless of the search inputs.</p></li>
-</ul></li>
-<li><p>Based on your regression results, how would you determine (explain
-in your own words) whether the total number of clicks generated by
-a product in the fifth position in an image search is greater than
-those generated by the product in the fifth position of a text
-search?</p></li>
-<li><p>Assume that the regression models confirm that, although there is
-an effect on clicks, this does not translate into more conversions.
-In light of this result, it seems interesting to study whether
-image searches perhaps generate additional searches that lead to
-more conversions. That is, images are used at an early stage of the
-purchase funnel, helping to find the product category, which is
-then refined through traditional text searches. Formulate a
-regression model to identify whether an image search increases the
-number of subsequent searches. Assume that for each search instance
-<em>k</em> of user <em>i</em>, <span class="math inline">\(NNextSearch_{ik}\)</span> can be computed, counting the
-total number of searches made by the same user, within the same
-category, on the same day as search <em>k</em>. For your regression model,
-consider that, along with the search type, you must control for:</p>
-<ul>
-<li><p>Product category, considering that each search is mainly
-associated with a single category, and each product category
-has a greater or lesser propensity to be searched. For example,
-the <em>toys</em> category generally has more searches than the
-<em>mattresses</em> category.</p></li>
-<li><p>The number of results reported in the search <em>NumResult</em> and
-the number of distinct categories reported in the search
-<em>NumProdCat</em>. Assume that both <em>NumResult</em> and <em>NumProdCat</em>
-are already computed in the working dataset.</p></li>
-<li><p>The average number of daily searches made by the customer
-<em>AvgNumSearch</em> (which can be assumed known).</p></li>
-</ul></li>
-<li><p>Suppose that, after a couple of iterations, two linear model
-specifications have been found to work relatively well, as
-indicated by the results in the table.</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>How do you interpret the results of the <em>NumResult</em> variable
-in the context of this application?</p></li>
-<li><p>How do you interpret the dramatic increase in the value of
-<span class="math inline">\(R^2_{adj}\)</span> between specifications (1) and (2)?</p></li>
-</ol></li>
-</ol>
-</div>
 <p><em>Variable dependiente: <span class="math inline">\(\ln(\text{NumSubsequentSearch}+1)\)</span></em></p>
-<div class="lang-es">
 <table>
-<caption><span id="tab:reg-p5-busqueda">Table 1.11: </span> Resultados de modelos de regresión de búsquedas posteriores.</caption>
+<caption><span id="tab:reg-p5-busqueda">Table 1.15: </span> Resultados de modelos de regresión de búsquedas posteriores.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Coeficiente</strong></th>
@@ -4723,11 +5584,71 @@ in the context of this application?</p></li>
 <td align="center">0.825</td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol style="list-style-type: decimal">
+<li><p>Propose a regression model to describe the number of clicks by
+user <em>i</em> on product <em>j</em> in search instance <em>k</em>, that allows
+understanding differences depending on whether the search is
+performed using images or text. Consider that:</p>
+<ul>
+<li><p>The <em>ranking</em> or position in the search listing affects clicks
+so that products listed first receive many more clicks than
+those listed later. Note that the rate at which clicks decay
+with <em>ranking</em> differs depending on whether the search is by
+image or text.</p></li>
+<li><p>Search complexity matters for the clicks generated. For text
+searches, complexity can be captured by text length. For images,
+it can be measured by image size.</p></li>
+<li><p>Each product has a different baseline click propensity. Some
+popular products tend to receive more clicks than less popular
+ones, regardless of the search inputs.</p></li>
+</ul></li>
+<li><p>Based on your regression results, how would you determine (explain
+in your own words) whether the total number of clicks generated by
+a product in the fifth position in an image search is greater than
+those generated by the product in the fifth position of a text
+search?</p></li>
+<li><p>Assume that the regression models confirm that, although there is
+an effect on clicks, this does not translate into more conversions.
+In light of this result, it seems interesting to study whether
+image searches perhaps generate additional searches that lead to
+more conversions. That is, images are used at an early stage of the
+purchase funnel, helping to find the product category, which is
+then refined through traditional text searches. Formulate a
+regression model to identify whether an image search increases the
+number of subsequent searches. Assume that for each search instance
+<em>k</em> of user <em>i</em>, <span class="math inline">\(NNextSearch_{ik}\)</span> can be computed, counting the
+total number of searches made by the same user, within the same
+category, on the same day as search <em>k</em>. For your regression model,
+consider that, along with the search type, you must control for:</p>
+<ul>
+<li><p>Product category, considering that each search is mainly
+associated with a single category, and each product category
+has a greater or lesser propensity to be searched. For example,
+the <em>toys</em> category generally has more searches than the
+<em>mattresses</em> category.</p></li>
+<li><p>The number of results reported in the search <em>NumResult</em> and
+the number of distinct categories reported in the search
+<em>NumProdCat</em>. Assume that both <em>NumResult</em> and <em>NumProdCat</em>
+are already computed in the working dataset.</p></li>
+<li><p>The average number of daily searches made by the customer
+<em>AvgNumSearch</em> (which can be assumed known).</p></li>
+</ul></li>
+<li><p>Suppose that, after a couple of iterations, two linear model
+specifications have been found to work relatively well, as
+indicated by the results in the table.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>How do you interpret the results of the <em>NumResult</em> variable
+in the context of this application?</p></li>
+<li><p>How do you interpret the dramatic increase in the value of
+<span class="math inline">\(R^2_{adj}\)</span> between specifications (1) and (2)?</p></li>
+</ol>
+<p><em>Dependent variable: <span class="math inline">\(\ln(\text{NumSubsequentSearch}+1)\)</span></em></p>
 <table>
-<caption><span id="tab:reg-p5-busqueda">Table 1.11: </span> Regression results for subsequent searches.</caption>
+<caption><span id="tab:reg-p5-busqueda">Table 1.15: </span> Regression results for subsequent searches.</caption>
 <thead>
 <tr class="header">
 <th align="center"><strong>Coefficient</strong></th>
@@ -4797,7 +5718,8 @@ in the context of this application?</p></li>
 <td align="center">0.825</td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ol>
 </div>
 <details>
 <summary>
@@ -5016,38 +5938,9 @@ preciso de la demanda en cada tienda, ¿cómo elegiría entre estos
 dos modelos?</p></li>
 <li><p>¿Cómo testearía si hay diferencias significativas en la demanda
 por marca?</p></li>
-</ol></li>
 </ol>
-</div>
-<div class="lang-en">
-<ol style="list-style-type: decimal">
-<li><p>Discuss the theoretical advantages of each formulation. If you
-prefer, you may answer by arguing in which scenarios you would
-prefer one formulation and in which you would prefer the other.</p></li>
-<li><p>Table 1 displays the results of a first regression exercise for
-the two previously proposed models. For simplicity, only a sample
-of stores and census tracts has been considered. Since the model
-was estimated using a demeaning technique, the fixed effects are
-not reported in Table 1.</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>How is it possible that, using the same data, equations 1 and 2
-report different estimators of the distance effect on demand
-from each census tract for each brand?</p></li>
-<li><p>What information do you need to construct a confidence interval
-for the effect that store area has on its demand? If possible,
-report the numerical value of this confidence interval using
-the data in the table.</p></li>
-<li><p>If the objective of the analysis were to have the most accurate
-demand forecast for each store, how would you choose between
-these two models?</p></li>
-<li><p>How would you test whether there are significant differences
-in demand by brand?</p></li>
-</ol></li>
-</ol>
-</div>
-<div class="lang-es">
 <table>
-<caption><span id="tab:reg-p6-regresion">Table 1.12: </span> Resultados de modelos alternativos de regresión.</caption>
+<caption><span id="tab:reg-p6-regresion">Table 1.16: </span> Resultados de modelos alternativos de regresión.</caption>
 <thead>
 <tr class="header">
 <th align="center">Variable</th>
@@ -5152,11 +6045,35 @@ in demand by brand?</p></li>
 <td align="center">0.482</td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol style="list-style-type: decimal">
+<li><p>Discuss the theoretical advantages of each formulation. If you
+prefer, you may answer by arguing in which scenarios you would
+prefer one formulation and in which you would prefer the other.</p></li>
+<li><p>Table 1 displays the results of a first regression exercise for
+the two previously proposed models. For simplicity, only a sample
+of stores and census tracts has been considered. Since the model
+was estimated using a demeaning technique, the fixed effects are
+not reported in Table 1.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>How is it possible that, using the same data, equations 1 and 2
+report different estimators of the distance effect on demand
+from each census tract for each brand?</p></li>
+<li><p>What information do you need to construct a confidence interval
+for the effect that store area has on its demand? If possible,
+report the numerical value of this confidence interval using
+the data in the table.</p></li>
+<li><p>If the objective of the analysis were to have the most accurate
+demand forecast for each store, how would you choose between
+these two models?</p></li>
+<li><p>How would you test whether there are significant differences
+in demand by brand?</p></li>
+</ol>
 <table>
-<caption><span id="tab:reg-p6-regresion">Table 1.12: </span> Alternative regression model results.</caption>
+<caption><span id="tab:reg-p6-regresion">Table 1.16: </span> Alternative regression model results.</caption>
 <thead>
 <tr class="header">
 <th align="center">Variable</th>
@@ -5261,11 +6178,12 @@ in demand by brand?</p></li>
 <td align="center">0.482</td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ol>
 </div>
 <div class="lang-es">
 <ol start="3" style="list-style-type: decimal">
-<li>Para evaluar la capacidad de los modelos para apoyar la gestión del
+<li><p>Para evaluar la capacidad de los modelos para apoyar la gestión del
 negocio, el equipo de desarrollo quiere generar algunos pronósticos
 con la demanda para la próxima semana para cuatro tiendas
 seleccionadas. Para esto, necesita ajustar la propuesta inicial de
@@ -5280,30 +6198,9 @@ otro optimista. Mientras en el escenario neutro se considera que las
 variables independientes toman valores típicamente observados, los
 escenarios pesimistas y optimistas se evalúan en combinaciones más
 extremas que favorecen y desfavorecen la demanda respectivamente.
-Los pronósticos generados se despliegan en la siguiente tabla.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="3" style="list-style-type: decimal">
-<li>To evaluate the models’ ability to support business management, the
-development team wants to generate demand forecasts for the next
-week for four selected stores. To do this, it needs to adjust the
-initial proposal so that temporal effects are controlled by a list
-of temporal variables <span class="math inline">\(z_t\)</span> that include a weather forecast, trend,
-monthly seasonality, the intensity of brand promotional activity,
-as well as the intensity of competing brands’ promotional activity.
-Considering that variables such as weather and promotional activity
-are uncertain, a report with three scenarios has been generated:
-pessimistic, neutral, and optimistic. In the neutral scenario, the
-independent variables take typically observed values, while the
-pessimistic and optimistic scenarios are evaluated at more extreme
-combinations that disfavor and favor demand, respectively. The
-generated forecasts are displayed in the following table.</li>
-</ol>
-</div>
-<div class="lang-es">
+Los pronósticos generados se despliegan en la siguiente tabla.</p>
 <table style="width:100%;">
-<caption><span id="tab:reg-p6-pronostico">Table 1.13: </span> Pronóstico de demanda para cuatro tiendas seleccionadas.</caption>
+<caption><span id="tab:reg-p6-pronostico">Table 1.17: </span> Pronóstico de demanda para cuatro tiendas seleccionadas.</caption>
 <colgroup>
 <col width="14%" />
 <col width="14%" />
@@ -5372,10 +6269,29 @@ generated forecasts are displayed in the following table.</li>
 </tr>
 </tbody>
 </table>
+<p>En la tabla anterior, junto con los pronósticos se despliegan los
+errores estándar de pronóstico (<em>sef</em>). Explique por qué los <em>sef</em>
+son en general menores en los escenarios neutros.</p></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol start="3" style="list-style-type: decimal">
+<li><p>To evaluate the models’ ability to support business management, the
+development team wants to generate demand forecasts for the next
+week for four selected stores. To do this, it needs to adjust the
+initial proposal so that temporal effects are controlled by a list
+of temporal variables <span class="math inline">\(z_t\)</span> that include a weather forecast, trend,
+monthly seasonality, the intensity of brand promotional activity,
+as well as the intensity of competing brands’ promotional activity.
+Considering that variables such as weather and promotional activity
+are uncertain, a report with three scenarios has been generated:
+pessimistic, neutral, and optimistic. In the neutral scenario, the
+independent variables take typically observed values, while the
+pessimistic and optimistic scenarios are evaluated at more extreme
+combinations that disfavor and favor demand, respectively. The
+generated forecasts are displayed in the following table.</p>
 <table style="width:100%;">
-<caption><span id="tab:reg-p6-pronostico">Table 1.13: </span> Demand forecast for four selected stores.</caption>
+<caption><span id="tab:reg-p6-pronostico">Table 1.17: </span> Demand forecast for four selected stores.</caption>
 <colgroup>
 <col width="14%" />
 <col width="14%" />
@@ -5444,16 +6360,10 @@ generated forecasts are displayed in the following table.</li>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="lang-es">
-<p>En la tabla anterior, junto con los pronósticos se despliegan los
-errores estándar de pronóstico (<em>sef</em>). Explique por qué los <em>sef</em>
-son en general menores en los escenarios neutros.</p>
-</div>
-<div class="lang-en">
 <p>In the table above, along with the forecasts, the standard errors
 of forecast (<em>sef</em>) are displayed. Explain why the <em>sef</em> values
-are generally lower in the neutral scenarios.</p>
+are generally lower in the neutral scenarios.</p></li>
+</ol>
 </div>
 <div class="lang-es">
 <ol start="4" style="list-style-type: decimal">
@@ -5793,10 +6703,9 @@ regresión, ¿qué rol juega las distintas estrategias de
 entrenamiento en el desempeño del agente virtual?</p></li>
 <li><p>¿Cómo podríamos determinar el impacto de la
 introducción de restricciones en la estrategia de entrenamiento?</p></li>
-</ol></li>
 </ol>
 <table>
-<caption><span id="tab:reg-p7-agentes">Table 1.14: </span> Resultados de modelos de regresión de agentes de IA.</caption>
+<caption><span id="tab:reg-p7-agentes">Table 1.18: </span> Resultados de modelos de regresión de agentes de IA.</caption>
 <colgroup>
 <col width="25%" />
 <col width="25%" />
@@ -5891,7 +6800,8 @@ introducción de restricciones en la estrategia de entrenamiento?</p></li>
 <td align="center">0.105</td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ol>
 </div>
 <div class="lang-en">
 <p>One of the most significant changes in recent years, in business
@@ -6003,10 +6913,9 @@ what role do the different training strategies play in the
 performance of the virtual agent?</p></li>
 <li><p>How could we determine the impact of introducing
 restrictions in the training strategy?</p></li>
-</ol></li>
 </ol>
 <table>
-<caption><span id="tab:reg-p7-agentes">Table 1.14: </span> AI agent regression model results.</caption>
+<caption><span id="tab:reg-p7-agentes">Table 1.18: </span> AI agent regression model results.</caption>
 <colgroup>
 <col width="25%" />
 <col width="25%" />
@@ -6101,7 +7010,8 @@ restrictions in the training strategy?</p></li>
 <td align="center">0.105</td>
 </tr>
 </tbody>
-</table>
+</table></li>
+</ol>
 </div>
 <em>Fuente: Hernández, F. (2024): “Agentes inteligentes basados en Large Language Models para la atención automatizada en canal conversacional online de servicio al cliente en una empresa financiera”. Memoria para optar al título de Ingeniero Civil Industrial.</em>
 <details>
@@ -6159,9 +7069,11 @@ its resolutivity.</li>
 </ol>
 </div>
 <p><span class="math display">\[
-y_{ik} = \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i
-       + \beta_{2} NW_{ik} + \beta_{3} NW_{ik}^2 + \beta_{4} Sex_i
-       + \beta_{5} NW_{ik} Sex_i + \varepsilon_{ik}
+\begin{aligned}
+y_{ik} &amp;= \sum_{e \in \{2,3\}} \theta_e 1_{ei} + \alpha_k + \beta_{1} Age_i \\
+       &amp;\quad + \beta_{2} NW_{ik} + \beta_{3} NW_{ik}^2 + \beta_{4} Sex_i \\
+       &amp;\quad + \beta_{5} NW_{ik} Sex_i + \varepsilon_{ik}
+\end{aligned}
 \]</span></p>
 <div class="lang-es">
 <p>Donde</p>
@@ -6461,21 +7373,11 @@ from the available records.</p>
 </div>
 <div class="lang-es">
 <ol start="3" style="list-style-type: decimal">
-<li>Suponga que se estiman tres modelos simples de regresión lineal para
+<li><p>Suponga que se estiman tres modelos simples de regresión lineal para
 describir la popularidad de las canciones dentro de la plataforma.
-Los resultados de estos modelos se reportan en la siguiente tabla.</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="3" style="list-style-type: decimal">
-<li>Suppose that three simple linear regression models are estimated to
-describe the popularity of songs on the platform. The results of
-these models are reported in the following table.</li>
-</ol>
-</div>
-<div class="lang-es">
+Los resultados de estos modelos se reportan en la siguiente tabla.</p>
 <table style="width:100%;">
-<caption><span id="tab:reg-p8-modelos">Table 1.15: </span> Resultados de modelos alternativos de regresión.</caption>
+<caption><span id="tab:reg-p8-modelos">Table 1.19: </span> Resultados de modelos alternativos de regresión.</caption>
 <colgroup>
 <col width="14%" />
 <col width="14%" />
@@ -6562,10 +7464,86 @@ these models are reported in the following table.</li>
 </tr>
 </tbody>
 </table>
+<p><strong>Fixed Effects</strong></p>
+<table>
+<caption><span id="tab:reg-p8-ef">Table 1.20: </span> Efectos fijos incluidos en cada modelo.</caption>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Modelo 1</th>
+<th align="center">Modelo 2</th>
+<th align="center">Modelo 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Artist</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr class="even">
+<td align="center">Year</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+<tr class="odd">
+<td align="center">Genre</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Métricas</strong></p>
+<table>
+<caption><span id="tab:reg-p8-metricas">Table 1.21: </span> Métricas de ajuste de los modelos.</caption>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Modelo 1</th>
+<th align="center">Modelo 2</th>
+<th align="center">Modelo 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Std. Error</td>
+<td align="center">5.355</td>
+<td align="center">4.307</td>
+<td align="center">4.278</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(R^2\)</span></td>
+<td align="center">0.296</td>
+<td align="center">0.445</td>
+<td align="center">0.455</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(R^2_{adj}\)</span></td>
+<td align="center">0.286</td>
+<td align="center">0.398</td>
+<td align="center">0.401</td>
+</tr>
+</tbody>
+</table>
+<p>A partir de los resultados anteriores:</p>
+<ol style="list-style-type: lower-alpha">
+<li>¿Qué aprendizaje puede derivar a partir de observar los <span class="math inline">\(R^2\)</span>?</li>
+<li>¿Cuál es el intervalo de confianza del 95% para el coeficiente <span class="math inline">\(NFollow\)</span> en el modelo 2?</li>
+<li>¿Qué puede explicar el cambio de significancia de <span class="math inline">\(Energy\)</span> y <span class="math inline">\(Danceability\)</span> en Modelos 1 y 2?</li>
+<li>¿Cómo se puede testear que <span class="math inline">\(Danceability\)</span> y <span class="math inline">\(Energy\)</span>, de manera conjunta tienen un efecto nulo?</li>
+</ol></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol start="3" style="list-style-type: decimal">
+<li><p>Suppose that three simple linear regression models are estimated to
+describe the popularity of songs on the platform. The results of
+these models are reported in the following table.</p>
 <table style="width:100%;">
-<caption><span id="tab:reg-p8-modelos">Table 1.15: </span> Alternative regression model results.</caption>
+<caption><span id="tab:reg-p8-modelos">Table 1.19: </span> Alternative regression model results.</caption>
 <colgroup>
 <col width="14%" />
 <col width="14%" />
@@ -6652,49 +7630,9 @@ these models are reported in the following table.</li>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="lang-es">
 <p><strong>Fixed Effects</strong></p>
-</div>
-<div class="lang-en">
-<p><strong>Fixed Effects</strong></p>
-</div>
-<div class="lang-es">
 <table>
-<caption><span id="tab:reg-p8-ef">Table 1.16: </span> Efectos fijos incluidos en cada modelo.</caption>
-<thead>
-<tr class="header">
-<th align="center"></th>
-<th align="center">Modelo 1</th>
-<th align="center">Modelo 2</th>
-<th align="center">Modelo 3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Artist</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-</tr>
-<tr class="even">
-<td align="center">Year</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-</tr>
-<tr class="odd">
-<td align="center">Genre</td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="lang-en">
-<table>
-<caption><span id="tab:reg-p8-ef">Table 1.16: </span> Fixed effects included in each model.</caption>
+<caption><span id="tab:reg-p8-ef">Table 1.20: </span> Fixed effects included in each model.</caption>
 <thead>
 <tr class="header">
 <th align="center"></th>
@@ -6724,49 +7662,9 @@ these models are reported in the following table.</li>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="lang-es">
-<p><strong>Métricas</strong></p>
-</div>
-<div class="lang-en">
 <p><strong>Metrics</strong></p>
-</div>
-<div class="lang-es">
 <table>
-<caption><span id="tab:reg-p8-metricas">Table 1.17: </span> Métricas de ajuste de los modelos.</caption>
-<thead>
-<tr class="header">
-<th align="center"></th>
-<th align="center">Modelo 1</th>
-<th align="center">Modelo 2</th>
-<th align="center">Modelo 3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Std. Error</td>
-<td align="center">5.355</td>
-<td align="center">4.307</td>
-<td align="center">4.278</td>
-</tr>
-<tr class="even">
-<td align="center"><span class="math inline">\(R^2\)</span></td>
-<td align="center">0.296</td>
-<td align="center">0.445</td>
-<td align="center">0.455</td>
-</tr>
-<tr class="odd">
-<td align="center"><span class="math inline">\(R^2_{adj}\)</span></td>
-<td align="center">0.286</td>
-<td align="center">0.398</td>
-<td align="center">0.401</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="lang-en">
-<table>
-<caption><span id="tab:reg-p8-metricas">Table 1.17: </span> Model goodness-of-fit metrics.</caption>
+<caption><span id="tab:reg-p8-metricas">Table 1.21: </span> Model goodness-of-fit metrics.</caption>
 <thead>
 <tr class="header">
 <th align="center"></th>
@@ -6796,27 +7694,13 @@ these models are reported in the following table.</li>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="lang-es">
-<p>A partir de los resultados anteriores:</p>
-</div>
-<div class="lang-en">
 <p>Based on the results above:</p>
-</div>
-<div class="lang-es">
-<ol style="list-style-type: lower-alpha">
-<li>¿Qué aprendizaje puede derivar a partir de observar los <span class="math inline">\(R^2\)</span>?</li>
-<li>¿Cuál es el intervalo de confianza del 95% para el coeficiente <span class="math inline">\(NFollow\)</span> en el modelo 2?</li>
-<li>¿Qué puede explicar el cambio de significancia de <span class="math inline">\(Energy\)</span> y <span class="math inline">\(Danceability\)</span> en Modelos 1 y 2?</li>
-<li>¿Cómo se puede testear que <span class="math inline">\(Danceability\)</span> y <span class="math inline">\(Energy\)</span>, de manera conjunta tienen un efecto nulo?</li>
-</ol>
-</div>
-<div class="lang-en">
 <ol style="list-style-type: lower-alpha">
 <li>What insight can be derived from observing the <span class="math inline">\(R^2\)</span> values?</li>
 <li>What is the 95% confidence interval for the <span class="math inline">\(NFollow\)</span> coefficient in Model 2?</li>
 <li>What can explain the change in significance of <span class="math inline">\(Energy\)</span> and <span class="math inline">\(Danceability\)</span> between Models 1 and 2?</li>
 <li>How can one test whether <span class="math inline">\(Danceability\)</span> and <span class="math inline">\(Energy\)</span> jointly have a null effect?</li>
+</ol></li>
 </ol>
 </div>
 <details>
@@ -7137,36 +8021,25 @@ siguiente tabla.</p>
 table.</p>
 </div>
 <div class="lang-es">
-<table style="width:100%;">
-<caption><span id="tab:reg-p9-datos">Table 1.18: </span> Muestra de los primeros 6 registros de la base de datos.</caption>
-<colgroup>
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-</colgroup>
+<table>
+<caption><span id="tab:reg-p9-datos">Table 1.22: </span> Muestra de los primeros 6 registros de la base de datos.</caption>
 <thead>
 <tr class="header">
-<th align="center">IdZip</th>
-<th align="center">Date</th>
-<th align="center">Hour</th>
-<th align="center">NOrdersC</th>
-<th align="center">NOrdersN</th>
-<th align="center">Day</th>
+<th align="center">Zip</th>
+<th align="center">Fecha</th>
+<th align="center">Hr</th>
+<th align="center">Compl.</th>
+<th align="center">Perd.</th>
+<th align="center">Día</th>
 <th align="center">Mes</th>
-<th align="center">Rain</th>
+<th align="center">Lluvia</th>
 <th align="center">IMACEC</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center">15217</td>
-<td align="center">02/01/2018</td>
+<td align="center">02/01/18</td>
 <td align="center">8</td>
 <td align="center">248</td>
 <td align="center">0</td>
@@ -7177,7 +8050,7 @@ table.</p>
 </tr>
 <tr class="even">
 <td align="center">15217</td>
-<td align="center">02/01/2018</td>
+<td align="center">02/01/18</td>
 <td align="center">9</td>
 <td align="center">325</td>
 <td align="center">0</td>
@@ -7188,7 +8061,7 @@ table.</p>
 </tr>
 <tr class="odd">
 <td align="center">15217</td>
-<td align="center">02/01/2018</td>
+<td align="center">02/01/18</td>
 <td align="center">10</td>
 <td align="center">331</td>
 <td align="center">13</td>
@@ -7199,7 +8072,7 @@ table.</p>
 </tr>
 <tr class="even">
 <td align="center">23156</td>
-<td align="center">03/01/2018</td>
+<td align="center">03/01/18</td>
 <td align="center">8</td>
 <td align="center">1345</td>
 <td align="center">1</td>
@@ -7210,7 +8083,7 @@ table.</p>
 </tr>
 <tr class="odd">
 <td align="center">23156</td>
-<td align="center">03/01/2018</td>
+<td align="center">03/01/18</td>
 <td align="center">9</td>
 <td align="center">1221</td>
 <td align="center">0</td>
@@ -7221,7 +8094,7 @@ table.</p>
 </tr>
 <tr class="even">
 <td align="center">23156</td>
-<td align="center">03/01/2018</td>
+<td align="center">03/01/18</td>
 <td align="center">10</td>
 <td align="center">1436</td>
 <td align="center">54</td>
@@ -7234,28 +8107,17 @@ table.</p>
 </table>
 </div>
 <div class="lang-en">
-<table style="width:100%;">
-<caption><span id="tab:reg-p9-datos">Table 1.18: </span> Sample of the first 6 records from the database.</caption>
-<colgroup>
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-<col width="11%" />
-</colgroup>
+<table>
+<caption><span id="tab:reg-p9-datos">Table 1.22: </span> Sample of the first 6 records from the database.</caption>
 <thead>
 <tr class="header">
-<th align="center">IdZip</th>
+<th align="center">Zip</th>
 <th align="center">Date</th>
-<th align="center">Hour</th>
-<th align="center">NOrdersC</th>
-<th align="center">NOrdersN</th>
+<th align="center">Hr</th>
+<th align="center">Compl.</th>
+<th align="center">Lost</th>
 <th align="center">Day</th>
-<th align="center">Mes</th>
+<th align="center">Month</th>
 <th align="center">Rain</th>
 <th align="center">IMACEC</th>
 </tr>
@@ -7263,7 +8125,7 @@ table.</p>
 <tbody>
 <tr class="odd">
 <td align="center">15217</td>
-<td align="center">02/01/2018</td>
+<td align="center">02/01/18</td>
 <td align="center">8</td>
 <td align="center">248</td>
 <td align="center">0</td>
@@ -7274,7 +8136,7 @@ table.</p>
 </tr>
 <tr class="even">
 <td align="center">15217</td>
-<td align="center">02/01/2018</td>
+<td align="center">02/01/18</td>
 <td align="center">9</td>
 <td align="center">325</td>
 <td align="center">0</td>
@@ -7285,7 +8147,7 @@ table.</p>
 </tr>
 <tr class="odd">
 <td align="center">15217</td>
-<td align="center">02/01/2018</td>
+<td align="center">02/01/18</td>
 <td align="center">10</td>
 <td align="center">331</td>
 <td align="center">13</td>
@@ -7296,7 +8158,7 @@ table.</p>
 </tr>
 <tr class="even">
 <td align="center">23156</td>
-<td align="center">03/01/2018</td>
+<td align="center">03/01/18</td>
 <td align="center">8</td>
 <td align="center">1345</td>
 <td align="center">1</td>
@@ -7307,7 +8169,7 @@ table.</p>
 </tr>
 <tr class="odd">
 <td align="center">23156</td>
-<td align="center">03/01/2018</td>
+<td align="center">03/01/18</td>
 <td align="center">9</td>
 <td align="center">1221</td>
 <td align="center">0</td>
@@ -7318,7 +8180,7 @@ table.</p>
 </tr>
 <tr class="even">
 <td align="center">23156</td>
-<td align="center">03/01/2018</td>
+<td align="center">03/01/18</td>
 <td align="center">10</td>
 <td align="center">1436</td>
 <td align="center">54</td>
@@ -7442,21 +8304,11 @@ database.</p>
 </div>
 <div class="lang-es">
 <ol start="2" style="list-style-type: decimal">
-<li>Suponga que se estiman dos modelos simples de regresión lineal para
+<li><p>Suponga que se estiman dos modelos simples de regresión lineal para
 describir la demanda por servicios de <em>KornerK</em>. Los resultados de
-estos dos modelos se reportan en la siguiente tabla:</li>
-</ol>
-</div>
-<div class="lang-en">
-<ol start="2" style="list-style-type: decimal">
-<li>Suppose that two simple linear regression models are estimated to
-describe the demand for <em>KornerK</em> services. The results of these two
-models are reported in the following table:</li>
-</ol>
-</div>
-<div class="lang-es">
+estos dos modelos se reportan en la siguiente tabla:</p>
 <table>
-<caption><span id="tab:reg-p9-modelos">Table 1.19: </span> Resultados de modelos alternativos de regresión.</caption>
+<caption><span id="tab:reg-p9-modelos">Table 1.23: </span> Resultados de modelos alternativos de regresión.</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -7516,10 +8368,82 @@ models are reported in the following table:</li>
 </tr>
 </tbody>
 </table>
+<p><strong>Fixed Effects</strong></p>
+<table>
+<caption><span id="tab:reg-p9-ef">Table 1.24: </span> Efectos fijos incluidos en cada modelo.</caption>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">Modelo 1</th>
+<th align="center">Modelo 2</th>
+<th align="center">Modelo 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Zip</td>
+<td align="center">No</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+</tr>
+<tr class="even">
+<td align="center">Hour</td>
+<td align="center">No</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Resumen</strong></p>
+<table>
+<caption><span id="tab:reg-p9-metricas">Table 1.25: </span> Métricas de ajuste de los modelos.</caption>
+<thead>
+<tr class="header">
+<th align="center">Métrica</th>
+<th align="center">Modelo 1</th>
+<th align="center">Modelo 2</th>
+<th align="center">Modelo 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Std. Error</td>
+<td align="center">5.355</td>
+<td align="center">4.307</td>
+<td align="center">4.278</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(R^2\)</span></td>
+<td align="center">0.196</td>
+<td align="center">0.445</td>
+<td align="center">0.544</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(R^2_{adj}\)</span></td>
+<td align="center">0.186</td>
+<td align="center">0.392</td>
+<td align="center">0.417</td>
+</tr>
+</tbody>
+</table>
+<p>A partir de los resultados anteriores:</p>
+<ol style="list-style-type: lower-alpha">
+<li>¿Por qué no se reporta un intercepto para los modelos 2 y 3?</li>
+<li>¿Qué modelo explica la mayor varianza de la demanda observada?</li>
+<li>¿Qué se puede afirmar con respecto al rol de los efectos fijos
+regionales para describir la variabilidad en la demanda?</li>
+<li>¿Qué rol juega la actividad económica en la demanda por
+servicios de <em>KornerK</em>?</li>
+</ol></li>
+</ol>
 </div>
 <div class="lang-en">
+<ol start="2" style="list-style-type: decimal">
+<li><p>Suppose that two simple linear regression models are estimated to
+describe the demand for <em>KornerK</em> services. The results of these two
+models are reported in the following table:</p>
 <table>
-<caption><span id="tab:reg-p9-modelos">Table 1.19: </span> Alternative regression model results.</caption>
+<caption><span id="tab:reg-p9-modelos">Table 1.23: </span> Alternative regression model results.</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -7579,43 +8503,9 @@ models are reported in the following table:</li>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="lang-es">
 <p><strong>Fixed Effects</strong></p>
-</div>
-<div class="lang-en">
-<p><strong>Fixed Effects</strong></p>
-</div>
-<div class="lang-es">
 <table>
-<caption><span id="tab:reg-p9-ef">Table 1.20: </span> Efectos fijos incluidos en cada modelo.</caption>
-<thead>
-<tr class="header">
-<th align="center"></th>
-<th align="center">Modelo 1</th>
-<th align="center">Modelo 2</th>
-<th align="center">Modelo 3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Zip</td>
-<td align="center">No</td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-</tr>
-<tr class="even">
-<td align="center">Hour</td>
-<td align="center">No</td>
-<td align="center">Yes</td>
-<td align="center">Yes</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="lang-en">
-<table>
-<caption><span id="tab:reg-p9-ef">Table 1.20: </span> Fixed effects included in each model.</caption>
+<caption><span id="tab:reg-p9-ef">Table 1.24: </span> Fixed effects included in each model.</caption>
 <thead>
 <tr class="header">
 <th align="center"></th>
@@ -7639,49 +8529,9 @@ models are reported in the following table:</li>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="lang-es">
-<p><strong>Resumen</strong></p>
-</div>
-<div class="lang-en">
 <p><strong>Summary</strong></p>
-</div>
-<div class="lang-es">
 <table>
-<caption><span id="tab:reg-p9-metricas">Table 1.21: </span> Métricas de ajuste de los modelos.</caption>
-<thead>
-<tr class="header">
-<th align="center">Métrica</th>
-<th align="center">Modelo 1</th>
-<th align="center">Modelo 2</th>
-<th align="center">Modelo 3</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Std. Error</td>
-<td align="center">5.355</td>
-<td align="center">4.307</td>
-<td align="center">4.278</td>
-</tr>
-<tr class="even">
-<td align="center"><span class="math inline">\(R^2\)</span></td>
-<td align="center">0.196</td>
-<td align="center">0.445</td>
-<td align="center">0.544</td>
-</tr>
-<tr class="odd">
-<td align="center"><span class="math inline">\(R^2_{adj}\)</span></td>
-<td align="center">0.186</td>
-<td align="center">0.392</td>
-<td align="center">0.417</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="lang-en">
-<table>
-<caption><span id="tab:reg-p9-metricas">Table 1.21: </span> Model goodness-of-fit metrics.</caption>
+<caption><span id="tab:reg-p9-metricas">Table 1.25: </span> Model goodness-of-fit metrics.</caption>
 <thead>
 <tr class="header">
 <th align="center">Metric</th>
@@ -7711,24 +8561,7 @@ models are reported in the following table:</li>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="lang-es">
-<p>A partir de los resultados anteriores:</p>
-</div>
-<div class="lang-en">
 <p>Based on the results above:</p>
-</div>
-<div class="lang-es">
-<ol style="list-style-type: lower-alpha">
-<li>¿Por qué no se reporta un intercepto para los modelos 2 y 3?</li>
-<li>¿Qué modelo explica la mayor varianza de la demanda observada?</li>
-<li>¿Qué se puede afirmar con respecto al rol de los efectos fijos
-regionales para describir la variabilidad en la demanda?</li>
-<li>¿Qué rol juega la actividad económica en la demanda por
-servicios de <em>KornerK</em>?</li>
-</ol>
-</div>
-<div class="lang-en">
 <ol style="list-style-type: lower-alpha">
 <li>Why is no intercept reported for Models 2 and 3?</li>
 <li>Which model explains the largest variance of observed demand?</li>
@@ -7736,6 +8569,7 @@ servicios de <em>KornerK</em>?</li>
 in describing demand variability?</li>
 <li>What role does economic activity play in the demand for
 <em>KornerK</em> services?</li>
+</ol></li>
 </ol>
 </div>
 <div class="lang-es">
@@ -7821,7 +8655,7 @@ be considered:</p>
 <li>Efectos fijos geográficos: <span class="math inline">\(\alpha_i^1\)</span></li>
 <li>Efectos fijos por hora: <span class="math inline">\(\alpha_h^2\)</span></li>
 <li>Diferencia entre día de semana y fin de semana: <span class="math inline">\(\beta_1 FDS_t\)</span>
-donde <span class="math inline">\(FDS_t = 1_{\{Day \in \{Sábado,Domingo\}\}}\)</span></li>
+donde <span class="math inline">\(FDS_t = 1_{\{Day \in \{\text{Sábado},\text{Domingo}\}\}}\)</span></li>
 <li>El nivel de actividad económica de los últimos 3 meses
 <span class="math inline">\(\beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} + \beta_4 IMACEC_{t-2}\)</span>.
 Un modelo admisible es suponer que
@@ -7837,7 +8671,7 @@ cada mes, se tiene un único para el promedio de los tres.</li>
 <li>Geographic fixed effects: <span class="math inline">\(\alpha_i^1\)</span></li>
 <li>Hourly fixed effects: <span class="math inline">\(\alpha_h^2\)</span></li>
 <li>Weekday vs. weekend difference: <span class="math inline">\(\beta_1 FDS_t\)</span> where
-<span class="math inline">\(FDS_t = 1_{\{Day \in \{Saturday, Sunday\}\}}\)</span></li>
+<span class="math inline">\(FDS_t = 1_{\{Day \in \{\text{Saturday}, \text{Sunday}\}\}}\)</span></li>
 <li>Economic activity level over the last 3 months:
 <span class="math inline">\(\beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} + \beta_4 IMACEC_{t-2}\)</span>.
 An admissible model is to assume that

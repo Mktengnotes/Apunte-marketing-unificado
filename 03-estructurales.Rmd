@@ -454,6 +454,65 @@ econometric models those drawing on both sources.
 
 </div>
 
+### Modelos estructurales en marketing {#estr-marketing data-en="Structural Models in Marketing"}
+
+::: {.lang-es}
+
+El marketing se ha constituido en un terreno particularmente fértil
+para el enfoque estructural por al menos cuatro razones:
+
+1.  *Disponibilidad de datos.* Los registros de interacciones entre
+    clientes y firmas ---compras, visitas web, llamadas---
+    satisfacen directamente los requerimientos de datos de los
+    modelos estructurales.
+
+2.  *Atractivo de la evaluación de intervenciones.* La función
+    comercial busca perturbar sistemas para mejorar la oferta de
+    valor. De acuerdo a la crítica de Lucas, solo un modelo
+    estructural permite predecir la reacción de los consumidores
+    ante cambios en el ambiente competitivo.
+
+3.  *Importancia de la heterogeneidad.* En marketing se busca
+    inferencia desagregada a nivel de cliente o segmento para
+    diseñar versiones especializadas del marketing mix. Los modelos
+    estructurales, al especificar supuestos a nivel individual,
+    facilitan la obtención de estimaciones desagregadas.
+
+4.  *Pragmatismo en la aceptación de teorías.* En marketing existe
+    tradición de revisión continua de las fuerzas que moldean el
+    comportamiento de las personas, y el enfoque estructural provee
+    una herramienta alternativa a la verificación experimental de
+    nuevas teorías.
+
+:::
+
+::: {.lang-en}
+
+Marketing has proven a particularly fertile ground for the structural
+approach for at least four reasons:
+
+1.  *Data availability.* Records of customer-firm interactions
+    ---purchases, web visits, calls--- directly satisfy the data
+    requirements of structural models.
+
+2.  *Appeal of intervention evaluation.* The marketing function
+    seeks to perturb systems to improve the value proposition.
+    Following Lucas's critique, only a structural model can predict
+    consumer reactions to changes in the competitive environment.
+
+3.  *Importance of heterogeneity.* Marketing seeks disaggregated
+    inference at the customer or segment level to design specialized
+    versions of the marketing mix. Structural models, by specifying
+    assumptions at the individual level, facilitate disaggregated
+    estimation.
+
+4.  *Pragmatism in accepting theories.* Marketing has a tradition of
+    continually revisiting the forces that shape human behavior, and
+    the structural approach provides an alternative to experimental
+    verification of new theories.
+
+:::
+
 ### Taxonomía de modelos estructurales {#estr-taxonomia data-en="Taxonomy of Structural Models"}
 
 ::: {.lang-es}
@@ -538,65 +597,6 @@ in static problems (or with dynamics limited to the incorporation of
 the past), and with disaggregated data. We begin by briefly describing
 continuous-decision models and then move to a more extensive discussion
 of discrete-choice models, which have a longer tradition in marketing.
-
-:::
-
-### Modelos estructurales en marketing {#estr-marketing data-en="Structural Models in Marketing"}
-
-::: {.lang-es}
-
-El marketing se ha constituido en un terreno particularmente fértil
-para el enfoque estructural por al menos cuatro razones:
-
-1.  *Disponibilidad de datos.* Los registros de interacciones entre
-    clientes y firmas ---compras, visitas web, llamadas---
-    satisfacen directamente los requerimientos de datos de los
-    modelos estructurales.
-
-2.  *Atractivo de la evaluación de intervenciones.* La función
-    comercial busca perturbar sistemas para mejorar la oferta de
-    valor. De acuerdo a la crítica de Lucas, solo un modelo
-    estructural permite predecir la reacción de los consumidores
-    ante cambios en el ambiente competitivo.
-
-3.  *Importancia de la heterogeneidad.* En marketing se busca
-    inferencia desagregada a nivel de cliente o segmento para
-    diseñar versiones especializadas del marketing mix. Los modelos
-    estructurales, al especificar supuestos a nivel individual,
-    facilitan la obtención de estimaciones desagregadas.
-
-4.  *Pragmatismo en la aceptación de teorías.* En marketing existe
-    tradición de revisión continua de las fuerzas que moldean el
-    comportamiento de las personas, y el enfoque estructural provee
-    una herramienta alternativa a la verificación experimental de
-    nuevas teorías.
-
-:::
-
-::: {.lang-en}
-
-Marketing has proven a particularly fertile ground for the structural
-approach for at least four reasons:
-
-1.  *Data availability.* Records of customer-firm interactions
-    ---purchases, web visits, calls--- directly satisfy the data
-    requirements of structural models.
-
-2.  *Appeal of intervention evaluation.* The marketing function
-    seeks to perturb systems to improve the value proposition.
-    Following Lucas's critique, only a structural model can predict
-    consumer reactions to changes in the competitive environment.
-
-3.  *Importance of heterogeneity.* Marketing seeks disaggregated
-    inference at the customer or segment level to design specialized
-    versions of the marketing mix. Structural models, by specifying
-    assumptions at the individual level, facilitate disaggregated
-    estimation.
-
-4.  *Pragmatism in accepting theories.* Marketing has a tradition of
-    continually revisiting the forces that shape human behavior, and
-    the structural approach provides an alternative to experimental
-    verification of new theories.
 
 :::
 
@@ -931,15 +931,6 @@ $dw = -e^{-s}\,ds$), the integral is solved, yielding:
 
 $$P_{nit} = \frac{e^{v_{nit}}}{\sum_{j} e^{v_{njt}}}
 (\#eq:estr-logitprob)$$
-
-::: {.lang-en}
-
-The logit choice probability has the well-known closed-form
-expression: the exponential of the systematic utility of
-alternative $i$ divided by the sum of exponentials across all
-alternatives.
-
-:::
 
 ::: {.lang-es}
 
@@ -3863,9 +3854,11 @@ preference distribution is smooth and continuous.
 
 ## Resumen {#estr-sumario data-en="Summary"}
 
-::: {.lang-es}
+<div class="lang-es">
 
-**Conceptos clave:**
+::: {.rmdwarning}
+
+**Conceptos clave.**
 
 -   Un *modelo estructural* deriva relaciones estimables a partir
     de supuestos de comportamiento, permitiendo interpretación de
@@ -3885,7 +3878,7 @@ preference distribution is smooth and continuous.
     preferibles cuando la población se segmenta en grupos bien
     diferenciados.
 
-**Decisiones de modelamiento:**
+**Decisiones de modelamiento.**
 
 -   Especificación de $v_{nit}$: variables a incluir, forma
     funcional, heterogeneidad observable.
@@ -3896,46 +3889,12 @@ preference distribution is smooth and continuous.
 -   Incorporación de dinámica: lealtad ($z_{nit}$), precios de
     referencia ($RP_{nit}$).
 
-**Métricas de evaluación:**
+**Métricas de evaluación.**
 
 -   Bondad de ajuste: $\rho$ de McFadden, AIC, BIC.
 -   Capacidad de pronóstico: MAE, MAPE (con muestra de prueba).
 -   Test de hipótesis: razón de verosimilitud, estadístico $t$.
 -   Métricas derivadas: elasticidades propias y cruzadas, DAP.
-
-:::
-
-::: {.lang-en}
-
-**Key concepts:**
-
--   A *structural model* derives estimable relationships from behavioral assumptions, allowing parameter interpretation and counterfactual evaluation.
--   *Random utility* is decomposed into a systematic component $v_{nit}$ and a random component $\varepsilon_{nit}$; the distribution of the latter determines the model (logit, probit, nested, mixed).
--   The *logit* provides a closed-form formula and efficient estimation, but imposes IIA and proportional substitution.
--   The *probit* allows correlation between alternatives and random heterogeneity, but requires simulation.
--   The *nested logit* partially relaxes IIA by grouping alternatives into nests with intra-group correlation.
--   The *mixed logit* allows continuous preference heterogeneity and can approximate any random utility model.
--   *Latent classes* provide discrete heterogeneity; they are preferable when the population segments into well-differentiated groups.
-
-**Modeling decisions:**
-
--   Specification of $v_{nit}$: variables to include, functional form, observable heterogeneity.
--   Error distribution: Gumbel (logit), normal (probit), GEV (nested logit).
--   Heterogeneity treatment: observable (interactions), random (mixed logit), discrete (latent classes).
--   Dynamics incorporation: loyalty ($z_{nit}$), reference prices ($RP_{nit}$).
-
-**Evaluation metrics:**
-
--   Goodness of fit: McFadden's $\rho$, AIC, BIC.
--   Forecasting ability: MAE, MAPE (with test sample).
--   Hypothesis testing: likelihood ratio, $t$-statistic.
--   Derived metrics: own and cross elasticities, WTP.
-
-:::
-
-<div class="lang-es">
-
-::: {.rmdwarning}
 
 **Errores frecuentes:**
 
@@ -3966,6 +3925,30 @@ preference distribution is smooth and continuous.
 <div class="lang-en">
 
 ::: {.rmdwarning}
+
+**Key concepts.**
+
+-   A *structural model* derives estimable relationships from behavioral assumptions, allowing parameter interpretation and counterfactual evaluation.
+-   *Random utility* is decomposed into a systematic component $v_{nit}$ and a random component $\varepsilon_{nit}$; the distribution of the latter determines the model (logit, probit, nested, mixed).
+-   The *logit* provides a closed-form formula and efficient estimation, but imposes IIA and proportional substitution.
+-   The *probit* allows correlation between alternatives and random heterogeneity, but requires simulation.
+-   The *nested logit* partially relaxes IIA by grouping alternatives into nests with intra-group correlation.
+-   The *mixed logit* allows continuous preference heterogeneity and can approximate any random utility model.
+-   *Latent classes* provide discrete heterogeneity; they are preferable when the population segments into well-differentiated groups.
+
+**Modeling decisions.**
+
+-   Specification of $v_{nit}$: variables to include, functional form, observable heterogeneity.
+-   Error distribution: Gumbel (logit), normal (probit), GEV (nested logit).
+-   Heterogeneity treatment: observable (interactions), random (mixed logit), discrete (latent classes).
+-   Dynamics incorporation: loyalty ($z_{nit}$), reference prices ($RP_{nit}$).
+
+**Evaluation metrics.**
+
+-   Goodness of fit: McFadden's $\rho$, AIC, BIC.
+-   Forecasting ability: MAE, MAPE (with test sample).
+-   Hypothesis testing: likelihood ratio, $t$-statistic.
+-   Derived metrics: own and cross elasticities, WTP.
 
 **Common mistakes:**
 

@@ -95,7 +95,11 @@ Table: (\#tab:anexo-esperanzas) Esperanzas condicionales por tipo de modelo.
 
 -   Distribución *Beta*:
 
-    $$f(x|\alpha,\beta) = \frac{x^{\alpha - 1}(1-x)^{\beta-1}}{B(\alpha,\beta)} \qquad \mathbb{E}(X) = \frac{\alpha}{\alpha + \beta} \qquad \mathbb{V}ar(X) = \frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)} $$
+    $$\begin{aligned}
+    f(x|\alpha,\beta) &= \frac{x^{\alpha - 1}(1-x)^{\beta-1}}{B(\alpha,\beta)} \\
+    \mathbb{E}(X) &= \frac{\alpha}{\alpha + \beta} \\
+    \mathbb{V}ar(X) &= \frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)}
+    \end{aligned}$$
 
 -   Distribución *Gamma*:
 

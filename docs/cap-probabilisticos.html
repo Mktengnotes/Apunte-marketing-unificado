@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-03-29" />
+<meta name="date" content="2026-03-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -275,8 +275,8 @@ div.csl-indent {
 <li class="chapter" data-level="3.1.1" data-path="cap-estructurales.html"><a href="cap-estructurales.html#modelos-estructurales-versus-forma-reducida"><i class="fa fa-check"></i><b>3.1.1</b> Modelos estructurales versus forma reducida</a></li>
 <li class="chapter" data-level="3.1.2" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-ejemplos"><i class="fa fa-check"></i><b>3.1.2</b> Ejemplos motivadores</a></li>
 <li class="chapter" data-level="3.1.3" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-ventajas"><i class="fa fa-check"></i><b>3.1.3</b> Ventajas de los modelos estructurales</a></li>
-<li class="chapter" data-level="3.1.4" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-taxonomia"><i class="fa fa-check"></i><b>3.1.4</b> Taxonomía de modelos estructurales</a></li>
-<li class="chapter" data-level="3.1.5" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-marketing"><i class="fa fa-check"></i><b>3.1.5</b> Modelos estructurales en marketing</a></li>
+<li class="chapter" data-level="3.1.4" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-marketing"><i class="fa fa-check"></i><b>3.1.4</b> Modelos estructurales en marketing</a></li>
+<li class="chapter" data-level="3.1.5" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-taxonomia"><i class="fa fa-check"></i><b>3.1.5</b> Taxonomía de modelos estructurales</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-logit"><i class="fa fa-check"></i><b>3.2</b> Modelo logit</a>
 <ul>
@@ -951,12 +951,17 @@ individuals.</p>
 <div class="lang-en">
 <p>The <em>likelihood function</em> of the shifted geometric model is:</p>
 </div>
-<p><span class="math display">\[L(\theta) = \left\{\prod_{t=1}^{\tau} P(T=t \mid \theta)^{n_t}\right\}
-P(T&gt;\tau \mid \theta)^{n_\tau}
-= \left\{\prod_{t=1}^{\tau}
+<p><span class="math display">\[
+\begin{aligned}
+L(\theta)
+&amp;= \left\{\prod_{t=1}^{\tau} P(T=t \mid \theta)^{n_t}\right\}
+P(T&gt;\tau \mid \theta)^{n_\tau} \\
+&amp;= \left\{\prod_{t=1}^{\tau}
 \big[\theta(1-\theta)^{t-1}\big]^{n_t}\right\}
 \big[(1-\theta)^{\tau}\big]^{n_\tau}
-\tag{2.5}\]</span></p>
+\end{aligned}
+\tag{2.5}
+\]</span></p>
 <div class="lang-es">
 <p>donde <span class="math inline">\(n_t\)</span> es el número de abandonos en el período <span class="math inline">\(t\)</span>, <span class="math inline">\(n_\tau\)</span> es
 el número de clientes activos después del máximo tiempo observable
@@ -2864,11 +2869,15 @@ antigüedad:</p>
 Lifetime) function uses the posterior distribution conditional on
 tenure:</p>
 </div>
-<p><span class="math display">\[\text{DERL}(d \mid \alpha, \beta, \text{activo en } n)
-= \left(\frac{\beta + n - 1}{\alpha + \beta + n - 1}\right)
-\cdot {}_2F_1\!\left(1, \beta + n;\, \alpha + \beta + n;\,
+<p><span class="math display">\[
+\begin{aligned}
+\text{DERL}(d \mid \alpha, \beta, \text{activo en } n)
+&amp;= \left(\frac{\beta + n - 1}{\alpha + \beta + n - 1}\right) \\
+&amp;\quad \cdot {}_2F_1\!\left(1, \beta + n;\, \alpha + \beta + n;\,
 \frac{1}{1+d}\right)
-\tag{2.58}\]</span></p>
+\end{aligned}
+\tag{2.58}
+\]</span></p>
 <div class="lang-es">
 <p>donde <span class="math inline">\({}_2F_1\)</span> es la <em>función hipergeométrica de Gauss</em>.</p>
 </div>
@@ -2933,10 +2942,13 @@ S(t\mid r,\alpha) = \int_0^{\infty} S(t\mid\lambda)g(\lambda\mid r,\alpha)\,d\la
 <p>The expected value of the <span class="math inline">\(\text{Residual Lifetime Value}\)</span> is:</p>
 </div>
 <p><span class="math display">\[
+\begin{aligned}
 \mathbb{E}(\text{RLV}(\delta\mid\text{activo en }s))
-= \int_s^{\infty} \mathbb{E}(v(t))S(t\mid t&gt;s)\delta(t)\,dt
-= \bar{v}\cdot \text{DERL}(\delta\mid r,\alpha,\text{activo en }s)
-\tag{2.63}\]</span></p>
+&amp;= \int_s^{\infty} \mathbb{E}(v(t))S(t\mid t&gt;s)\delta(t)\,dt \\
+&amp;= \bar{v}\cdot \text{DERL}(\delta\mid r,\alpha,\text{activo en }s)
+\end{aligned}
+\tag{2.63}
+\]</span></p>
 <div class="lang-es">
 <p>donde</p>
 </div>
@@ -3385,8 +3397,13 @@ latentes:</p>
 <p><strong>2a.</strong> The probability of observing <span class="math inline">\(n_{jkt}\)</span> events with two latent
 classes:</p>
 </div>
-<p><span class="math display">\[\Pr(n_{jkt} \mid \theta_1, \theta_2, \pi)= \pi\binom{m}{n_{jkt}}\theta_1^{n_{jkt}}(1-\theta_1)^{m-n_{jkt}}
-+ (1-\pi)\binom{m}{n_{jkt}}\theta_2^{n_{jkt}}(1-\theta_2)^{m-n_{jkt}}\]</span>
+<p><span class="math display">\[
+\begin{aligned}
+\Pr(n_{jkt} \mid \theta_1, \theta_2, \pi)
+&amp;= \pi\binom{m}{n_{jkt}}\theta_1^{n_{jkt}}(1-\theta_1)^{m-n_{jkt}} \\
+&amp;\quad + (1-\pi)\binom{m}{n_{jkt}}\theta_2^{n_{jkt}}(1-\theta_2)^{m-n_{jkt}}
+\end{aligned}
+\]</span>
 <span class="math display">\[LL = \sum_j \sum_k \sum_t\ln\!\big(\Pr(n_{jkt} \mid \theta_1, \theta_2, \pi)\big)\]</span></p>
 <div class="lang-es">
 <p><strong>2b.</strong> Aplicando Bayes:</p>
@@ -3394,9 +3411,12 @@ classes:</p>
 <div class="lang-en">
 <p><strong>2b.</strong> Applying Bayes’ rule:</p>
 </div>
-<p><span class="math display">\[\Pr(\lambda = \lambda_2 \mid n_{jkt}=17)= \frac{\Pr(n_{jkt}=17 \mid \lambda_2)\,\Pr(\lambda_2)}
+<p><span class="math display">\[
+\Pr(\lambda = \lambda_2 \mid n_{jkt}=17)=
+\frac{\Pr(n_{jkt}=17 \mid \lambda_2)\,\Pr(\lambda_2)}
 {\Pr(n_{jkt}=17 \mid \lambda_1)\,\Pr(\lambda_1)
-+ \Pr(n_{jkt}=17 \mid \lambda_2)\,\Pr(\lambda_2)}\]</span></p>
++ \Pr(n_{jkt}=17 \mid \lambda_2)\,\Pr(\lambda_2)}
+\]</span></p>
 <div class="lang-es">
 <p>con <span class="math inline">\(\Pr(n_{jkt}=17 \mid \lambda_1)
 = \binom{824}{17}(0{,}1)^{17}(0{,}9)^{807}\)</span>,
@@ -3523,13 +3543,18 @@ industries (<span class="math inline">\(\text{Industry}_{ih_2}\)</span>), tenure
 digital events with interaction, and the logarithm of total
 interactions. The purchase rate is:</p>
 </div>
-<p><span class="math display">\[\lambda_{it} = \sum_{h_1}\alpha_{h_1}\text{Zone}_{ih_1}+ \sum_{h_2}\alpha_{h_2}\text{Industry}_{ih_2}
+<p><span class="math display">\[
+\begin{aligned}
+\lambda_{it} &amp;= \sum_{h_1}\alpha_{h_1}\text{Zone}_{ih_1}
++ \sum_{h_2}\alpha_{h_2}\text{Industry}_{ih_2}
 + \beta_1\text{Tenure2}_{it}
-+ \beta_2\text{Tenure3}_{it}
-+ \beta_3\text{NEventOnline}_{it-1}
-+ \beta_4\text{NEventOffline}_{it-1}
-+ \beta_5\text{NEventOnline}_{it-1}\cdot\text{NEventOffline}_{it-1}
-+ \beta_6\ln(\text{NEmployeeAccess}_{it-1}\cdot\text{NAccessMean}_{it-1})\]</span></p>
++ \beta_2\text{Tenure3}_{it} \\
+&amp;\quad + \beta_3\text{NEventOnline}_{it-1}
++ \beta_4\text{NEventOffline}_{it-1} \\
+&amp;\quad + \beta_5\text{NEventOnline}_{it-1}\cdot\text{NEventOffline}_{it-1} \\
+&amp;\quad + \beta_6\ln(\text{NEmployeeAccess}_{it-1}\cdot\text{NAccessMean}_{it-1})
+\end{aligned}
+\]</span></p>
 <div class="lang-es">
 <p>Este modelo tiene <span class="math inline">\(Z + I + 6\)</span> parámetros, donde <span class="math inline">\(Z\)</span> es el número de
 zonas e <span class="math inline">\(I\)</span> el número de industrias. La log-verosimilitud es:</p>
@@ -4598,11 +4623,15 @@ store <span class="math inline">\(s\)</span> in month <span class="math inline">
 <span class="math inline">\(t = \text{September}\)</span>.</li>
 </ul>
 </div>
-<p><span class="math display">\[\lambda_{icst} = \alpha_c + \alpha_s+ \beta_1\text{MUJER}_i
-+ \beta_2\text{MUJER}_i \cdot \text{ZORIENTE}_s
-+ \sum_a \gamma_a\delta_{ta}
-+ \theta_1\Delta^1_{ct}
-+ \theta_2\Delta^2_{ct}\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\lambda_{icst} &amp;= \alpha_c + \alpha_s + \beta_1\text{MUJER}_i \\
+&amp;\quad + \beta_2\text{MUJER}_i \cdot \text{ZORIENTE}_s
++ \sum_a \gamma_a\delta_{ta} \\
+&amp;\quad + \theta_1\Delta^1_{ct}
++ \theta_2\Delta^2_{ct}
+\end{aligned}
+\]</span></p>
 <div class="lang-es">
 <p>La log-verosimilitud es:</p>
 </div>
@@ -4863,11 +4892,16 @@ at least one unit) is <span class="math inline">\(\beta/(\alpha + \beta)\)</span
 <div class="lang-en">
 <p><strong>1.</strong> The market penetration <span class="math inline">\(p_0\)</span> is:</p>
 </div>
-<p><span class="math display">\[p_0 = 1 - \Pr(X = 0)= 1 - \frac{B(\alpha + 1, \beta)}{B(\alpha, \beta)}
-= 1 - \frac{\Gamma(\alpha+1)\Gamma(\beta)}{\Gamma(\alpha+\beta+1)}
-\cdot \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}
-= 1 - \frac{\alpha}{\alpha + \beta}
-= \frac{\beta}{\alpha + \beta}\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+p_0 &amp;= 1 - \Pr(X = 0)
+= 1 - \frac{B(\alpha + 1, \beta)}{B(\alpha, \beta)} \\
+&amp;= 1 - \frac{\Gamma(\alpha+1)\Gamma(\beta)}{\Gamma(\alpha+\beta+1)}
+\cdot \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} \\
+&amp;= 1 - \frac{\alpha}{\alpha + \beta}
+= \frac{\beta}{\alpha + \beta}
+\end{aligned}
+\]</span></p>
 <div class="lang-es">
 <p><strong>2.</strong> De la penetración:
 <span class="math inline">\(0{,}6 = \beta/(\alpha + \beta) \Rightarrow \alpha = \tfrac{2}{3}\beta\)</span>.</p>
@@ -5567,11 +5601,16 @@ p_{iN} = \frac{\exp(\boldsymbol{\beta}&#39;_N\mathbf{z}_i)}
 <div class="lang-en">
 <p><strong>4.</strong> Integrated model with two stages (reading and redemption):</p>
 </div>
-<p><span class="math display">\[\Pr(X_i = x_i \mid p_{\text{canjear}}, p_{\text{leer}})= \sum_{n_i = x_i}^{m_i}
+<p><span class="math display">\[
+\begin{aligned}
+\Pr(X_i = x_i \mid p_{\text{canjear}}, p_{\text{leer}})
+&amp;= \sum_{n_i = x_i}^{m_i}
 \binom{n_i}{x_i}p_{\text{canjear}}^{x_i}
-(1-p_{\text{canjear}})^{n_i - x_i}
-\cdot \binom{m_i}{n_i}p_{\text{leer}}^{n_i}
-(1-p_{\text{leer}})^{m_i - n_i}\]</span></p>
+(1-p_{\text{canjear}})^{n_i - x_i} \\
+&amp;\quad \cdot \binom{m_i}{n_i}p_{\text{leer}}^{n_i}
+(1-p_{\text{leer}})^{m_i - n_i}
+\end{aligned}
+\]</span></p>
 <div class="lang-es">
 <p>La log-verosimilitud es:</p>
 </div>
