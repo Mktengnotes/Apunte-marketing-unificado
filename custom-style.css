@@ -87,6 +87,9 @@ li.part:first-child {
 /* Texto justificado */
 .book .book-body .page-wrapper .page-inner section.normal p {
   text-align: justify;
+  text-indent: 0 !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 .book .book-body .page-wrapper .page-inner section.normal table {
@@ -431,32 +434,6 @@ li p {
   text-transform: uppercase;
 }
 
-/* ---- Applied problems: consistent alignment ---- */
-
-.section.level3.unnumbered h3 {
-  padding-left: 0;
-  margin-left: 0;
-  text-transform: none;
-  letter-spacing: normal;
-  font-size: 1.2em;
-  color: #1a162d;
-}
-
-.section.level3.unnumbered .lang-es,
-.section.level3.unnumbered .lang-en {
-  padding-left: 0;
-  margin-left: 0;
-}
-
-.section.level3.unnumbered ol {
-  padding-left: 1.5em;
-}
-
-.section.level3.unnumbered details {
-  padding-left: 0;
-  margin-left: 0;
-}
-
 /* ---- Collapsible solutions ---- */
 
 details {
@@ -495,8 +472,19 @@ mjx-container[jax="CHTML"][display="true"] {
 /* Figure captions centered */
 .figure p.caption,
 p.caption,
-figcaption {
+figcaption,
+.figcaption {
   text-align: center !important;
+}
+
+div.float {
+  text-align: center !important;
+}
+
+div.float img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ============================================

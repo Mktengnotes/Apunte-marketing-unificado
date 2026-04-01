@@ -8,6 +8,7 @@
 \usepackage{titlesec}
 
 \setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
 \setlength{\LTleft}{\fill}
 \setlength{\LTright}{\fill}
 \hfuzz=20pt
@@ -32,7 +33,14 @@
 \excludecomment{lang-en}
 
 % Pass through Spanish content
-\newenvironment{lang-es}{}{}
+\newenvironment{lang-es}{%
+  \par
+  \setlength{\parindent}{0pt}%
+  \noindent
+  \ignorespaces
+}{%
+  \par
+}
 
 % Styled box for rmdnote (matches gitbook styling)
 \newtcolorbox{rmdnote}{

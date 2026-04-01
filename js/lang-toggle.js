@@ -33,9 +33,10 @@
       var div = sections[i];
       var h = div.querySelector('h1, h2, h3, h4');
       if (!h) continue;
+      var anchorLink = h.querySelector('.anchor-section');
       if (!h.hasAttribute(DATA_ORIG)) {
-        var anchor = h.querySelector('.header-section-number');
-        var anchorText = anchor ? anchor.textContent : '';
+        var sectionNum = h.querySelector('.header-section-number');
+        var anchorText = sectionNum ? sectionNum.textContent : '';
         h.setAttribute(DATA_ORIG, h.textContent.replace(anchorText, '').trim());
       }
       var textToShow = (lang === 'en' && div.getAttribute('data-en'))
@@ -45,7 +46,12 @@
       for (j = children.length - 1; j >= 0; j--) {
         if (children[j].nodeType === 3) h.removeChild(children[j]);
       }
-      h.appendChild(document.createTextNode(' ' + textToShow));
+      var titleNode = document.createTextNode(textToShow + ' ');
+      if (anchorLink) {
+        h.insertBefore(titleNode, anchorLink);
+      } else {
+        h.appendChild(titleNode);
+      }
     }
 
     // Static translations for cross-page TOC entries (chapter titles, etc.)
