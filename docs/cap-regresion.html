@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-03-31" />
+<meta name="date" content="2026-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -324,8 +324,13 @@ div.csl-indent {
 <li class="chapter" data-level="3.6.8" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-mixed-ejemplo"><i class="fa fa-check"></i><b>3.6.8</b> Ejemplo: elección de yogur</a></li>
 <li class="chapter" data-level="3.6.9" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-clases-latentes"><i class="fa fa-check"></i><b>3.6.9</b> Logit con clases latentes</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-sumario"><i class="fa fa-check"></i><b>3.7</b> Resumen</a></li>
-<li class="chapter" data-level="3.8" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-aplicados"><i class="fa fa-check"></i><b>3.8</b> Problemas</a>
+<li class="chapter" data-level="3.7" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-tobit"><i class="fa fa-check"></i><b>3.7</b> Modelos Tobit</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-tobit1"><i class="fa fa-check"></i><b>3.7.1</b> Tobit tipo I</a></li>
+<li class="chapter" data-level="3.7.2" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-tobit2"><i class="fa fa-check"></i><b>3.7.2</b> Tobit tipo II</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-sumario"><i class="fa fa-check"></i><b>3.8</b> Resumen</a></li>
+<li class="chapter" data-level="3.9" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-aplicados"><i class="fa fa-check"></i><b>3.9</b> Problemas</a>
 <ul>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-1-stud-ia"><i class="fa fa-check"></i>Problema 1: STUD-IA</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-2-categor%C3%ADa-aceites"><i class="fa fa-check"></i>Problema 2: Categoría aceites</a></li>
@@ -3365,17 +3370,17 @@ during the year for 1,250 films, with the following variables:</p>
 </tr>
 <tr class="even">
 <td align="center">Tipo</td>
-<td align="center">{Acción, Comedia, Romance, Drama, Terror}</td>
+<td align="center">{Base, Acción, Comedia, Romance, Drama, Terror}</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
 <td align="center">Edad</td>
-<td align="center">{TE, TE+7, MA+14, MA+18}</td>
+<td align="center">{Base, TE, TE+7, MA+14, MA+18}</td>
 <td align="center">-</td>
 </tr>
 <tr class="even">
 <td align="center">Estudio</td>
-<td align="center">{Dis, WB, Para, Uni}</td>
+<td align="center">{Base, Dis, WB, Para, Uni}</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
@@ -3987,6 +3992,7 @@ models, obtaining the following results:</p></li>
 </table>
 </div>
 <div class="lang-es">
+<p>A partir de los datos entregados elija cuál modelo es mejor para predecir el número de entradas vendidas para una película y entregue 3 argumentos de porqué lo considera mejor.</p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Interprete los coeficientes de cada modelo. Según cada modelo, ¿qué
 tipo de películas debería presentar el cine para tener mayores
@@ -4008,6 +4014,7 @@ puede tener con aquellas de acción).</p></li>
 </ol>
 </div>
 <div class="lang-en">
+<p>Based on the data provided, choose which model is better for predicting the number of tickets sold for a movie and provide 3 arguments for why you consider it better.</p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Interpret the coefficients of each model. According to each model,
 what type of movies should the theater screen to achieve higher

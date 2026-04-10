@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-03-31" />
+<meta name="date" content="2026-04-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -324,8 +324,13 @@ div.csl-indent {
 <li class="chapter" data-level="3.6.8" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-mixed-ejemplo"><i class="fa fa-check"></i><b>3.6.8</b> Ejemplo: elección de yogur</a></li>
 <li class="chapter" data-level="3.6.9" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-clases-latentes"><i class="fa fa-check"></i><b>3.6.9</b> Logit con clases latentes</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-sumario"><i class="fa fa-check"></i><b>3.7</b> Resumen</a></li>
-<li class="chapter" data-level="3.8" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-aplicados"><i class="fa fa-check"></i><b>3.8</b> Problemas</a>
+<li class="chapter" data-level="3.7" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-tobit"><i class="fa fa-check"></i><b>3.7</b> Modelos Tobit</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-tobit1"><i class="fa fa-check"></i><b>3.7.1</b> Tobit tipo I</a></li>
+<li class="chapter" data-level="3.7.2" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-tobit2"><i class="fa fa-check"></i><b>3.7.2</b> Tobit tipo II</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-sumario"><i class="fa fa-check"></i><b>3.8</b> Resumen</a></li>
+<li class="chapter" data-level="3.9" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-aplicados"><i class="fa fa-check"></i><b>3.9</b> Problemas</a>
 <ul>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-1-stud-ia"><i class="fa fa-check"></i>Problema 1: STUD-IA</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-2-categor%C3%ADa-aceites"><i class="fa fa-check"></i>Problema 2: Categoría aceites</a></li>
@@ -4030,8 +4035,308 @@ preference distribution is smooth and continuous.</p>
 </div>
 </div>
 </div>
-<div id="estr-sumario" class="section level2 hasAnchor" number="3.7" data-en="Summary">
-<h2><span class="header-section-number">3.7</span> Resumen<a href="cap-estructurales.html#estr-sumario" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estr-tobit" class="section level2 hasAnchor" number="3.7" data-en="Tobit Models">
+<h2><span class="header-section-number">3.7</span> Modelos Tobit<a href="cap-estructurales.html#estr-tobit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="lang-es">
+<p>Los modelos Tobit son útiles cuando la variable dependiente observada
+está restringida por una regla de observación que impide ver el
+resultado latente en todo su soporte. En marketing esto ocurre, por
+ejemplo, cuando el gasto observado está truncado en cero, cuando el
+monto de descuento solo se observa para quienes usan un cupón o cuando
+el número de millas disponibles solo es relevante para quienes activan
+un programa de lealtad. La formulación original se debe a
+<span class="citation">Tobin (<a href="referencias.html#ref-tobin1958">1958</a>)</span>, mientras que la extensión más utilizada para selección
+muestral corresponde a <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span>; una exposición didáctica y moderna
+puede encontrarse en <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span> y <span class="citation">Greene (<a href="referencias.html#ref-greene2018">2018</a>)</span>.</p>
+</div>
+<div class="lang-en">
+<p>Tobit models are useful when the observed dependent variable is
+restricted by an observation rule that prevents us from seeing the
+latent outcome over its full support. In marketing, this occurs for
+example when observed spending is cornered at zero, when a discount
+amount is observed only for those who redeem a coupon, or when the
+number of available loyalty points is relevant only for those who
+activate a loyalty program. The original formulation is due to
+<span class="citation">Tobin (<a href="referencias.html#ref-tobin1958">1958</a>)</span>, while the extension most commonly used for sample
+selection is due to <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span>; a modern and pedagogical treatment
+can be found in <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span> and <span class="citation">Greene (<a href="referencias.html#ref-greene2018">2018</a>)</span>.</p>
+</div>
+<div id="estr-tobit1" class="section level3 hasAnchor" number="3.7.1" data-en="Type I Tobit">
+<h3><span class="header-section-number">3.7.1</span> Tobit tipo I<a href="cap-estructurales.html#estr-tobit1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="lang-es">
+<p>El <em>Tobit tipo I</em> parte de una variable latente continua:</p>
+</div>
+<div class="lang-en">
+<p>The <em>Type I Tobit</em> starts from a continuous latent variable:</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit1-latente">\[y_i^* = \mathbf{x}_i&#39;\boldsymbol{\beta} + \varepsilon_i,\qquad
+\varepsilon_i \sim N(0,\sigma^2)
+\tag{3.60}\]</span></p>
+<div class="lang-es">
+<p>y una regla de observación censurada:</p>
+</div>
+<div class="lang-en">
+<p>and a censored observation rule:</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit1-observado">\[y_i =
+\begin{cases}
+y_i^* &amp; \text{si } y_i^* &gt; 0, \\
+0 &amp; \text{si } y_i^* \le 0.
+\end{cases}
+\tag{3.61}\]</span></p>
+<div class="lang-es">
+<p>Este modelo supone que la misma ecuación determina simultáneamente la
+incidencia y la intensidad del resultado. Por eso es apropiado cuando
+los ceros se interpretan como <em>soluciones de esquina</em>: muchos agentes
+eligen exactamente cero, pero si participaran marginalmente el mismo
+mecanismo que genera el monto positivo seguiría siendo válido. Un caso
+clásico es el gasto en una categoría no esencial durante un período
+dado.</p>
+<p>La contribución a la verosimilitud difiere según si la observación está
+censurada o no. Si <span class="math inline">\(y_i = 0\)</span>, la probabilidad observada es:</p>
+</div>
+<div class="lang-en">
+<p>This model assumes that the same equation jointly determines both the
+incidence and the intensity of the outcome. For that reason, it is
+appropriate when zeros are interpreted as <em>corner solutions</em>: many
+agents optimally choose exactly zero, but if they were to participate
+marginally, the same mechanism that generates the positive amount would
+still apply. A classical example is spending in a non-essential
+category during a given period.</p>
+<p>The likelihood contribution differs depending on whether the
+observation is censored or not. If <span class="math inline">\(y_i = 0\)</span>, the observed probability
+is:</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit1-censura">\[\Pr(y_i = 0 \mid \mathbf{x}_i)
+= \Pr(y_i^* \le 0 \mid \mathbf{x}_i)
+= \Phi\!\left(-\frac{\mathbf{x}_i&#39;\boldsymbol{\beta}}{\sigma}\right)
+\tag{3.62}\]</span></p>
+<div class="lang-es">
+<p>Si <span class="math inline">\(y_i &gt; 0\)</span>, la contribución corresponde a la densidad normal evaluada
+en el valor observado:</p>
+</div>
+<div class="lang-en">
+<p>If <span class="math inline">\(y_i &gt; 0\)</span>, the contribution corresponds to the normal density
+evaluated at the observed value:</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit1-densidad">\[f(y_i \mid \mathbf{x}_i, y_i&gt;0)
+= \frac{1}{\sigma}
+\phi\!\left(\frac{y_i - \mathbf{x}_i&#39;\boldsymbol{\beta}}{\sigma}\right)
+\tag{3.63}\]</span></p>
+<div class="lang-es">
+<p>Con esto, la log-verosimilitud muestral se escribe como:</p>
+</div>
+<div class="lang-en">
+<p>Thus, the sample log-likelihood is:</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit1-ll">\[\ell(\boldsymbol{\beta},\sigma)
+= \sum_{i:y_i=0}
+\ln \Phi\!\left(-\frac{\mathbf{x}_i&#39;\boldsymbol{\beta}}{\sigma}\right)
++ \sum_{i:y_i&gt;0}
+\left[
+-\ln \sigma
++ \ln \phi\!\left(\frac{y_i - \mathbf{x}_i&#39;\boldsymbol{\beta}}{\sigma}\right)
+\right]
+\tag{3.64}\]</span></p>
+<div class="lang-es">
+<p>Una diferencia importante con OLS es que los coeficientes
+<span class="math inline">\(\boldsymbol{\beta}\)</span> no son directamente efectos marginales sobre
+<span class="math inline">\(y_i\)</span>. En cambio, afectan simultáneamente:</p>
+<ul>
+<li>la probabilidad de observar un resultado positivo;</li>
+<li>el valor esperado del resultado latente;</li>
+<li>y el valor esperado del resultado observado.</li>
+</ul>
+<p>En particular, el valor esperado observado satisface:</p>
+</div>
+<div class="lang-en">
+<p>An important difference relative to OLS is that the coefficients
+<span class="math inline">\(\boldsymbol{\beta}\)</span> are not directly marginal effects on <span class="math inline">\(y_i\)</span>.
+Instead, they simultaneously affect:</p>
+<ul>
+<li>the probability of observing a positive outcome;</li>
+<li>the expected value of the latent outcome;</li>
+<li>and the expected value of the observed outcome.</li>
+</ul>
+<p>In particular, the observed conditional mean satisfies:</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit1-esperanza">\[E[y_i \mid \mathbf{x}_i]
+= \Phi(z_i)\,\mathbf{x}_i&#39;\boldsymbol{\beta}
++ \sigma \phi(z_i),
+\qquad
+z_i = \frac{\mathbf{x}_i&#39;\boldsymbol{\beta}}{\sigma}
+\tag{3.65}\]</span></p>
+<div class="lang-es">
+<p>y por tanto, para una covariable continua <span class="math inline">\(x_{ik}\)</span>:</p>
+</div>
+<div class="lang-en">
+<p>and therefore, for a continuous covariate <span class="math inline">\(x_{ik}\)</span>:</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit1-marginal">\[\frac{\partial E[y_i \mid \mathbf{x}_i]}{\partial x_{ik}}
+= \Phi(z_i)\,\beta_k
+\tag{3.66}\]</span></p>
+<div class="lang-es">
+<p>Esta expresión muestra que el efecto marginal sobre la variable
+observada es menor en magnitud que el efecto sobre el resultado
+latente, porque se encuentra atenuado por la probabilidad de no estar
+censurado. En términos gerenciales, esto implica que una variable como
+precio, ingreso o intensidad promocional puede afectar simultáneamente
+la decisión de participar y el nivel consumido.</p>
+<p>El principal riesgo de usar un Tobit tipo I es imponer una restricción
+demasiado fuerte: que la misma combinación lineal explique tanto el
+salto desde cero a positivo como la intensidad condicional. Si en la
+práctica estas dos decisiones obedecen a mecanismos distintos, entonces
+conviene separar explícitamente selección e intensidad.</p>
+</div>
+<div class="lang-en">
+<p>This expression shows that the marginal effect on the observed
+variable is smaller in magnitude than the effect on the latent
+outcome, because it is attenuated by the probability of not being
+censored. In managerial terms, this means that a variable such as
+price, income, or promotional intensity may simultaneously affect the
+decision to participate and the conditional level consumed.</p>
+<p>The main risk of using a Type I Tobit is that it imposes a strong
+restriction: the same linear index must explain both the jump from
+zero to positive values and the conditional intensity. If in practice
+these two decisions obey different mechanisms, then it is better to
+separate selection and intensity explicitly.</p>
+</div>
+</div>
+<div id="estr-tobit2" class="section level3 hasAnchor" number="3.7.2" data-en="Type II Tobit">
+<h3><span class="header-section-number">3.7.2</span> Tobit tipo II<a href="cap-estructurales.html#estr-tobit2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="lang-es">
+<p>El <em>Tobit tipo II</em> surge precisamente cuando la decisión de observar el
+resultado y el nivel del resultado obedecen a procesos distintos. Este
+es el caso clásico de <em>selección muestral</em>: el monto de descuento se
+observa solo si el cliente usa el cupón; las millas disponibles son
+relevantes solo si el individuo activa el programa; el gasto
+condicional se observa solo si la compra ocurre.</p>
+<p>La formulación separa una ecuación de selección y una ecuación de
+resultado:</p>
+</div>
+<div class="lang-en">
+<p>The <em>Type II Tobit</em> arises precisely when the decision that makes the
+outcome observable and the level of the outcome are generated by
+different processes. This is the classical case of <em>sample selection</em>:
+the discount amount is observed only if the customer redeems the
+coupon; available miles are relevant only if the individual activates
+the program; conditional expenditure is observed only if purchase
+occurs.</p>
+<p>The formulation separates a selection equation and an outcome
+equation:</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit2-seleccion">\[s_i^* = \mathbf{z}_i&#39;\boldsymbol{\gamma} + u_i,\qquad
+s_i = \mathbb{1}[s_i^*&gt;0]
+\tag{3.67}\]</span></p>
+<p><span class="math display" id="eq:estr-tobit2-resultado">\[y_i^* = \mathbf{x}_i&#39;\boldsymbol{\beta} + \varepsilon_i,\qquad
+y_i = y_i^* \text{ solo si } s_i=1
+\tag{3.68}\]</span></p>
+<div class="lang-es">
+<p>donde típicamente se asume que:</p>
+</div>
+<div class="lang-en">
+<p>where it is typically assumed that:</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit2-errores">\[\left(\begin{array}{c}
+u_i \\
+\varepsilon_i
+\end{array}\right)
+\sim
+N\!\left(
+\left(\begin{array}{c}
+0 \\
+0
+\end{array}\right),
+\left(\begin{array}{cc}
+1 &amp; \rho \sigma_{\varepsilon} \\
+\rho \sigma_{\varepsilon} &amp; \sigma_{\varepsilon}^2
+\end{array}\right)
+\right)
+\tag{3.69}\]</span></p>
+<div class="lang-es">
+<p>La correlación <span class="math inline">\(\rho\)</span> es el parámetro crucial: si <span class="math inline">\(\rho \ne 0\)</span>, entonces
+las observaciones para las cuales <span class="math inline">\(y_i\)</span> es visible no constituyen una
+submuestra aleatoria. En consecuencia, estimar por OLS la ecuación de
+resultado solo con los casos observados genera sesgo de selección.</p>
+<p>El resultado central de <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span> muestra que:</p>
+</div>
+<div class="lang-en">
+<p>The correlation parameter <span class="math inline">\(\rho\)</span> is crucial: if <span class="math inline">\(\rho \ne 0\)</span>, then the
+observations for which <span class="math inline">\(y_i\)</span> is visible do not form a random
+subsample. Consequently, estimating the outcome equation by OLS using
+only the observed cases generates selection bias.</p>
+<p>The central result of <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span> shows that:</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit2-esperanza">\[E[y_i \mid \mathbf{x}_i,\mathbf{z}_i,s_i=1]
+= \mathbf{x}_i&#39;\boldsymbol{\beta}
++ \rho \sigma_{\varepsilon}\lambda(\mathbf{z}_i&#39;\boldsymbol{\gamma}),
+\tag{3.70}\]</span></p>
+<div class="lang-es">
+<p>donde</p>
+</div>
+<div class="lang-en">
+<p>where</p>
+</div>
+<p><span class="math display" id="eq:estr-tobit2-imr">\[\lambda(\mathbf{z}_i&#39;\boldsymbol{\gamma})
+= \frac{\phi(\mathbf{z}_i&#39;\boldsymbol{\gamma})}
+        {\Phi(\mathbf{z}_i&#39;\boldsymbol{\gamma})}
+\tag{3.71}\]</span></p>
+<div class="lang-es">
+<p>es la <em>razón de Mills inversa</em>. Esta expresión muestra que la esperanza
+condicional del resultado observado incluye un término adicional que
+resume la no aleatoriedad del proceso de observación. Si dicho término
+se omite, los coeficientes de la ecuación de resultado absorben parte
+de ese sesgo.</p>
+<p>En la práctica existen dos estrategias principales de estimación:</p>
+<ol style="list-style-type: decimal">
+<li><em>Máxima verosimilitud conjunta</em>, que estima simultáneamente
+<span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\boldsymbol{\gamma}\)</span>, <span class="math inline">\(\sigma_{\varepsilon}\)</span>
+y <span class="math inline">\(\rho\)</span>.</li>
+<li><em>Procedimiento en dos etapas de Heckman</em>, que primero estima la
+selección mediante probit y luego incorpora la razón de Mills
+inversa en la ecuación de resultado.</li>
+</ol>
+<p>La máxima verosimilitud es más eficiente si la normalidad conjunta está
+bien especificada. El estimador en dos etapas es más transparente y
+pedagógico, por lo que suele ser especialmente útil al introducir el
+modelo y al interpretar el origen del sesgo de selección.</p>
+<p>Desde un punto de vista gerencial, el Tobit tipo II permite distinguir
+dos preguntas diferentes: qué factores explican la activación o uso de
+un mecanismo y qué factores explican la magnitud del resultado
+condicional una vez que la activación ocurre. En problemas de cupones,
+retención o lealtad, esta separación es normalmente más realista que la
+restricción del Tobit tipo I.</p>
+</div>
+<div class="lang-en">
+<p>is the <em>inverse Mills ratio</em>. This expression shows that the
+conditional expectation of the observed outcome includes an additional
+term summarizing the non-randomness of the observation process. If
+that term is omitted, the coefficients of the outcome equation absorb
+part of the selection bias.</p>
+<p>In practice there are two main estimation strategies:</p>
+<ol style="list-style-type: decimal">
+<li><em>Joint maximum likelihood</em>, which estimates
+<span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\boldsymbol{\gamma}\)</span>, <span class="math inline">\(\sigma_{\varepsilon}\)</span>,
+and <span class="math inline">\(\rho\)</span> simultaneously.</li>
+<li><em>Heckman’s two-step procedure</em>, which first estimates the selection
+equation using probit and then incorporates the inverse Mills ratio
+into the outcome equation.</li>
+</ol>
+<p>Maximum likelihood is more efficient if joint normality is correctly
+specified. The two-step estimator is more transparent and pedagogical,
+which is why it is especially useful when introducing the model and
+when interpreting the source of selection bias.</p>
+<p>From a managerial point of view, the Type II Tobit allows one to
+distinguish two different questions: which factors explain the
+activation or use of a mechanism, and which factors explain the
+magnitude of the conditional outcome once activation occurs. In coupon,
+retention, or loyalty problems, this separation is usually more
+realistic than the restriction imposed by the Type I Tobit.</p>
+</div>
+</div>
+</div>
+<div id="estr-sumario" class="section level2 hasAnchor" number="3.8" data-en="Summary">
+<h2><span class="header-section-number">3.8</span> Resumen<a href="cap-estructurales.html#estr-sumario" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="lang-es">
 <div class="rmdwarning">
 <p><em>Conceptos clave.</em></p>
@@ -4053,6 +4358,8 @@ preferencias y aproxima cualquier modelo de utilidad aleatoria.</li>
 <li>Las <em>clases latentes</em> proveen heterogeneidad discreta; resultan
 preferibles cuando la población se segmenta en grupos bien
 diferenciados.</li>
+<li>Los <em>modelos Tobit</em> permiten tratar resultados limitados:
+censura en <em>Tobit I</em> y selección muestral en <em>Tobit II</em>.</li>
 </ul>
 <p><em>Decisiones de modelamiento.</em></p>
 <ul>
@@ -4064,6 +4371,8 @@ funcional, heterogeneidad observable.</li>
 aleatoria (mixed logit), discreta (clases latentes).</li>
 <li>Incorporación de dinámica: lealtad (<span class="math inline">\(z_{nit}\)</span>), precios de
 referencia (<span class="math inline">\(RP_{nit}\)</span>).</li>
+<li>Regla de observación del resultado: censura, truncamiento o
+selección, según la naturaleza del dato observado.</li>
 </ul>
 <p><em>Métricas de evaluación.</em></p>
 <ul>
@@ -4093,6 +4402,9 @@ valor fuera de rango indica problemas de especificación.</li>
 <li>Omitir la condición inicial de <span class="math inline">\(z_{ni1}\)</span> y <span class="math inline">\(RP_{ni1}\)</span> al
 implementar modelos de panel con persistencia o precios de
 referencia.</li>
+<li>Usar <em>Tobit I</em> cuando la decisión de participar y la magnitud
+condicional del resultado obedecen a mecanismos distintos; en
+ese caso conviene un enfoque tipo Heckman o <em>Tobit II</em>.</li>
 </ul>
 </div>
 </div>
@@ -4107,6 +4419,8 @@ referencia.</li>
 <li>The <em>nested logit</em> partially relaxes IIA by grouping alternatives into nests with intra-group correlation.</li>
 <li>The <em>mixed logit</em> allows continuous preference heterogeneity and can approximate any random utility model.</li>
 <li><em>Latent classes</em> provide discrete heterogeneity; they are preferable when the population segments into well-differentiated groups.</li>
+<li><em>Tobit models</em> handle limited outcomes: censoring in <em>Type I</em>
+Tobit and sample selection in <em>Type II</em> Tobit.</li>
 </ul>
 <p><em>Modeling decisions.</em></p>
 <ul>
@@ -4114,6 +4428,8 @@ referencia.</li>
 <li>Error distribution: Gumbel (logit), normal (probit), GEV (nested logit).</li>
 <li>Heterogeneity treatment: observable (interactions), random (mixed logit), discrete (latent classes).</li>
 <li>Dynamics incorporation: loyalty (<span class="math inline">\(z_{nit}\)</span>), reference prices (<span class="math inline">\(RP_{nit}\)</span>).</li>
+<li>Observation rule for the outcome: censoring, truncation, or
+selection, depending on the nature of the observed data.</li>
 </ul>
 <p><em>Evaluation metrics.</em></p>
 <ul>
@@ -4143,20 +4459,25 @@ problems.</li>
 <li>Omitting the initial condition for <span class="math inline">\(z_{ni1}\)</span> and <span class="math inline">\(RP_{ni1}\)</span>
 when implementing panel models with persistence or reference
 prices.</li>
+<li>Using <em>Type I Tobit</em> when participation and conditional
+intensity are governed by different mechanisms; in that case a
+Heckman-type or <em>Type II Tobit</em> approach is preferable.</li>
 </ul>
 </div>
 </div>
 <div class="lang-es">
 <p><em>Referencias principales:</em> <span class="citation">McFadden (<a href="referencias.html#ref-mcfadden1974">1974</a>)</span>, <span class="citation">Train (<a href="referencias.html#ref-train2009">2009</a>)</span>,
-<span class="citation">Ben-Akiva &amp; Lerman (<a href="referencias.html#ref-ben-akiva1985">1985</a>)</span>, <span class="citation">Berry et al. (<a href="referencias.html#ref-berry1995">1995</a>)</span>, <span class="citation">Guadagni &amp; Little (<a href="referencias.html#ref-guadagni1983">1983</a>)</span>, <span class="citation">Nevo (<a href="referencias.html#ref-nevo2000">2000</a>)</span>, <span class="citation">Rossi et al. (<a href="referencias.html#ref-rossi2005">2005</a>)</span>.</p>
+<span class="citation">Ben-Akiva &amp; Lerman (<a href="referencias.html#ref-ben-akiva1985">1985</a>)</span>, <span class="citation">Berry et al. (<a href="referencias.html#ref-berry1995">1995</a>)</span>, <span class="citation">Guadagni &amp; Little (<a href="referencias.html#ref-guadagni1983">1983</a>)</span>, <span class="citation">Nevo (<a href="referencias.html#ref-nevo2000">2000</a>)</span>, <span class="citation">Rossi et al. (<a href="referencias.html#ref-rossi2005">2005</a>)</span>,
+<span class="citation">Tobin (<a href="referencias.html#ref-tobin1958">1958</a>)</span>, <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span>, <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span>.</p>
 </div>
 <div class="lang-en">
 <p><em>Main references:</em> <span class="citation">McFadden (<a href="referencias.html#ref-mcfadden1974">1974</a>)</span>, <span class="citation">Train (<a href="referencias.html#ref-train2009">2009</a>)</span>,
-<span class="citation">Ben-Akiva &amp; Lerman (<a href="referencias.html#ref-ben-akiva1985">1985</a>)</span>, <span class="citation">Berry et al. (<a href="referencias.html#ref-berry1995">1995</a>)</span>, <span class="citation">Guadagni &amp; Little (<a href="referencias.html#ref-guadagni1983">1983</a>)</span>, <span class="citation">Nevo (<a href="referencias.html#ref-nevo2000">2000</a>)</span>, <span class="citation">Rossi et al. (<a href="referencias.html#ref-rossi2005">2005</a>)</span>.</p>
+<span class="citation">Ben-Akiva &amp; Lerman (<a href="referencias.html#ref-ben-akiva1985">1985</a>)</span>, <span class="citation">Berry et al. (<a href="referencias.html#ref-berry1995">1995</a>)</span>, <span class="citation">Guadagni &amp; Little (<a href="referencias.html#ref-guadagni1983">1983</a>)</span>, <span class="citation">Nevo (<a href="referencias.html#ref-nevo2000">2000</a>)</span>, <span class="citation">Rossi et al. (<a href="referencias.html#ref-rossi2005">2005</a>)</span>,
+<span class="citation">Tobin (<a href="referencias.html#ref-tobin1958">1958</a>)</span>, <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span>, <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span>.</p>
 </div>
 </div>
-<div id="estr-aplicados" class="section level2 hasAnchor" number="3.8" data-en="Problems">
-<h2><span class="header-section-number">3.8</span> Problemas<a href="cap-estructurales.html#estr-aplicados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estr-aplicados" class="section level2 hasAnchor" number="3.9" data-en="Problems">
+<h2><span class="header-section-number">3.9</span> Problemas<a href="cap-estructurales.html#estr-aplicados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="problema-1-stud-ia" class="section level3 unnumbered hasAnchor">
 <h3>Problema 1: STUD-IA<a href="cap-estructurales.html#problema-1-stud-ia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">

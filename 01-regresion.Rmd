@@ -3131,9 +3131,9 @@ Table: (\#tab:reg-p2-variables) Resumen de ventas para cada función.
 | Hora | Hora de la función | - |
 | Película | Nombre de la película | - |
 | Duración | Duración [minutos] | 103.32 |
-| Tipo | {Acción, Comedia, Romance, Drama, Terror} | - |
-| Edad | {TE, TE+7, MA+14, MA+18} | - |
-| Estudio | {Dis, WB, Para, Uni} | - |
+| Tipo | {Base, Acción, Comedia, Romance, Drama, Terror} | - |
+| Edad | {Base, TE, TE+7, MA+14, MA+18} | - |
+| Estudio | {Base, Dis, WB, Para, Uni} | - |
 | Presupuesto | Presupuesto [CLP] | 160,200,000 |
 | Ingreso | Ingreso por entradas [CLP] | 714,500 |
 
@@ -3271,6 +3271,8 @@ Table: (\#tab:reg-p2-modelos) Model comparison results.
 
 ::: {.lang-es}
 
+A partir de los datos entregados elija cuál modelo es mejor para predecir el número de entradas vendidas para una película y entregue 3 argumentos de porqué lo considera mejor.
+
 3.  Interprete los coeficientes de cada modelo. Según cada modelo, ¿qué
     tipo de películas debería presentar el cine para tener mayores
     ingresos?
@@ -3294,6 +3296,8 @@ Table: (\#tab:reg-p2-modelos) Model comparison results.
 :::
 
 ::: {.lang-en}
+
+Based on the data provided, choose which model is better for predicting the number of tickets sold for a movie and provide 3 arguments for why you consider it better.
 
 3.  Interpret the coefficients of each model. According to each model,
     what type of movies should the theater screen to achieve higher

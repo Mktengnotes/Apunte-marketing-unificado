@@ -4571,6 +4571,411 @@ preference distribution is smooth and continuous.
 
 :::
 
+## Modelos Tobit {#estr-tobit data-en="Tobit Models"}
+
+::: {.lang-es}
+
+Los modelos Tobit son útiles cuando la variable dependiente observada
+está restringida por una regla de observación que impide ver el
+resultado latente en todo su soporte. En marketing esto ocurre, por
+ejemplo, cuando el gasto observado está truncado en cero, cuando el
+monto de descuento solo se observa para quienes usan un cupón o cuando
+el número de millas disponibles solo es relevante para quienes activan
+un programa de lealtad. La formulación original se debe a
+@tobin1958, mientras que la extensión más utilizada para selección
+muestral corresponde a @heckman1979; una exposición didáctica y moderna
+puede encontrarse en @wooldridge2019 y @greene2018.
+
+:::
+
+::: {.lang-en}
+
+Tobit models are useful when the observed dependent variable is
+restricted by an observation rule that prevents us from seeing the
+latent outcome over its full support. In marketing, this occurs for
+example when observed spending is cornered at zero, when a discount
+amount is observed only for those who redeem a coupon, or when the
+number of available loyalty points is relevant only for those who
+activate a loyalty program. The original formulation is due to
+@tobin1958, while the extension most commonly used for sample
+selection is due to @heckman1979; a modern and pedagogical treatment
+can be found in @wooldridge2019 and @greene2018.
+
+:::
+
+### Tobit tipo I {#estr-tobit1 data-en="Type I Tobit"}
+
+::: {.lang-es}
+
+El *Tobit tipo I* parte de una variable latente continua:
+
+:::
+
+::: {.lang-en}
+
+The *Type I Tobit* starts from a continuous latent variable:
+
+:::
+
+$$y_i^* = \mathbf{x}_i'\boldsymbol{\beta} + \varepsilon_i,\qquad
+\varepsilon_i \sim N(0,\sigma^2)
+(\#eq:estr-tobit1-latente)$$
+
+::: {.lang-es}
+
+y una regla de observación censurada:
+
+:::
+
+::: {.lang-en}
+
+and a censored observation rule:
+
+:::
+
+$$y_i =
+\begin{cases}
+y_i^* & \text{si } y_i^* > 0, \\
+0 & \text{si } y_i^* \le 0.
+\end{cases}
+(\#eq:estr-tobit1-observado)$$
+
+::: {.lang-es}
+
+Este modelo supone que la misma ecuación determina simultáneamente la
+incidencia y la intensidad del resultado. Por eso es apropiado cuando
+los ceros se interpretan como *soluciones de esquina*: muchos agentes
+eligen exactamente cero, pero si participaran marginalmente el mismo
+mecanismo que genera el monto positivo seguiría siendo válido. Un caso
+clásico es el gasto en una categoría no esencial durante un período
+dado.
+
+La contribución a la verosimilitud difiere según si la observación está
+censurada o no. Si $y_i = 0$, la probabilidad observada es:
+
+:::
+
+::: {.lang-en}
+
+This model assumes that the same equation jointly determines both the
+incidence and the intensity of the outcome. For that reason, it is
+appropriate when zeros are interpreted as *corner solutions*: many
+agents optimally choose exactly zero, but if they were to participate
+marginally, the same mechanism that generates the positive amount would
+still apply. A classical example is spending in a non-essential
+category during a given period.
+
+The likelihood contribution differs depending on whether the
+observation is censored or not. If $y_i = 0$, the observed probability
+is:
+
+:::
+
+$$\Pr(y_i = 0 \mid \mathbf{x}_i)
+= \Pr(y_i^* \le 0 \mid \mathbf{x}_i)
+= \Phi\!\left(-\frac{\mathbf{x}_i'\boldsymbol{\beta}}{\sigma}\right)
+(\#eq:estr-tobit1-censura)$$
+
+::: {.lang-es}
+
+Si $y_i > 0$, la contribución corresponde a la densidad normal evaluada
+en el valor observado:
+
+:::
+
+::: {.lang-en}
+
+If $y_i > 0$, the contribution corresponds to the normal density
+evaluated at the observed value:
+
+:::
+
+$$f(y_i \mid \mathbf{x}_i, y_i>0)
+= \frac{1}{\sigma}
+\phi\!\left(\frac{y_i - \mathbf{x}_i'\boldsymbol{\beta}}{\sigma}\right)
+(\#eq:estr-tobit1-densidad)$$
+
+::: {.lang-es}
+
+Con esto, la log-verosimilitud muestral se escribe como:
+
+:::
+
+::: {.lang-en}
+
+Thus, the sample log-likelihood is:
+
+:::
+
+$$\ell(\boldsymbol{\beta},\sigma)
+= \sum_{i:y_i=0}
+\ln \Phi\!\left(-\frac{\mathbf{x}_i'\boldsymbol{\beta}}{\sigma}\right)
++ \sum_{i:y_i>0}
+\left[
+-\ln \sigma
++ \ln \phi\!\left(\frac{y_i - \mathbf{x}_i'\boldsymbol{\beta}}{\sigma}\right)
+\right]
+(\#eq:estr-tobit1-ll)$$
+
+::: {.lang-es}
+
+Una diferencia importante con OLS es que los coeficientes
+$\boldsymbol{\beta}$ no son directamente efectos marginales sobre
+$y_i$. En cambio, afectan simultáneamente:
+
+- la probabilidad de observar un resultado positivo;
+- el valor esperado del resultado latente;
+- y el valor esperado del resultado observado.
+
+En particular, el valor esperado observado satisface:
+
+:::
+
+::: {.lang-en}
+
+An important difference relative to OLS is that the coefficients
+$\boldsymbol{\beta}$ are not directly marginal effects on $y_i$.
+Instead, they simultaneously affect:
+
+- the probability of observing a positive outcome;
+- the expected value of the latent outcome;
+- and the expected value of the observed outcome.
+
+In particular, the observed conditional mean satisfies:
+
+:::
+
+$$E[y_i \mid \mathbf{x}_i]
+= \Phi(z_i)\,\mathbf{x}_i'\boldsymbol{\beta}
++ \sigma \phi(z_i),
+\qquad
+z_i = \frac{\mathbf{x}_i'\boldsymbol{\beta}}{\sigma}
+(\#eq:estr-tobit1-esperanza)$$
+
+::: {.lang-es}
+
+y por tanto, para una covariable continua $x_{ik}$:
+
+:::
+
+::: {.lang-en}
+
+and therefore, for a continuous covariate $x_{ik}$:
+
+:::
+
+$$\frac{\partial E[y_i \mid \mathbf{x}_i]}{\partial x_{ik}}
+= \Phi(z_i)\,\beta_k
+(\#eq:estr-tobit1-marginal)$$
+
+::: {.lang-es}
+
+Esta expresión muestra que el efecto marginal sobre la variable
+observada es menor en magnitud que el efecto sobre el resultado
+latente, porque se encuentra atenuado por la probabilidad de no estar
+censurado. En términos gerenciales, esto implica que una variable como
+precio, ingreso o intensidad promocional puede afectar simultáneamente
+la decisión de participar y el nivel consumido.
+
+El principal riesgo de usar un Tobit tipo I es imponer una restricción
+demasiado fuerte: que la misma combinación lineal explique tanto el
+salto desde cero a positivo como la intensidad condicional. Si en la
+práctica estas dos decisiones obedecen a mecanismos distintos, entonces
+conviene separar explícitamente selección e intensidad.
+
+:::
+
+::: {.lang-en}
+
+This expression shows that the marginal effect on the observed
+variable is smaller in magnitude than the effect on the latent
+outcome, because it is attenuated by the probability of not being
+censored. In managerial terms, this means that a variable such as
+price, income, or promotional intensity may simultaneously affect the
+decision to participate and the conditional level consumed.
+
+The main risk of using a Type I Tobit is that it imposes a strong
+restriction: the same linear index must explain both the jump from
+zero to positive values and the conditional intensity. If in practice
+these two decisions obey different mechanisms, then it is better to
+separate selection and intensity explicitly.
+
+:::
+
+### Tobit tipo II {#estr-tobit2 data-en="Type II Tobit"}
+
+::: {.lang-es}
+
+El *Tobit tipo II* surge precisamente cuando la decisión de observar el
+resultado y el nivel del resultado obedecen a procesos distintos. Este
+es el caso clásico de *selección muestral*: el monto de descuento se
+observa solo si el cliente usa el cupón; las millas disponibles son
+relevantes solo si el individuo activa el programa; el gasto
+condicional se observa solo si la compra ocurre.
+
+La formulación separa una ecuación de selección y una ecuación de
+resultado:
+
+:::
+
+::: {.lang-en}
+
+The *Type II Tobit* arises precisely when the decision that makes the
+outcome observable and the level of the outcome are generated by
+different processes. This is the classical case of *sample selection*:
+the discount amount is observed only if the customer redeems the
+coupon; available miles are relevant only if the individual activates
+the program; conditional expenditure is observed only if purchase
+occurs.
+
+The formulation separates a selection equation and an outcome
+equation:
+
+:::
+
+$$s_i^* = \mathbf{z}_i'\boldsymbol{\gamma} + u_i,\qquad
+s_i = \mathbb{1}[s_i^*>0]
+(\#eq:estr-tobit2-seleccion)$$
+
+$$y_i^* = \mathbf{x}_i'\boldsymbol{\beta} + \varepsilon_i,\qquad
+y_i = y_i^* \text{ solo si } s_i=1
+(\#eq:estr-tobit2-resultado)$$
+
+::: {.lang-es}
+
+donde típicamente se asume que:
+
+:::
+
+::: {.lang-en}
+
+where it is typically assumed that:
+
+:::
+
+$$\left(\begin{array}{c}
+u_i \\
+\varepsilon_i
+\end{array}\right)
+\sim
+N\!\left(
+\left(\begin{array}{c}
+0 \\
+0
+\end{array}\right),
+\left(\begin{array}{cc}
+1 & \rho \sigma_{\varepsilon} \\
+\rho \sigma_{\varepsilon} & \sigma_{\varepsilon}^2
+\end{array}\right)
+\right)
+(\#eq:estr-tobit2-errores)$$
+
+::: {.lang-es}
+
+La correlación $\rho$ es el parámetro crucial: si $\rho \ne 0$, entonces
+las observaciones para las cuales $y_i$ es visible no constituyen una
+submuestra aleatoria. En consecuencia, estimar por OLS la ecuación de
+resultado solo con los casos observados genera sesgo de selección.
+
+El resultado central de @heckman1979 muestra que:
+
+:::
+
+::: {.lang-en}
+
+The correlation parameter $\rho$ is crucial: if $\rho \ne 0$, then the
+observations for which $y_i$ is visible do not form a random
+subsample. Consequently, estimating the outcome equation by OLS using
+only the observed cases generates selection bias.
+
+The central result of @heckman1979 shows that:
+
+:::
+
+$$E[y_i \mid \mathbf{x}_i,\mathbf{z}_i,s_i=1]
+= \mathbf{x}_i'\boldsymbol{\beta}
++ \rho \sigma_{\varepsilon}\lambda(\mathbf{z}_i'\boldsymbol{\gamma}),
+(\#eq:estr-tobit2-esperanza)$$
+
+::: {.lang-es}
+
+donde
+
+:::
+
+::: {.lang-en}
+
+where
+
+:::
+
+$$\lambda(\mathbf{z}_i'\boldsymbol{\gamma})
+= \frac{\phi(\mathbf{z}_i'\boldsymbol{\gamma})}
+        {\Phi(\mathbf{z}_i'\boldsymbol{\gamma})}
+(\#eq:estr-tobit2-imr)$$
+
+::: {.lang-es}
+
+es la *razón de Mills inversa*. Esta expresión muestra que la esperanza
+condicional del resultado observado incluye un término adicional que
+resume la no aleatoriedad del proceso de observación. Si dicho término
+se omite, los coeficientes de la ecuación de resultado absorben parte
+de ese sesgo.
+
+En la práctica existen dos estrategias principales de estimación:
+
+1. *Máxima verosimilitud conjunta*, que estima simultáneamente
+   $\boldsymbol{\beta}$, $\boldsymbol{\gamma}$, $\sigma_{\varepsilon}$
+   y $\rho$.
+2. *Procedimiento en dos etapas de Heckman*, que primero estima la
+   selección mediante probit y luego incorpora la razón de Mills
+   inversa en la ecuación de resultado.
+
+La máxima verosimilitud es más eficiente si la normalidad conjunta está
+bien especificada. El estimador en dos etapas es más transparente y
+pedagógico, por lo que suele ser especialmente útil al introducir el
+modelo y al interpretar el origen del sesgo de selección.
+
+Desde un punto de vista gerencial, el Tobit tipo II permite distinguir
+dos preguntas diferentes: qué factores explican la activación o uso de
+un mecanismo y qué factores explican la magnitud del resultado
+condicional una vez que la activación ocurre. En problemas de cupones,
+retención o lealtad, esta separación es normalmente más realista que la
+restricción del Tobit tipo I.
+
+:::
+
+::: {.lang-en}
+
+is the *inverse Mills ratio*. This expression shows that the
+conditional expectation of the observed outcome includes an additional
+term summarizing the non-randomness of the observation process. If
+that term is omitted, the coefficients of the outcome equation absorb
+part of the selection bias.
+
+In practice there are two main estimation strategies:
+
+1. *Joint maximum likelihood*, which estimates
+   $\boldsymbol{\beta}$, $\boldsymbol{\gamma}$, $\sigma_{\varepsilon}$,
+   and $\rho$ simultaneously.
+2. *Heckman's two-step procedure*, which first estimates the selection
+   equation using probit and then incorporates the inverse Mills ratio
+   into the outcome equation.
+
+Maximum likelihood is more efficient if joint normality is correctly
+specified. The two-step estimator is more transparent and pedagogical,
+which is why it is especially useful when introducing the model and
+when interpreting the source of selection bias.
+
+From a managerial point of view, the Type II Tobit allows one to
+distinguish two different questions: which factors explain the
+activation or use of a mechanism, and which factors explain the
+magnitude of the conditional outcome once activation occurs. In coupon,
+retention, or loyalty problems, this separation is usually more
+realistic than the restriction imposed by the Type I Tobit.
+
+:::
+
 
 ## Resumen {#estr-sumario data-en="Summary"}
 
@@ -4597,6 +5002,8 @@ preference distribution is smooth and continuous.
 -   Las *clases latentes* proveen heterogeneidad discreta; resultan
     preferibles cuando la población se segmenta en grupos bien
     diferenciados.
+-   Los *modelos Tobit* permiten tratar resultados limitados:
+    censura en *Tobit I* y selección muestral en *Tobit II*.
 
 *Decisiones de modelamiento.*
 
@@ -4608,6 +5015,8 @@ preference distribution is smooth and continuous.
     aleatoria (mixed logit), discreta (clases latentes).
 -   Incorporación de dinámica: lealtad ($z_{nit}$), precios de
     referencia ($RP_{nit}$).
+-   Regla de observación del resultado: censura, truncamiento o
+    selección, según la naturaleza del dato observado.
 
 *Métricas de evaluación.*
 
@@ -4637,6 +5046,9 @@ preference distribution is smooth and continuous.
 -   Omitir la condición inicial de $z_{ni1}$ y $RP_{ni1}$ al
     implementar modelos de panel con persistencia o precios de
     referencia.
+-   Usar *Tobit I* cuando la decisión de participar y la magnitud
+    condicional del resultado obedecen a mecanismos distintos; en
+    ese caso conviene un enfoque tipo Heckman o *Tobit II*.
 
 :::
 
@@ -4655,6 +5067,8 @@ preference distribution is smooth and continuous.
 -   The *nested logit* partially relaxes IIA by grouping alternatives into nests with intra-group correlation.
 -   The *mixed logit* allows continuous preference heterogeneity and can approximate any random utility model.
 -   *Latent classes* provide discrete heterogeneity; they are preferable when the population segments into well-differentiated groups.
+-   *Tobit models* handle limited outcomes: censoring in *Type I*
+    Tobit and sample selection in *Type II* Tobit.
 
 *Modeling decisions.*
 
@@ -4662,6 +5076,8 @@ preference distribution is smooth and continuous.
 -   Error distribution: Gumbel (logit), normal (probit), GEV (nested logit).
 -   Heterogeneity treatment: observable (interactions), random (mixed logit), discrete (latent classes).
 -   Dynamics incorporation: loyalty ($z_{nit}$), reference prices ($RP_{nit}$).
+-   Observation rule for the outcome: censoring, truncation, or
+    selection, depending on the nature of the observed data.
 
 *Evaluation metrics.*
 
@@ -4691,6 +5107,9 @@ preference distribution is smooth and continuous.
 -   Omitting the initial condition for $z_{ni1}$ and $RP_{ni1}$
     when implementing panel models with persistence or reference
     prices.
+-   Using *Type I Tobit* when participation and conditional
+    intensity are governed by different mechanisms; in that case a
+    Heckman-type or *Type II Tobit* approach is preferable.
 
 :::
 
@@ -4699,14 +5118,16 @@ preference distribution is smooth and continuous.
 ::: {.lang-es}
 
 *Referencias principales:* @mcfadden1974, @train2009,
-@ben-akiva1985, @berry1995, @guadagni1983, @nevo2000, @rossi2005.
+@ben-akiva1985, @berry1995, @guadagni1983, @nevo2000, @rossi2005,
+@tobin1958, @heckman1979, @wooldridge2019.
 
 :::
 
 ::: {.lang-en}
 
 *Main references:* @mcfadden1974, @train2009,
-@ben-akiva1985, @berry1995, @guadagni1983, @nevo2000, @rossi2005.
+@ben-akiva1985, @berry1995, @guadagni1983, @nevo2000, @rossi2005,
+@tobin1958, @heckman1979, @wooldridge2019.
 
 :::
 
