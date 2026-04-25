@@ -6707,3 +6707,422 @@ Table: (\#tab:reg-p9-datos) Sample of the first 6 records from the database.
 
 :::
 </details>
+
+
+### Problema 10: Demanda global de cacao {-}
+
+::: {.lang-es}
+
+En un contexto de comercio global, el precio de los insumos tiende a
+moverse de forma coordinada en gran parte de los mercados, lo que motiva
+un análisis de la demanda global para la planificación de la demanda a
+nivel planetario. A continuación, revisaremos enfoques de regresión para
+describir la demanda del cacao en distintos mercados. Este análisis
+resulta particularmente pertinente en el contexto de las restricciones
+de producción a nivel global, que han provocado aumentos importantes del
+precio del cacao, con un máximo histórico en 2025 y un declive
+sostenido en lo que va de 2026.
+
+Para el análisis se considera usar la base de datos histórica de ventas
+por mercado que recopila los niveles de precio y ventas para los 256
+mercados más relevantes a nivel global. La base registra transacciones
+agregadas a nivel semanal desde 1984 hasta la fecha y considera algunas
+covariables adicionales que pueden resultar funcionales al estudio de la
+demanda. Así, la lista de columnas de la base está compuesta por:
+
+-   **nweek**: número de semana correlativo.
+-   **idmarket**: identificador del mercado.
+-   **idcountry**: identificador del país.
+-   **idregion**: identificador de la región.
+-   **idcontinent**: identificador del continente.
+-   **PIBmarket**: producto interno bruto per cápita del mercado.
+-   **PRICEmarket**: precio promedio, convertido a USD, en el mercado.
+-   **SALESmarket**: cantidad de cacao vendido, en kilogramos, en el
+    mercado.
+-   **Valentine**: 1 si la semana incluye el 14 de febrero.
+-   **Eastern**: 1 si la semana incluye Pascua de Resurrección.
+-   **Mother**: 1 si la semana incluye el día de la madre.
+
+Como primera aproximación, se ha propuesto describir $q_{rt}$, la
+demanda por cacao en la región $r$ en la semana $t$, a través del
+siguiente modelo de regresión lineal:
+
+\[
+\ln(q_{rt}) =
+\alpha + \beta_1 \ln(p_{rt})
++ \beta_2 \ln(p_{rt}) PIBpc_r + \varepsilon_{rt}
+\]
+
+donde $q_{rt} = \sum_{i \in r} q_{it}$ es la demanda agregada de la
+región $r$,
+$p_{rt} = \left(\sum_{i \in r} p_{it} q_{it}\right)/
+\left(\sum_{i \in r} q_{it}\right)$ es el precio promedio ponderado de
+la región, y $PIBpc_r$ es el producto interno bruto per cápita de la
+región. Usando estos datos agregados se han estimado dos variantes del
+modelo de regresión, como indica la Tabla \@ref(tab:reg-p10-modelos).
+
+Table: (\#tab:reg-p10-modelos) Resultados de los modelos de regresión.
+
+| Variable | Modelo 1 | | Modelo 2 | |
+|:--|--:|:--:|--:|:--:|
+| Intercepto | 6.114 | *** | 5.943 | *** |
+| | (0.287) | | (0.301) | |
+| $\ln(\text{precio})$ | 0.634 | *** | 0.138 | * |
+| | (0.071) | | (0.107) | |
+| $\ln(\text{precio}) \times PIBpc$ | | | 0.00921 | *** |
+| | | | (0.00148) | |
+| N. Obs | 65,760 | | 65,760 | |
+| $R^2$ | 0.3214 | | 0.5034 | |
+| Adj. $R^2$ | 0.3213 | | 0.5033 | |
+
+1.  ¿Cuál de los dos modelos prefiere? ¿Cómo se interpretan los
+    parámetros del modelo preferido?
+
+2.  Sea $\overline{PIBpc}$ el producto interno bruto promedio en los
+    mercados considerados. Explique cómo testearía si, en el modelo
+    preferido, el precio tiene un efecto positivo en la demanda para
+    una región promedio, es decir, si a mayor precio se observa mayor
+    demanda.
+
+3.  Describa cómo podría aliviar, con los datos disponibles, el
+    potencial sesgo que explica los coeficientes de precio positivos a
+    nivel de región.
+
+4.  Suponga ahora que quiere hacer uso de todo el potencial del conjunto
+    de datos, estimando modelos a nivel de cada mercado. Para eso,
+    proponga un modelo de regresión que, además de los elementos ya
+    propuestos en el modelo agregado, considere los siguientes factores:
+
+    a.  Los mercados más ricos tienden a presentar un mayor consumo de
+        cacao. Los mercados orientales suelen tener un menor consumo de
+        cacao.
+    b.  La demanda por cacao es estacional, con mayores ventas en
+        Semana Santa, la semana del 14 de febrero y el día de la madre.
+    c.  La magnitud de los factores estacionales varía según la región.
+        Por ejemplo, el aumento del consumo en Semana Santa es relevante
+        solo para los países de tradición cristiana.
+    d.  El precio ciertamente importa, pero también importa cómo varía
+        el precio. En particular, se ha detectado una caída más marcada
+        cuando el precio excede el precio promedio del último año.
+
+5.  Suponga que se estimó un modelo de *random forest* para predecir la
+    demanda de cacao en cada uno de los mercados, usando un conjunto
+    amplio de variables explicativas. Suponga, además, que este modelo
+    exhibe menores errores en el conjunto de calibración. Sin embargo,
+    el modelo no se comporta mejor al evaluar los errores en el conjunto
+    de validación. ¿Deberíamos descartar el modelo de *machine learning*?
+    ¿Hay algo que se pueda hacer en términos del conjunto de variables
+    explicativas y de los hiperparámetros del problema?
+
+:::
+
+::: {.lang-en}
+
+In a global trade context, input prices tend to move in a coordinated
+way across many markets, which motivates an analysis of global demand
+for demand planning at a worldwide scale. Below, regression approaches
+are reviewed to describe cocoa demand across different markets. This
+analysis is particularly relevant in the context of global production
+constraints, which have generated substantial increases in cocoa prices,
+with a historical peak in 2025 and a sustained decline so far in 2026.
+
+The analysis considers a historical market-level sales database that
+records price and sales levels for the 256 most relevant markets
+worldwide. The database contains weekly aggregate transactions from 1984
+to date and includes additional covariates that may be useful for
+studying demand. Thus, the database columns are:
+
+-   **nweek**: consecutive week number.
+-   **idmarket**: market identifier.
+-   **idcountry**: country identifier.
+-   **idregion**: region identifier.
+-   **idcontinent**: continent identifier.
+-   **PIBmarket**: market per-capita gross domestic product.
+-   **PRICEmarket**: average market price, converted to USD.
+-   **SALESmarket**: quantity of cocoa sold, in kilograms, in the
+    market.
+-   **Valentine**: 1 if the week includes February 14.
+-   **Eastern**: 1 if the week includes Easter.
+-   **Mother**: 1 if the week includes Mother's Day.
+
+As a first approximation, it has been proposed to describe $q_{rt}$,
+cocoa demand in region $r$ during week $t$, through the following
+linear regression model:
+
+\[
+\ln(q_{rt}) =
+\alpha + \beta_1 \ln(p_{rt})
++ \beta_2 \ln(p_{rt}) PIBpc_r + \varepsilon_{rt}
+\]
+
+where $q_{rt} = \sum_{i \in r} q_{it}$ is aggregate demand in region
+$r$,
+$p_{rt} = \left(\sum_{i \in r} p_{it} q_{it}\right)/
+\left(\sum_{i \in r} q_{it}\right)$ is the weighted average price in
+the region, and $PIBpc_r$ is the region's per-capita gross domestic
+product. Using these aggregate data, two variants of the regression
+model have been estimated, as shown in Table \@ref(tab:reg-p10-modelos).
+
+Table: (\#tab:reg-p10-modelos) Regression model results.
+
+| Variable | Model 1 | | Model 2 | |
+|:--|--:|:--:|--:|:--:|
+| Intercept | 6.114 | *** | 5.943 | *** |
+| | (0.287) | | (0.301) | |
+| $\ln(\text{price})$ | 0.634 | *** | 0.138 | * |
+| | (0.071) | | (0.107) | |
+| $\ln(\text{price}) \times PIBpc$ | | | 0.00921 | *** |
+| | | | (0.00148) | |
+| N. Obs | 65,760 | | 65,760 | |
+| $R^2$ | 0.3214 | | 0.5034 | |
+| Adj. $R^2$ | 0.3213 | | 0.5033 | |
+
+1.  Which of the two models do you prefer? How are the parameters of
+    the preferred model interpreted?
+
+2.  Let $\overline{PIBpc}$ be the average gross domestic product in the
+    markets considered. Explain how you would test whether, in the
+    preferred model, price has a positive effect on demand for an
+    average region, that is, whether higher prices are associated with
+    higher demand.
+
+3.  Describe how, with the available data, one could alleviate the
+    potential bias that explains the positive price coefficients at the
+    regional level.
+
+4.  Suppose now that you want to use the full potential of the dataset
+    by estimating models at the level of each market. Propose a
+    regression model that, in addition to the elements already proposed
+    in the aggregate model, considers the following factors:
+
+    a.  Richer markets tend to exhibit higher cocoa consumption. Eastern
+        markets usually exhibit lower cocoa consumption.
+    b.  Cocoa demand is seasonal, with higher sales during Easter, the
+        week of February 14, and Mother's Day.
+    c.  The magnitude of seasonal factors varies by region. For example,
+        the increase in consumption during Easter is relevant only for
+        countries with a Christian tradition.
+    d.  Price certainly matters, but how price varies also matters. In
+        particular, a sharper decline has been detected when price
+        exceeds the average price over the last year.
+
+5.  Suppose that a *random forest* model was estimated to predict cocoa
+    demand in each market, using a broad set of explanatory variables.
+    Suppose also that this model exhibits lower errors in the
+    calibration set. However, the model does not perform better when
+    errors are evaluated in the validation set. Should the *machine
+    learning* model be discarded? Is there anything that can be done in
+    terms of the set of explanatory variables and the hyperparameters of
+    the problem?
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+Respondemos cada parte independientemente:
+
+1.  Según lo que observamos, deberíamos preferir el Modelo 2. En efecto,
+    el Modelo 2 explica más varianza y la única variable en la que
+    difieren los modelos parece ser significativa, por lo que valdría la
+    pena mantenerla. En términos de los parámetros, encontramos que el
+    coeficiente de precio es positivo, lo cual no es consistente con la
+    teoría económica; esto puede explicarse porque los precios son
+    endógenos. El coeficiente de la interacción indica que los mercados
+    de mayores ingresos son menos sensibles al precio.
+
+    Una justificación basada solamente en el valor de los coeficientes
+    responde parcialmente la pregunta, ya que omite el significado
+    económico del modelo. En este caso, un aumento de 1% en el precio se
+    asocia con un aumento de 0.138% en la demanda. Por cada unidad
+    adicional de $PIBpc$, el efecto de un aumento de 1% en el precio
+    sobre la demanda cambia en 0.00921 puntos porcentuales.
+
+    **Observación:** Al controlar por riqueza, el coeficiente se hace
+    menos positivo, sugiriendo que el signo del coeficiente del precio
+    puede explicarse al menos parcialmente por diferencias de base entre
+    los mercados.
+
+2.  Se tendría que testear la hipótesis nula
+    $\beta_1 + \beta_2\overline{PIBpc} = 0$. Como
+    $\overline{PIBpc}$ es una constante, la ecuación es lineal en los
+    parámetros y, por tanto, podemos usar un test F. Un test t no es
+    viable a simple vista, ya que el precio interactúa individualmente y
+    con la constante $\overline{PIBpc}$, lo que no permite crear una
+    restricción solo con un parámetro.
+
+3.  Para proponer soluciones es útil tener una idea de por qué el
+    coeficiente de precio podría ser positivo. Basta mencionar y
+    justificar un mecanismo plausible.
+
+    Un motivo es que mercados más ricos consumen más cacao. Esto se
+    puede aliviar controlando por $PIBpc_g$, no solo en la interacción,
+    o, mejor aún, agregando un efecto fijo de región.
+
+    Otro motivo es que los precios suban cuando hay más demanda, aunque
+    esto es menos plausible en mercados globales. En este caso, agregar
+    efectos fijos de semana ayuda a controlar variaciones de demanda a
+    nivel global. También podemos controlar por eventos de mayor demanda
+    como Pascua de Resurrección, día de la madre y otras festividades, o
+    controlar por la demanda de la semana pasada $\ln(q_{g,t-1})$,
+    suponiendo que los ajustes de precios demoran una semana en hacer
+    efecto.
+
+    **Observación 1:** Alguien podría proponer hacer un experimento,
+    pero es difícil de implementar en este contexto global.
+    Eventualmente podrían usarse variables instrumentales, aunque es
+    difícil encontrar buenos instrumentos en este conjunto acotado de
+    datos.
+
+    **Observación 2:** Puede que existan otros mecanismos, pero deben
+    explicar por qué afectarían el signo del coeficiente de precio.
+
+4.  Partimos del modelo base y vamos agregando progresivamente todos los
+    elementos descritos:
+
+    a.  Agregamos un control para el nivel de ingreso ($PIBpc_i$) y
+        otro para los mercados asiáticos ($ASIA_i$, que toma el valor 1
+        si el continente del mercado $i$ es Asia).
+    b.  Agregamos tres dummies de tiempo, $EASTERN_t$, $VALENTINE_t$ y
+        $MOTHER_t$, que toman el valor 1 si la semana contiene Pascua
+        de Resurrección, día de los enamorados o día de la madre,
+        respectivamente.
+    c.  Los coeficientes de las dummies de tiempo deben depender del
+        mercado, representados por $\beta_{5i}$, $\beta_{6i}$ y
+        $\beta_{7i}$.
+    d.  Agregamos una dummy de mercado y tiempo $EXCEDE_{it}$, que toma
+        el valor 1 si
+        $p_{it} > \frac{1}{52}\sum_{\tau = 1}^{52}p_{i,t-\tau}$.
+
+    Con esto, el modelo de regresión puede escribirse como:
+
+    \[
+    \begin{aligned}
+    \ln(q_{it}) =\;& \alpha + \beta_1 \ln(p_{it})
+    + \beta_2 \ln(p_{it}) PIBpc_i + \beta_3 PIBpc_i \\
+    &+ \beta_4 ASIA_i + \beta_{5i} EASTERN_t
+    + \beta_{6i} VALENTINE_t + \beta_{7i} MOTHER_t \\
+    &+ \beta_8 EXCEDE_{it} + \varepsilon_{it}.
+    \end{aligned}
+    \]
+
+5.  En general, los errores de calibración no son tan informativos en un
+    esquema de aprendizaje de máquina porque podrían estar
+    sobreajustados. Si el modelo de *random forest* no es capaz de
+    mejorar los errores de pronóstico en validación, efectivamente no
+    debiera ser considerado por sobre lo ya existente. Sin embargo, hay
+    al menos dos cosas que podemos hacer para reducir los grados de
+    libertad del modelo e intentar evitar el sobreajuste:
+
+    -   Desde el punto de vista de las variables explicativas, podemos
+        restringir el número de columnas que ingresan al modelo.
+    -   Desde el punto de vista de los hiperparámetros, podemos limitar
+        la complejidad de cada árbol, por ejemplo reduciendo la
+        profundidad máxima, o aumentar la diversidad de árboles, por
+        ejemplo aumentando el número de árboles.
+
+:::
+
+::: {.lang-en}
+
+Each part is answered independently:
+
+1.  Based on the results, Model 2 should be preferred. Model 2 explains
+    more variance and the only variable in which the models differ
+    appears to be significant, so it is worth keeping it. In terms of
+    the parameters, the price coefficient is positive, which is not
+    consistent with economic theory; this may be explained by price
+    endogeneity. The interaction coefficient indicates that higher-income
+    markets are less sensitive to price.
+
+    A justification based only on the value of the coefficients answers
+    the question only partially, because it omits the economic meaning
+    of the model. In this case, a 1% increase in price is associated
+    with a 0.138% increase in demand. For each additional unit of
+    $PIBpc$, the effect of a 1% increase in price on demand changes by
+    0.00921 percentage points.
+
+    **Remark:** After controlling for wealth, the coefficient becomes
+    less positive, suggesting that the sign of the price coefficient may
+    be explained at least partially by baseline differences across
+    markets.
+
+2.  The null hypothesis to be tested is
+    $\beta_1 + \beta_2\overline{PIBpc} = 0$. Since
+    $\overline{PIBpc}$ is a constant, the equation is linear in the
+    parameters and, therefore, an F-test can be used. A t-test is not
+    directly viable at first glance, because price enters both by itself
+    and interacted with the constant $\overline{PIBpc}$, which does not
+    allow the restriction to be expressed in terms of a single
+    parameter.
+
+3.  To propose solutions, it is useful to have an idea of why the price
+    coefficient could be positive. It is enough to mention and justify
+    one plausible mechanism.
+
+    One reason is that richer markets consume more cocoa. This can be
+    alleviated by controlling for $PIBpc_g$, not only through the
+    interaction, or, better yet, by adding a regional fixed effect.
+
+    Another reason is that prices may rise when demand is higher,
+    although this is less plausible in global markets. In this case,
+    adding week fixed effects helps control for global demand variation.
+    One could also control for high-demand events such as Easter,
+    Mother's Day, and other holidays, or control for last week's demand
+    $\ln(q_{g,t-1})$, assuming that price adjustments take one week to
+    have an effect.
+
+    **Remark 1:** One could propose running an experiment, but this is
+    difficult to implement in a global context. Instrumental variables
+    could eventually be used, although it is difficult to find good
+    instruments in this limited dataset.
+
+    **Remark 2:** Other mechanisms may exist, but they must explain why
+    they would affect the sign of the price coefficient.
+
+4.  Starting from the base model, all the described elements are added
+    progressively:
+
+    a.  A control for income level ($PIBpc_i$) is added, along with a
+        control for Asian markets ($ASIA_i$, equal to 1 if the continent
+        of market $i$ is Asia).
+    b.  Three time dummies are added: $EASTERN_t$, $VALENTINE_t$, and
+        $MOTHER_t$, which take value 1 if the week contains Easter,
+        Valentine's Day, or Mother's Day, respectively.
+    c.  The coefficients of the time dummies should depend on the
+        market, represented by $\beta_{5i}$, $\beta_{6i}$, and
+        $\beta_{7i}$.
+    d.  A market-time dummy $EXCEDE_{it}$ is added, which takes value 1
+        if
+        $p_{it} > \frac{1}{52}\sum_{\tau = 1}^{52}p_{i,t-\tau}$.
+
+    With this, the regression model can be written as:
+
+    \[
+    \begin{aligned}
+    \ln(q_{it}) =\;& \alpha + \beta_1 \ln(p_{it})
+    + \beta_2 \ln(p_{it}) PIBpc_i + \beta_3 PIBpc_i \\
+    &+ \beta_4 ASIA_i + \beta_{5i} EASTERN_t
+    + \beta_{6i} VALENTINE_t + \beta_{7i} MOTHER_t \\
+    &+ \beta_8 EXCEDE_{it} + \varepsilon_{it}.
+    \end{aligned}
+    \]
+
+5.  In general, calibration errors are not very informative in a
+    machine-learning setting because they may reflect overfitting. If
+    the *random forest* model cannot improve forecast errors in
+    validation, it should not be preferred over the existing model.
+    However, at least two things can be done to reduce the model's
+    degrees of freedom and try to avoid overfitting:
+
+    -   From the explanatory-variable perspective, the number of columns
+        entering the model can be restricted.
+    -   From the hyperparameter perspective, the complexity of each tree
+        can be limited, for example by reducing maximum depth, or tree
+        diversity can be increased, for example by increasing the number
+        of trees.
+
+:::
+</details>

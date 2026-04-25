@@ -48,6 +48,7 @@ tab:reg-p9-datos
 tab:reg-p9-modelos
 tab:reg-p9-ef
 tab:reg-p9-metricas
+tab:reg-p10-modelos
 tab:prob-duracion-contribuciones
 tab:prob-duracion-contribuciones-en
 tab:prob-p1-retencion
