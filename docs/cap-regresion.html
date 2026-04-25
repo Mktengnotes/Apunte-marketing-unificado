@@ -8699,7 +8699,8 @@ mercado.</li>
 <li><strong>Eastern</strong>: 1 si la semana incluye Pascua de Resurrección.</li>
 <li><strong>Mother</strong>: 1 si la semana incluye el día de la madre.</li>
 </ul>
-<p>Como primera aproximación, se ha propuesto describir <span class="math inline">\(q_{rt}\)</span>, la
+<ol style="list-style-type: decimal">
+<li><p>Como primera aproximación, se ha propuesto describir <span class="math inline">\(q_{rt}\)</span>, la
 demanda por cacao en la región <span class="math inline">\(r\)</span> en la semana <span class="math inline">\(t\)</span>, a través del
 siguiente modelo de regresión lineal:</p>
 <p><span class="math display">\[
@@ -8710,10 +8711,11 @@ siguiente modelo de regresión lineal:</p>
 <p>donde <span class="math inline">\(q_{rt} = \sum_{i \in r} q_{it}\)</span> es la demanda agregada de la
 región <span class="math inline">\(r\)</span>,
 <span class="math inline">\(p_{rt} = \left(\sum_{i \in r} p_{it} q_{it}\right)/
-\left(\sum_{i \in r} q_{it}\right)\)</span> es el precio promedio ponderado de
-la región, y <span class="math inline">\(PIBpc_r\)</span> es el producto interno bruto per cápita de la
-región. Usando estos datos agregados se han estimado dos variantes del
-modelo de regresión, como indica la Tabla <a href="cap-regresion.html#tab:reg-p10-modelos">1.26</a>.</p>
+\left(\sum_{i \in r} q_{it}\right)\)</span> es el precio promedio ponderado
+de la región, y <span class="math inline">\(PIBpc_r\)</span> es el producto interno bruto per cápita de
+la región. Usando estos datos agregados se han estimado dos
+variantes del modelo de regresión, como indica la Tabla
+<a href="cap-regresion.html#tab:reg-p10-modelos">1.26</a>.</p>
 <table>
 <caption><span id="tab:reg-p10-modelos">Table 1.26: </span> Resultados de los modelos de regresión.</caption>
 <thead>
@@ -8791,17 +8793,18 @@ modelo de regresión, como indica la Tabla <a href="cap-regresion.html#tab:reg-p
 </tr>
 </tbody>
 </table>
-<ol style="list-style-type: decimal">
-<li><p>¿Cuál de los dos modelos prefiere? ¿Cómo se interpretan los
-parámetros del modelo preferido?</p></li>
-<li><p>Sea <span class="math inline">\(\overline{PIBpc}\)</span> el producto interno bruto promedio en los
+<ol style="list-style-type: lower-alpha">
+<li>¿Cuál de los dos modelos prefiere? ¿Cómo se interpretan los
+parámetros del modelo preferido?</li>
+<li>Sea <span class="math inline">\(\overline{PIBpc}\)</span> el producto interno bruto promedio en los
 mercados considerados. Explique cómo testearía si, en el modelo
 preferido, el precio tiene un efecto positivo en la demanda para
-una región promedio, es decir, si a mayor precio se observa mayor
-demanda.</p></li>
-<li><p>Describa cómo podría aliviar, con los datos disponibles, el
-potencial sesgo que explica los coeficientes de precio positivos a
-nivel de región.</p></li>
+una región promedio, es decir, si a mayor precio se observa
+mayor demanda.</li>
+<li>Describa cómo podría aliviar, con los datos disponibles, el
+potencial sesgo que explica los coeficientes de precio positivos
+a nivel de región.</li>
+</ol></li>
 <li><p>Suponga ahora que quiere hacer uso de todo el potencial del conjunto
 de datos, estimando modelos a nivel de cada mercado. Para eso,
 proponga un modelo de regresión que, además de los elementos ya
@@ -8856,7 +8859,8 @@ market.</li>
 <li><strong>Eastern</strong>: 1 if the week includes Easter.</li>
 <li><strong>Mother</strong>: 1 if the week includes Mother’s Day.</li>
 </ul>
-<p>As a first approximation, it has been proposed to describe <span class="math inline">\(q_{rt}\)</span>,
+<ol style="list-style-type: decimal">
+<li><p>As a first approximation, it has been proposed to describe <span class="math inline">\(q_{rt}\)</span>,
 cocoa demand in region <span class="math inline">\(r\)</span> during week <span class="math inline">\(t\)</span>, through the following
 linear regression model:</p>
 <p><span class="math display">\[
@@ -8864,13 +8868,14 @@ linear regression model:</p>
 \alpha + \beta_1 \ln(p_{rt})
 + \beta_2 \ln(p_{rt}) PIBpc_r + \varepsilon_{rt}
 \]</span></p>
-<p>where <span class="math inline">\(q_{rt} = \sum_{i \in r} q_{it}\)</span> is aggregate demand in region
-<span class="math inline">\(r\)</span>,
+<p>where <span class="math inline">\(q_{rt} = \sum_{i \in r} q_{it}\)</span> is aggregate demand in
+region <span class="math inline">\(r\)</span>,
 <span class="math inline">\(p_{rt} = \left(\sum_{i \in r} p_{it} q_{it}\right)/
-\left(\sum_{i \in r} q_{it}\right)\)</span> is the weighted average price in
-the region, and <span class="math inline">\(PIBpc_r\)</span> is the region’s per-capita gross domestic
-product. Using these aggregate data, two variants of the regression
-model have been estimated, as shown in Table <a href="cap-regresion.html#tab:reg-p10-modelos">1.26</a>.</p>
+\left(\sum_{i \in r} q_{it}\right)\)</span> is the weighted average price
+in the region, and <span class="math inline">\(PIBpc_r\)</span> is the region’s per-capita gross
+domestic product. Using these aggregate data, two variants of the
+regression model have been estimated, as shown in Table
+<a href="cap-regresion.html#tab:reg-p10-modelos">1.26</a>.</p>
 <table>
 <caption><span id="tab:reg-p10-modelos">Table 1.26: </span> Regression model results.</caption>
 <thead>
@@ -8948,17 +8953,18 @@ model have been estimated, as shown in Table <a href="cap-regresion.html#tab:reg
 </tr>
 </tbody>
 </table>
-<ol style="list-style-type: decimal">
-<li><p>Which of the two models do you prefer? How are the parameters of
-the preferred model interpreted?</p></li>
-<li><p>Let <span class="math inline">\(\overline{PIBpc}\)</span> be the average gross domestic product in the
-markets considered. Explain how you would test whether, in the
-preferred model, price has a positive effect on demand for an
-average region, that is, whether higher prices are associated with
-higher demand.</p></li>
-<li><p>Describe how, with the available data, one could alleviate the
-potential bias that explains the positive price coefficients at the
-regional level.</p></li>
+<ol style="list-style-type: lower-alpha">
+<li>Which of the two models do you prefer? How are the parameters of
+the preferred model interpreted?</li>
+<li>Let <span class="math inline">\(\overline{PIBpc}\)</span> be the average gross domestic product in
+the markets considered. Explain how you would test whether, in
+the preferred model, price has a positive effect on demand for
+an average region, that is, whether higher prices are associated
+with higher demand.</li>
+<li>Describe how, with the available data, one could alleviate the
+potential bias that explains the positive price coefficients at
+the regional level.</li>
+</ol></li>
 <li><p>Suppose now that you want to use the full potential of the dataset
 by estimating models at the level of each market. Propose a
 regression model that, in addition to the elements already proposed
@@ -8992,52 +8998,58 @@ the problem?</p></li>
 <div class="lang-es">
 <p>Respondemos cada parte independientemente:</p>
 <ol style="list-style-type: decimal">
-<li><p>Según lo que observamos, deberíamos preferir el Modelo 2. En efecto,
-el Modelo 2 explica más varianza y la única variable en la que
-difieren los modelos parece ser significativa, por lo que valdría la
-pena mantenerla. En términos de los parámetros, encontramos que el
-coeficiente de precio es positivo, lo cual no es consistente con la
-teoría económica; esto puede explicarse porque los precios son
-endógenos. El coeficiente de la interacción indica que los mercados
-de mayores ingresos son menos sensibles al precio.</p>
-<p>Una justificación basada solamente en el valor de los coeficientes
-responde parcialmente la pregunta, ya que omite el significado
-económico del modelo. En este caso, un aumento de 1% en el precio se
-asocia con un aumento de 0.138% en la demanda. Por cada unidad
-adicional de <span class="math inline">\(PIBpc\)</span>, el efecto de un aumento de 1% en el precio
-sobre la demanda cambia en 0.00921 puntos porcentuales.</p>
-<p><strong>Observación:</strong> Al controlar por riqueza, el coeficiente se hace
-menos positivo, sugiriendo que el signo del coeficiente del precio
-puede explicarse al menos parcialmente por diferencias de base entre
-los mercados.</p></li>
+<li><p>Respecto del modelo agregado:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Según lo que observamos, deberíamos preferir el Modelo 2. En
+efecto, el Modelo 2 explica más varianza y la única variable en
+la que difieren los modelos parece ser significativa, por lo que
+valdría la pena mantenerla. En términos de los parámetros,
+encontramos que el coeficiente de precio es positivo, lo cual no
+es consistente con la teoría económica; esto puede explicarse
+porque los precios son endógenos. El coeficiente de la
+interacción indica que los mercados de mayores ingresos son
+menos sensibles al precio.</p>
+<p>Una justificación basada solamente en el valor de los
+coeficientes responde parcialmente la pregunta, ya que omite el
+significado económico del modelo. En este caso, un aumento de 1%
+en el precio se asocia con un aumento de 0.138% en la demanda.
+Por cada unidad adicional de <span class="math inline">\(PIBpc\)</span>, el efecto de un aumento de
+1% en el precio sobre la demanda cambia en 0.00921 puntos
+porcentuales.</p>
+<p><strong>Observación:</strong> Al controlar por riqueza, el coeficiente se
+hace menos positivo, sugiriendo que el signo del coeficiente del
+precio puede explicarse al menos parcialmente por diferencias de
+base entre los mercados.</p></li>
 <li><p>Se tendría que testear la hipótesis nula
 <span class="math inline">\(\beta_1 + \beta_2\overline{PIBpc} = 0\)</span>. Como
-<span class="math inline">\(\overline{PIBpc}\)</span> es una constante, la ecuación es lineal en los
-parámetros y, por tanto, podemos usar un test F. Un test t no es
-viable a simple vista, ya que el precio interactúa individualmente y
-con la constante <span class="math inline">\(\overline{PIBpc}\)</span>, lo que no permite crear una
-restricción solo con un parámetro.</p></li>
+<span class="math inline">\(\overline{PIBpc}\)</span> es una constante, la ecuación es lineal en
+los parámetros y, por tanto, podemos usar un test F. Un test t
+no es viable a simple vista, ya que el precio interactúa
+individualmente y con la constante <span class="math inline">\(\overline{PIBpc}\)</span>, lo que no
+permite crear una restricción solo con un parámetro.</p></li>
 <li><p>Para proponer soluciones es útil tener una idea de por qué el
 coeficiente de precio podría ser positivo. Basta mencionar y
 justificar un mecanismo plausible.</p>
 <p>Un motivo es que mercados más ricos consumen más cacao. Esto se
-puede aliviar controlando por <span class="math inline">\(PIBpc_g\)</span>, no solo en la interacción,
-o, mejor aún, agregando un efecto fijo de región.</p>
-<p>Otro motivo es que los precios suban cuando hay más demanda, aunque
-esto es menos plausible en mercados globales. En este caso, agregar
-efectos fijos de semana ayuda a controlar variaciones de demanda a
-nivel global. También podemos controlar por eventos de mayor demanda
-como Pascua de Resurrección, día de la madre y otras festividades, o
-controlar por la demanda de la semana pasada <span class="math inline">\(\ln(q_{g,t-1})\)</span>,
-suponiendo que los ajustes de precios demoran una semana en hacer
-efecto.</p>
+puede aliviar controlando por <span class="math inline">\(PIBpc_g\)</span>, no solo en la
+interacción, o, mejor aún, agregando un efecto fijo de región.</p>
+<p>Otro motivo es que los precios suban cuando hay más demanda,
+aunque esto es menos plausible en mercados globales. En este
+caso, agregar efectos fijos de semana ayuda a controlar
+variaciones de demanda a nivel global. También podemos controlar
+por eventos de mayor demanda como Pascua de Resurrección, día de
+la madre y otras festividades, o controlar por la demanda de la
+semana pasada <span class="math inline">\(\ln(q_{g,t-1})\)</span>, suponiendo que los ajustes de
+precios demoran una semana en hacer efecto.</p>
 <p><strong>Observación 1:</strong> Alguien podría proponer hacer un experimento,
 pero es difícil de implementar en este contexto global.
 Eventualmente podrían usarse variables instrumentales, aunque es
-difícil encontrar buenos instrumentos en este conjunto acotado de
-datos.</p>
-<p><strong>Observación 2:</strong> Puede que existan otros mecanismos, pero deben
-explicar por qué afectarían el signo del coeficiente de precio.</p></li>
+difícil encontrar buenos instrumentos en este conjunto acotado
+de datos.</p>
+<p><strong>Observación 2:</strong> Puede que existan otros mecanismos, pero
+deben explicar por qué afectarían el signo del coeficiente de
+precio.</p></li>
+</ol></li>
 <li><p>Partimos del modelo base y vamos agregando progresivamente todos los
 elementos descritos:</p>
 <ol style="list-style-type: lower-alpha">
@@ -9085,50 +9097,54 @@ ejemplo aumentando el número de árboles.</li>
 <div class="lang-en">
 <p>Each part is answered independently:</p>
 <ol style="list-style-type: decimal">
-<li><p>Based on the results, Model 2 should be preferred. Model 2 explains
-more variance and the only variable in which the models differ
-appears to be significant, so it is worth keeping it. In terms of
-the parameters, the price coefficient is positive, which is not
-consistent with economic theory; this may be explained by price
-endogeneity. The interaction coefficient indicates that higher-income
-markets are less sensitive to price.</p>
-<p>A justification based only on the value of the coefficients answers
-the question only partially, because it omits the economic meaning
-of the model. In this case, a 1% increase in price is associated
-with a 0.138% increase in demand. For each additional unit of
-<span class="math inline">\(PIBpc\)</span>, the effect of a 1% increase in price on demand changes by
-0.00921 percentage points.</p>
-<p><strong>Remark:</strong> After controlling for wealth, the coefficient becomes
-less positive, suggesting that the sign of the price coefficient may
-be explained at least partially by baseline differences across
-markets.</p></li>
+<li><p>Regarding the aggregate model:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Based on the results, Model 2 should be preferred. Model 2
+explains more variance and the only variable in which the models
+differ appears to be significant, so it is worth keeping it. In
+terms of the parameters, the price coefficient is positive,
+which is not consistent with economic theory; this may be
+explained by price endogeneity. The interaction coefficient
+indicates that higher-income markets are less sensitive to
+price.</p>
+<p>A justification based only on the value of the coefficients
+answers the question only partially, because it omits the
+economic meaning of the model. In this case, a 1% increase in
+price is associated with a 0.138% increase in demand. For each
+additional unit of <span class="math inline">\(PIBpc\)</span>, the effect of a 1% increase in price
+on demand changes by 0.00921 percentage points.</p>
+<p><strong>Remark:</strong> After controlling for wealth, the coefficient
+becomes less positive, suggesting that the sign of the price
+coefficient may be explained at least partially by baseline
+differences across markets.</p></li>
 <li><p>The null hypothesis to be tested is
 <span class="math inline">\(\beta_1 + \beta_2\overline{PIBpc} = 0\)</span>. Since
 <span class="math inline">\(\overline{PIBpc}\)</span> is a constant, the equation is linear in the
-parameters and, therefore, an F-test can be used. A t-test is not
-directly viable at first glance, because price enters both by itself
-and interacted with the constant <span class="math inline">\(\overline{PIBpc}\)</span>, which does not
-allow the restriction to be expressed in terms of a single
-parameter.</p></li>
-<li><p>To propose solutions, it is useful to have an idea of why the price
-coefficient could be positive. It is enough to mention and justify
-one plausible mechanism.</p>
-<p>One reason is that richer markets consume more cocoa. This can be
-alleviated by controlling for <span class="math inline">\(PIBpc_g\)</span>, not only through the
+parameters and, therefore, an F-test can be used. A t-test is
+not directly viable at first glance, because price enters both
+by itself and interacted with the constant <span class="math inline">\(\overline{PIBpc}\)</span>,
+which does not allow the restriction to be expressed in terms of
+a single parameter.</p></li>
+<li><p>To propose solutions, it is useful to have an idea of why the
+price coefficient could be positive. It is enough to mention and
+justify one plausible mechanism.</p>
+<p>One reason is that richer markets consume more cocoa. This can
+be alleviated by controlling for <span class="math inline">\(PIBpc_g\)</span>, not only through the
 interaction, or, better yet, by adding a regional fixed effect.</p>
 <p>Another reason is that prices may rise when demand is higher,
 although this is less plausible in global markets. In this case,
-adding week fixed effects helps control for global demand variation.
-One could also control for high-demand events such as Easter,
-Mother’s Day, and other holidays, or control for last week’s demand
-<span class="math inline">\(\ln(q_{g,t-1})\)</span>, assuming that price adjustments take one week to
-have an effect.</p>
-<p><strong>Remark 1:</strong> One could propose running an experiment, but this is
-difficult to implement in a global context. Instrumental variables
-could eventually be used, although it is difficult to find good
-instruments in this limited dataset.</p>
-<p><strong>Remark 2:</strong> Other mechanisms may exist, but they must explain why
-they would affect the sign of the price coefficient.</p></li>
+adding week fixed effects helps control for global demand
+variation. One could also control for high-demand events such as
+Easter, Mother’s Day, and other holidays, or control for last
+week’s demand <span class="math inline">\(\ln(q_{g,t-1})\)</span>, assuming that price adjustments
+take one week to have an effect.</p>
+<p><strong>Remark 1:</strong> One could propose running an experiment, but this
+is difficult to implement in a global context. Instrumental
+variables could eventually be used, although it is difficult to
+find good instruments in this limited dataset.</p>
+<p><strong>Remark 2:</strong> Other mechanisms may exist, but they must explain
+why they would affect the sign of the price coefficient.</p></li>
+</ol></li>
 <li><p>Starting from the base model, all the described elements are added
 progressively:</p>
 <ol style="list-style-type: lower-alpha">
