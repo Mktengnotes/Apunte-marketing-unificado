@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 2 Modelos Probabilísticos | Apunte de Marketing Engineering</title>
   <meta name="description" content="Apunte unificado del curso de Ingeniería de Marketing, IN5162/IN5602, Universidad de Chile." />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 2 Modelos Probabilísticos | Apunte de Marketing Engineering" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-04-25" />
+<meta name="date" content="2026-05-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,7 +55,6 @@
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -93,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -129,7 +128,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -168,13 +166,13 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="cap-regresion.html"><a href="cap-regresion.html"><i class="fa fa-check"></i><b>1</b> Modelos de Regresión</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="cap-regresion.html"><a href="cap-regresion.html#definiciones-clave"><i class="fa fa-check"></i><b>1.1</b> Definiciones clave</a></li>
-<li class="chapter" data-level="1.2" data-path="cap-regresion.html"><a href="cap-regresion.html#conceptos-b%C3%A1sicos"><i class="fa fa-check"></i><b>1.2</b> Conceptos básicos</a>
+<li class="chapter" data-level="1.2" data-path="cap-regresion.html"><a href="cap-regresion.html#conceptos-básicos"><i class="fa fa-check"></i><b>1.2</b> Conceptos básicos</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="cap-regresion.html"><a href="cap-regresion.html#notaci%C3%B3n"><i class="fa fa-check"></i><b>1.2.1</b> Notación</a></li>
+<li class="chapter" data-level="1.2.1" data-path="cap-regresion.html"><a href="cap-regresion.html#notación"><i class="fa fa-check"></i><b>1.2.1</b> Notación</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="cap-regresion.html"><a href="cap-regresion.html#m%C3%ADnimos-cuadrados-ordinarios-ols-y-supuestos"><i class="fa fa-check"></i><b>1.3</b> Mínimos Cuadrados Ordinarios (OLS) y supuestos</a>
+<li class="chapter" data-level="1.3" data-path="cap-regresion.html"><a href="cap-regresion.html#mínimos-cuadrados-ordinarios-ols-y-supuestos"><i class="fa fa-check"></i><b>1.3</b> Mínimos Cuadrados Ordinarios (OLS) y supuestos</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="cap-regresion.html"><a href="cap-regresion.html#estimaci%C3%B3n"><i class="fa fa-check"></i><b>1.3.1</b> Estimación</a></li>
+<li class="chapter" data-level="1.3.1" data-path="cap-regresion.html"><a href="cap-regresion.html#estimación"><i class="fa fa-check"></i><b>1.3.1</b> Estimación</a></li>
 <li class="chapter" data-level="1.3.2" data-path="cap-regresion.html"><a href="cap-regresion.html#propiedades"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="cap-regresion.html"><a href="cap-regresion.html#estrategias-de-modelamiento"><i class="fa fa-check"></i><b>1.4</b> Estrategias de Modelamiento</a>
@@ -182,29 +180,29 @@ div.csl-indent {
 <li class="chapter" data-level="1.4.1" data-path="cap-regresion.html"><a href="cap-regresion.html#arte-vs.-procedimiento"><i class="fa fa-check"></i><b>1.4.1</b> Arte vs. procedimiento</a></li>
 <li class="chapter" data-level="1.4.2" data-path="cap-regresion.html"><a href="cap-regresion.html#aprendizajes-preliminares"><i class="fa fa-check"></i><b>1.4.2</b> Aprendizajes Preliminares</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="cap-regresion.html"><a href="cap-regresion.html#evaluaci%C3%B3n-de-modelos"><i class="fa fa-check"></i><b>1.5</b> Evaluación de modelos</a>
+<li class="chapter" data-level="1.5" data-path="cap-regresion.html"><a href="cap-regresion.html#evaluación-de-modelos"><i class="fa fa-check"></i><b>1.5</b> Evaluación de modelos</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="cap-regresion.html"><a href="cap-regresion.html#qu%C3%A9-se-busca-en-un-modelo"><i class="fa fa-check"></i><b>1.5.1</b> ¿Qué se busca en un modelo?</a></li>
-<li class="chapter" data-level="1.5.2" data-path="cap-regresion.html"><a href="cap-regresion.html#ajuste-por-m%C3%A9tricas-generales"><i class="fa fa-check"></i><b>1.5.2</b> Ajuste por métricas generales</a></li>
+<li class="chapter" data-level="1.5.1" data-path="cap-regresion.html"><a href="cap-regresion.html#qué-se-busca-en-un-modelo"><i class="fa fa-check"></i><b>1.5.1</b> ¿Qué se busca en un modelo?</a></li>
+<li class="chapter" data-level="1.5.2" data-path="cap-regresion.html"><a href="cap-regresion.html#ajuste-por-métricas-generales"><i class="fa fa-check"></i><b>1.5.2</b> Ajuste por métricas generales</a></li>
 <li class="chapter" data-level="1.5.3" data-path="cap-regresion.html"><a href="cap-regresion.html#ajuste-basado-en-la-probabilidad"><i class="fa fa-check"></i><b>1.5.3</b> Ajuste basado en la probabilidad</a></li>
 <li class="chapter" data-level="1.5.4" data-path="cap-regresion.html"><a href="cap-regresion.html#errores-dentro-y-fuera-de-la-muestra"><i class="fa fa-check"></i><b>1.5.4</b> Errores dentro y fuera de la muestra</a></li>
-<li class="chapter" data-level="1.5.5" data-path="cap-regresion.html"><a href="cap-regresion.html#divisi%C3%B3n-de-datos"><i class="fa fa-check"></i><b>1.5.5</b> División de datos</a></li>
-<li class="chapter" data-level="1.5.6" data-path="cap-regresion.html"><a href="cap-regresion.html#validaci%C3%B3n-cruzada"><i class="fa fa-check"></i><b>1.5.6</b> Validación cruzada</a></li>
-<li class="chapter" data-level="1.5.7" data-path="cap-regresion.html"><a href="cap-regresion.html#test-de-hip%C3%B3tesis"><i class="fa fa-check"></i><b>1.5.7</b> Test de hipótesis</a></li>
+<li class="chapter" data-level="1.5.5" data-path="cap-regresion.html"><a href="cap-regresion.html#división-de-datos"><i class="fa fa-check"></i><b>1.5.5</b> División de datos</a></li>
+<li class="chapter" data-level="1.5.6" data-path="cap-regresion.html"><a href="cap-regresion.html#validación-cruzada"><i class="fa fa-check"></i><b>1.5.6</b> Validación cruzada</a></li>
+<li class="chapter" data-level="1.5.7" data-path="cap-regresion.html"><a href="cap-regresion.html#test-de-hipótesis"><i class="fa fa-check"></i><b>1.5.7</b> Test de hipótesis</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="cap-regresion.html"><a href="cap-regresion.html#usos-y-limitaciones-del-an%C3%A1lisis-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.6</b> Usos y limitaciones del análisis de regresión</a>
+<li class="chapter" data-level="1.6" data-path="cap-regresion.html"><a href="cap-regresion.html#usos-y-limitaciones-del-análisis-de-regresión"><i class="fa fa-check"></i><b>1.6</b> Usos y limitaciones del análisis de regresión</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="cap-regresion.html"><a href="cap-regresion.html#aprendizaje-de-los-par%C3%A1metros"><i class="fa fa-check"></i><b>1.6.1</b> Aprendizaje de los parámetros</a></li>
-<li class="chapter" data-level="1.6.2" data-path="cap-regresion.html"><a href="cap-regresion.html#interpretaci%C3%B3n-de-los-coeficientes"><i class="fa fa-check"></i><b>1.6.2</b> Interpretación de los coeficientes</a></li>
-<li class="chapter" data-level="1.6.3" data-path="cap-regresion.html"><a href="cap-regresion.html#pron%C3%B3sticos-y-errores-de-pron%C3%B3stico"><i class="fa fa-check"></i><b>1.6.3</b> Pronósticos y errores de pronóstico</a></li>
-<li class="chapter" data-level="1.6.4" data-path="cap-regresion.html"><a href="cap-regresion.html#principios-generales-de-pron%C3%B3stico"><i class="fa fa-check"></i><b>1.6.4</b> Principios generales de pronóstico</a></li>
+<li class="chapter" data-level="1.6.1" data-path="cap-regresion.html"><a href="cap-regresion.html#aprendizaje-de-los-parámetros"><i class="fa fa-check"></i><b>1.6.1</b> Aprendizaje de los parámetros</a></li>
+<li class="chapter" data-level="1.6.2" data-path="cap-regresion.html"><a href="cap-regresion.html#interpretación-de-los-coeficientes"><i class="fa fa-check"></i><b>1.6.2</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="1.6.3" data-path="cap-regresion.html"><a href="cap-regresion.html#pronósticos-y-errores-de-pronóstico"><i class="fa fa-check"></i><b>1.6.3</b> Pronósticos y errores de pronóstico</a></li>
+<li class="chapter" data-level="1.6.4" data-path="cap-regresion.html"><a href="cap-regresion.html#principios-generales-de-pronóstico"><i class="fa fa-check"></i><b>1.6.4</b> Principios generales de pronóstico</a></li>
 <li class="chapter" data-level="1.6.5" data-path="cap-regresion.html"><a href="cap-regresion.html#modelos-lineales-generalizados"><i class="fa fa-check"></i><b>1.6.5</b> Modelos lineales generalizados</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="cap-regresion.html"><a href="cap-regresion.html#alternativas-de-machine-learning-para-la-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7</b> Alternativas de Machine Learning para la regresión</a>
+<li class="chapter" data-level="1.7" data-path="cap-regresion.html"><a href="cap-regresion.html#alternativas-de-machine-learning-para-la-regresión"><i class="fa fa-check"></i><b>1.7</b> Alternativas de Machine Learning para la regresión</a>
 <ul>
 <li class="chapter" data-level="1.7.1" data-path="cap-regresion.html"><a href="cap-regresion.html#multivariate-adaptive-regression-splines-mars"><i class="fa fa-check"></i><b>1.7.1</b> Multivariate Adaptive Regression Splines (MARS)</a></li>
 <li class="chapter" data-level="1.7.2" data-path="cap-regresion.html"><a href="cap-regresion.html#k-nearest-neighbors-regression-knn"><i class="fa fa-check"></i><b>1.7.2</b> K Nearest Neighbors Regression (KNN)</a></li>
-<li class="chapter" data-level="1.7.3" data-path="cap-regresion.html"><a href="cap-regresion.html#%C3%A1rboles-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7.3</b> Árboles de regresión</a></li>
+<li class="chapter" data-level="1.7.3" data-path="cap-regresion.html"><a href="cap-regresion.html#árboles-de-regresión"><i class="fa fa-check"></i><b>1.7.3</b> Árboles de regresión</a></li>
 <li class="chapter" data-level="1.7.4" data-path="cap-regresion.html"><a href="cap-regresion.html#bagging-y-random-forests"><i class="fa fa-check"></i><b>1.7.4</b> Bagging y Random Forests</a></li>
 </ul></li>
 <li class="chapter" data-level="1.8" data-path="cap-regresion.html"><a href="cap-regresion.html#resumen"><i class="fa fa-check"></i><b>1.8</b> Resumen</a></li>
@@ -214,7 +212,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-2-ventas-de-un-cine"><i class="fa fa-check"></i>Problema 2: Ventas de un cine</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-3-programa-de-recompensas"><i class="fa fa-check"></i>Problema 3: Programa de recompensas</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-4-precios-internacionales-de-arriendo"><i class="fa fa-check"></i>Problema 4: Precios internacionales de arriendo</a></li>
-<li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-5-b%C3%BAsqueda-visual-vs.-texto-en-e-commerce"><i class="fa fa-check"></i>Problema 5: Búsqueda visual vs. texto en e-commerce</a></li>
+<li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-5-búsqueda-visual-vs.-texto-en-e-commerce"><i class="fa fa-check"></i>Problema 5: Búsqueda visual vs. texto en e-commerce</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-6-retail-y-telecomunicaciones"><i class="fa fa-check"></i>Problema 6: Retail y telecomunicaciones</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-7-agentes-de-ia-para-servicio-al-cliente-bancario"><i class="fa fa-check"></i>Problema 7: Agentes de IA para servicio al cliente bancario</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-8-plataforma-de-streaming-musical"><i class="fa fa-check"></i>Problema 8: Plataforma de streaming musical</a></li>
@@ -236,19 +234,19 @@ div.csl-indent {
 <li class="chapter" data-level="2.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-eleccion"><i class="fa fa-check"></i><b>2.5</b> Modelos de elección binaria</a></li>
 <li class="chapter" data-level="2.6" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-het-observable"><i class="fa fa-check"></i><b>2.6</b> Heterogeneidad observable</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duraci%C3%B3n-en-tiempo-discreto-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.1</b> Modelos de duración en tiempo discreto con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.2</b> Modelos de duración en tiempo continuo con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.3" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-dependencia-de-la-duraci%C3%B3n-y-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.3</b> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.1" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-discreto-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.1</b> Modelos de duración en tiempo discreto con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.2</b> Modelos de duración en tiempo continuo con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.3" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-dependencia-de-la-duración-y-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.3</b> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable</a></li>
 <li class="chapter" data-level="2.6.4" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-conteo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.4</b> Modelos de conteo con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-elecci%C3%B3n-binaria-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.5</b> Modelos de elección binaria con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-elección-binaria-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.5</b> Modelos de elección binaria con heterogeneidad observable</a></li>
 </ul></li>
 <li class="chapter" data-level="2.7" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-esperanzas"><i class="fa fa-check"></i><b>2.7</b> Esperanzas condicionales</a>
 <ul>
 <li class="chapter" data-level="2.7.1" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#esperanzas-de-las-distribuciones-de-mezcla"><i class="fa fa-check"></i><b>2.7.1</b> Esperanzas de las distribuciones de mezcla</a></li>
-<li class="chapter" data-level="2.7.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-tiempo-discreto-beta-geom%C3%A9trico"><i class="fa fa-check"></i><b>2.7.2</b> Modelo de tiempo discreto (Beta-Geométrico)</a></li>
+<li class="chapter" data-level="2.7.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-tiempo-discreto-beta-geométrico"><i class="fa fa-check"></i><b>2.7.2</b> Modelo de tiempo discreto (Beta-Geométrico)</a></li>
 <li class="chapter" data-level="2.7.3" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-tiempo-continuo-gamma-exponencial"><i class="fa fa-check"></i><b>2.7.3</b> Modelo de tiempo continuo (Gamma-Exponencial)</a></li>
 <li class="chapter" data-level="2.7.4" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-conteo-gamma-poisson"><i class="fa fa-check"></i><b>2.7.4</b> Modelo de conteo (Gamma-Poisson)</a></li>
-<li class="chapter" data-level="2.7.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-elecci%C3%B3n-binaria-beta-binomial"><i class="fa fa-check"></i><b>2.7.5</b> Modelo de elección binaria (Beta-Binomial)</a></li>
+<li class="chapter" data-level="2.7.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-elección-binaria-beta-binomial"><i class="fa fa-check"></i><b>2.7.5</b> Modelo de elección binaria (Beta-Binomial)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-clv"><i class="fa fa-check"></i><b>2.8</b> Customer Lifetime Value: caso contractual</a>
 <ul>
@@ -264,9 +262,9 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-4-discrepancias-de-precios-en-supermercados"><i class="fa fa-check"></i>Problema 4: Discrepancias de precios en supermercados</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-5-notcomida-panel-de-compras"><i class="fa fa-check"></i>Problema 5: NotComida — Panel de compras</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-6-creadores-de-contenido"><i class="fa fa-check"></i>Problema 6: Creadores de contenido</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-7-hippi-parkas-para-alta-monta%C3%B1a"><i class="fa fa-check"></i>Problema 7: Hippi — Parkas para alta montaña</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-8-pok%C3%A9mon-go"><i class="fa fa-check"></i>Problema 8: Pokémon Go</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-9-aplicaci%C3%B3n-m%C3%B3vil-con-promociones-georreferenciadas"><i class="fa fa-check"></i>Problema 9: Aplicación móvil con promociones georreferenciadas</a></li>
+<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-7-hippi-parkas-para-alta-montaña"><i class="fa fa-check"></i>Problema 7: Hippi — Parkas para alta montaña</a></li>
+<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-8-pokémon-go"><i class="fa fa-check"></i>Problema 8: Pokémon Go</a></li>
+<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-9-aplicación-móvil-con-promociones-georreferenciadas"><i class="fa fa-check"></i>Problema 9: Aplicación móvil con promociones georreferenciadas</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cap-estructurales.html"><a href="cap-estructurales.html"><i class="fa fa-check"></i><b>3</b> Modelos Estructurales</a>
@@ -334,15 +332,15 @@ div.csl-indent {
 <li class="chapter" data-level="3.9" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-aplicados"><i class="fa fa-check"></i><b>3.9</b> Problemas</a>
 <ul>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-1-stud-ia"><i class="fa fa-check"></i>Problema 1: STUD-IA</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-2-categor%C3%ADa-aceites"><i class="fa fa-check"></i>Problema 2: Categoría aceites</a></li>
+<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-2-categoría-aceites"><i class="fa fa-check"></i>Problema 2: Categoría aceites</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-3-margarina-y-modelo-probit"><i class="fa fa-check"></i>Problema 3: Margarina y modelo probit</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-4-telefon%C3%ADa-m%C3%B3vil-en-redes-sociales"><i class="fa fa-check"></i>Problema 4: Telefonía móvil en redes sociales</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-5-multitienda-y-tarjeta-de-cr%C3%A9dito"><i class="fa fa-check"></i>Problema 5: Multitienda y tarjeta de crédito</a></li>
+<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-4-telefonía-móvil-en-redes-sociales"><i class="fa fa-check"></i>Problema 4: Telefonía móvil en redes sociales</a></li>
+<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-5-multitienda-y-tarjeta-de-crédito"><i class="fa fa-check"></i>Problema 5: Multitienda y tarjeta de crédito</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-6-preventa-de-tickets"><i class="fa fa-check"></i>Problema 6: Preventa de tickets</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-7-gasto-publicitario"><i class="fa fa-check"></i>Problema 7: Gasto publicitario</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-8-pizza-a-pieza"><i class="fa fa-check"></i>Problema 8: Pizza a Pieza</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-9-retail-online"><i class="fa fa-check"></i>Problema 9: Retail online</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-10-copa-am%C3%A9rica"><i class="fa fa-check"></i>Problema 10: Copa América</a></li>
+<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-10-copa-américa"><i class="fa fa-check"></i>Problema 10: Copa América</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-11-agencia-de-medios"><i class="fa fa-check"></i>Problema 11: Agencia de medios</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-12-cupones-de-supermercado"><i class="fa fa-check"></i>Problema 12: Cupones de supermercado</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-13-viajesdii"><i class="fa fa-check"></i>Problema 13: ViajesDII</a></li>
@@ -484,7 +482,7 @@ individuo, actualizado a la luz de su comportamiento observado
 (actualización bayesiana).</li>
 <li><em>Customer Lifetime Value</em> (CLV): valor presente neto de los flujos
 futuros esperados de un cliente, considerando su probabilidad de
-permanencia <span class="citation">(<a href="referencias.html#ref-fader2005rfm">Fader et al., 2005b</a>; <a href="referencias.html#ref-fader2010">Fader &amp; Hardie, 2010</a>)</span>.</li>
+permanencia <span class="citation">(<a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">Fader et al., 2005b</a>; <a href="referencias.html#ref-fader2010" role="doc-biblioref">Fader &amp; Hardie, 2010</a>)</span>.</li>
 </ul>
 </div>
 </div>
@@ -515,7 +513,7 @@ parameter, updated in light of their observed behavior (Bayesian
 updating).</li>
 <li><em>Customer Lifetime Value</em> (CLV): net present value of the expected
 future cash flows of a customer, considering their probability of
-retention <span class="citation">(<a href="referencias.html#ref-fader2005rfm">Fader et al., 2005b</a>; <a href="referencias.html#ref-fader2010">Fader &amp; Hardie, 2010</a>)</span>.</li>
+retention <span class="citation">(<a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">Fader et al., 2005b</a>; <a href="referencias.html#ref-fader2010" role="doc-biblioref">Fader &amp; Hardie, 2010</a>)</span>.</li>
 </ul>
 </div>
 </div>
@@ -551,7 +549,7 @@ available information is limited or aggregated.</li>
 </ul>
 </div>
 <div class="lang-es">
-<p>La metodología de modelamiento probabilístico <span class="citation">(<a href="referencias.html#ref-fader2005">Fader et al., 2005a</a>; <a href="referencias.html#ref-schmittlein1987">Schmittlein et al., 1987</a>)</span> sigue una secuencia de siete pasos:</p>
+<p>La metodología de modelamiento probabilístico <span class="citation">(<a href="referencias.html#ref-fader2005" role="doc-biblioref">Fader et al., 2005a</a>; <a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">Schmittlein et al., 1987</a>)</span> sigue una secuencia de siete pasos:</p>
 <ol style="list-style-type: decimal">
 <li>Determinar el problema de decisión a estudiar y la información
 requerida.</li>
@@ -567,7 +565,7 @@ mezcla</em> o <em>heterogénea</em>), típicamente denotada <span class="math in
 </ol>
 </div>
 <div class="lang-en">
-<p>The probabilistic modeling methodology <span class="citation">(<a href="referencias.html#ref-fader2005">Fader et al., 2005a</a>; <a href="referencias.html#ref-schmittlein1987">Schmittlein et al., 1987</a>)</span>
+<p>The probabilistic modeling methodology <span class="citation">(<a href="referencias.html#ref-fader2005" role="doc-biblioref">Fader et al., 2005a</a>; <a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">Schmittlein et al., 1987</a>)</span>
 follows a sequence of seven steps:</p>
 <ol style="list-style-type: decimal">
 <li>Determine the decision problem to study and the required
@@ -775,7 +773,7 @@ periods will the subscription last?</li>
 </ul>
 </div>
 <div id="modelo-geométrico-desplazado" class="section level4 unnumbered hasAnchor">
-<h4>Modelo Geométrico Desplazado<a href="cap-probabilisticos.html#modelo-geom%C3%A9trico-desplazado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Modelo Geométrico Desplazado<a href="cap-probabilisticos.html#modelo-geométrico-desplazado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
 <p>Como ejemplo, se asume que se tiene una cartera de clientes que van
 abandonando la relación comercial para <strong>nunca más retomarla</strong> en
@@ -1005,7 +1003,7 @@ data and assuming independence across samples:</p>
 </ul>
 </div>
 <p><span class="math display">\[f(x_1,x_2,\ldots,x_n\mid\theta) = f(x_1\mid\theta) \cdot f(x_2\mid\theta) \cdot \ldots \cdot f(x_n\mid\theta)
-\tag{2.4a}\]</span></p>
+\tag{2.5}\]</span></p>
 <div class="lang-es">
 <ul>
 <li>Función de verosimilitud:</li>
@@ -1025,7 +1023,7 @@ P(T&gt;\tau \mid \theta)^{n_\tau} \\
 \big[\theta(1-\theta)^{t-1}\big]^{n_t}\right\}
 \big[(1-\theta)^{\tau}\big]^{n_\tau}
 \end{aligned}
-\tag{2.5}
+\tag{2.6}
 \]</span></p>
 <div class="lang-es">
 <p>Notar que <span class="math inline">\(n_\tau\)</span> es el número de clientes activos después del máximo
@@ -1036,12 +1034,6 @@ siguientes (asumiendo como modelo de comportamiento la distribución
 geométrica desplazada)</p>
 <table>
 <caption><span id="tab:prob-duracion-contribuciones">Table 2.1: </span> Contribuciones a la verosimilitud en el modelo geométrico desplazado.</caption>
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th>Año</th>
@@ -1122,12 +1114,6 @@ the likelihood are the following (assuming the shifted geometric
 distribution as the behavioral model):</p>
 <table>
 <caption><span id="tab:prob-duracion-contribuciones-en">Table 2.2: </span> Contributions to the likelihood in the shifted geometric model.</caption>
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th>Year</th>
@@ -1204,7 +1190,7 @@ construct the log-likelihood function:</p>
 \hat{\ell}(\theta)  &amp;= \sum_{t=1}^{\tau} n_t \,\ln P(T=t \mid \theta)\;+\; n_{\tau}\,\ln P(T&gt;\tau \mid \theta) \\
 &amp;= \sum_{t=1}^{\tau} n_t \big[\ln \theta + (t-1)\ln(1-\theta)\big]\;+\;n_{\tau}\,\tau\ln(1-\theta)
 \end{aligned}
-\tag{2.6}\]</span></p>
+\tag{2.7}\]</span></p>
 <div class="lang-es">
 <p>Con lo anterior, es sencillo maximizar la función de log verosimilitud
 para un <span class="math inline">\(\theta\)</span> desconocido utilizando un paquete estadístico como R,
@@ -1219,8 +1205,7 @@ obtaining:</p>
 \begin{aligned}
 \hat{\theta} &amp;= 0, 226027 \\
 \hat{l} &amp;= -1794,62
-\end{aligned}
-\tag{2.7}\]</span></p>
+\end{aligned}\]</span></p>
 <div class="lang-es">
 <p>El modelo presentado, si bien permite tomar medidas de gestión a partir
 de un modelo sencillo, es poco realista, pues se asume que la población
@@ -1343,7 +1328,7 @@ even with zero observed successes.
 </div>
 </div>
 <div id="modelo-beta-geométrico-desplazado" class="section level4 unnumbered hasAnchor">
-<h4>Modelo Beta-Geométrico Desplazado<a href="cap-probabilisticos.html#modelo-beta-geom%C3%A9trico-desplazado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Modelo Beta-Geométrico Desplazado<a href="cap-probabilisticos.html#modelo-beta-geométrico-desplazado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
 <p>Los modelos anteriores funcionan bien cuando la población se comporta de
 manera distinta entre clases latentes, y similar al interior de cada
@@ -1362,7 +1347,7 @@ totales):</p>
 <ol style="list-style-type: decimal">
 <li><p>Probabilidad de que un individuo cualquiera abandone la relación
 comercial exactamente en el periodo t:</p>
-<p><span class="math display">\[P(T=t|\alpha,\beta) = \int_0^1 P(T=t|\theta)B(\theta|\alpha,\beta)d\theta\]</span></p>
+<p><span class="math display">\[P(T=t|\alpha,\beta) = \int_0^1 P(T=t|\theta)B(\theta|\alpha,\beta)d\theta \tag{2.10}\]</span></p>
 <p>Donde:</p></li>
 </ol>
 </div>
@@ -1385,20 +1370,17 @@ approach (total probabilities):</p>
 <ol style="list-style-type: decimal">
 <li><p>Probability that any individual leaves the business relationship
 exactly in period t:</p>
-<p><span class="math display">\[P(T=t|\alpha,\beta) = \int_0^1 P(T=t|\theta)B(\theta|\alpha,\beta)d\theta\]</span></p>
+<p><span class="math display">\[P(T=t|\alpha,\beta) = \int_0^1 P(T=t|\theta)B(\theta|\alpha,\beta)d\theta \tag{2.10}\]</span></p>
 <p>Where:</p></li>
 </ol>
 </div>
-<p><span class="math display">\[
-B(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}
-\qquad
-B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}
-\tag{2.10}\]</span></p>
+<p><span class="math display">\[B(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)} \tag{2.11a}\]</span></p>
+<p><span class="math display">\[B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)} \tag{2.11b}\]</span></p>
 <div class="lang-es">
 <ol start="2" style="list-style-type: decimal">
 <li><p>Probabilidad de que un individuo cualquiera abandone la relación
 comercial en un periodo posterior al periodo t:</p>
-<p><span class="math display">\[P(T&gt;t|\alpha,\beta) = \int_0^1 (T&gt;t|\theta)B(\theta|\alpha,\beta)d\theta\]</span></p>
+<p><span class="math display">\[P(T&gt;t|\alpha,\beta) = \int_0^1 P(T&gt;t|\theta)B(\theta|\alpha,\beta)d\theta \tag{2.12}\]</span></p>
 <p>Al desarrollar la primera integral antes mencionada, y
 reconociendo las relaciones de la distribución <em>Beta</em>, se tiene
 que:</p></li>
@@ -1408,14 +1390,14 @@ que:</p></li>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Probability that any individual leaves the business relationship in
 a period after period t:</p>
-<p><span class="math display">\[P(T&gt;t|\alpha,\beta) = \int_0^1 (T&gt;t|\theta)B(\theta|\alpha,\beta)d\theta\]</span></p>
+<p><span class="math display">\[P(T&gt;t|\alpha,\beta) = \int_0^1 P(T&gt;t|\theta)B(\theta|\alpha,\beta)d\theta \tag{2.12}\]</span></p>
 <p>Developing the first integral mentioned above, and recognizing the
 relationships of the <em>Beta</em> distribution, we obtain:</p></li>
 </ol>
 </div>
 <p><span class="math display">\[
 \begin{aligned} P(T = t \mid \alpha, \beta) &amp;= \int_0^1 \left( \theta(1-\theta)^{t-1} \right) \left( \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha, \beta)} \right) d\theta \\ &amp;= \frac{1}{B(\alpha, \beta)} \int_0^1 (\theta \cdot \theta^{\alpha-1}) \cdot ((1-\theta)^{t-1} \cdot (1-\theta)^{\beta-1}) d\theta \\ &amp;= \frac{1}{B(\alpha, \beta)} \int_0^1 \theta^{\alpha} (1-\theta)^{t+\beta-2} d\theta \\ &amp;= \frac{B(\alpha+1, t+\beta-1)}{B(\alpha, \beta)} \end{aligned}
-\tag{2.11}\]</span></p>
+\tag{2.13}\]</span></p>
 <div class="lang-es">
 <p>Notar que se usa indistintamente el <span class="math inline">\(B(\alpha,\beta)\)</span> para hacer alusión
 tanto a la <strong>función</strong> como a la <strong>distribución Beta</strong>. Bajo ninguna
@@ -1435,7 +1417,7 @@ P(T &gt; t \mid \alpha, \beta) &amp;= \int_0^1 (1-\theta)^{t} \left( \frac{\thet
 &amp;= \frac{1}{B(\alpha, \beta)} \int_0^1 \theta^{\alpha-1} (1-\theta)^{t+\beta-1} d\theta \\
 &amp;= \frac{B(\alpha, t+\beta)}{B(\alpha, \beta)}
 \end{aligned}
-\tag{2.12}\]</span>
+\tag{2.14}\]</span>
 <div class="lang-es">
 <div class="rmdwarning">
 <p><strong>Notación importante.</strong> Se utiliza <span class="math inline">\(B(\alpha, \beta)\)</span> indistintamente
@@ -1471,7 +1453,7 @@ Ejemplo 2, se obtiene:
 <span class="math display">\[\hat{\alpha} = 0{,}7041 \qquad
 \hat{\beta} = 1{,}1820 \qquad
 \hat{\ell} = -1680{,}27
-\tag{2.13}\]</span>
+\tag{2.15}\]</span>
 La diferencia en log-verosimilitud respecto al modelo homogéneo
 (<span class="math inline">\(\hat{\ell} = -1794{,}62\)</span>) es notable. Si bien esto sugiere una
 mejora, la comparación rigurosa debe realizarse mediante criterios como
@@ -1495,7 +1477,7 @@ Example 2 yields:
 <span class="math display">\[\hat{\alpha} = 0.7041 \qquad
 \hat{\beta} = 1.1820 \qquad
 \hat{\ell} = -1680.27
-\tag{2.13}\]</span>
+\tag{2.15}\]</span>
 The difference in log-likelihood relative to the homogeneous model
 (<span class="math inline">\(\hat{\ell} = -1794.62\)</span>) is notable. Although this suggests an
 improvement, a rigorous comparison should be performed using criteria
@@ -1582,10 +1564,7 @@ behavior can be seen as:</p>
 <li>Probability that it occurs at or before <span class="math inline">\(t\)</span>:</li>
 </ol>
 </div>
-<p><span class="math display">\[P(T \leq t) = 1 - e^{-\lambda t}
-\tag{2.14}\]</span>
-<span class="math display">\[P(T &gt; t) = e^{-\lambda t}
-\tag{2.15}\]</span></p>
+<p><span class="math display">\[P(T \leq t) = 1 - e^{-\lambda t} \tag{2.16}\]</span></p>
 <div class="lang-es">
 <ol start="2" style="list-style-type: decimal">
 <li>Probabilidad de que ocurra después de <span class="math inline">\(t\)</span>:</li>
@@ -1596,10 +1575,24 @@ behavior can be seen as:</p>
 <li>Probability that it occurs after <span class="math inline">\(t\)</span>:</li>
 </ol>
 </div>
-<p><span class="math display">\[
-L(\theta) = \prod_{i \in A} f(t_i | \theta) \prod_{i \notin A} (1 - P(T \leq t))
-= \prod_{i \in A} (\theta e^{-\theta t_i}) \prod_{i \notin A} (e^{-\theta \tau_i})
-\tag{2.16}\]</span></p>
+<p><span class="math display">\[P(T &gt; t) = e^{-\lambda t} \tag{2.17}\]</span></p>
+<div class="lang-es">
+<p>Verosimilitud:</p>
+</div>
+<div class="lang-en">
+<p>Likelihood:</p>
+</div>
+<p><span class="math display">\[\begin{aligned}
+L(\lambda) &amp;= \prod_{i \in A} f(t_i \mid \lambda) \prod_{i \notin A} (1 - P(T \leq t)) \\
+           &amp;= \prod_{i \in A} (\lambda e^{-\lambda t_i}) \prod_{i \notin A} (e^{-\lambda \tau_i})
+\end{aligned} \tag{2.18}\]</span></p>
+<div class="lang-es">
+<p>Log-verosimilitud:</p>
+</div>
+<div class="lang-en">
+<p>Log-likelihood:</p>
+</div>
+<p><span class="math display">\[\ell(\lambda) = \sum_{i \in A}\big[\ln\lambda - \lambda\, t_i\big] - \lambda\sum_{i \notin A} \tau_i \tag{2.19}\]</span></p>
 <div class="lang-es">
 <p>donde <span class="math inline">\(f(t_i \mid \theta)\)</span> es la función de densidad, es decir, la
 derivada de la función de probabilidad acumulada <span class="math inline">\(P(T \leq t)\)</span>. El
@@ -1638,8 +1631,7 @@ thus it is possible to solve the limitation found (2 latent classes).</p>
 \begin{array}{c}
 \lambda = \theta\\
 \Rightarrow P(T \leq t) = 1 - e^{-\theta t}
-\end{array}
-\tag{2.17}\]</span></p>
+\end{array}\]</span></p>
 <div class="lang-es">
 <ol start="2" style="list-style-type: decimal">
 <li>Segmento que no prueba: Tamaño (<span class="math inline">\(1-\pi\)</span>):</li>
@@ -1654,8 +1646,7 @@ thus it is possible to solve the limitation found (2 latent classes).</p>
 \begin{array}{c}
 \lambda = 0\\
 \Rightarrow P(T \leq t) = 0
-\end{array}
-\tag{2.17a}\]</span></p>
+\end{array}\]</span></p>
 <div class="lang-es">
 <p>Luego, la probabilidad total será:</p>
 </div>
@@ -1667,7 +1658,7 @@ thus it is possible to solve the limitation found (2 latent classes).</p>
 P(T \leq t) = P(T \leq t | \text{Prueba}) P(\text{Prueba}) + P(T \leq t | \text{No Prueba}) P(\text{No Prueba}) \\
 = 1 - e^{-\theta t}\pi
 \end{array}
-\tag{2.17b}\]</span>
+\tag{2.20}\]</span>
 <div class="lang-es">
 <div class="rstudio-tip">
 <p><strong>Implementación práctica.</strong> Aunque el modelo describe probabilidades
@@ -1703,7 +1694,7 @@ measurement period, that is:</p>
 </div>
 <p><span class="math display">\[
 P(t_0 \leq T \leq t_1) = F(t_1) - F(t_0)
-\tag{2.18}\]</span></p>
+\tag{2.21}\]</span></p>
 <div class="lang-es">
 <p>Cconsiderando n periodos discretos para el cálculo, la log-verosimilitud es:</p>
 </div>
@@ -1712,7 +1703,7 @@ P(t_0 \leq T \leq t_1) = F(t_1) - F(t_0)
 </div>
 <p><span class="math display">\[
 LL(\pi,\theta|\text{data}) = N_1 ln[P(1\leq T \leq 2)] + ... + (N_{panel} - \sum_{i=1}^{n}N_i)ln[P(T&gt;n)]
-\tag{2.18a}\]</span></p>
+\tag{2.22}\]</span></p>
 <div class="lang-es">
 <p>Adicionalmente, es de interés calcular los valores predichos por el
 modelo, de modo de realizar predicciones futuras. <span class="math inline">\(F(t)\)</span> representa la
@@ -1730,7 +1721,7 @@ Future estimation can be done through the expectation:</p>
 </div>
 <p><span class="math display">\[
 \mathbb{E}[T(t)] = N_{\text{panel }} \cdot \hat{F}(t)
-\tag{2.18b}\]</span></p>
+\tag{2.23}\]</span></p>
 <div class="lang-es">
 <p>Antes de avanzar, es importante aclarar la distinción de un modelo <em>sin
 dependencia en la duración</em>. Esto se puede explicar con la propiedad
@@ -1755,8 +1746,10 @@ occurred. This can be shown mathematically:</p>
 </div>
 <p><span class="math display">\[
 P(T &gt; s + t|T&gt;s) = \frac{P(T&gt; s+t)}{P(T&gt; s)} = \frac{1-P(T \leq s+t)}{1-P(T \leq s)}= \frac{e^{-\lambda(s+t)}}{e^{-\lambda s}} = e^{-\lambda t}
-\tag{2.18c}\]</span>
-#### Modelo Gamma-Exponencial {.unnumbered}</p>
+\tag{2.24}\]</span></p>
+</div>
+<div id="modelo-gamma-exponencial" class="section level4 unnumbered hasAnchor">
+<h4>Modelo Gamma-Exponencial<a href="cap-probabilisticos.html#modelo-gamma-exponencial" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
 <p>Análogamente al caso de duración discreta, hay casos en que el
 comportamiento de la población heterogéneo. Esto busca complejizar la
@@ -1775,7 +1768,7 @@ distributed <em>Gamma</em> in the population:</p>
 </div>
 <p><span class="math display">\[g(\lambda) = \frac{\alpha^r \lambda^{r-1} e^{-\alpha \lambda}}
 {\Gamma(r)}
-\tag{2.19}\]</span></p>
+\tag{2.25}\]</span></p>
 <div class="lang-es">
 <p>Donde <span class="math inline">\(r\)</span> es un parámetro de forma mide la morfología. Con <span class="math inline">\(r=1\)</span> se
 reduce a una exponencial y, a medida que crece, su la forma se vuelve
@@ -1796,7 +1789,7 @@ customer acquires a product before time <span class="math inline">\(t\)</span> i
 </div>
 <p><span class="math display">\[
 \begin{aligned} P(T\leq t) &amp;= \int_{0}^{\infty} P(T \leq t|\lambda) g(\lambda)d \lambda \\ &amp;= \int_{0}^{\infty} (1 - e^{-\lambda t}) \left( \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha \lambda} \right) d\lambda \\ &amp;= \int_{0}^{\infty} \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha \lambda} d\lambda - \int_{0}^{\infty} e^{-\lambda t} \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha \lambda} d\lambda \\ &amp;= 1 - \frac{\alpha^r}{\Gamma(r)} \int_{0}^{\infty} \frac{\lambda^{r-1} e^{-\lambda(\alpha+t)} \Gamma(r) (\alpha + t)^r}{\Gamma(r) (\alpha + t)^r} d\lambda \\ &amp;= 1 - \frac{\alpha^r}{\Gamma(r)} \frac{\Gamma(r)}{(\alpha+t)^r} \\ &amp;= 1 - \left(\frac{\alpha}{\alpha + t}\right)^r \end{aligned}
-\tag{2.20}\]</span></p>
+\tag{2.26}\]</span></p>
 <div class="lang-es">
 <p>Donde en el cuarto paso se agregó un 1 en forma de
 <span class="math inline">\(\frac{\Gamma(r) (\alpha + t)^r}{\Gamma(r) (\alpha + t)^r}\)</span> para obtener
@@ -1892,7 +1885,7 @@ that it has not occurred up to this moment. This is known as the
 </div>
 <p><span class="math display">\[
 h(t) = \frac{f(t)}{1 - F(t)}
-\tag{2.21}\]</span></p>
+\tag{2.27}\]</span></p>
 <div class="lang-es">
 <p>Donde</p>
 </div>
@@ -1904,7 +1897,7 @@ h(t) = \frac{f(t)}{1 - F(t)}
 f(t) &amp;= \frac{d}{dt} F(t) \\
 &amp;= -c\lambda t^{c-1} e^{-\lambda t^c}
 \end{aligned}
-\tag{2.22}\]</span>
+\tag{2.28}\]</span>
 <div class="lang-es">
 <div class="rmdnote">
 <p><strong>Ejemplo 4 (Interpretación de tasas de riesgo).</strong> Distintos fenómenos
@@ -1952,7 +1945,7 @@ variable can be uniquely defined through the following integral:</p>
 </div>
 <p><span class="math display">\[
 F(t) = 1 - exp \left( -\int_{0}^{t} h(u)du \right)
-\tag{2.22a}\]</span></p>
+\tag{2.29}\]</span></p>
 <div class="lang-es">
 <p>Este concepto será útil para definir los modelos de duración en tiempo
 continuo en que la duración sí es un factor relevante</p>
@@ -1982,7 +1975,7 @@ occurrence that a customer tries our product in a time less than t is:</p>
 </div>
 <p><span class="math display">\[
 F(t) = P(T \leq t) = 1 - e^{-\lambda t ^c}
-\tag{2.23}\]</span></p>
+\tag{2.30}\]</span></p>
 <div class="lang-es">
 <p>Y la tasa de riesgo asociada a esta distribución:</p>
 </div>
@@ -1991,7 +1984,7 @@ F(t) = P(T \leq t) = 1 - e^{-\lambda t ^c}
 </div>
 <p><span class="math display">\[
 h(t) = c \lambda t ^{c-1}
-\tag{2.24}\]</span></p>
+\tag{2.31}\]</span></p>
 <div class="lang-es">
 <p>El primer parámetro <span class="math inline">\(\lambda\)</span> que compone la fórmula es un parámetro de
 escala, mientras que el parámetro c es el parámetro de forma. Es
@@ -2012,7 +2005,7 @@ the exponential distribution.</p>
 </div>
 <span class="math display">\[
 P(T &gt; s + t|T&gt;s) = \frac{P(T&gt; s+t)}{P(T&gt; s)} = \frac{1-P(T \leq s+t)}{1-P(T \leq s)}= \frac{e^{-\lambda(s+t)^c}}{e^{-\lambda s^c}}
-\tag{2.25}\]</span>
+\tag{2.32}\]</span>
 <div class="lang-es">
 <div class="rmdnote">
 <p><strong>Ejercicio guiado E2: Distribución Weibull.</strong></p>
@@ -2086,7 +2079,7 @@ be modeled through</p>
 </div>
 <p><span class="math display">\[
 \begin{aligned} P(T \leq t \mid \alpha,r, c) &amp;= \int_{0}^{\infty} \frac{(1 - e^{-\lambda t^c}) \alpha^r \lambda^{r-1}e^{-\alpha \lambda}}{\Gamma(r)} d\lambda \\ &amp;= \int_{0}^{\infty} \frac{\alpha^r \lambda^{r-1}e^{-\alpha \lambda}}{\Gamma(r)} d\lambda - \int_{0}^{\infty} \frac{e^{-\lambda t^c} \alpha^r \lambda^{r-1}e^{-\alpha \lambda}}{\Gamma(r)} d\lambda \\ &amp;= 1 - \frac{\alpha^r}{\Gamma(r)} \int_{0}^{\infty} \lambda^{r-1}e^{-\lambda(\alpha + t^c)} d\lambda \\ &amp;= 1 - \frac{\alpha^r}{\Gamma(r)} \frac{\Gamma(r)}{(\alpha + t^c)^r} \\ &amp;= 1 - \left(\frac{\alpha}{\alpha + t^c}\right)^r \end{aligned}
-\tag{2.26}\]</span></p>
+\tag{2.33}\]</span></p>
 <div class="lang-es">
 <p>Para <span class="math inline">\(c = 1\)</span>, se recupera el modelo Gamma-Exponencial.</p>
 </div>
@@ -2243,7 +2236,7 @@ in an interval of length <span class="math inline">\(t\)</span>.</p>
 </div>
 <p><span class="math display">\[P(N_t = m \mid \lambda)
 = \frac{(\lambda t)^m e^{-\lambda t}}{m!}
-\tag{2.27}\]</span></p>
+\tag{2.34}\]</span></p>
 <div class="lang-es">
 <p>Su verosimilitud corresponde a:</p>
 </div>
@@ -2252,7 +2245,7 @@ in an interval of length <span class="math inline">\(t\)</span>.</p>
 </div>
 <p><span class="math display">\[L(\lambda) = \prod_m P(N_t = m \mid \lambda)^{n_m}
 = \prod_m \left( \frac{(\lambda t)^m e^{-\lambda t}}{m!} \right)^{n_m}
-\tag{2.27a}\]</span></p>
+\tag{2.35}\]</span></p>
 <div class="lang-es">
 <p>Su log-verosimilitud es:</p>
 <p>Computacionalmente, suele ser más conveniente trabajar con la
@@ -2272,7 +2265,7 @@ invariant to monotone transformations such as the logarithm.</p>
 </div>
 <p><span class="math display">\[LL(\lambda) = \sum_m n_m \ln\left(
 \frac{(\lambda t)^m e^{-\lambda t}}{m!}\right)
-\tag{2.28}\]</span></p>
+\tag{2.36}\]</span></p>
 <div class="lang-es">
 <p>Donde <span class="math inline">\(m\)</span> corresponde al número de ocurrencias de un suceso (cuántas
 personas han visto un determinado número de anuncios), <span class="math inline">\(n_m\)</span> es el
@@ -2305,7 +2298,7 @@ the first segment. The probability model is:</p>
 <p><span class="math display">\[P(N_t = m \mid \lambda_1, \lambda_2, \pi)
 = \frac{(\lambda_1 t)^m e^{-\lambda_1 t}}{m!}\,\pi
 + \frac{(\lambda_2 t)^m e^{-\lambda_2 t}}{m!}\,(1-\pi)
-\tag{2.29}\]</span></p>
+\tag{2.37}\]</span></p>
 </div>
 <div id="modelo-gamma-poisson-nbd" class="section level4 unnumbered hasAnchor">
 <h4>Modelo Gamma-Poisson (NBD)<a href="cap-probabilisticos.html#modelo-gamma-poisson-nbd" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -2320,14 +2313,14 @@ distribution. Suppose that this distribution is <em>Gamma</em>.</p>
 </div>
 <p><span class="math display">\[
 g(\lambda|\alpha, r) = \frac{\alpha^r \lambda^{r-1}e^{-\alpha \lambda}}{\Gamma(r)}
-\tag{2.29a}\]</span></p>
+\tag{2.38}\]</span></p>
 <div class="lang-es">
-<p>Usando el modelo individual en (2.27) y la distribución en (2.29a), se
+<p>Usando el modelo individual en (2.34) y la distribución en (2.38), se
 puede estimar la probabilidad de un número de exposiciones, conocido
 como modelo <strong>Gamma Poisson (NBD):</strong></p>
 </div>
 <div class="lang-en">
-<p>Using the individual model in (2.27) and the distribution in (2.29a),
+<p>Using the individual model in (2.34) and the distribution in (2.38),
 the probability of a number of exposures can be estimated. This is known
 as the <strong>Gamma Poisson (NBD)</strong> model:</p>
 </div>
@@ -2341,7 +2334,7 @@ P(N_t = m \mid r, \alpha) &amp;= \int_{0}^{\infty} P(N_t = m|\lambda) g(\lambda)
 &amp;= \frac{\alpha^r}{(\alpha+t)^r} \cdot \frac{t^m}{(\alpha+t)^m} \cdot \frac{\Gamma(r+m)}{\Gamma(r)m!} \\
 &amp;= \left( \frac{\alpha}{\alpha+t}\right)^r \left( \frac{t}{\alpha + t}\right)^m \frac{\Gamma(r+m)}{\Gamma(r)m!}
 \end{aligned}
-\tag{2.30}\]</span>
+\tag{2.39}\]</span>
 <div class="lang-es">
 <div class="rmdnote">
 <p><strong>Ejercicio guiado E5: Modelo NBD.</strong></p>
@@ -2523,7 +2516,7 @@ Then:</p>
 </div>
 <p><span class="math display">\[P(X_s = x_s \mid m_s, p_s)
 = \binom{m_s}{x_s} p_s^{x_s}(1 - p_s)^{m_s - x_s}
-\tag{2.31}\]</span></p>
+\tag{2.40}\]</span></p>
 <div class="lang-es">
 <p>donde <span class="math inline">\(m_s\)</span> es la población del segmento <span class="math inline">\(s\)</span> y <span class="math inline">\(p_s\)</span> es la probabilidad
 de respuesta del segmento <span class="math inline">\(s\)</span>.</p>
@@ -2539,7 +2532,7 @@ probability of segment <span class="math inline">\(s\)</span>.</p>
 L(\theta) &amp;= \prod_{s=1}^{S} P(X_s = x_s | m_s, \theta) \\
 &amp;= \prod_{s=1}^{S} \binom{m_s}{x_s} \theta^{x_s} (1-\theta)^{m_s - x_s}
 \end{aligned}
-\tag{2.31a}\]</span></p>
+\tag{2.41}\]</span></p>
 <div class="lang-es">
 <p>Mientras que su log verosimilitud es:</p>
 </div>
@@ -2553,7 +2546,7 @@ LL(\theta) &amp;= \sum_{s=1}^{S} \ln \left( P(X_s = x_s | m_s, \theta) \right) \
 &amp;= \sum_{s=1}^{S} \left[ \ln\binom{m_s}{x_s} + \ln(\theta^{x_s}) + \ln((1-\theta)^{m_s - x_s}) \right] \\
 &amp;= \sum_{s=1}^{S} \left[ \ln\binom{m_s}{x_s} + x_s \ln(\theta) + (m_s - x_s) \ln(1-\theta) \right]
 \end{aligned}
-\tag{2.32}\]</span></p>
+\tag{2.42}\]</span></p>
 <div class="lang-es">
 <p>Con respecto a la heterogeneidad, en el caso de una mezcla finita en
 donde la probabilidad de éxito en cada uno de los intentos es distinta
@@ -2572,7 +2565,7 @@ the first segment. The probability model is:</p>
 <p><span class="math display">\[
 P(X_s = x_s \mid m_s, \theta_1, \theta_2, \pi) = \binom{m_s}{x_s}
 \left[ \theta_1^{x_s}(1-\theta_1)^{m_s-x_s}\pi + \theta_2^{x_s}(1-\theta_2)^{m_s-x_s}(1-\pi) \right]
-\tag{2.33}\]</span></p>
+\tag{2.43}\]</span></p>
 </div>
 <div id="modelo-beta-binomial" class="section level4 unnumbered hasAnchor">
 <h4>Modelo Beta-Binomial<a href="cap-probabilisticos.html#modelo-beta-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -2591,7 +2584,7 @@ P(X_s = x_s \mid \alpha, \beta) &amp;= \int_{0}^{1} P(X_s = x_s|m_s,\theta_s) g(
 &amp;= \frac{\binom{m_s}{x_s}}{B(\alpha,\beta)} \int_{0}^{1} \theta_s^{x_s+\alpha-1}(1-\theta_s)^{m_s-x_s+\beta-1} d\theta_s \\
 &amp;= \binom{m_s}{x_s} \frac{B(\alpha + x_s, \beta + m_s - x_s)}{B(\alpha,\beta)}
 \end{aligned}
-\tag{2.34}\]</span></p>
+\tag{2.44}\]</span></p>
 </div>
 </div>
 <div id="prob-het-observable" class="section level2 hasAnchor" number="2.6" data-en="Observable Heterogeneity">
@@ -2615,15 +2608,14 @@ data (gender, age, socioeconomic level, among others) that
 differentiate individuals.</p>
 </div>
 <div id="modelos-de-duración-en-tiempo-discreto-con-heterogeneidad-observable" class="section level3 hasAnchor" number="2.6.1" data-en="Discrete-Time Duration Models with Observable Heterogeneity">
-<h3><span class="header-section-number">2.6.1</span> Modelos de duración en tiempo discreto con heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-duraci%C3%B3n-en-tiempo-discreto-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.6.1</span> Modelos de duración en tiempo discreto con heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-discreto-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Sea <span class="math inline">\(T_i\)</span> la variable aleatoria que describe el instante en que el
 individuo <span class="math inline">\(i\)</span> termina su relación comercial. Se modelará dicha variable
 con una distribución Geométrica Desplazada de parámetro <span class="math inline">\(\theta_i\)</span>, que
 es la probabilidad de abandono para el individuo <span class="math inline">\(i\)</span>.</p>
 <p><span class="math display">\[
-\mathbb{P}(T_i=t_i|\theta_i) = \theta_i(1-\theta_i)^{t_i-1}
-\]</span></p>
+\mathbb{P}(T_i=t_i|\theta_i) = \theta_i(1-\theta_i)^{t_i-1} \tag{2.45}\]</span></p>
 <p>Dado que se cuenta con información a nivel individual, es posible
 estimar un parámetro de abandono para cada persona.</p>
 <p>Sea <span class="math inline">\(\mathbf{x}_i\)</span> el vector que contiene las variables explicativas del
@@ -2640,7 +2632,7 @@ is modeled using a logistic transformation:</p>
 <p><span class="math display">\[\theta_i = \frac{\exp(\beta_0 + \boldsymbol{\beta}&#39;\mathbf{x}_i)}
 {1 + \exp(\beta_0 + \boldsymbol{\beta}&#39;\mathbf{x}_i)}
 = \frac{1}{1 + \exp(-(\beta_0 + \boldsymbol{\beta}&#39;\mathbf{x}_i))}
-\tag{2.35}\]</span></p>
+\tag{2.46}\]</span></p>
 <div class="lang-es">
 <p>donde <span class="math inline">\(\boldsymbol{\beta}\)</span> corresponde al vector de coeficientes
 asociados a las variables explicativas. La inclusión de esta función
@@ -2663,8 +2655,7 @@ individual <span class="math inline">\(i\)</span> churns at time <span class="ma
 \begin{aligned}
 \mathbb{P}(T_i = t_i|\beta_0, \boldsymbol{\beta}) &amp;= \theta_i (1 - \theta_i)^{t_i-1} \\
 \text{donde } \theta_i &amp;= \frac{1}{1 + \exp(-(\beta_0 + \boldsymbol{\beta}&#39;\mathbf{x}_i))}
-\end{aligned}
-\]</span></p>
+\end{aligned} \tag{2.47}\]</span></p>
 <div class="lang-es">
 <p>Con lo cual, para un panel de <span class="math inline">\(N\)</span> individuos, donde algunos abandonan en
 el período <span class="math inline">\(t_i\)</span> y otros permanecen activos (censurados a la derecha),
@@ -2679,7 +2670,7 @@ problem is:</p>
 = \sum_{i \in \text{abandono}}
 \big[\ln(\theta_i) + (t_i - 1)\ln(1 - \theta_i)\big]
 + \sum_{i \in \text{activos}} t_i\ln(1 - \theta_i)
-\tag{2.36}\]</span></p>
+\tag{2.48}\]</span></p>
 <div class="lang-es">
 <p>Para introducir heterogeneidad no observable en el modelo y así mezclar
 ambos efectos, es análogo al desarrollo de la integral del Modelo
@@ -2693,9 +2684,8 @@ effects, the derivation is analogous to the integral in the Shifted
 Beta-Geometric model. The parameters <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(\beta_i\)</span> of the
 Beta distribution are modeled as follows to ensure positivity:</p>
 </div>
-<p><span class="math display">\[\alpha_i = \exp(\mathbf{a}&#39;\mathbf{x}_i), \quad
-\beta_i = \exp(\mathbf{b}&#39;\mathbf{x}_i)
-\tag{2.37}\]</span></p>
+<p><span class="math display">\[\alpha_i = \exp(\mathbf{a}&#39;\mathbf{x}_i) \tag{2.49a}\]</span></p>
+<p><span class="math display">\[\beta_i = \exp(\mathbf{b}&#39;\mathbf{x}_i) \tag{2.49b}\]</span></p>
 <div class="lang-es">
 <p>La obtención de la expresión de probabilidad con heterogeneidad mixta es
 análoga a la obtención de la probabilidad con heterogeneidad no
@@ -2719,17 +2709,16 @@ different.</p>
 + \sum_{i \in \text{activos}}
 \ln\!\left(\frac{B(\alpha_i,\, \beta_i + t_i)}
 {B(\alpha_i, \beta_i)}\right)
-\tag{2.38}\]</span></p>
+\tag{2.50}\]</span></p>
 </div>
 <div id="modelos-de-duración-en-tiempo-continuo-con-heterogeneidad-observable" class="section level3 hasAnchor" number="2.6.2" data-en="Continuous-Time Duration Models with Observable Heterogeneity">
-<h3><span class="header-section-number">2.6.2</span> Modelos de duración en tiempo continuo con heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.6.2</span> Modelos de duración en tiempo continuo con heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Sea <span class="math inline">\(T_i\)</span> la variable aleatoria que describe el instante en que el
 individuo <span class="math inline">\(i\)</span> realiza una determinada acción. Se modelará dicha variable
 aleatoria con una distribución exponencial de parámetro <span class="math inline">\(\lambda_i\)</span>:</p>
 <p><span class="math display">\[
-\mathbb{P}(T_i&lt;t_i|\lambda_i) = 1-e^{-\lambda_it_i}
-\]</span></p>
+\mathbb{P}(T_i&lt;t_i|\lambda_i) = 1-e^{-\lambda_it_i} \tag{2.51}\]</span></p>
 <p>Cabe destacar que, dada la naturaleza de los datos, el comportamiento
 descrito se realizará de manera desagregada (dependencia de <span class="math inline">\(i\)</span> en el
 parámetro), es decir, dado que existe información individual para cada
@@ -2745,7 +2734,7 @@ siguiente manera:</p>
 </div>
 <p><span class="math display">\[\lambda_i = \exp(\beta_0 + \boldsymbol{\beta}&#39;\mathbf{x}_i)
 = \lambda_0\exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)
-\tag{2.39}\]</span></p>
+\tag{2.52}\]</span></p>
 <div class="lang-es">
 <p>Donde <span class="math inline">\(\boldsymbol{\beta}\)</span> corresponde al vector de coeficientes
 asociados a las variables explicativas en cuestión.</p>
@@ -2774,8 +2763,7 @@ the probability that individual <span class="math inline">\(i\)</span> performs 
 \begin{aligned}
 \mathbb{P}(T_i &lt; t_i|\boldsymbol{\beta},\lambda_0) &amp;= 1 - e^{-\lambda_it_i}\\
 &amp;= 1 - e^{-\lambda_0 \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)t_i}
-\end{aligned}
-\]</span></p>
+\end{aligned} \tag{2.53}\]</span></p>
 <div class="lang-es">
 <p>Con lo cual (considerando instantes de tiempo <span class="math inline">\(t_i^-\)</span> y <span class="math inline">\(t_i^+\)</span> para
 discretizar el tiempo, un panel de <span class="math inline">\(N\)</span> individuos y un vector de
@@ -2792,7 +2780,7 @@ of <span class="math inline">\(N\)</span> individuals, and a vector of parameter
 e^{-\lambda_0\exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)t_i^-}
 - e^{-\lambda_0\exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)t_i^+}
 \right)
-\tag{2.40}\]</span></p>
+\tag{2.54}\]</span></p>
 <div class="lang-es">
 <p>Para incorporar adicionalmente heterogeneidad no observable, se asume
 que <span class="math inline">\(\lambda_0\)</span> se dejará distribuyendo de manera continua en la
@@ -2822,10 +2810,10 @@ variable <span class="math inline">\(t\)</span>.</p>
 - \left(\frac{\alpha}
 {\alpha + \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)t_i^+}\right)^r
 \right)
-\tag{2.41}\]</span></p>
+\tag{2.55}\]</span></p>
 </div>
 <div id="modelos-de-duración-en-tiempo-continuo-con-dependencia-de-la-duración-y-heterogeneidad-observable" class="section level3 hasAnchor" number="2.6.3" data-en="Continuous-Time Duration Models with Duration Dependence and Observable Heterogeneity">
-<h3><span class="header-section-number">2.6.3</span> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-dependencia-de-la-duraci%C3%B3n-y-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.6.3</span> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-dependencia-de-la-duración-y-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Cuando el tiempo en que ocurre un determinado suceso posee dependencia
 en la duración, el procedimiento es análogo que en el caso sin dicha
@@ -2839,7 +2827,7 @@ considering that <span class="math inline">\(T_i\)</span> follows a Weibull law.
 </div>
 <p><span class="math display">\[P(T_i &lt; t_i \mid \lambda_i, c)
 = 1 - e^{-\lambda_i(t_i)^c}
-\tag{2.42}\]</span></p>
+\tag{2.56}\]</span></p>
 <div class="lang-es">
 <p>En el caso con tasa homogénea (la misma para toda la población), la
 probabilidad que un individuo <span class="math inline">\(i\)</span> realice un evento determinado antes
@@ -2854,8 +2842,7 @@ the probability that individual <span class="math inline">\(i\)</span> performs 
 \begin{aligned}
 \mathbb{P}(T_i &lt; t_i|\boldsymbol{\beta},\lambda_0,c) &amp;= 1 - e^{-\lambda_i t_i}\\
 &amp;= 1 - e^{-\lambda_0 \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i) (t_i)^c}
-\end{aligned}
-\]</span></p>
+\end{aligned} \tag{2.57}\]</span></p>
 <div class="lang-es">
 <p>Por lo que, la función de log verosimilitud toma la siguiente forma:</p>
 </div>
@@ -2868,8 +2855,7 @@ LL(\theta) &amp;= \sum_{i=1}^{N} \ln(\mathbb{P}(t_i^- &lt; T_i &lt; t_i^+|\bolds
 &amp;= \sum_{i=1}^{N} \ln((\mathbb{P}(T_i &lt; t_i^+|\boldsymbol{\beta},\lambda_0,c)) - \mathbb{P}(T_i &lt; t_i^-|\boldsymbol{\beta},\lambda_0,c)) \\
 &amp;=  \sum_{i=1}^{N} \ln \left((1 - e^{-\lambda_0 \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)(t_i^+)^c}) - (1 - e^{-\lambda_0 \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)(t_i^-)^c}) \right)\\
 &amp;= \sum_{i=1}^{N} \ln (e^{-\lambda_0 \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)(t_i^-)^c} - e^{-\lambda_0 \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)(t_i^+)^c})
-\end{aligned}
-\]</span></p>
+\end{aligned} \tag{2.58}\]</span></p>
 <div class="lang-es">
 <p>De manera análoga al caso anterior, se puede introducir adicionalmente
 heterogeneidad no observable mediante el parámetro <span class="math inline">\(\lambda_0\)</span> según una
@@ -2886,8 +2872,7 @@ log-likelihood is described as:</p>
 \begin{aligned}
 LL(\theta) &amp;= \sum_{i=1}^{N} \ln(\mathbb{P}(t_i^- &lt; T_i &lt; t_i^+|\boldsymbol{\beta},\lambda_0,r,c)) \\
 &amp;= \sum_{i=1}^{N} \ln \left( \left(\frac{\alpha}{\alpha + \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)(t_i^-)^c}\right)^r - \left(\frac{\alpha}{\alpha + \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)(t_i^+)^c}\right)^r \right)
-\end{aligned}
-\]</span></p>
+\end{aligned} \tag{2.59}\]</span></p>
 </div>
 <div id="modelos-de-conteo-con-heterogeneidad-observable" class="section level3 hasAnchor" number="2.6.4" data-en="Count Models with Observable Heterogeneity">
 <h3><span class="header-section-number">2.6.4</span> Modelos de conteo con heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-conteo-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -2908,7 +2893,7 @@ log-likelihood is:</p>
 \big[y_i(\beta_0 + \boldsymbol{\beta}&#39;\mathbf{x}_i)
 - \exp(\beta_0 + \boldsymbol{\beta}&#39;\mathbf{x}_i)
 - \ln(y_i!)\big]
-\tag{2.43}\]</span></p>
+\tag{2.60}\]</span></p>
 <div class="lang-es">
 <p>Para incorporar heterogeneidad no observable (modelo de <em>Regresión
 Binomial Negativa</em>), se asume <span class="math inline">\(\lambda_0 \sim \text{Gamma}(r, \alpha)\)</span>:</p>
@@ -2924,10 +2909,10 @@ assumed:</p>
 {\alpha + \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)}\right)^r
 \left(\frac{\exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)}
 {\alpha + \exp(\boldsymbol{\beta}&#39;\mathbf{x}_i)}\right)^{y_i}
-\tag{2.44}\]</span></p>
+\tag{2.61}\]</span></p>
 </div>
 <div id="modelos-de-elección-binaria-con-heterogeneidad-observable" class="section level3 hasAnchor" number="2.6.5" data-en="Binary Choice Models with Observable Heterogeneity">
-<h3><span class="header-section-number">2.6.5</span> Modelos de elección binaria con heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-elecci%C3%B3n-binaria-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.6.5</span> Modelos de elección binaria con heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-elección-binaria-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Sea <span class="math inline">\(X_i\)</span> el número de éxitos en <span class="math inline">\(m_i\)</span> intentos, con probabilidad
 <span class="math inline">\(\theta_i\)</span> modelada mediante transformación logística. La
@@ -2942,7 +2927,7 @@ observable heterogeneity is:</p>
 = \sum_{i=1}^{N}
 \left[\ln\binom{m_i}{x_i}
 + x_i\ln(\theta_i) + (m_i - x_i)\ln(1 - \theta_i)\right]
-\tag{2.45}\]</span></p>
+\tag{2.62}\]</span></p>
 <div class="lang-es">
 <p>Para el modelo mixto (<em>Regresión Beta-Binomial</em>), con
 <span class="math inline">\(\alpha_i = \exp(\mathbf{a}&#39;\mathbf{x}_i)\)</span> y
@@ -2957,7 +2942,7 @@ observable heterogeneity is:</p>
 = \binom{m_i}{x_i}
 \frac{B(\alpha_i + x_i,\, \beta_i + m_i - x_i)}
 {B(\alpha_i, \beta_i)}
-\tag{2.46}\]</span></p>
+\tag{2.63}\]</span></p>
 </div>
 </div>
 <div id="prob-esperanzas" class="section level2 hasAnchor" number="2.7" data-en="Conditional Expectations">
@@ -2981,11 +2966,10 @@ of the expectations of the Gamma and Beta distributions is shown below.</p>
 <p>Para la distribución Gamma, con parámetro de forma <span class="math inline">\(r\)</span> y de tasa
 <span class="math inline">\(\alpha\)</span>, que se utiliza para modelar tasas de ocurrencia (ej.
 <span class="math inline">\(\lambda\)</span>), su función de densidad de probabilidad es:
-<span class="math display">\[g(\lambda|r,\alpha) = \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha\lambda}\]</span>
+<span class="math display">\[g(\lambda|r,\alpha) = \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha\lambda} \tag{2.64}\]</span>
 La esperanza de una variable aleatoria <span class="math inline">\(\lambda\)</span> que sigue esta
 distribución es: <span class="math display">\[
-\mathbb{E}[\lambda] = \frac{r}{\alpha}
-\]</span>Este resultado se obtiene a partir de la definición de valor
+\mathbb{E}[\lambda] = \frac{r}{\alpha} \tag{2.65}\]</span>Este resultado se obtiene a partir de la definición de valor
 esperado para una variable continua: <span class="math display">\[
 \begin{aligned}
 \mathbb{E}[\lambda] &amp;= \int_{0}^{\infty} \lambda \cdot g(\lambda|r,\alpha) d\lambda \\
@@ -3006,8 +2990,11 @@ con <span class="math inline">\(k=r+1\)</span> y <span class="math inline">\(\th
 <p>Para la distribución Beta con parámetros <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span> que se
 utilizan para modelar probabilidades (ej. <span class="math inline">\(\theta\)</span>), su función de
 densidad de probabilidad es:
-<span class="math display">\[g(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}\]</span>
-El desarrollo para obtener esta esperanza es el siguiente: <span class="math display">\[
+<span class="math display">\[g(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)} \tag{2.66}\]</span>
+Por definición de valor esperado para una variable continua:
+<span class="math display">\[\mathbb{E}[\theta] = \int_{0}^{1} \theta \cdot g(\theta|\alpha,\beta) d\theta \tag{2.67}\]</span>
+El desarrollo para obtener esta esperanza es el siguiente:
+<span class="math display">\[
 \begin{aligned}
 \mathbb{E}[\theta] &amp;= \int_{0}^{1} \theta \cdot g(\theta|\alpha,\beta) d\theta \\
 &amp;= \int_{0}^{1} \theta \cdot \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)} d\theta \\
@@ -3032,22 +3019,24 @@ El desarrollo para obtener esta esperanza es el siguiente: <span class="math dis
 <p>For the Gamma distribution, with shape parameter <span class="math inline">\(r\)</span> and rate
 <span class="math inline">\(\alpha\)</span>, used to model occurrence rates (e.g. <span class="math inline">\(\lambda\)</span>), its
 probability density function is:
-<span class="math display">\[g(\lambda|r,\alpha) = \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha\lambda}\]</span>
+<span class="math display">\[g(\lambda|r,\alpha) = \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha\lambda} \tag{2.64}\]</span>
 The expectation of a random variable <span class="math inline">\(\lambda\)</span> that follows this
 distribution is:
-<span class="math display">\[\mathbb{E}[\lambda] = \frac{r}{\alpha}\]</span></p></li>
+<span class="math display">\[\mathbb{E}[\lambda] = \frac{r}{\alpha} \tag{2.65}\]</span></p></li>
 <li><p><strong>Expectation of the Beta distribution</strong></p>
 <p>For the Beta distribution with parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>,
 which are used to model probabilities (e.g. <span class="math inline">\(\theta\)</span>), its
 probability density function is:
-<span class="math display">\[g(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}\]</span>
-Its expectation is:
-<span class="math display">\[\mathbb{E}[\theta] = \frac{\alpha}{\alpha+\beta}\]</span></p></li>
+<span class="math display">\[g(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)} \tag{2.66}\]</span>
+By definition of expected value for a continuous variable:
+<span class="math display">\[\mathbb{E}[\theta] = \int_{0}^{1} \theta \cdot g(\theta|\alpha,\beta) d\theta \tag{2.67}\]</span>
+Which simplifies to:
+<span class="math display">\[\mathbb{E}[\theta] = \frac{\alpha}{\alpha+\beta} \tag{2.68}\]</span></p></li>
 </ul>
 </div>
 </div>
 <div id="modelo-de-tiempo-discreto-beta-geométrico" class="section level3 hasAnchor" number="2.7.2" data-en="Discrete-Time Model (Beta-Geometric)">
-<h3><span class="header-section-number">2.7.2</span> Modelo de tiempo discreto (Beta-Geométrico)<a href="cap-probabilisticos.html#modelo-de-tiempo-discreto-beta-geom%C3%A9trico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.7.2</span> Modelo de tiempo discreto (Beta-Geométrico)<a href="cap-probabilisticos.html#modelo-de-tiempo-discreto-beta-geométrico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Para el modelo de duración en tiempo discreto, una pregunta válida es
 cuál es la probabilidad de abandono esperada para un cliente
@@ -3072,7 +3061,7 @@ through Bayes’ theorem:</p>
 \begin{aligned}
 g(\theta|\text{datos}) &amp;= \frac{\mathbb{P}(\text{datos}|\theta)g(\theta)}{\int \mathbb{P}(\text{datos}|\theta)g(\theta)d\theta}
 \end{aligned}
-\tag{2.47}
+\tag{2.69}
 \]</span></p>
 <div class="lang-es">
 <p>donde <span class="math inline">\(g(\theta)\)</span> es la distribución a priori del parámetro (Beta) y
@@ -3100,7 +3089,7 @@ distribución <strong>Beta</strong>:
 <li><p><strong>Función de Verosimilitud</strong>: El comportamiento de abandono
 individual se modela con una distribución Geométrica Desplazada, que
 indica la probabilidad de que el evento ocurra exactamente en el
-período <span class="math inline">\(t\)</span>: <span class="math display">\[ \mathbb{P}(T=t|\theta) = \theta(1-\theta)^{t-1} \]</span></p></li>
+período <span class="math inline">\(t\)</span>: <span class="math display">\[ \mathbb{P}(T=t|\theta) = \theta(1-\theta)^{t-1} \tag{2.70}\]</span></p></li>
 </ul>
 <p>Con respecto a la Ley de Probabilidades Totales, ya se ha calculado en
 anterioridad para el Modelo Beta Geométrico-Desplazado. A continuación,
@@ -3121,8 +3110,7 @@ updated as a function of the observed duration <span class="math inline">\(t\)</
 g(\theta|T=t) &amp;= \frac{\mathbb{P}(T=t|\theta) \cdot g(\theta|\alpha, \beta)}{\int_0^1 \mathbb{P}(T=t|\theta) \cdot g(\theta|\alpha, \beta) d\theta} \\
 &amp;= \frac{ \left( \theta(1-\theta)^{t-1} \right) \left( \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha, \beta)} \right) }{ \frac{B(\alpha+1, \beta+t-1)}{B(\alpha, \beta)} } \\
 &amp;= \frac{\theta^{\alpha}(1-\theta)^{\beta+t-2}}{B(\alpha+1, \beta+t-1)}
-\end{aligned}
-\]</span></p>
+\end{aligned} \tag{2.71}\]</span></p>
 <div class="lang-es">
 <p>La expresión resultante es la función de densidad de una distribución
 Beta, con los parámetros actualizados.
@@ -3138,7 +3126,7 @@ updated parameters. From this posterior distribution, the conditional
 expectation follows directly as its mean:</p>
 </div>
 <p><span class="math display">\[\mathbb{E}(\theta \mid T = t) = \frac{\alpha + 1}{\alpha + \beta + t}
-\tag{2.48}\]</span></p>
+\tag{2.72}\]</span></p>
 <div class="lang-es">
 <p>Esta expresión representa la probabilidad de abandono esperada y
 actualizada para un cliente que ha permanecido exactamente <span class="math inline">\(t\)</span> períodos.
@@ -3150,7 +3138,7 @@ períodos (observación censurada):</p>
 <ul>
 <li><strong>Función de Verosimilitud</strong>: La probabilidad de que el evento aún
 no haya ocurrido es la función de supervivencia:
-<span class="math display">\[ \mathbb{P}(T&gt;t|\theta) = (1-\theta)^{t} \]</span></li>
+<span class="math display">\[ \mathbb{P}(T&gt;t|\theta) = (1-\theta)^{t} \tag{2.73}\]</span></li>
 </ul>
 <p>Obteniendo la distribución posterior:</p>
 </div>
@@ -3164,8 +3152,7 @@ function. The posterior distribution becomes:</p>
 g(\theta|T &gt; t) &amp;= \frac{\mathbb{P}(T &gt; t|\theta) \cdot g(\theta|\alpha, \beta)}{\int_0^1 \mathbb{P}(T &gt; t|\theta) \cdot g(\theta|\alpha, \beta) d\theta} \\
 &amp;= \frac{ \left( (1-\theta)^{t} \right) \left( \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha, \beta)} \right) }{ \frac{B(\alpha, \beta+t)}{B(\alpha, \beta)} } \\
 &amp;= \frac{\theta^{\alpha-1}(1-\theta)^{\beta+t-1}}{B(\alpha, \beta+t)}
-\end{aligned}
-\]</span></p>
+\end{aligned} \tag{2.74}\]</span></p>
 <div class="lang-es">
 <p>La expresión resultante es la función de densidad de otra distribución
 Beta, con los parámetros actualizados.
@@ -3180,7 +3167,7 @@ es simplemente la media de dicha distribución:</p>
 with updated parameters. Its mean yields the conditional expectation:</p>
 </div>
 <span class="math display">\[\mathbb{E}(\theta \mid T &gt; t) = \frac{\alpha}{\alpha + \beta + t}
-\tag{2.49}\]</span>
+\tag{2.75}\]</span>
 <div class="lang-es">
 <div class="rmdnote">
 <p><strong>Ejemplo 5 (Regla de decisión con esperanza condicional).</strong> Es posible
@@ -3243,7 +3230,7 @@ de eventos <span class="math inline">\(\lambda\)</span> en la población sigue u
 evento se modela con una distribución Exponencial, que indica la
 probabilidad (densidad) de que el evento ocurra exactamente en el
 instante <span class="math inline">\(t\)</span>:
-<span class="math display">\[ \mathbb{P}(T=t|\lambda) = f(t|\lambda) = \lambda e^{-\lambda t} \]</span></p></li>
+<span class="math display">\[ \mathbb{P}(T=t|\lambda) = f(t|\lambda) = \lambda e^{-\lambda t} \tag{2.76}\]</span></p></li>
 </ul>
 <p>Con respecto a la Ley de Probabilidades Totales, el denominador de la
 expresión de Bayes corresponde a la probabilidad en heterogeneidad no
@@ -3259,8 +3246,7 @@ event rate for a customer, updated as a function of elapsed time <span class="ma
 g(\lambda|T=t) &amp;= \frac{\mathbb{P}(T=t|\lambda) \cdot g(\lambda|r, \alpha)}{\int_0^\infty \mathbb{P}(T=t|\lambda) \cdot g(\lambda|r, \alpha) d\lambda} \\
 &amp;= \frac{ \left( \lambda t e^{-\lambda t} \right) \left( \frac{\alpha^r \lambda^{r-1} e^{-\alpha\lambda}}{\Gamma(r)} \right) }{\left(\frac{rt}{\alpha + t} \right) \left(\frac{1}{\alpha + t} \right)^r} \\
 &amp;= \frac{(\alpha+t)^{r+1}}{\Gamma(r+1)}\lambda^{r}e^{-\lambda(\alpha+t)}
-\end{aligned}
-\]</span></p>
+\end{aligned} \tag{2.77}\]</span></p>
 <div class="lang-es">
 <p>La expresión resultante es la función de densidad de una distribución
 Gamma, con los parámetros actualizados.
@@ -3275,7 +3261,7 @@ es simplemente la media de dicha distribución:</p>
 updated parameters. Its mean yields the conditional expectation:</p>
 </div>
 <p><span class="math display">\[\mathbb{E}(\lambda \mid T = t) = \frac{r + 1}{\alpha + t}
-\tag{2.50}\]</span></p>
+\tag{2.78}\]</span></p>
 </div>
 <div id="modelo-de-conteo-gamma-poisson" class="section level3 hasAnchor" number="2.7.4" data-en="Count Model (Gamma-Poisson)">
 <h3><span class="header-section-number">2.7.4</span> Modelo de conteo (Gamma-Poisson)<a href="cap-probabilisticos.html#modelo-de-conteo-gamma-poisson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -3333,8 +3319,7 @@ in the population is assumed to follow a <strong>Gamma</strong> distribution.</p
 g(\lambda|Y_t=y) &amp;= \frac{\mathbb{P}(Y_t=y|\lambda, t) \cdot g(\lambda|r, \alpha)}{\int_0^\infty \mathbb{P}(Y_t=y|\lambda, t) \cdot g(\lambda|r, \alpha) d\lambda} \\
 &amp;= \frac{ \left( \frac{(\lambda t)^y e^{-\lambda t}}{y!} \right) \left( \frac{\alpha^r \lambda^{r-1} e^{-\alpha\lambda}}{\Gamma(r)} \right) }{ \frac{\Gamma(r+y)}{\Gamma(r)y!} \left(\frac{\alpha}{\alpha+t}\right)^r \left(\frac{t}{\alpha+t}\right)^{y} } \\
 &amp;= \frac{(\alpha+t)^{r+y}}{\Gamma(r+y)}\lambda^{r+y-1}e^{-\lambda(\alpha+t)}
-\end{aligned}
-\]</span></p>
+\end{aligned} \tag{2.79}\]</span></p>
 <div class="lang-es">
 <p>La expresión resultante es la función de densidad de una distribución
 Gamma, con los parámetros actualizados.
@@ -3349,10 +3334,10 @@ es simplemente la media de dicha distribución:</p>
 updated parameters. Its mean yields the conditional expectation:</p>
 </div>
 <p><span class="math display">\[\mathbb{E}(\lambda \mid Y_t = y) = \frac{r + y}{\alpha + t}
-\tag{2.51}\]</span></p>
+\tag{2.80}\]</span></p>
 </div>
 <div id="modelo-de-elección-binaria-beta-binomial" class="section level3 hasAnchor" number="2.7.5" data-en="Binary Choice Model (Beta-Binomial)">
-<h3><span class="header-section-number">2.7.5</span> Modelo de elección binaria (Beta-Binomial)<a href="cap-probabilisticos.html#modelo-de-elecci%C3%B3n-binaria-beta-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.7.5</span> Modelo de elección binaria (Beta-Binomial)<a href="cap-probabilisticos.html#modelo-de-elección-binaria-beta-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Recordando que la distribución del parámetro <span class="math inline">\(\theta\)</span> (la probabilidad
 de éxito), condicionada a los datos observados, se obtiene por el
@@ -3417,16 +3402,16 @@ es simplemente la media de dicha distribución:</p>
 updated parameters. Its mean yields the conditional expectation:</p>
 </div>
 <p><span class="math display">\[\mathbb{E}(\theta \mid X = x) = \frac{\alpha + x}{\alpha + \beta + m}
-\tag{2.52}\]</span></p>
+\tag{2.81}\]</span></p>
 <div class="lang-es">
 <p>En el modelo de elección en donde la <span class="math inline">\(P(X_s = x_s)\)</span> quedaba definida en
-(2.31). Una pregunta válida que se puede hacer es cuál es la tasa de
+(2.40). Una pregunta válida que se puede hacer es cuál es la tasa de
 respuesta de un segmento <span class="math inline">\(s\)</span> determinado. Intuitivamente debería estar
 entre la tasa de respuesta esperada de la población y la observada, es
 decir,</p>
 </div>
 <div class="lang-en">
-<p>In the choice model where <span class="math inline">\(P(X_s = x_s)\)</span> was defined in (2.31), a valid
+<p>In the choice model where <span class="math inline">\(P(X_s = x_s)\)</span> was defined in (2.40), a valid
 question is what the response rate is for a given segment <span class="math inline">\(s\)</span>.
 Intuitively, it should lie between the population-expected response rate
 and the observed one:</p>
@@ -3436,7 +3421,7 @@ and the observed one:</p>
 + (1 - \gamma)\,\frac{x_s}{m_s},
 \qquad
 \gamma = \frac{\alpha + \beta}{\alpha + \beta + m_s}
-\tag{2.53}\]</span></p>
+\tag{2.82}\]</span></p>
 <div class="lang-es">
 <p>Esta última igualdad se encuentra al hacer el reemplazo
 <span class="math inline">\(\gamma = \frac{\alpha + \beta}{\alpha + \beta + m_s}\)</span>, la cual coincide
@@ -3490,7 +3475,7 @@ is with the firm. For the deterministic case, Life Time Value (CLV) is
 defined as:</p>
 </div>
 <p><span class="math display">\[CLV = \sum_{t=0}^{T} m \cdot \frac{r^t}{(1+d)^t}
-\tag{2.54}\]</span></p>
+\tag{2.83}\]</span></p>
 <div class="lang-es">
 <p>donde <span class="math inline">\(m\)</span> es el flujo neto por período (si el cliente está activo); <span class="math inline">\(r\)</span>
 es la tasa de retención; <span class="math inline">\(d\)</span> es la tasa de descuento; y <span class="math inline">\(T\)</span> es el
@@ -3513,7 +3498,7 @@ of money received at time <span class="math inline">\(t\)</span>. CLV is then co
 </div>
 <p><span class="math display">\[\mathbb{E}(CLV) = \int_0^{\infty}
 \mathbb{E}(v(t))\,S(t)\,d(t)\,dt
-\tag{2.55}\]</span></p>
+\tag{2.84}\]</span></p>
 <div class="lang-es">
 <p>Esta definición es inútil a menos que se operacionalice
 <span class="math inline">\(\mathbb{E}(v(t))\)</span>, <span class="math inline">\(S(t)\)</span> y <span class="math inline">\(d(t)\)</span> para la situación particular.</p>
@@ -3570,7 +3555,7 @@ credit-card transaction.</li>
 su primera suscripción, pero ese número salta al 50 % para la segunda
 renovación y hasta el 75 % para subscriptores de mayor antigüedad
 (Fielding, Michael (2005), “Get Circulation Going: DM Redesign
-Increases Renewal Rates for Magazines”, Marketing News, September 1,
+Increases Renewal Rates for Magazines,” Marketing News, September 1,
 9-10).</em></p>
 <p>Al evaluar las tasas de retención de una base de clientes, es necesario
 considerar las diferencias entre las cohortes y proyectar los
@@ -3593,7 +3578,7 @@ de 0,5.</li>
 subscription, but that number jumps to 50% for the second renewal and
 as high as 75% for longer-tenure subscribers (Fielding, Michael (2005),
 “Get Circulation Going: DM Redesign Increases Renewal Rates for
-Magazines”, Marketing News, September 1, 9-10).</em></p>
+Magazines,” Marketing News, September 1, 9-10).</em></p>
 <p>When evaluating the retention rates of a customer base, it is necessary
 to account for differences across cohorts and to project behaviors
 beyond those directly observed.</p>
@@ -3608,17 +3593,8 @@ of two segments:</p>
 <li><em>Segment 2</em> (2/3 of customers): constant retention rate of 0.5.</li>
 </ul>
 </div>
-<table style="width:100%;">
+<table>
 <caption><span id="tab:prob-p1-retencion">Table 2.3: </span> Rol de la heterogeneidad.</caption>
-<colgroup>
-<col width="6%" />
-<col width="26%" />
-<col width="9%" />
-<col width="9%" />
-<col width="25%" />
-<col width="9%" />
-<col width="14%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th></th>
@@ -3776,12 +3752,12 @@ account.</p>
 <li><p>La tasa de retención a nivel individual es <span class="math inline">\(1- \theta\)</span>:</p>
 <p><span class="math display">\[
 S(t|\theta) = (1-\theta)^t, \quad t=1,2,3,...
-\tag{2.56}\]</span></p></li>
+\tag{2.85}\]</span></p></li>
 <li><p>La heterogeneidad en <span class="math inline">\(\theta\)</span> es capturada por una distribución
 <span class="math inline">\(\text{Beta}\)</span>:</p>
 <p><span class="math display">\[
 f(\theta|\alpha,\beta) = \frac{\theta^{\alpha -1}(1-\theta)^{\beta -1}}{B(\alpha,\beta)}
-\tag{2.56a}\]</span></p></li>
+\tag{2.86}\]</span></p></li>
 </ol>
 <p>La probabilidad de que el cliente siga activo en <span class="math inline">\(t\)</span>:</p>
 </div>
@@ -3796,7 +3772,7 @@ distribution.</li>
 </div>
 <p><span class="math display">\[S(t \mid \alpha, \beta)
 = \frac{B(\alpha, \beta + t)}{B(\alpha, \beta)}
-\tag{2.56b}\]</span></p>
+\tag{2.87}\]</span></p>
 <div class="lang-es">
 <p>Considerando a un cliente que ha estado activo por <span class="math inline">\(n\)</span> períodos:</p>
 </div>
@@ -3809,7 +3785,7 @@ distribution.</li>
 &amp;= \sum_{t=n+1}^{\infty} \mathbb{E}(v(t)) \cdot \frac{S(t|t&gt;n)}{(1+d)^{t-n}}\\
 &amp;= \bar{v} \sum_{t=n+1}^{\infty} \frac{S(t|t&gt;n)}{(1+d)^{t-n}}, \quad \text{Asumiendo flujos constantes}
 \end{aligned}
-\tag{2.57}\]</span></p>
+\tag{2.88}\]</span></p>
 <div class="lang-es">
 <p>DERL es el valor esperado residual del cliente (condicional en la
 antigüedad). Para el caso de la distribución geométrica desplazada:</p>
@@ -3824,7 +3800,7 @@ antigüedad). Para el caso de la distribución geométrica desplazada:</p>
 &amp;= \sum_{t=n}^{\infty} \frac{S(t)}{S(n-1)} \cdot \left(\frac{a}{a+d}\right)^{t-n}\\
 &amp;= \frac{(1-\theta)(1+d)}{d+\theta}
 \end{aligned}
-\tag{2.57a}\]</span></p>
+\tag{2.89}\]</span></p>
 <div class="lang-es">
 <p>Cuando la tasa de abandono <span class="math inline">\(\theta\)</span> no es observable, hay que encontrar
 la distribución de esta variable en la población. Para ello se usa la
@@ -3844,7 +3820,7 @@ posterior distribution conditional on tenure.</p>
 &amp;\quad \cdot {}_2F_1\!\left(1, \beta + n;\, \alpha + \beta + n;\,
 \frac{1}{1+d}\right)
 \end{aligned}
-\tag{2.58}
+\tag{2.90}
 \]</span></p>
 <div class="lang-es">
 <p>donde <span class="math inline">\({}_2F_1\)</span> es la <em>función hipergeométrica de Gauss</em>.</p>
@@ -3863,16 +3839,16 @@ caracterizada por una distribución exponencial, con densidad y
 función de sobrevivencia dadas por:</p>
 <p><span class="math display">\[
 f(t\mid\lambda) = \lambda e^{-\lambda t}
-\tag{2.59}\]</span></p>
+\tag{2.91}\]</span></p>
 <p><span class="math display">\[
 S(t\mid\lambda) = e^{-\lambda t}
-\tag{2.60}\]</span></p></li>
+\tag{2.92}\]</span></p></li>
 <li><p>La heterogeneidad en <span class="math inline">\(\lambda\)</span> es capturada por una distribución
 <span class="math inline">\(\text{Gamma}\)</span>:</p>
 <p><span class="math display">\[
 g(\lambda\mid r,\alpha) =
 \frac{\alpha^r\lambda^{r-1}e^{-\alpha\lambda}}{\Gamma(r)}
-\tag{2.61}\]</span></p></li>
+\tag{2.93}\]</span></p></li>
 </ol>
 </div>
 <div class="lang-en">
@@ -3883,16 +3859,16 @@ characterized by an exponential distribution, with density and
 survival function given by:</p>
 <p><span class="math display">\[
 f(t\mid\lambda) = \lambda e^{-\lambda t}
-\tag{2.59}\]</span></p>
+\tag{2.91}\]</span></p>
 <p><span class="math display">\[
 S(t\mid\lambda) = e^{-\lambda t}
-\tag{2.60}\]</span></p></li>
+\tag{2.92}\]</span></p></li>
 <li><p>Heterogeneity in <span class="math inline">\(\lambda\)</span> is captured by a <span class="math inline">\(\text{Gamma}\)</span>
 distribution:</p>
 <p><span class="math display">\[
 g(\lambda\mid r,\alpha) =
 \frac{\alpha^r\lambda^{r-1}e^{-\alpha\lambda}}{\Gamma(r)}
-\tag{2.61}\]</span></p></li>
+\tag{2.93}\]</span></p></li>
 </ol>
 </div>
 <div class="lang-es">
@@ -3904,7 +3880,7 @@ g(\lambda\mid r,\alpha) =
 <p><span class="math display">\[
 S(t\mid r,\alpha) = \int_0^{\infty} S(t\mid\lambda)g(\lambda\mid r,\alpha)\,d\lambda
 = \left(\frac{\alpha}{\alpha+t}\right)^r
-\tag{2.62}\]</span></p>
+\tag{2.94}\]</span></p>
 <div class="lang-es">
 <p>El valor esperado de <span class="math inline">\(\text{Residual Lifetime Value}\)</span> es:</p>
 </div>
@@ -3917,7 +3893,7 @@ S(t\mid r,\alpha) = \int_0^{\infty} S(t\mid\lambda)g(\lambda\mid r,\alpha)\,d\la
 &amp;= \int_s^{\infty} \mathbb{E}(v(t))S(t\mid t&gt;s)\delta(t)\,dt \\
 &amp;= \bar{v}\cdot \text{DERL}(\delta\mid r,\alpha,\text{activo en }s)
 \end{aligned}
-\tag{2.63}
+\tag{2.95}
 \]</span></p>
 <div class="lang-es">
 <p>donde</p>
@@ -3928,7 +3904,7 @@ S(t\mid r,\alpha) = \int_0^{\infty} S(t\mid\lambda)g(\lambda\mid r,\alpha)\,d\la
 <p><span class="math display">\[
 \text{DERL}(\delta\mid r,\alpha,\text{activo en }s)
 = (\alpha+s)^r\delta \Psi(r;r;(\alpha+s)\delta)
-\tag{2.64}\]</span></p>
+\tag{2.96}\]</span></p>
 <div class="lang-es">
 <p><span class="math inline">\(\Psi\)</span> es la <em>función hiper geométrica confluyente del segundo tipo</em>.</p>
 </div>
@@ -4032,12 +4008,12 @@ elapsed time is relevant.</li>
 </div>
 </div>
 <div class="lang-es">
-<p><strong>Referencias principales:</strong> <span class="citation">Schmittlein et al. (<a href="referencias.html#ref-schmittlein1987">1987</a>)</span>, <span class="citation">Fader et al. (<a href="referencias.html#ref-fader2005">2005a</a>)</span>, <span class="citation">Fader &amp; Hardie (<a href="referencias.html#ref-fader2010">2010</a>)</span>,
-<span class="citation">Fader et al. (<a href="referencias.html#ref-fader2005rfm">2005b</a>)</span>, <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span>.</p>
+<p><strong>Referencias principales:</strong> <span class="citation"><a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">Schmittlein et al.</a> (<a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">1987</a>)</span>, <span class="citation"><a href="referencias.html#ref-fader2005" role="doc-biblioref">Fader et al.</a> (<a href="referencias.html#ref-fader2005" role="doc-biblioref">2005a</a>)</span>, <span class="citation"><a href="referencias.html#ref-fader2010" role="doc-biblioref">Fader &amp; Hardie</a> (<a href="referencias.html#ref-fader2010" role="doc-biblioref">2010</a>)</span>,
+<span class="citation"><a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">Fader et al.</a> (<a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">2005b</a>)</span>, <span class="citation"><a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge</a> (<a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">2019</a>)</span>.</p>
 </div>
 <div class="lang-en">
-<p><strong>Main references:</strong> <span class="citation">Schmittlein et al. (<a href="referencias.html#ref-schmittlein1987">1987</a>)</span>, <span class="citation">Fader et al. (<a href="referencias.html#ref-fader2005">2005a</a>)</span>, <span class="citation">Fader &amp; Hardie (<a href="referencias.html#ref-fader2010">2010</a>)</span>,
-<span class="citation">Fader et al. (<a href="referencias.html#ref-fader2005rfm">2005b</a>)</span>, <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span>.</p>
+<p><strong>Main references:</strong> <span class="citation"><a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">Schmittlein et al.</a> (<a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">1987</a>)</span>, <span class="citation"><a href="referencias.html#ref-fader2005" role="doc-biblioref">Fader et al.</a> (<a href="referencias.html#ref-fader2005" role="doc-biblioref">2005a</a>)</span>, <span class="citation"><a href="referencias.html#ref-fader2010" role="doc-biblioref">Fader &amp; Hardie</a> (<a href="referencias.html#ref-fader2010" role="doc-biblioref">2010</a>)</span>,
+<span class="citation"><a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">Fader et al.</a> (<a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">2005b</a>)</span>, <span class="citation"><a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge</a> (<a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">2019</a>)</span>.</p>
 </div>
 </div>
 <div id="prob-problemas" class="section level2 hasAnchor" number="2.10" data-en="Problems">
@@ -4098,18 +4074,17 @@ segmento con 824 beneficiarios que, transcurrido un trimestre,
 evidencia 17 eventos de salud. Escriba una expresión para la
 probabilidad que este segmento corresponda a la clase de mayor
 propensión a registrar eventos.</li>
-</ol></li>
 </ol>
-<p>Para las descripciones anteriores considere que <span class="math inline">\(n_{jkt}\)</span> es el número
-total de beneficiarios que tuvieron algún gasto de salud en el trimestre
-t dentro del segmento j de la empresa k y que <span class="math inline">\(m_{jkt}\)</span> es el número
-total de beneficiarios dentro de ese segmento, empresa y trimestre.</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Como último enfoque, se estiman tres versiones de modelos
+<p>Para las descripciones anteriores considere que <span class="math inline">\(n_{jkt}\)</span> es el
+número total de beneficiarios que tuvieron algún gasto de salud en
+el trimestre t dentro del segmento j de la empresa k y que
+<span class="math inline">\(m_{jkt}\)</span> es el número total de beneficiarios dentro de ese
+segmento, empresa y trimestre.</p></li>
+<li><p>Como último enfoque, se estiman tres versiones de modelos
 beta-binomiales. En los modelos que se incluye heterogeneidad
 observable, se consideran variables asociadas tanto a
 características del segmento como a variables estacionales y de
-tendencia.</li>
+tendencia.</p></li>
 </ol>
 </div>
 <div class="lang-en">
@@ -4162,17 +4137,16 @@ segment with 824 beneficiaries that, after one quarter, shows
 17 health events. Write an expression for the probability that
 this segment belongs to the class with the higher propensity to
 register events.</li>
-</ol></li>
 </ol>
 <p>For the previous descriptions, let <span class="math inline">\(n_{jkt}\)</span> be the total number of
-beneficiaries who had at least one health expenditure in quarter <span class="math inline">\(t\)</span>
-within segment <span class="math inline">\(j\)</span> of company <span class="math inline">\(k\)</span>, and let <span class="math inline">\(m_{jkt}\)</span> be the total
-number of beneficiaries within that segment, company, and quarter.</p>
-<ol start="3" style="list-style-type: decimal">
-<li>As a final approach, three versions of beta-binomial models are
+beneficiaries who had at least one health expenditure in quarter
+<span class="math inline">\(t\)</span> within segment <span class="math inline">\(j\)</span> of company <span class="math inline">\(k\)</span>, and let <span class="math inline">\(m_{jkt}\)</span> be the
+total number of beneficiaries within that segment, company, and
+quarter.</p></li>
+<li><p>As a final approach, three versions of beta-binomial models are
 estimated. In the models with observable heterogeneity, variables
 associated with segment characteristics as well as seasonal and
-trend variables are included.</li>
+trend variables are included.</p></li>
 </ol>
 </div>
 <div class="lang-es">
@@ -4279,6 +4253,15 @@ trend variables are included.</li>
 </tr>
 </tbody>
 </table>
+<ol style="list-style-type: lower-alpha">
+<li>Discuta si el programa <em>TuBienestar</em> ayuda a describir el
+comportamiento de los beneficiarios y si el programa <em>TuBienestar</em>
+es bueno para la salud de los beneficiarios.</li>
+<li>En otros mercados el valor esperado de la probabilidad que un
+beneficiario exhiba un evento de salud en un trimestre dado es
+0.16. ¿Cómo testearía si los datos de Chile son distintos a ese
+valor medio internacional?</li>
+</ol>
 </div>
 <div class="lang-en">
 <table>
@@ -4384,6 +4367,15 @@ trend variables are included.</li>
 </tr>
 </tbody>
 </table>
+<ol style="list-style-type: lower-alpha">
+<li>Discuss whether the <em>TuBienestar</em> program helps describe
+beneficiaries’ behavior and whether the <em>TuBienestar</em> program is
+good for beneficiaries’ health.</li>
+<li>In other markets, the expected value of the probability that a
+beneficiary exhibits a health event in a given quarter is 0.16. How
+would you test whether the Chilean data differ from that
+international benchmark?</li>
+</ol>
 </div>
 <details>
 <summary>
@@ -5056,9 +5048,9 @@ estimadores máximos verosímiles de la Tabla. Por inspección de
 la figura, provea una aproximación numérica a la probabilidad de
 que un cliente no avance al siguiente nivel sea mayor que 0.8
 (usando áreas de triángulos y rectángulos).</p>
-<div class="float"><span style="display:block;" id="fig:prob-p3-posterior-es"></span>
-<img src="images/fig_beta_posterior_v2.png" style="width:60.0%" fig-align="center" alt=" Distribución posterior de la probabilidad de no continuar" />
-<div class="figcaption">Figure 2.1:  Distribución posterior de la probabilidad de no continuar</div>
+<div class="figure"><span style="display:block;" id="fig:prob-p3-posterior-es"></span>
+<img src="images/fig_beta_posterior_v2.png" fig-align="center" style="width:60.0%" alt="" />
+<p class="caption">Figure 2.1:  Distribución posterior de la probabilidad de no continuar</p>
 </div></li>
 <li><p>Calcule el intervalo de confianza al 95% del segundo parámetro
 <span class="math inline">\(\beta\)</span>. Considere que el inverso del hessiano de la
@@ -5162,9 +5154,9 @@ figure, provide a numerical approximation to the probability
 that a customer does not advance to the next level with
 probability greater than 0.8 (using areas of triangles and
 rectangles).</p>
-<div class="float"><span style="display:block;" id="fig:prob-p3-posterior-en"></span>
-<img src="images/fig_beta_posterior_v2.png" style="width:60.0%" fig-align="center" alt=" Posterior distribution of the probability of not continuing" />
-<div class="figcaption">Figure 2.2:  Posterior distribution of the probability of not continuing</div>
+<div class="figure"><span style="display:block;" id="fig:prob-p3-posterior-en"></span>
+<img src="images/fig_beta_posterior_v2.png" fig-align="center" style="width:60.0%" alt="" />
+<p class="caption">Figure 2.2:  Posterior distribution of the probability of not continuing</p>
 </div></li>
 <li><p>Calculate the 95% confidence interval for the second parameter
 <span class="math inline">\(\beta\)</span>. Assume that the inverse of the Hessian of the
@@ -5227,9 +5219,9 @@ aproximarse como</p>
 <p><span class="math display">\[
 p \approx 0.2\cdot 2 + 0.2\cdot 2/2 = 0.6.
 \]</span></p>
-<div class="float"><span style="display:block;" id="fig:prob-p3-sombreada-es"></span>
-<img src="images/fig_beta_posterior_shaded_08_1.png" style="width:60.0%" fig-align="center" alt=" Distribución posterior con área sombreada" />
-<div class="figcaption">Figure 2.3:  Distribución posterior con área sombreada</div>
+<div class="figure"><span style="display:block;" id="fig:prob-p3-sombreada-es"></span>
+<img src="images/fig_beta_posterior_shaded_08_1.png" fig-align="center" style="width:60.0%" alt="" />
+<p class="caption">Figure 2.3:  Distribución posterior con área sombreada</p>
 </div></li>
 <li><p>Usando el inverso del hessiano, el ientervalo de confianza
 viene dado por <span class="math inline">\(4.001 \pm 1.96 \sqrt{0.36}\)</span>, donde el
@@ -5282,9 +5274,9 @@ which can be approximated as</p>
 <p><span class="math display">\[
 p \approx 0.2\cdot 2 + 0.2\cdot 2/2 = 0.6.
 \]</span></p>
-<div class="float"><span style="display:block;" id="fig:prob-p3-sombreada-en"></span>
-<img src="images/fig_beta_posterior_shaded_08_1.png" style="width:60.0%" fig-align="center" alt=" Posterior distribution with shaded area" />
-<div class="figcaption">Figure 2.4:  Posterior distribution with shaded area</div>
+<div class="figure"><span style="display:block;" id="fig:prob-p3-sombreada-en"></span>
+<img src="images/fig_beta_posterior_shaded_08_1.png" fig-align="center" style="width:60.0%" alt="" />
+<p class="caption">Figure 2.4:  Posterior distribution with shaded area</p>
 </div></li>
 <li><p>Using the inverse Hessian, the confidence interval is given by
 <span class="math inline">\(4.001 \pm 1.96 \sqrt{0.36}\)</span>, where the coefficient <span class="math inline">\(\beta\)</span>
@@ -5416,18 +5408,8 @@ shelf tag and the transactional system.</li>
 in Table <a href="cap-probabilisticos.html#tab:prob-p4-muestra">2.7</a>:</p>
 </div>
 <div class="lang-es">
-<table style="width:100%;">
+<table>
 <caption><span id="tab:prob-p4-muestra">Table 2.7: </span> Muestra de los primeros 6 registros de la base de discrepancias.</caption>
-<colgroup>
-<col width="7%" />
-<col width="7%" />
-<col width="8%" />
-<col width="16%" />
-<col width="14%" />
-<col width="16%" />
-<col width="17%" />
-<col width="10%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="right">Id</th>
@@ -5507,16 +5489,6 @@ in Table <a href="cap-probabilisticos.html#tab:prob-p4-muestra">2.7</a>:</p>
 <div class="lang-en">
 <table>
 <caption><span id="tab:prob-p4-muestra">Table 2.7: </span> Sample of supermarket price discrepancies.</caption>
-<colgroup>
-<col width="7%" />
-<col width="7%" />
-<col width="8%" />
-<col width="15%" />
-<col width="14%" />
-<col width="17%" />
-<col width="18%" />
-<col width="10%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="right">Id</th>
@@ -5858,12 +5830,6 @@ value is not required).</p></li>
 <div class="lang-es">
 <table>
 <caption><span id="tab:prob-p4-duracion">Table 2.9: </span> Estimadores y criterios de información de tres modelos de duración.</caption>
-<colgroup>
-<col width="25%" />
-<col width="22%" />
-<col width="25%" />
-<col width="27%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Parámetros</th>
@@ -6105,12 +6071,12 @@ este es solo el primer paso.</p>
 <p>Todavía quedan dos semanas para que empiece la práctica, pero ya estás
 ansiosa, por lo que recibes con entusiasmo y sorpresa un correo
 electrónico de Kiara, quien será tu supervisora directa durante tu
-estadía en la compañía. <em>“¡Hola! Esperando que estés muy bien, te
+estadía en la compañía. <em>"¡Hola! Esperando que estés muy bien, te
 escribo para contarte los próximos desafíos en los que vamos a estar
 trabajando en el equipo en los próximos seis meses. Por supuesto que no
 es necesario que hagas absolutamente nada, pero como queremos que te
 sientas integrada te vamos a ir copiando en las</em> <em>comunicaciones
-internas del equipo”.</em> Antes de cerrar el mensaje, te das el tiempo de
+internas del equipo".</em> Antes de cerrar el mensaje, te das el tiempo de
 darle un vistazo rápido al diccionario de datos que viene adjunto:</p>
 </div>
 <div class="lang-en">
@@ -6129,22 +6095,17 @@ is only the first step.</p>
 <p>There are still two weeks left before the internship begins, but you are
 already anxious, so you receive with enthusiasm and surprise an email
 from Kiara, who will be your direct supervisor during your stay at the
-company. <em>“Hi! Hoping you’re very well, I’m writing to tell you about
+company. <em>"Hi! Hoping you’re very well, I’m writing to tell you about
 the upcoming challenges we will be working on in the team over the next
 six months. Of course, it is not necessary for you to do absolutely
 anything, but since we want you to feel integrated, we will start
-copying you on the team’s</em> <em>internal communications.”</em> Before closing
+copying you on the team’s</em> <em>internal communications."</em> Before closing
 the message, you take the time to quickly look over the attached data
 dictionary:</p>
 </div>
 <div class="lang-es">
 <table>
 <caption><span id="tab:prob-p5-variables">Table 2.10: </span> Variables del panel de compras de NotComida.</caption>
-<colgroup>
-<col width="17%" />
-<col width="71%" />
-<col width="11%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Variable</th>
@@ -6209,11 +6170,6 @@ dictionary:</p>
 <div class="lang-en">
 <table>
 <caption><span id="tab:prob-p5-variables">Table 2.10: </span> NotComida purchase panel variables.</caption>
-<colgroup>
-<col width="17%" />
-<col width="71%" />
-<col width="11%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Variable</th>
@@ -6394,20 +6350,8 @@ the log-likelihood of this customer’s purchase history.</li>
 </ol>
 </div>
 <div class="lang-es">
-<table style="width:100%;">
+<table>
 <caption><span id="tab:prob-p5-historial">Table 2.11: </span> Historial resumido de compras del cliente 321045.</caption>
-<colgroup>
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">IdCliente</th>
@@ -6451,20 +6395,8 @@ the log-likelihood of this customer’s purchase history.</li>
 </table>
 </div>
 <div class="lang-en">
-<table style="width:100%;">
+<table>
 <caption><span id="tab:prob-p5-historial">Table 2.11: </span> Summary purchase history for customer 321045.</caption>
-<colgroup>
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">IdCliente</th>
@@ -6592,7 +6524,7 @@ log(\lambda_{i2}) = 0.5 + \beta_1 \text{MUJER}_i = 0.5 + 0 \implies \lambda_{i1}
 \]</span></p>
 <p>Por tanto, la probabilidad de comprar una vez en cada segmento es:</p>
 <p><span class="math display">\[
-\mathbb{P}(n_i = 1 \mid s_1) = \lambda_{i1} e^{-\lambda_{i1}} = e^{-1}e^{-e^{-1}}
+\mathbb{P}(n_i = 1 \mid s_1) = \lambda_{i1} e^{-\lambda_{i1}} = e^{-1}e^{-e^{-1}} 
 \]</span></p>
 <p><span class="math display">\[
 \mathbb{P}(n_i = 0 \mid s_2) = \lambda_{i2} e^{-\lambda_{i2}} = e^{-0.5}e^{-e^{-0.5}}
@@ -6601,7 +6533,7 @@ log(\lambda_{i2}) = 0.5 + \beta_1 \text{MUJER}_i = 0.5 + 0 \implies \lambda_{i1}
 <p><span class="math display">\[
 \mathbb{P}(s_1 \mid n_i = 1) = \frac{\mathbb{P}(n_i = 0 \mid s_1)\mathbb{P}(s_1)}{\mathbb{P}(s_1 \mid n_i = 0) \mathbb{P}(s_1) + \mathbb{P}(s_2 \mid n_i = 0) \mathbb{P}(s_2)}
 \]</span></p>
-<p>Donde <span class="math inline">\(\mathbb{P}(s_1) \;=\; 0.4\)</span> y <span class="math inline">\(\mathbb{P}(s_2)  \;=\; 0.6\)</span>.</p></li>
+<p>Donde <span class="math inline">\(\mathbb{P}(s_1) \;=\; 0.4\)</span> y <span class="math inline">\(\mathbb{P}(s_2) \;=\; 0.6\)</span>.</p></li>
 </ol>
 </div>
 <div class="lang-en">
@@ -6615,7 +6547,7 @@ log(\lambda_{i2}) = 0.5 + \beta_1 \text{MUJER}_i = 0.5 + 0 \implies \lambda_{i1}
 \]</span></p>
 <p>Therefore, the probability of purchasing once in each segment is:</p>
 <p><span class="math display">\[
-\mathbb{P}(n_i = 1 \mid s_1) = \lambda_{i1} e^{-\lambda_{i1}} = e^{-1}e^{-e^{-1}}
+\mathbb{P}(n_i = 1 \mid s_1) = \lambda_{i1} e^{-\lambda_{i1}} = e^{-1}e^{-e^{-1}} 
 \]</span></p>
 <p><span class="math display">\[
 \mathbb{P}(n_i = 0 \mid s_2) = \lambda_{i2} e^{-\lambda_{i2}} = e^{-0.5}e^{-e^{-0.5}}
@@ -6624,7 +6556,7 @@ log(\lambda_{i2}) = 0.5 + \beta_1 \text{MUJER}_i = 0.5 + 0 \implies \lambda_{i1}
 <p><span class="math display">\[
 \mathbb{P}(s_1 \mid n_i = 1) = \frac{\mathbb{P}(n_i = 0 \mid s_1)\mathbb{P}(s_1)}{\mathbb{P}(s_1 \mid n_i = 0) \mathbb{P}(s_1) + \mathbb{P}(s_2 \mid n_i = 0) \mathbb{P}(s_2)}
 \]</span></p>
-<p>Where <span class="math inline">\(\mathbb{P}(s_1) \;=\; 0.4\)</span> and <span class="math inline">\(\mathbb{P}(s_2)  \;=\; 0.6\)</span>.</p></li>
+<p>Where <span class="math inline">\(\mathbb{P}(s_1) \;=\; 0.4\)</span> and <span class="math inline">\(\mathbb{P}(s_2) \;=\; 0.6\)</span>.</p></li>
 </ol>
 </div>
 <div class="lang-es">
@@ -6632,7 +6564,7 @@ log(\lambda_{i2}) = 0.5 + \beta_1 \text{MUJER}_i = 0.5 + 0 \implies \lambda_{i1}
 <li><p>La utilidad que deriva el cliente <span class="math inline">\(i\)</span> por comprar en la categoría
 <span class="math inline">\(c\)</span> en la tienda <span class="math inline">\(s\)</span> en el mes <span class="math inline">\(t\)</span> viene dado por:</p>
 <p><span class="math display">\[
-u_{icst} = \alpha_c + \alpha_c + (\beta_1 \text{MUJER}_i = 0) + (\beta_2 \text{MUJER}_i \text{ZORIENTE}_s = 0) + \sum_{a} \gamma_a \delta_{ta} + (\theta_1 \Delta_{ct}^1 = 0)+ \theta_2 \Delta_{ct}^2
+u_{icst} = \alpha_c + \alpha_c + (\beta_1 \text{MUJER}_i = 0) + (\beta_2 \text{MUJER}_i \text{ZORIENTE}_s = 0) + \sum_{a} \gamma_a \delta_{ta} + (\theta_1 \Delta_{ct}^1 = 0)+ \theta_2 \Delta_{ct}^2 
 \]</span></p>
 <p>Donde <span class="math inline">\(\text{MUJER}_i \;=\; 0\)</span> porque el registro es de un hombre, y
 <span class="math inline">\(\theta_1 \Delta_{ct}^1 = 0\)</span> porque aplica para helado y en los
@@ -6648,7 +6580,7 @@ LL(\hat{\theta}) = \sum_{icst} y_{icst} ln\left(\frac{e^{u_{icst}}}{1+e^{u_{icst
 <li><p>The utility derived by customer <span class="math inline">\(i\)</span> from purchasing in category <span class="math inline">\(c\)</span>
 at store <span class="math inline">\(s\)</span> in month <span class="math inline">\(t\)</span> is given by:</p>
 <p><span class="math display">\[
-u_{icst} = \alpha_c + \alpha_c + (\beta_1 \text{MUJER}_i = 0) + (\beta_2 \text{MUJER}_i \text{ZORIENTE}_s = 0) + \sum_{a} \gamma_a \delta_{ta} + (\theta_1 \Delta_{ct}^1 = 0)+ \theta_2 \Delta_{ct}^2
+u_{icst} = \alpha_c + \alpha_c + (\beta_1 \text{MUJER}_i = 0) + (\beta_2 \text{MUJER}_i \text{ZORIENTE}_s = 0) + \sum_{a} \gamma_a \delta_{ta} + (\theta_1 \Delta_{ct}^1 = 0)+ \theta_2 \Delta_{ct}^2 
 \]</span></p>
 <p>Where <span class="math inline">\(\text{MUJER}_i \;=\; 0\)</span> because the record corresponds to a
 man, and <span class="math inline">\(\theta_1 \Delta_{ct}^1 = 0\)</span> because it applies to ice
@@ -6699,11 +6631,6 @@ inteligencia artificial, se cuenta con el puntaje de cada contenido en
 tres dimensiones distintos: producción, contenido y novedad.</p>
 <table>
 <caption><span id="tab:prob-p6-base">Table 2.12: </span> Descripción base de contenidos en la plataforma de creadores.</caption>
-<colgroup>
-<col width="26%" />
-<col width="47%" />
-<col width="26%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Variable</th>
@@ -6841,11 +6768,6 @@ platform has a score for each post in three different dimensions:
 production, content, and novelty.</p>
 <table>
 <caption><span id="tab:prob-p6-base">Table 2.12: </span> Baseline description of content on the creator platform.</caption>
-<colgroup>
-<col width="26%" />
-<col width="47%" />
-<col width="26%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Variable</th>
@@ -7094,7 +7016,7 @@ one simply multiplies.</p></li>
 </details>
 </div>
 <div id="problema-7-hippi-parkas-para-alta-montaña" class="section level3 unnumbered hasAnchor">
-<h3>Problema 7: Hippi — Parkas para alta montaña<a href="cap-probabilisticos.html#problema-7-hippi-parkas-para-alta-monta%C3%B1a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 7: Hippi — Parkas para alta montaña<a href="cap-probabilisticos.html#problema-7-hippi-parkas-para-alta-montaña" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Hippi es una empresa nacional dedicada a la fabricación de productos
 para alta montaña. La empresa cuenta con una base de datos que registra
@@ -7264,7 +7186,7 @@ L(\alpha,\beta,\pi |x) = \prod_{x=0}^{\infty} \mathbb{P}(X=x|\alpha,\beta,\pi)^{
 </details>
 </div>
 <div id="problema-8-pokémon-go" class="section level3 unnumbered hasAnchor">
-<h3>Problema 8: Pokémon Go<a href="cap-probabilisticos.html#problema-8-pok%C3%A9mon-go" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 8: Pokémon Go<a href="cap-probabilisticos.html#problema-8-pokémon-go" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Para revitalizar el interés de los usuarios, Pokémon Go está pensando
 introducir 7 nuevos personajes Pokémon en las comunas de Melipilla,
@@ -7286,18 +7208,6 @@ the following table:</p>
 <div class="lang-es">
 <table>
 <caption><span id="tab:prob-p8-mostrados">Table 2.13: </span> Número de veces que un determinado pokemón fue mostrado a un jugador.</caption>
-<colgroup>
-<col width="14%" />
-<col width="13%" />
-<col width="13%" />
-<col width="9%" />
-<col width="9%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="7%" />
-<col width="8%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Pokémon</th>
@@ -7403,18 +7313,6 @@ the following table:</p>
 <div class="lang-en">
 <table>
 <caption><span id="tab:prob-p8-mostrados">Table 2.13: </span> Number of times each pokémon was shown per municipality.</caption>
-<colgroup>
-<col width="14%" />
-<col width="13%" />
-<col width="13%" />
-<col width="9%" />
-<col width="9%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="7%" />
-<col width="8%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Pokémon</th>
@@ -7552,18 +7450,6 @@ that are part of the pilot study:</p>
 <div class="lang-es">
 <table>
 <caption><span id="tab:prob-p8-capturas">Table 2.14: </span> Número de veces que un jugador intentó atrapar a un determinado pokemón.</caption>
-<colgroup>
-<col width="14%" />
-<col width="13%" />
-<col width="13%" />
-<col width="9%" />
-<col width="9%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="7%" />
-<col width="8%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Pokémon</th>
@@ -7680,18 +7566,6 @@ cada pokémon <span class="math inline">\(k\)</span> y comuna <span class="math 
 <div class="lang-en">
 <table>
 <caption><span id="tab:prob-p8-capturas">Table 2.14: </span> Number of times a player attempted to catch a given pokémon.</caption>
-<colgroup>
-<col width="14%" />
-<col width="13%" />
-<col width="13%" />
-<col width="9%" />
-<col width="9%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="7%" />
-<col width="8%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Pokémon</th>
@@ -7977,7 +7851,7 @@ expression found in the previous part is substituted.</p></li>
 </details>
 </div>
 <div id="problema-9-aplicación-móvil-con-promociones-georreferenciadas" class="section level3 unnumbered hasAnchor">
-<h3>Problema 9: Aplicación móvil con promociones georreferenciadas<a href="cap-probabilisticos.html#problema-9-aplicaci%C3%B3n-m%C3%B3vil-con-promociones-georreferenciadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 9: Aplicación móvil con promociones georreferenciadas<a href="cap-probabilisticos.html#problema-9-aplicación-móvil-con-promociones-georreferenciadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Inmersos en la era digital, los consumidores están cada vez conectados
 en distintos dispositivos los cuales pueden ser usados como canales

@@ -176,7 +176,7 @@ Then, a simple reduced-form model for studying the problem is:
 
 :::
 
-\[p_i = \beta_0+ \beta_1POP_i + \beta_2INC_i + \beta_3CMP_i + \varepsilon_i\]
+$$p_i = \beta_0+ \beta_1POP_i + \beta_2INC_i + \beta_3CMP_i + \varepsilon_i$$
 
 ::: {.lang-es}
 
@@ -229,7 +229,7 @@ force members measured as number of units sold $q$.
 
 :::
 
-\[q=f(X,\beta)+\varepsilon\]
+$$q=f(X,\beta)+\varepsilon$$
 
 ::: {.lang-es}
 
@@ -1286,13 +1286,13 @@ notation, let $s=\varepsilon_{nit}$.
 
 :::
 
-\[
+$$
 \begin{aligned}
 P_{nit} &= \int_{-\infty}^{\infty} \left(\prod_{j\neq i}    e^{-e^{-(s + v_{nit} - v_{njt})}}\right) e^{-s} e^{-e^{-s}}ds\\
 &= \int_{-\infty}^{\infty} \left(\prod_{j}   e^{-e^{-(s + v_{nit} - v_{njt})}}\right) e^{-s}ds\\
 &= \int_{-\infty}^{\infty} exp\left(\sum_{j}  e^{-(v_{nit} - v_{njt})}\right) e^{-s}ds
 \end{aligned}
-\]
+$$
 
 ::: {.lang-es}
 
@@ -1628,8 +1628,8 @@ $x_{nj}$ of alternative $j$ changes.
 
 :::
 
-\[E_{ix_{nj}} = -\frac{\partial v_{nj}}{\partial x_{nj}}x_{nj} P_{nj},
-\forall i \neq j\]
+$$E_{ix_{nj}} = -\frac{\partial v_{nj}}{\partial x_{nj}}x_{nj} P_{nj},
+\forall i \neq j$$
 
 ::: {.lang-es}
 
@@ -1696,7 +1696,7 @@ observables, pero no a componentes no observables. Para ilustrar este
 resultado, supóngase un tomador de decisión caracterizado por la
 siguiente función de utilidad:
 
-\[u_{nit} = \alpha_i + \beta_np_{it} + \varepsilon_{nit}\]
+$$u_{nit} = \alpha_i + \beta_np_{it} + \varepsilon_{nit}$$
 
 Es decir, la utilidad de cada alternativa tiene una componente base
 que es constante entre los tomadores de decisión y una penalización
@@ -1706,7 +1706,7 @@ algunos tomadores de decisión sean más sensibles al precio que otros.
 Supóngase que se postula que el coeficiente de precio viene dado por
 la siguiente ecuación de regresión.
 
-\[\beta_n = \lambda_0 + \lambda_1I_n + \mu_n\]
+$$\beta_n = \lambda_0 + \lambda_1I_n + \mu_n$$
 
 Donde $\lambda_0$ captura la sensibilidad base al precio, $I_n$ el
 nivel de ingreso del agente $n$ y $\lambda_1$ el coeficiente que
@@ -1715,12 +1715,12 @@ precio. Por último, $\mu_n$ es un valor aleatorio que captura todas
 las otras componentes que modifican la sensibilidad al precio más allá
 del nivel base y los ingresos.
 
-\[
+$$
 \begin{aligned}
 u_{nit} &= \alpha_i + (\lambda_0 + \lambda_1 I_n + \mu_n)p_{it} + \varepsilon_{nit}\\
 &= \alpha_i + \lambda_0 p_{it} + \lambda_1p_{it}I_n + \xi_{nit}
 \end{aligned}
-\]
+$$
 
 Donde $\xi_{nit} = \mu_np_{it} + \varepsilon_{nit}$. De esta expresión
 debiera ser claro que la inclusión de heterogeneidad observable puede
@@ -1771,7 +1771,7 @@ study preference variation associated with observable components, but
 not with unobservable ones. To illustrate this result, suppose a
 decision maker is characterized by the following utility function:
 
-\[u_{nit} = \alpha_i + \beta_np_{it} + \varepsilon_{nit}\]
+$$u_{nit} = \alpha_i + \beta_np_{it} + \varepsilon_{nit}$$
 
 That is, the utility of each alternative has a base component that is
 constant across decision makers and a price penalty $p_{it}$ faced by
@@ -1780,7 +1780,7 @@ allowing some decision makers to be more price sensitive than others.
 Suppose that the price coefficient is postulated to follow the
 following regression equation:
 
-\[\beta_n = \lambda_0 + \lambda_1I_n + \mu_n\]
+$$\beta_n = \lambda_0 + \lambda_1I_n + \mu_n$$
 
 Here, $\lambda_0$ captures baseline price sensitivity, $I_n$ is the
 income level of agent $n$, and $\lambda_1$ indicates how income
@@ -1788,12 +1788,12 @@ affects price sensitivity. Finally, $\mu_n$ is a random value
 capturing all the other components that modify price sensitivity
 beyond the base level and income.
 
-\[
+$$
 \begin{aligned}
 u_{nit} &= \alpha_i + (\lambda_0 + \lambda_1 I_n + \mu_n)p_{it} + \varepsilon_{nit}\\
 &= \alpha_i + \lambda_0 p_{it} + \lambda_1p_{it}I_n + \xi_{nit}
 \end{aligned}
-\]
+$$
 
 where $\xi_{nit} = \mu_np_{it} + \varepsilon_{nit}$. From this
 expression, it should be clear that observable heterogeneity can be
@@ -1917,10 +1917,10 @@ $\text{Precio} \times \text{Ingreso}$ en la función de utilidad.
 
 El efecto del ingreso en la elasticidad precio depende directamente
 del parámetro $\gamma_1$ de la siguiente ecuación:
-\[\gamma_{\text{precio}} = \gamma_0  + \gamma_1\,\text{Ingreso}\]
+$$\gamma_{\text{precio}} = \gamma_0  + \gamma_1\,\text{Ingreso}$$
 Al reemplazar en la función de utilidad se obtiene:
-\[u_{nit} = \beta_0  + \gamma_0\,\text{Precio}
-  + \gamma_1\,\text{Ingreso} \times \text{Precio}\]
+$$u_{nit} = \beta_0  + \gamma_0\,\text{Precio}
+  + \gamma_1\,\text{Ingreso} \times \text{Precio}$$
 El coeficiente $\gamma_1$ (o $\delta$ en la notación del
 enunciado) captura directamente cómo varía la sensibilidad al
 precio con el nivel de ingreso. Si $\gamma_1 > 0$, los hogares
@@ -1948,10 +1948,10 @@ $\text{Price} \times \text{Income}$ in the utility function.
 
 The effect of income on price elasticity depends directly on the
 parameter $\gamma_1$ of the following equation:
-\[\gamma_{\text{price}} = \gamma_0  + \gamma_1\,\text{Income}\]
+$$\gamma_{\text{price}} = \gamma_0  + \gamma_1\,\text{Income}$$
 Substituting into the utility function yields:
-\[u_{nit} = \beta_0  + \gamma_0\,\text{Price}
-  + \gamma_1\,\text{Income} \times \text{Price}\]
+$$u_{nit} = \beta_0  + \gamma_0\,\text{Price}
+  + \gamma_1\,\text{Income} \times \text{Price}$$
 The coefficient $\gamma_1$ (or $\delta$ in the problem statement
 notation) directly captures how price sensitivity varies with
 income level. If $\gamma_1 > 0$, higher-income households are less
@@ -1980,7 +1980,7 @@ $\hat{\boldsymbol{\theta}}
 
 Se aplica la definición directamente. Como
 $\hat{\boldsymbol{\theta}}$ tiene $k = 2$ componentes:
-\[AIC = -2\ln(f(\mathbf{X}|\hat{\boldsymbol{\theta}})) + 2k    = -2\ln(f(\mathbf{X}|\hat{\boldsymbol{\theta}})) + 4\]
+$$AIC = -2\ln(f(\mathbf{X}|\hat{\boldsymbol{\theta}})) + 2k    = -2\ln(f(\mathbf{X}|\hat{\boldsymbol{\theta}})) + 4$$
 
 </details>
 
@@ -2003,7 +2003,7 @@ $\hat{\boldsymbol{\theta}}
 
 The definition is applied directly. Since
 $\hat{\boldsymbol{\theta}}$ has $k = 2$ components:
-\[AIC = -2\ln(f(\mathbf{X}|\hat{\boldsymbol{\theta}})) + 2k    = -2\ln(f(\mathbf{X}|\hat{\boldsymbol{\theta}})) + 4\]
+$$AIC = -2\ln(f(\mathbf{X}|\hat{\boldsymbol{\theta}})) + 2k    = -2\ln(f(\mathbf{X}|\hat{\boldsymbol{\theta}})) + 4$$
 
 </details>
 
@@ -2506,11 +2506,11 @@ de referencia en un modelo logit.
 <summary>Ver solución</summary>
 
 Se define la componente determinística de la utilidad como:
-\[v_{nit} = \beta_0 + \beta_1(P_{nit} - RP_{nit})\]
+$$v_{nit} = \beta_0 + \beta_1(P_{nit} - RP_{nit})$$
 donde $P_{nit}$ es el precio de la alternativa $i$ al que se
 enfrenta el cliente $n$ en la ocasión de compra $t$ y $RP_{nit}$
 es el precio de referencia, típicamente definido como:
-\[RP_{nit} = \lambda\, RP_{ni,t-1}           + (1 - \lambda)\, P_{ni,t-1}\]
+$$RP_{nit} = \lambda\, RP_{ni,t-1}           + (1 - \lambda)\, P_{ni,t-1}$$
 Con esta especificación, la probabilidad de elección se calcula
 usando la fórmula estándar del modelo logit. Es posible agregar
 una especificación asimétrica separando las desviaciones positivas
@@ -2533,11 +2533,11 @@ logit model.
 <summary>Ver solución</summary>
 
 The deterministic utility component is defined as:
-\[v_{nit} = \beta_0 + \beta_1(P_{nit} - RP_{nit})\]
+$$v_{nit} = \beta_0 + \beta_1(P_{nit} - RP_{nit})$$
 where $P_{nit}$ is the price of alternative $i$ faced by customer
 $n$ at purchase occasion $t$ and $RP_{nit}$ is the reference
 price, typically defined as:
-\[RP_{nit} = \lambda\, RP_{ni,t-1}           + (1 - \lambda)\, P_{ni,t-1}\]
+$$RP_{nit} = \lambda\, RP_{ni,t-1}           + (1 - \lambda)\, P_{ni,t-1}$$
 With this specification, the choice probability is computed using
 the standard logit formula. It is possible to add an asymmetric
 specification separating positive deviations (losses) and negative
@@ -2828,12 +2828,12 @@ un modelo lineal con una única variable para describir la componente
 sistemática de la utilidad. En este caso, las utilidades por cada
 alternativa vienen dadas por:
 
-\[
+$$
 \begin{aligned}
 u_{n1} &= \beta_n x_{n1} + \varepsilon_{n1}\\
 u_{n2} &= \beta_n x_{n2} + \varepsilon_{n2}
 \end{aligned}
-\]
+$$
 
 donde $\varepsilon_{n1}$ y $\varepsilon_{n2}$ son términos
 independientes e idénticamente distribuidos con varianza
@@ -2841,12 +2841,12 @@ $\sigma_\varepsilon$. Si se asume que el parámetro $\beta_n$ se
 distribuye normal con media $b$ y varianza $\sigma_\beta$, entonces se
 puede reescribir las utilidades como:
 
-\[
+$$
 \begin{aligned}
 u_{n1} &= b x_{n1} + \eta_{n1}\\
 u_{n2} &= b x_{n2} + \eta_{n2}
 \end{aligned}
-\]
+$$
 
 donde $\eta_{n1}$ y $\eta_{n2}$ están normalmente distribuidas. Cada
 una tiene esperanza cero:
@@ -2857,7 +2857,7 @@ y covarianzas
 $\mathbb{C}ov(\eta_{n1}, \eta_{n2}) = x_{n1}x_{n2}\sigma_\beta$. Así,
 la matriz de covarianza viene dada por:
 
-\[
+$$
 \begin{aligned}
 \Sigma &=
 \begin{bmatrix}
@@ -2877,14 +2877,14 @@ x_{n1}x_{n2} & x^2_{n2}
 0 & 1
 \end{bmatrix}
 \end{aligned}
-\]
+$$
 
 El siguiente paso es estimar. Recordando que el comportamiento no es
 afectado por transformaciones multiplicativas de la utilidad, es
 necesario escalar esta matriz. Lo recomendable es fijar
 $\sigma_\varepsilon = 1$, obteniendo así:
 
-\[
+$$
 \Sigma=
 \sigma_\beta
 \begin{bmatrix}
@@ -2896,7 +2896,7 @@ x_{n1}x_{n2} & x^2_{n2}
 1 & 0\\
 0 & 1
 \end{bmatrix}
-\]
+$$
 
 :::
 
@@ -2911,12 +2911,12 @@ specification with a single variable describing the systematic
 component of utility. In that case, the utilities for each alternative
 are given by:
 
-\[
+$$
 \begin{aligned}
 u_{n1} &= \beta_n x_{n1} + \varepsilon_{n1}\\
 u_{n2} &= \beta_n x_{n2} + \varepsilon_{n2}
 \end{aligned}
-\]
+$$
 
 where $\varepsilon_{n1}$ and $\varepsilon_{n2}$ are independent and
 identically distributed terms with variance $\sigma_\varepsilon$. If
@@ -2924,12 +2924,12 @@ one assumes that the parameter $\beta_n$ is normally distributed with
 mean $b$ and variance $\sigma_\beta$, the utilities can be rewritten
 as:
 
-\[
+$$
 \begin{aligned}
 u_{n1} &= b x_{n1} + \eta_{n1}\\
 u_{n2} &= b x_{n2} + \eta_{n2}
 \end{aligned}
-\]
+$$
 
 where $\eta_{n1}$ and $\eta_{n2}$ are normally distributed. Each has
 zero mean,
@@ -2940,7 +2940,7 @@ and covariance
 $\mathbb{C}ov(\eta_{n1}, \eta_{n2}) = x_{n1}x_{n2}\sigma_\beta$. Thus,
 the covariance matrix is:
 
-\[
+$$
 \begin{aligned}
 \Sigma &=
 \begin{bmatrix}
@@ -2960,14 +2960,14 @@ x_{n1}x_{n2} & x^2_{n2}
 0 & 1
 \end{bmatrix}
 \end{aligned}
-\]
+$$
 
 The next step is estimation. Since behavior is unaffected by
 multiplicative transformations of utility, it is necessary to scale
 this matrix. A standard recommendation is to fix
 $\sigma_\varepsilon = 1$, yielding:
 
-\[
+$$
 \Sigma=
 \sigma_\beta
 \begin{bmatrix}
@@ -2979,7 +2979,7 @@ x_{n1}x_{n2} & x^2_{n2}
 1 & 0\\
 0 & 1
 \end{bmatrix}
-\]
+$$
 
 :::
 
@@ -4135,11 +4135,11 @@ normaliza la utilidad de no elegir a 0?
 
 Sea $\pi$ la probabilidad de que un cliente pertenezca al
 segmento 1. La probabilidad de elección viene dada por:
-\[P_{ni} = \pi  \frac{\exp(v(\boldsymbol{\theta}_1))}
+$$P_{ni} = \pi  \frac{\exp(v(\boldsymbol{\theta}_1))}
        {1 + \exp(v(\boldsymbol{\theta}_1))}
 + (1 - \pi)
   \frac{\exp(v(\boldsymbol{\theta}_2))}
-       {1 + \exp(v(\boldsymbol{\theta}_2))}\]
+       {1 + \exp(v(\boldsymbol{\theta}_2))}$$
 La utilidad de no elegir se ha normalizado a 0, por lo que el
 denominador del logit binario es
 $1 + \exp(v(\boldsymbol{\theta}_m))$ para cada clase $m$.
@@ -4167,11 +4167,11 @@ normalized to 0?
 
 Let $\pi$ be the probability that a customer belongs to segment 1.
 The choice probability is given by:
-\[P_{ni} = \pi  \frac{\exp(v(\boldsymbol{\theta}_1))}
+$$P_{ni} = \pi  \frac{\exp(v(\boldsymbol{\theta}_1))}
        {1 + \exp(v(\boldsymbol{\theta}_1))}
 + (1 - \pi)
   \frac{\exp(v(\boldsymbol{\theta}_2))}
-       {1 + \exp(v(\boldsymbol{\theta}_2))}\]
+       {1 + \exp(v(\boldsymbol{\theta}_2))}$$
 The utility of not choosing has been normalized to 0, so the
 denominator of the binary logit is
 $1 + \exp(v(\boldsymbol{\theta}_m))$ for each class $m$.
@@ -4196,8 +4196,8 @@ elija la alternativa $i$.
 <summary>Ver solución</summary>
 
 Dicha probabilidad puede estimarse como:
-\[\hat{P}_{ni} = \frac{1}{R}\sum_{r=1}^R  \frac{\exp(v_i(\boldsymbol{\theta}^{(r)}))}
-       {\sum_k \exp(v_k(\boldsymbol{\theta}^{(r)}))}\]
+$$\hat{P}_{ni} = \frac{1}{R}\sum_{r=1}^R  \frac{\exp(v_i(\boldsymbol{\theta}^{(r)}))}
+       {\sum_k \exp(v_k(\boldsymbol{\theta}^{(r)}))}$$
 donde $v_i(\boldsymbol{\theta})$ es la componente determinística
 de la utilidad que el tomador de decisión deriva al elegir la
 alternativa $i$, evaluada en la $r$-ésima muestra de parámetros
@@ -4221,8 +4221,8 @@ probability that consumer $n$ chooses alternative $i$.
 <summary>Ver solución</summary>
 
 That probability can be estimated as:
-\[\hat{P}_{ni} = \frac{1}{R}\sum_{r=1}^R  \frac{\exp(v_i(\boldsymbol{\theta}^{(r)}))}
-       {\sum_k \exp(v_k(\boldsymbol{\theta}^{(r)}))}\]
+$$\hat{P}_{ni} = \frac{1}{R}\sum_{r=1}^R  \frac{\exp(v_i(\boldsymbol{\theta}^{(r)}))}
+       {\sum_k \exp(v_k(\boldsymbol{\theta}^{(r)}))}$$
 where $v_i(\boldsymbol{\theta})$ is the deterministic component of
 the utility that the decision-maker derives from choosing
 alternative $i$, evaluated at the $r$-th parameter draw
@@ -5673,7 +5673,7 @@ Un administrador de la categoría aceites de una sala del centro de Santiago de 
 
 Después de una reunión de trabajo con administradores de categoría en otras salas se ha acordado que un buen punto de partida es usar un modelo estructural en que la componente determinística de la utilidad de compra viene dada por:
 
-\[v_{ijt} = \alpha_{ij} + \beta_{i1} PRICE_{jt} + \beta_{i2} COUPON_{ijt}\]
+$$v_{ijt} = \alpha_{ij} + \beta_{i1} PRICE_{jt} + \beta_{i2} COUPON_{ijt}$$
 
 Sin embargo, hasta el momento no hay demasiada claridad respecto a cómo introducir heterogeneidad en el modelo, por lo que se barajan varias alternativas.
 
@@ -5685,7 +5685,7 @@ A category manager for cooking oils at a store in central Santiago belonging to 
 
 After a working meeting with category managers from other stores, it has been agreed that a good starting point is to use a structural model where the deterministic component of purchase utility is given by:
 
-\[v_{ijt} = \alpha_{ij} + \beta_{i1} PRICE_{jt} + \beta_{i2} COUPON_{ijt}\]
+$$v_{ijt} = \alpha_{ij} + \beta_{i1} PRICE_{jt} + \beta_{i2} COUPON_{ijt}$$
 
 However, there is not yet much clarity regarding how to introduce heterogeneity into the model, so several alternatives are being considered.
 
@@ -5714,21 +5714,21 @@ b) Write an (approximation to the) log-likelihood of a mixed logit model. As bef
 
 a) La función de log-verosimilitud viene dada por:
 
-   \[
+   $$
    LL = \sum_i \sum_j \sum_t y_{ijt} \ln\left[\frac{\exp(\lambda)}{1 + \exp(\lambda)} \frac{\exp(v_{ijt}^1)}{\sum_k \exp(v_{ikt}^1)} + \frac{1}{1 + \exp(\lambda)} \frac{\exp(v_{ijt}^2)}{\sum_k \exp(v_{ikt}^2)}\right]
-   \]
+   $$
 
    donde $v_{ijt}^1$ y $v_{ijt}^2$ son las componentes sistemáticas de
    la utilidad de los clientes pertenecientes a las clases 1 y 2
    respectivamente y vienen dadas por:
 
-   \[
+   $$
    v_{ijt}^1 = \alpha_{ij}^1 + \beta_{i1}^1 PRICE_{jt} + \beta_{i2}^1 COUPON_{ijt}
-   \]
+   $$
 
-   \[
+   $$
    v_{ijt}^2 = \alpha_{ij}^2 + \beta_{i1}^2 PRICE_{jt} + \beta_{i2}^2 COUPON_{ijt}
-   \]
+   $$
 
    Los parámetros $\alpha_{ij}^1$, $\beta_{i1}^1$ y $\beta_{i2}^1$
    corresponden a los parámetros caracterizando a la clase 1 y
@@ -5740,9 +5740,9 @@ a) La función de log-verosimilitud viene dada por:
 
 b) La (aproximación de la) función de log-verosimilitud viene dada por:
 
-   \[
+   $$
    LL = \sum_i \sum_j \sum_t y_{ijt} \ln\left(\frac{1}{R} \sum_r \frac{\exp(v_{ijt}^r)}{\sum_k \exp(v_{ikt}^r)}\right)
-   \]
+   $$
 
    donde $v_{ijt}^r$ son las componentes sistemáticas de la utilidad de
    los clientes si los parámetros toman los valores $\alpha_{ij}^r$,
@@ -5754,21 +5754,21 @@ b) La (aproximación de la) función de log-verosimilitud viene dada por:
 
 a) The log-likelihood function is given by:
 
-   \[
+   $$
    LL = \sum_i \sum_j \sum_t y_{ijt} \ln\left[\frac{\exp(\lambda)}{1 + \exp(\lambda)} \frac{\exp(v_{ijt}^1)}{\sum_k \exp(v_{ikt}^1)} + \frac{1}{1 + \exp(\lambda)} \frac{\exp(v_{ijt}^2)}{\sum_k \exp(v_{ikt}^2)}\right]
-   \]
+   $$
 
    where $v_{ijt}^1$ and $v_{ijt}^2$ are the systematic utility
    components for customers belonging to classes 1 and 2,
    respectively, and are given by:
 
-   \[
+   $$
    v_{ijt}^1 = \alpha_{ij}^1 + \beta_{i1}^1 PRICE_{jt} + \beta_{i2}^1 COUPON_{ijt}
-   \]
+   $$
 
-   \[
+   $$
    v_{ijt}^2 = \alpha_{ij}^2 + \beta_{i1}^2 PRICE_{jt} + \beta_{i2}^2 COUPON_{ijt}
-   \]
+   $$
 
    The parameters $\alpha_{ij}^1$, $\beta_{i1}^1$, and $\beta_{i2}^1$
    correspond to the parameters characterizing class 1, while
@@ -5779,9 +5779,9 @@ a) The log-likelihood function is given by:
 
 b) The (approximation of the) log-likelihood function is given by:
 
-   \[
+   $$
    LL = \sum_i \sum_j \sum_t y_{ijt} \ln\left(\frac{1}{R} \sum_r \frac{\exp(v_{ijt}^r)}{\sum_k \exp(v_{ikt}^r)}\right)
-   \]
+   $$
 
    where $v_{ijt}^r$ are the systematic utility components when
    parameters take the values $\alpha_{ij}^r$, $\beta_1^r$, and
@@ -5839,10 +5839,10 @@ b) The (approximation of the) log-likelihood function is given by:
    no se ha impuesto ninguna restricción más allá de la simetría.
    Calcule explícitamente:
 
-   \[\begin{aligned}
+   $$\begin{aligned}
    P_A &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \mathbb{1}(v_A + \varepsilon_A > v_B + \varepsilon_B) \\
    &\quad \cdot \phi(\varepsilon_A, \varepsilon_B)\, d\varepsilon_A\, d\varepsilon_B
-   \end{aligned}\]
+   \end{aligned}$$
 
    Justifique su respuesta e interprete el resultado.
 
@@ -5857,10 +5857,10 @@ b) The (approximation of the) log-likelihood function is given by:
    matrix, that is, one on which no restriction beyond symmetry has
    been imposed. Explicitly compute:
 
-   \[\begin{aligned}
+   $$\begin{aligned}
    P_A &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \mathbb{1}(v_A + \varepsilon_A > v_B + \varepsilon_B) \\
    &\quad \cdot \phi(\varepsilon_A, \varepsilon_B)\, d\varepsilon_A\, d\varepsilon_B
-   \end{aligned}\]
+   \end{aligned}$$
 
    Justify your answer and interpret the result.
 
@@ -5948,7 +5948,7 @@ b) The (approximation of the) log-likelihood function is given by:
 1. 
    a) La utilidad que experimenta un cliente $n$ respecto a la marca $i$ en la ocasión de compra $t$ viene dada por:
 
-      \[u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \beta_{PAN}\, PAN_i + \varepsilon_{nit}\]
+      $$u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \beta_{PAN}\, PAN_i + \varepsilon_{nit}$$
 
       donde $PAN_i$ toma el valor 1 si la alternativa $i$ corresponde al formato pan, $PRECIO_{it}$ es el precio de la alternativa $i$ en la oportunidad de compra $t$ y $\varepsilon_{nit}$ independientes e idénticamente distribuidas valor extremo tipo I. Notar que por motivos de identificación, este modelo hemos fijado en cero la utilidad intrínseca de la alternativa pote.
 
@@ -5956,19 +5956,19 @@ b) The (approximation of the) log-likelihood function is given by:
 
       - La utilidad que experimenta un cliente $n$ respecto a la marca $i$ en la ocasión de compra $t$ viene dada por:
 
-         \[u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \beta_{PAN}\, PAN_i + \sum_{j=1}^{4} \alpha_j M_{ij} + \varepsilon_{nit}\]
+         $$u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \beta_{PAN}\, PAN_i + \sum_{j=1}^{4} \alpha_j M_{ij} + \varepsilon_{nit}$$
 
          donde $PAN_i$ toma el valor 1 si la alternativa $i$ corresponde al formato pan, $M_{ij}$ toma el valor 1 si la alternativa $i$ es de la marca $j$, $PRECIO_{it}$ es el precio de la alternativa $i$ en la oportunidad de compra $t$ y $\varepsilon_{nit}$ independientes e idénticamente distribuidas valor extremo tipo I. Notar que por motivos de identificación, este modelo hemos fijado en cero la utilidad intrínseca de la alternativa pote y de la última marca (Es por esto que la sumatoria llega hasta 4 y no hasta 5).
 
       - La utilidad que experimenta un cliente $n$ respecto a la marca $i$ en la ocasión de compra $t$ viene dada por:
 
-         \[u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \sum_{j=1}^{N-1} \alpha_j MF_{ij} + \varepsilon_{nit}\]
+         $$u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \sum_{j=1}^{N-1} \alpha_j MF_{ij} + \varepsilon_{nit}$$
 
          donde $MF_{ij}$ toma el valor 1 si la alternativa $i$ corresponde a la marca-formato $j$, $PRECIO_{it}$ es el precio de la alternativa $i$ en la oportunidad de compra $t$ y $\varepsilon_{nit}$ independientes e idénticamente distribuidas valor extremo tipo I. Si todas las marcas están disponibles en todos los formatos, entonces tenemos $N = 2 \times 5$ marca-formatos, de los cuales solo podemos identificar $N-1$ interceptos.
 
    c) Asumiendo que la utilidad que experimenta un cliente $n$ respecto a la marca $i$ en la ocasión de compra $t$ depende exclusivamente del precio (si dependiera de otros factores simplemente tendríamos que agregar los términos correspondientes), la función de utilidad puede expresarse como:
 
-      \[u_{nit} = \beta_{0p} + \beta_{1p}\, ING_n + \beta_{2p}\, PRECIO_{it} + \beta_{3p}\, ING_n + PRECIO_{it} + \varepsilon_{nit}\]
+      $$u_{nit} = \beta_{0p} + \beta_{1p}\, ING_n + \beta_{2p}\, PRECIO_{it} + \beta_{3p}\, ING_n + PRECIO_{it} + \varepsilon_{nit}$$
 
       donde $PRECIO_{it}$ es el precio de la alternativa $i$ en la oportunidad de compra $t$ y $\varepsilon_{nit}$ independientes e idénticamente distribuidas valor extremo tipo I.
 
@@ -5992,11 +5992,11 @@ b) The (approximation of the) log-likelihood function is given by:
 
 4. Por definición:
 
-   \[BIC = -2LL(\hat{\theta}) + k \ln(n)\]
+   $$BIC = -2LL(\hat{\theta}) + k \ln(n)$$
 
    donde $LL(\hat{\theta})$ es la log verosimilitud evaluada en el estimador máximo verosímil, $k$ el número de parámetros en el modelo y $n$ el número de observaciones sobre la que se calcula la verosimilitud. Entonces:
 
-   \[BIC = -2(-1344.35) + 3 \ln(3615) = 2713.279\]
+   $$BIC = -2(-1344.35) + 3 \ln(3615) = 2713.279$$
 
 :::
 
@@ -6005,7 +6005,7 @@ b) The (approximation of the) log-likelihood function is given by:
 1.
    a) The utility experienced by customer $n$ for brand $i$ on purchase occasion $t$ is given by:
 
-      \[u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \beta_{PAN}\, PAN_i + \varepsilon_{nit}\]
+      $$u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \beta_{PAN}\, PAN_i + \varepsilon_{nit}$$
 
       where $PAN_i$ takes the value 1 if alternative $i$ corresponds to the stick format, $PRECIO_{it}$ is the price of alternative $i$ on purchase occasion $t$, and $\varepsilon_{nit}$ are independent and identically distributed type I extreme value. Note that, for identification reasons, this model sets the intrinsic utility of the tub alternative to zero.
 
@@ -6013,19 +6013,19 @@ b) The (approximation of the) log-likelihood function is given by:
 
       - The utility experienced by customer $n$ for brand $i$ on purchase occasion $t$ is given by:
 
-         \[u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \beta_{PAN}\, PAN_i + \sum_{j=1}^{4} \alpha_j M_{ij} + \varepsilon_{nit}\]
+         $$u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \beta_{PAN}\, PAN_i + \sum_{j=1}^{4} \alpha_j M_{ij} + \varepsilon_{nit}$$
 
          where $PAN_i$ takes the value 1 if alternative $i$ corresponds to the stick format, $M_{ij}$ takes the value 1 if alternative $i$ is of brand $j$, $PRECIO_{it}$ is the price of alternative $i$ on purchase occasion $t$, and $\varepsilon_{nit}$ are independent and identically distributed type I extreme value. Note that, for identification reasons, this model sets the intrinsic utility of the tub alternative and of the last brand to zero (this is why the summation goes up to 4 rather than 5).
 
       - The utility experienced by customer $n$ for brand $i$ on purchase occasion $t$ is given by:
 
-         \[u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \sum_{j=1}^{N-1} \alpha_j MF_{ij} + \varepsilon_{nit}\]
+         $$u_{nit} = \beta_{PRECIO}\, PRECIO_{it} + \sum_{j=1}^{N-1} \alpha_j MF_{ij} + \varepsilon_{nit}$$
 
          where $MF_{ij}$ takes the value 1 if alternative $i$ corresponds to brand-format $j$, $PRECIO_{it}$ is the price of alternative $i$ on purchase occasion $t$, and $\varepsilon_{nit}$ are independent and identically distributed type I extreme value. If all brands are available in all formats, then we have $N = 2 \times 5$ brand-formats, of which only $N-1$ intercepts can be identified.
 
    c) Assuming that the utility experienced by customer $n$ for brand $i$ on purchase occasion $t$ depends exclusively on price (if it depended on other factors, one would simply add the corresponding terms), the utility function can be expressed as:
 
-      \[u_{nit} = \beta_{0p} + \beta_{1p}\, ING_n + \beta_{2p}\, PRECIO_{it} + \beta_{3p}\, ING_n + PRECIO_{it} + \varepsilon_{nit}\]
+      $$u_{nit} = \beta_{0p} + \beta_{1p}\, ING_n + \beta_{2p}\, PRECIO_{it} + \beta_{3p}\, ING_n + PRECIO_{it} + \varepsilon_{nit}$$
 
       where $PRECIO_{it}$ is the price of alternative $i$ on purchase occasion $t$ and $\varepsilon_{nit}$ are independent and identically distributed type I extreme value.
 
@@ -6049,11 +6049,11 @@ b) The (approximation of the) log-likelihood function is given by:
 
 4. By definition:
 
-   \[BIC = -2LL(\hat{\theta}) + k \ln(n)\]
+   $$BIC = -2LL(\hat{\theta}) + k \ln(n)$$
 
    where $LL(\hat{\theta})$ is the log-likelihood evaluated at the maximum likelihood estimator, $k$ is the number of parameters in the model, and $n$ is the number of observations on which the likelihood is computed. Therefore:
 
-   \[BIC = -2(-1344.35) + 3 \ln(3615) = 2713.279\]
+   $$BIC = -2(-1344.35) + 3 \ln(3615) = 2713.279$$
 
 :::
 
@@ -6209,36 +6209,36 @@ design of future campaigns.
 
 a) La componente determinística de la utilidad viene dada por:
 
-   \[
+   $$
    v_n = \beta_0 + \beta_1\, Hombre_n + \beta_2\, Twitter_n + \beta_3\, Edad_n + \beta_4\, Edad_n^2
-   \]
+   $$
 
    Luego, la log-verosimilitud puede escribirse como:
 
-   \[
+   $$
    LL = \sum_n y_n \ln\frac{\exp(v_n)}{1 + \exp(v_n)} + (1-y_n) \ln\frac{1}{1 + \exp(v_n)}
-   \]
+   $$
 
 b) Para esta mujer, la componente sistemática de la utilidad viene dada
    por:
 
-   \[
+   $$
    v_n = -0.9623 + 3.4340 \times 0 + 0.0047 \times 0 + 0.0365 \times 20 - 0.0048 \times 400 = -2.1523
-   \]
+   $$
 
    Entonces:
 
-   \[
+   $$
    Pr(y_n = 1) = \frac{\exp(v_n)}{1 + \exp(v_n)} = 0.10412
-   \]
+   $$
 
 c) Si fuere usuaria de twitter, basta modificar la componente
    determinística de la utilidad $v_n \to v_n + 0.047 = -2.1476$ y
    recalcular la probabilidad:
 
-   \[
+   $$
    Pr(y_n = 1) = \frac{\exp(v_n)}{1 + \exp(v_n)} = 0.10456
-   \]
+   $$
 
    Como el cambio de probabilidad es muy bajo, podemos concluir que ser
    usuario de twitter no es muy relevante para explicar si una persona
@@ -6254,35 +6254,35 @@ c) Si fuere usuaria de twitter, basta modificar la componente
 
 a) The deterministic component of utility is given by:
 
-   \[
+   $$
    v_n = \beta_0 + \beta_1\, Hombre_n + \beta_2\, Twitter_n + \beta_3\, Edad_n + \beta_4\, Edad_n^2
-   \]
+   $$
 
    Then, the log-likelihood can be written as:
 
-   \[
+   $$
    LL = \sum_n y_n \ln\frac{\exp(v_n)}{1 + \exp(v_n)} + (1-y_n) \ln\frac{1}{1 + \exp(v_n)}
-   \]
+   $$
 
 b) For this woman, the systematic component of utility is given by:
 
-   \[
+   $$
    v_n = -0.9623 + 3.4340 \times 0 + 0.0047 \times 0 + 0.0365 \times 20 - 0.0048 \times 400 = -2.1523
-   \]
+   $$
 
    Therefore:
 
-   \[
+   $$
    Pr(y_n = 1) = \frac{\exp(v_n)}{1 + \exp(v_n)} = 0.10412
-   \]
+   $$
 
 c) If she were a Twitter user, it is enough to modify the
    deterministic component of utility $v_n \to v_n + 0.047 = -2.1476$
    and recalculate the probability:
 
-   \[
+   $$
    Pr(y_n = 1) = \frac{\exp(v_n)}{1 + \exp(v_n)} = 0.10456
-   \]
+   $$
 
    Since the probability change is very small, we can conclude that
    being a Twitter user is not very relevant for explaining whether a
@@ -6318,17 +6318,17 @@ Table: (\#tab:estr-p5-variables) Descripción de variables de la base de datos.
 Como primera aproximación, los analistas del departamento de estudio han
 propuesto describir el gasto en tienda usando el siguiente modelo:
 
-\[y_n = \begin{cases}
+$$y_n = \begin{cases}
 \beta_0 + \beta_1\, Mujer_n + \beta_2\, Edad_n + \varepsilon_{1n}, & \text{si } w_n = 1 \\
 \beta'_0 + \beta'_1\, Mujer_n + \beta'_2\, Edad_n + \varepsilon_{2n}, & \text{si } w_n = 0
-\end{cases}\]
+\end{cases}$$
 
 Y para la decisión de adquisición de tarjeta:
 
-\[u_n = \begin{cases}
+$$u_n = \begin{cases}
 \gamma_0 + \gamma_1\, Mujer_n + \gamma_2\, Edad_n + \varepsilon_{3n}, & \text{adquiere tarjeta} \\
 \varepsilon_{4n}, & \text{no adquiere}
-\end{cases}\]
+\end{cases}$$
 
 :::
 
@@ -6353,17 +6353,17 @@ Table: (\#tab:estr-p5-variables) Database variable descriptions.
 As a first approximation, analysts in the research department have
 proposed describing in-store spending using the following model:
 
-\[y_n = \begin{cases}
+$$y_n = \begin{cases}
 \beta_0 + \beta_1\, Mujer_n + \beta_2\, Edad_n + \varepsilon_{1n}, & \text{if } w_n = 1 \\
 \beta'_0 + \beta'_1\, Mujer_n + \beta'_2\, Edad_n + \varepsilon_{2n}, & \text{if } w_n = 0
-\end{cases}\]
+\end{cases}$$
 
 And for the card acquisition decision:
 
-\[u_n = \begin{cases}
+$$u_n = \begin{cases}
 \gamma_0 + \gamma_1\, Mujer_n + \gamma_2\, Edad_n + \varepsilon_{3n}, & \text{acquires card} \\
 \varepsilon_{4n}, & \text{does not acquire}
-\end{cases}\]
+\end{cases}$$
 
 :::
 
@@ -6448,23 +6448,23 @@ spending behavior and card ownership.
 distribuidos valor extremo, entonces la probabilidad que el cliente
 elija adquirir la tarjeta viene dada directamente por la fórmula del
 logit, donde la utilidad de no adquisición se ha normalizado en 0:
-\[P_n = \frac{\exp(\gamma_0 + \gamma_1\, Mujer_n + \gamma_2\, Edad_n)}{1 + \exp(\gamma_0 + \gamma_1\, Mujer_n + \gamma_2\, Edad_n)}\]
+$$P_n = \frac{\exp(\gamma_0 + \gamma_1\, Mujer_n + \gamma_2\, Edad_n)}{1 + \exp(\gamma_0 + \gamma_1\, Mujer_n + \gamma_2\, Edad_n)}$$
 
 2. Dada la distribución de los errores, los montos gastados para ambos
 casos estarán normalmente distribuidos. Entonces, las verosimilitudes
 condicionales vienen dadas por:
-\[L(y_n|w_n = 1) = \frac{1}{\sqrt{2\pi\sigma_1^2}} \exp\left(-\frac{(y_n - (\beta_0 + \beta_1\, Mujer_n + \beta_2\, Edad_n))^2}{2\sigma_1^2}\right)\]
-\[L(y_n|w_n = 0) = \frac{1}{\sqrt{2\pi\sigma_2^2}} \exp\left(-\frac{(y_n - (\beta'_0 + \beta'_1\, Mujer_n + \beta'_2\, Edad_n))^2}{2\sigma_2^2}\right)\]
+$$L(y_n|w_n = 1) = \frac{1}{\sqrt{2\pi\sigma_1^2}} \exp\left(-\frac{(y_n - (\beta_0 + \beta_1\, Mujer_n + \beta_2\, Edad_n))^2}{2\sigma_1^2}\right)$$
+$$L(y_n|w_n = 0) = \frac{1}{\sqrt{2\pi\sigma_2^2}} \exp\left(-\frac{(y_n - (\beta'_0 + \beta'_1\, Mujer_n + \beta'_2\, Edad_n))^2}{2\sigma_2^2}\right)$$
 
 3. La respuesta se deriva directamente de la definición de
 verosimilitud y la fórmula de probabilidades totales:
-\[LL = \sum_n \ln\bigl(P_n\, L(y_n|w_n = 1) + (1-P_n)\, L(y_n|w_n = 0)\bigr)\]
+$$LL = \sum_n \ln\bigl(P_n\, L(y_n|w_n = 1) + (1-P_n)\, L(y_n|w_n = 0)\bigr)$$
 
 4. La restricción propuesta implicaría que los patrones de gastos entre
 clientes con y sin tarjeta serán equivalentes. Para testear esta
 hipótesis se puede usar el test de ratios de verosimilitud
 directamente:
-\[LR = 2(LL_0 - LL_1) = 2(-2332.57 - (-2418.42)) = 171.7\]
+$$LR = 2(LL_0 - LL_1) = 2(-2332.57 - (-2418.42)) = 171.7$$
 De acuerdo al número de restricciones, el $LR$ se distribuye
 $\chi^2_{k=3}$. Por tanto, como el estadístico es mayor que el valor
 crítico $\chi^2_{0.05,3} = 7.81$, rechazamos la hipótesis nula que el
@@ -6488,21 +6488,21 @@ son también respuestas correctas.
 extreme value distributed, then the probability that the customer
 chooses to acquire the card is given directly by the logit formula,
 where the utility of not acquiring has been normalized to 0:
-\[P_n = \frac{\exp(\gamma_0 + \gamma_1\, Mujer_n + \gamma_2\, Edad_n)}{1 + \exp(\gamma_0 + \gamma_1\, Mujer_n + \gamma_2\, Edad_n)}\]
+$$P_n = \frac{\exp(\gamma_0 + \gamma_1\, Mujer_n + \gamma_2\, Edad_n)}{1 + \exp(\gamma_0 + \gamma_1\, Mujer_n + \gamma_2\, Edad_n)}$$
 
 2. Given the error distribution, the amounts spent in both cases will
 be normally distributed. Then the conditional likelihoods are given by:
-\[L(y_n|w_n = 1) = \frac{1}{\sqrt{2\pi\sigma_1^2}} \exp\left(-\frac{(y_n - (\beta_0 + \beta_1\, Mujer_n + \beta_2\, Edad_n))^2}{2\sigma_1^2}\right)\]
-\[L(y_n|w_n = 0) = \frac{1}{\sqrt{2\pi\sigma_2^2}} \exp\left(-\frac{(y_n - (\beta'_0 + \beta'_1\, Mujer_n + \beta'_2\, Edad_n))^2}{2\sigma_2^2}\right)\]
+$$L(y_n|w_n = 1) = \frac{1}{\sqrt{2\pi\sigma_1^2}} \exp\left(-\frac{(y_n - (\beta_0 + \beta_1\, Mujer_n + \beta_2\, Edad_n))^2}{2\sigma_1^2}\right)$$
+$$L(y_n|w_n = 0) = \frac{1}{\sqrt{2\pi\sigma_2^2}} \exp\left(-\frac{(y_n - (\beta'_0 + \beta'_1\, Mujer_n + \beta'_2\, Edad_n))^2}{2\sigma_2^2}\right)$$
 
 3. The answer is derived directly from the definition of likelihood and
 the law of total probability:
-\[LL = \sum_n \ln\bigl(P_n\, L(y_n|w_n = 1) + (1-P_n)\, L(y_n|w_n = 0)\bigr)\]
+$$LL = \sum_n \ln\bigl(P_n\, L(y_n|w_n = 1) + (1-P_n)\, L(y_n|w_n = 0)\bigr)$$
 
 4. The proposed restriction would imply that spending patterns between
 customers with and without a card are equivalent. To test this
 hypothesis, the likelihood-ratio test can be used directly:
-\[LR = 2(LL_0 - LL_1) = 2(-2332.57 - (-2418.42)) = 171.7\]
+$$LR = 2(LL_0 - LL_1) = 2(-2332.57 - (-2418.42)) = 171.7$$
 According to the number of restrictions, $LR$ follows a
 $\chi^2_{k=3}$ distribution. Therefore, since the statistic is larger
 than the critical value $\chi^2_{0.05,3} = 7.81$, we reject the null
@@ -6546,10 +6546,10 @@ knitr::include_graphics("images/arbol_decision_tickets.png")
 Para completar el modelo, se han propuesto las siguientes
 especificaciones para las componentes sistemática de la utilidad:
 
-\[v_{PA} = \alpha_1 - \beta p_1\]
-\[v_{PN} = \alpha_2 - \beta p_1\]
-\[v_{EA} = \alpha_3 - \beta p_2\]
-\[v_{EN} = 0\]
+$$v_{PA} = \alpha_1 - \beta p_1$$
+$$v_{PN} = \alpha_2 - \beta p_1$$
+$$v_{EA} = \alpha_3 - \beta p_2$$
+$$v_{EN} = 0$$
 
 :::
 
@@ -6574,10 +6574,10 @@ knitr::include_graphics("images/arbol_decision_tickets.png")
 To complete the model, the following specifications have been proposed
 for the systematic components of utility:
 
-\[v_{PA} = \alpha_1 - \beta p_1\]
-\[v_{PN} = \alpha_2 - \beta p_1\]
-\[v_{EA} = \alpha_3 - \beta p_2\]
-\[v_{EN} = 0\]
+$$v_{PA} = \alpha_1 - \beta p_1$$
+$$v_{PN} = \alpha_2 - \beta p_1$$
+$$v_{EA} = \alpha_3 - \beta p_2$$
+$$v_{EN} = 0$$
 
 :::
 
@@ -6640,26 +6640,26 @@ $i \in I$.
 evento condicional en que esperó. Esta probabilidad viene dada
 directamente por la fórmula del logit:
 
-   \[
+   $$
    P_{A|E} = \frac{\exp(\alpha_3 - \beta p_2)}{\exp(\alpha_3 - \beta p_2) + 1}
-   \]
+   $$
 
    Luego calculamos la probabilidad de esperar no comprando en la
    preventa:
 
-   \[
+   $$
    P_E = \frac{\exp(\lambda\, IV_E)}{\exp(\lambda\, IV_P) + \exp(\lambda\, IV_E)}
-   \]
+   $$
 
    donde $IV_P$ y $IV_E$ son los valores inclusivos de comprar y no
    comprar en la preventa respectivamente:
 
-   \[
+   $$
    IV_P = \ln(\exp(\alpha_1 - \beta p_1) + \exp(\alpha_2 - \beta p_1))
-   \]
-   \[
+   $$
+   $$
    IV_E = \ln(\exp(\alpha_3 - \beta p_2) + 1)
-   \]
+   $$
 
    Finalmente, la probabilidad total viene dada por la multiplicación
    de las dos probabilidades anteriores:
@@ -6668,9 +6668,9 @@ directamente por la fórmula del logit:
 
 2. Aplicamos directamente la definición de la verosimilitud:
 
-   \[
+   $$
    LL(\theta) = \sum_n \sum_{i \in I} y_{ni} \ln(P_i(\theta))
-   \]
+   $$
 
 3. Imponer que $\alpha_1 = \alpha_3$ implicaría que la utilidad
 intrínseca que los clientes derivan por asistir al evento es la misma
@@ -6692,26 +6692,26 @@ libertad.
 event given that the customer waited. This probability is given
 directly by the logit formula:
 
-   \[
+   $$
    P_{A|E} = \frac{\exp(\alpha_3 - \beta p_2)}{\exp(\alpha_3 - \beta p_2) + 1}
-   \]
+   $$
 
    Then we calculate the probability of waiting without buying in the
    pre-sale:
 
-   \[
+   $$
    P_E = \frac{\exp(\lambda\, IV_E)}{\exp(\lambda\, IV_P) + \exp(\lambda\, IV_E)}
-   \]
+   $$
 
    where $IV_P$ and $IV_E$ are the inclusive values of buying and not
    buying in the pre-sale, respectively:
 
-   \[
+   $$
    IV_P = \ln(\exp(\alpha_1 - \beta p_1) + \exp(\alpha_2 - \beta p_1))
-   \]
-   \[
+   $$
+   $$
    IV_E = \ln(\exp(\alpha_3 - \beta p_2) + 1)
-   \]
+   $$
 
    Finally, the total probability is given by multiplying the two
    previous probabilities:
@@ -6720,9 +6720,9 @@ directly by the logit formula:
 
 2. We apply the definition of likelihood directly:
 
-   \[
+   $$
    LL(\theta) = \sum_n \sum_{i \in I} y_{ni} \ln(P_i(\theta))
-   \]
+   $$
 
 3. Imposing $\alpha_1 = \alpha_3$ would imply that the intrinsic
 utility customers derive from attending the event is the same
@@ -6750,7 +6750,7 @@ ventas ($q_t$) y gasto publicitario ($ADV_t$) para las últimas 205
 semanas y ha propuesto un modelo de elección binaria basado en la
 siguiente función de utilidad:
 
-\[u_t = \alpha + \beta \ln(p_t) + \gamma ADV_t + \nu_t + \varepsilon_t\]
+$$u_t = \alpha + \beta \ln(p_t) + \gamma ADV_t + \nu_t + \varepsilon_t$$
 
 donde $\nu_t$ están normalmente distribuidos con media 0 y $\varepsilon_t$ están distribuidos valor extremo.
 
@@ -6765,7 +6765,7 @@ and advertising expenditure ($ADV_t$) series for the last 205 weeks and
 has proposed a binary choice model based on the following utility
 function:
 
-\[u_t = \alpha + \beta \ln(p_t) + \gamma ADV_t + \nu_t + \varepsilon_t\]
+$$u_t = \alpha + \beta \ln(p_t) + \gamma ADV_t + \nu_t + \varepsilon_t$$
 
 where $\nu_t$ are normally distributed with mean 0 and $\varepsilon_t$ are extreme value distributed.
 
@@ -6775,9 +6775,9 @@ where $\nu_t$ are normally distributed with mean 0 and $\varepsilon_t$ are extre
 
 1. Muestre que si $s_t$ es la participación de mercado del producto, los parámetros $\alpha$, $\beta$ y $\gamma$ pueden estimarse usando un enfoque de mínimos cuadrados ordinarios sobre la siguiente ecuación:
 
-   \[
+   $$
    \ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t
-   \]
+   $$
 
 :::
 
@@ -6785,9 +6785,9 @@ where $\nu_t$ are normally distributed with mean 0 and $\varepsilon_t$ are extre
 
 1. Show that if $s_t$ is the product's market share, the parameters $\alpha$, $\beta$, and $\gamma$ can be estimated using an ordinary least squares approach on the following equation:
 
-   \[
+   $$
    \ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t
-   \]
+   $$
 
 :::
 
@@ -6831,35 +6831,35 @@ where $\nu_t$ are normally distributed with mean 0 and $\varepsilon_t$ are extre
 
 1. Aplicando la definición del modelo logit:
 
-   \[
+   $$
    s_t = \frac{\exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}
-   \]
-   \[
+   $$
+   $$
    1 - s_t = \frac{1}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}
-   \]
+   $$
 
    Como los denominadores son iguales:
 
-   \[
+   $$
    \frac{s_t}{1-s_t} = \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)
-   \]
+   $$
 
    Aplicando logaritmo y reordenando términos:
 
-   \[
+   $$
    \ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t
-   \]
+   $$
 
    Como $\nu_t$ está normalmente distribuido, se satisfacen las condiciones para aplicar mínimos cuadrados ordinarios.
 
 2. Se evalúa directamente:
 
-   \[
+   $$
    s_t(ADV_t = 10) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)} = 0.792
-   \]
-   \[
+   $$
+   $$
    s_t(ADV_t = 20) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)} = 0.988
-   \]
+   $$
 
    Por lo tanto hay un incremento de $\Delta = 19.6$ puntos porcentuales.
 
@@ -6869,35 +6869,35 @@ where $\nu_t$ are normally distributed with mean 0 and $\varepsilon_t$ are extre
 
 1. Applying the logit model definition:
 
-   \[
+   $$
    s_t = \frac{\exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}
-   \]
-   \[
+   $$
+   $$
    1 - s_t = \frac{1}{1 + \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)}
-   \]
+   $$
 
    Since the denominators are equal:
 
-   \[
+   $$
    \frac{s_t}{1-s_t} = \exp(\alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t)
-   \]
+   $$
 
    Taking logarithms and rearranging terms:
 
-   \[
+   $$
    \ln(s_t) - \ln(1-s_t) = \alpha + \beta \ln(p_t) + \gamma\, ADV_t + \nu_t
-   \]
+   $$
 
    Since $\nu_t$ is normally distributed, the conditions for applying ordinary least squares are satisfied.
 
 2. Direct evaluation:
 
-   \[
+   $$
    s_t(ADV_t = 10) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 10)} = 0.792
-   \]
-   \[
+   $$
+   $$
    s_t(ADV_t = 20) = \frac{\exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)}{1 + \exp(-1.76 - 1.23 \ln(1) + 0.31 \times 20)} = 0.988
-   \]
+   $$
 
    Therefore, there is an increase of $\Delta = 19.6$ percentage points.
 
@@ -7120,9 +7120,9 @@ of these two models are available in the following table:
    extremo tipo I, entonces resulta un modelo logit, cuya log
    verosimilitud viene dada por:
 
-   \[
+   $$
    LL = \sum_n \sum_t y_{nt} \ln\frac{\exp(\beta_0' x_{nt})}{1 + \exp(\beta_0' x_{nt})} + (1-y_{nt}) \ln\frac{1}{1 + \exp(\beta_0' x_{nt})}
-   \]
+   $$
 
 2. Si no hay variabilidad entonces no podemos saber cuál es el efecto
    del precio. Otras variables que podrían recolectarse son algunas
@@ -7140,17 +7140,17 @@ of these two models are available in the following table:
    métrica acumulada de publicidad en $t$ ($ADV_t$) puede definirse
    como:
 
-      \[
+      $$
       ADV_t = \lambda\, ADV_{t-1} + (1-\lambda)\, a_{t-1}
-      \]
+      $$
 
    b) Aunque otras formas funcionales son posibles, lo más sencillo es
    imponer que la publicidad acumulada entra aditivamente en la
    función de utilidad:
 
-      \[
+      $$
       u_{nt} = \beta_0' x_{nt} + \delta\, ADV_t + \varepsilon_{nt}
-      \]
+      $$
 
       donde $x_{nt}$ incluye cualquier otra variable explicativa que
       quiera usarse para describir la utilidad de elección.
@@ -7159,9 +7159,9 @@ of these two models are available in the following table:
    imponer que la publicidad acumulada entra aditivamente en la
    sensibilidad al precio:
 
-      \[
+      $$
       u_{nt} = \beta_0' w_{nt} + (\beta_1 + \delta\, ADV_t)\, PRICE_{nt} + \varepsilon_{nt}
-      \]
+      $$
 
       donde $w_{nt}$ incluye cualquier otra variable explicativa que
       quiera usarse para describir la sensibilidad al precio.
@@ -7185,9 +7185,9 @@ of these two models are available in the following table:
    value distribution, the result is a logit model, whose
    log-likelihood is given by:
 
-   \[
+   $$
    LL = \sum_n \sum_t y_{nt} \ln\frac{\exp(\beta_0' x_{nt})}{1 + \exp(\beta_0' x_{nt})} + (1-y_{nt}) \ln\frac{1}{1 + \exp(\beta_0' x_{nt})}
-   \]
+   $$
 
 2. If there is no variability, then we cannot know what the price
    effect is. Other variables that could be collected are promotional
@@ -7204,16 +7204,16 @@ of these two models are available in the following table:
    $t$ and $\lambda \in (0,1)$. Then the cumulative advertising
    metric at $t$ ($ADV_t$) can be defined as:
 
-      \[
+      $$
       ADV_t = \lambda\, ADV_{t-1} + (1-\lambda)\, a_{t-1}
-      \]
+      $$
 
    b) Although other functional forms are possible, the simplest is
    to impose that accumulated advertising enters utility additively:
 
-      \[
+      $$
       u_{nt} = \beta_0' x_{nt} + \delta\, ADV_t + \varepsilon_{nt}
-      \]
+      $$
 
       where $x_{nt}$ includes any other explanatory variable that one
       may want to use to describe choice utility.
@@ -7222,9 +7222,9 @@ of these two models are available in the following table:
    to impose that accumulated advertising enters additively into
    price sensitivity:
 
-      \[
+      $$
       u_{nt} = \beta_0' w_{nt} + (\beta_1 + \delta\, ADV_t)\, PRICE_{nt} + \varepsilon_{nt}
-      \]
+      $$
 
       where $w_{nt}$ includes any other explanatory variable that one
       may want to use to describe price sensitivity.
@@ -7339,16 +7339,16 @@ a normal distribution.
 1. Bajo un modelo logit, la probabilidad que el cliente $n$ elija
 compre el producto $i$ en el día $t$ viene dada por:
 
-   \[
+   $$
    p_{nit} = \frac{\exp(v_{nit})}{1 + \exp(v_{nit})}
-   \]
+   $$
 
    Luego, si $y_{nit}$ toma el valor 1 si el cliente $n$ compró el
    producto $i$ en $t$, entonces la log verosimilitud viene dada por:
 
-   \[
+   $$
    LL = \sum_i \sum_t \sum_{n=1}^{N_t} y_{nit} \ln(p_{nit}) + (1-y_{nit}) \ln(1-p_{nit})
-   \]
+   $$
 
 2. La elección es binaria por lo que matriz de varianza covarianza
    tiene dos filas y dos columnas. Se puede argumentar también que por
@@ -7359,9 +7359,9 @@ compre el producto $i$ en el día $t$ viene dada por:
 4. La expresión es idéntica a la anterior, pero ahora no tenemos una
    fórmula cerrada para $p_{nit}$ y debemos aproximarlo:
 
-   \[
+   $$
    p_{nit} \approx \frac{1}{R} \sum_{r=1}^R \frac{\exp(v_{nit}(\theta^r))}{1 + \exp(v_{nit}(\theta^r))}
-   \]
+   $$
 
 :::
 
@@ -7370,16 +7370,16 @@ compre el producto $i$ en el día $t$ viene dada por:
 1. Under a logit model, the probability that customer $n$ chooses to
    buy product $i$ on day $t$ is given by:
 
-   \[
+   $$
    p_{nit} = \frac{\exp(v_{nit})}{1 + \exp(v_{nit})}
-   \]
+   $$
 
    Then, if $y_{nit}$ takes the value 1 if customer $n$ bought product
    $i$ on day $t$, the log-likelihood is given by:
 
-   \[
+   $$
    LL = \sum_i \sum_t \sum_{n=1}^{N_t} y_{nit} \ln(p_{nit}) + (1-y_{nit}) \ln(1-p_{nit})
-   \]
+   $$
 
 2. The choice is binary, so the variance-covariance matrix has two rows
    and two columns. One can also argue that for identification purposes
@@ -7390,9 +7390,9 @@ compre el producto $i$ en el día $t$ viene dada por:
 4. The expression is identical to the previous one, but now we do not
    have a closed-form expression for $p_{nit}$ and must approximate it:
 
-   \[
+   $$
    p_{nit} \approx \frac{1}{R} \sum_{r=1}^R \frac{\exp(v_{nit}(\theta^r))}{1 + \exp(v_{nit}(\theta^r))}
-   \]
+   $$
 
 :::
 
@@ -7480,11 +7480,11 @@ Table: (\#tab:estr-p10-variables) Available variables for the attendance model.
    varianza-covarianza (desnormalizada) como sigue. Interprete los
    resultados.
 
-   \[\Sigma = \begin{bmatrix}
+   $$\Sigma = \begin{bmatrix}
    0.198 & 0.533 & 0 \\
    0.533 & 0.360 & 0.258 \\
    0 & 0.258 & 0.852
-   \end{bmatrix}\]
+   \end{bmatrix}$$
 
 :::
 
@@ -7525,11 +7525,11 @@ Table: (\#tab:estr-p10-variables) Available variables for the attendance model.
    (unnormalized) variance-covariance matrix is found. Interpret the
    results.
 
-   \[\Sigma = \begin{bmatrix}
+   $$\Sigma = \begin{bmatrix}
    0.198 & 0.533 & 0 \\
    0.533 & 0.360 & 0.258 \\
    0 & 0.258 & 0.852
-   \end{bmatrix}\]
+   \end{bmatrix}$$
 
 :::
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 1 Modelos de Regresión | Apunte de Marketing Engineering</title>
   <meta name="description" content="Apunte unificado del curso de Ingeniería de Marketing, IN5162/IN5602, Universidad de Chile." />
-  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 1 Modelos de Regresión | Apunte de Marketing Engineering" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-04-25" />
+<meta name="date" content="2026-05-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,7 +55,6 @@
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -93,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -129,7 +128,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -168,13 +166,13 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="cap-regresion.html"><a href="cap-regresion.html"><i class="fa fa-check"></i><b>1</b> Modelos de Regresión</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="cap-regresion.html"><a href="cap-regresion.html#definiciones-clave"><i class="fa fa-check"></i><b>1.1</b> Definiciones clave</a></li>
-<li class="chapter" data-level="1.2" data-path="cap-regresion.html"><a href="cap-regresion.html#conceptos-b%C3%A1sicos"><i class="fa fa-check"></i><b>1.2</b> Conceptos básicos</a>
+<li class="chapter" data-level="1.2" data-path="cap-regresion.html"><a href="cap-regresion.html#conceptos-básicos"><i class="fa fa-check"></i><b>1.2</b> Conceptos básicos</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="cap-regresion.html"><a href="cap-regresion.html#notaci%C3%B3n"><i class="fa fa-check"></i><b>1.2.1</b> Notación</a></li>
+<li class="chapter" data-level="1.2.1" data-path="cap-regresion.html"><a href="cap-regresion.html#notación"><i class="fa fa-check"></i><b>1.2.1</b> Notación</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="cap-regresion.html"><a href="cap-regresion.html#m%C3%ADnimos-cuadrados-ordinarios-ols-y-supuestos"><i class="fa fa-check"></i><b>1.3</b> Mínimos Cuadrados Ordinarios (OLS) y supuestos</a>
+<li class="chapter" data-level="1.3" data-path="cap-regresion.html"><a href="cap-regresion.html#mínimos-cuadrados-ordinarios-ols-y-supuestos"><i class="fa fa-check"></i><b>1.3</b> Mínimos Cuadrados Ordinarios (OLS) y supuestos</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="cap-regresion.html"><a href="cap-regresion.html#estimaci%C3%B3n"><i class="fa fa-check"></i><b>1.3.1</b> Estimación</a></li>
+<li class="chapter" data-level="1.3.1" data-path="cap-regresion.html"><a href="cap-regresion.html#estimación"><i class="fa fa-check"></i><b>1.3.1</b> Estimación</a></li>
 <li class="chapter" data-level="1.3.2" data-path="cap-regresion.html"><a href="cap-regresion.html#propiedades"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="cap-regresion.html"><a href="cap-regresion.html#estrategias-de-modelamiento"><i class="fa fa-check"></i><b>1.4</b> Estrategias de Modelamiento</a>
@@ -182,29 +180,29 @@ div.csl-indent {
 <li class="chapter" data-level="1.4.1" data-path="cap-regresion.html"><a href="cap-regresion.html#arte-vs.-procedimiento"><i class="fa fa-check"></i><b>1.4.1</b> Arte vs. procedimiento</a></li>
 <li class="chapter" data-level="1.4.2" data-path="cap-regresion.html"><a href="cap-regresion.html#aprendizajes-preliminares"><i class="fa fa-check"></i><b>1.4.2</b> Aprendizajes Preliminares</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="cap-regresion.html"><a href="cap-regresion.html#evaluaci%C3%B3n-de-modelos"><i class="fa fa-check"></i><b>1.5</b> Evaluación de modelos</a>
+<li class="chapter" data-level="1.5" data-path="cap-regresion.html"><a href="cap-regresion.html#evaluación-de-modelos"><i class="fa fa-check"></i><b>1.5</b> Evaluación de modelos</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="cap-regresion.html"><a href="cap-regresion.html#qu%C3%A9-se-busca-en-un-modelo"><i class="fa fa-check"></i><b>1.5.1</b> ¿Qué se busca en un modelo?</a></li>
-<li class="chapter" data-level="1.5.2" data-path="cap-regresion.html"><a href="cap-regresion.html#ajuste-por-m%C3%A9tricas-generales"><i class="fa fa-check"></i><b>1.5.2</b> Ajuste por métricas generales</a></li>
+<li class="chapter" data-level="1.5.1" data-path="cap-regresion.html"><a href="cap-regresion.html#qué-se-busca-en-un-modelo"><i class="fa fa-check"></i><b>1.5.1</b> ¿Qué se busca en un modelo?</a></li>
+<li class="chapter" data-level="1.5.2" data-path="cap-regresion.html"><a href="cap-regresion.html#ajuste-por-métricas-generales"><i class="fa fa-check"></i><b>1.5.2</b> Ajuste por métricas generales</a></li>
 <li class="chapter" data-level="1.5.3" data-path="cap-regresion.html"><a href="cap-regresion.html#ajuste-basado-en-la-probabilidad"><i class="fa fa-check"></i><b>1.5.3</b> Ajuste basado en la probabilidad</a></li>
 <li class="chapter" data-level="1.5.4" data-path="cap-regresion.html"><a href="cap-regresion.html#errores-dentro-y-fuera-de-la-muestra"><i class="fa fa-check"></i><b>1.5.4</b> Errores dentro y fuera de la muestra</a></li>
-<li class="chapter" data-level="1.5.5" data-path="cap-regresion.html"><a href="cap-regresion.html#divisi%C3%B3n-de-datos"><i class="fa fa-check"></i><b>1.5.5</b> División de datos</a></li>
-<li class="chapter" data-level="1.5.6" data-path="cap-regresion.html"><a href="cap-regresion.html#validaci%C3%B3n-cruzada"><i class="fa fa-check"></i><b>1.5.6</b> Validación cruzada</a></li>
-<li class="chapter" data-level="1.5.7" data-path="cap-regresion.html"><a href="cap-regresion.html#test-de-hip%C3%B3tesis"><i class="fa fa-check"></i><b>1.5.7</b> Test de hipótesis</a></li>
+<li class="chapter" data-level="1.5.5" data-path="cap-regresion.html"><a href="cap-regresion.html#división-de-datos"><i class="fa fa-check"></i><b>1.5.5</b> División de datos</a></li>
+<li class="chapter" data-level="1.5.6" data-path="cap-regresion.html"><a href="cap-regresion.html#validación-cruzada"><i class="fa fa-check"></i><b>1.5.6</b> Validación cruzada</a></li>
+<li class="chapter" data-level="1.5.7" data-path="cap-regresion.html"><a href="cap-regresion.html#test-de-hipótesis"><i class="fa fa-check"></i><b>1.5.7</b> Test de hipótesis</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="cap-regresion.html"><a href="cap-regresion.html#usos-y-limitaciones-del-an%C3%A1lisis-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.6</b> Usos y limitaciones del análisis de regresión</a>
+<li class="chapter" data-level="1.6" data-path="cap-regresion.html"><a href="cap-regresion.html#usos-y-limitaciones-del-análisis-de-regresión"><i class="fa fa-check"></i><b>1.6</b> Usos y limitaciones del análisis de regresión</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="cap-regresion.html"><a href="cap-regresion.html#aprendizaje-de-los-par%C3%A1metros"><i class="fa fa-check"></i><b>1.6.1</b> Aprendizaje de los parámetros</a></li>
-<li class="chapter" data-level="1.6.2" data-path="cap-regresion.html"><a href="cap-regresion.html#interpretaci%C3%B3n-de-los-coeficientes"><i class="fa fa-check"></i><b>1.6.2</b> Interpretación de los coeficientes</a></li>
-<li class="chapter" data-level="1.6.3" data-path="cap-regresion.html"><a href="cap-regresion.html#pron%C3%B3sticos-y-errores-de-pron%C3%B3stico"><i class="fa fa-check"></i><b>1.6.3</b> Pronósticos y errores de pronóstico</a></li>
-<li class="chapter" data-level="1.6.4" data-path="cap-regresion.html"><a href="cap-regresion.html#principios-generales-de-pron%C3%B3stico"><i class="fa fa-check"></i><b>1.6.4</b> Principios generales de pronóstico</a></li>
+<li class="chapter" data-level="1.6.1" data-path="cap-regresion.html"><a href="cap-regresion.html#aprendizaje-de-los-parámetros"><i class="fa fa-check"></i><b>1.6.1</b> Aprendizaje de los parámetros</a></li>
+<li class="chapter" data-level="1.6.2" data-path="cap-regresion.html"><a href="cap-regresion.html#interpretación-de-los-coeficientes"><i class="fa fa-check"></i><b>1.6.2</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="1.6.3" data-path="cap-regresion.html"><a href="cap-regresion.html#pronósticos-y-errores-de-pronóstico"><i class="fa fa-check"></i><b>1.6.3</b> Pronósticos y errores de pronóstico</a></li>
+<li class="chapter" data-level="1.6.4" data-path="cap-regresion.html"><a href="cap-regresion.html#principios-generales-de-pronóstico"><i class="fa fa-check"></i><b>1.6.4</b> Principios generales de pronóstico</a></li>
 <li class="chapter" data-level="1.6.5" data-path="cap-regresion.html"><a href="cap-regresion.html#modelos-lineales-generalizados"><i class="fa fa-check"></i><b>1.6.5</b> Modelos lineales generalizados</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="cap-regresion.html"><a href="cap-regresion.html#alternativas-de-machine-learning-para-la-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7</b> Alternativas de Machine Learning para la regresión</a>
+<li class="chapter" data-level="1.7" data-path="cap-regresion.html"><a href="cap-regresion.html#alternativas-de-machine-learning-para-la-regresión"><i class="fa fa-check"></i><b>1.7</b> Alternativas de Machine Learning para la regresión</a>
 <ul>
 <li class="chapter" data-level="1.7.1" data-path="cap-regresion.html"><a href="cap-regresion.html#multivariate-adaptive-regression-splines-mars"><i class="fa fa-check"></i><b>1.7.1</b> Multivariate Adaptive Regression Splines (MARS)</a></li>
 <li class="chapter" data-level="1.7.2" data-path="cap-regresion.html"><a href="cap-regresion.html#k-nearest-neighbors-regression-knn"><i class="fa fa-check"></i><b>1.7.2</b> K Nearest Neighbors Regression (KNN)</a></li>
-<li class="chapter" data-level="1.7.3" data-path="cap-regresion.html"><a href="cap-regresion.html#%C3%A1rboles-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7.3</b> Árboles de regresión</a></li>
+<li class="chapter" data-level="1.7.3" data-path="cap-regresion.html"><a href="cap-regresion.html#árboles-de-regresión"><i class="fa fa-check"></i><b>1.7.3</b> Árboles de regresión</a></li>
 <li class="chapter" data-level="1.7.4" data-path="cap-regresion.html"><a href="cap-regresion.html#bagging-y-random-forests"><i class="fa fa-check"></i><b>1.7.4</b> Bagging y Random Forests</a></li>
 </ul></li>
 <li class="chapter" data-level="1.8" data-path="cap-regresion.html"><a href="cap-regresion.html#resumen"><i class="fa fa-check"></i><b>1.8</b> Resumen</a></li>
@@ -214,7 +212,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-2-ventas-de-un-cine"><i class="fa fa-check"></i>Problema 2: Ventas de un cine</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-3-programa-de-recompensas"><i class="fa fa-check"></i>Problema 3: Programa de recompensas</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-4-precios-internacionales-de-arriendo"><i class="fa fa-check"></i>Problema 4: Precios internacionales de arriendo</a></li>
-<li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-5-b%C3%BAsqueda-visual-vs.-texto-en-e-commerce"><i class="fa fa-check"></i>Problema 5: Búsqueda visual vs. texto en e-commerce</a></li>
+<li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-5-búsqueda-visual-vs.-texto-en-e-commerce"><i class="fa fa-check"></i>Problema 5: Búsqueda visual vs. texto en e-commerce</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-6-retail-y-telecomunicaciones"><i class="fa fa-check"></i>Problema 6: Retail y telecomunicaciones</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-7-agentes-de-ia-para-servicio-al-cliente-bancario"><i class="fa fa-check"></i>Problema 7: Agentes de IA para servicio al cliente bancario</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-8-plataforma-de-streaming-musical"><i class="fa fa-check"></i>Problema 8: Plataforma de streaming musical</a></li>
@@ -236,19 +234,19 @@ div.csl-indent {
 <li class="chapter" data-level="2.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-eleccion"><i class="fa fa-check"></i><b>2.5</b> Modelos de elección binaria</a></li>
 <li class="chapter" data-level="2.6" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-het-observable"><i class="fa fa-check"></i><b>2.6</b> Heterogeneidad observable</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duraci%C3%B3n-en-tiempo-discreto-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.1</b> Modelos de duración en tiempo discreto con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.2</b> Modelos de duración en tiempo continuo con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.3" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-dependencia-de-la-duraci%C3%B3n-y-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.3</b> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.1" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-discreto-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.1</b> Modelos de duración en tiempo discreto con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.2</b> Modelos de duración en tiempo continuo con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.3" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-dependencia-de-la-duración-y-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.3</b> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable</a></li>
 <li class="chapter" data-level="2.6.4" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-conteo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.4</b> Modelos de conteo con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-elecci%C3%B3n-binaria-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.5</b> Modelos de elección binaria con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-elección-binaria-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.5</b> Modelos de elección binaria con heterogeneidad observable</a></li>
 </ul></li>
 <li class="chapter" data-level="2.7" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-esperanzas"><i class="fa fa-check"></i><b>2.7</b> Esperanzas condicionales</a>
 <ul>
 <li class="chapter" data-level="2.7.1" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#esperanzas-de-las-distribuciones-de-mezcla"><i class="fa fa-check"></i><b>2.7.1</b> Esperanzas de las distribuciones de mezcla</a></li>
-<li class="chapter" data-level="2.7.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-tiempo-discreto-beta-geom%C3%A9trico"><i class="fa fa-check"></i><b>2.7.2</b> Modelo de tiempo discreto (Beta-Geométrico)</a></li>
+<li class="chapter" data-level="2.7.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-tiempo-discreto-beta-geométrico"><i class="fa fa-check"></i><b>2.7.2</b> Modelo de tiempo discreto (Beta-Geométrico)</a></li>
 <li class="chapter" data-level="2.7.3" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-tiempo-continuo-gamma-exponencial"><i class="fa fa-check"></i><b>2.7.3</b> Modelo de tiempo continuo (Gamma-Exponencial)</a></li>
 <li class="chapter" data-level="2.7.4" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-conteo-gamma-poisson"><i class="fa fa-check"></i><b>2.7.4</b> Modelo de conteo (Gamma-Poisson)</a></li>
-<li class="chapter" data-level="2.7.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-elecci%C3%B3n-binaria-beta-binomial"><i class="fa fa-check"></i><b>2.7.5</b> Modelo de elección binaria (Beta-Binomial)</a></li>
+<li class="chapter" data-level="2.7.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-elección-binaria-beta-binomial"><i class="fa fa-check"></i><b>2.7.5</b> Modelo de elección binaria (Beta-Binomial)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-clv"><i class="fa fa-check"></i><b>2.8</b> Customer Lifetime Value: caso contractual</a>
 <ul>
@@ -264,9 +262,9 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-4-discrepancias-de-precios-en-supermercados"><i class="fa fa-check"></i>Problema 4: Discrepancias de precios en supermercados</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-5-notcomida-panel-de-compras"><i class="fa fa-check"></i>Problema 5: NotComida — Panel de compras</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-6-creadores-de-contenido"><i class="fa fa-check"></i>Problema 6: Creadores de contenido</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-7-hippi-parkas-para-alta-monta%C3%B1a"><i class="fa fa-check"></i>Problema 7: Hippi — Parkas para alta montaña</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-8-pok%C3%A9mon-go"><i class="fa fa-check"></i>Problema 8: Pokémon Go</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-9-aplicaci%C3%B3n-m%C3%B3vil-con-promociones-georreferenciadas"><i class="fa fa-check"></i>Problema 9: Aplicación móvil con promociones georreferenciadas</a></li>
+<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-7-hippi-parkas-para-alta-montaña"><i class="fa fa-check"></i>Problema 7: Hippi — Parkas para alta montaña</a></li>
+<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-8-pokémon-go"><i class="fa fa-check"></i>Problema 8: Pokémon Go</a></li>
+<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-9-aplicación-móvil-con-promociones-georreferenciadas"><i class="fa fa-check"></i>Problema 9: Aplicación móvil con promociones georreferenciadas</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cap-estructurales.html"><a href="cap-estructurales.html"><i class="fa fa-check"></i><b>3</b> Modelos Estructurales</a>
@@ -334,15 +332,15 @@ div.csl-indent {
 <li class="chapter" data-level="3.9" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-aplicados"><i class="fa fa-check"></i><b>3.9</b> Problemas</a>
 <ul>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-1-stud-ia"><i class="fa fa-check"></i>Problema 1: STUD-IA</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-2-categor%C3%ADa-aceites"><i class="fa fa-check"></i>Problema 2: Categoría aceites</a></li>
+<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-2-categoría-aceites"><i class="fa fa-check"></i>Problema 2: Categoría aceites</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-3-margarina-y-modelo-probit"><i class="fa fa-check"></i>Problema 3: Margarina y modelo probit</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-4-telefon%C3%ADa-m%C3%B3vil-en-redes-sociales"><i class="fa fa-check"></i>Problema 4: Telefonía móvil en redes sociales</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-5-multitienda-y-tarjeta-de-cr%C3%A9dito"><i class="fa fa-check"></i>Problema 5: Multitienda y tarjeta de crédito</a></li>
+<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-4-telefonía-móvil-en-redes-sociales"><i class="fa fa-check"></i>Problema 4: Telefonía móvil en redes sociales</a></li>
+<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-5-multitienda-y-tarjeta-de-crédito"><i class="fa fa-check"></i>Problema 5: Multitienda y tarjeta de crédito</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-6-preventa-de-tickets"><i class="fa fa-check"></i>Problema 6: Preventa de tickets</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-7-gasto-publicitario"><i class="fa fa-check"></i>Problema 7: Gasto publicitario</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-8-pizza-a-pieza"><i class="fa fa-check"></i>Problema 8: Pizza a Pieza</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-9-retail-online"><i class="fa fa-check"></i>Problema 9: Retail online</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-10-copa-am%C3%A9rica"><i class="fa fa-check"></i>Problema 10: Copa América</a></li>
+<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-10-copa-américa"><i class="fa fa-check"></i>Problema 10: Copa América</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-11-agencia-de-medios"><i class="fa fa-check"></i>Problema 11: Agencia de medios</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-12-cupones-de-supermercado"><i class="fa fa-check"></i>Problema 12: Cupones de supermercado</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-13-viajesdii"><i class="fa fa-check"></i>Problema 13: ViajesDII</a></li>
@@ -535,7 +533,7 @@ causal relationship.
 </div>
 </div>
 <div id="conceptos-básicos" class="section level2 hasAnchor" number="1.2" data-en="Basic Concepts">
-<h2><span class="header-section-number">1.2</span> Conceptos básicos<a href="cap-regresion.html#conceptos-b%C3%A1sicos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">1.2</span> Conceptos básicos<a href="cap-regresion.html#conceptos-básicos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="lang-es">
 <p>Como bien ya se ha estudiado en otros cursos de la carrera de ingeniería
 industrial, una <em>regresión</em> es una técnica para calcular el valor
@@ -566,7 +564,7 @@ rating of the shows is 8.7 points?</li>
 </ul>
 </div>
 <div id="notación" class="section level3 hasAnchor" number="1.2.1" data-en="Notation">
-<h3><span class="header-section-number">1.2.1</span> Notación<a href="cap-regresion.html#notaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.2.1</span> Notación<a href="cap-regresion.html#notación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>En general se denota con <span class="math inline">\(y\)</span> al vector que representa todas las
 variables dependientes en un único vector columna, mientras que
@@ -605,12 +603,12 @@ are used, one of the most popular being Ordinary Least Squares (OLS).</p>
 </div>
 </div>
 <div id="mínimos-cuadrados-ordinarios-ols-y-supuestos" class="section level2 hasAnchor" number="1.3" data-en="Ordinary Least Squares (OLS) and Assumptions">
-<h2><span class="header-section-number">1.3</span> Mínimos Cuadrados Ordinarios (OLS) y supuestos<a href="cap-regresion.html#m%C3%ADnimos-cuadrados-ordinarios-ols-y-supuestos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">1.3</span> Mínimos Cuadrados Ordinarios (OLS) y supuestos<a href="cap-regresion.html#mínimos-cuadrados-ordinarios-ols-y-supuestos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="lang-es">
 <p>OLS proporciona una estimación óptima de los parámetros de la recta de
 regresión, al encontrar la recta que minimiza la suma de los cuadrados
 de las diferencias entre los valores reales y los valores estimados de
-la variable dependiente <span class="citation">(<a href="referencias.html#ref-greene2018">Greene, 2018</a>; <a href="referencias.html#ref-wooldridge2019">Wooldridge, 2019</a>)</span>. Sin embargo,
+la variable dependiente <span class="citation">(<a href="referencias.html#ref-greene2018" role="doc-biblioref">Greene, 2018</a>; <a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge, 2019</a>)</span>. Sin embargo,
 para que este método sea un estimador adecuado de los parámetros, se
 deben cumplir ciertos supuestos:</p>
 <ol style="list-style-type: decimal">
@@ -646,7 +644,7 @@ resultados pueden ser incorrectos.</p></li>
 <p>OLS provides an optimal estimation of the regression line parameters
 by finding the line that minimizes the sum of squared differences
 between the actual and estimated values of the dependent variable
-<span class="citation">(<a href="referencias.html#ref-greene2018">Greene, 2018</a>; <a href="referencias.html#ref-wooldridge2019">Wooldridge, 2019</a>)</span>. However, for this method to be an
+<span class="citation">(<a href="referencias.html#ref-greene2018" role="doc-biblioref">Greene, 2018</a>; <a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge, 2019</a>)</span>. However, for this method to be an
 adequate estimator of the parameters, certain assumptions must hold:</p>
 <ol style="list-style-type: decimal">
 <li><p>There is a <em>linear relationship</em> between the dependent variable
@@ -736,7 +734,7 @@ achieved by finding the values of the line parameters that minimize
 this sum of squares.</p>
 </div>
 <div id="estimación" class="section level3 hasAnchor" number="1.3.1" data-en="Estimation">
-<h3><span class="header-section-number">1.3.1</span> Estimación<a href="cap-regresion.html#estimaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.3.1</span> Estimación<a href="cap-regresion.html#estimación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Considérese el problema de estimar los parámetros
 <span class="math inline">\(\beta_0, \beta_1, \ldots, \beta_n\)</span> de la recta de regresión
@@ -1188,12 +1186,6 @@ variable transformation.</p>
 <div class="lang-es">
 <table>
 <caption><span id="tab:reg-interpretacion">Table 1.1: </span> Interpretación de coeficientes según transformación de variables.</caption>
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th><em>Modelo</em></th>
@@ -1233,12 +1225,6 @@ variable transformation.</p>
 <div class="lang-en">
 <table>
 <caption><span id="tab:reg-interpretacion">Table 1.1: </span> Coefficient interpretation by variable transformation.</caption>
-<colgroup>
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-<col width="25%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th><em>Model</em></th>
@@ -1779,7 +1765,7 @@ parsimonious manner.</li>
 </div>
 </div>
 <div id="evaluación-de-modelos" class="section level2 hasAnchor" number="1.5" data-en="Model Evaluation">
-<h2><span class="header-section-number">1.5</span> Evaluación de modelos<a href="cap-regresion.html#evaluaci%C3%B3n-de-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">1.5</span> Evaluación de modelos<a href="cap-regresion.html#evaluación-de-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="lang-es">
 <p>La evaluación de modelos estadísticos es un proceso fundamental para
 determinar la calidad y utilidad de los modelos, es decir, para
@@ -1804,7 +1790,7 @@ Therefore, it is essential to continue updating and refining models to
 ensure their quality and usefulness in data-driven decision-making.</p>
 </div>
 <div id="qué-se-busca-en-un-modelo" class="section level3 hasAnchor" number="1.5.1" data-en="What Makes a Good Model?">
-<h3><span class="header-section-number">1.5.1</span> ¿Qué se busca en un modelo?<a href="cap-regresion.html#qu%C3%A9-se-busca-en-un-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.5.1</span> ¿Qué se busca en un modelo?<a href="cap-regresion.html#qué-se-busca-en-un-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Lo deseable en un modelo es que cualitativamente pueda contar una buena
 historia — proporcionar información útil para tomar decisiones — y
@@ -1951,7 +1937,7 @@ models and determining whether a given model is sufficiently good.</p>
 </div>
 </div>
 <div id="ajuste-por-métricas-generales" class="section level3 hasAnchor" number="1.5.2" data-en="General Metrics">
-<h3><span class="header-section-number">1.5.2</span> Ajuste por métricas generales<a href="cap-regresion.html#ajuste-por-m%C3%A9tricas-generales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.5.2</span> Ajuste por métricas generales<a href="cap-regresion.html#ajuste-por-métricas-generales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Las siguientes métricas de ajuste se basan en reducir los errores de
 predicción de los modelos. La tabla a continuación resume las métricas
@@ -2124,24 +2110,24 @@ complexity.</li>
 \tag{1.6}\]</span></p>
 <div class="lang-es">
 <ol start="2" style="list-style-type: decimal">
-<li><em>Criterio de Información de Akaike</em> (AIC): penaliza la complejidad del modelo sumando <span class="math inline">\(2k\)</span>, donde <span class="math inline">\(k\)</span> es el número de parámetros estimados. Un menor AIC indica un mejor balance entre ajuste y parsimonia. Su derivación se basa en minimizar la divergencia de Kullback-Leibler entre el modelo verdadero y el estimado <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>:</li>
+<li><em>Criterio de Información de Akaike</em> (AIC): penaliza la complejidad del modelo sumando <span class="math inline">\(2k\)</span>, donde <span class="math inline">\(k\)</span> es el número de parámetros estimados. Un menor AIC indica un mejor balance entre ajuste y parsimonia. Su derivación se basa en minimizar la divergencia de Kullback-Leibler entre el modelo verdadero y el estimado <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>:</li>
 </ol>
 </div>
 <div class="lang-en">
 <ol start="2" style="list-style-type: decimal">
-<li><em>Akaike Information Criterion</em> (AIC): penalizes model complexity by adding <span class="math inline">\(2k\)</span>, where <span class="math inline">\(k\)</span> is the number of estimated parameters. A lower AIC indicates a better balance between fit and parsimony. Its derivation is based on minimizing the Kullback-Leibler divergence between the true model and the estimated one <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>:</li>
+<li><em>Akaike Information Criterion</em> (AIC): penalizes model complexity by adding <span class="math inline">\(2k\)</span>, where <span class="math inline">\(k\)</span> is the number of estimated parameters. A lower AIC indicates a better balance between fit and parsimony. Its derivation is based on minimizing the Kullback-Leibler divergence between the true model and the estimated one <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>:</li>
 </ol>
 </div>
 <p><span class="math display" id="eq:reg-aic">\[AIC = -2\ell(\hat{\boldsymbol{\beta}}) + 2k
 \tag{1.7}\]</span></p>
 <div class="lang-es">
 <ol start="3" style="list-style-type: decimal">
-<li><em>Criterio de Información Bayesiano</em> (BIC o criterio de Schwarz): similar al AIC, pero penaliza más fuertemente los modelos complejos al reemplazar <span class="math inline">\(2k\)</span> por <span class="math inline">\(k\log(n)\)</span>, donde <span class="math inline">\(n\)</span> es el número de observaciones. Para muestras grandes (<span class="math inline">\(n &gt; e^2 \approx 7.4\)</span>), el BIC penaliza más que el AIC y tiende a seleccionar modelos más parsimoniosos <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>:</li>
+<li><em>Criterio de Información Bayesiano</em> (BIC o criterio de Schwarz): similar al AIC, pero penaliza más fuertemente los modelos complejos al reemplazar <span class="math inline">\(2k\)</span> por <span class="math inline">\(k\log(n)\)</span>, donde <span class="math inline">\(n\)</span> es el número de observaciones. Para muestras grandes (<span class="math inline">\(n &gt; e^2 \approx 7.4\)</span>), el BIC penaliza más que el AIC y tiende a seleccionar modelos más parsimoniosos <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>:</li>
 </ol>
 </div>
 <div class="lang-en">
 <ol start="3" style="list-style-type: decimal">
-<li><em>Bayesian Information Criterion</em> (BIC or Schwarz criterion): similar to AIC, but penalizes complex models more heavily by replacing <span class="math inline">\(2k\)</span> with <span class="math inline">\(k\log(n)\)</span>, where <span class="math inline">\(n\)</span> is the number of observations. For large samples (<span class="math inline">\(n &gt; e^2 \approx 7.4\)</span>), BIC penalizes more than AIC and tends to select more parsimonious models <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>:</li>
+<li><em>Bayesian Information Criterion</em> (BIC or Schwarz criterion): similar to AIC, but penalizes complex models more heavily by replacing <span class="math inline">\(2k\)</span> with <span class="math inline">\(k\log(n)\)</span>, where <span class="math inline">\(n\)</span> is the number of observations. For large samples (<span class="math inline">\(n &gt; e^2 \approx 7.4\)</span>), BIC penalizes more than AIC and tends to select more parsimonious models <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>:</li>
 </ol>
 </div>
 <p><span class="math display" id="eq:reg-bic">\[BIC = -2\ell(\hat{\boldsymbol{\beta}}) + k\log(n)
@@ -2151,11 +2137,11 @@ complexity.</li>
 <h3><span class="header-section-number">1.5.4</span> Errores dentro y fuera de la muestra<a href="cap-regresion.html#errores-dentro-y-fuera-de-la-muestra" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>En general, se busca construir modelos que sean generalizables a datos no observados durante la estimación. Para ello se distingue entre el <em>error dentro de la muestra</em> (in-sample), calculado sobre los datos de entrenamiento, y el <em>error fuera de la muestra</em> (out-of-sample), evaluado sobre datos nuevos. Un modelo puede ajustar perfectamente los datos de entrenamiento (bajo error in-sample) pero fallar en datos nuevos si ha capturado ruido en lugar de la señal subyacente: este fenómeno se denomina <em>sobreajuste</em> (overfitting). Por el contrario, un modelo demasiado simple puede no capturar la estructura de los datos (<em>subajuste</em> o underfitting).</p>
-<p>La tensión entre ajuste y generalización se formaliza mediante la <strong>descomposición sesgo-varianza</strong> <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>. Sea <span class="math inline">\(\hat{f}(\mathbf{x}|\mathcal{D})\)</span> un estimador de la función verdadera <span class="math inline">\(f(\mathbf{x})\)</span>, construido a partir de un conjunto de entrenamiento <span class="math inline">\(\mathcal{D}\)</span>, y sea <span class="math inline">\(y = f(\mathbf{x}) + \varepsilon\)</span> con <span class="math inline">\(\mathbb{E}(\varepsilon) = 0\)</span> y <span class="math inline">\(\text{Var}(\varepsilon) = \sigma^2\)</span>. El error cuadrático esperado de predicción se descompone en:</p>
+<p>La tensión entre ajuste y generalización se formaliza mediante la <strong>descomposición sesgo-varianza</strong> <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>. Sea <span class="math inline">\(\hat{f}(\mathbf{x}|\mathcal{D})\)</span> un estimador de la función verdadera <span class="math inline">\(f(\mathbf{x})\)</span>, construido a partir de un conjunto de entrenamiento <span class="math inline">\(\mathcal{D}\)</span>, y sea <span class="math inline">\(y = f(\mathbf{x}) + \varepsilon\)</span> con <span class="math inline">\(\mathbb{E}(\varepsilon) = 0\)</span> y <span class="math inline">\(\text{Var}(\varepsilon) = \sigma^2\)</span>. El error cuadrático esperado de predicción se descompone en:</p>
 </div>
 <div class="lang-en">
 <p>In general, the goal is to build models that generalize to data not observed during estimation. A distinction is made between the <em>in-sample error</em>, computed on the training data, and the <em>out-of-sample error</em>, evaluated on new data. A model may fit the training data perfectly (low in-sample error) but fail on new data if it has captured noise instead of the underlying signal: this phenomenon is called <em>overfitting</em>. Conversely, a model that is too simple may fail to capture the data structure (<em>underfitting</em>).</p>
-<p>The tension between fit and generalization is formalized through the <strong>bias-variance decomposition</strong> <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>. Let <span class="math inline">\(\hat{f}(\mathbf{x}|\mathcal{D})\)</span> be an estimator of the true function <span class="math inline">\(f(\mathbf{x})\)</span>, built from a training set <span class="math inline">\(\mathcal{D}\)</span>, and let <span class="math inline">\(y = f(\mathbf{x}) + \varepsilon\)</span> with <span class="math inline">\(\mathbb{E}(\varepsilon) = 0\)</span> and <span class="math inline">\(\text{Var}(\varepsilon) = \sigma^2\)</span>. The expected prediction squared error decomposes as:</p>
+<p>The tension between fit and generalization is formalized through the <strong>bias-variance decomposition</strong> <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>. Let <span class="math inline">\(\hat{f}(\mathbf{x}|\mathcal{D})\)</span> be an estimator of the true function <span class="math inline">\(f(\mathbf{x})\)</span>, built from a training set <span class="math inline">\(\mathcal{D}\)</span>, and let <span class="math inline">\(y = f(\mathbf{x}) + \varepsilon\)</span> with <span class="math inline">\(\mathbb{E}(\varepsilon) = 0\)</span> and <span class="math inline">\(\text{Var}(\varepsilon) = \sigma^2\)</span>. The expected prediction squared error decomposes as:</p>
 </div>
 <p><span class="math display" id="eq:reg-biasvar">\[\mathbb{E}_{\mathcal{D}}\!\left[(y - \hat{f})^2\right]
 = \underbrace{\text{Sesgo}^2(\hat{f})}_{\text{Bias}^2}
@@ -2188,7 +2174,7 @@ Figure 1.1: Error de calibración vs. predicción
 </div>
 </div>
 <div id="división-de-datos" class="section level3 hasAnchor" number="1.5.5" data-en="Data Splitting">
-<h3><span class="header-section-number">1.5.5</span> División de datos<a href="cap-regresion.html#divisi%C3%B3n-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.5.5</span> División de datos<a href="cap-regresion.html#división-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Para evaluar la capacidad de generalización, el conjunto de datos <span class="math inline">\(\mathcal{D}\)</span> se divide en subconjuntos con roles diferenciados:</p>
 <ul>
@@ -2196,7 +2182,7 @@ Figure 1.1: Error de calibración vs. predicción
 <li><strong>Conjunto de validación</strong> (<em>validation set</em>): se emplea para calibrar hiperparámetros (por ejemplo, el grado de un polinomio o el parámetro de regularización <span class="math inline">\(\rho\)</span>) y seleccionar entre modelos candidatos.</li>
 <li><strong>Conjunto de prueba</strong> (<em>test set</em>): se reserva para la evaluación final del modelo seleccionado. No debe utilizarse en ninguna decisión de modelamiento.</li>
 </ul>
-<p>Una regla usual es destinar el 50% a entrenamiento y 25% a validación y test, respectivamente <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>. La división debe realizarse <em>antes</em> de cualquier transformación que utilice información del conjunto completo (por ejemplo, estandarización), para evitar <em>data leakage</em>. En datos con estructura temporal, la división debe respetar el orden cronológico.</p>
+<p>Una regla usual es destinar el 50% a entrenamiento y 25% a validación y test, respectivamente <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>. La división debe realizarse <em>antes</em> de cualquier transformación que utilice información del conjunto completo (por ejemplo, estandarización), para evitar <em>data leakage</em>. En datos con estructura temporal, la división debe respetar el orden cronológico.</p>
 </div>
 <div class="lang-en">
 <p>To evaluate generalization capability, the dataset <span class="math inline">\(\mathcal{D}\)</span> is split into subsets with differentiated roles:</p>
@@ -2205,13 +2191,13 @@ Figure 1.1: Error de calibración vs. predicción
 <li><strong>Validation set</strong>: used to calibrate hyperparameters (e.g., the degree of a polynomial or the regularization parameter <span class="math inline">\(\rho\)</span>) and select among candidate models.</li>
 <li><strong>Test set</strong>: reserved for the final evaluation of the selected model. It must not be used in any modeling decision.</li>
 </ul>
-<p>A common rule is to allocate 50% for training and 25% each for validation and test <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>. The split must be performed <em>before</em> any transformation that uses information from the full dataset (e.g., standardization), to avoid <em>data leakage</em>. For data with temporal structure, the split must respect chronological order.</p>
+<p>A common rule is to allocate 50% for training and 25% each for validation and test <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>. The split must be performed <em>before</em> any transformation that uses information from the full dataset (e.g., standardization), to avoid <em>data leakage</em>. For data with temporal structure, the split must respect chronological order.</p>
 </div>
 </div>
 <div id="validación-cruzada" class="section level3 hasAnchor" number="1.5.6" data-en="Cross-Validation">
-<h3><span class="header-section-number">1.5.6</span> Validación cruzada<a href="cap-regresion.html#validaci%C3%B3n-cruzada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.5.6</span> Validación cruzada<a href="cap-regresion.html#validación-cruzada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
-<p>La validación cruzada es una técnica que permite estimar el error de generalización de un modelo sin necesidad de reservar un conjunto de validación fijo <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>. Existen dos familias principales:</p>
+<p>La validación cruzada es una técnica que permite estimar el error de generalización de un modelo sin necesidad de reservar un conjunto de validación fijo <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>. Existen dos familias principales:</p>
 <p><strong>Validación cruzada exhaustiva:</strong></p>
 <ul>
 <li><em>Leave-<span class="math inline">\(p\)</span>-out</em> (LpOCV): se dejan <span class="math inline">\(p\)</span> observaciones para validación y se entrena con las <span class="math inline">\(n-p\)</span> restantes. Se repite para todas las <span class="math inline">\(\binom{n}{p}\)</span> combinaciones posibles.</li>
@@ -2225,7 +2211,7 @@ Figure 1.1: Error de calibración vs. predicción
 <p>El pipeline de validación cruzada opera así: (1) dividir <span class="math inline">\(\mathcal{D}\)</span> en <span class="math inline">\(k\)</span> folds; (2) para cada fold <span class="math inline">\(j\)</span>, entrenar el modelo con los folds <span class="math inline">\(\{1, \ldots, k\}\setminus\{j\}\)</span>; (3) evaluar el error en el fold <span class="math inline">\(j\)</span>; (4) promediar los <span class="math inline">\(k\)</span> errores obtenidos. El hiperparámetro o modelo que minimice este promedio es el seleccionado.</p>
 </div>
 <div class="lang-en">
-<p>Cross-validation is a technique that estimates a model’s generalization error without requiring a fixed validation set <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>. There are two main families:</p>
+<p>Cross-validation is a technique that estimates a model’s generalization error without requiring a fixed validation set <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>. There are two main families:</p>
 <p><strong>Exhaustive cross-validation:</strong></p>
 <ul>
 <li><em>Leave-<span class="math inline">\(p\)</span>-out</em> (LpOCV): <span class="math inline">\(p\)</span> observations are left for validation and the model is trained on the remaining <span class="math inline">\(n-p\)</span>. This is repeated for all <span class="math inline">\(\binom{n}{p}\)</span> possible combinations.</li>
@@ -2270,7 +2256,7 @@ for forecasting.</p>
 </div>
 </div>
 <div id="test-de-hipótesis" class="section level3 hasAnchor" number="1.5.7" data-en="Hypothesis Testing">
-<h3><span class="header-section-number">1.5.7</span> Test de hipótesis<a href="cap-regresion.html#test-de-hip%C3%B3tesis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.5.7</span> Test de hipótesis<a href="cap-regresion.html#test-de-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Además de la evaluación del ajuste mediante métricas, los test de hipótesis permiten realizar inferencias estadísticas formales sobre los parámetros del modelo. La lógica general de un test es: (1) plantear una hipótesis nula <span class="math inline">\(H_0\)</span> y una alternativa <span class="math inline">\(H_1\)</span>; (2) calcular un estadístico de prueba a partir de los datos; (3) comparar el estadístico con un valor crítico de su distribución bajo <span class="math inline">\(H_0\)</span> (o equivalentemente, calcular el <em>p-valor</em>); (4) rechazar <span class="math inline">\(H_0\)</span> si el estadístico supera el valor crítico al nivel de significancia <span class="math inline">\(\alpha\)</span> elegido.</p>
 <p>A continuación se presentan los cuatro test más relevantes en el contexto de regresión:</p>
@@ -2324,9 +2310,9 @@ for forecasting.</p>
 </div>
 </div>
 <div id="usos-y-limitaciones-del-análisis-de-regresión" class="section level2 hasAnchor" number="1.6" data-en="Uses and Limitations of Regression Analysis">
-<h2><span class="header-section-number">1.6</span> Usos y limitaciones del análisis de regresión<a href="cap-regresion.html#usos-y-limitaciones-del-an%C3%A1lisis-de-regresi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">1.6</span> Usos y limitaciones del análisis de regresión<a href="cap-regresion.html#usos-y-limitaciones-del-análisis-de-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="aprendizaje-de-los-parámetros" class="section level3 hasAnchor" number="1.6.1" data-en="Parameter Learning">
-<h3><span class="header-section-number">1.6.1</span> Aprendizaje de los parámetros<a href="cap-regresion.html#aprendizaje-de-los-par%C3%A1metros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.6.1</span> Aprendizaje de los parámetros<a href="cap-regresion.html#aprendizaje-de-los-parámetros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>La principal fuente de aprendizaje que provee un modelo de regresión son
 los coeficientes calculados, los cuales entregan información sobre el
@@ -2357,7 +2343,7 @@ the evaluation of a set of regressors.</p>
 </div>
 </div>
 <div id="interpretación-de-los-coeficientes" class="section level3 hasAnchor" number="1.6.2" data-en="Coefficient Interpretation">
-<h3><span class="header-section-number">1.6.2</span> Interpretación de los coeficientes<a href="cap-regresion.html#interpretaci%C3%B3n-de-los-coeficientes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.6.2</span> Interpretación de los coeficientes<a href="cap-regresion.html#interpretación-de-los-coeficientes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Teniendo en cuenta un modelo lineal simple definido por <span class="math inline">\(y = 12 + 1.5x\)</span>. Es
 lógico pensar que el efecto de <span class="math inline">\(x\)</span> sobre <span class="math inline">\(y\)</span> al incrementar en una
@@ -2444,7 +2430,7 @@ third-variable scenario. If <span class="math inline">\(x\)</span> causes <span 
 </div>
 </div>
 <div id="pronósticos-y-errores-de-pronóstico" class="section level3 hasAnchor" number="1.6.3" data-en="Forecasts and Forecast Errors">
-<h3><span class="header-section-number">1.6.3</span> Pronósticos y errores de pronóstico<a href="cap-regresion.html#pron%C3%B3sticos-y-errores-de-pron%C3%B3stico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.6.3</span> Pronósticos y errores de pronóstico<a href="cap-regresion.html#pronósticos-y-errores-de-pronóstico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>La principal razón de realizar buenas predicciones es la toma de
 decisiones mediante la evaluación de resultados en diversos escenarios
@@ -2509,7 +2495,7 @@ uncertainty in extrapolation.</p>
 </div>
 </div>
 <div id="principios-generales-de-pronóstico" class="section level3 hasAnchor" number="1.6.4" data-en="General Forecasting Principles">
-<h3><span class="header-section-number">1.6.4</span> Principios generales de pronóstico<a href="cap-regresion.html#principios-generales-de-pron%C3%B3stico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.6.4</span> Principios generales de pronóstico<a href="cap-regresion.html#principios-generales-de-pronóstico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <ol style="list-style-type: decimal">
 <li>Incluir todas las variables que se esperan que contribuyan al
@@ -2747,12 +2733,12 @@ to estimate the model, and the nature of the dependent variable.
 </div>
 </div>
 <div id="alternativas-de-machine-learning-para-la-regresión" class="section level2 hasAnchor" number="1.7" data-en="Machine Learning Alternatives for Regression">
-<h2><span class="header-section-number">1.7</span> Alternativas de Machine Learning para la regresión<a href="cap-regresion.html#alternativas-de-machine-learning-para-la-regresi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">1.7</span> Alternativas de Machine Learning para la regresión<a href="cap-regresion.html#alternativas-de-machine-learning-para-la-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="lang-es">
 <p>El aprendizaje automático (<em>machine learning</em>, ML) agrupa algoritmos que
 aprenden patrones directamente de los datos sin requerir una
 especificación funcional explícita por parte del analista
-<span class="citation">(<a href="referencias.html#ref-hastie2009">Hastie et al., 2009</a>; <a href="referencias.html#ref-james2021">James et al., 2021</a>)</span>. Si bien la regresión también aprende de los
+<span class="citation">(<a href="referencias.html#ref-hastie2009" role="doc-biblioref">Hastie et al., 2009</a>; <a href="referencias.html#ref-james2021" role="doc-biblioref">James et al., 2021</a>)</span>. Si bien la regresión también aprende de los
 datos, la necesidad de seleccionar variables, aplicar transformaciones y
 verificar supuestos estadísticos la hace menos automática. Un
 acercamiento más próximo a ML se da al utilizar técnicas como Ridge o
@@ -2764,7 +2750,7 @@ relevantes.</p>
 <div class="lang-en">
 <p>Machine learning (ML) groups algorithms that learn patterns directly
 from data without requiring an explicit functional specification from
-the analyst <span class="citation">(<a href="referencias.html#ref-hastie2009">Hastie et al., 2009</a>; <a href="referencias.html#ref-james2021">James et al., 2021</a>)</span>. Although regression also learns
+the analyst <span class="citation">(<a href="referencias.html#ref-hastie2009" role="doc-biblioref">Hastie et al., 2009</a>; <a href="referencias.html#ref-james2021" role="doc-biblioref">James et al., 2021</a>)</span>. Although regression also learns
 from data, the need to select variables, apply transformations, and
 verify statistical assumptions makes it less automatic. A closer
 approximation to ML arises when using techniques such as Ridge or LASSO.
@@ -2777,13 +2763,13 @@ functional forms. The most relevant alternatives are presented below.</p>
 <div class="lang-es">
 <p>MARS extiende OLS generando para cada variable independiente <span class="math inline">\(x\)</span> una
 función bisagra (<em>hinge</em>)
-<span class="math inline">\(h(x, a) = \{ \max\{0, x-a\},  \max\{0, a-x\} \}\)</span>. De esta forma, un
+<span class="math inline">\(h(x, a) = \{ \max\{0, x-a\}, \max\{0, a-x\} \}\)</span>. De esta forma, un
 modelo MARS genera una aproximación lineal por tramos:</p>
 </div>
 <div class="lang-en">
 <p>MARS extends OLS by generating for each independent variable <span class="math inline">\(x\)</span> a
 hinge function
-<span class="math inline">\(h(x, a) = \{ \max\{0, x-a\},  \max\{0, a-x\} \}\)</span>. In this way, a
+<span class="math inline">\(h(x, a) = \{ \max\{0, x-a\}, \max\{0, a-x\} \}\)</span>. In this way, a
 MARS model produces a piecewise linear approximation:</p>
 </div>
 <p><span class="math display">\[\text{OLS: }y = \beta_0 + \beta_1 x\]</span>
@@ -2902,13 +2888,13 @@ the distance metric.</p>
 </div>
 </div>
 <div id="árboles-de-regresión" class="section level3 hasAnchor" number="1.7.3" data-en="Regression Trees">
-<h3><span class="header-section-number">1.7.3</span> Árboles de regresión<a href="cap-regresion.html#%C3%A1rboles-de-regresi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">1.7.3</span> Árboles de regresión<a href="cap-regresion.html#árboles-de-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
-<p>Los árboles de regresión pertenecen a la familia de modelos de <em>función de base adaptativa</em> <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>, donde la predicción se expresa como <span class="math inline">\(f(\mathbf{x}) = \sum_{k=1}^K w_k \phi_k(\mathbf{x})\)</span> con funciones base <span class="math inline">\(\phi_k\)</span> que se adaptan a los datos. En el caso de un árbol, cada <span class="math inline">\(\phi_k\)</span> es una función indicadora de una región del espacio y <span class="math inline">\(w_k\)</span> es la media de <span class="math inline">\(y\)</span> en esa región.</p>
+<p>Los árboles de regresión pertenecen a la familia de modelos de <em>función de base adaptativa</em> <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>, donde la predicción se expresa como <span class="math inline">\(f(\mathbf{x}) = \sum_{k=1}^K w_k \phi_k(\mathbf{x})\)</span> con funciones base <span class="math inline">\(\phi_k\)</span> que se adaptan a los datos. En el caso de un árbol, cada <span class="math inline">\(\phi_k\)</span> es una función indicadora de una región del espacio y <span class="math inline">\(w_k\)</span> es la media de <span class="math inline">\(y\)</span> en esa región.</p>
 <p>El <strong>algoritmo CART</strong> (<em>Classification and Regression Trees</em>) construye el árbol de forma recursiva: en cada nodo, busca la variable <span class="math inline">\(j\)</span> y el punto de corte <span class="math inline">\(t\)</span> que dividen los datos en dos regiones <span class="math inline">\(R_1 = \{(\mathbf{x}_i, y_i) : x_{ij} \leq t\}\)</span> y <span class="math inline">\(R_2 = \{(\mathbf{x}_i, y_i) : x_{ij} &gt; t\}\)</span>, minimizando la suma de costos:</p>
 </div>
 <div class="lang-en">
-<p>Regression trees belong to the family of <em>adaptive basis function</em> models <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>, where the prediction is expressed as <span class="math inline">\(f(\mathbf{x}) = \sum_{k=1}^K w_k \phi_k(\mathbf{x})\)</span> with basis functions <span class="math inline">\(\phi_k\)</span> that adapt to the data. In the case of a tree, each <span class="math inline">\(\phi_k\)</span> is an indicator function for a region of the space and <span class="math inline">\(w_k\)</span> is the mean of <span class="math inline">\(y\)</span> in that region.</p>
+<p>Regression trees belong to the family of <em>adaptive basis function</em> models <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>, where the prediction is expressed as <span class="math inline">\(f(\mathbf{x}) = \sum_{k=1}^K w_k \phi_k(\mathbf{x})\)</span> with basis functions <span class="math inline">\(\phi_k\)</span> that adapt to the data. In the case of a tree, each <span class="math inline">\(\phi_k\)</span> is an indicator function for a region of the space and <span class="math inline">\(w_k\)</span> is the mean of <span class="math inline">\(y\)</span> in that region.</p>
 <p>The <strong>CART algorithm</strong> (<em>Classification and Regression Trees</em>) builds the tree recursively: at each node, it searches for the variable <span class="math inline">\(j\)</span> and cutpoint <span class="math inline">\(t\)</span> that split the data into two regions <span class="math inline">\(R_1 = \{(\mathbf{x}_i, y_i) : x_{ij} \leq t\}\)</span> and <span class="math inline">\(R_2 = \{(\mathbf{x}_i, y_i) : x_{ij} &gt; t\}\)</span>, minimizing the sum of costs:</p>
 </div>
 <p><span class="math display" id="eq:reg-cart">\[\min_{j, t} \left\{ \sum_{i \in R_1(j,t)}(y_i - \bar{y}_{R_1(j,t)})^2 + \sum_{i \in R_2(j,t)} (y_i - \bar{y}_{R_2(j,t)})^2 \right\}
@@ -2937,7 +2923,7 @@ Figure 1.6: Árbol de ejemplo
 <div id="bagging-y-random-forests" class="section level3 hasAnchor" number="1.7.4" data-en="Bagging and Random Forests">
 <h3><span class="header-section-number">1.7.4</span> Bagging y Random Forests<a href="cap-regresion.html#bagging-y-random-forests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
-<p>Un problema central de los árboles de regresión es su alta varianza: pequeños cambios en los datos pueden producir árboles muy distintos. La técnica de <em>Bagging</em> (Bootstrap Aggregation) <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span> aborda este problema promediando múltiples modelos entrenados sobre muestras bootstrap:</p>
+<p>Un problema central de los árboles de regresión es su alta varianza: pequeños cambios en los datos pueden producir árboles muy distintos. La técnica de <em>Bagging</em> (Bootstrap Aggregation) <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span> aborda este problema promediando múltiples modelos entrenados sobre muestras bootstrap:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Bootstrap</strong>: se generan <span class="math inline">\(B\)</span> conjuntos de datos <span class="math inline">\(\{\mathcal{D}^{(b)}\}_{b=1}^B\)</span> mediante muestreo con reemplazo del conjunto original.</li>
 <li><strong>Entrenamiento independiente</strong>: se ajusta un árbol profundo a cada muestra <span class="math inline">\(\mathcal{D}^{(b)}\)</span>.</li>
@@ -2945,7 +2931,7 @@ Figure 1.6: Árbol de ejemplo
 </ol>
 </div>
 <div class="lang-en">
-<p>A central problem of regression trees is their high variance: small changes in the data can produce very different trees. The <em>Bagging</em> (Bootstrap Aggregation) technique <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span> addresses this by averaging multiple models trained on bootstrap samples:</p>
+<p>A central problem of regression trees is their high variance: small changes in the data can produce very different trees. The <em>Bagging</em> (Bootstrap Aggregation) technique <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span> addresses this by averaging multiple models trained on bootstrap samples:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Bootstrap</strong>: <span class="math inline">\(B\)</span> datasets <span class="math inline">\(\{\mathcal{D}^{(b)}\}_{b=1}^B\)</span> are generated by sampling with replacement from the original dataset.</li>
 <li><strong>Independent training</strong>: a deep tree (unpruned) is fitted to each sample <span class="math inline">\(\mathcal{D}^{(b)}\)</span>.</li>
@@ -2955,12 +2941,12 @@ Figure 1.6: Árbol de ejemplo
 <p><span class="math display" id="eq:reg-bagging">\[\hat{f}_{bagging}(\mathbf{x}) = \frac{1}{B}\sum_{b=1}^B \hat{f}^{(b)}(\mathbf{x})
 \tag{1.19}\]</span></p>
 <div class="lang-es">
-<p>En la práctica, los <span class="math inline">\(B\)</span> árboles pueden estar correlacionados si una variable predictora es dominante (aparece siempre en el nodo raíz). El <strong>Random Forest</strong> resuelve esto introduciendo aleatoriedad adicional: en cada nodo de cada árbol, solo se consideran <span class="math inline">\(m\)</span> variables seleccionadas aleatoriamente (de las <span class="math inline">\(p\)</span> disponibles) para elegir el mejor corte. Esto <em>decorrelaciona</em> los árboles y reduce la varianza del promedio. Se recomienda típicamente <span class="math inline">\(m \approx p/3\)</span> para regresión y <span class="math inline">\(m \approx \sqrt{p}\)</span> para clasificación <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>.</p>
+<p>En la práctica, los <span class="math inline">\(B\)</span> árboles pueden estar correlacionados si una variable predictora es dominante (aparece siempre en el nodo raíz). El <strong>Random Forest</strong> resuelve esto introduciendo aleatoriedad adicional: en cada nodo de cada árbol, solo se consideran <span class="math inline">\(m\)</span> variables seleccionadas aleatoriamente (de las <span class="math inline">\(p\)</span> disponibles) para elegir el mejor corte. Esto <em>decorrelaciona</em> los árboles y reduce la varianza del promedio. Se recomienda típicamente <span class="math inline">\(m \approx p/3\)</span> para regresión y <span class="math inline">\(m \approx \sqrt{p}\)</span> para clasificación <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>.</p>
 <p>Formalmente, si la correlación entre árboles es <span class="math inline">\(\rho\)</span> y cada uno tiene varianza <span class="math inline">\(\sigma^2\)</span>, la varianza del bagging es <span class="math inline">\(\rho\sigma^2 + \frac{1-\rho}{B}\sigma^2\)</span>. Al reducir <span class="math inline">\(\rho\)</span> mediante la selección aleatoria de variables, la varianza del ensamble disminuye.</p>
 <p>El resultado es una reducción significativa de la varianza respecto a un solo árbol, con robustez a valores atípicos y sin necesidad de supuestos distribucionales. El modelo también permite estimar la importancia relativa de las variables y escala bien con el número de predictores. Al igual que los árboles, opera con variables numéricas y categóricas. Como contrapartida, el ensamble pierde la interpretabilidad del árbol individual (se convierte en un modelo de “caja negra”) y tiene mayor costo computacional.</p>
 </div>
 <div class="lang-en">
-<p>In practice, the <span class="math inline">\(B\)</span> trees may be correlated if a dominant predictor always appears at the root node. <strong>Random Forest</strong> addresses this by introducing additional randomness: at each node of each tree, only <span class="math inline">\(m\)</span> randomly selected variables (from the <span class="math inline">\(p\)</span> available) are considered for the best split. This <em>decorrelates</em> the trees and reduces the variance of the average. Typically <span class="math inline">\(m \approx p/3\)</span> is recommended for regression and <span class="math inline">\(m \approx \sqrt{p}\)</span> for classification <span class="citation">(<a href="referencias.html#ref-tobar2024">Tobar, 2024</a>)</span>.</p>
+<p>In practice, the <span class="math inline">\(B\)</span> trees may be correlated if a dominant predictor always appears at the root node. <strong>Random Forest</strong> addresses this by introducing additional randomness: at each node of each tree, only <span class="math inline">\(m\)</span> randomly selected variables (from the <span class="math inline">\(p\)</span> available) are considered for the best split. This <em>decorrelates</em> the trees and reduces the variance of the average. Typically <span class="math inline">\(m \approx p/3\)</span> is recommended for regression and <span class="math inline">\(m \approx \sqrt{p}\)</span> for classification <span class="citation">(<a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar, 2024</a>)</span>.</p>
 <p>Formally, if the correlation between trees is <span class="math inline">\(\rho\)</span> and each has variance <span class="math inline">\(\sigma^2\)</span>, the bagging variance is <span class="math inline">\(\rho\sigma^2 + \frac{1-\rho}{B}\sigma^2\)</span>. By reducing <span class="math inline">\(\rho\)</span> through random variable selection, the ensemble variance decreases.</p>
 <p>The result is a significant variance reduction compared to a single tree, with robustness to outliers and no distributional assumptions required. The model also allows estimating relative variable importance and scales well with the number of predictors. Like trees, it works with both numeric and categorical variables. The trade-off is that the ensemble loses the interpretability of an individual tree (becoming a “black box” model) and has higher computational cost.</p>
 </div>
@@ -2982,7 +2968,7 @@ Figure 1.6: Árbol de ejemplo
 <li>Usar <span class="math inline">\(R^2\)</span> para comparar modelos con distinto número de variables sin ajustar por complejidad.</li>
 <li>No separar datos de entrenamiento y validación al evaluar modelos.</li>
 </ul>
-<p><strong>Referencias principales:</strong> <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span>, <span class="citation">James et al. (<a href="referencias.html#ref-james2021">2021</a>)</span>, <span class="citation">Hastie et al. (<a href="referencias.html#ref-hastie2009">2009</a>)</span>, <span class="citation">Tobar (<a href="referencias.html#ref-tobar2024">2024</a>)</span>.</p>
+<p><strong>Referencias principales:</strong> <span class="citation"><a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge</a> (<a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">2019</a>)</span>, <span class="citation"><a href="referencias.html#ref-james2021" role="doc-biblioref">James et al.</a> (<a href="referencias.html#ref-james2021" role="doc-biblioref">2021</a>)</span>, <span class="citation"><a href="referencias.html#ref-hastie2009" role="doc-biblioref">Hastie et al.</a> (<a href="referencias.html#ref-hastie2009" role="doc-biblioref">2009</a>)</span>, <span class="citation"><a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar</a> (<a href="referencias.html#ref-tobar2024" role="doc-biblioref">2024</a>)</span>.</p>
 </div>
 </div>
 <div class="lang-en">
@@ -2999,7 +2985,7 @@ Figure 1.6: Árbol de ejemplo
 <li>Using <span class="math inline">\(R^2\)</span> to compare models with different numbers of variables without adjusting for complexity.</li>
 <li>Failing to separate training and validation data when evaluating models.</li>
 </ul>
-<p><strong>Main references:</strong> <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span>, <span class="citation">James et al. (<a href="referencias.html#ref-james2021">2021</a>)</span>, <span class="citation">Hastie et al. (<a href="referencias.html#ref-hastie2009">2009</a>)</span>, <span class="citation">Tobar (<a href="referencias.html#ref-tobar2024">2024</a>)</span>.</p>
+<p><strong>Main references:</strong> <span class="citation"><a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge</a> (<a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">2019</a>)</span>, <span class="citation"><a href="referencias.html#ref-james2021" role="doc-biblioref">James et al.</a> (<a href="referencias.html#ref-james2021" role="doc-biblioref">2021</a>)</span>, <span class="citation"><a href="referencias.html#ref-hastie2009" role="doc-biblioref">Hastie et al.</a> (<a href="referencias.html#ref-hastie2009" role="doc-biblioref">2009</a>)</span>, <span class="citation"><a href="referencias.html#ref-tobar2024" role="doc-biblioref">Tobar</a> (<a href="referencias.html#ref-tobar2024" role="doc-biblioref">2024</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -3464,20 +3450,8 @@ during the year for 1,250 films, with the following variables:</p>
 <div class="lang-es">
 <p>Para tener una mejor idea de cómo se ven los datos, se pueden observar
 estos 6 registros:</p>
-<table style="width:100%;">
+<table>
 <caption><span id="tab:reg-p2-ejemplo">Table 1.8: </span> Ejemplo de 6 registros en Tabla de Ventas.</caption>
-<colgroup>
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Id<sub>i</sub></th>
@@ -3581,20 +3555,8 @@ modelos distintos, entregando los siguientes resultados:</p></li>
 <div class="lang-en">
 <p>To get a better idea of what the data look like, the following 6
 records can be observed:</p>
-<table style="width:100%;">
+<table>
 <caption><span id="tab:reg-p2-ejemplo">Table 1.8: </span> Example of 6 records in the Sales Table.</caption>
-<colgroup>
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-<col width="10%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">ID<sub>i</sub></th>
@@ -4068,17 +4030,8 @@ del logaritmo de estos montos: <span class="math inline">\(\log(Ingreso_j)\)</sp
 <p>Para ser más claros, a partir de los 6 registros mostrados en la
 Tabla <a href="cap-regresion.html#tab:reg-p2-ejemplo">1.8</a>, la tabla con las transformaciones
 apropiadas tendría la siguiente forma:</p>
-<table style="width:100%;">
+<table>
 <caption><span id="tab:reg-p2-transformadas">Table 1.10: </span> Transformaciones a nivel de película para los registros de ejemplo.</caption>
-<colgroup>
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Película<sub>j</sub></th>
@@ -4215,17 +4168,8 @@ Because of this, the logarithm of these amounts is studied:
 <p>To make this clearer, using the 6 records shown in Table
 <a href="cap-regresion.html#tab:reg-p2-ejemplo">1.8</a>, the table with the appropriate
 transformations would take the following form:</p>
-<table style="width:100%;">
+<table>
 <caption><span id="tab:reg-p2-transformadas">Table 1.10: </span> Movie-level transformations for the example records.</caption>
-<colgroup>
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Movie<sub>j</sub></th>
@@ -4475,10 +4419,6 @@ of the transactions carried out since enrollment, as shown in Tables
 <div class="lang-es">
 <table>
 <caption><span id="tab:reg-p3-trans">Table 1.12: </span> Variables Transaccionales.</caption>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Variable</th>
@@ -4658,12 +4598,6 @@ results are shown in the following table:</p></li>
 <div class="lang-es">
 <table>
 <caption><span id="tab:reg-p3-modelos">Table 1.13: </span> Resultados Modelos Regresión.</caption>
-<colgroup>
-<col width="34%" />
-<col width="22%" />
-<col width="21%" />
-<col width="22%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Variable</th>
@@ -4740,12 +4674,6 @@ menos puntos?</li>
 <div class="lang-en">
 <table>
 <caption><span id="tab:reg-p3-modelos">Table 1.13: </span> Regression Model Results.</caption>
-<colgroup>
-<col width="34%" />
-<col width="22%" />
-<col width="21%" />
-<col width="22%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Variable</th>
@@ -5281,9 +5209,7 @@ Chile y Argentina en el año <span class="math inline">\(t\)</span> puede escrib
 <span class="math inline">\(\theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t}\)</span>.
 Si se quiere evaluar si esta diferencia es estadísticamente
 distinta de cero, se puede plantear el contraste de hipótesis
-<span class="math inline">\(H_0: \theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t}
-= 0\)</span> contra <span class="math inline">\(H_1: \theta&#39; \bar{x}_{k=Chile,t} -
-\theta&#39; \bar{x}_{k=Argentina,t} \neq 0\)</span>.</p>
+<span class="math inline">\(H_0: \theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t} = 0\)</span> contra <span class="math inline">\(H_1: \theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t} \neq 0\)</span>.</p>
 <p>Para esto, se estima el modelo sin restricciones y luego el modelo
 restringido por la hipótesis nula. Con ambos modelos se construye
 el estadístico F de restricciones lineales conjuntas, el cual
@@ -5343,9 +5269,7 @@ Chile and Argentina in year <span class="math inline">\(t\)</span> can be writte
 <span class="math inline">\(\theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t}\)</span>.
 If the goal is to assess whether this difference is statistically
 different from zero, one can state the hypothesis test
-<span class="math inline">\(H_0: \theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t}
-= 0\)</span> against <span class="math inline">\(H_1: \theta&#39; \bar{x}_{k=Chile,t} -
-\theta&#39; \bar{x}_{k=Argentina,t} \neq 0\)</span>.</p>
+<span class="math inline">\(H_0: \theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t} = 0\)</span> against <span class="math inline">\(H_1: \theta&#39; \bar{x}_{k=Chile,t} - \theta&#39; \bar{x}_{k=Argentina,t} \neq 0\)</span>.</p>
 <p>To do so, one estimates the unrestricted model and then the model
 restricted by the null hypothesis. Using both models, one
 constructs the F-statistic for joint linear restrictions, which
@@ -5371,7 +5295,7 @@ counts in how many dimensions the points differ.</p>
 </details>
 </div>
 <div id="problema-5-búsqueda-visual-vs.-texto-en-e-commerce" class="section level3 unnumbered hasAnchor">
-<h3>Problema 5: Búsqueda visual vs. texto en e-commerce<a href="cap-regresion.html#problema-5-b%C3%BAsqueda-visual-vs.-texto-en-e-commerce" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 5: Búsqueda visual vs. texto en e-commerce<a href="cap-regresion.html#problema-5-búsqueda-visual-vs.-texto-en-e-commerce" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Las tecnologías tradicionales de búsqueda basadas en texto han sido
 durante mucho tiempo uno de los pilares del comercio electrónico,
@@ -7020,7 +6944,7 @@ restrictions in the training strategy?</p></li>
 </table></li>
 </ol>
 </div>
-<em>Fuente: Hernández, F. (2024): “Agentes inteligentes basados en Large Language Models para la atención automatizada en canal conversacional online de servicio al cliente en una empresa financiera”. Memoria para optar al título de Ingeniero Civil Industrial.</em>
+<em>Fuente: Hernández, F. (2024): “Agentes inteligentes basados en Large Language Models para la atención automatizada en canal conversacional online de servicio al cliente en una empresa financiera.” Memoria para optar al título de Ingeniero Civil Industrial.</em>
 <details>
 <summary>
 <strong>Solución</strong>
@@ -7359,17 +7283,8 @@ from the available records.</li>
 <li><p>Suponga que se estiman tres modelos simples de regresión lineal para
 describir la popularidad de las canciones dentro de la plataforma.
 Los resultados de estos modelos se reportan en la siguiente tabla.</p>
-<table style="width:100%;">
+<table>
 <caption><span id="tab:reg-p8-modelos">Table 1.19: </span> Resultados de modelos alternativos de regresión.</caption>
-<colgroup>
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -7525,17 +7440,8 @@ Los resultados de estos modelos se reportan en la siguiente tabla.</p>
 <li><p>Suppose that three simple linear regression models are estimated to
 describe the popularity of songs on the platform. The results of
 these models are reported in the following table.</p>
-<table style="width:100%;">
+<table>
 <caption><span id="tab:reg-p8-modelos">Table 1.19: </span> Alternative regression model results.</caption>
-<colgroup>
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -8541,10 +8447,10 @@ cada mes, se tiene un único para el promedio de los tres.</li>
 <p>Así, la ecuación de regresión que considera todos los factores viene
 dada por:</p>
 <p><span class="math display">\[
-\begin{align}
+\begin{aligned}
 DT_{iht} &amp;= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
 &amp;\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
-\end{align}
+\end{aligned}
 \]</span></p></li>
 </ol>
 </div>
@@ -8574,10 +8480,10 @@ month, a single parameter for the average of the three is used.</li>
 </ul>
 <p>Thus, the regression equation that considers all factors is given by:</p>
 <p><span class="math display">\[
-\begin{align}
+\begin{aligned}
 DT_{iht} &amp;= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
 &amp;\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
-\end{align}
+\end{aligned}
 \]</span></p></li>
 </ol>
 </div>
@@ -8710,8 +8616,7 @@ siguiente modelo de regresión lineal:</p>
 \]</span></p>
 <p>donde <span class="math inline">\(q_{rt} = \sum_{i \in r} q_{it}\)</span> es la demanda agregada de la
 región <span class="math inline">\(r\)</span>,
-<span class="math inline">\(p_{rt} = \left(\sum_{i \in r} p_{it} q_{it}\right)/
-\left(\sum_{i \in r} q_{it}\right)\)</span> es el precio promedio ponderado
+<span class="math inline">\(p_{rt} = \left(\sum_{i \in r} p_{it} q_{it}\right)/ \left(\sum_{i \in r} q_{it}\right)\)</span> es el precio promedio ponderado
 de la región, y <span class="math inline">\(PIBpc_r\)</span> es el producto interno bruto per cápita de
 la región. Usando estos datos agregados se han estimado dos
 variantes del modelo de regresión, como indica la Tabla
@@ -8870,8 +8775,7 @@ linear regression model:</p>
 \]</span></p>
 <p>where <span class="math inline">\(q_{rt} = \sum_{i \in r} q_{it}\)</span> is aggregate demand in
 region <span class="math inline">\(r\)</span>,
-<span class="math inline">\(p_{rt} = \left(\sum_{i \in r} p_{it} q_{it}\right)/
-\left(\sum_{i \in r} q_{it}\right)\)</span> is the weighted average price
+<span class="math inline">\(p_{rt} = \left(\sum_{i \in r} p_{it} q_{it}\right)/ \left(\sum_{i \in r} q_{it}\right)\)</span> is the weighted average price
 in the region, and <span class="math inline">\(PIBpc_r\)</span> is the region’s per-capita gross
 domestic product. Using these aggregate data, two variants of the
 regression model have been estimated, as shown in Table

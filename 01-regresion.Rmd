@@ -1430,7 +1430,7 @@ d)  Indices and Binary Variables: In regression analysis, indices can
 
 **Ejercicio guiado.** Se tiene el siguiente modelo lineal de venta de productos:
 
-\[Q_{ist}=\theta_{s}+\mu_{is}P_{ist}+\gamma t+\varepsilon_{ist}\]
+$$Q_{ist}=\theta_{s}+\mu_{is}P_{ist}+\gamma t+\varepsilon_{ist}$$
 
 Donde $Q_{ist}$ es la cantidad vendida del producto $i$ en la tienda
 $s$ en el año $t$ y $P_{ist}$ el precio. El set de datos contiene
@@ -1462,7 +1462,7 @@ no permite capturar comportamiento cíclico de la demanda.
 
 **Guided exercise.** Consider the following linear model for product sales:
 
-\[Q_{ist}=\theta_{s}+\mu_{is}P_{ist}+\gamma t+\varepsilon_{ist}\]
+$$Q_{ist}=\theta_{s}+\mu_{is}P_{ist}+\gamma t+\varepsilon_{ist}$$
 
 Where $Q_{ist}$ is the quantity sold of product $i$ in store $s$ in
 year $t$ and $P_{ist}$ is the price. The dataset contains records for
@@ -1991,7 +1991,7 @@ The four most relevant tests in the regression context are presented below:
 
 :::
 
-\[H_0: \beta_j = 0 \quad\text{vs.}\quad H_1: \beta_j \neq 0\]
+$$H_0: \beta_j = 0 \quad\text{vs.}\quad H_1: \beta_j \neq 0$$
 
 $$t_j = \frac{\hat{\beta}_j}{\text{se}(\hat{\beta}_j)} \sim t_{n-k-1}
 (\#eq:reg-ttest)$$
@@ -2012,7 +2012,7 @@ where $\text{se}(\hat{\beta}_j)$ is the standard error of the coefficient. $H_0$
 
 :::
 
-\[H_0: \beta_1 = \beta_2 = \cdots = \beta_k = 0\]
+$$H_0: \beta_1 = \beta_2 = \cdots = \beta_k = 0$$
 
 $$F = \frac{(SSR_R - SSR_{NR})/q}{SSR_{NR}/(n-k-1)} \sim F_{q,\, n-k-1}
 (\#eq:reg-ftest)$$
@@ -2577,8 +2577,8 @@ MARS model produces a piecewise linear approximation:
 
 :::
 
-\[\text{OLS: }y = \beta_0 + \beta_1 x\]
-\[\text{MARS: }y = \gamma_0 + \gamma_1 \max\{0, x-a\} + \gamma_2 \max\{0, a-x\}\]
+$$\text{OLS: }y = \beta_0 + \beta_1 x$$
+$$\text{MARS: }y = \gamma_0 + \gamma_1 \max\{0, x-a\} + \gamma_2 \max\{0, a-x\}$$
 
 ::: {.lang-es}
 
@@ -3015,14 +3015,14 @@ Table: (\#tab:reg-p1-m1m2) Regression model comparison.
 
 1.  Se agregan progresivamente un término adicional a la regresión:
     
-    \[
+    $$
     \begin{aligned}
     q_{ist} &= \alpha_{is} + \beta_1 \cdot \mathbf{1}_{[q_{ist-1}= 0]} \\
     &\quad + \beta_2 \cdot QUAR_{st} \times \mathbf{1}_{[i \notin \mathcal{PN}]} \\
     &\quad + \beta_3 \cdot QUAR_{st} \times FDS_t \\
     &\quad + \beta_4 \cdot InfMV_{st} + \beta_5 \cdot (InfMV_{st} - InfMV_{st-7})
     \end{aligned}
-    \]
+    $$
 
     **Observación:** El modelo anterior puede permitir algunas
     variantes. Por ejemplo, aunque la condición (a) indique que existe
@@ -3043,14 +3043,14 @@ Table: (\#tab:reg-p1-m1m2) Regression model comparison.
 
 1.  Terms are progressively added to the regression:
     
-    \[
+    $$
     \begin{aligned}
     q_{ist} &= \alpha_{is} + \beta_1 \cdot \mathbf{1}_{[q_{ist-1}= 0]} \\
     &\quad + \beta_2 \cdot QUAR_{st} \times \mathbf{1}_{[i \notin \mathcal{PN}]} \\
     &\quad + \beta_3 \cdot QUAR_{st} \times FDS_t \\
     &\quad + \beta_4 \cdot InfMV_{st} + \beta_5 \cdot (InfMV_{st} - InfMV_{st-7})
     \end{aligned}
-    \]
+    $$
 
     **Remark:** The previous model admits some variants. For example,
     although condition (a) indicates that there is a fixed effect by
@@ -3333,9 +3333,9 @@ Based on the data provided, choose which model is better for predicting the numb
     película. De modo que se define el ingreso para la película $j$
     como la suma del éxito de todas sus funciones $i$:
 
-    \[
+    $$
     Ingreso_j = \sum_i Ingreso_i \cdot \mathbf{1}_{[Nombre_i = j]}
-    \]
+    $$
 
     Cabe notar que las características de la película
     ($Presupuesto_i$, $\text{Duración}_i$, $Tipo_i$, $Edad_i$, $Estudio_i$) se
@@ -3451,9 +3451,9 @@ Based on the data provided, choose which model is better for predicting the numb
     be considered at the movie level. Thus, revenue for movie $j$ is
     defined as the sum of the success of all its screenings $i$:
 
-    \[
+    $$
     Ingreso_j = \sum_i Ingreso_i \cdot \mathbf{1}_{[Nombre_i = j]}
-    \]
+    $$
 
     It should be noted that the movie characteristics
     ($Presupuesto_i$, $\text{Duración}_i$, $Tipo_i$, $Edad_i$, $Estudio_i$)
@@ -3554,12 +3554,12 @@ Based on the data provided, choose which model is better for predicting the numb
 
 :::
 
-\[\begin{aligned}
+$$\begin{aligned}
 \log(Ingreso_j) \; &= \; \beta_1 \log(Presupuesto_j) + \beta_2 \text{Duración}_j + \sum_{e \in E} \beta_e Edad_{j,e} \\
 &\quad + \sum_{t \in T} \beta_t Tipo_{j,t} + \sum_{s \in S} \beta_s Estudio_{j,s} + \beta_3 NFun_j \\
 &\quad + \sum_{t \in T} \sum_{s \in S} \gamma_{t,s} \, (Tipo_{j,t} \times Estudio_{j,s}) \\
 &\quad + \sum_{e \in \{TE,TE+7\}} \delta_e \, (Edad_{j,e} \times \text{Duración}_j)
-\end{aligned}\]
+\end{aligned}$$
 
 ::: {.lang-es}
 
@@ -4207,9 +4207,9 @@ structural city factors and property characteristics.
 
 :::
 
-\[\begin{aligned}
+$$\begin{aligned}
 \ln(P_{ijkt}) \; &= \; \alpha_{jt}    + \beta_1 M2_{ijkt}    + \beta_2 Dorms_{ijkt}    + \beta_3 Bath_{ijkt} \\&\quad + \beta_4 M2_{ijkt} \cdot Residencial_{ijkt}    + \beta_5 Dorms_{ijkt} \cdot Residencial_{ijkt} \\&\quad + \beta_6 Bath_{ijkt} \cdot Residencial_{ijkt}    + \varepsilon_{ijkt}
-\end{aligned}\]
+\end{aligned}$$
 
 ::: {.lang-es}
 
@@ -4225,8 +4225,8 @@ structural city factors and property characteristics.
 
 :::
 
-\[\beta_1 \;\to\; \gamma_1 + \gamma_2 \cdot \frac{CiudadPob_{ijkt}}{CiudadSup_{ijkt}}\qquad\text{y}\qquad
-\beta_4 \;\to\; \gamma_3 + \gamma_4 \cdot \frac{CiudadPob_{ijkt}}{CiudadSup_{ijkt}}\]
+$$\beta_1 \;\to\; \gamma_1 + \gamma_2 \cdot \frac{CiudadPob_{ijkt}}{CiudadSup_{ijkt}}\qquad\text{y}\qquad
+\beta_4 \;\to\; \gamma_3 + \gamma_4 \cdot \frac{CiudadPob_{ijkt}}{CiudadSup_{ijkt}}$$
 
 ::: {.lang-es}
 
@@ -4707,9 +4707,9 @@ conversion rates.
 
 :::
 
-\[\begin{aligned}NNextSearch_{ik} &= \left(\sum_h \alpha_h CAT_{ihk}\right) + \beta_1 Image_{ik} + \beta_2 NumResult_{ik} \\
+$$\begin{aligned}NNextSearch_{ik} &= \left(\sum_h \alpha_h CAT_{ihk}\right) + \beta_1 Image_{ik} + \beta_2 NumResult_{ik} \\
 &\quad + \beta_3 NumProdCat_{ik} + \beta_4 AvgNumSearch_i + \epsilon_{ik}
-\end{aligned}\]
+\end{aligned}$$
 
 ::: {.lang-es}
 
@@ -4812,9 +4812,9 @@ i in week t, $q_{ikt}$.
 
 :::
 
-\[ q_{ikt} = \alpha_i^1 + \beta_t^1 + \gamma^1 d_{ik} + \theta^1 z_k + \varepsilon_{ikt}^1 \tag{1} \]
+$$ q_{ikt} = \alpha_i^1 + \beta_t^1 + \gamma^1 d_{ik} + \theta^1 z_k + \varepsilon_{ikt}^1 \tag{1} $$
 
-\[ q_{ikt} = \alpha_k^2 + \beta_t^2 + \gamma^2 d_{ik} + \theta^2 w_i + \varepsilon_{ikt}^2 \tag{2} \]
+$$ q_{ikt} = \alpha_k^2 + \beta_t^2 + \gamma^2 d_{ik} + \theta^2 w_i + \varepsilon_{ikt}^2 \tag{2} $$
 
 ::: {.lang-es}
 
@@ -5829,9 +5829,9 @@ variables are observed:
 
 1.  Considere un modelo de regresión lineal genérico
 
-    \[
+    $$
     y_i = \beta' x_i + \varepsilon_i
-    \]
+    $$
 
     que cuantifica la relación de una medida de la popularidad de una
     canción $i$ ($y_i$), con un conjunto de variables observables de esa
@@ -5847,9 +5847,9 @@ variables are observed:
 
 1.  Consider a generic linear regression model
 
-    \[
+    $$
     y_i = \beta' x_i + \varepsilon_i
-    \]
+    $$
 
     that quantifies the relationship between a measure of the
     popularity of song $i$ ($y_i$) and a set of observable variables of
@@ -6092,7 +6092,7 @@ variables are observed:
 
     Con esto el modelo puede expresarse como:
 
-    \[
+    $$
     \begin{aligned}
     y_i \;=\;& \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2
     + \beta_1 \left( \sum_t PromoExpend_{it} \right) \\
@@ -6100,7 +6100,7 @@ variables are observed:
     &+ \sum_{g \in genero} \alpha_{g}\, Danceability_i\, Genre_{i}
     + \beta_4\, Length_i + \beta_5\, Length_i^2
     \end{aligned}
-    \]
+    $$
 
 :::
 
@@ -6118,7 +6118,7 @@ variables are observed:
 
     With this, the model can be expressed as:
 
-    \[
+    $$
     \begin{aligned}
     y_i \;=\;& \alpha_{Artist_i}^1 + \alpha_{LaunchDate_i}^2
     + \beta_1 \left( \sum_t PromoExpend_{it} \right) \\
@@ -6126,7 +6126,7 @@ variables are observed:
     &+ \sum_{g \in genero} \alpha_{g}\, Danceability_i\, Genre_{i}
     + \beta_4\, Length_i + \beta_5\, Length_i^2
     \end{aligned}
-    \]
+    $$
 
 :::
 
@@ -6571,12 +6571,12 @@ Table: (\#tab:reg-p9-datos) Sample of the first 6 records from the database.
     Así, la ecuación de regresión que considera todos los factores viene
     dada por:
 
-    \[
-    \begin{align}
+    $$
+    \begin{aligned}
     DT_{iht} &= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
     &\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
-    \end{align}
-    \]
+    \end{aligned}
+    $$
 
 :::
 
@@ -6608,12 +6608,12 @@ Table: (\#tab:reg-p9-datos) Sample of the first 6 records from the database.
 
     Thus, the regression equation that considers all factors is given by:
 
-    \[
-    \begin{align}
+    $$
+    \begin{aligned}
     DT_{iht} &= \alpha_i^1 + \alpha_h^2 + \beta_1 FDS_t + \beta_2 IMACEC_t + \beta_3 IMACEC_{t-1} \\
     &\quad + \beta_4 IMACEC_{t-2} + \beta_5 MES_t + \beta_6 RAIN_{th} + \beta_7 \big(RAIN_{th}\cdot FDS_t\big)
-    \end{align}
-    \]
+    \end{aligned}
+    $$
 
 :::
 
@@ -6747,11 +6747,11 @@ demanda. Así, la lista de columnas de la base está compuesta por:
     demanda por cacao en la región $r$ en la semana $t$, a través del
     siguiente modelo de regresión lineal:
 
-    \[
+    $$
     \ln(q_{rt}) =
     \alpha + \beta_1 \ln(p_{rt})
     + \beta_2 \ln(p_{rt}) PIBpc_r + \varepsilon_{rt}
-    \]
+    $$
 
     donde $q_{rt} = \sum_{i \in r} q_{it}$ es la demanda agregada de la
     región $r$,
@@ -6848,11 +6848,11 @@ studying demand. Thus, the database columns are:
     cocoa demand in region $r$ during week $t$, through the following
     linear regression model:
 
-    \[
+    $$
     \ln(q_{rt}) =
     \alpha + \beta_1 \ln(p_{rt})
     + \beta_2 \ln(p_{rt}) PIBpc_r + \varepsilon_{rt}
-    \]
+    $$
 
     where $q_{rt} = \sum_{i \in r} q_{it}$ is aggregate demand in
     region $r$,
@@ -7001,7 +7001,7 @@ Respondemos cada parte independientemente:
 
     Con esto, el modelo de regresión puede escribirse como:
 
-    \[
+    $$
     \begin{aligned}
     \ln(q_{it}) =\;& \alpha + \beta_1 \ln(p_{it})
     + \beta_2 \ln(p_{it}) PIBpc_i + \beta_3 PIBpc_i \\
@@ -7009,7 +7009,7 @@ Respondemos cada parte independientemente:
     + \beta_{6i} VALENTINE_t + \beta_{7i} MOTHER_t \\
     &+ \beta_8 EXCEDE_{it} + \varepsilon_{it}.
     \end{aligned}
-    \]
+    $$
 
 3.  En general, los errores de calibración no son tan informativos en un
     esquema de aprendizaje de máquina porque podrían estar
@@ -7106,7 +7106,7 @@ Each part is answered independently:
 
     With this, the regression model can be written as:
 
-    \[
+    $$
     \begin{aligned}
     \ln(q_{it}) =\;& \alpha + \beta_1 \ln(p_{it})
     + \beta_2 \ln(p_{it}) PIBpc_i + \beta_3 PIBpc_i \\
@@ -7114,7 +7114,7 @@ Each part is answered independently:
     + \beta_{6i} VALENTINE_t + \beta_{7i} MOTHER_t \\
     &+ \beta_8 EXCEDE_{it} + \varepsilon_{it}.
     \end{aligned}
-    \]
+    $$
 
 3.  In general, calibration errors are not very informative in a
     machine-learning setting because they may reflect overfitting. If

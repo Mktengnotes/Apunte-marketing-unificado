@@ -253,12 +253,12 @@ follows a sequence of seven steps:
 
 :::
 
-\[f(x) = \int f(x \mid \theta)\, g(\theta)\, d\theta
+$$f(x) = \int f(x \mid \theta)\, g(\theta)\, d\theta
 \quad \text{(caso continuo)}
-\tag{2.1}\]
-\[p(x) = \sum_{i} f(x \mid \theta)\, \Pr(\theta = \theta_i)
+\tag{2.1}$$
+$$p(x) = \sum_{i} f(x \mid \theta)\, \Pr(\theta = \theta_i)
 \quad \text{(caso discreto)}
-\tag{2.2}\]
+\tag{2.2}$$
 
 ::: {.lang-es}
 
@@ -530,8 +530,8 @@ $\theta$:
 
 :::
 
-\[P(T=t \mid \theta) = \theta(1 - \theta)^{t-1}
-\tag{2.3}\]
+$$P(T=t \mid \theta) = \theta(1 - \theta)^{t-1}
+\tag{2.3}$$
 
 ::: {.lang-es}
 
@@ -547,8 +547,8 @@ $\theta$:
 
 :::
 
-\[P(T > t \mid \theta) = (1 - \theta)^{t}
-\tag{2.4}\]
+$$P(T > t \mid \theta) = (1 - \theta)^{t}
+\tag{2.4}$$
 
 ::: {.lang-es}
 
@@ -644,8 +644,8 @@ data and assuming independence across samples:
 
 :::
 
-\[f(x_1,x_2,\ldots,x_n\mid\theta) = f(x_1\mid\theta) \cdot f(x_2\mid\theta) \cdot \ldots \cdot f(x_n\mid\theta)
-\tag{2.4a}\]
+$$f(x_1,x_2,\ldots,x_n\mid\theta) = f(x_1\mid\theta) \cdot f(x_2\mid\theta) \cdot \ldots \cdot f(x_n\mid\theta)
+\tag{2.5}$$
 
 ::: {.lang-es}
 
@@ -659,7 +659,7 @@ data and assuming independence across samples:
 
 :::
 
-\[
+$$
 \begin{aligned}
 L(\theta)
 &= \left\{\prod_{t=1}^{\tau} P(T=t \mid \theta)^{n_t}\right\}
@@ -668,8 +668,8 @@ P(T>\tau \mid \theta)^{n_\tau} \\
 \big[\theta(1-\theta)^{t-1}\big]^{n_t}\right\}
 \big[(1-\theta)^{\tau}\big]^{n_\tau}
 \end{aligned}
-\tag{2.5}
-\]
+\tag{2.6}
+$$
 
 ::: {.lang-es}
 
@@ -731,12 +731,12 @@ construct the log-likelihood function:
 
 :::
 
-\[
+$$
 \begin{aligned}
 \hat{\ell}(\theta)  &= \sum_{t=1}^{\tau} n_t \,\ln P(T=t \mid \theta)\;+\; n_{\tau}\,\ln P(T>\tau \mid \theta) \\
 &= \sum_{t=1}^{\tau} n_t \big[\ln \theta + (t-1)\ln(1-\theta)\big]\;+\;n_{\tau}\,\tau\ln(1-\theta)
 \end{aligned}
-\tag{2.6}\]
+\tag{2.7}$$
 
 ::: {.lang-es}
 
@@ -754,12 +754,11 @@ obtaining:
 
 :::
 
-\[
+$$
 \begin{aligned}
 \hat{\theta} &= 0, 226027 \\
 \hat{l} &= -1794,62
-\end{aligned}
-\tag{2.7}\]
+\end{aligned}$$
 
 ::: {.lang-es}
 
@@ -802,12 +801,12 @@ Formally, the relationships that best describe this are the following:
 
 :::
 
-\[
+$$
 P(T=t|\theta_1, \theta_2, \pi)= \theta_1 (1-\theta_1)^{t-1} \pi + \theta_2(1-\theta_2)^{t-1}(1-\pi)
-\tag{2.8}\]
-\[
+\tag{2.8}$$
+$$
 P(T>t|\theta_1, \theta_2, \pi)= (1-\theta_1)^{t} \pi + (1-\theta_2)^{t}(1-\pi)
-\tag{2.9}\]
+\tag{2.9}$$
 
 ::: {.lang-es}
 
@@ -932,7 +931,7 @@ totales):
 1.  Probabilidad de que un individuo cualquiera abandone la relación
     comercial exactamente en el periodo t:
 
-    $$P(T=t|\alpha,\beta) = \int_0^1 P(T=t|\theta)B(\theta|\alpha,\beta)d\theta$$
+    $$P(T=t|\alpha,\beta) = \int_0^1 P(T=t|\theta)B(\theta|\alpha,\beta)d\theta \tag{2.10}$$
 
     Donde:
 
@@ -961,24 +960,22 @@ approach (total probabilities):
 1.  Probability that any individual leaves the business relationship
     exactly in period t:
 
-    $$P(T=t|\alpha,\beta) = \int_0^1 P(T=t|\theta)B(\theta|\alpha,\beta)d\theta$$
+    $$P(T=t|\alpha,\beta) = \int_0^1 P(T=t|\theta)B(\theta|\alpha,\beta)d\theta \tag{2.10}$$
 
     Where:
 
 :::
 
-\[
-B(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}
-\qquad
-B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}
-\tag{2.10}\]
+$$B(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)} \tag{2.11a}$$
+
+$$B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)} \tag{2.11b}$$
 
 ::: {.lang-es}
 
 2.  Probabilidad de que un individuo cualquiera abandone la relación
     comercial en un periodo posterior al periodo t:
 
-    $$P(T>t|\alpha,\beta) = \int_0^1 (T>t|\theta)B(\theta|\alpha,\beta)d\theta$$
+    $$P(T>t|\alpha,\beta) = \int_0^1 P(T>t|\theta)B(\theta|\alpha,\beta)d\theta \tag{2.12}$$
 
     Al desarrollar la primera integral antes mencionada, y
     reconociendo las relaciones de la distribución *Beta*, se tiene
@@ -991,16 +988,16 @@ B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}
 2.  Probability that any individual leaves the business relationship in
     a period after period t:
 
-    $$P(T>t|\alpha,\beta) = \int_0^1 (T>t|\theta)B(\theta|\alpha,\beta)d\theta$$
+    $$P(T>t|\alpha,\beta) = \int_0^1 P(T>t|\theta)B(\theta|\alpha,\beta)d\theta \tag{2.12}$$
 
     Developing the first integral mentioned above, and recognizing the
     relationships of the *Beta* distribution, we obtain:
 
 :::
 
-\[
+$$
 \begin{aligned} P(T = t \mid \alpha, \beta) &= \int_0^1 \left( \theta(1-\theta)^{t-1} \right) \left( \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha, \beta)} \right) d\theta \\ &= \frac{1}{B(\alpha, \beta)} \int_0^1 (\theta \cdot \theta^{\alpha-1}) \cdot ((1-\theta)^{t-1} \cdot (1-\theta)^{\beta-1}) d\theta \\ &= \frac{1}{B(\alpha, \beta)} \int_0^1 \theta^{\alpha} (1-\theta)^{t+\beta-2} d\theta \\ &= \frac{B(\alpha+1, t+\beta-1)}{B(\alpha, \beta)} \end{aligned}
-\tag{2.11}\]
+\tag{2.13}$$
 
 ::: {.lang-es}
 
@@ -1022,14 +1019,14 @@ The development of the second integral is:
 
 :::
 
-\[
+$$
 \begin{aligned}
 P(T > t \mid \alpha, \beta) &= \int_0^1 (1-\theta)^{t} \left( \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha, \beta)} \right) d\theta \\
 &= \frac{1}{B(\alpha, \beta)} \int_0^1 \theta^{\alpha-1} \cdot ((1-\theta)^{t} \cdot (1-\theta)^{\beta-1}) d\theta \\
 &= \frac{1}{B(\alpha, \beta)} \int_0^1 \theta^{\alpha-1} (1-\theta)^{t+\beta-1} d\theta \\
 &= \frac{B(\alpha, t+\beta)}{B(\alpha, \beta)}
 \end{aligned}
-\tag{2.12}\]
+\tag{2.14}$$
 <div class="lang-es">
 
 ::: {.rmdwarning}
@@ -1067,18 +1064,18 @@ misma cohorte del Ejemplo 2, pero asumiendo heterogeneidad continua,
 es posible identificar una recursividad en la fórmula de abandono:
 
 *Caso base* ($t=1$):
-\[P(T=1 \mid \alpha, \beta)
+$$P(T=1 \mid \alpha, \beta)
 = \frac{B(\alpha+1, \beta)}{B(\alpha, \beta)}
-= \frac{\alpha}{\alpha + \beta}\]
+= \frac{\alpha}{\alpha + \beta}$$
 *Paso recursivo* ($t > 1$):
-\[\frac{P(T=t \mid \alpha, \beta)}{P(T=t-1 \mid \alpha, \beta)}
-= \frac{\beta + t - 2}{\alpha + \beta + t - 1}\]
+$$\frac{P(T=t \mid \alpha, \beta)}{P(T=t-1 \mid \alpha, \beta)}
+= \frac{\beta + t - 2}{\alpha + \beta + t - 1}$$
 Al estimar el modelo Beta-Geométrico Desplazado con los datos del
 Ejemplo 2, se obtiene:
-\[\hat{\alpha} = 0{,}7041 \qquad
+$$\hat{\alpha} = 0{,}7041 \qquad
 \hat{\beta} = 1{,}1820 \qquad
 \hat{\ell} = -1680{,}27
-\tag{2.13}\]
+\tag{2.15}$$
 La diferencia en log-verosimilitud respecto al modelo homogéneo
 ($\hat{\ell} = -1794{,}62$) es notable. Si bien esto sugiere una
 mejora, la comparación rigurosa debe realizarse mediante criterios como
@@ -1097,18 +1094,18 @@ cohort from Example 2, but assuming continuous heterogeneity, a
 recursion in the churn formula can be identified:
 
 *Base case* ($t=1$):
-\[P(T=1 \mid \alpha, \beta)
+$$P(T=1 \mid \alpha, \beta)
 = \frac{B(\alpha+1, \beta)}{B(\alpha, \beta)}
-= \frac{\alpha}{\alpha + \beta}\]
+= \frac{\alpha}{\alpha + \beta}$$
 *Recursive step* ($t > 1$):
-\[\frac{P(T=t \mid \alpha, \beta)}{P(T=t-1 \mid \alpha, \beta)}
-= \frac{\beta + t - 2}{\alpha + \beta + t - 1}\]
+$$\frac{P(T=t \mid \alpha, \beta)}{P(T=t-1 \mid \alpha, \beta)}
+= \frac{\beta + t - 2}{\alpha + \beta + t - 1}$$
 Estimating the Shifted Beta-Geometric model with the data from
 Example 2 yields:
-\[\hat{\alpha} = 0.7041 \qquad
+$$\hat{\alpha} = 0.7041 \qquad
 \hat{\beta} = 1.1820 \qquad
 \hat{\ell} = -1680.27
-\tag{2.13}\]
+\tag{2.15}$$
 The difference in log-likelihood relative to the homogeneous model
 ($\hat{\ell} = -1794.62$) is notable. Although this suggests an
 improvement, a rigorous comparison should be performed using criteria
@@ -1210,10 +1207,7 @@ behavior can be seen as:
 
 :::
 
-\[P(T \leq t) = 1 - e^{-\lambda t}
-\tag{2.14}\]
-\[P(T > t) = e^{-\lambda t}
-\tag{2.15}\]
+$$P(T \leq t) = 1 - e^{-\lambda t} \tag{2.16}$$
 
 ::: {.lang-es}
 
@@ -1227,10 +1221,38 @@ behavior can be seen as:
 
 :::
 
-\[
-L(\theta) = \prod_{i \in A} f(t_i | \theta) \prod_{i \notin A} (1 - P(T \leq t))
-= \prod_{i \in A} (\theta e^{-\theta t_i}) \prod_{i \notin A} (e^{-\theta \tau_i})
-\tag{2.16}\]
+$$P(T > t) = e^{-\lambda t} \tag{2.17}$$
+
+::: {.lang-es}
+
+Verosimilitud:
+
+:::
+
+::: {.lang-en}
+
+Likelihood:
+
+:::
+
+$$\begin{aligned}
+L(\lambda) &= \prod_{i \in A} f(t_i \mid \lambda) \prod_{i \notin A} (1 - P(T \leq t)) \\
+           &= \prod_{i \in A} (\lambda e^{-\lambda t_i}) \prod_{i \notin A} (e^{-\lambda \tau_i})
+\end{aligned} \tag{2.18}$$
+
+::: {.lang-es}
+
+Log-verosimilitud:
+
+:::
+
+::: {.lang-en}
+
+Log-likelihood:
+
+:::
+
+$$\ell(\lambda) = \sum_{i \in A}\big[\ln\lambda - \lambda\, t_i\big] - \lambda\sum_{i \notin A} \tau_i \tag{2.19}$$
 
 ::: {.lang-es}
 
@@ -1272,12 +1294,11 @@ thus it is possible to solve the limitation found (2 latent classes).
 
 :::
 
-\[
+$$
 \begin{array}{c}
 \lambda = \theta\\
 \Rightarrow P(T \leq t) = 1 - e^{-\theta t}
-\end{array}
-\tag{2.17}\]
+\end{array}$$
 
 ::: {.lang-es}
 
@@ -1291,12 +1312,11 @@ thus it is possible to solve the limitation found (2 latent classes).
 
 :::
 
-\[
+$$
 \begin{array}{c}
 \lambda = 0\\
 \Rightarrow P(T \leq t) = 0
-\end{array}
-\tag{2.17a}\]
+\end{array}$$
 
 ::: {.lang-es}
 
@@ -1310,12 +1330,12 @@ Then, total probability will be:
 
 :::
 
-\[
+$$
 \begin{array}{c}
 P(T \leq t) = P(T \leq t | \text{Prueba}) P(\text{Prueba}) + P(T \leq t | \text{No Prueba}) P(\text{No Prueba}) \\
 = 1 - e^{-\theta t}\pi
 \end{array}
-\tag{2.17b}\]
+\tag{2.20}$$
 <div class="lang-es">
 
 ::: {.rstudio-tip}
@@ -1365,9 +1385,9 @@ measurement period, that is:
 
 :::
 
-\[
+$$
 P(t_0 \leq T \leq t_1) = F(t_1) - F(t_0)
-\tag{2.18}\]
+\tag{2.21}$$
 
 ::: {.lang-es}
 
@@ -1381,9 +1401,9 @@ Considering n discrete periods for the calculation, the log-likelihood is:
 
 :::
 
-\[
+$$
 LL(\pi,\theta|\text{data}) = N_1 ln[P(1\leq T \leq 2)] + ... + (N_{panel} - \sum_{i=1}^{n}N_i)ln[P(T>n)]
-\tag{2.18a}\]
+\tag{2.22}$$
 
 ::: {.lang-es}
 
@@ -1406,9 +1426,9 @@ Future estimation can be done through the expectation:
 
 :::
 
-\[
+$$
 \mathbb{E}[T(t)] = N_{\text{panel }} \cdot \hat{F}(t)
-\tag{2.18b}\]
+\tag{2.23}$$
 
 ::: {.lang-es}
 
@@ -1440,9 +1460,10 @@ occurred. This can be shown mathematically:
 
 :::
 
-\[
+$$
 P(T > s + t|T>s) = \frac{P(T> s+t)}{P(T> s)} = \frac{1-P(T \leq s+t)}{1-P(T \leq s)}= \frac{e^{-\lambda(s+t)}}{e^{-\lambda s}} = e^{-\lambda t}
-\tag{2.18c}\]
+\tag{2.24}$$
+
 #### Modelo Gamma-Exponencial {.unnumbered}
 
 ::: {.lang-es}
@@ -1467,9 +1488,9 @@ distributed *Gamma* in the population:
 
 :::
 
-\[g(\lambda) = \frac{\alpha^r \lambda^{r-1} e^{-\alpha \lambda}}
+$$g(\lambda) = \frac{\alpha^r \lambda^{r-1} e^{-\alpha \lambda}}
 {\Gamma(r)}
-\tag{2.19}\]
+\tag{2.25}$$
 
 ::: {.lang-es}
 
@@ -1497,9 +1518,9 @@ customer acquires a product before time $t$ is the following:
 
 :::
 
-\[
+$$
 \begin{aligned} P(T\leq t) &= \int_{0}^{\infty} P(T \leq t|\lambda) g(\lambda)d \lambda \\ &= \int_{0}^{\infty} (1 - e^{-\lambda t}) \left( \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha \lambda} \right) d\lambda \\ &= \int_{0}^{\infty} \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha \lambda} d\lambda - \int_{0}^{\infty} e^{-\lambda t} \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha \lambda} d\lambda \\ &= 1 - \frac{\alpha^r}{\Gamma(r)} \int_{0}^{\infty} \frac{\lambda^{r-1} e^{-\lambda(\alpha+t)} \Gamma(r) (\alpha + t)^r}{\Gamma(r) (\alpha + t)^r} d\lambda \\ &= 1 - \frac{\alpha^r}{\Gamma(r)} \frac{\Gamma(r)}{(\alpha+t)^r} \\ &= 1 - \left(\frac{\alpha}{\alpha + t}\right)^r \end{aligned}
-\tag{2.20}\]
+\tag{2.26}$$
 
 ::: {.lang-es}
 
@@ -1613,9 +1634,9 @@ that it has not occurred up to this moment. This is known as the
 
 :::
 
-\[
+$$
 h(t) = \frac{f(t)}{1 - F(t)}
-\tag{2.21}\]
+\tag{2.27}$$
 
 ::: {.lang-es}
 
@@ -1629,12 +1650,12 @@ Where
 
 :::
 
-\[
+$$
 \begin{aligned}
 f(t) &= \frac{d}{dt} F(t) \\
 &= -c\lambda t^{c-1} e^{-\lambda t^c}
 \end{aligned}
-\tag{2.22}\]
+\tag{2.28}$$
 <div class="lang-es">
 
 ::: {.rmdnote}
@@ -1694,9 +1715,9 @@ variable can be uniquely defined through the following integral:
 
 :::
 
-\[
+$$
 F(t) = 1 - exp \left( -\int_{0}^{t} h(u)du \right)
-\tag{2.22a}\]
+\tag{2.29}$$
 
 ::: {.lang-es}
 
@@ -1737,9 +1758,9 @@ occurrence that a customer tries our product in a time less than t is:
 
 :::
 
-\[
+$$
 F(t) = P(T \leq t) = 1 - e^{-\lambda t ^c}
-\tag{2.23}\]
+\tag{2.30}$$
 
 ::: {.lang-es}
 
@@ -1753,9 +1774,9 @@ And the hazard rate associated with this distribution:
 
 :::
 
-\[
+$$
 h(t) = c \lambda t ^{c-1}
-\tag{2.24}\]
+\tag{2.31}$$
 
 ::: {.lang-es}
 
@@ -1781,9 +1802,9 @@ the exponential distribution.
 
 :::
 
-\[
+$$
 P(T > s + t|T>s) = \frac{P(T> s+t)}{P(T> s)} = \frac{1-P(T \leq s+t)}{1-P(T \leq s)}= \frac{e^{-\lambda(s+t)^c}}{e^{-\lambda s^c}}
-\tag{2.25}\]
+\tag{2.32}$$
 <div class="lang-es">
 
 ::: {.rmdnote}
@@ -1872,9 +1893,9 @@ be modeled through
 
 :::
 
-\[
+$$
 \begin{aligned} P(T \leq t \mid \alpha,r, c) &= \int_{0}^{\infty} \frac{(1 - e^{-\lambda t^c}) \alpha^r \lambda^{r-1}e^{-\alpha \lambda}}{\Gamma(r)} d\lambda \\ &= \int_{0}^{\infty} \frac{\alpha^r \lambda^{r-1}e^{-\alpha \lambda}}{\Gamma(r)} d\lambda - \int_{0}^{\infty} \frac{e^{-\lambda t^c} \alpha^r \lambda^{r-1}e^{-\alpha \lambda}}{\Gamma(r)} d\lambda \\ &= 1 - \frac{\alpha^r}{\Gamma(r)} \int_{0}^{\infty} \lambda^{r-1}e^{-\lambda(\alpha + t^c)} d\lambda \\ &= 1 - \frac{\alpha^r}{\Gamma(r)} \frac{\Gamma(r)}{(\alpha + t^c)^r} \\ &= 1 - \left(\frac{\alpha}{\alpha + t^c}\right)^r \end{aligned}
-\tag{2.26}\]
+\tag{2.33}$$
 
 ::: {.lang-es}
 
@@ -2071,9 +2092,9 @@ in an interval of length $t$.
 
 :::
 
-\[P(N_t = m \mid \lambda)
+$$P(N_t = m \mid \lambda)
 = \frac{(\lambda t)^m e^{-\lambda t}}{m!}
-\tag{2.27}\]
+\tag{2.34}$$
 
 ::: {.lang-es}
 
@@ -2087,9 +2108,9 @@ Its likelihood is:
 
 :::
 
-\[L(\lambda) = \prod_m P(N_t = m \mid \lambda)^{n_m}
+$$L(\lambda) = \prod_m P(N_t = m \mid \lambda)^{n_m}
 = \prod_m \left( \frac{(\lambda t)^m e^{-\lambda t}}{m!} \right)^{n_m}
-\tag{2.27a}\]
+\tag{2.35}$$
 
 ::: {.lang-es}
 
@@ -2116,9 +2137,9 @@ invariant to monotone transformations such as the logarithm.
 
 :::
 
-\[LL(\lambda) = \sum_m n_m \ln\left(
+$$LL(\lambda) = \sum_m n_m \ln\left(
 \frac{(\lambda t)^m e^{-\lambda t}}{m!}\right)
-\tag{2.28}\]
+\tag{2.36}$$
 
 ::: {.lang-es}
 
@@ -2157,10 +2178,10 @@ the first segment. The probability model is:
 
 :::
 
-\[P(N_t = m \mid \lambda_1, \lambda_2, \pi)
+$$P(N_t = m \mid \lambda_1, \lambda_2, \pi)
 = \frac{(\lambda_1 t)^m e^{-\lambda_1 t}}{m!}\,\pi
 + \frac{(\lambda_2 t)^m e^{-\lambda_2 t}}{m!}\,(1-\pi)
-\tag{2.29}\]
+\tag{2.37}$$
 
 #### Modelo Gamma-Poisson (NBD) {.unnumbered}
 
@@ -2179,13 +2200,13 @@ distribution. Suppose that this distribution is *Gamma*.
 
 :::
 
-\[
+$$
 g(\lambda|\alpha, r) = \frac{\alpha^r \lambda^{r-1}e^{-\alpha \lambda}}{\Gamma(r)}
-\tag{2.29a}\]
+\tag{2.38}$$
 
 ::: {.lang-es}
 
-Usando el modelo individual en (2.27) y la distribución en (2.29a), se
+Usando el modelo individual en (2.34) y la distribución en (2.38), se
 puede estimar la probabilidad de un número de exposiciones, conocido
 como modelo **Gamma Poisson (NBD):**
 
@@ -2193,13 +2214,13 @@ como modelo **Gamma Poisson (NBD):**
 
 ::: {.lang-en}
 
-Using the individual model in (2.27) and the distribution in (2.29a),
+Using the individual model in (2.34) and the distribution in (2.38),
 the probability of a number of exposures can be estimated. This is known
 as the **Gamma Poisson (NBD)** model:
 
 :::
 
-\[
+$$
 \begin{aligned}
 P(N_t = m \mid r, \alpha) &= \int_{0}^{\infty} P(N_t = m|\lambda) g(\lambda)d\lambda \\
 &= \int_{0}^{\infty} \frac{(\lambda t)^m e^{-\lambda t}}{m!} \cdot \frac{\alpha^r \lambda^{r-1}e^{-\alpha \lambda}}{\Gamma(r)}d\lambda \\
@@ -2209,7 +2230,7 @@ P(N_t = m \mid r, \alpha) &= \int_{0}^{\infty} P(N_t = m|\lambda) g(\lambda)d\la
 &= \frac{\alpha^r}{(\alpha+t)^r} \cdot \frac{t^m}{(\alpha+t)^m} \cdot \frac{\Gamma(r+m)}{\Gamma(r)m!} \\
 &= \left( \frac{\alpha}{\alpha+t}\right)^r \left( \frac{t}{\alpha + t}\right)^m \frac{\Gamma(r+m)}{\Gamma(r)m!}
 \end{aligned}
-\tag{2.30}\]
+\tag{2.39}$$
 <div class="lang-es">
 
 ::: {.rmdnote}
@@ -2421,9 +2442,9 @@ Then:
 
 :::
 
-\[P(X_s = x_s \mid m_s, p_s)
+$$P(X_s = x_s \mid m_s, p_s)
 = \binom{m_s}{x_s} p_s^{x_s}(1 - p_s)^{m_s - x_s}
-\tag{2.31}\]
+\tag{2.40}$$
 
 ::: {.lang-es}
 
@@ -2443,12 +2464,12 @@ The likelihood can be written as:
 
 :::
 
-\[
+$$
 \begin{aligned}
 L(\theta) &= \prod_{s=1}^{S} P(X_s = x_s | m_s, \theta) \\
 &= \prod_{s=1}^{S} \binom{m_s}{x_s} \theta^{x_s} (1-\theta)^{m_s - x_s}
 \end{aligned}
-\tag{2.31a}\]
+\tag{2.41}$$
 
 ::: {.lang-es}
 
@@ -2462,14 +2483,14 @@ Whereas its log-likelihood is:
 
 :::
 
-\[
+$$
 \begin{aligned}
 LL(\theta) &= \sum_{s=1}^{S} \ln \left( P(X_s = x_s | m_s, \theta) \right) \\
 &= \sum_{s=1}^{S} \ln \left( \binom{m_s}{x_s} \theta^{x_s} (1-\theta)^{m_s - x_s} \right) \\
 &= \sum_{s=1}^{S} \left[ \ln\binom{m_s}{x_s} + \ln(\theta^{x_s}) + \ln((1-\theta)^{m_s - x_s}) \right] \\
 &= \sum_{s=1}^{S} \left[ \ln\binom{m_s}{x_s} + x_s \ln(\theta) + (m_s - x_s) \ln(1-\theta) \right]
 \end{aligned}
-\tag{2.32}\]
+\tag{2.42}$$
 
 ::: {.lang-es}
 
@@ -2492,10 +2513,10 @@ the first segment. The probability model is:
 
 :::
 
-\[
+$$
 P(X_s = x_s \mid m_s, \theta_1, \theta_2, \pi) = \binom{m_s}{x_s}
 \left[ \theta_1^{x_s}(1-\theta_1)^{m_s-x_s}\pi + \theta_2^{x_s}(1-\theta_2)^{m_s-x_s}(1-\pi) \right]
-\tag{2.33}\]
+\tag{2.43}$$
 
 #### Modelo Beta-Binomial {.unnumbered}
 
@@ -2513,14 +2534,14 @@ using the $B(\alpha,\beta)$ distribution:
 
 :::
 
-\[
+$$
 \begin{aligned}
 P(X_s = x_s \mid \alpha, \beta) &= \int_{0}^{1} P(X_s = x_s|m_s,\theta_s) g(\theta_s|\alpha,\beta)d\theta_s \\
 &= \int_{0}^{1} \binom{m_s}{x_s} \theta_s^{x_s}(1-\theta_s)^{m_s-x_s} \frac{\theta_s^{\alpha-1}(1-\theta_s)^{\beta -1}}{B(\alpha,\beta)}d\theta_s \\
 &= \frac{\binom{m_s}{x_s}}{B(\alpha,\beta)} \int_{0}^{1} \theta_s^{x_s+\alpha-1}(1-\theta_s)^{m_s-x_s+\beta-1} d\theta_s \\
 &= \binom{m_s}{x_s} \frac{B(\alpha + x_s, \beta + m_s - x_s)}{B(\alpha,\beta)}
 \end{aligned}
-\tag{2.34}\]
+\tag{2.44}$$
 
 ## Heterogeneidad observable {#prob-het-observable data-en="Observable Heterogeneity"}
 
@@ -2558,9 +2579,8 @@ individuo $i$ termina su relación comercial. Se modelará dicha variable
 con una distribución Geométrica Desplazada de parámetro $\theta_i$, que
 es la probabilidad de abandono para el individuo $i$.
 
-\[
-\mathbb{P}(T_i=t_i|\theta_i) = \theta_i(1-\theta_i)^{t_i-1}
-\]
+$$
+\mathbb{P}(T_i=t_i|\theta_i) = \theta_i(1-\theta_i)^{t_i-1} \tag{2.45}$$
 
 Dado que se cuenta con información a nivel individual, es posible
 estimar un parámetro de abandono para cada persona.
@@ -2581,10 +2601,10 @@ is modeled using a logistic transformation:
 
 :::
 
-\[\theta_i = \frac{\exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)}
+$$\theta_i = \frac{\exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)}
 {1 + \exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)}
 = \frac{1}{1 + \exp(-(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i))}
-\tag{2.35}\]
+\tag{2.46}$$
 
 ::: {.lang-es}
 
@@ -2612,12 +2632,11 @@ individual $i$ churns at time $t_i$ is:
 
 :::
 
-\[
+$$
 \begin{aligned}
 \mathbb{P}(T_i = t_i|\beta_0, \boldsymbol{\beta}) &= \theta_i (1 - \theta_i)^{t_i-1} \\
 \text{donde } \theta_i &= \frac{1}{1 + \exp(-(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i))}
-\end{aligned}
-\]
+\end{aligned} \tag{2.47}$$
 
 ::: {.lang-es}
 
@@ -2635,11 +2654,11 @@ problem is:
 
 :::
 
-\[LL(\beta_0, \boldsymbol{\beta})
+$$LL(\beta_0, \boldsymbol{\beta})
 = \sum_{i \in \text{abandono}}
 \big[\ln(\theta_i) + (t_i - 1)\ln(1 - \theta_i)\big]
 + \sum_{i \in \text{activos}} t_i\ln(1 - \theta_i)
-\tag{2.36}\]
+\tag{2.48}$$
 
 ::: {.lang-es}
 
@@ -2660,9 +2679,9 @@ Beta distribution are modeled as follows to ensure positivity:
 
 :::
 
-\[\alpha_i = \exp(\mathbf{a}'\mathbf{x}_i), \quad
-\beta_i = \exp(\mathbf{b}'\mathbf{x}_i)
-\tag{2.37}\]
+$$\alpha_i = \exp(\mathbf{a}'\mathbf{x}_i) \tag{2.49a}$$
+
+$$\beta_i = \exp(\mathbf{b}'\mathbf{x}_i) \tag{2.49b}$$
 
 ::: {.lang-es}
 
@@ -2688,14 +2707,14 @@ $\theta_{params} = (a, b)$:
 
 :::
 
-\[LL(\theta_{params})
+$$LL(\theta_{params})
 = \sum_{i \in \text{abandono}}
 \ln\!\left(\frac{B(\alpha_i + 1,\, t_i + \beta_i - 1)}
 {B(\alpha_i, \beta_i)}\right)
 + \sum_{i \in \text{activos}}
 \ln\!\left(\frac{B(\alpha_i,\, \beta_i + t_i)}
 {B(\alpha_i, \beta_i)}\right)
-\tag{2.38}\]
+\tag{2.50}$$
 
 ### Modelos de duración en tiempo continuo con heterogeneidad observable {data-en="Continuous-Time Duration Models with Observable Heterogeneity"}
 
@@ -2705,9 +2724,8 @@ Sea $T_i$ la variable aleatoria que describe el instante en que el
 individuo $i$ realiza una determinada acción. Se modelará dicha variable
 aleatoria con una distribución exponencial de parámetro $\lambda_i$:
 
-\[
-\mathbb{P}(T_i<t_i|\lambda_i) = 1-e^{-\lambda_it_i}
-\]
+$$
+\mathbb{P}(T_i<t_i|\lambda_i) = 1-e^{-\lambda_it_i} \tag{2.51}$$
 
 Cabe destacar que, dada la naturaleza de los datos, el comportamiento
 descrito se realizará de manera desagregada (dependencia de $i$ en el
@@ -2728,9 +2746,9 @@ $\lambda_i$. Observable heterogeneity is incorporated through:
 
 :::
 
-\[\lambda_i = \exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)
+$$\lambda_i = \exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)
 = \lambda_0\exp(\boldsymbol{\beta}'\mathbf{x}_i)
-\tag{2.39}\]
+\tag{2.52}$$
 
 ::: {.lang-es}
 
@@ -2766,12 +2784,11 @@ $t_i$, including observable information, is:
 
 :::
 
-\[
+$$
 \begin{aligned}
 \mathbb{P}(T_i < t_i|\boldsymbol{\beta},\lambda_0) &= 1 - e^{-\lambda_it_i}\\
 &= 1 - e^{-\lambda_0 \exp(\boldsymbol{\beta}'\mathbf{x}_i)t_i}
-\end{aligned}
-\]
+\end{aligned} \tag{2.53}$$
 
 ::: {.lang-es}
 
@@ -2790,12 +2807,12 @@ $\theta = (\beta,\lambda_0)$), the log-likelihood of the problem is:
 
 :::
 
-\[LL(\boldsymbol{\theta})
+$$LL(\boldsymbol{\theta})
 = \sum_{i=1}^{N} \ln\!\left(
 e^{-\lambda_0\exp(\boldsymbol{\beta}'\mathbf{x}_i)t_i^-}
 - e^{-\lambda_0\exp(\boldsymbol{\beta}'\mathbf{x}_i)t_i^+}
 \right)
-\tag{2.40}\]
+\tag{2.54}$$
 
 ::: {.lang-es}
 
@@ -2827,14 +2844,14 @@ $\theta = (\beta,\alpha,r)$:
 
 :::
 
-\[LL(\boldsymbol{\theta})
+$$LL(\boldsymbol{\theta})
 = \sum_{i=1}^{N} \ln\!\left(
 \left(\frac{\alpha}
 {\alpha + \exp(\boldsymbol{\beta}'\mathbf{x}_i)t_i^-}\right)^r
 - \left(\frac{\alpha}
 {\alpha + \exp(\boldsymbol{\beta}'\mathbf{x}_i)t_i^+}\right)^r
 \right)
-\tag{2.41}\]
+\tag{2.55}$$
 
 ### Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable {data-en="Continuous-Time Duration Models with Duration Dependence and Observable Heterogeneity"}
 
@@ -2855,9 +2872,9 @@ considering that $T_i$ follows a Weibull law.
 
 :::
 
-\[P(T_i < t_i \mid \lambda_i, c)
+$$P(T_i < t_i \mid \lambda_i, c)
 = 1 - e^{-\lambda_i(t_i)^c}
-\tag{2.42}\]
+\tag{2.56}$$
 
 ::: {.lang-es}
 
@@ -2875,12 +2892,11 @@ $t_i$, including observable information, is:
 
 :::
 
-\[
+$$
 \begin{aligned}
 \mathbb{P}(T_i < t_i|\boldsymbol{\beta},\lambda_0,c) &= 1 - e^{-\lambda_i t_i}\\
 &= 1 - e^{-\lambda_0 \exp(\boldsymbol{\beta}'\mathbf{x}_i) (t_i)^c}
-\end{aligned}
-\]
+\end{aligned} \tag{2.57}$$
 
 ::: {.lang-es}
 
@@ -2894,14 +2910,13 @@ Therefore, the log-likelihood function takes the following form:
 
 :::
 
-\[
+$$
 \begin{aligned}
 LL(\theta) &= \sum_{i=1}^{N} \ln(\mathbb{P}(t_i^- < T_i < t_i^+|\boldsymbol{\beta},\lambda_0,c)) \\
 &= \sum_{i=1}^{N} \ln((\mathbb{P}(T_i < t_i^+|\boldsymbol{\beta},\lambda_0,c)) - \mathbb{P}(T_i < t_i^-|\boldsymbol{\beta},\lambda_0,c)) \\
 &=  \sum_{i=1}^{N} \ln \left((1 - e^{-\lambda_0 \exp(\boldsymbol{\beta}'\mathbf{x}_i)(t_i^+)^c}) - (1 - e^{-\lambda_0 \exp(\boldsymbol{\beta}'\mathbf{x}_i)(t_i^-)^c}) \right)\\
 &= \sum_{i=1}^{N} \ln (e^{-\lambda_0 \exp(\boldsymbol{\beta}'\mathbf{x}_i)(t_i^-)^c} - e^{-\lambda_0 \exp(\boldsymbol{\beta}'\mathbf{x}_i)(t_i^+)^c})
-\end{aligned}
-\]
+\end{aligned} \tag{2.58}$$
 
 ::: {.lang-es}
 
@@ -2921,12 +2936,11 @@ log-likelihood is described as:
 
 :::
 
-\[
+$$
 \begin{aligned}
 LL(\theta) &= \sum_{i=1}^{N} \ln(\mathbb{P}(t_i^- < T_i < t_i^+|\boldsymbol{\beta},\lambda_0,r,c)) \\
 &= \sum_{i=1}^{N} \ln \left( \left(\frac{\alpha}{\alpha + \exp(\boldsymbol{\beta}'\mathbf{x}_i)(t_i^-)^c}\right)^r - \left(\frac{\alpha}{\alpha + \exp(\boldsymbol{\beta}'\mathbf{x}_i)(t_i^+)^c}\right)^r \right)
-\end{aligned}
-\]
+\end{aligned} \tag{2.59}$$
 
 ### Modelos de conteo con heterogeneidad observable {data-en="Count Models with Observable Heterogeneity"}
 
@@ -2948,12 +2962,12 @@ log-likelihood is:
 
 :::
 
-\[LL(\beta_0, \boldsymbol{\beta})
+$$LL(\beta_0, \boldsymbol{\beta})
 = \sum_{i=1}^{N}
 \big[y_i(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)
 - \exp(\beta_0 + \boldsymbol{\beta}'\mathbf{x}_i)
 - \ln(y_i!)\big]
-\tag{2.43}\]
+\tag{2.60}$$
 
 ::: {.lang-es}
 
@@ -2970,13 +2984,13 @@ assumed:
 
 :::
 
-\[P(Y_i = y_i \mid r, \alpha, \boldsymbol{\beta})
+$$P(Y_i = y_i \mid r, \alpha, \boldsymbol{\beta})
 = \frac{\Gamma(r + y_i)}{\Gamma(r)\,y_i!}
 \left(\frac{\alpha}
 {\alpha + \exp(\boldsymbol{\beta}'\mathbf{x}_i)}\right)^r
 \left(\frac{\exp(\boldsymbol{\beta}'\mathbf{x}_i)}
 {\alpha + \exp(\boldsymbol{\beta}'\mathbf{x}_i)}\right)^{y_i}
-\tag{2.44}\]
+\tag{2.61}$$
 
 ### Modelos de elección binaria con heterogeneidad observable {data-en="Binary Choice Models with Observable Heterogeneity"}
 
@@ -2996,11 +3010,11 @@ observable heterogeneity is:
 
 :::
 
-\[LL(\beta_0, \boldsymbol{\beta})
+$$LL(\beta_0, \boldsymbol{\beta})
 = \sum_{i=1}^{N}
 \left[\ln\binom{m_i}{x_i}
 + x_i\ln(\theta_i) + (m_i - x_i)\ln(1 - \theta_i)\right]
-\tag{2.45}\]
+\tag{2.62}$$
 
 ::: {.lang-es}
 
@@ -3018,11 +3032,11 @@ $\beta_i = \exp(\mathbf{b}'\mathbf{x}_i)$:
 
 :::
 
-\[P(X_i = x_i \mid \mathbf{a}, \mathbf{b})
+$$P(X_i = x_i \mid \mathbf{a}, \mathbf{b})
 = \binom{m_i}{x_i}
 \frac{B(\alpha_i + x_i,\, \beta_i + m_i - x_i)}
 {B(\alpha_i, \beta_i)}
-\tag{2.46}\]
+\tag{2.63}$$
 
 ## Esperanzas condicionales {#prob-esperanzas data-en="Conditional Expectations"}
 
@@ -3052,11 +3066,10 @@ of the expectations of the Gamma and Beta distributions is shown below.
     Para la distribución Gamma, con parámetro de forma $r$ y de tasa
     $\alpha$, que se utiliza para modelar tasas de ocurrencia (ej.
     $\lambda$), su función de densidad de probabilidad es:
-    $$g(\lambda|r,\alpha) = \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha\lambda}$$
+    $$g(\lambda|r,\alpha) = \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha\lambda} \tag{2.64}$$
     La esperanza de una variable aleatoria $\lambda$ que sigue esta
     distribución es: $$
-    \mathbb{E}[\lambda] = \frac{r}{\alpha}
-    $$Este resultado se obtiene a partir de la definición de valor
+    \mathbb{E}[\lambda] = \frac{r}{\alpha} \tag{2.65}$$Este resultado se obtiene a partir de la definición de valor
     esperado para una variable continua: $$
     \begin{aligned}
     \mathbb{E}[\lambda] &= \int_{0}^{\infty} \lambda \cdot g(\lambda|r,\alpha) d\lambda \\
@@ -3079,8 +3092,11 @@ of the expectations of the Gamma and Beta distributions is shown below.
     Para la distribución Beta con parámetros $\alpha$ y $\beta$ que se
     utilizan para modelar probabilidades (ej. $\theta$), su función de
     densidad de probabilidad es:
-    $$g(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}$$
-    El desarrollo para obtener esta esperanza es el siguiente: $$
+    $$g(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)} \tag{2.66}$$
+    Por definición de valor esperado para una variable continua:
+    $$\mathbb{E}[\theta] = \int_{0}^{1} \theta \cdot g(\theta|\alpha,\beta) d\theta \tag{2.67}$$
+    El desarrollo para obtener esta esperanza es el siguiente:
+    $$
     \begin{aligned}
     \mathbb{E}[\theta] &= \int_{0}^{1} \theta \cdot g(\theta|\alpha,\beta) d\theta \\
     &= \int_{0}^{1} \theta \cdot \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)} d\theta \\
@@ -3107,19 +3123,21 @@ of the expectations of the Gamma and Beta distributions is shown below.
     For the Gamma distribution, with shape parameter $r$ and rate
     $\alpha$, used to model occurrence rates (e.g. $\lambda$), its
     probability density function is:
-    $$g(\lambda|r,\alpha) = \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha\lambda}$$
+    $$g(\lambda|r,\alpha) = \frac{\alpha^r}{\Gamma(r)} \lambda^{r-1} e^{-\alpha\lambda} \tag{2.64}$$
     The expectation of a random variable $\lambda$ that follows this
     distribution is:
-    $$\mathbb{E}[\lambda] = \frac{r}{\alpha}$$
+    $$\mathbb{E}[\lambda] = \frac{r}{\alpha} \tag{2.65}$$
 
 -   **Expectation of the Beta distribution**
 
     For the Beta distribution with parameters $\alpha$ and $\beta$,
     which are used to model probabilities (e.g. $\theta$), its
     probability density function is:
-    $$g(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}$$
-    Its expectation is:
-    $$\mathbb{E}[\theta] = \frac{\alpha}{\alpha+\beta}$$
+    $$g(\theta|\alpha,\beta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)} \tag{2.66}$$
+    By definition of expected value for a continuous variable:
+    $$\mathbb{E}[\theta] = \int_{0}^{1} \theta \cdot g(\theta|\alpha,\beta) d\theta \tag{2.67}$$
+    Which simplifies to:
+    $$\mathbb{E}[\theta] = \frac{\alpha}{\alpha+\beta} \tag{2.68}$$
 
 :::
 
@@ -3153,12 +3171,12 @@ through Bayes' theorem:
 
 :::
 
-\[
+$$
 \begin{aligned}
 g(\theta|\text{datos}) &= \frac{\mathbb{P}(\text{datos}|\theta)g(\theta)}{\int \mathbb{P}(\text{datos}|\theta)g(\theta)d\theta}
 \end{aligned}
-\tag{2.47}
-\]
+\tag{2.69}
+$$
 
 ::: {.lang-es}
 
@@ -3177,9 +3195,9 @@ El cálculo de esta esperanza se basa en el Teorema de Bayes, que
 actualiza el conocimiento previo sobre el parámetro $\theta$ a la luz de
 los datos observados:
 
-\[
+$$
 g(\theta|\text{datos}) = \frac{\mathbb{P}(\text{datos}|\theta) \cdot g(\theta)}{\int \mathbb{P}(\text{datos} \mid \theta) \cdot g(\theta) d\theta}
-\]
+$$
 
 El proceso para derivar la esperanza condicional se descompone de la
 siguiente manera:
@@ -3192,7 +3210,7 @@ siguiente manera:
 -   **Función de Verosimilitud**: El comportamiento de abandono
     individual se modela con una distribución Geométrica Desplazada, que
     indica la probabilidad de que el evento ocurra exactamente en el
-    período $t$: $$ \mathbb{P}(T=t|\theta) = \theta(1-\theta)^{t-1} $$
+    período $t$: $$ \mathbb{P}(T=t|\theta) = \theta(1-\theta)^{t-1} \tag{2.70}$$
 
 Con respecto a la Ley de Probabilidades Totales, ya se ha calculado en
 anterioridad para el Modelo Beta Geométrico-Desplazado. A continuación,
@@ -3214,21 +3232,20 @@ updated as a function of the observed duration $t$.
 
 :::
 
-\[
+$$
 \begin{aligned}
 g(\theta|T=t) &= \frac{\mathbb{P}(T=t|\theta) \cdot g(\theta|\alpha, \beta)}{\int_0^1 \mathbb{P}(T=t|\theta) \cdot g(\theta|\alpha, \beta) d\theta} \\
 &= \frac{ \left( \theta(1-\theta)^{t-1} \right) \left( \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha, \beta)} \right) }{ \frac{B(\alpha+1, \beta+t-1)}{B(\alpha, \beta)} } \\
 &= \frac{\theta^{\alpha}(1-\theta)^{\beta+t-2}}{B(\alpha+1, \beta+t-1)}
-\end{aligned}
-\]
+\end{aligned} \tag{2.71}$$
 
 ::: {.lang-es}
 
 La expresión resultante es la función de densidad de una distribución
 Beta, con los parámetros actualizados.
-\[
+$$
 g(\theta|T=t) \sim \text{Beta}(\alpha+1, \beta+t-1)
-\]
+$$
 
 De esta distribución posterior se deduce la Esperanza Condicional, que
 es simplemente la media de dicha distribución:
@@ -3243,8 +3260,8 @@ expectation follows directly as its mean:
 
 :::
 
-\[\mathbb{E}(\theta \mid T = t) = \frac{\alpha + 1}{\alpha + \beta + t}
-\tag{2.48}\]
+$$\mathbb{E}(\theta \mid T = t) = \frac{\alpha + 1}{\alpha + \beta + t}
+\tag{2.72}$$
 
 ::: {.lang-es}
 
@@ -3259,7 +3276,7 @@ períodos (observación censurada):
 
 -   **Función de Verosimilitud**: La probabilidad de que el evento aún
     no haya ocurrido es la función de supervivencia:
-    $$ \mathbb{P}(T>t|\theta) = (1-\theta)^{t} $$
+    $$ \mathbb{P}(T>t|\theta) = (1-\theta)^{t} \tag{2.73}$$
 
 Obteniendo la distribución posterior:
 
@@ -3273,21 +3290,20 @@ function. The posterior distribution becomes:
 
 :::
 
-\[
+$$
 \begin{aligned}
 g(\theta|T > t) &= \frac{\mathbb{P}(T > t|\theta) \cdot g(\theta|\alpha, \beta)}{\int_0^1 \mathbb{P}(T > t|\theta) \cdot g(\theta|\alpha, \beta) d\theta} \\
 &= \frac{ \left( (1-\theta)^{t} \right) \left( \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha, \beta)} \right) }{ \frac{B(\alpha, \beta+t)}{B(\alpha, \beta)} } \\
 &= \frac{\theta^{\alpha-1}(1-\theta)^{\beta+t-1}}{B(\alpha, \beta+t)}
-\end{aligned}
-\]
+\end{aligned} \tag{2.74}$$
 
 ::: {.lang-es}
 
 La expresión resultante es la función de densidad de otra distribución
 Beta, con los parámetros actualizados.
-\[
+$$
 g(\theta|T>t) \sim \text{Beta}(\alpha, \beta+t)
-\]
+$$
 
 De esta distribución posterior se deduce la Esperanza Condicional, que
 es simplemente la media de dicha distribución:
@@ -3301,8 +3317,8 @@ with updated parameters. Its mean yields the conditional expectation:
 
 :::
 
-\[\mathbb{E}(\theta \mid T > t) = \frac{\alpha}{\alpha + \beta + t}
-\tag{2.49}\]
+$$\mathbb{E}(\theta \mid T > t) = \frac{\alpha}{\alpha + \beta + t}
+\tag{2.75}$$
 <div class="lang-es">
 
 ::: {.rmdnote}
@@ -3311,9 +3327,9 @@ with updated parameters. Its mean yields the conditional expectation:
 definir una regla de retención dirigiendo una campaña a los clientes
 activos después de $t$ períodos cuya probabilidad de abandono esperada
 supere cierto umbral:
-\[\mathbb{E}(\theta \mid T > t)
+$$\mathbb{E}(\theta \mid T > t)
 = \frac{\alpha}{\alpha + \beta + t}
-> \frac{\text{Costo de retención}}{\text{Valor del cliente}}\]
+> \frac{\text{Costo de retención}}{\text{Valor del cliente}}$$
 
 :::
 
@@ -3327,9 +3343,9 @@ supere cierto umbral:
 rule can be defined by directing a campaign to customers who are active
 after $t$ periods and whose expected churn probability exceeds a
 certain threshold:
-\[\mathbb{E}(\theta \mid T > t)
+$$\mathbb{E}(\theta \mid T > t)
 = \frac{\alpha}{\alpha + \beta + t}
-> \frac{\text{Retention cost}}{\text{Customer value}}\]
+> \frac{\text{Retention cost}}{\text{Customer value}}$$
 
 :::
 
@@ -3363,11 +3379,11 @@ theorem:
 
 :::
 
-\[
+$$
 \begin{aligned}
 g(\lambda|\text{datos}) &= \frac{\mathbb{P}(\text{datos}|\lambda)g(\lambda)}{\int \mathbb{P}(\text{datos}|\lambda)g(\lambda)d\lambda}
 \end{aligned}
-\]
+$$
 
 ::: {.lang-es}
 
@@ -3386,7 +3402,7 @@ siguiente manera:
     evento se modela con una distribución Exponencial, que indica la
     probabilidad (densidad) de que el evento ocurra exactamente en el
     instante $t$:
-    $$ \mathbb{P}(T=t|\lambda) = f(t|\lambda) = \lambda e^{-\lambda t} $$
+    $$ \mathbb{P}(T=t|\lambda) = f(t|\lambda) = \lambda e^{-\lambda t} \tag{2.76}$$
 
 Con respecto a la Ley de Probabilidades Totales, el denominador de la
 expresión de Bayes corresponde a la probabilidad en heterogeneidad no
@@ -3402,21 +3418,20 @@ event rate for a customer, updated as a function of elapsed time $t$.
 
 :::
 
-\[
+$$
 \begin{aligned}
 g(\lambda|T=t) &= \frac{\mathbb{P}(T=t|\lambda) \cdot g(\lambda|r, \alpha)}{\int_0^\infty \mathbb{P}(T=t|\lambda) \cdot g(\lambda|r, \alpha) d\lambda} \\
 &= \frac{ \left( \lambda t e^{-\lambda t} \right) \left( \frac{\alpha^r \lambda^{r-1} e^{-\alpha\lambda}}{\Gamma(r)} \right) }{\left(\frac{rt}{\alpha + t} \right) \left(\frac{1}{\alpha + t} \right)^r} \\
 &= \frac{(\alpha+t)^{r+1}}{\Gamma(r+1)}\lambda^{r}e^{-\lambda(\alpha+t)}
-\end{aligned}
-\]
+\end{aligned} \tag{2.77}$$
 
 ::: {.lang-es}
 
 La expresión resultante es la función de densidad de una distribución
 Gamma, con los parámetros actualizados.
-\[
+$$
 g(\lambda|T=t) \sim \text{Gamma}(r+1, \alpha+t)
-\]
+$$
 
 De esta distribución posterior se deduce la Esperanza Condicional, que
 es simplemente la media de dicha distribución:
@@ -3430,8 +3445,8 @@ updated parameters. Its mean yields the conditional expectation:
 
 :::
 
-\[\mathbb{E}(\lambda \mid T = t) = \frac{r + 1}{\alpha + t}
-\tag{2.50}\]
+$$\mathbb{E}(\lambda \mid T = t) = \frac{r + 1}{\alpha + t}
+\tag{2.78}$$
 
 ### Modelo de conteo (Gamma-Poisson) {data-en="Count Model (Gamma-Poisson)"}
 
@@ -3459,11 +3474,11 @@ Bayes' theorem:
 
 :::
 
-\[
+$$
 \begin{aligned}
 g(\lambda|\text{datos}) = \frac{\mathbb{P}(\text{datos}|\lambda)g(\lambda)}{\int \mathbb{P}(\text{datos}|\lambda)g(\lambda)d\lambda}
 \end{aligned}
-\]
+$$
 
 ::: {.lang-es}
 
@@ -3500,21 +3515,20 @@ as follows:
 
 :::
 
-\[
+$$
 \begin{aligned}
 g(\lambda|Y_t=y) &= \frac{\mathbb{P}(Y_t=y|\lambda, t) \cdot g(\lambda|r, \alpha)}{\int_0^\infty \mathbb{P}(Y_t=y|\lambda, t) \cdot g(\lambda|r, \alpha) d\lambda} \\
 &= \frac{ \left( \frac{(\lambda t)^y e^{-\lambda t}}{y!} \right) \left( \frac{\alpha^r \lambda^{r-1} e^{-\alpha\lambda}}{\Gamma(r)} \right) }{ \frac{\Gamma(r+y)}{\Gamma(r)y!} \left(\frac{\alpha}{\alpha+t}\right)^r \left(\frac{t}{\alpha+t}\right)^{y} } \\
 &= \frac{(\alpha+t)^{r+y}}{\Gamma(r+y)}\lambda^{r+y-1}e^{-\lambda(\alpha+t)}
-\end{aligned}
-\]
+\end{aligned} \tag{2.79}$$
 
 ::: {.lang-es}
 
 La expresión resultante es la función de densidad de una distribución
 Gamma, con los parámetros actualizados.
-\[
+$$
 g(\lambda|Y_t=y) \sim \text{Gamma}(r+y, \alpha+t)
-\]
+$$
 
 De esta distribución posterior se deduce la Esperanza Condicional, que
 es simplemente la media de dicha distribución:
@@ -3528,8 +3542,8 @@ updated parameters. Its mean yields the conditional expectation:
 
 :::
 
-\[\mathbb{E}(\lambda \mid Y_t = y) = \frac{r + y}{\alpha + t}
-\tag{2.51}\]
+$$\mathbb{E}(\lambda \mid Y_t = y) = \frac{r + y}{\alpha + t}
+\tag{2.80}$$
 
 ### Modelo de elección binaria (Beta-Binomial) {data-en="Binary Choice Model (Beta-Binomial)"}
 
@@ -3549,11 +3563,11 @@ Bayes' theorem:
 
 :::
 
-\[
+$$
 \begin{aligned}
 g(\theta|\text{datos}) &= \frac{\mathbb{P}(\text{datos}|\theta)g(\theta)}{\int \mathbb{P}(\text{datos}|\theta)g(\theta)d\theta}
 \end{aligned}
-\]
+$$
 
 ::: {.lang-es}
 
@@ -3590,21 +3604,21 @@ as follows:
 
 :::
 
-\[
+$$
 \begin{aligned}
 g(\theta|X=x) &= \frac{\mathbb{P}(X=x|m, \theta) \cdot g(\theta|\alpha, \beta)}{\int_0^1 \mathbb{P}(X=x|m, \theta) \cdot g(\theta|\alpha, \beta) d\theta} \\
 &= \frac{ \left( \binom{m}{x} \theta^x (1-\theta)^{m-x} \right) \left( \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha, \beta)} \right) }{ \binom{m}{x} \frac{B(\alpha+x, \beta+m-x)}{B(\alpha, \beta)} } \\
 &= \frac{\theta^{\alpha+x-1}(1-\theta)^{\beta+m-x-1}}{B(\alpha+x, \beta+m-x)}
 \end{aligned}
-\]
+$$
 
 ::: {.lang-es}
 
 La expresión resultante es la función de densidad de una distribución
 Beta, con los parámetros actualizados.
-\[
+$$
 g(\theta|X=x) \sim \text{Beta}(\alpha+x, \beta+m-x)
-\]
+$$
 
 De esta distribución posterior se deduce la Esperanza Condicional, que
 es simplemente la media de dicha distribución:
@@ -3618,13 +3632,13 @@ updated parameters. Its mean yields the conditional expectation:
 
 :::
 
-\[\mathbb{E}(\theta \mid X = x) = \frac{\alpha + x}{\alpha + \beta + m}
-\tag{2.52}\]
+$$\mathbb{E}(\theta \mid X = x) = \frac{\alpha + x}{\alpha + \beta + m}
+\tag{2.81}$$
 
 ::: {.lang-es}
 
 En el modelo de elección en donde la $P(X_s = x_s)$ quedaba definida en
-(2.31). Una pregunta válida que se puede hacer es cuál es la tasa de
+(2.40). Una pregunta válida que se puede hacer es cuál es la tasa de
 respuesta de un segmento $s$ determinado. Intuitivamente debería estar
 entre la tasa de respuesta esperada de la población y la observada, es
 decir,
@@ -3633,19 +3647,19 @@ decir,
 
 ::: {.lang-en}
 
-In the choice model where $P(X_s = x_s)$ was defined in (2.31), a valid
+In the choice model where $P(X_s = x_s)$ was defined in (2.40), a valid
 question is what the response rate is for a given segment $s$.
 Intuitively, it should lie between the population-expected response rate
 and the observed one:
 
 :::
 
-\[\mathbb{E}(\theta_s \mid m_s, x_s)
+$$\mathbb{E}(\theta_s \mid m_s, x_s)
 = \gamma\,\frac{\alpha}{\alpha + \beta}
 + (1 - \gamma)\,\frac{x_s}{m_s},
 \qquad
 \gamma = \frac{\alpha + \beta}{\alpha + \beta + m_s}
-\tag{2.53}\]
+\tag{2.82}$$
 
 ::: {.lang-es}
 
@@ -3670,9 +3684,9 @@ that:
 
 **Ejemplo 6 (Regla de decisión para campañas).** Es posible definir
 una regla de envío de catálogos al segmento $s$ cuando:
-\[\mathbb{E}(\theta_s \mid x_s)
+$$\mathbb{E}(\theta_s \mid x_s)
 = \frac{\alpha + x_s}{\alpha + \beta + m_s}
-> \frac{\text{Costo de envío}}{\text{Margen unitario}}\]
+> \frac{\text{Costo de envío}}{\text{Margen unitario}}$$
 Esta regla mejora la decisión ingenua basada únicamente en la tasa
 observada $x_s / m_s$, ya que incorpora información previa sobre la
 distribución poblacional de las tasas de respuesta.
@@ -3687,9 +3701,9 @@ distribución poblacional de las tasas de respuesta.
 
 **Example 6 (Decision rule for campaigns).** A catalog-sending rule
 for segment $s$ can be defined as:
-\[\mathbb{E}(\theta_s \mid x_s)
+$$\mathbb{E}(\theta_s \mid x_s)
 = \frac{\alpha + x_s}{\alpha + \beta + m_s}
-> \frac{\text{Mailing cost}}{\text{Unit margin}}\]
+> \frac{\text{Mailing cost}}{\text{Unit margin}}$$
 This rule improves upon the naive decision based solely on the observed
 rate $x_s / m_s$, since it incorporates prior information about the
 population distribution of response rates.
@@ -3718,8 +3732,8 @@ defined as:
 
 :::
 
-\[CLV = \sum_{t=0}^{T} m \cdot \frac{r^t}{(1+d)^t}
-\tag{2.54}\]
+$$CLV = \sum_{t=0}^{T} m \cdot \frac{r^t}{(1+d)^t}
+\tag{2.83}$$
 
 ::: {.lang-es}
 
@@ -3749,9 +3763,9 @@ of money received at time $t$. CLV is then computed as:
 
 :::
 
-\[\mathbb{E}(CLV) = \int_0^{\infty}
+$$\mathbb{E}(CLV) = \int_0^{\infty}
 \mathbb{E}(v(t))\,S(t)\,d(t)\,dt
-\tag{2.55}\]
+\tag{2.84}$$
 
 ::: {.lang-es}
 
@@ -3909,8 +3923,8 @@ segment 1, is:
 
 :::
 
-\[\mathbb{E}(RLV_1) = \sum_{t=1}^{\infty}
-\$100 \cdot \frac{0{,}9^t}{(1 + 0{,}1)^{t-1}} = \$495\]
+$$\mathbb{E}(RLV_1) = \sum_{t=1}^{\infty}
+\$100 \cdot \frac{0{,}9^t}{(1 + 0{,}1)^{t-1}} = \$495$$
 
 ::: {.lang-es}
 
@@ -3924,8 +3938,8 @@ For segment 2:
 
 :::
 
-\[\mathbb{E}(RLV_2) = \sum_{t=1}^{\infty}
-\$100 \cdot \frac{0{,}5^t}{(1 + 0{,}1)^{t-1}} = \$92\]
+$$\mathbb{E}(RLV_2) = \sum_{t=1}^{\infty}
+\$100 \cdot \frac{0{,}5^t}{(1 + 0{,}1)^{t-1}} = \$92$$
 
 ::: {.lang-es}
 
@@ -3940,9 +3954,9 @@ Applying Bayes' rule, conditional on being active after 4 renewals:
 
 :::
 
-\[P(\text{seg-1} \mid \text{renovar 4 veces})
+$$P(\text{seg-1} \mid \text{renovar 4 veces})
 = \frac{0{,}9^4 \cdot 0{,}333}{0{,}9^4 \cdot 0{,}333
-+ 0{,}5^4 \cdot 0{,}667} = 0{,}84\]
++ 0{,}5^4 \cdot 0{,}667} = 0{,}84$$
 
 ::: {.lang-es}
 
@@ -3956,7 +3970,7 @@ Then, the *Residual Lifetime Value* is given by:
 
 :::
 
-\[\mathbb{E}(RLV) = 0{,}84 \cdot \$495 + (0{,}84) \cdot \$92 = \$493{,}08\]
+$$\mathbb{E}(RLV) = 0{,}84 \cdot \$495 + (0{,}84) \cdot \$92 = \$493{,}08$$
 
 ::: {.lang-es}
 
@@ -4019,16 +4033,16 @@ Se postulan los siguientes supuestos para el caso discreto:
 
 1.  La tasa de retención a nivel individual es $1- \theta$:
 
-    \[
+    $$
     S(t|\theta) = (1-\theta)^t, \quad t=1,2,3,...
-    \tag{2.56}\]
+    \tag{2.85}$$
 
 2.  La heterogeneidad en $\theta$ es capturada por una distribución
     $\text{Beta}$:
 
-    \[
+    $$
     f(\theta|\alpha,\beta) = \frac{\theta^{\alpha -1}(1-\theta)^{\beta -1}}{B(\alpha,\beta)}
-    \tag{2.56a}\]
+    \tag{2.86}$$
 
 La probabilidad de que el cliente siga activo en $t$:
 
@@ -4046,9 +4060,9 @@ The probability that the customer remains active at $t$ is:
 
 :::
 
-\[S(t \mid \alpha, \beta)
+$$S(t \mid \alpha, \beta)
 = \frac{B(\alpha, \beta + t)}{B(\alpha, \beta)}
-\tag{2.56b}\]
+\tag{2.87}$$
 
 ::: {.lang-es}
 
@@ -4062,13 +4076,13 @@ Considering a customer who has been active for $n$ periods:
 
 :::
 
-\[
+$$
 \begin{aligned}
 \mathbb{E}(\text{RLV}(d \mid \text{activo en } n \text{ períodos}))
 &= \sum_{t=n+1}^{\infty} \mathbb{E}(v(t)) \cdot \frac{S(t|t>n)}{(1+d)^{t-n}}\\
 &= \bar{v} \sum_{t=n+1}^{\infty} \frac{S(t|t>n)}{(1+d)^{t-n}}, \quad \text{Asumiendo flujos constantes}
 \end{aligned}
-\tag{2.57}\]
+\tag{2.88}$$
 
 ::: {.lang-es}
 
@@ -4084,13 +4098,13 @@ DERL is the customer's discounted expected residual lifetime
 
 :::
 
-\[
+$$
 \begin{aligned}
 \text{DERL}(d \mid \text{activo en } n \text{ períodos})
 &= \sum_{t=n}^{\infty} \frac{S(t)}{S(n-1)} \cdot \left(\frac{a}{a+d}\right)^{t-n}\\
 &= \frac{(1-\theta)(1+d)}{d+\theta}
 \end{aligned}
-\tag{2.57a}\]
+\tag{2.89}$$
 
 ::: {.lang-es}
 
@@ -4109,7 +4123,7 @@ posterior distribution conditional on tenure.
 
 :::
 
-\[
+$$
 \begin{aligned}
 \text{DERL}(d \mid \alpha, \beta, \text{activo en } n)
 &= \int_0^1 \frac{(1-\theta)(1+d)}{d+\theta} \cdot \frac{S(n-1|\theta)f(\theta|\alpha,\beta)}{S(n-1|\alpha, \beta)} d\theta \\
@@ -4117,8 +4131,8 @@ posterior distribution conditional on tenure.
 &\quad \cdot {}_2F_1\!\left(1, \beta + n;\, \alpha + \beta + n;\,
 \frac{1}{1+d}\right)
 \end{aligned}
-\tag{2.58}
-\]
+\tag{2.90}
+$$
 
 ::: {.lang-es}
 
@@ -4142,21 +4156,21 @@ Algunos supuestos son:
     caracterizada por una distribución exponencial, con densidad y
     función de sobrevivencia dadas por:
 
-    \[
+    $$
     f(t\mid\lambda) = \lambda e^{-\lambda t}
-    \tag{2.59}\]
+    \tag{2.91}$$
 
-    \[
+    $$
     S(t\mid\lambda) = e^{-\lambda t}
-    \tag{2.60}\]
+    \tag{2.92}$$
 
 2.  La heterogeneidad en $\lambda$ es capturada por una distribución
     $\text{Gamma}$:
 
-    \[
+    $$
     g(\lambda\mid r,\alpha) =
     \frac{\alpha^r\lambda^{r-1}e^{-\alpha\lambda}}{\Gamma(r)}
-    \tag{2.61}\]
+    \tag{2.93}$$
 
 :::
 
@@ -4168,21 +4182,21 @@ Some assumptions are:
     characterized by an exponential distribution, with density and
     survival function given by:
 
-    \[
+    $$
     f(t\mid\lambda) = \lambda e^{-\lambda t}
-    \tag{2.59}\]
+    \tag{2.91}$$
 
-    \[
+    $$
     S(t\mid\lambda) = e^{-\lambda t}
-    \tag{2.60}\]
+    \tag{2.92}$$
 
 2.  Heterogeneity in $\lambda$ is captured by a $\text{Gamma}$
     distribution:
 
-    \[
+    $$
     g(\lambda\mid r,\alpha) =
     \frac{\alpha^r\lambda^{r-1}e^{-\alpha\lambda}}{\Gamma(r)}
-    \tag{2.61}\]
+    \tag{2.93}$$
 
 :::
 
@@ -4198,10 +4212,10 @@ Then, the probability of remaining active at $t$ is:
 
 :::
 
-\[
+$$
 S(t\mid r,\alpha) = \int_0^{\infty} S(t\mid\lambda)g(\lambda\mid r,\alpha)\,d\lambda
 = \left(\frac{\alpha}{\alpha+t}\right)^r
-\tag{2.62}\]
+\tag{2.94}$$
 
 ::: {.lang-es}
 
@@ -4215,14 +4229,14 @@ The expected value of the $\text{Residual Lifetime Value}$ is:
 
 :::
 
-\[
+$$
 \begin{aligned}
 \mathbb{E}(\text{RLV}(\delta\mid\text{activo en }s))
 &= \int_s^{\infty} \mathbb{E}(v(t))S(t\mid t>s)\delta(t)\,dt \\
 &= \bar{v}\cdot \text{DERL}(\delta\mid r,\alpha,\text{activo en }s)
 \end{aligned}
-\tag{2.63}
-\]
+\tag{2.95}
+$$
 
 ::: {.lang-es}
 
@@ -4236,10 +4250,10 @@ where
 
 :::
 
-\[
+$$
 \text{DERL}(\delta\mid r,\alpha,\text{activo en }s)
 = (\alpha+s)^r\delta \Psi(r;r;(\alpha+s)\delta)
-\tag{2.64}\]
+\tag{2.96}$$
 
 ::: {.lang-es}
 
@@ -4430,10 +4444,11 @@ acceder a distintos beneficios.
         probabilidad que este segmento corresponda a la clase de mayor
         propensión a registrar eventos.
 
-Para las descripciones anteriores considere que $n_{jkt}$ es el número
-total de beneficiarios que tuvieron algún gasto de salud en el trimestre
-t dentro del segmento j de la empresa k y que $m_{jkt}$ es el número
-total de beneficiarios dentro de ese segmento, empresa y trimestre.
+    Para las descripciones anteriores considere que $n_{jkt}$ es el
+    número total de beneficiarios que tuvieron algún gasto de salud en
+    el trimestre t dentro del segmento j de la empresa k y que
+    $m_{jkt}$ es el número total de beneficiarios dentro de ese
+    segmento, empresa y trimestre.
 
 3.  Como último enfoque, se estiman tres versiones de modelos
     beta-binomiales. En los modelos que se incluye heterogeneidad
@@ -4496,10 +4511,11 @@ different benefits.
         this segment belongs to the class with the higher propensity to
         register events.
 
-For the previous descriptions, let $n_{jkt}$ be the total number of
-beneficiaries who had at least one health expenditure in quarter $t$
-within segment $j$ of company $k$, and let $m_{jkt}$ be the total
-number of beneficiaries within that segment, company, and quarter.
+    For the previous descriptions, let $n_{jkt}$ be the total number of
+    beneficiaries who had at least one health expenditure in quarter
+    $t$ within segment $j$ of company $k$, and let $m_{jkt}$ be the
+    total number of beneficiaries within that segment, company, and
+    quarter.
 
 3.  As a final approach, three versions of beta-binomial models are
     estimated. In the models with observable heterogeneity, variables
@@ -4530,6 +4546,14 @@ Table: (\#tab:prob-p2-betabin) Estimadores máximo verosímiles de dos modelos b
 | **LL**              | -51.771,8    | -45.282,1    | -41.321,9    |
 | **AIC**             | 107.543,6    | 90.580,2     | 82.665,8     |
 
+a.  Discuta si el programa *TuBienestar* ayuda a describir el
+    comportamiento de los beneficiarios y si el programa *TuBienestar*
+    es bueno para la salud de los beneficiarios.
+b.  En otros mercados el valor esperado de la probabilidad que un
+    beneficiario exhiba un evento de salud en un trimestre dado es
+    0.16. ¿Cómo testearía si los datos de Chile son distintos a ese
+    valor medio internacional?
+
 :::
 
 ::: {.lang-en}
@@ -4553,6 +4577,14 @@ Table: (\#tab:prob-p2-betabin) Maximum likelihood estimates of two beta-binomial
 | **N. Obs**          | 34,825       | 34,825       | 34,825       |
 | **LL**              | -51,771.8    | -45,282.1    | -41,321.9    |
 | **AIC**             | 107,543.6    | 90,580.2     | 82,665.8     |
+
+a.  Discuss whether the *TuBienestar* program helps describe
+    beneficiaries' behavior and whether the *TuBienestar* program is
+    good for beneficiaries' health.
+b.  In other markets, the expected value of the probability that a
+    beneficiary exhibits a health event in a given quarter is 0.16. How
+    would you test whether the Chilean data differ from that
+    international benchmark?
 
 :::
 
