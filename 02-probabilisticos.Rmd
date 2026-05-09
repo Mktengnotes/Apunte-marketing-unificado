@@ -1027,33 +1027,6 @@ P(T > t \mid \alpha, \beta) &= \int_0^1 (1-\theta)^{t} \left( \frac{\theta^{\alp
 &= \frac{B(\alpha, t+\beta)}{B(\alpha, \beta)}
 \end{aligned}
 \tag{2.14}$$
-<div class="lang-es">
-
-::: {.rmdwarning}
-
-**Notación importante.** Se utiliza $B(\alpha, \beta)$ indistintamente
-para referirse tanto a la *función Beta* como a la *distribución Beta*.
-Bajo ninguna circunstancia estos objetos son iguales: la función Beta
-es una constante de normalización, mientras que la distribución Beta es
-una función de densidad de probabilidad.
-
-:::
-
-</div>
-
-<div class="lang-en">
-
-::: {.rmdwarning}
-
-**Important notation.** $B(\alpha, \beta)$ is used interchangeably to
-refer to both the *Beta function* and the *Beta distribution*. Under no
-circumstances are these objects the same: the Beta function is a
-normalization constant, while the Beta distribution is a probability
-density function.
-
-:::
-
-</div>
 
 <div class="lang-es">
 
@@ -5731,6 +5704,22 @@ Table: (\#tab:prob-p4-muestra) Sample of supermarket price discrepancies.
     discrepancias como variable dependiente. Los resultados de estos dos
     modelos se reportan en la Tabla \@ref(tab:prob-p4-regresion).
 
+    Table: (\#tab:prob-p4-regresion) Resultados de dos modelos de regresión lineal para la duración de la discrepancia.
+
+    | Variable         |  Coef. M1 | p-valor M1 |  Coef. M2 | p-valor M2 |
+    |:-----------------|----------:|:----------:|----------:|:----------:|
+    | intercepto       |      3.55 |   0.0901   |    -1.353 |   0.1607   |
+    | diff             |   -0.0002 |   0.7830   |         – |     –      |
+    | log(Tag\_price)  |   -0.2688 |   0.3661   |         – |     –      |
+    | log(diff)        |         – |     –      |     0.563 |   0.0019   |
+    | type.I           |      1.51 |   0.0210   |     2.168 |   0.0000   |
+    | type.I:diff      |    0.0046 |   0.1165   |         – |     –      |
+    | day.1            |         – |     –      |    -1.013 |   0.0061   |
+    | section.limpieza |         – |     –      |     4.394 |   0.0000   |
+    | section.cocktail |         – |     –      |    -1.329 |   0.0221   |
+    | **R²**           | **0,096** |            | **0,136** |            |
+    | **Adj. R²**      | **0,086** |            | **0,120** |            |
+
     Más allá de la varianza explicada por cada modelo, ¿qué modelo le
     parece más adecuado? Provea al menos dos razones por las cuales
     prefiere el modelo elegido.
@@ -5751,49 +5740,25 @@ Table: (\#tab:prob-p4-muestra) Sample of supermarket price discrepancies.
     the dependent variable. The results of these two models are reported
     in Table \@ref(tab:prob-p4-regresion).
 
+    Table: (\#tab:prob-p4-regresion) Linear regression results for price discrepancies.
+
+    | Variable         |  Coef. M1 | p-value M1 |  Coef. M2 | p-value M2 |
+    |:-----------------|----------:|:----------:|----------:|:----------:|
+    | intercept        |      3.55 |   0.0901   |    -1.353 |   0.1607   |
+    | diff             |   -0.0002 |   0.7830   |         – |     –      |
+    | log(Tag\_price)  |   -0.2688 |   0.3661   |         – |     –      |
+    | log(diff)        |         – |     –      |     0.563 |   0.0019   |
+    | type.I           |      1.51 |   0.0210   |     2.168 |   0.0000   |
+    | type.I:diff      |    0.0046 |   0.1165   |         – |     –      |
+    | day.1            |         – |     –      |    -1.013 |   0.0061   |
+    | section.cleaning |         – |     –      |     4.394 |   0.0000   |
+    | section.cocktail |         – |     –      |    -1.329 |   0.0221   |
+    | **R²**           | **0.096** |            | **0.136** |            |
+    | **Adj. R²**      | **0.086** |            | **0.120** |            |
+
     Beyond the explained variance of each model, which model seems more
     appropriate? Provide at least two reasons for preferring the chosen
     model.
-
-:::
-
-::: {.lang-es}
-
-Table: (\#tab:prob-p4-regresion) Resultados de dos modelos de regresión lineal para la duración de la discrepancia.
-
-| Variable         |  Coef. M1 | p-valor M1 |  Coef. M2 | p-valor M2 |
-|:-----------------|----------:|:----------:|----------:|:----------:|
-| intercepto       |      3.55 |   0.0901   |    -1.353 |   0.1607   |
-| diff             |   -0.0002 |   0.7830   |         – |     –      |
-| log(Tag\_price)  |   -0.2688 |   0.3661   |         – |     –      |
-| log(diff)        |         – |     –      |     0.563 |   0.0019   |
-| type.I           |      1.51 |   0.0210   |     2.168 |   0.0000   |
-| type.I:diff      |    0.0046 |   0.1165   |         – |     –      |
-| day.1            |         – |     –      |    -1.013 |   0.0061   |
-| section.limpieza |         – |     –      |     4.394 |   0.0000   |
-| section.cocktail |         – |     –      |    -1.329 |   0.0221   |
-| **R²**           | **0,096** |            | **0,136** |            |
-| **Adj. R²**      | **0,086** |            | **0,120** |            |
-
-:::
-
-::: {.lang-en}
-
-Table: (\#tab:prob-p4-regresion) Linear regression results for price discrepancies.
-
-| Variable         |  Coef. M1 | p-value M1 |  Coef. M2 | p-value M2 |
-|:-----------------|----------:|:----------:|----------:|:----------:|
-| intercept        |      3.55 |   0.0901   |    -1.353 |   0.1607   |
-| diff             |   -0.0002 |   0.7830   |         – |     –      |
-| log(Tag\_price)  |   -0.2688 |   0.3661   |         – |     –      |
-| log(diff)        |         – |     –      |     0.563 |   0.0019   |
-| type.I           |      1.51 |   0.0210   |     2.168 |   0.0000   |
-| type.I:diff      |    0.0046 |   0.1165   |         – |     –      |
-| day.1            |         – |     –      |    -1.013 |   0.0061   |
-| section.cleaning |         – |     –      |     4.394 |   0.0000   |
-| section.cocktail |         – |     –      |    -1.329 |   0.0221   |
-| **R²**           | **0.096** |            | **0.136** |            |
-| **Adj. R²**      | **0.086** |            | **0.120** |            |
 
 :::
 
@@ -5814,6 +5779,19 @@ Table: (\#tab:prob-p4-regresion) Linear regression results for price discrepanci
     $$
 
     Los estimadores máximo-verosímiles se muestran a continuación.
+
+    Table: (\#tab:prob-p4-duracion) Estimadores y criterios de información de tres modelos de duración.
+
+    | Parámetros | Geométrico desplazado | Beta geométrico | Regresión geométrica |
+    |:-----------|----------:|-----------:|------------:|
+    | $\theta_0$ |       0.33 |          – |        0.46 |
+    | $\alpha$   |          – |       2.08 |           – |
+    | $\beta$    |          – |       2.62 |           – |
+    | Diff       |          – |          – |       -0.43 |
+    | limpieza   |          – |          – |       -0.87 |
+    | **LL**     |       -788 |       -761 |        -566 |
+    | **AIC**    |       1278 |       1526 |        1142 |
+
     Elija dos de los modelos y, para cada uno, calcule la probabilidad
     de que una discrepancia para un producto de limpieza, cuya
     diferencia de precios es 201, dure más de 3 días (deje la expresión
@@ -5837,43 +5815,24 @@ Table: (\#tab:prob-p4-regresion) Linear regression results for price discrepanci
     \theta_i \;=\; \frac{\exp(\beta\cdot x_i)}{1+\exp(\beta\cdot x_i)}.
     $$
 
-    The maximum-likelihood estimators are shown below. Choose two of the
-    models and, for each one, calculate the probability that a
-    discrepancy for a cleaning product, whose price difference is 201,
-    lasts more than 3 days (leave the symbolic expression; a numerical
-    value is not required).
+    The maximum-likelihood estimators are shown below.
 
-:::
+    Table: (\#tab:prob-p4-duracion) Estimated parameters of duration models.
 
-::: {.lang-es}
+    | Parameters | Geometric | Beta-Geometric | Geometric Regression |
+    |:-----------|----------:|-----------:|------------:|
+    | $\theta_0$ |       0.33 |          – |        0.46 |
+    | $\alpha$   |          – |       2.08 |           – |
+    | $\beta$    |          – |       2.62 |           – |
+    | Diff       |          – |          – |       -0.43 |
+    | cleaning   |          – |          – |       -0.87 |
+    | **LL**     |       -788 |       -761 |        -566 |
+    | **AIC**    |      1,278 |      1,526 |       1,142 |
 
-Table: (\#tab:prob-p4-duracion) Estimadores y criterios de información de tres modelos de duración.
-
-| Parámetros | Geométrico desplazado | Beta geométrico | Regresión geométrica |
-|:-----------|----------:|-----------:|------------:|
-| $\theta_0$ |       0.33 |          – |        0.46 |
-| $\alpha$   |          – |       2.08 |           – |
-| $\beta$    |          – |       2.62 |           – |
-| Diff       |          – |          – |       -0.43 |
-| limpieza   |          – |          – |       -0.87 |
-| **LL**     |       -788 |       -761 |        -566 |
-| **AIC**    |       1278 |       1526 |        1142 |
-
-:::
-
-::: {.lang-en}
-
-Table: (\#tab:prob-p4-duracion) Estimated parameters of duration models.
-
-| Parameters | Geometric | Beta-Geometric | Geometric Regression |
-|:-----------|----------:|-----------:|------------:|
-| $\theta_0$ |       0.33 |          – |        0.46 |
-| $\alpha$   |          – |       2.08 |           – |
-| $\beta$    |          – |       2.62 |           – |
-| Diff       |          – |          – |       -0.43 |
-| cleaning   |          – |          – |       -0.87 |
-| **LL**     |       -788 |       -761 |        -566 |
-| **AIC**    |      1,278 |      1,526 |       1,142 |
+    Choose two of the models and, for each one, calculate the
+    probability that a discrepancy for a cleaning product, whose price
+    difference is 201, lasts more than 3 days (leave the symbolic
+    expression; a numerical value is not required).
 
 :::
 
@@ -6159,6 +6118,13 @@ modelo puede estar basado en un modelo de conteo.
         321045, escriba la log-verosimilitud del historial de compra de
         este cliente.
 
+        Table: (\#tab:prob-p5-historial) Historial resumido de compras del cliente 321045.
+
+        | IdCliente | Mes | Año | Tienda | Categoría | Edad | Mujer | Ingresos | Zona Oriente | Ncompras |
+        |:------:|:------:|:------:|:------:|:-------|:------:|:------:|:------:|:------:|:------:|
+        | 321045 | Julio | 2021 | S816 | Hamburguesa | 26 | 0 | 1.3 | 0 | 1 |
+        | 321045 | Septiembre | 2021 | S816 | Hamburguesa | 26 | 0 | 1.3 | 0 | 0 |
+
 :::
 
 ::: {.lang-en}
@@ -6220,27 +6186,12 @@ count model.
         which describe all purchases observed for customer 321045, write
         the log-likelihood of this customer's purchase history.
 
-:::
+        Table: (\#tab:prob-p5-historial) Summary purchase history for customer 321045.
 
-::: {.lang-es}
-
-Table: (\#tab:prob-p5-historial) Historial resumido de compras del cliente 321045.
-
-| IdCliente | Mes | Año | Tienda | Categoría | Edad | Mujer | Ingresos | Zona Oriente | Ncompras |
-|:------:|:------:|:------:|:------:|:-------|:------:|:------:|:------:|:------:|:------:|
-| 321045 | Julio | 2021 | S816 | Hamburguesa | 26 | 0 | 1.3 | 0 | 1 |
-| 321045 | Septiembre | 2021 | S816 | Hamburguesa | 26 | 0 | 1.3 | 0 | 0 |
-
-:::
-
-::: {.lang-en}
-
-Table: (\#tab:prob-p5-historial) Summary purchase history for customer 321045.
-
-| IdCliente | Month | Year | Store | Category | Age | Female | Income | Eastern Zone | NPurchases |
-|:------:|:------:|:------:|:------:|:-------|:------:|:------:|:------:|:------:|:------:|
-| 321045 | July | 2021 | S816 | Hamburger | 26 | 0 | 1.3 | 0 | 1 |
-| 321045 | September | 2021 | S816 | Hamburger | 26 | 0 | 1.3 | 0 | 0 |
+        | IdCliente | Month | Year | Store | Category | Age | Female | Income | Eastern Zone | NPurchases |
+        |:------:|:------:|:------:|:------:|:-------|:------:|:------:|:------:|:------:|:------:|
+        | 321045 | July | 2021 | S816 | Hamburger | 26 | 0 | 1.3 | 0 | 1 |
+        | 321045 | September | 2021 | S816 | Hamburger | 26 | 0 | 1.3 | 0 | 0 |
 
 :::
 
@@ -7648,4 +7599,422 @@ customer.
     $$
 
 :::
+</details>
+
+
+### Problema 10: Retraso en graduaciones universitarias {.unnumbered}
+
+::: {.lang-es}
+
+Uno de los fenómenos que ha acompañado el desarrollo económico de Chile
+en las últimas décadas es el aumento explosivo de la matrícula
+universitaria. Aunque un mayor nivel de educación tiene impactos
+universalmente favorables para el bienestar de las naciones, la
+provisión de los servicios educacionales es costosa desde un punto de
+vista privado y público. Esto motiva a que las distintas casas de
+estudio pongan especial atención a la duración de los estudios
+universitarios. Un mejor entendimiento de este fenómeno permitiría
+orientar decisiones de gestión de recursos y poner atención al proceso
+de prestación, con foco a tener un mejor balance entre los tiempos
+nominales y efectivos.
+
+De acuerdo con las estadísticas disponibles, los retrasos pueden
+constituir un problema serio en el sistema universitario nacional. En
+la Tabla \@ref(tab:prob-p10-duracion) se despliegan las duraciones
+promedio de los titulados del sistema entre los años 2012 y 2021, las
+que oscilan en torno a los 10 semestres. Esta cifra contrasta con la
+duración formal de los planes de estudios que, al 2021, ascendía a los
+7.6 semestres en promedio.
+
+:::
+
+::: {.lang-en}
+
+One of the phenomena that has accompanied Chile's economic development
+in recent decades is the explosive increase in university enrollment.
+Although a higher level of education has universally favorable impacts
+on the well-being of nations, the provision of educational services is
+costly from both a private and public standpoint. This motivates higher
+education institutions to pay special attention to the duration of
+university studies. A better understanding of this phenomenon would
+inform resource management decisions and the design of academic
+programs, with the aim of achieving a better balance between nominal
+and effective durations.
+
+According to available statistics, delays can constitute a serious
+problem in the national university system. Table
+\@ref(tab:prob-p10-duracion) shows the average graduation durations in
+the system between 2012 and 2021, oscillating around 10 semesters.
+This figure contrasts with the formal duration of study plans, which
+in 2021 averaged 7.6 semesters.
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p10-duracion) Duración efectiva de las carreras de la educación superior en Chile.
+
+|           | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 |
+|:----------|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+| Semestres | 10.1 | 10.1 | 10.0 |  9.7 |  9.6 |  9.6 |  9.8 |  9.7 |  9.6 | 10.1 |
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p10-duracion) Effective duration of higher education programs in Chile.
+
+|           | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 |
+|:----------|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+| Semesters | 10.1 | 10.1 | 10.0 |  9.7 |  9.6 |  9.6 |  9.8 |  9.7 |  9.6 | 10.1 |
+
+:::
+
+::: {.lang-es}
+
+Al descomponer por programas, los que más demoran en graduar a sus
+estudiantes son las carreras profesionales con licenciatura impartidas
+en universidades, con un promedio de 13,3 semestres. Considerando que
+la duración formal promedio de estos programas es de 10,1 semestres,
+se registra un retraso promedio de 3,2 semestres. En particular, las
+carreras de ingeniería están entre las que tienen mayor duración real.
+Por ejemplo, Ingeniería Civil Electrónica tiene una duración promedio
+de 16,8 semestres, Ingeniería Civil Metalúrgica una duración de 16,7
+semestres e Ingeniería Civil Eléctrica dura 16,5 semestres en
+promedio.
+
+Para entender en profundidad qué factores son los que más influyen en
+el retraso en las graduaciones, un equipo de la escuela de Ingeniería
+de la Universidad de Chile ha armado una base de datos con los
+graduados de las últimas cohortes, en que se registran las siguientes
+variables:
+
+-   *AñoIng*: año de ingreso a la Universidad.
+-   *EdadIng*: edad de ingreso a la Universidad.
+-   *NTrabaja*: número de semestres en que trabajó mientras estudiaba.
+-   *Beca*: 1 si tenía alguna beca de excelencia académica.
+-   *Nfam*: número de integrantes en el grupo familiar.
+-   *Especialidad*: especialidad de la que egresó el o la estudiante.
+-   *Particular*: 1 si egresó de un colegio particular pagado.
+-   *NEM*: notas promedio de la enseñanza media.
+-   *Region*: 1 si el colegio de egreso no está ubicado en la Región
+    Metropolitana.
+-   *PMAT*: puntaje en las pruebas de admisión de matemáticas.
+-   *PCIE*: puntaje en las pruebas de admisión de ciencias.
+-   *PLEN*: puntaje en las pruebas de admisión de lenguaje.
+-   *NSem*: número de semestres que demoró el o la estudiante en
+    graduarse.
+
+El análisis se centra en el comportamiento del número de semestres de
+retraso ($NRet$), el que, por simplicidad, puede suponerse que se
+calcula como $NRet = NSem - 12$. A partir de una exploración inicial
+de datos, se ha considerado que esta variable $NRet$ puede aproximarse
+a través de una distribución de Poisson.
+
+1.  Suponga que observa dos individuos, con tiempos de graduación de
+    12 ($NRet = 0$) y 13 semestres ($NRet = 1$). ¿Qué valor de
+    $\lambda$ le parece más verosímil: $\lambda = 1$ o $\lambda = 2$?
+
+    *Hint:* si lo necesita, puede usar los valores numéricos de la
+    Tabla \@ref(tab:prob-p10-logs).
+
+:::
+
+::: {.lang-en}
+
+When broken down by program, those that take the longest to graduate
+their students are professional programs with a *licenciatura* offered
+by universities, averaging 13.3 semesters. Given that the formal
+average duration of these programs is 10.1 semesters, the average
+delay is 3.2 semesters. Engineering programs are among those with the
+longest effective duration. For example, Electronic Engineering takes
+an average of 16.8 semesters, Metallurgical Engineering 16.7
+semesters, and Electrical Engineering 16.5 semesters.
+
+To better understand which factors most influence graduation delays,
+a team from the School of Engineering at Universidad de Chile has
+assembled a database of graduates from recent cohorts, recording the
+following variables:
+
+-   *AñoIng*: year of admission to the university.
+-   *EdadIng*: age at admission.
+-   *NTrabaja*: number of semesters worked while studying.
+-   *Beca*: 1 if the student held an academic merit scholarship.
+-   *Nfam*: number of household members.
+-   *Especialidad*: program from which the student graduated.
+-   *Particular*: 1 if the student graduated from a private fee-paying
+    school.
+-   *NEM*: high school grade-point average.
+-   *Region*: 1 if the high school is located outside the Metropolitan
+    Region.
+-   *PMAT*: admission test score in mathematics.
+-   *PCIE*: admission test score in sciences.
+-   *PLEN*: admission test score in language.
+-   *NSem*: number of semesters the student took to graduate.
+
+The analysis focuses on the number of semesters of delay ($NRet$),
+which, for simplicity, may be assumed to satisfy $NRet = NSem - 12$.
+An initial exploratory analysis suggests that $NRet$ can be
+approximated by a Poisson distribution.
+
+1.  Suppose two individuals are observed with graduation times of 12
+    semesters ($NRet = 0$) and 13 semesters ($NRet = 1$). Which value
+    of $\lambda$ seems more likely: $\lambda = 1$ or $\lambda = 2$?
+
+    *Hint:* if needed, the numerical values in Table
+    \@ref(tab:prob-p10-logs) may be useful.
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p10-logs) Valores numéricos de $\log(x)$ para una selección de valores de $x$.
+
+| $x$       |   1   |   2   |   3   |
+|:----------|:-----:|:-----:|:-----:|
+| $\log(x)$ | 0.000 | 0.693 | 1.099 |
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p10-logs) Numerical values of $\log(x)$ for a selection of $x$.
+
+| $x$       |   1   |   2   |   3   |
+|:----------|:-----:|:-----:|:-----:|
+| $\log(x)$ | 0.000 | 0.693 | 1.099 |
+
+:::
+
+::: {.lang-es}
+
+2.  Suponga que se quiere estimar un modelo de Poisson con dos clases
+    latentes, con parámetros $\lambda_{\text{high}}$ y
+    $\lambda_{\text{low}}$ ($\lambda_{\text{low}} < \lambda_{\text{high}}$).
+    Escriba una expresión para la probabilidad de que un estudiante
+    se atrase, condicional en que pertenece al segmento con
+    $\lambda_{\text{high}}$.
+
+3.  Suponga que ahora se quiere describir los meses de retraso como un
+    modelo de conteo que considere tanto heterogeneidad observable
+    como no observable.
+
+    a.  Para este modelo, escriba una expresión para la tasa de
+        retraso considerando al menos 2 variables observables y
+        explique por qué la inclusión de esas variables tiene
+        sentido. Determine cuál es el signo esperado para el
+        coeficiente correspondiente.
+    b.  Usando la definición de la tasa de retraso de la pregunta
+        anterior, agregue heterogeneidad no observable y escriba la
+        log-verosimilitud de observar todo el conjunto de datos.
+
+4.  Después de terminar el análisis y presentar los resultados al
+    equipo de trabajo, un estudiante en práctica levanta la mano y le
+    manifiesta que todo el análisis presentado es incorrecto. Esto
+    porque el problema corresponde a un modelo de duración en tiempo
+    discreto y, por tanto, en vez de usar un modelo de Poisson
+    debiera usarse un modelo geométrico desplazado. Discuta respecto
+    a la veracidad del argumento del estudiante.
+
+:::
+
+::: {.lang-en}
+
+2.  Suppose a Poisson model with two latent classes is to be
+    estimated, with parameters $\lambda_{\text{high}}$ and
+    $\lambda_{\text{low}}$ ($\lambda_{\text{low}} < \lambda_{\text{high}}$).
+    Write an expression for the probability that a student is
+    delayed, conditional on belonging to the segment with
+    $\lambda_{\text{high}}$.
+
+3.  Suppose now that one wants to describe the months of delay as a
+    count model that incorporates both observable and unobservable
+    heterogeneity.
+
+    a.  For this model, write an expression for the delay rate
+        considering at least two observable variables and explain
+        why their inclusion is sensible. Determine the expected
+        sign of the corresponding coefficient.
+    b.  Using the delay rate from the previous part, add unobservable
+        heterogeneity and write the log-likelihood of observing the
+        entire dataset.
+
+4.  After completing the analysis and presenting the results to the
+    team, an intern raises their hand and argues that the entire
+    analysis is incorrect, because the problem corresponds to a
+    discrete-time duration model and therefore, instead of a Poisson
+    model, a shifted geometric model should be used. Discuss the
+    validity of the intern's argument.
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+1.  Podríamos aplicar directamente la definición de verosimilitud,
+    pero numéricamente es más cómodo trabajar con la
+    log-verosimilitud:
+
+    $$
+    LL(\lambda) = \ln\!\big(\mathbb{P}(NRet_1 = 0 \mid \lambda)\big) + \ln\!\big(\mathbb{P}(NRet_2 = 1 \mid \lambda)\big) = -\lambda + \ln\!\big(\lambda e^{-\lambda}\big).
+    $$
+
+    Reemplazando en los valores propuestos:
+
+    $$
+    \begin{aligned}
+    LL(\lambda = 1) &= -1 + \ln\!\big(1 \cdot e^{-1}\big) = -2, \\
+    LL(\lambda = 2) &= -2 + \ln(2) + \ln\!\big(e^{-2}\big) = -2 + 0.693 - 2 = -3.307.
+    \end{aligned}
+    $$
+
+    Con lo que verificamos que $\lambda = 1$ es más verosímil que
+    $\lambda = 2$.
+
+:::
+
+::: {.lang-en}
+
+1.  We could apply the definition of likelihood directly, but it is
+    numerically more convenient to work with the log-likelihood:
+
+    $$
+    LL(\lambda) = \ln\!\big(\mathbb{P}(NRet_1 = 0 \mid \lambda)\big) + \ln\!\big(\mathbb{P}(NRet_2 = 1 \mid \lambda)\big) = -\lambda + \ln\!\big(\lambda e^{-\lambda}\big).
+    $$
+
+    Substituting the proposed values:
+
+    $$
+    \begin{aligned}
+    LL(\lambda = 1) &= -1 + \ln\!\big(1 \cdot e^{-1}\big) = -2, \\
+    LL(\lambda = 2) &= -2 + \ln(2) + \ln\!\big(e^{-2}\big) = -2 + 0.693 - 2 = -3.307.
+    \end{aligned}
+    $$
+
+    Hence $\lambda = 1$ is more likely than $\lambda = 2$.
+
+:::
+
+::: {.lang-es}
+
+2.  Condicional en la pertenencia al segmento con
+    $\lambda_{\text{high}}$, los retrasos siguen un proceso de Poisson
+    evaluado en $\lambda = \lambda_{\text{high}}$. Luego,
+
+    $$
+    \mathbb{P}\!\big(NRet > 0 \mid \lambda = \lambda_{\text{high}}\big) = 1 - \mathbb{P}\!\big(NRet = 0 \mid \lambda = \lambda_{\text{high}}\big) = 1 - \exp\!\big(-\lambda_{\text{high}}\big).
+    $$
+
+:::
+
+::: {.lang-en}
+
+2.  Conditional on membership in the segment with
+    $\lambda_{\text{high}}$, delays follow a Poisson process with
+    rate $\lambda = \lambda_{\text{high}}$. Therefore,
+
+    $$
+    \mathbb{P}\!\big(NRet > 0 \mid \lambda = \lambda_{\text{high}}\big) = 1 - \mathbb{P}\!\big(NRet = 0 \mid \lambda = \lambda_{\text{high}}\big) = 1 - \exp\!\big(-\lambda_{\text{high}}\big).
+    $$
+
+:::
+
+::: {.lang-es}
+
+3.  La primera parte trata de heterogeneidad observable; la segunda
+    agrega heterogeneidad no observable.
+
+    a.  La especificación es la misma vista en clases:
+
+        $$
+        \hat{\lambda}_i = \lambda_0 \exp\!\big(\beta' x_i\big),
+        $$
+
+        de modo que basta listar y justificar las componentes de
+        $x_i$. Algunos ejemplos:
+
+        -   *PMAT*: estudiantes con mejores notas en pruebas de
+            matemáticas suelen tener mejores resultados y se espera
+            que se retrasen menos (coeficiente negativo).
+        -   *NEM*: estudiantes con mejores notas en enseñanza media
+            se retrasan menos (coeficiente negativo).
+        -   *Particular*: estudiantes de colegios particulares
+            tienden a tener mejores resultados, se espera que se
+            retrasen menos (coeficiente negativo).
+        -   *Beca*: estudiantes con beca tienen mejores notas e
+            incentivos para no retrasarse, por lo que se espera un
+            coeficiente negativo.
+
+    b.  Al agregar heterogeneidad no observable se obtiene un modelo
+        de regresión binomial negativa. La log-verosimilitud queda
+
+        $$
+        LL\!\big(\hat{\lambda}_i\big) = \sum_i \ln\!\Bigg( \frac{\Gamma(r + n_i)}{\Gamma(r)\, n_i!} \left(\frac{\alpha}{\alpha + \exp(\beta' x_i)}\right)^{r} \left(\frac{\exp(\beta' x_i)}{\alpha + \exp(\beta' x_i)}\right)^{n_i} \Bigg).
+        $$
+
+:::
+
+::: {.lang-en}
+
+3.  The first part deals with observable heterogeneity; the second
+    adds unobservable heterogeneity.
+
+    a.  The specification is the same one seen in class:
+
+        $$
+        \hat{\lambda}_i = \lambda_0 \exp\!\big(\beta' x_i\big),
+        $$
+
+        so it suffices to list and justify the components of $x_i$.
+        Some examples:
+
+        -   *PMAT*: students with better mathematics scores tend to
+            perform better and are expected to be less delayed
+            (negative coefficient).
+        -   *NEM*: students with higher high school GPAs are less
+            delayed (negative coefficient).
+        -   *Particular*: students from private schools tend to
+            perform better and are expected to be less delayed
+            (negative coefficient).
+        -   *Beca*: scholarship holders have better grades and
+            stronger incentives to avoid delays, so a negative
+            coefficient is expected.
+
+    b.  Adding unobservable heterogeneity yields a negative binomial
+        regression. The log-likelihood is
+
+        $$
+        LL\!\big(\hat{\lambda}_i\big) = \sum_i \ln\!\Bigg( \frac{\Gamma(r + n_i)}{\Gamma(r)\, n_i!} \left(\frac{\alpha}{\alpha + \exp(\beta' x_i)}\right)^{r} \left(\frac{\exp(\beta' x_i)}{\alpha + \exp(\beta' x_i)}\right)^{n_i} \Bigg).
+        $$
+
+:::
+
+::: {.lang-es}
+
+4.  El modelo geométrico desplazado es una alternativa razonable para
+    caracterizar los retrasos. Sin embargo, un modelo de conteo
+    también es válido: la elección entre uno y otro depende de cómo
+    se interprete $NRet$ (cuántos semestres adicionales son
+    necesarios para graduarse, en una óptica de duración, frente al
+    número de eventos de atraso, en una óptica de conteo). Para
+    determinar cuál resulta más adecuado en este caso conviene
+    revisar métricas de ajuste y de pronóstico fuera de muestra.
+
+:::
+
+::: {.lang-en}
+
+4.  The shifted geometric model is a reasonable alternative for
+    characterizing delays. However, a count model is also valid: the
+    choice between the two depends on how $NRet$ is interpreted (how
+    many additional semesters are needed to graduate, from a duration
+    perspective, versus the number of delay events, from a counting
+    perspective). To decide which one fits the data better, one
+    should compare in-sample fit and out-of-sample predictive
+    metrics.
+
+:::
+
 </details>

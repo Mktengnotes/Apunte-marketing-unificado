@@ -469,6 +469,13 @@ mjx-container[jax="CHTML"][display="true"] {
   max-width: 100%;
 }
 
+/* Wide tables: deslizador horizontal cuando exceden el ancho de la pagina */
+.book .book-body .page-wrapper .page-inner section.normal table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 /* Figure captions centered */
 .figure p.caption,
 p.caption,
