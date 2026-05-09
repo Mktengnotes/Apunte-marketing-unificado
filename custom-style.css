@@ -469,11 +469,16 @@ mjx-container[jax="CHTML"][display="true"] {
   max-width: 100%;
 }
 
-/* Wide tables: deslizador horizontal cuando exceden el ancho de la pagina */
+/* Wide tables: deslizador horizontal cuando exceden el ancho de la pagina,
+   pero las angostas siguen centradas dentro de su contenedor (incluyendo
+   tablas anidadas en items de lista). */
 .book .book-body .page-wrapper .page-inner section.normal table {
   display: block;
+  width: fit-content;
   max-width: 100%;
   overflow-x: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Figure captions centered */
