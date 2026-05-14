@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-05-09" />
+<meta name="date" content="2026-05-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -268,6 +268,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-8-pok%C3%A9mon-go"><i class="fa fa-check"></i>Problema 8: Pokémon Go</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-9-aplicaci%C3%B3n-m%C3%B3vil-con-promociones-georreferenciadas"><i class="fa fa-check"></i>Problema 9: Aplicación móvil con promociones georreferenciadas</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-10-retraso-en-graduaciones-universitarias"><i class="fa fa-check"></i>Problema 10: Retraso en graduaciones universitarias</a></li>
+<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-11-tasas-de-respuesta-en-encuestas-de-educaci%C3%B3n-superior"><i class="fa fa-check"></i>Problema 11: Tasas de respuesta en encuestas de educación superior</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cap-estructurales.html"><a href="cap-estructurales.html"><i class="fa fa-check"></i><b>3</b> Modelos Estructurales</a>
@@ -8677,6 +8678,735 @@ perspective, versus the number of delay events, from a counting
 perspective). To decide which one fits the data better, one
 should compare in-sample fit and out-of-sample predictive
 metrics.</li>
+</ol>
+</div>
+</details>
+</div>
+<div id="problema-11-tasas-de-respuesta-en-encuestas-de-educación-superior" class="section level3 unnumbered hasAnchor">
+<h3>Problema 11: Tasas de respuesta en encuestas de educación superior<a href="cap-probabilisticos.html#problema-11-tasas-de-respuesta-en-encuestas-de-educaci%C3%B3n-superior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="lang-es">
+<p>Los paneles de encuestas siguen siendo una herramienta importante para
+recoger la valoración que tienen los usuarios sobre sus experiencias en
+distintas industrias de servicios. Uno de los desafíos actuales de la
+administración de estos paneles es las bajas tasas de respuesta, lo que
+dificulta la recopilación de datos y potencialmente introduce sesgos en
+las percepciones medidas. A continuación, propondremos el estudio de
+las tasas de respuesta en el contexto de las evaluaciones que proveen
+los estudiantes a las encuestas semestrales en cada una de las materias
+que cursan.</p>
+<p>Para estudiar el fenómeno, se ha preparado un panel de encuestados
+caracterizados por el número de matrícula, la carrera que estudian y el
+año de ingreso, y una muestra de 94 encuestas realizadas entre 2023 y
+2025 en una institución de educación superior. Para cada encuesta,
+conocemos la fecha de envío, el número de días en que la encuesta está
+abierta y el tipo de encuesta. La variable central de análisis es una
+variable binaria que indica si el estudiante responde o no a la
+encuesta. La Tabla <a href="cap-probabilisticos.html#tab:prob-p11-panel">2.17</a> despliega una muestra con
+los primeros 6 registros del panel. Notar que este panel solo registra
+los casos de estudiantes que recibieron una encuesta; si un alumno no
+recibe una encuesta, esa combinación de estudiante-encuesta no se
+registra en el panel.</p>
+</div>
+<div class="lang-en">
+<p>Survey panels remain an important tool for collecting users’
+assessments of their experiences across various service industries. One
+of the current challenges in managing these panels is the low response
+rate, which hampers data collection and potentially introduces biases
+in the measured perceptions. Below, we study response rates in the
+context of evaluations that students provide in semester surveys for
+each of the courses they take.</p>
+<p>To study the phenomenon, a panel of respondents has been prepared,
+characterized by enrollment number, field of study, and year of
+admission, along with a sample of 94 surveys conducted between 2023
+and 2025 at a higher education institution. For each survey, we know
+the date it was sent, the number of days it remained open, and the
+type of survey. The central variable of analysis is a binary variable
+indicating whether the student responds to the survey or not. Table
+<a href="cap-probabilisticos.html#tab:prob-p11-panel">2.17</a> displays a sample of the first 6 records
+from the panel. Note that this panel only records cases where a
+student received a survey; if a student does not receive a survey, that
+student-survey combination is not recorded in the panel.</p>
+</div>
+<div class="lang-es">
+<table style="width:100%;">
+<caption><span id="tab:prob-p11-panel">Table 2.17: </span> Muestra de los primeros seis registros del panel de encuestados.</caption>
+<colgroup>
+<col width="7%" />
+<col width="12%" />
+<col width="12%" />
+<col width="6%" />
+<col width="13%" />
+<col width="2%" />
+<col width="12%" />
+<col width="5%" />
+<col width="14%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">NMat</th>
+<th align="left">Carrera</th>
+<th align="center">Año Ingreso</th>
+<th align="center">IdEnc</th>
+<th align="center">Código Curso</th>
+<th align="center">N</th>
+<th align="center">Fecha Envío</th>
+<th align="center">Días</th>
+<th align="center">Tipo Encuesta</th>
+<th align="center">Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">945001</td>
+<td align="left">Ingeniería</td>
+<td align="center">2019</td>
+<td align="center">4501</td>
+<td align="center">ECO101</td>
+<td align="center"></td>
+<td align="center">2023-11-15</td>
+<td align="center">14</td>
+<td align="center">Docencia</td>
+<td align="center">Sí</td>
+</tr>
+<tr class="even">
+<td align="left">033012</td>
+<td align="left">Psicología</td>
+<td align="center">2020</td>
+<td align="center">4502</td>
+<td align="center">PSI205</td>
+<td align="center"></td>
+<td align="center">2023-11-15</td>
+<td align="center">14</td>
+<td align="center">Docencia</td>
+<td align="center">No</td>
+</tr>
+<tr class="odd">
+<td align="left">111005</td>
+<td align="left">Derecho</td>
+<td align="center">2021</td>
+<td align="center">4503</td>
+<td align="center">DER110</td>
+<td align="center"></td>
+<td align="center">2023-11-16</td>
+<td align="center">7</td>
+<td align="center">Bienestar</td>
+<td align="center">No</td>
+</tr>
+<tr class="even">
+<td align="left">945001</td>
+<td align="left">Ingeniería</td>
+<td align="center">2019</td>
+<td align="center">4504</td>
+<td align="center">MAT200</td>
+<td align="center"></td>
+<td align="center">2023-11-15</td>
+<td align="center">21</td>
+<td align="center">Docencia</td>
+<td align="center">No</td>
+</tr>
+<tr class="odd">
+<td align="left">200554</td>
+<td align="left">Medicina</td>
+<td align="center">2022</td>
+<td align="center">4505</td>
+<td align="center">MED010</td>
+<td align="center"></td>
+<td align="center">2023-11-17</td>
+<td align="center">14</td>
+<td align="center">Docencia</td>
+<td align="center">Sí</td>
+</tr>
+<tr class="even">
+<td align="left">033012</td>
+<td align="left">Psicología</td>
+<td align="center">2020</td>
+<td align="center">4506</td>
+<td align="center">SOC100</td>
+<td align="center"></td>
+<td align="center">2023-11-15</td>
+<td align="center">14</td>
+<td align="center">Bienestar</td>
+<td align="center">No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="lang-en">
+<table style="width:100%;">
+<caption><span id="tab:prob-p11-panel">Table 2.17: </span> Sample of the first six records from the survey panel.</caption>
+<colgroup>
+<col width="8%" />
+<col width="13%" />
+<col width="11%" />
+<col width="7%" />
+<col width="13%" />
+<col width="3%" />
+<col width="13%" />
+<col width="6%" />
+<col width="13%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">NMat</th>
+<th align="left">Field</th>
+<th align="center">Year Adm.</th>
+<th align="center">IdEnc</th>
+<th align="center">Course Code</th>
+<th align="center">N</th>
+<th align="center">Date Sent</th>
+<th align="center">Days</th>
+<th align="center">Survey Type</th>
+<th align="center">Response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">945001</td>
+<td align="left">Engineering</td>
+<td align="center">2019</td>
+<td align="center">4501</td>
+<td align="center">ECO101</td>
+<td align="center"></td>
+<td align="center">2023-11-15</td>
+<td align="center">14</td>
+<td align="center">Teaching</td>
+<td align="center">Yes</td>
+</tr>
+<tr class="even">
+<td align="left">033012</td>
+<td align="left">Psychology</td>
+<td align="center">2020</td>
+<td align="center">4502</td>
+<td align="center">PSI205</td>
+<td align="center"></td>
+<td align="center">2023-11-15</td>
+<td align="center">14</td>
+<td align="center">Teaching</td>
+<td align="center">No</td>
+</tr>
+<tr class="odd">
+<td align="left">111005</td>
+<td align="left">Law</td>
+<td align="center">2021</td>
+<td align="center">4503</td>
+<td align="center">DER110</td>
+<td align="center"></td>
+<td align="center">2023-11-16</td>
+<td align="center">7</td>
+<td align="center">Welfare</td>
+<td align="center">No</td>
+</tr>
+<tr class="even">
+<td align="left">945001</td>
+<td align="left">Engineering</td>
+<td align="center">2019</td>
+<td align="center">4504</td>
+<td align="center">MAT200</td>
+<td align="center"></td>
+<td align="center">2023-11-15</td>
+<td align="center">21</td>
+<td align="center">Teaching</td>
+<td align="center">No</td>
+</tr>
+<tr class="odd">
+<td align="left">200554</td>
+<td align="left">Medicine</td>
+<td align="center">2022</td>
+<td align="center">4505</td>
+<td align="center">MED010</td>
+<td align="center"></td>
+<td align="center">2023-11-17</td>
+<td align="center">14</td>
+<td align="center">Teaching</td>
+<td align="center">Yes</td>
+</tr>
+<tr class="even">
+<td align="left">033012</td>
+<td align="left">Psychology</td>
+<td align="center">2020</td>
+<td align="center">4506</td>
+<td align="center">SOC100</td>
+<td align="center"></td>
+<td align="center">2023-11-15</td>
+<td align="center">14</td>
+<td align="center">Welfare</td>
+<td align="center">No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="lang-es">
+<ol style="list-style-type: decimal">
+<li><p>Escriba la log-verosimilitud de un modelo de conteo con
+heterogeneidad observable que describa el número de respuestas
+provistas por cada estudiante. En su desarrollo, asuma que la tasa
+de respuesta anual se puede escribir como <span class="math inline">\(\lambda_i(\mathbf{x}_i)\)</span>
+donde <span class="math inline">\(\mathbf{x}_i\)</span> es un vector que caracteriza al estudiante <span class="math inline">\(i\)</span>.
+De necesitar cualquier otro dato, explique cómo calcularlo a partir
+de los datos disponibles en el panel.</p></li>
+<li><p>Escriba la log-verosimilitud de un modelo de conteo con
+heterogeneidad observable que describa el número de encuestas
+recibidas por cada estudiante. En su desarrollo, asuma que la tasa
+de recepción anual se puede escribir como <span class="math inline">\(\mu_i(\mathbf{x}_i)\)</span>
+donde <span class="math inline">\(\mathbf{x}_i\)</span> es un vector que caracteriza al estudiante <span class="math inline">\(i\)</span>.
+De necesitar cualquier otro dato, explique cómo calcularlo a partir
+de los datos disponibles en el panel.</p>
+<p><em>Hint: para las dos preguntas anteriores, puede asumir que todos los
+estudiantes de la muestra están activos durante los tres años de
+observación.</em></p></li>
+<li><p>Un estudiante plantea que una de las principales razones que
+explican las bajas tasas de respuesta es la gran cantidad de
+encuestas que envía la institución, que abruman al estudiantado. En
+particular, el estudiante plantea que la tasa de respuesta ha ido
+bajando porque la tasa de envío ha ido subiendo.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Para testear que la institución ha ido aumentando el número de
+encuestas, el estudiante plantea que debiera estimarse un modelo
+homogéneo independiente para cada año y luego comparar los
+valores de los estimadores máximos verosímiles
+<span class="math inline">\(\hat{\lambda}_{2023}\)</span>, <span class="math inline">\(\hat{\lambda}_{2024}\)</span> y
+<span class="math inline">\(\hat{\lambda}_{2025}\)</span> usando un test de ratios de
+verosimilitud. Comente sobre la adecuación de la propuesta del
+estudiante.</p></li>
+<li><p>Más allá de la opinión que tenga de la propuesta anterior del
+estudiante, ¿cómo haría usted para comprobar si efectivamente la
+institución ha mantenido o aumentado su tasa de envíos?</p></li>
+</ol></li>
+<li><p>Para avanzar en la comprensión del problema, se han estimado cuatro
+modelos de conteo, como se indica en la Tabla
+<a href="cap-probabilisticos.html#tab:prob-p11-modelos">2.18</a>. En la lista se incluyen tanto modelos
+homogéneos, como modelos que incorporan heterogeneidad observable y
+no observable.</p>
+<table>
+<caption><span id="tab:prob-p11-modelos">Table 2.18: </span> Estimadores máximos verosímiles de cuatro modelos de conteo.</caption>
+<colgroup>
+<col width="16%" />
+<col width="22%" />
+<col width="24%" />
+<col width="17%" />
+<col width="19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="center">Poisson Homogéneo</th>
+<th align="center">Poisson Heterogéneo</th>
+<th align="center">NBD Homogéneo</th>
+<th align="center">NBD Heterogéneo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\lambda_0\)</span></td>
+<td align="center">12,58 ***</td>
+<td align="center">12,19 ***</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\alpha\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0,45 **</td>
+<td align="center">0,63 **</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(r\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">3,52 ***</td>
+<td align="center">4,15 ***</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(X_1\)</span></td>
+<td align="center"></td>
+<td align="center">0,32 **</td>
+<td align="center"></td>
+<td align="center">0,42 ***</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(X_2\)</span></td>
+<td align="center"></td>
+<td align="center">0,08 .</td>
+<td align="center"></td>
+<td align="center">0,15 *</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(X_3\)</span></td>
+<td align="center"></td>
+<td align="center">0,65 ***</td>
+<td align="center"></td>
+<td align="center">0,81 **</td>
+</tr>
+<tr class="odd">
+<td align="left">N. Obs</td>
+<td align="center">11.456</td>
+<td align="center">11.456</td>
+<td align="center">11.456</td>
+<td align="center">11.456</td>
+</tr>
+<tr class="even">
+<td align="left">LL</td>
+<td align="center">−44.200</td>
+<td align="center">−44.200</td>
+<td align="center">−44.200</td>
+<td align="center">−44.200</td>
+</tr>
+<tr class="odd">
+<td align="left">AIC</td>
+<td align="center">90.400</td>
+<td align="center">89.000</td>
+<td align="center">75.760</td>
+<td align="center">80.200</td>
+</tr>
+</tbody>
+</table>
+<p>Para el modelo que mejor ajuste a los datos, calcule la tasa esperada
+de un estudiante, para el próximo año, condicional a que ha contestado
+dos encuestas en el año recién pasado.</p></li>
+<li><p>Proponga y justifique 2 variables para incluir en el vector
+<span class="math inline">\(\mathbf{x}_i\)</span>, distintas a la fecha de envío. Junto con explicar
+por qué piensa que hace sentido incluir esas variables, hipotetice
+la dirección esperada del efecto.</p></li>
+<li><p>Los modelos de conteo propuestos anteriormente suponen que las tasas
+de respuesta no dependen del número de encuestas realizadas. Esto
+es, dos estudiantes con las mismas características debieran generar,
+en promedio, las mismas respuestas, independientemente de si uno
+recibió más encuestas que el otro. Escriba la log-verosimilitud de
+un modelo que permita tener en cuenta que el número de respuestas
+generadas está asociado al número de encuestas recibidas.</p></li>
+</ol>
+</div>
+<div class="lang-en">
+<ol style="list-style-type: decimal">
+<li><p>Write the log-likelihood of a count model with observable
+heterogeneity that describes the number of responses provided by
+each student. In your derivation, assume that the annual response
+rate can be written as <span class="math inline">\(\lambda_i(\mathbf{x}_i)\)</span> where
+<span class="math inline">\(\mathbf{x}_i\)</span> is a vector characterizing student <span class="math inline">\(i\)</span>. If you need
+any additional data, explain how to compute it from the data
+available in the panel.</p></li>
+<li><p>Write the log-likelihood of a count model with observable
+heterogeneity that describes the number of surveys received by each
+student. In your derivation, assume that the annual reception rate
+can be written as <span class="math inline">\(\mu_i(\mathbf{x}_i)\)</span> where <span class="math inline">\(\mathbf{x}_i\)</span> is a
+vector characterizing student <span class="math inline">\(i\)</span>. If you need any additional data,
+explain how to compute it from the data available in the panel.</p>
+<p><em>Hint: for the two questions above, you may assume that all students
+in the sample are active during the three years of observation.</em></p></li>
+<li><p>A student argues that one of the main reasons explaining low
+response rates is the large number of surveys sent by the
+institution, which overwhelm students. Specifically, the student
+argues that the response rate has been declining because the sending
+rate has been rising.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>To test whether the institution has been increasing the number
+of surveys, the student proposes estimating an independent
+homogeneous model for each year and then comparing the maximum
+likelihood estimates <span class="math inline">\(\hat{\lambda}_{2023}\)</span>,
+<span class="math inline">\(\hat{\lambda}_{2024}\)</span>, and <span class="math inline">\(\hat{\lambda}_{2025}\)</span> using a
+likelihood ratio test. Comment on the adequacy of the student’s
+proposal.</p></li>
+<li><p>Regardless of your opinion on the student’s proposal above, how
+would you verify whether the institution has maintained or
+increased its sending rate?</p></li>
+</ol></li>
+<li><p>To advance the understanding of the problem, four count models have
+been estimated, as shown in Table <a href="cap-probabilisticos.html#tab:prob-p11-modelos">2.18</a>. The
+list includes both homogeneous models and models incorporating
+observable and unobservable heterogeneity.</p>
+<table>
+<caption><span id="tab:prob-p11-modelos">Table 2.18: </span> Maximum likelihood estimates of four count models.</caption>
+<colgroup>
+<col width="18%" />
+<col width="21%" />
+<col width="24%" />
+<col width="17%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="center">Poisson Homog.</th>
+<th align="center">Poisson Heterog.</th>
+<th align="center">NBD Homog.</th>
+<th align="center">NBD Heterog.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(\lambda_0\)</span></td>
+<td align="center">12.58 ***</td>
+<td align="center">12.19 ***</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(\alpha\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">0.45 **</td>
+<td align="center">0.63 **</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(r\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">3.52 ***</td>
+<td align="center">4.15 ***</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(X_1\)</span></td>
+<td align="center"></td>
+<td align="center">0.32 **</td>
+<td align="center"></td>
+<td align="center">0.42 ***</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(X_2\)</span></td>
+<td align="center"></td>
+<td align="center">0.08 .</td>
+<td align="center"></td>
+<td align="center">0.15 *</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(X_3\)</span></td>
+<td align="center"></td>
+<td align="center">0.65 ***</td>
+<td align="center"></td>
+<td align="center">0.81 **</td>
+</tr>
+<tr class="odd">
+<td align="left">N. Obs</td>
+<td align="center">11,456</td>
+<td align="center">11,456</td>
+<td align="center">11,456</td>
+<td align="center">11,456</td>
+</tr>
+<tr class="even">
+<td align="left">LL</td>
+<td align="center">−44,200</td>
+<td align="center">−44,200</td>
+<td align="center">−44,200</td>
+<td align="center">−44,200</td>
+</tr>
+<tr class="odd">
+<td align="left">AIC</td>
+<td align="center">90,400</td>
+<td align="center">89,000</td>
+<td align="center">75,760</td>
+<td align="center">80,200</td>
+</tr>
+</tbody>
+</table>
+<p>For the model that best fits the data, calculate the expected rate for
+a student, for the next year, conditional on having answered two surveys
+in the past year.</p></li>
+<li><p>Propose and justify 2 variables to include in the vector
+<span class="math inline">\(\mathbf{x}_i\)</span>, other than the date the survey was sent. Along with
+explaining why you think it makes sense to include those variables,
+hypothesize the expected direction of the effect.</p></li>
+<li><p>The count models proposed above assume that response rates do not
+depend on the number of surveys administered. That is, two students
+with the same characteristics should generate, on average, the same
+responses, regardless of whether one received more surveys than the
+other. Write the log-likelihood of a model that accounts for the
+fact that the number of responses generated is associated with the
+number of surveys received.</p></li>
+</ol>
+</div>
+<details>
+<summary>
+<strong>Solución</strong>
+</summary>
+<div class="lang-es">
+<ol style="list-style-type: decimal">
+<li><p>Asumimos que el número de respuestas se distribuye Poisson con tasa
+<span class="math inline">\(\lambda_i(\mathbf{x}_i)\)</span>. Como todos los estudiantes están activos
+durante los tres años de observación, la exposición es <span class="math inline">\(T = 3\)</span>.
+Entonces la log-verosimilitud viene dada por:</p>
+<p><span class="math display">\[
+LL = \sum_i \ln\!\Big[\Pr(N_i = n_i)\Big]
+   = \sum_i \ln\!\left[
+     \frac{\big(3\,\lambda_i(\mathbf{x}_i)\big)^{n_i}\,
+           e^{-3\,\lambda_i(\mathbf{x}_i)}}{n_i!}
+     \right],
+\]</span></p>
+<p>donde <span class="math inline">\(n_i\)</span> es el número de respuestas del estudiante <span class="math inline">\(i\)</span>, que se
+obtiene contando las filas del panel en que <span class="math inline">\(\text{NMat} = i\)</span> y
+<span class="math inline">\(\text{Respuesta} = \text{Sí}\)</span>.</p></li>
+<li><p>La pregunta es conceptualmente idéntica a la anterior, pero se
+estima con otros datos. Asumiendo que el número de encuestas
+recibidas se distribuye Poisson con tasa <span class="math inline">\(\mu_i(\mathbf{x}_i)\)</span>, la
+log-verosimilitud viene dada por:</p>
+<p><span class="math display">\[
+LL = \sum_i \ln\!\Big[\Pr(M_i = m_i)\Big]
+   = \sum_i \ln\!\left[
+     \frac{\big(3\,\mu_i(\mathbf{x}_i)\big)^{m_i}\,
+           e^{-3\,\mu_i(\mathbf{x}_i)}}{m_i!}
+     \right],
+\]</span></p>
+<p>donde <span class="math inline">\(m_i\)</span> es el número de encuestas recibidas por el
+estudiante <span class="math inline">\(i\)</span>, que se obtiene contando las filas del panel en que
+<span class="math inline">\(\text{NMat} = i\)</span> (independiente de la respuesta).</p></li>
+<li><p>Las dos partes pueden contestarse separadamente:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>La propuesta metodológica del estudiante no tiene sentido.
+Primero, el test de ratios de verosimilitud (TRV) permite
+comparar modelos, no parámetros. Segundo, aun cuando
+quisiéramos comparar los modelos, el TRV requiere que un
+modelo esté anidado en el otro, lo que no ocurre en este caso
+(son tres modelos independientes estimados en submuestras
+distintas).</p></li>
+<li><p>Lo más sencillo es incluir los años como covariables en la
+tasa de envío:</p>
+<p><span class="math display">\[
+\mu_i(\mathbf{x}_i) = \gamma_0 + \gamma_1\,\text{Año}_{2023}
+  + \gamma_2\,\text{Año}_{2024} + \gamma_3\,\text{Año}_{2025}.
+\]</span></p>
+<p>Con esto, podemos aplicar un test <span class="math inline">\(F\)</span> para evaluar si
+<span class="math inline">\(\gamma_1 = \gamma_2\)</span> y <span class="math inline">\(\gamma_2 = \gamma_3\)</span>.</p></li>
+</ol></li>
+<li><p>De acuerdo al AIC, el mejor modelo es el NBD homogéneo (AIC =
+75.760). Recordando que la distribución posterior de la tasa
+individual en un modelo Poisson-Gamma es</p>
+<p><span class="math display">\[
+\lambda \mid n \sim \text{Gamma}(\alpha + 1,\; r + n),
+\]</span></p>
+<p>podemos calcular la esperanza condicional directamente:</p>
+<p><span class="math display">\[
+E(\lambda \mid n = 2) = \frac{r + n}{\alpha + 1}
+  = \frac{3{,}52 + 2}{0{,}45 + 1} \approx 3{,}81
+  \;\text{[respuestas/año]}.
+\]</span></p></li>
+<li><p>Hay múltiples opciones válidas. Algunos ejemplos:</p>
+<ul>
+<li><em>Carrera:</em> es posible que algunas carreras respondan más que
+otras, ya sea por factores culturales o de carga académica. La
+dirección del signo dependerá de la carrera específica.</li>
+<li><em>Tipo de encuesta:</em> es posible que algunos tipos de encuestas se
+contesten más que otros. Se puede postular que las encuestas de
+bienestar se contestan más que las de docencia, porque a los
+estudiantes les importan más los cambios en infraestructura.</li>
+<li><em>Duración promedio:</em> si un estudiante recibe encuestas que duran
+más días, puede tener una mayor probabilidad de contestar y por
+tanto el efecto esperado sería positivo (aunque previsiblemente
+pequeño).</li>
+<li><em>Número de encuestas recibidas (y su cuadrado):</em> si un
+estudiante recibe más encuestas, tiene un universo mayor para
+responder y por tanto el efecto podría ser positivo. Si recibe
+demasiadas encuestas, quizás deja de contestar, lo que se
+capturaría por un efecto cuadrático negativo.</li>
+</ul>
+<p><em>Nota: las direcciones de los efectos son especulativas. Mientras se
+argumente adecuadamente, se considera correcta la respuesta.</em></p></li>
+<li><p>Asumimos que el número de respuestas, condicionado en el número de
+encuestas recibidas <span class="math inline">\(m_i\)</span>, se distribuye binomial con tasa
+<span class="math inline">\(\theta_i(\mathbf{x}_i)\)</span>. La log-verosimilitud viene dada por:</p>
+<p><span class="math display">\[
+LL = \sum_i \ln\!\Big[\Pr(N_i = n_i \mid m_i)\Big]
+   = \sum_i \ln\!\left[
+     \binom{m_i}{n_i}\,
+     \theta_i(\mathbf{x}_i)^{n_i}\,
+     \big(1 - \theta_i(\mathbf{x}_i)\big)^{m_i - n_i}
+     \right],
+\]</span></p>
+<p>donde <span class="math inline">\(m_i\)</span> y <span class="math inline">\(n_i\)</span> se definen como en las partes 1 y 2.</p></li>
+</ol>
+</div>
+<div class="lang-en">
+<ol style="list-style-type: decimal">
+<li><p>We assume that the number of responses follows a Poisson
+distribution with rate <span class="math inline">\(\lambda_i(\mathbf{x}_i)\)</span>. Since all
+students are active during the three years of observation, the
+exposure is <span class="math inline">\(T = 3\)</span>. The log-likelihood is then given by:</p>
+<p><span class="math display">\[
+LL = \sum_i \ln\!\Big[\Pr(N_i = n_i)\Big]
+   = \sum_i \ln\!\left[
+     \frac{\big(3\,\lambda_i(\mathbf{x}_i)\big)^{n_i}\,
+           e^{-3\,\lambda_i(\mathbf{x}_i)}}{n_i!}
+     \right],
+\]</span></p>
+<p>where <span class="math inline">\(n_i\)</span> is the number of responses from student <span class="math inline">\(i\)</span>, obtained
+by counting the rows in the panel where <span class="math inline">\(\text{NMat} = i\)</span> and
+<span class="math inline">\(\text{Response} = \text{Yes}\)</span>.</p></li>
+<li><p>The question is conceptually identical to the previous one, but
+estimated with different data. Assuming that the number of surveys
+received follows a Poisson distribution with rate
+<span class="math inline">\(\mu_i(\mathbf{x}_i)\)</span>, the log-likelihood is given by:</p>
+<p><span class="math display">\[
+LL = \sum_i \ln\!\Big[\Pr(M_i = m_i)\Big]
+   = \sum_i \ln\!\left[
+     \frac{\big(3\,\mu_i(\mathbf{x}_i)\big)^{m_i}\,
+           e^{-3\,\mu_i(\mathbf{x}_i)}}{m_i!}
+     \right],
+\]</span></p>
+<p>where <span class="math inline">\(m_i\)</span> is the number of surveys received by student <span class="math inline">\(i\)</span>,
+obtained by counting the rows in the panel where
+<span class="math inline">\(\text{NMat} = i\)</span> (regardless of the response).</p></li>
+<li><p>The two parts can be answered separately:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>The student’s methodological proposal does not make sense.
+First, the likelihood ratio test (LRT) is used to compare
+models, not parameters. Second, even if we wanted to compare
+the models, the LRT requires that one model be nested within
+another, which is not the case here (they are three independent
+models estimated on different subsamples).</p></li>
+<li><p>The simplest approach is to include year indicators as
+covariates in the sending rate:</p>
+<p><span class="math display">\[
+\mu_i(\mathbf{x}_i) = \gamma_0 + \gamma_1\,\text{Year}_{2023}
+  + \gamma_2\,\text{Year}_{2024} + \gamma_3\,\text{Year}_{2025}.
+\]</span></p>
+<p>With this specification, we can apply an <span class="math inline">\(F\)</span> test to evaluate
+whether <span class="math inline">\(\gamma_1 = \gamma_2\)</span> and <span class="math inline">\(\gamma_2 = \gamma_3\)</span>.</p></li>
+</ol></li>
+<li><p>According to the AIC, the best model is the homogeneous NBD (AIC =
+75,760). Recalling that the posterior distribution of the individual
+rate in a Poisson-Gamma model is</p>
+<p><span class="math display">\[
+\lambda \mid n \sim \text{Gamma}(\alpha + 1,\; r + n),
+\]</span></p>
+<p>we can compute the conditional expectation directly:</p>
+<p><span class="math display">\[
+E(\lambda \mid n = 2) = \frac{r + n}{\alpha + 1}
+  = \frac{3.52 + 2}{0.45 + 1} \approx 3.81
+  \;\text{[responses/year]}.
+\]</span></p></li>
+<li><p>There are many valid options. Some examples:</p>
+<ul>
+<li><em>Field of study:</em> some fields may respond more than others, due
+to cultural factors or academic workload. The sign direction
+will depend on the specific field.</li>
+<li><em>Survey type:</em> some survey types may elicit more responses than
+others. One could hypothesize that welfare surveys are answered
+more than teaching surveys, because students care more about
+infrastructure changes.</li>
+<li><em>Average duration:</em> if a student receives surveys that stay open
+longer, they may have a higher probability of responding, so the
+expected effect would be positive (though likely small).</li>
+<li><em>Number of surveys received (and its square):</em> if a student
+receives more surveys, they have a larger universe in which to
+respond, so the effect could be positive. If they receive too
+many surveys, they may stop responding, which would be captured
+by a negative quadratic effect.</li>
+</ul>
+<p><em>Note: the effect directions are speculative. As long as the
+argument is well-reasoned, the answer is considered correct.</em></p></li>
+<li><p>We assume that the number of responses, conditional on the number of
+surveys received <span class="math inline">\(m_i\)</span>, follows a binomial distribution with rate
+<span class="math inline">\(\theta_i(\mathbf{x}_i)\)</span>. The log-likelihood is given by:</p>
+<p><span class="math display">\[
+LL = \sum_i \ln\!\Big[\Pr(N_i = n_i \mid m_i)\Big]
+   = \sum_i \ln\!\left[
+     \binom{m_i}{n_i}\,
+     \theta_i(\mathbf{x}_i)^{n_i}\,
+     \big(1 - \theta_i(\mathbf{x}_i)\big)^{m_i - n_i}
+     \right],
+\]</span></p>
+<p>where <span class="math inline">\(m_i\)</span> and <span class="math inline">\(n_i\)</span> are defined as in parts 1 and 2.</p></li>
 </ol>
 </div>
 </details>

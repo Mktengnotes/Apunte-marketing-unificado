@@ -8018,3 +8018,470 @@ Table: (\#tab:prob-p10-logs) Numerical values of $\log(x)$ for a selection of $x
 :::
 
 </details>
+
+
+### Problema 11: Tasas de respuesta en encuestas de educación superior {.unnumbered}
+
+::: {.lang-es}
+
+Los paneles de encuestas siguen siendo una herramienta importante para
+recoger la valoración que tienen los usuarios sobre sus experiencias en
+distintas industrias de servicios. Uno de los desafíos actuales de la
+administración de estos paneles es las bajas tasas de respuesta, lo que
+dificulta la recopilación de datos y potencialmente introduce sesgos en
+las percepciones medidas. A continuación, propondremos el estudio de
+las tasas de respuesta en el contexto de las evaluaciones que proveen
+los estudiantes a las encuestas semestrales en cada una de las materias
+que cursan.
+
+Para estudiar el fenómeno, se ha preparado un panel de encuestados
+caracterizados por el número de matrícula, la carrera que estudian y el
+año de ingreso, y una muestra de 94 encuestas realizadas entre 2023 y
+2025 en una institución de educación superior. Para cada encuesta,
+conocemos la fecha de envío, el número de días en que la encuesta está
+abierta y el tipo de encuesta. La variable central de análisis es una
+variable binaria que indica si el estudiante responde o no a la
+encuesta. La Tabla \@ref(tab:prob-p11-panel) despliega una muestra con
+los primeros 6 registros del panel. Notar que este panel solo registra
+los casos de estudiantes que recibieron una encuesta; si un alumno no
+recibe una encuesta, esa combinación de estudiante-encuesta no se
+registra en el panel.
+
+:::
+
+::: {.lang-en}
+
+Survey panels remain an important tool for collecting users'
+assessments of their experiences across various service industries. One
+of the current challenges in managing these panels is the low response
+rate, which hampers data collection and potentially introduces biases
+in the measured perceptions. Below, we study response rates in the
+context of evaluations that students provide in semester surveys for
+each of the courses they take.
+
+To study the phenomenon, a panel of respondents has been prepared,
+characterized by enrollment number, field of study, and year of
+admission, along with a sample of 94 surveys conducted between 2023
+and 2025 at a higher education institution. For each survey, we know
+the date it was sent, the number of days it remained open, and the
+type of survey. The central variable of analysis is a binary variable
+indicating whether the student responds to the survey or not. Table
+\@ref(tab:prob-p11-panel) displays a sample of the first 6 records
+from the panel. Note that this panel only records cases where a
+student received a survey; if a student does not receive a survey, that
+student-survey combination is not recorded in the panel.
+
+:::
+
+::: {.lang-es}
+
+Table: (\#tab:prob-p11-panel) Muestra de los primeros seis registros del panel de encuestados.
+
+| NMat   | Carrera     | Año Ingreso | IdEnc | Código Curso | N | Fecha Envío | Días | Tipo Encuesta | Respuesta |
+|:-------|:------------|:-----------:|:-----:|:------------:|:-:|:-----------:|:----:|:-------------:|:---------:|
+| 945001 | Ingeniería  |    2019     | 4501  |    ECO101    |   |  2023-11-15 |  14  |   Docencia    |    Sí     |
+| 033012 | Psicología  |    2020     | 4502  |    PSI205    |   |  2023-11-15 |  14  |   Docencia    |    No     |
+| 111005 | Derecho     |    2021     | 4503  |    DER110    |   |  2023-11-16 |   7  |   Bienestar   |    No     |
+| 945001 | Ingeniería  |    2019     | 4504  |    MAT200    |   |  2023-11-15 |  21  |   Docencia    |    No     |
+| 200554 | Medicina    |    2022     | 4505  |    MED010    |   |  2023-11-17 |  14  |   Docencia    |    Sí     |
+| 033012 | Psicología  |    2020     | 4506  |    SOC100    |   |  2023-11-15 |  14  |   Bienestar   |    No     |
+
+:::
+
+::: {.lang-en}
+
+Table: (\#tab:prob-p11-panel) Sample of the first six records from the survey panel.
+
+| NMat   | Field       | Year Adm. | IdEnc | Course Code | N | Date Sent   | Days | Survey Type | Response |
+|:-------|:------------|:---------:|:-----:|:-----------:|:-:|:-----------:|:----:|:-----------:|:--------:|
+| 945001 | Engineering |   2019    | 4501  |   ECO101    |   | 2023-11-15  |  14  |  Teaching   |   Yes    |
+| 033012 | Psychology  |   2020    | 4502  |   PSI205    |   | 2023-11-15  |  14  |  Teaching   |    No    |
+| 111005 | Law         |   2021    | 4503  |   DER110    |   | 2023-11-16  |   7  |  Welfare    |    No    |
+| 945001 | Engineering |   2019    | 4504  |   MAT200    |   | 2023-11-15  |  21  |  Teaching   |    No    |
+| 200554 | Medicine    |   2022    | 4505  |   MED010    |   | 2023-11-17  |  14  |  Teaching   |   Yes    |
+| 033012 | Psychology  |   2020    | 4506  |   SOC100    |   | 2023-11-15  |  14  |  Welfare    |    No    |
+
+:::
+
+::: {.lang-es}
+
+1.  Escriba la log-verosimilitud de un modelo de conteo con
+    heterogeneidad observable que describa el número de respuestas
+    provistas por cada estudiante. En su desarrollo, asuma que la tasa
+    de respuesta anual se puede escribir como $\lambda_i(\mathbf{x}_i)$
+    donde $\mathbf{x}_i$ es un vector que caracteriza al estudiante $i$.
+    De necesitar cualquier otro dato, explique cómo calcularlo a partir
+    de los datos disponibles en el panel.
+
+2.  Escriba la log-verosimilitud de un modelo de conteo con
+    heterogeneidad observable que describa el número de encuestas
+    recibidas por cada estudiante. En su desarrollo, asuma que la tasa
+    de recepción anual se puede escribir como $\mu_i(\mathbf{x}_i)$
+    donde $\mathbf{x}_i$ es un vector que caracteriza al estudiante $i$.
+    De necesitar cualquier otro dato, explique cómo calcularlo a partir
+    de los datos disponibles en el panel.
+
+    *Hint: para las dos preguntas anteriores, puede asumir que todos los
+    estudiantes de la muestra están activos durante los tres años de
+    observación.*
+
+3.  Un estudiante plantea que una de las principales razones que
+    explican las bajas tasas de respuesta es la gran cantidad de
+    encuestas que envía la institución, que abruman al estudiantado. En
+    particular, el estudiante plantea que la tasa de respuesta ha ido
+    bajando porque la tasa de envío ha ido subiendo.
+
+    a.  Para testear que la institución ha ido aumentando el número de
+        encuestas, el estudiante plantea que debiera estimarse un modelo
+        homogéneo independiente para cada año y luego comparar los
+        valores de los estimadores máximos verosímiles
+        $\hat{\lambda}_{2023}$, $\hat{\lambda}_{2024}$ y
+        $\hat{\lambda}_{2025}$ usando un test de ratios de
+        verosimilitud. Comente sobre la adecuación de la propuesta del
+        estudiante.
+
+    b.  Más allá de la opinión que tenga de la propuesta anterior del
+        estudiante, ¿cómo haría usted para comprobar si efectivamente la
+        institución ha mantenido o aumentado su tasa de envíos?
+
+4.  Para avanzar en la comprensión del problema, se han estimado cuatro
+    modelos de conteo, como se indica en la Tabla
+    \@ref(tab:prob-p11-modelos). En la lista se incluyen tanto modelos
+    homogéneos, como modelos que incorporan heterogeneidad observable y
+    no observable.
+
+    Table: (\#tab:prob-p11-modelos) Estimadores máximos verosímiles de cuatro modelos de conteo.
+
+    | Variable     | Poisson Homogéneo | Poisson Heterogéneo | NBD Homogéneo | NBD Heterogéneo |
+    |:-------------|:-----------------:|:-------------------:|:-------------:|:---------------:|
+    | $\lambda_0$  | 12,58 \*\*\*      | 12,19 \*\*\*        |               |                 |
+    | $\alpha$     |                   |                     | 0,45 \*\*     | 0,63 \*\*       |
+    | $r$          |                   |                     | 3,52 \*\*\*   | 4,15 \*\*\*     |
+    | $X_1$        |                   | 0,32 \*\*            |               | 0,42 \*\*\*     |
+    | $X_2$        |                   | 0,08 .               |               | 0,15 \*         |
+    | $X_3$        |                   | 0,65 \*\*\*          |               | 0,81 \*\*       |
+    | N. Obs       | 11.456            | 11.456              | 11.456        | 11.456          |
+    | LL           | −44.200           | −44.200             | −44.200       | −44.200         |
+    | AIC          | 90.400            | 89.000              | 75.760        | 80.200          |
+
+    Para el modelo que mejor ajuste a los datos, calcule la tasa esperada
+    de un estudiante, para el próximo año, condicional a que ha contestado
+    dos encuestas en el año recién pasado.
+
+5.  Proponga y justifique 2 variables para incluir en el vector
+    $\mathbf{x}_i$, distintas a la fecha de envío. Junto con explicar
+    por qué piensa que hace sentido incluir esas variables, hipotetice
+    la dirección esperada del efecto.
+
+6.  Los modelos de conteo propuestos anteriormente suponen que las tasas
+    de respuesta no dependen del número de encuestas realizadas. Esto
+    es, dos estudiantes con las mismas características debieran generar,
+    en promedio, las mismas respuestas, independientemente de si uno
+    recibió más encuestas que el otro. Escriba la log-verosimilitud de
+    un modelo que permita tener en cuenta que el número de respuestas
+    generadas está asociado al número de encuestas recibidas.
+
+:::
+
+::: {.lang-en}
+
+1.  Write the log-likelihood of a count model with observable
+    heterogeneity that describes the number of responses provided by
+    each student. In your derivation, assume that the annual response
+    rate can be written as $\lambda_i(\mathbf{x}_i)$ where
+    $\mathbf{x}_i$ is a vector characterizing student $i$. If you need
+    any additional data, explain how to compute it from the data
+    available in the panel.
+
+2.  Write the log-likelihood of a count model with observable
+    heterogeneity that describes the number of surveys received by each
+    student. In your derivation, assume that the annual reception rate
+    can be written as $\mu_i(\mathbf{x}_i)$ where $\mathbf{x}_i$ is a
+    vector characterizing student $i$. If you need any additional data,
+    explain how to compute it from the data available in the panel.
+
+    *Hint: for the two questions above, you may assume that all students
+    in the sample are active during the three years of observation.*
+
+3.  A student argues that one of the main reasons explaining low
+    response rates is the large number of surveys sent by the
+    institution, which overwhelm students. Specifically, the student
+    argues that the response rate has been declining because the sending
+    rate has been rising.
+
+    a.  To test whether the institution has been increasing the number
+        of surveys, the student proposes estimating an independent
+        homogeneous model for each year and then comparing the maximum
+        likelihood estimates $\hat{\lambda}_{2023}$,
+        $\hat{\lambda}_{2024}$, and $\hat{\lambda}_{2025}$ using a
+        likelihood ratio test. Comment on the adequacy of the student's
+        proposal.
+
+    b.  Regardless of your opinion on the student's proposal above, how
+        would you verify whether the institution has maintained or
+        increased its sending rate?
+
+4.  To advance the understanding of the problem, four count models have
+    been estimated, as shown in Table \@ref(tab:prob-p11-modelos). The
+    list includes both homogeneous models and models incorporating
+    observable and unobservable heterogeneity.
+
+    Table: (\#tab:prob-p11-modelos) Maximum likelihood estimates of four count models.
+
+    | Variable     | Poisson Homog. | Poisson Heterog. | NBD Homog.  | NBD Heterog. |
+    |:-------------|:--------------:|:----------------:|:-----------:|:------------:|
+    | $\lambda_0$  | 12.58 \*\*\*   | 12.19 \*\*\*     |             |              |
+    | $\alpha$     |                |                  | 0.45 \*\*   | 0.63 \*\*    |
+    | $r$          |                |                  | 3.52 \*\*\* | 4.15 \*\*\*  |
+    | $X_1$        |                | 0.32 \*\*         |             | 0.42 \*\*\*  |
+    | $X_2$        |                | 0.08 .            |             | 0.15 \*      |
+    | $X_3$        |                | 0.65 \*\*\*       |             | 0.81 \*\*    |
+    | N. Obs       | 11,456         | 11,456           | 11,456      | 11,456       |
+    | LL           | −44,200        | −44,200          | −44,200     | −44,200      |
+    | AIC          | 90,400         | 89,000           | 75,760      | 80,200       |
+
+    For the model that best fits the data, calculate the expected rate for
+    a student, for the next year, conditional on having answered two surveys
+    in the past year.
+
+5.  Propose and justify 2 variables to include in the vector
+    $\mathbf{x}_i$, other than the date the survey was sent. Along with
+    explaining why you think it makes sense to include those variables,
+    hypothesize the expected direction of the effect.
+
+6.  The count models proposed above assume that response rates do not
+    depend on the number of surveys administered. That is, two students
+    with the same characteristics should generate, on average, the same
+    responses, regardless of whether one received more surveys than the
+    other. Write the log-likelihood of a model that accounts for the
+    fact that the number of responses generated is associated with the
+    number of surveys received.
+
+:::
+
+<details>
+<summary>**Solución**</summary>
+
+::: {.lang-es}
+
+1.  Asumimos que el número de respuestas se distribuye Poisson con tasa
+    $\lambda_i(\mathbf{x}_i)$. Como todos los estudiantes están activos
+    durante los tres años de observación, la exposición es $T = 3$.
+    Entonces la log-verosimilitud viene dada por:
+
+    $$
+    LL = \sum_i \ln\!\Big[\Pr(N_i = n_i)\Big]
+       = \sum_i \ln\!\left[
+         \frac{\big(3\,\lambda_i(\mathbf{x}_i)\big)^{n_i}\,
+               e^{-3\,\lambda_i(\mathbf{x}_i)}}{n_i!}
+         \right],
+    $$
+
+    donde $n_i$ es el número de respuestas del estudiante $i$, que se
+    obtiene contando las filas del panel en que $\text{NMat} = i$ y
+    $\text{Respuesta} = \text{Sí}$.
+
+2.  La pregunta es conceptualmente idéntica a la anterior, pero se
+    estima con otros datos. Asumiendo que el número de encuestas
+    recibidas se distribuye Poisson con tasa $\mu_i(\mathbf{x}_i)$, la
+    log-verosimilitud viene dada por:
+
+    $$
+    LL = \sum_i \ln\!\Big[\Pr(M_i = m_i)\Big]
+       = \sum_i \ln\!\left[
+         \frac{\big(3\,\mu_i(\mathbf{x}_i)\big)^{m_i}\,
+               e^{-3\,\mu_i(\mathbf{x}_i)}}{m_i!}
+         \right],
+    $$
+
+    donde $m_i$ es el número de encuestas recibidas por el
+    estudiante $i$, que se obtiene contando las filas del panel en que
+    $\text{NMat} = i$ (independiente de la respuesta).
+
+3.  Las dos partes pueden contestarse separadamente:
+
+    a.  La propuesta metodológica del estudiante no tiene sentido.
+        Primero, el test de ratios de verosimilitud (TRV) permite
+        comparar modelos, no parámetros. Segundo, aun cuando
+        quisiéramos comparar los modelos, el TRV requiere que un
+        modelo esté anidado en el otro, lo que no ocurre en este caso
+        (son tres modelos independientes estimados en submuestras
+        distintas).
+
+    b.  Lo más sencillo es incluir los años como covariables en la
+        tasa de envío:
+
+        $$
+        \mu_i(\mathbf{x}_i) = \gamma_0 + \gamma_1\,\text{Año}_{2023}
+          + \gamma_2\,\text{Año}_{2024} + \gamma_3\,\text{Año}_{2025}.
+        $$
+
+        Con esto, podemos aplicar un test $F$ para evaluar si
+        $\gamma_1 = \gamma_2$ y $\gamma_2 = \gamma_3$.
+
+4.  De acuerdo al AIC, el mejor modelo es el NBD homogéneo (AIC =
+    75.760). Recordando que la distribución posterior de la tasa
+    individual en un modelo Poisson-Gamma es
+
+    $$
+    \lambda \mid n \sim \text{Gamma}(\alpha + 1,\; r + n),
+    $$
+
+    podemos calcular la esperanza condicional directamente:
+
+    $$
+    E(\lambda \mid n = 2) = \frac{r + n}{\alpha + 1}
+      = \frac{3{,}52 + 2}{0{,}45 + 1} \approx 3{,}81
+      \;\text{[respuestas/año]}.
+    $$
+
+5.  Hay múltiples opciones válidas. Algunos ejemplos:
+
+    -   *Carrera:* es posible que algunas carreras respondan más que
+        otras, ya sea por factores culturales o de carga académica. La
+        dirección del signo dependerá de la carrera específica.
+    -   *Tipo de encuesta:* es posible que algunos tipos de encuestas se
+        contesten más que otros. Se puede postular que las encuestas de
+        bienestar se contestan más que las de docencia, porque a los
+        estudiantes les importan más los cambios en infraestructura.
+    -   *Duración promedio:* si un estudiante recibe encuestas que duran
+        más días, puede tener una mayor probabilidad de contestar y por
+        tanto el efecto esperado sería positivo (aunque previsiblemente
+        pequeño).
+    -   *Número de encuestas recibidas (y su cuadrado):* si un
+        estudiante recibe más encuestas, tiene un universo mayor para
+        responder y por tanto el efecto podría ser positivo. Si recibe
+        demasiadas encuestas, quizás deja de contestar, lo que se
+        capturaría por un efecto cuadrático negativo.
+
+    *Nota: las direcciones de los efectos son especulativas. Mientras se
+    argumente adecuadamente, se considera correcta la respuesta.*
+
+6.  Asumimos que el número de respuestas, condicionado en el número de
+    encuestas recibidas $m_i$, se distribuye binomial con tasa
+    $\theta_i(\mathbf{x}_i)$. La log-verosimilitud viene dada por:
+
+    $$
+    LL = \sum_i \ln\!\Big[\Pr(N_i = n_i \mid m_i)\Big]
+       = \sum_i \ln\!\left[
+         \binom{m_i}{n_i}\,
+         \theta_i(\mathbf{x}_i)^{n_i}\,
+         \big(1 - \theta_i(\mathbf{x}_i)\big)^{m_i - n_i}
+         \right],
+    $$
+
+    donde $m_i$ y $n_i$ se definen como en las partes 1 y 2.
+
+:::
+
+::: {.lang-en}
+
+1.  We assume that the number of responses follows a Poisson
+    distribution with rate $\lambda_i(\mathbf{x}_i)$. Since all
+    students are active during the three years of observation, the
+    exposure is $T = 3$. The log-likelihood is then given by:
+
+    $$
+    LL = \sum_i \ln\!\Big[\Pr(N_i = n_i)\Big]
+       = \sum_i \ln\!\left[
+         \frac{\big(3\,\lambda_i(\mathbf{x}_i)\big)^{n_i}\,
+               e^{-3\,\lambda_i(\mathbf{x}_i)}}{n_i!}
+         \right],
+    $$
+
+    where $n_i$ is the number of responses from student $i$, obtained
+    by counting the rows in the panel where $\text{NMat} = i$ and
+    $\text{Response} = \text{Yes}$.
+
+2.  The question is conceptually identical to the previous one, but
+    estimated with different data. Assuming that the number of surveys
+    received follows a Poisson distribution with rate
+    $\mu_i(\mathbf{x}_i)$, the log-likelihood is given by:
+
+    $$
+    LL = \sum_i \ln\!\Big[\Pr(M_i = m_i)\Big]
+       = \sum_i \ln\!\left[
+         \frac{\big(3\,\mu_i(\mathbf{x}_i)\big)^{m_i}\,
+               e^{-3\,\mu_i(\mathbf{x}_i)}}{m_i!}
+         \right],
+    $$
+
+    where $m_i$ is the number of surveys received by student $i$,
+    obtained by counting the rows in the panel where
+    $\text{NMat} = i$ (regardless of the response).
+
+3.  The two parts can be answered separately:
+
+    a.  The student's methodological proposal does not make sense.
+        First, the likelihood ratio test (LRT) is used to compare
+        models, not parameters. Second, even if we wanted to compare
+        the models, the LRT requires that one model be nested within
+        another, which is not the case here (they are three independent
+        models estimated on different subsamples).
+
+    b.  The simplest approach is to include year indicators as
+        covariates in the sending rate:
+
+        $$
+        \mu_i(\mathbf{x}_i) = \gamma_0 + \gamma_1\,\text{Year}_{2023}
+          + \gamma_2\,\text{Year}_{2024} + \gamma_3\,\text{Year}_{2025}.
+        $$
+
+        With this specification, we can apply an $F$ test to evaluate
+        whether $\gamma_1 = \gamma_2$ and $\gamma_2 = \gamma_3$.
+
+4.  According to the AIC, the best model is the homogeneous NBD (AIC =
+    75,760). Recalling that the posterior distribution of the individual
+    rate in a Poisson-Gamma model is
+
+    $$
+    \lambda \mid n \sim \text{Gamma}(\alpha + 1,\; r + n),
+    $$
+
+    we can compute the conditional expectation directly:
+
+    $$
+    E(\lambda \mid n = 2) = \frac{r + n}{\alpha + 1}
+      = \frac{3.52 + 2}{0.45 + 1} \approx 3.81
+      \;\text{[responses/year]}.
+    $$
+
+5.  There are many valid options. Some examples:
+
+    -   *Field of study:* some fields may respond more than others, due
+        to cultural factors or academic workload. The sign direction
+        will depend on the specific field.
+    -   *Survey type:* some survey types may elicit more responses than
+        others. One could hypothesize that welfare surveys are answered
+        more than teaching surveys, because students care more about
+        infrastructure changes.
+    -   *Average duration:* if a student receives surveys that stay open
+        longer, they may have a higher probability of responding, so the
+        expected effect would be positive (though likely small).
+    -   *Number of surveys received (and its square):* if a student
+        receives more surveys, they have a larger universe in which to
+        respond, so the effect could be positive. If they receive too
+        many surveys, they may stop responding, which would be captured
+        by a negative quadratic effect.
+
+    *Note: the effect directions are speculative. As long as the
+    argument is well-reasoned, the answer is considered correct.*
+
+6.  We assume that the number of responses, conditional on the number of
+    surveys received $m_i$, follows a binomial distribution with rate
+    $\theta_i(\mathbf{x}_i)$. The log-likelihood is given by:
+
+    $$
+    LL = \sum_i \ln\!\Big[\Pr(N_i = n_i \mid m_i)\Big]
+       = \sum_i \ln\!\left[
+         \binom{m_i}{n_i}\,
+         \theta_i(\mathbf{x}_i)^{n_i}\,
+         \big(1 - \theta_i(\mathbf{x}_i)\big)^{m_i - n_i}
+         \right],
+    $$
+
+    where $m_i$ and $n_i$ are defined as in parts 1 and 2.
+
+:::
+
+</details>

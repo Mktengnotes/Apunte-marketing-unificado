@@ -69,6 +69,8 @@ tab:prob-p8-mostrados
 tab:prob-p8-capturas
 tab:prob-p10-duracion
 tab:prob-p10-logs
+tab:prob-p11-panel
+tab:prob-p11-modelos
 eq:estr-utilidad
 eq:estr-probelec
 eq:estr-gumbel
