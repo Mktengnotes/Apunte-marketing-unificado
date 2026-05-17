@@ -8506,3 +8506,217 @@ $$v_{nit} = \beta_i + \beta_{gen} \cdot Genero_n + \beta_{edad} \cdot Edad_n + \
 :::
 
 </details>
+
+### Problema 14: Brebajes {- data-en="Problem 14: Beverages"}
+
+::: {.lang-es}
+
+Tradicionalmente, después de un largo periodo de evaluaciones, los estudiantes de un lejano país suelen juntarse a celebrar y compartir experiencias de aprendizaje. Para ello es costumbre que cada estudiante se presente al lugar de reunión con algún brebaje frutal, siendo frutilla (F) y naranja (N) las alternativas más frecuentemente elegidas. Recientemente ha surgido además una nueva tendencia de llevar jugo de cranberries (C).
+
+Para la compra de los brebajes, los potenciales clientes tienen básicamente dos alternativas: supermercado (S) y tienda de conveniencia (C) que difieren en precios, disponibilidad de surtido y tiempo de compra. Mientras el supermercado cobra precios menores y dispone de jugo de cranberries que no está disponible en la tienda de conveniencia, al mismo requiere un tiempo de compra significativamente mayor. Interesados en describir el proceso de compra, un grupo de investigadores ha propuesto usar un modelo logit anidado en que primero se decide el lugar de compra y condicional en él, la variedad de brebaje a adquirir.
+
+1. Discuta:
+   a. ¿Son las decisiones realmente anidadas? Si no lo son, ¿puede usarse un modelo anidado?
+   b. ¿Qué restricciones a los patrones de substitución impone la descripción propuesta?
+
+2. Sea $\alpha_f$ y $\alpha_c$ las valoraciones intrínsecas por los sabores frutilla y cranberries (por motivos de identificación se ha fijado en 0 la valoración intrínseca de por sabor naranja) y $t_i$ y $p_{ji}$ los tiempos de compra y precios en la tienda tipo $i$ ($i \in \{S,C\}$ y $j \in \{N,F,C\}$). Con esto y asumiendo una utilidad lineal, derive la probabilidad de elegir cada sabor condicional en la elección de tienda.
+
+3. Derive la probabilidad de elección de tienda.
+
+4. Si se observa $y_{nij}$ que toma el valor 1 si el tomador de decisión $n$ elige comprar el sabor $j$ en la tienda tipo $i$ para una muestra de $N = 452$ clientes, derive la log-verosimilitud del problema.
+
+:::
+
+::: {.lang-en}
+
+Traditionally, after a long period of exams, students in a faraway country gather to celebrate and share learning experiences. It is customary for each student to bring a fruit beverage, with strawberry (F) and orange (N) being the most frequently chosen alternatives. Recently, a new trend of bringing cranberry juice (C) has emerged.
+
+For purchasing beverages, potential customers have two basic alternatives: supermarket (S) and convenience store (C), which differ in prices, product assortment, and shopping time. While the supermarket charges lower prices and carries cranberry juice (not available at the convenience store), it requires significantly more shopping time. Interested in describing the purchase process, a group of researchers has proposed using a nested logit model in which the store choice is made first, followed by the beverage variety conditional on the store.
+
+1. Discuss:
+   a. Are the decisions truly nested? If not, can a nested model still be used?
+   b. What restrictions on substitution patterns does the proposed description impose?
+
+2. Let $\alpha_f$ and $\alpha_c$ be the intrinsic valuations for strawberry and cranberry flavors (for identification, the intrinsic valuation for orange flavor has been set to 0), and $t_i$ and $p_{ji}$ the shopping times and prices at store type $i$ ($i \in \{S,C\}$ and $j \in \{N,F,C\}$). Assuming linear utility, derive the probability of choosing each flavor conditional on store choice.
+
+3. Derive the probability of store choice.
+
+4. If we observe $y_{nij}$ taking value 1 if decision-maker $n$ chooses flavor $j$ at store type $i$ for a sample of $N = 452$ customers, derive the log-likelihood of the problem.
+
+:::
+
+<details>
+<summary>Ver solución</summary>
+
+::: {.lang-es}
+
+1. Discusión:
+   a. Las decisiones no son realmente anidadas y es probable que muchos clientes elijan de manera conjunta y no secuencial. Por ejemplo, pueden escoger según el tipo de fruta y luego preocuparse sobre el lugar donde comprar. Sin embargo, este es un modelo de comportamiento y como tal puede ayudar a entender cómo los clientes toman decisiones.
+   b. En esencia, los patrones de sustitución siguen siendo proporcionales dentro de cada nido, pero no entre nidos. Los patrones de sustitución indican que la persona priorizará escoger un producto que venda el mismo supermercado o tienda de conveniencia, en lugar de cambiarse de sitio.
+
+2. Para el caso del supermercado las componentes determinísticas de la utilidad vienen dadas por:
+$$v_{NS} = \beta_t t_S + \beta_p p_{NS}$$
+$$v_{FS} = \alpha_f + \beta_t t_S + \beta_p p_{FS}$$
+$$v_{CS} = \alpha_c + \beta_t t_S + \beta_p p_{CS}$$
+Luego, las probabilidades de elección vienen dadas por:
+$$p_{N|S} = \frac{\exp(v_{NS})}{\exp(v_{NS}) + \exp(v_{FS}) + \exp(v_{CS})}$$
+$$p_{F|S} = \frac{\exp(v_{FS})}{\exp(v_{NS}) + \exp(v_{FS}) + \exp(v_{CS})}$$
+$$p_{C|S} = \frac{\exp(v_{CS})}{\exp(v_{NS}) + \exp(v_{FS}) + \exp(v_{CS})}$$
+Similarmente, para el caso de la tienda de conveniencia las componentes determinísticas de la utilidad vienen dadas por:
+$$v_{NC} = \beta_t t_C + \beta_p p_{NC}$$
+$$v_{FC} = \alpha_f + \beta_t t_C + \beta_p p_{FC}$$
+y luego, las probabilidades de elección vienen dadas por:
+$$p_{N|C} = \frac{\exp(v_{NC})}{\exp(v_{NC}) + \exp(v_{FC})}$$
+$$p_{F|C} = \frac{\exp(v_{FC})}{\exp(v_{NC}) + \exp(v_{FC})}$$
+
+3. Para calcular la probabilidad de elección de tienda necesitamos calcular los valores inclusivos, los que vienen dados por:
+$$I_S = \ln(\exp(v_{NS}) + \exp(v_{FS}) + \exp(v_{CS}))$$
+$$I_C = \ln(\exp(v_{NC}) + \exp(v_{FC}))$$
+Luego, las probabilidades de elección vienen dadas por:
+$$p_S = \frac{\exp(I_S)}{\exp(I_S) + \exp(I_C)}, \quad p_C = \frac{\exp(I_C)}{\exp(I_S) + \exp(I_C)}$$
+
+4. La probabilidad de comprar cada sabor en cada tienda es simplemente el producto de las dos probabilidades anteriores. Por lo tanto la log-verosimilitud viene directamente dada por:
+$$LL = \sum_n \sum_i \sum_j y_{nij} \ln(p_{j|i}\, p_i)$$
+
+:::
+
+::: {.lang-en}
+
+1. Discussion:
+   a. The decisions are not truly nested and it is likely that many customers choose jointly rather than sequentially. For example, they may choose by fruit type first and then worry about where to buy. However, this is a behavioral model and as such can help understand how customers make decisions.
+   b. In essence, substitution patterns remain proportional within each nest but not between nests. The substitution patterns indicate that a person will prioritize choosing a product sold at the same supermarket or convenience store, rather than switching stores.
+
+2. For the supermarket, the deterministic utility components are:
+$$v_{NS} = \beta_t t_S + \beta_p p_{NS}$$
+$$v_{FS} = \alpha_f + \beta_t t_S + \beta_p p_{FS}$$
+$$v_{CS} = \alpha_c + \beta_t t_S + \beta_p p_{CS}$$
+The choice probabilities are:
+$$p_{N|S} = \frac{\exp(v_{NS})}{\exp(v_{NS}) + \exp(v_{FS}) + \exp(v_{CS})}$$
+$$p_{F|S} = \frac{\exp(v_{FS})}{\exp(v_{NS}) + \exp(v_{FS}) + \exp(v_{CS})}$$
+$$p_{C|S} = \frac{\exp(v_{CS})}{\exp(v_{NS}) + \exp(v_{FS}) + \exp(v_{CS})}$$
+Similarly, for the convenience store the deterministic utility components are:
+$$v_{NC} = \beta_t t_C + \beta_p p_{NC}$$
+$$v_{FC} = \alpha_f + \beta_t t_C + \beta_p p_{FC}$$
+and the choice probabilities are:
+$$p_{N|C} = \frac{\exp(v_{NC})}{\exp(v_{NC}) + \exp(v_{FC})}$$
+$$p_{F|C} = \frac{\exp(v_{FC})}{\exp(v_{NC}) + \exp(v_{FC})}$$
+
+3. To compute the store choice probability we need the inclusive values:
+$$I_S = \ln(\exp(v_{NS}) + \exp(v_{FS}) + \exp(v_{CS}))$$
+$$I_C = \ln(\exp(v_{NC}) + \exp(v_{FC}))$$
+The store choice probabilities are:
+$$p_S = \frac{\exp(I_S)}{\exp(I_S) + \exp(I_C)}, \quad p_C = \frac{\exp(I_C)}{\exp(I_S) + \exp(I_C)}$$
+
+4. The probability of buying each flavor at each store is simply the product of the two previous probabilities. Therefore the log-likelihood is:
+$$LL = \sum_n \sum_i \sum_j y_{nij} \ln(p_{j|i}\, p_i)$$
+
+:::
+
+</details>
+
+### Problema 15: Toallas absorbentes {- data-en="Problem 15: Absorbent Towels"}
+
+::: {.lang-es}
+
+Para entender la estructura de la categoría de toallas absorbentes, un retailer ha decidido estudiar las compras de las dos marcas principales, las que denominaremos A y B. Para este estudio se ha identificado que la heterogeneidad de las preferencias constituye un elemento fundamental y por tanto se ha decidido usar un modelo mixed logit. Preliminarmente, se ha propuesto que la utilidad del individuo $n$ por la marca $i \in \{A,B\}$ queda bien representada por un intercepto y un coeficiente precio:
+$$u_{ni} = \alpha_{ni} + \beta_n p_i + \varepsilon_{ni}$$
+donde $\varepsilon_{ni}$ se distribuyen valor extremo y $\alpha_{nA} = 0$ para identificar el problema. Además, la heterogeneidad se ha modelado con una distribución normal multivariada $(\alpha_{nB}, \beta_n) \sim N((\alpha_B, \beta), \Sigma)$.
+
+1. Proponga una expresión para la log-verosimilitud del problema.
+
+Utilizando datos transaccionales históricos de la categoría, se han estimado los siguientes valores y $H$ la matriz hessiana de la log-verosimilitud:
+$$\begin{pmatrix} \hat{\alpha}_B \\ \hat{\beta} \end{pmatrix} = \begin{pmatrix} 4.2 \\ -3.7 \end{pmatrix} \qquad \hat{\Sigma} = \begin{pmatrix} 1.32 & 0.0 \\ 0.0 & 8.35 \end{pmatrix}$$
+$$H(\hat{\theta})^{-1} = \begin{pmatrix} 1.8 & 1.4 & -0.7 & 0.1 \\ 1.4 & 1.1 & 3.2 & 0.3 \\ -0.7 & 3.2 & 0.2 & -0.2 \\ 0.1 & 0.3 & -0.2 & 1 \end{pmatrix}$$
+donde $\hat{\theta} = (\hat{\alpha}_B, \hat{\beta}, \hat{\sigma}_{11}, \hat{\sigma}_{22})$ es el vector con los estimadores máximo verosímiles. Considerando estos valores y los puntajes-z de una distribución normal estándar disponibles en la tabla siguiente, responda:
+
+| z | -1.65 | -1.28 | -0.84 | -0.53 | -0.25 | 0.00 |
+|---|-------|-------|-------|-------|-------|------|
+| Pr(x $\leq$ z) | 0.05 | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 |
+
+2. Construya el intervalo de confianza para $\beta$. Indique si es significativo al 10% e interprete sus resultados.
+
+3. ¿Cuál es la probabilidad que un individuo cualquiera tenga un coeficiente de precio positivo?
+
+:::
+
+::: {.lang-en}
+
+To understand the structure of the absorbent towels category, a retailer has decided to study the purchases of the two main brands, which we will call A and B. For this study, preference heterogeneity has been identified as a fundamental element and therefore a mixed logit model has been chosen. Preliminarily, it has been proposed that the utility of individual $n$ for brand $i \in \{A,B\}$ is well represented by an intercept and a price coefficient:
+$$u_{ni} = \alpha_{ni} + \beta_n p_i + \varepsilon_{ni}$$
+where $\varepsilon_{ni}$ are distributed extreme value and $\alpha_{nA} = 0$ for identification. Furthermore, heterogeneity has been modeled with a multivariate normal distribution $(\alpha_{nB}, \beta_n) \sim N((\alpha_B, \beta), \Sigma)$.
+
+1. Propose an expression for the log-likelihood of the problem.
+
+Using historical transactional data from the category, the following values have been estimated, along with $H$ the Hessian matrix of the log-likelihood:
+$$\begin{pmatrix} \hat{\alpha}_B \\ \hat{\beta} \end{pmatrix} = \begin{pmatrix} 4.2 \\ -3.7 \end{pmatrix} \qquad \hat{\Sigma} = \begin{pmatrix} 1.32 & 0.0 \\ 0.0 & 8.35 \end{pmatrix}$$
+$$H(\hat{\theta})^{-1} = \begin{pmatrix} 1.8 & 1.4 & -0.7 & 0.1 \\ 1.4 & 1.1 & 3.2 & 0.3 \\ -0.7 & 3.2 & 0.2 & -0.2 \\ 0.1 & 0.3 & -0.2 & 1 \end{pmatrix}$$
+where $\hat{\theta} = (\hat{\alpha}_B, \hat{\beta}, \hat{\sigma}_{11}, \hat{\sigma}_{22})$ is the vector of maximum likelihood estimators. Considering these values and the z-scores from a standard normal distribution available in the following table, answer:
+
+| z | -1.65 | -1.28 | -0.84 | -0.53 | -0.25 | 0.00 |
+|---|-------|-------|-------|-------|-------|------|
+| Pr(x $\leq$ z) | 0.05 | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 |
+
+2. Construct the confidence interval for $\beta$. Indicate whether it is significant at 10% and interpret your results.
+
+3. What is the probability that any given individual has a positive price coefficient?
+
+:::
+
+<details>
+<summary>Ver solución</summary>
+
+::: {.lang-es}
+
+1. Las probabilidades de elección condicionales a los parámetros aleatorios $(\alpha_{nB}, \beta_n)$ son:
+$$P_{nA \mid (\alpha_{nB}, \beta_n)} = \frac{\exp(\beta_n p_A)}{\exp(\beta_n p_A) + \exp(\alpha_{nB} + \beta_n p_B)}$$
+$$P_{nB \mid (\alpha_{nB}, \beta_n)} = \frac{\exp(\alpha_{nB} + \beta_n p_B)}{\exp(\beta_n p_A) + \exp(\alpha_{nB} + \beta_n p_B)}$$
+Como $(\alpha_{nB}, \beta_n) \sim N((\alpha_B, \beta), \Sigma)$, las probabilidades incondicionales se obtienen integrando respecto de la densidad normal bivariada:
+$$P_{nA} = \int_{\mathbb{R}^2} P_{nA \mid (\alpha_{nB}, \beta_n)} \, \phi((\alpha_{nB}, \beta_n) \mid (\alpha_B, \beta), \Sigma) \, d\alpha_{nB} \, d\beta_n$$
+$$P_{nB} = \int_{\mathbb{R}^2} P_{nB \mid (\alpha_{nB}, \beta_n)} \, \phi((\alpha_{nB}, \beta_n) \mid (\alpha_B, \beta), \Sigma) \, d\alpha_{nB} \, d\beta_n$$
+donde $\phi(\cdot)$ es la densidad de la normal bivariada con media $(\alpha_B, \beta)$ y matriz de varianzas-covarianzas $\Sigma$.
+
+La log-verosimilitud poblacional del modelo es entonces:
+$$\ell = \sum_n (y_{nA} \ln P_{nA} + y_{nB} \ln P_{nB})$$
+Como las integrales anteriores no tienen forma cerrada, se aproximan por simulación. Si tomamos $R$ draws $(\alpha_{nB}^{(r)}, \beta_n^{(r)})$ de la $N((\alpha_B, \beta), \Sigma)$, las probabilidades simuladas son:
+$$\hat{P}_{nA} = \frac{1}{R}\sum_{r=1}^R P_{nA \mid (\alpha_{nB}^{(r)}, \beta_n^{(r)})}$$
+$$\hat{P}_{nB} = \frac{1}{R}\sum_{r=1}^R P_{nB \mid (\alpha_{nB}^{(r)}, \beta_n^{(r)})}$$
+y la log-verosimilitud simulada que se maximiza es:
+$$\hat{\ell} = \sum_n (y_{nA} \ln \hat{P}_{nA} + y_{nB} \ln \hat{P}_{nB})$$
+
+2. Podemos construir el intervalo de confianza IC directamente usando los valores de la normal estándar y el inverso del hessiano:
+$$IC = \left[-3.7 - 1.65 \cdot \sqrt{1.1},\; -3.7 + 1.65 \cdot \sqrt{1.1}\right] = [-5.43,\; -1.97]$$
+Como $0 \notin IC$ entonces $\beta$ es significativo. Esto quiere decir que con un 90% de posibilidades la media poblacional de los coeficientes de precio está en el rango $[-5.43, -1.97]$.
+
+3. De los resultados sabemos que $\beta_n \sim N(-3.7, 8.35)$. Por lo tanto, para calcular numéricamente $\Pr(\beta_n \leq 0)$ basta con estandarizar la variable normal (recordar que la distribución normal es simétrica):
+$$\Pr(\beta_n \geq 0) = 1 - \Pr(\beta_n \leq 0) = \Pr\!\left(\frac{\beta_n - (-3.7)}{\sqrt{8.35}} \leq \frac{0 - (-3.7)}{\sqrt{8.35}}\right) = \Pr(z \leq 1.28) = 0.90$$
+
+:::
+
+::: {.lang-en}
+
+1. The choice probabilities conditional on the random parameters $(\alpha_{nB}, \beta_n)$ are:
+$$P_{nA \mid (\alpha_{nB}, \beta_n)} = \frac{\exp(\beta_n p_A)}{\exp(\beta_n p_A) + \exp(\alpha_{nB} + \beta_n p_B)}$$
+$$P_{nB \mid (\alpha_{nB}, \beta_n)} = \frac{\exp(\alpha_{nB} + \beta_n p_B)}{\exp(\beta_n p_A) + \exp(\alpha_{nB} + \beta_n p_B)}$$
+Since $(\alpha_{nB}, \beta_n) \sim N((\alpha_B, \beta), \Sigma)$, the unconditional probabilities are obtained by integrating with respect to the bivariate normal density:
+$$P_{nA} = \int_{\mathbb{R}^2} P_{nA \mid (\alpha_{nB}, \beta_n)} \, \phi((\alpha_{nB}, \beta_n) \mid (\alpha_B, \beta), \Sigma) \, d\alpha_{nB} \, d\beta_n$$
+$$P_{nB} = \int_{\mathbb{R}^2} P_{nB \mid (\alpha_{nB}, \beta_n)} \, \phi((\alpha_{nB}, \beta_n) \mid (\alpha_B, \beta), \Sigma) \, d\alpha_{nB} \, d\beta_n$$
+where $\phi(\cdot)$ is the bivariate normal density with mean $(\alpha_B, \beta)$ and variance-covariance matrix $\Sigma$.
+
+The population log-likelihood of the model is:
+$$\ell = \sum_n (y_{nA} \ln P_{nA} + y_{nB} \ln P_{nB})$$
+Since the integrals above have no closed form, they are approximated by simulation. Taking $R$ draws $(\alpha_{nB}^{(r)}, \beta_n^{(r)})$ from $N((\alpha_B, \beta), \Sigma)$, the simulated probabilities are:
+$$\hat{P}_{nA} = \frac{1}{R}\sum_{r=1}^R P_{nA \mid (\alpha_{nB}^{(r)}, \beta_n^{(r)})}$$
+$$\hat{P}_{nB} = \frac{1}{R}\sum_{r=1}^R P_{nB \mid (\alpha_{nB}^{(r)}, \beta_n^{(r)})}$$
+and the simulated log-likelihood to be maximized is:
+$$\hat{\ell} = \sum_n (y_{nA} \ln \hat{P}_{nA} + y_{nB} \ln \hat{P}_{nB})$$
+
+2. We can construct the confidence interval directly using standard normal values and the inverse Hessian:
+$$CI = \left[-3.7 - 1.65 \cdot \sqrt{1.1},\; -3.7 + 1.65 \cdot \sqrt{1.1}\right] = [-5.43,\; -1.97]$$
+Since $0 \notin CI$, $\beta$ is significant. This means that with 90% confidence the population mean of price coefficients lies in the range $[-5.43, -1.97]$.
+
+3. From the results we know that $\beta_n \sim N(-3.7, 8.35)$. To compute $\Pr(\beta_n \leq 0)$ numerically we standardize (recall that the normal distribution is symmetric):
+$$\Pr(\beta_n \geq 0) = 1 - \Pr(\beta_n \leq 0) = \Pr\!\left(\frac{\beta_n - (-3.7)}{\sqrt{8.35}} \leq \frac{0 - (-3.7)}{\sqrt{8.35}}\right) = \Pr(z \leq 1.28) = 0.90$$
+
+:::
+
+</details>
