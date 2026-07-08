@@ -161,6 +161,9 @@ tab:estr-p12-variables
 tab:estr-p12-muestra
 tab:estr-p12-resultados
 tab:estr-p13-millas
+tab:estr-p16-muestra
+tab:estr-p16-descriptivas
+tab:estr-p16-mixedlogit
 tab:anexo-esperanzas
 cap-regresion
 definiciones-clave

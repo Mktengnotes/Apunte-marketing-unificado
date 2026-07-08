@@ -8720,3 +8720,310 @@ $$\Pr(\beta_n \geq 0) = 1 - \Pr(\beta_n \leq 0) = \Pr\!\left(\frac{\beta_n - (-3
 :::
 
 </details>
+
+### Problema 16: Agente concierge de IA {- data-en="Problem 16: AI Concierge Agent"}
+
+::: {.lang-es}
+
+Los agentes de inteligencia artificial son sistemas que, apoyados en modelos de lenguaje, son capaces de interpretar una solicitud, razonar sobre ella y ejecutar acciones de manera autónoma para resolverla. En los últimos años, las empresas han comenzado a incorporarlos en la automatización de la atención y los servicios al cliente, donde permiten responder consultas, gestionar requerimientos y escalar los casos más complejos con una mínima intervención humana. Una empresa nacional, líder en el mercado de los seguros, ha implementado hace algunos meses un sistema basado en agentes de inteligencia artificial que ofrece atención automatizada al cliente. El sistema está implementado usando una arquitectura de agentes entrelazados, en la que distintos agentes especializados colaboran para resolver los requerimientos de los usuarios. En el centro de esta arquitectura se encuentra un *agente concierge*, encargado de recibir los requerimientos iniciales y decidir cómo procesarlos. Para cada requerimiento que recibe, este agente debe tomar una de tres decisiones posibles: responder directamente al cliente, derivar el caso a otro agente especializado, o derivar el caso a un agente humano.
+
+El equipo de diseño está interesado en describir el comportamiento del agente concierge, y así poder hacer ajustes al sistema para mejorar continuamente la evaluación que hacen los clientes de la calidad del servicio. Para eso, el equipo ha armado una base de datos que pueda servir de base para la estimación de modelos de elección discreta para caracterizar el comportamiento de los agentes. La base de datos registra cada atención junto con sus características, donde la decisión del agente puede tomar tres niveles: responder al cliente (responde), derivar a otro agente especializado (dagente) y derivar a un agente humano (dhumano), como indica la Tabla 1.
+
+Table: (\#tab:estr-p16-muestra) Muestra de la base de datos para la calibración de modelos de elección discreta. La tabla considera un identificador del cliente (IDcust), un identificador de la interacción (IDinter), la fecha (date), el género y la edad del usuario (gender, edad), el número de interacciones anteriores (npastint), el texto completo con el diálogo (dialogue), el largo del diálogo en número de caracteres (length) y la decisión del agente (output).
+
+| IDcust | IDinter | date | edad | npastint | dialogue | length | output |
+|--------|---------|----------|------|----------|-----------------------------------------------------|--------|----------|
+| c001 | 001 | 01/03/26 | 23 | 0 | Hola, quiero saber qué pasó con el ... | 145 | responde |
+| c001 | 002 | 01/03/26 | 23 | 1 | Buen día, escribo para que me indiquen ... | 1345 | responde |
+| c002 | 001 | 01/04/26 | 56 | 0 | Necesito entender dónde encuentro ... | 845 | responde |
+| c003 | 001 | 01/06/26 | 49 | 0 | Estoy muy molesto, llevo semanas esperando que... | 1820 | dhumano |
+| c004 | 001 | 01/03/26 | 29 | 0 | ¿Cuál es el número de mi póliza de ... | 210 | responde |
+| c004 | 002 | 01/08/26 | 29 | 1 | Quisiera saber el estado de mi solicitud de ... | 320 | responde |
+| c005 | 001 | 01/07/26 | 62 | 0 | Necesito hablar con alguien urgente porque... | 95 | dhumano |
+| c005 | 002 | 01/09/26 | 62 | 1 | Quiero cotizar un seguro automotriz adicional ... | 540 | dagente |
+
+Al explorar la base de datos, aparecen algunas regularidades que se ilustran en la Tabla 2. Por ejemplo, vemos que el agente concierge es capaz de resolver autónomamente la mayoría (83%) de los requerimientos. Más aún, si miramos qué pasa con el largo de los diálogos, en general los requerimientos que responde el agente tienden a ser más cortos y con menos dispersión en el largo. Estos elementos nos sugieren que un modelo de elección discreta podría tener bastante capacidad explicativa incluso considerando solo unas pocas covariables.
+
+Table: (\#tab:estr-p16-descriptivas) Estadísticas descriptivas de las interacciones según la decisión del agente.
+
+| output | porcentaje | Largo (prom.) | Largo (s.d.) | Interacc. previas (prom.) | Interacc. previas (s.d.) |
+|----------|-----------|---------------|--------------|---------------------------|--------------------------|
+| responde | 83% | 318 | 176 | 0.8 | 1.1 |
+| dagente | 11% | 742 | 351 | 1.6 | 1.4 |
+| dhumano | 6% | 1146 | 603 | 2.3 | 1.8 |
+
+1. Proponga una función de utilidad para describir el comportamiento del agente concierge en su interacción $i$ con un cliente $n$, que considere los siguientes elementos:
+
+    a. Hay efectos fijos por alternativa (responde, deriva a otro agente o a un humano).
+    b. El largo de la conversación con el agente importa. Se espera que, si el texto es corto, la probabilidad de derivar sea relativamente alta, que luego disminuya y que, si la conversación se alarga, la probabilidad de derivar vuelva a aumentar.
+    c. La edad y el número de interacciones previas del usuario también influyen en el comportamiento del agente.
+    d. La presencia de ciertas palabras clave podría ser un indicador de una alta probabilidad de derivación. Suponga que dispone de un algoritmo de procesamiento de texto que permite crear variables dummy para indicar la presencia de cada una de esas palabras.
+
+2. Suponga que en la ecuación de utilidad se incluyen efectos fijos por alternativa (un intercepto por cada decisión del agente) y se fija el intercepto de la alternativa responder en cero como categoría base ($\alpha_{\text{responde}} = 0$). ¿Qué signo espera observar para los interceptos de las otras dos alternativas, derivar a agente y derivar a humano? Justifique su respuesta.
+
+3. Suponga que en un instante $t^*$ se modificó el prompt de orquestación del agente para sugerir que "si necesitas derivar a los clientes con mayor historial de interacciones, derívalos siempre a un humano". ¿Cómo cambia el modelo propuesto en la pregunta anterior para incorporar este cambio?
+
+4. Suponga que se introduce heterogeneidad mediante un modelo muy sencillo con dos clases latentes de igual tamaño y funciones de utilidad que solo tienen efectos fijos por alternativa de decisión. Suponga además que se estima el modelo y, manteniendo responder como el nivel base, se encuentra que para la primera clase $(\alpha^1_{\text{dagente}}, \alpha^1_{\text{dhumano}}) = (0,1)$ mientras que para la segunda clase $(\alpha^2_{\text{dagente}}, \alpha^2_{\text{dhumano}}) = (1,0)$. Demuestre que la verosimilitud de observar dos observaciones en que la decisión del agente sea responder viene dada por $p = \left(\frac{1}{2+e}\right)^2$.
+
+5. Disconforme con la solución de clases latentes, se postula correr un modelo logit heterogéneo a través del siguiente código computacional, cuyos resultados se despliegan en la Tabla 3.
+
+   ```r
+   agente <- mlogit(decision ~ length + keyword1 + keyword2, data = dataconcierge,
+                    rpar = c(keyword1 = 'n', keyword2 = 'n'), correlation = FALSE)
+   ```
+
+   Table: (\#tab:estr-p16-mixedlogit) Resultados de la estimación del modelo logit heterogéneo.
+
+   |                | Mixed Logit |
+   |----------------|-------------|
+   | Deriva agente  | -1.245 **   |
+   | Deriva humano  | -2.876 ***  |
+   | Length         | 0.532 ***   |
+   | Keyword1       | 1.234 ***   |
+   | Keyword2       | 0.876 **    |
+   | Sd(keyword1)   | 1.645 ***   |
+   | Sd(keyword2)   | 0.312 *     |
+   | Num. Obs.      | 24137       |
+   | AIC            | 41082       |
+   | RMSE           | 0.318       |
+   | McFadden R2    | 0.0241      |
+
+   ¿Cómo interpreta que la desviación estándar estimada del parámetro de keyword1 sea mayor que la de keyword2?
+
+6. Si quisiera usar modelos de machine learning en este contexto, ¿qué haría para intentar reducir los errores de pronóstico de este tipo de enfoque en este contexto específico?
+
+**Bonus.**
+
+1. ¿Qué debiera hacer un algoritmo de árbol de clasificación si una hoja del árbol tiene una alta pureza de clase?
+
+    a. Seguir dividiendo el nodo hasta alcanzar la profundidad máxima permitida, pues una hoja pura todavía puede subdividirse para mejorar el ajuste.
+    b. Fusionar esa hoja con la hoja vecina de menor pureza para equilibrar la distribución de clases del árbol.
+    c. Detenerse y declarar el nodo como hoja terminal, asignándole la clase predominante, ya que no hay ganancia de información al seguir dividiendo.
+    d. Descartar las observaciones de esa hoja por considerarse redundantes y reentrenar el árbol con el resto de los datos.
+    e. Agregar ruido artificial a la hoja para aumentar su impureza y así evitar el sobreajuste del árbol.
+
+2. ¿Qué significa que un modelo mixed logit permita que las componentes de error puedan estar correlacionadas entre alternativas?
+
+    a. Que el modelo mantiene el supuesto de errores independientes (i.i.d.) del logit estándar, pero estima los parámetros más rápido.
+    b. Que los parámetros aleatorios crean un error compuesto que induce covarianza entre alternativas, evitando la sustitución proporcional.
+    c. Que las variables de los datos están altamente correlacionadas, lo que provoca errores de estimación en el modelo.
+    d. Que se elimina la componente aleatoria de la utilidad, haciendo que el modelo sea completamente determinístico.
+    e. Que las alternativas se vuelven sustitutos perfectos, forzando al modelo a cumplir estrictamente el supuesto IIA.
+
+3. ¿Por qué decimos que un modelo de regresión podría estar sesgado al aplicarlo sobre un modelo truncado?
+
+    a. Porque al estimar el modelo solo con la parte observada de la muestra dejamos fuera sistemáticamente cierto tipo de casos, de modo que la submuestra deja de ser representativa de la población completa.
+    b. Porque al truncar la muestra se incrementa artificialmente el tamaño muestral, lo que infla los errores estándar pero no afecta a los coeficientes.
+    c. Porque los datos truncados siempre cumplen el supuesto de homocedasticidad, lo que sesga únicamente la varianza estimada y no los parámetros.
+    d. Porque la truncación garantiza la disponibilidad de variables instrumentales, eliminando todo sesgo de la estimación.
+    e. Porque al truncar la muestra el modelo se convierte automáticamente en uno de elección discreta, invalidando cualquier regresión lineal.
+
+:::
+
+::: {.lang-en}
+
+AI agents are systems that, supported by language models, are able to interpret a request, reason about it, and autonomously execute actions to resolve it. In recent years, firms have begun incorporating them into the automation of customer care and service, where they can answer queries, handle requests, and escalate the most complex cases with minimal human intervention. A national firm, a leader in the insurance market, implemented a few months ago a system based on AI agents that offers automated customer service. The system is implemented using an interlinked-agent architecture, in which different specialized agents collaborate to resolve users' requests. At the center of this architecture is a *concierge agent*, in charge of receiving the initial requests and deciding how to process them. For each request it receives, this agent must make one of three possible decisions: respond directly to the customer, route the case to another specialized agent, or route the case to a human agent.
+
+The design team is interested in describing the behavior of the concierge agent in order to adjust the system and continuously improve customers' evaluation of service quality. For this, the team has assembled a database to serve as a basis for estimating discrete choice models that characterize the agents' behavior. The database records each service interaction along with its characteristics, where the agent's decision can take three levels: respond to the customer (responde), route to another specialized agent (dagente), and route to a human agent (dhumano), as shown in Table 1.
+
+Table: (\#tab:estr-p16-muestra) Sample of the database for calibrating discrete choice models. The table considers a customer identifier (IDcust), an interaction identifier (IDinter), the date (date), the user's gender and age (gender, edad), the number of previous interactions (npastint), the full dialogue text (dialogue), the dialogue length in number of characters (length), and the agent's decision (output).
+
+| IDcust | IDinter | date | edad | npastint | dialogue | length | output |
+|--------|---------|----------|------|----------|-----------------------------------------------------|--------|----------|
+| c001 | 001 | 01/03/26 | 23 | 0 | Hi, I want to know what happened with the ... | 145 | responde |
+| c001 | 002 | 01/03/26 | 23 | 1 | Good morning, I'm writing so you can tell me ... | 1345 | responde |
+| c002 | 001 | 01/04/26 | 56 | 0 | I need to understand where I can find ... | 845 | responde |
+| c003 | 001 | 01/06/26 | 49 | 0 | I'm very upset, I've been waiting for weeks for... | 1820 | dhumano |
+| c004 | 001 | 01/03/26 | 29 | 0 | What is my policy number for ... | 210 | responde |
+| c004 | 002 | 01/08/26 | 29 | 1 | I would like to know the status of my request for ...| 320 | responde |
+| c005 | 001 | 01/07/26 | 62 | 0 | I need to speak with someone urgently because... | 95 | dhumano |
+| c005 | 002 | 01/09/26 | 62 | 1 | I want to quote an additional car insurance ... | 540 | dagente |
+
+Exploring the database, some regularities appear, illustrated in Table 2. For instance, we see that the concierge agent is able to autonomously resolve the majority (83%) of requests. Moreover, looking at the length of the dialogues, in general the requests the agent responds to tend to be shorter and with less dispersion in length. These elements suggest that a discrete choice model could have substantial explanatory power even considering only a few covariates.
+
+Table: (\#tab:estr-p16-descriptivas) Descriptive statistics of the interactions by agent decision.
+
+| output | percentage | Length (mean) | Length (s.d.) | Prev. interactions (mean) | Prev. interactions (s.d.) |
+|----------|-----------|---------------|---------------|---------------------------|---------------------------|
+| responde | 83% | 318 | 176 | 0.8 | 1.1 |
+| dagente | 11% | 742 | 351 | 1.6 | 1.4 |
+| dhumano | 6% | 1146 | 603 | 2.3 | 1.8 |
+
+1. Propose a utility function to describe the behavior of the concierge agent in its interaction $i$ with a customer $n$, considering the following elements:
+
+    a. There are alternative-specific fixed effects (respond, route to another agent, or to a human).
+    b. The length of the conversation with the agent matters. It is expected that, if the text is short, the probability of routing is relatively high, then decreases, and that, if the conversation grows long, the probability of routing rises again.
+    c. The customer's age and number of previous interactions also influence the agent's behavior.
+    d. The presence of certain keywords could indicate a high probability of routing. Assume a text-processing algorithm is available that creates dummy variables indicating the presence of each of those words.
+
+2. Suppose the utility equation includes alternative-specific fixed effects (one intercept per agent decision) and the intercept of the respond alternative is set to zero as the base category ($\alpha_{\text{responde}} = 0$). What sign do you expect for the intercepts of the other two alternatives, route-to-agent and route-to-human? Justify your answer.
+
+3. Suppose that at an instant $t^*$ the agent's orchestration prompt was modified to suggest that "if you need to route customers with a longer interaction history, always route them to a human". How does the model proposed in the previous question change to incorporate this change?
+
+4. Suppose heterogeneity is introduced through a very simple model with two equally-sized latent classes and utility functions that only have alternative-specific fixed effects. Suppose further that the model is estimated and, keeping respond as the base level, it is found that for the first class $(\alpha^1_{\text{dagente}}, \alpha^1_{\text{dhumano}}) = (0,1)$ while for the second class $(\alpha^2_{\text{dagente}}, \alpha^2_{\text{dhumano}}) = (1,0)$. Show that the likelihood of observing two observations in which the agent's decision is respond is given by $p = \left(\frac{1}{2+e}\right)^2$.
+
+5. Unsatisfied with the latent-class solution, a heterogeneous logit model is proposed, run with the following code, whose results are shown in Table 3.
+
+   ```r
+   agente <- mlogit(decision ~ length + keyword1 + keyword2, data = dataconcierge,
+                    rpar = c(keyword1 = 'n', keyword2 = 'n'), correlation = FALSE)
+   ```
+
+   Table: (\#tab:estr-p16-mixedlogit) Estimation results of the heterogeneous logit model.
+
+   |                | Mixed Logit |
+   |----------------|-------------|
+   | Deriva agente  | -1.245 **   |
+   | Deriva humano  | -2.876 ***  |
+   | Length         | 0.532 ***   |
+   | Keyword1       | 1.234 ***   |
+   | Keyword2       | 0.876 **    |
+   | Sd(keyword1)   | 1.645 ***   |
+   | Sd(keyword2)   | 0.312 *     |
+   | Num. Obs.      | 24137       |
+   | AIC            | 41082       |
+   | RMSE           | 0.318       |
+   | McFadden R2    | 0.0241      |
+
+   How do you interpret that the estimated standard deviation of the keyword1 parameter is larger than that of keyword2?
+
+6. If you wanted to use machine learning models in this context, what would you do to try to reduce the forecast errors of this type of approach in this specific setting?
+
+**Bonus.**
+
+1. What should a classification-tree algorithm do if a leaf of the tree has high class purity?
+
+    a. Keep splitting the node until reaching the maximum allowed depth, since a pure leaf can still be subdivided to improve fit.
+    b. Merge that leaf with the neighboring leaf of lowest purity to balance the tree's class distribution.
+    c. Stop and declare the node a terminal leaf, assigning it the predominant class, since there is no information gain from further splitting.
+    d. Discard the observations of that leaf as redundant and retrain the tree with the remaining data.
+    e. Add artificial noise to the leaf to increase its impurity and thus avoid overfitting the tree.
+
+2. What does it mean for a mixed logit model to allow the error components to be correlated across alternatives?
+
+    a. That the model keeps the independent-errors (i.i.d.) assumption of the standard logit, but estimates the parameters faster.
+    b. That the random parameters create a composite error that induces covariance across alternatives, avoiding proportional substitution.
+    c. That the data variables are highly correlated, which causes estimation errors in the model.
+    d. That the random component of utility is removed, making the model fully deterministic.
+    e. That the alternatives become perfect substitutes, forcing the model to strictly satisfy the IIA assumption.
+
+3. Why do we say that a regression model could be biased when applied to a truncated model?
+
+    a. Because estimating the model only with the observed part of the sample systematically leaves out certain types of cases, so the subsample is no longer representative of the full population.
+    b. Because truncating the sample artificially increases the sample size, which inflates the standard errors but does not affect the coefficients.
+    c. Because truncated data always satisfy the homoskedasticity assumption, which biases only the estimated variance and not the parameters.
+    d. Because truncation guarantees the availability of instrumental variables, eliminating all bias from the estimation.
+    e. Because truncating the sample automatically turns the model into a discrete choice one, invalidating any linear regression.
+
+:::
+
+<details>
+<summary>Ver solución</summary>
+
+::: {.lang-es}
+
+1. Sea $K$ el conjunto de keywords y $\delta_{nik}$ una variable dummy que toma el valor 1 si la keyword $k \in K$ está incluida en el texto de la interacción $i$ del cliente $n$. Entonces la función de utilidad del agente con respecto a la decisión $d$, en la interacción $n$ del cliente $i$, puede escribirse como:
+
+   $$
+   u_{nid} = \alpha_d + \beta_1 \text{length}_{ni} + \beta_2 \text{length}_{ni}^2 + \beta_3 \text{edad}_i + \beta_4 \text{npastint}_{in} + \sum_{k \in K} \gamma_k \delta_{nik}
+   $$
+
+   Acá, el largo del texto considera un término cuadrático para capturar la no linealidad del efecto del largo (de acuerdo a la descripción debiéramos esperar $\beta_1 < 0$ y $\beta_2 > 0$).
+
+   *Nota:* En esta especificación, $\beta_1$ y $\beta_2$ no dependen de la alternativa. De acuerdo a la descripción del problema es perfectamente esperable que algunos puedan proponer que el largo afecta de forma distinta para cada alternativa y por tanto hacer que los coeficientes dependan de la alternativa ($\beta_{1d}$ y $\beta_{2d}$).
+
+2. Responder es por lejos la decisión más frecuente y por tanto debiéramos esperar que $\alpha_{\text{dagente}}, \alpha_{\text{dhumano}} < 0$.
+
+3. Habría que definir un indicador $\text{post}_{ni}$ que tome el valor 1 si la fecha de la interacción ocurre después de $t^*$ y agregarlo al modelo.
+
+   $$
+   u_{nid} = \cdots + \beta_5 \text{post}_{ni} + \beta_6 \, \text{post}_{ni} \cdot \text{npastint}_{in}
+   $$
+
+   *Nota 1:* Como en el problema anterior, también podríamos hacer depender el parámetro de la decisión ($\beta_{6d}$).
+
+   *Nota 2:* La pregunta se debía haber formulado como "cambia el modelo propuesto en la primera pregunta". En el fraseo impreso, se puede interpretar que se hace referencia a la segunda pregunta. Si lo consideraran así, entonces dos respuestas admisibles son:
+
+   - Después del cambio la probabilidad de derivar a los humanos debiera aumentar y por tanto $\alpha_{\text{dhumano}}$ debiera hacerse menos negativa (o incluso positiva).
+   - Hay una probabilidad intrínseca distinta antes que después del cambio y por tanto habría que tener interceptos distintos para el periodo antes y después.
+
+4. La probabilidad de responder puede escribirse como:
+
+   $$
+   \Pr(\text{responder}) = \frac{1}{2}\left(\frac{1}{1 + e^{\alpha^1_{\text{dagente}}} + e^{\alpha^1_{\text{dhumano}}}}\right) + \frac{1}{2}\left(\frac{1}{1 + e^{\alpha^2_{\text{dagente}}} + e^{\alpha^2_{\text{dhumano}}}}\right) = \frac{1}{2 + e}
+   $$
+
+   Entonces la verosimilitud ($L$) viene dada por:
+
+   $$
+   \begin{aligned}
+   L &= \Pr(\text{responder})^1 \Pr(\text{dagente})^0 \Pr(\text{dhumano})^0 \cdot \Pr(\text{responder})^1 \Pr(\text{dagente})^0 \Pr(\text{dhumano})^0 \\
+   &= \left(\frac{1}{2+e}\right)^2
+   \end{aligned}
+   $$
+
+5. Las desviaciones reportadas corresponden a la variación de la distribución normal subyacente que describe la heterogeneidad en la valoración/importancia que tienen esas dos keywords. Que $\text{sd}(\text{keyword1}) > \text{sd}(\text{keyword2})$ implica que la primera keyword tiene más variabilidad en su influencia que la segunda keyword. En otras palabras, keyword2 parece tener una influencia relativamente homogénea para todas las conversaciones mientras la keyword1 puede significar distintas cosas en distintas conversaciones.
+
+6. La respuesta es abierta pero la idea principal es que los modelos de ML funcionan mejor en capturar efectos no lineales complejos cuando hay muchos datos. En este caso, el texto del diálogo tiene información potencialmente muy rica que no estamos usando (más allá de la longitud y la aparición de algunas palabras clave). Para sacar el mayor provecho a un modelo de ML habría que hacer *feature engineering* para generar más variables a partir de los textos. Otras ideas que podrían aparecer y que podrían tener mérito:
+
+   - Definir correctamente los conjuntos de entrenamiento y de testeo para evitar el sobreajuste.
+   - Hacerse cargo del desbalance de clases que favorece la alternativa de responder.
+
+**Bonus:** 1-c, 2-b, 3-a.
+
+:::
+
+::: {.lang-en}
+
+1. Let $K$ be the set of keywords and $\delta_{nik}$ a dummy variable that takes the value 1 if keyword $k \in K$ is included in the text of interaction $i$ of customer $n$. Then the agent's utility with respect to decision $d$, in interaction $n$ of customer $i$, can be written as:
+
+   $$
+   u_{nid} = \alpha_d + \beta_1 \text{length}_{ni} + \beta_2 \text{length}_{ni}^2 + \beta_3 \text{edad}_i + \beta_4 \text{npastint}_{in} + \sum_{k \in K} \gamma_k \delta_{nik}
+   $$
+
+   Here, the text length includes a quadratic term to capture the non-linearity of the length effect (according to the description we should expect $\beta_1 < 0$ and $\beta_2 > 0$).
+
+   *Note:* In this specification, $\beta_1$ and $\beta_2$ do not depend on the alternative. Given the problem description, it is perfectly reasonable that some may propose that length affects each alternative differently and therefore make the coefficients alternative-specific ($\beta_{1d}$ and $\beta_{2d}$).
+
+2. Respond is by far the most frequent decision, so we should expect $\alpha_{\text{dagente}}, \alpha_{\text{dhumano}} < 0$.
+
+3. One would define an indicator $\text{post}_{ni}$ that takes the value 1 if the interaction date occurs after $t^*$ and add it to the model.
+
+   $$
+   u_{nid} = \cdots + \beta_5 \text{post}_{ni} + \beta_6 \, \text{post}_{ni} \cdot \text{npastint}_{in}
+   $$
+
+   *Note 1:* As in the previous problem, we could also make the decision parameter alternative-specific ($\beta_{6d}$).
+
+   *Note 2:* The question should have been phrased as "how does the model proposed in the first question change". In the printed wording, it can be interpreted as referring to the second question. If interpreted that way, two admissible answers are:
+
+   - After the change, the probability of routing to humans should increase and therefore $\alpha_{\text{dhumano}}$ should become less negative (or even positive).
+   - There is a different intrinsic probability before versus after the change and therefore one would need different intercepts for the before and after periods.
+
+4. The probability of responding can be written as:
+
+   $$
+   \Pr(\text{responder}) = \frac{1}{2}\left(\frac{1}{1 + e^{\alpha^1_{\text{dagente}}} + e^{\alpha^1_{\text{dhumano}}}}\right) + \frac{1}{2}\left(\frac{1}{1 + e^{\alpha^2_{\text{dagente}}} + e^{\alpha^2_{\text{dhumano}}}}\right) = \frac{1}{2 + e}
+   $$
+
+   Then the likelihood ($L$) is given by:
+
+   $$
+   \begin{aligned}
+   L &= \Pr(\text{responder})^1 \Pr(\text{dagente})^0 \Pr(\text{dhumano})^0 \cdot \Pr(\text{responder})^1 \Pr(\text{dagente})^0 \Pr(\text{dhumano})^0 \\
+   &= \left(\frac{1}{2+e}\right)^2
+   \end{aligned}
+   $$
+
+5. The reported deviations correspond to the variation of the underlying normal distribution that describes the heterogeneity in the valuation/importance of these two keywords. That $\text{sd}(\text{keyword1}) > \text{sd}(\text{keyword2})$ implies the first keyword has more variability in its influence than the second keyword. In other words, keyword2 seems to have a relatively homogeneous influence across all conversations while keyword1 may mean different things in different conversations.
+
+6. The answer is open but the main idea is that ML models perform better at capturing complex non-linear effects when there is a lot of data. In this case, the dialogue text has potentially very rich information that we are not using (beyond length and the appearance of a few keywords). To get the most out of an ML model, one would need to do *feature engineering* to generate more variables from the texts. Other ideas that could come up and could have merit:
+
+   - Properly defining the training and test sets to avoid overfitting.
+   - Addressing the class imbalance that favors the respond alternative.
+
+**Bonus:** 1-c, 2-b, 3-a.
+
+:::
+
+</details>

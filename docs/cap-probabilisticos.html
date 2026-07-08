@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-05-16" />
+<meta name="date" content="2026-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -92,7 +93,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +106,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -128,6 +129,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -162,17 +164,17 @@ div.csl-indent {
 <li><a href="./">Apunte de Marketing Engineering</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prólogo</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#pr%C3%B3logo"><i class="fa fa-check"></i>Prólogo</a></li>
 <li class="chapter" data-level="1" data-path="cap-regresion.html"><a href="cap-regresion.html"><i class="fa fa-check"></i><b>1</b> Modelos de Regresión</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="cap-regresion.html"><a href="cap-regresion.html#definiciones-clave"><i class="fa fa-check"></i><b>1.1</b> Definiciones clave</a></li>
-<li class="chapter" data-level="1.2" data-path="cap-regresion.html"><a href="cap-regresion.html#conceptos-básicos"><i class="fa fa-check"></i><b>1.2</b> Conceptos básicos</a>
+<li class="chapter" data-level="1.2" data-path="02-probabilisticos.html"><a href="#conceptos-b%C3%A1sicos"><i class="fa fa-check"></i><b>1.2</b> Conceptos básicos</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="cap-regresion.html"><a href="cap-regresion.html#notación"><i class="fa fa-check"></i><b>1.2.1</b> Notación</a></li>
+<li class="chapter" data-level="1.2.1" data-path="02-probabilisticos.html"><a href="#notaci%C3%B3n"><i class="fa fa-check"></i><b>1.2.1</b> Notación</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="cap-regresion.html"><a href="cap-regresion.html#mínimos-cuadrados-ordinarios-ols-y-supuestos"><i class="fa fa-check"></i><b>1.3</b> Mínimos Cuadrados Ordinarios (OLS) y supuestos</a>
+<li class="chapter" data-level="1.3" data-path="02-probabilisticos.html"><a href="#m%C3%ADnimos-cuadrados-ordinarios-ols-y-supuestos"><i class="fa fa-check"></i><b>1.3</b> Mínimos Cuadrados Ordinarios (OLS) y supuestos</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="cap-regresion.html"><a href="cap-regresion.html#estimación"><i class="fa fa-check"></i><b>1.3.1</b> Estimación</a></li>
+<li class="chapter" data-level="1.3.1" data-path="02-probabilisticos.html"><a href="#estimaci%C3%B3n"><i class="fa fa-check"></i><b>1.3.1</b> Estimación</a></li>
 <li class="chapter" data-level="1.3.2" data-path="cap-regresion.html"><a href="cap-regresion.html#propiedades"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="cap-regresion.html"><a href="cap-regresion.html#estrategias-de-modelamiento"><i class="fa fa-check"></i><b>1.4</b> Estrategias de Modelamiento</a>
@@ -180,29 +182,29 @@ div.csl-indent {
 <li class="chapter" data-level="1.4.1" data-path="cap-regresion.html"><a href="cap-regresion.html#arte-vs.-procedimiento"><i class="fa fa-check"></i><b>1.4.1</b> Arte vs. procedimiento</a></li>
 <li class="chapter" data-level="1.4.2" data-path="cap-regresion.html"><a href="cap-regresion.html#aprendizajes-preliminares"><i class="fa fa-check"></i><b>1.4.2</b> Aprendizajes Preliminares</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="cap-regresion.html"><a href="cap-regresion.html#evaluación-de-modelos"><i class="fa fa-check"></i><b>1.5</b> Evaluación de modelos</a>
+<li class="chapter" data-level="1.5" data-path="02-probabilisticos.html"><a href="#evaluaci%C3%B3n-de-modelos"><i class="fa fa-check"></i><b>1.5</b> Evaluación de modelos</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="cap-regresion.html"><a href="cap-regresion.html#qué-se-busca-en-un-modelo"><i class="fa fa-check"></i><b>1.5.1</b> ¿Qué se busca en un modelo?</a></li>
-<li class="chapter" data-level="1.5.2" data-path="cap-regresion.html"><a href="cap-regresion.html#ajuste-por-métricas-generales"><i class="fa fa-check"></i><b>1.5.2</b> Ajuste por métricas generales</a></li>
+<li class="chapter" data-level="1.5.1" data-path="02-probabilisticos.html"><a href="#qu%C3%A9-se-busca-en-un-modelo"><i class="fa fa-check"></i><b>1.5.1</b> ¿Qué se busca en un modelo?</a></li>
+<li class="chapter" data-level="1.5.2" data-path="02-probabilisticos.html"><a href="#ajuste-por-m%C3%A9tricas-generales"><i class="fa fa-check"></i><b>1.5.2</b> Ajuste por métricas generales</a></li>
 <li class="chapter" data-level="1.5.3" data-path="cap-regresion.html"><a href="cap-regresion.html#ajuste-basado-en-la-probabilidad"><i class="fa fa-check"></i><b>1.5.3</b> Ajuste basado en la probabilidad</a></li>
 <li class="chapter" data-level="1.5.4" data-path="cap-regresion.html"><a href="cap-regresion.html#errores-dentro-y-fuera-de-la-muestra"><i class="fa fa-check"></i><b>1.5.4</b> Errores dentro y fuera de la muestra</a></li>
-<li class="chapter" data-level="1.5.5" data-path="cap-regresion.html"><a href="cap-regresion.html#división-de-datos"><i class="fa fa-check"></i><b>1.5.5</b> División de datos</a></li>
-<li class="chapter" data-level="1.5.6" data-path="cap-regresion.html"><a href="cap-regresion.html#validación-cruzada"><i class="fa fa-check"></i><b>1.5.6</b> Validación cruzada</a></li>
-<li class="chapter" data-level="1.5.7" data-path="cap-regresion.html"><a href="cap-regresion.html#test-de-hipótesis"><i class="fa fa-check"></i><b>1.5.7</b> Test de hipótesis</a></li>
+<li class="chapter" data-level="1.5.5" data-path="02-probabilisticos.html"><a href="#divisi%C3%B3n-de-datos"><i class="fa fa-check"></i><b>1.5.5</b> División de datos</a></li>
+<li class="chapter" data-level="1.5.6" data-path="02-probabilisticos.html"><a href="#validaci%C3%B3n-cruzada"><i class="fa fa-check"></i><b>1.5.6</b> Validación cruzada</a></li>
+<li class="chapter" data-level="1.5.7" data-path="02-probabilisticos.html"><a href="#test-de-hip%C3%B3tesis"><i class="fa fa-check"></i><b>1.5.7</b> Test de hipótesis</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="cap-regresion.html"><a href="cap-regresion.html#usos-y-limitaciones-del-análisis-de-regresión"><i class="fa fa-check"></i><b>1.6</b> Usos y limitaciones del análisis de regresión</a>
+<li class="chapter" data-level="1.6" data-path="02-probabilisticos.html"><a href="#usos-y-limitaciones-del-an%C3%A1lisis-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.6</b> Usos y limitaciones del análisis de regresión</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="cap-regresion.html"><a href="cap-regresion.html#aprendizaje-de-los-parámetros"><i class="fa fa-check"></i><b>1.6.1</b> Aprendizaje de los parámetros</a></li>
-<li class="chapter" data-level="1.6.2" data-path="cap-regresion.html"><a href="cap-regresion.html#interpretación-de-los-coeficientes"><i class="fa fa-check"></i><b>1.6.2</b> Interpretación de los coeficientes</a></li>
-<li class="chapter" data-level="1.6.3" data-path="cap-regresion.html"><a href="cap-regresion.html#pronósticos-y-errores-de-pronóstico"><i class="fa fa-check"></i><b>1.6.3</b> Pronósticos y errores de pronóstico</a></li>
-<li class="chapter" data-level="1.6.4" data-path="cap-regresion.html"><a href="cap-regresion.html#principios-generales-de-pronóstico"><i class="fa fa-check"></i><b>1.6.4</b> Principios generales de pronóstico</a></li>
+<li class="chapter" data-level="1.6.1" data-path="02-probabilisticos.html"><a href="#aprendizaje-de-los-par%C3%A1metros"><i class="fa fa-check"></i><b>1.6.1</b> Aprendizaje de los parámetros</a></li>
+<li class="chapter" data-level="1.6.2" data-path="02-probabilisticos.html"><a href="#interpretaci%C3%B3n-de-los-coeficientes"><i class="fa fa-check"></i><b>1.6.2</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="1.6.3" data-path="02-probabilisticos.html"><a href="#pron%C3%B3sticos-y-errores-de-pron%C3%B3stico"><i class="fa fa-check"></i><b>1.6.3</b> Pronósticos y errores de pronóstico</a></li>
+<li class="chapter" data-level="1.6.4" data-path="02-probabilisticos.html"><a href="#principios-generales-de-pron%C3%B3stico"><i class="fa fa-check"></i><b>1.6.4</b> Principios generales de pronóstico</a></li>
 <li class="chapter" data-level="1.6.5" data-path="cap-regresion.html"><a href="cap-regresion.html#modelos-lineales-generalizados"><i class="fa fa-check"></i><b>1.6.5</b> Modelos lineales generalizados</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="cap-regresion.html"><a href="cap-regresion.html#alternativas-de-machine-learning-para-la-regresión"><i class="fa fa-check"></i><b>1.7</b> Alternativas de Machine Learning para la regresión</a>
+<li class="chapter" data-level="1.7" data-path="02-probabilisticos.html"><a href="#alternativas-de-machine-learning-para-la-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7</b> Alternativas de Machine Learning para la regresión</a>
 <ul>
 <li class="chapter" data-level="1.7.1" data-path="cap-regresion.html"><a href="cap-regresion.html#multivariate-adaptive-regression-splines-mars"><i class="fa fa-check"></i><b>1.7.1</b> Multivariate Adaptive Regression Splines (MARS)</a></li>
 <li class="chapter" data-level="1.7.2" data-path="cap-regresion.html"><a href="cap-regresion.html#k-nearest-neighbors-regression-knn"><i class="fa fa-check"></i><b>1.7.2</b> K Nearest Neighbors Regression (KNN)</a></li>
-<li class="chapter" data-level="1.7.3" data-path="cap-regresion.html"><a href="cap-regresion.html#árboles-de-regresión"><i class="fa fa-check"></i><b>1.7.3</b> Árboles de regresión</a></li>
+<li class="chapter" data-level="1.7.3" data-path="02-probabilisticos.html"><a href="#%C3%A1rboles-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7.3</b> Árboles de regresión</a></li>
 <li class="chapter" data-level="1.7.4" data-path="cap-regresion.html"><a href="cap-regresion.html#bagging-y-random-forests"><i class="fa fa-check"></i><b>1.7.4</b> Bagging y Random Forests</a></li>
 </ul></li>
 <li class="chapter" data-level="1.8" data-path="cap-regresion.html"><a href="cap-regresion.html#resumen"><i class="fa fa-check"></i><b>1.8</b> Resumen</a></li>
@@ -212,7 +214,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-2-ventas-de-un-cine"><i class="fa fa-check"></i>Problema 2: Ventas de un cine</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-3-programa-de-recompensas"><i class="fa fa-check"></i>Problema 3: Programa de recompensas</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-4-precios-internacionales-de-arriendo"><i class="fa fa-check"></i>Problema 4: Precios internacionales de arriendo</a></li>
-<li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-5-búsqueda-visual-vs.-texto-en-e-commerce"><i class="fa fa-check"></i>Problema 5: Búsqueda visual vs. texto en e-commerce</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-5-b%C3%BAsqueda-visual-vs.-texto-en-e-commerce"><i class="fa fa-check"></i>Problema 5: Búsqueda visual vs. texto en e-commerce</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-6-retail-y-telecomunicaciones"><i class="fa fa-check"></i>Problema 6: Retail y telecomunicaciones</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-7-agentes-de-ia-para-servicio-al-cliente-bancario"><i class="fa fa-check"></i>Problema 7: Agentes de IA para servicio al cliente bancario</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-8-plataforma-de-streaming-musical"><i class="fa fa-check"></i>Problema 8: Plataforma de streaming musical</a></li>
@@ -234,19 +236,19 @@ div.csl-indent {
 <li class="chapter" data-level="2.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-eleccion"><i class="fa fa-check"></i><b>2.5</b> Modelos de elección binaria</a></li>
 <li class="chapter" data-level="2.6" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-het-observable"><i class="fa fa-check"></i><b>2.6</b> Heterogeneidad observable</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-discreto-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.1</b> Modelos de duración en tiempo discreto con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.2</b> Modelos de duración en tiempo continuo con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.3" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-dependencia-de-la-duración-y-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.3</b> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.1" data-path="02-probabilisticos.html"><a href="#modelos-de-duraci%C3%B3n-en-tiempo-discreto-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.1</b> Modelos de duración en tiempo discreto con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.2" data-path="02-probabilisticos.html"><a href="#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.2</b> Modelos de duración en tiempo continuo con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.3" data-path="02-probabilisticos.html"><a href="#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-dependencia-de-la-duraci%C3%B3n-y-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.3</b> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable</a></li>
 <li class="chapter" data-level="2.6.4" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-conteo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.4</b> Modelos de conteo con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-elección-binaria-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.5</b> Modelos de elección binaria con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.5" data-path="02-probabilisticos.html"><a href="#modelos-de-elecci%C3%B3n-binaria-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.5</b> Modelos de elección binaria con heterogeneidad observable</a></li>
 </ul></li>
 <li class="chapter" data-level="2.7" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-esperanzas"><i class="fa fa-check"></i><b>2.7</b> Esperanzas condicionales</a>
 <ul>
 <li class="chapter" data-level="2.7.1" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#esperanzas-de-las-distribuciones-de-mezcla"><i class="fa fa-check"></i><b>2.7.1</b> Esperanzas de las distribuciones de mezcla</a></li>
-<li class="chapter" data-level="2.7.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-tiempo-discreto-beta-geométrico"><i class="fa fa-check"></i><b>2.7.2</b> Modelo de tiempo discreto (Beta-Geométrico)</a></li>
+<li class="chapter" data-level="2.7.2" data-path="02-probabilisticos.html"><a href="#modelo-de-tiempo-discreto-beta-geom%C3%A9trico"><i class="fa fa-check"></i><b>2.7.2</b> Modelo de tiempo discreto (Beta-Geométrico)</a></li>
 <li class="chapter" data-level="2.7.3" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-tiempo-continuo-gamma-exponencial"><i class="fa fa-check"></i><b>2.7.3</b> Modelo de tiempo continuo (Gamma-Exponencial)</a></li>
 <li class="chapter" data-level="2.7.4" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-conteo-gamma-poisson"><i class="fa fa-check"></i><b>2.7.4</b> Modelo de conteo (Gamma-Poisson)</a></li>
-<li class="chapter" data-level="2.7.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-elección-binaria-beta-binomial"><i class="fa fa-check"></i><b>2.7.5</b> Modelo de elección binaria (Beta-Binomial)</a></li>
+<li class="chapter" data-level="2.7.5" data-path="02-probabilisticos.html"><a href="#modelo-de-elecci%C3%B3n-binaria-beta-binomial"><i class="fa fa-check"></i><b>2.7.5</b> Modelo de elección binaria (Beta-Binomial)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-clv"><i class="fa fa-check"></i><b>2.8</b> Customer Lifetime Value: caso contractual</a>
 <ul>
@@ -262,11 +264,11 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-4-discrepancias-de-precios-en-supermercados"><i class="fa fa-check"></i>Problema 4: Discrepancias de precios en supermercados</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-5-notcomida-panel-de-compras"><i class="fa fa-check"></i>Problema 5: NotComida — Panel de compras</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-6-creadores-de-contenido"><i class="fa fa-check"></i>Problema 6: Creadores de contenido</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-7-hippi-parkas-para-alta-montaña"><i class="fa fa-check"></i>Problema 7: Hippi — Parkas para alta montaña</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-8-pokémon-go"><i class="fa fa-check"></i>Problema 8: Pokémon Go</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-9-aplicación-móvil-con-promociones-georreferenciadas"><i class="fa fa-check"></i>Problema 9: Aplicación móvil con promociones georreferenciadas</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-7-hippi-parkas-para-alta-monta%C3%B1a"><i class="fa fa-check"></i>Problema 7: Hippi — Parkas para alta montaña</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-8-pok%C3%A9mon-go"><i class="fa fa-check"></i>Problema 8: Pokémon Go</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-9-aplicaci%C3%B3n-m%C3%B3vil-con-promociones-georreferenciadas"><i class="fa fa-check"></i>Problema 9: Aplicación móvil con promociones georreferenciadas</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-10-retraso-en-graduaciones-universitarias"><i class="fa fa-check"></i>Problema 10: Retraso en graduaciones universitarias</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-11-tasas-de-respuesta-en-encuestas-de-educación-superior"><i class="fa fa-check"></i>Problema 11: Tasas de respuesta en encuestas de educación superior</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-11-tasas-de-respuesta-en-encuestas-de-educaci%C3%B3n-superior"><i class="fa fa-check"></i>Problema 11: Tasas de respuesta en encuestas de educación superior</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cap-estructurales.html"><a href="cap-estructurales.html"><i class="fa fa-check"></i><b>3</b> Modelos Estructurales</a>
@@ -334,20 +336,21 @@ div.csl-indent {
 <li class="chapter" data-level="3.9" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-aplicados"><i class="fa fa-check"></i><b>3.9</b> Problemas</a>
 <ul>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-1-stud-ia"><i class="fa fa-check"></i>Problema 1: STUD-IA</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-2-categoría-aceites"><i class="fa fa-check"></i>Problema 2: Categoría aceites</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-2-categor%C3%ADa-aceites"><i class="fa fa-check"></i>Problema 2: Categoría aceites</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-3-margarina-y-modelo-probit"><i class="fa fa-check"></i>Problema 3: Margarina y modelo probit</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-4-telefonía-móvil-en-redes-sociales"><i class="fa fa-check"></i>Problema 4: Telefonía móvil en redes sociales</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-5-multitienda-y-tarjeta-de-crédito"><i class="fa fa-check"></i>Problema 5: Multitienda y tarjeta de crédito</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-4-telefon%C3%ADa-m%C3%B3vil-en-redes-sociales"><i class="fa fa-check"></i>Problema 4: Telefonía móvil en redes sociales</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-5-multitienda-y-tarjeta-de-cr%C3%A9dito"><i class="fa fa-check"></i>Problema 5: Multitienda y tarjeta de crédito</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-6-preventa-de-tickets"><i class="fa fa-check"></i>Problema 6: Preventa de tickets</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-7-gasto-publicitario"><i class="fa fa-check"></i>Problema 7: Gasto publicitario</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-8-pizza-a-pieza"><i class="fa fa-check"></i>Problema 8: Pizza a Pieza</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-9-retail-online"><i class="fa fa-check"></i>Problema 9: Retail online</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-10-copa-américa"><i class="fa fa-check"></i>Problema 10: Copa América</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-10-copa-am%C3%A9rica"><i class="fa fa-check"></i>Problema 10: Copa América</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-11-agencia-de-medios"><i class="fa fa-check"></i>Problema 11: Agencia de medios</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-12-cupones-de-supermercado"><i class="fa fa-check"></i>Problema 12: Cupones de supermercado</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-13-viajesdii"><i class="fa fa-check"></i>Problema 13: ViajesDII</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-14-brebajes"><i class="fa fa-check"></i>Problema 14: Brebajes</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-15-toallas-absorbentes"><i class="fa fa-check"></i>Problema 15: Toallas absorbentes</a></li>
+<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-16-agente-concierge-de-ia"><i class="fa fa-check"></i>Problema 16: Agente concierge de IA</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Anexos</b></span></li>
@@ -486,7 +489,7 @@ individuo, actualizado a la luz de su comportamiento observado
 (actualización bayesiana).</li>
 <li><em>Customer Lifetime Value</em> (CLV): valor presente neto de los flujos
 futuros esperados de un cliente, considerando su probabilidad de
-permanencia <span class="citation">(<a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">Fader et al., 2005b</a>; <a href="referencias.html#ref-fader2010" role="doc-biblioref">Fader &amp; Hardie, 2010</a>)</span>.</li>
+permanencia <span class="citation">(<a href="referencias.html#ref-fader2005rfm">Fader et al., 2005b</a>; <a href="referencias.html#ref-fader2010">Fader &amp; Hardie, 2010</a>)</span>.</li>
 </ul>
 </div>
 </div>
@@ -517,7 +520,7 @@ parameter, updated in light of their observed behavior (Bayesian
 updating).</li>
 <li><em>Customer Lifetime Value</em> (CLV): net present value of the expected
 future cash flows of a customer, considering their probability of
-retention <span class="citation">(<a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">Fader et al., 2005b</a>; <a href="referencias.html#ref-fader2010" role="doc-biblioref">Fader &amp; Hardie, 2010</a>)</span>.</li>
+retention <span class="citation">(<a href="referencias.html#ref-fader2005rfm">Fader et al., 2005b</a>; <a href="referencias.html#ref-fader2010">Fader &amp; Hardie, 2010</a>)</span>.</li>
 </ul>
 </div>
 </div>
@@ -553,7 +556,7 @@ available information is limited or aggregated.</li>
 </ul>
 </div>
 <div class="lang-es">
-<p>La metodología de modelamiento probabilístico <span class="citation">(<a href="referencias.html#ref-fader2005" role="doc-biblioref">Fader et al., 2005a</a>; <a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">Schmittlein et al., 1987</a>)</span> sigue una secuencia de siete pasos:</p>
+<p>La metodología de modelamiento probabilístico <span class="citation">(<a href="referencias.html#ref-fader2005">Fader et al., 2005a</a>; <a href="referencias.html#ref-schmittlein1987">Schmittlein et al., 1987</a>)</span> sigue una secuencia de siete pasos:</p>
 <ol style="list-style-type: decimal">
 <li>Determinar el problema de decisión a estudiar y la información
 requerida.</li>
@@ -569,7 +572,7 @@ mezcla</em> o <em>heterogénea</em>), típicamente denotada <span class="math in
 </ol>
 </div>
 <div class="lang-en">
-<p>The probabilistic modeling methodology <span class="citation">(<a href="referencias.html#ref-fader2005" role="doc-biblioref">Fader et al., 2005a</a>; <a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">Schmittlein et al., 1987</a>)</span>
+<p>The probabilistic modeling methodology <span class="citation">(<a href="referencias.html#ref-fader2005">Fader et al., 2005a</a>; <a href="referencias.html#ref-schmittlein1987">Schmittlein et al., 1987</a>)</span>
 follows a sequence of seven steps:</p>
 <ol style="list-style-type: decimal">
 <li>Determine the decision problem to study and the required
@@ -777,7 +780,7 @@ periods will the subscription last?</li>
 </ul>
 </div>
 <div id="modelo-geométrico-desplazado" class="section level4 unnumbered hasAnchor">
-<h4>Modelo Geométrico Desplazado<a href="cap-probabilisticos.html#modelo-geométrico-desplazado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Modelo Geométrico Desplazado<a href="#modelo-geom%C3%A9trico-desplazado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
 <p>Como ejemplo, se asume que se tiene una cartera de clientes que van
 abandonando la relación comercial para <strong>nunca más retomarla</strong> en
@@ -1038,6 +1041,12 @@ siguientes (asumiendo como modelo de comportamiento la distribución
 geométrica desplazada)</p>
 <table>
 <caption><span id="tab:prob-duracion-contribuciones">Table 2.1: </span> Contribuciones a la verosimilitud en el modelo geométrico desplazado.</caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Año</th>
@@ -1118,6 +1127,12 @@ the likelihood are the following (assuming the shifted geometric
 distribution as the behavioral model):</p>
 <table>
 <caption><span id="tab:prob-duracion-contribuciones-en">Table 2.2: </span> Contributions to the likelihood in the shifted geometric model.</caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Year</th>
@@ -1332,7 +1347,7 @@ even with zero observed successes.
 </div>
 </div>
 <div id="modelo-beta-geométrico-desplazado" class="section level4 unnumbered hasAnchor">
-<h4>Modelo Beta-Geométrico Desplazado<a href="cap-probabilisticos.html#modelo-beta-geométrico-desplazado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Modelo Beta-Geométrico Desplazado<a href="#modelo-beta-geom%C3%A9trico-desplazado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
 <p>Los modelos anteriores funcionan bien cuando la población se comporta de
 manera distinta entre clases latentes, y similar al interior de cada
@@ -2594,7 +2609,7 @@ data (gender, age, socioeconomic level, among others) that
 differentiate individuals.</p>
 </div>
 <div id="modelos-de-duración-en-tiempo-discreto-con-heterogeneidad-observable" class="section level3 hasAnchor" number="2.6.1" data-en="Discrete-Time Duration Models with Observable Heterogeneity">
-<h3><span class="header-section-number">2.6.1</span> Modelos de duración en tiempo discreto con heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-discreto-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.6.1</span> Modelos de duración en tiempo discreto con heterogeneidad observable<a href="#modelos-de-duraci%C3%B3n-en-tiempo-discreto-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Sea <span class="math inline">\(T_i\)</span> la variable aleatoria que describe el instante en que el
 individuo <span class="math inline">\(i\)</span> termina su relación comercial. Se modelará dicha variable
@@ -2698,7 +2713,7 @@ different.</p>
 \tag{2.50}\]</span></p>
 </div>
 <div id="modelos-de-duración-en-tiempo-continuo-con-heterogeneidad-observable" class="section level3 hasAnchor" number="2.6.2" data-en="Continuous-Time Duration Models with Observable Heterogeneity">
-<h3><span class="header-section-number">2.6.2</span> Modelos de duración en tiempo continuo con heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.6.2</span> Modelos de duración en tiempo continuo con heterogeneidad observable<a href="#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Sea <span class="math inline">\(T_i\)</span> la variable aleatoria que describe el instante en que el
 individuo <span class="math inline">\(i\)</span> realiza una determinada acción. Se modelará dicha variable
@@ -2799,7 +2814,7 @@ variable <span class="math inline">\(t\)</span>.</p>
 \tag{2.55}\]</span></p>
 </div>
 <div id="modelos-de-duración-en-tiempo-continuo-con-dependencia-de-la-duración-y-heterogeneidad-observable" class="section level3 hasAnchor" number="2.6.3" data-en="Continuous-Time Duration Models with Duration Dependence and Observable Heterogeneity">
-<h3><span class="header-section-number">2.6.3</span> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-dependencia-de-la-duración-y-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.6.3</span> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable<a href="#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-dependencia-de-la-duraci%C3%B3n-y-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Cuando el tiempo en que ocurre un determinado suceso posee dependencia
 en la duración, el procedimiento es análogo que en el caso sin dicha
@@ -2898,7 +2913,7 @@ assumed:</p>
 \tag{2.61}\]</span></p>
 </div>
 <div id="modelos-de-elección-binaria-con-heterogeneidad-observable" class="section level3 hasAnchor" number="2.6.5" data-en="Binary Choice Models with Observable Heterogeneity">
-<h3><span class="header-section-number">2.6.5</span> Modelos de elección binaria con heterogeneidad observable<a href="cap-probabilisticos.html#modelos-de-elección-binaria-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.6.5</span> Modelos de elección binaria con heterogeneidad observable<a href="#modelos-de-elecci%C3%B3n-binaria-con-heterogeneidad-observable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Sea <span class="math inline">\(X_i\)</span> el número de éxitos en <span class="math inline">\(m_i\)</span> intentos, con probabilidad
 <span class="math inline">\(\theta_i\)</span> modelada mediante transformación logística. La
@@ -3022,7 +3037,7 @@ Which simplifies to:
 </div>
 </div>
 <div id="modelo-de-tiempo-discreto-beta-geométrico" class="section level3 hasAnchor" number="2.7.2" data-en="Discrete-Time Model (Beta-Geometric)">
-<h3><span class="header-section-number">2.7.2</span> Modelo de tiempo discreto (Beta-Geométrico)<a href="cap-probabilisticos.html#modelo-de-tiempo-discreto-beta-geométrico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.7.2</span> Modelo de tiempo discreto (Beta-Geométrico)<a href="#modelo-de-tiempo-discreto-beta-geom%C3%A9trico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Para el modelo de duración en tiempo discreto, una pregunta válida es
 cuál es la probabilidad de abandono esperada para un cliente
@@ -3323,7 +3338,7 @@ updated parameters. Its mean yields the conditional expectation:</p>
 \tag{2.80}\]</span></p>
 </div>
 <div id="modelo-de-elección-binaria-beta-binomial" class="section level3 hasAnchor" number="2.7.5" data-en="Binary Choice Model (Beta-Binomial)">
-<h3><span class="header-section-number">2.7.5</span> Modelo de elección binaria (Beta-Binomial)<a href="cap-probabilisticos.html#modelo-de-elección-binaria-beta-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.7.5</span> Modelo de elección binaria (Beta-Binomial)<a href="#modelo-de-elecci%C3%B3n-binaria-beta-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Recordando que la distribución del parámetro <span class="math inline">\(\theta\)</span> (la probabilidad
 de éxito), condicionada a los datos observados, se obtiene por el
@@ -3541,7 +3556,7 @@ credit-card transaction.</li>
 su primera suscripción, pero ese número salta al 50 % para la segunda
 renovación y hasta el 75 % para subscriptores de mayor antigüedad
 (Fielding, Michael (2005), “Get Circulation Going: DM Redesign
-Increases Renewal Rates for Magazines,” Marketing News, September 1,
+Increases Renewal Rates for Magazines”, Marketing News, September 1,
 9-10).</em></p>
 <p>Al evaluar las tasas de retención de una base de clientes, es necesario
 considerar las diferencias entre las cohortes y proyectar los
@@ -3564,7 +3579,7 @@ de 0,5.</li>
 subscription, but that number jumps to 50% for the second renewal and
 as high as 75% for longer-tenure subscribers (Fielding, Michael (2005),
 “Get Circulation Going: DM Redesign Increases Renewal Rates for
-Magazines,” Marketing News, September 1, 9-10).</em></p>
+Magazines”, Marketing News, September 1, 9-10).</em></p>
 <p>When evaluating the retention rates of a customer base, it is necessary
 to account for differences across cohorts and to project behaviors
 beyond those directly observed.</p>
@@ -3579,8 +3594,17 @@ of two segments:</p>
 <li><em>Segment 2</em> (2/3 of customers): constant retention rate of 0.5.</li>
 </ul>
 </div>
-<table>
+<table style="width:100%;">
 <caption><span id="tab:prob-p1-retencion">Table 2.3: </span> Rol de la heterogeneidad.</caption>
+<colgroup>
+<col width="6%" />
+<col width="26%" />
+<col width="9%" />
+<col width="9%" />
+<col width="25%" />
+<col width="9%" />
+<col width="14%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th></th>
@@ -3994,12 +4018,12 @@ elapsed time is relevant.</li>
 </div>
 </div>
 <div class="lang-es">
-<p><strong>Referencias principales:</strong> <span class="citation"><a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">Schmittlein et al.</a> (<a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">1987</a>)</span>, <span class="citation"><a href="referencias.html#ref-fader2005" role="doc-biblioref">Fader et al.</a> (<a href="referencias.html#ref-fader2005" role="doc-biblioref">2005a</a>)</span>, <span class="citation"><a href="referencias.html#ref-fader2010" role="doc-biblioref">Fader &amp; Hardie</a> (<a href="referencias.html#ref-fader2010" role="doc-biblioref">2010</a>)</span>,
-<span class="citation"><a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">Fader et al.</a> (<a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">2005b</a>)</span>, <span class="citation"><a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge</a> (<a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p><strong>Referencias principales:</strong> <span class="citation">Schmittlein et al. (<a href="referencias.html#ref-schmittlein1987">1987</a>)</span>, <span class="citation">Fader et al. (<a href="referencias.html#ref-fader2005">2005a</a>)</span>, <span class="citation">Fader &amp; Hardie (<a href="referencias.html#ref-fader2010">2010</a>)</span>,
+<span class="citation">Fader et al. (<a href="referencias.html#ref-fader2005rfm">2005b</a>)</span>, <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span>.</p>
 </div>
 <div class="lang-en">
-<p><strong>Main references:</strong> <span class="citation"><a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">Schmittlein et al.</a> (<a href="referencias.html#ref-schmittlein1987" role="doc-biblioref">1987</a>)</span>, <span class="citation"><a href="referencias.html#ref-fader2005" role="doc-biblioref">Fader et al.</a> (<a href="referencias.html#ref-fader2005" role="doc-biblioref">2005a</a>)</span>, <span class="citation"><a href="referencias.html#ref-fader2010" role="doc-biblioref">Fader &amp; Hardie</a> (<a href="referencias.html#ref-fader2010" role="doc-biblioref">2010</a>)</span>,
-<span class="citation"><a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">Fader et al.</a> (<a href="referencias.html#ref-fader2005rfm" role="doc-biblioref">2005b</a>)</span>, <span class="citation"><a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge</a> (<a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p><strong>Main references:</strong> <span class="citation">Schmittlein et al. (<a href="referencias.html#ref-schmittlein1987">1987</a>)</span>, <span class="citation">Fader et al. (<a href="referencias.html#ref-fader2005">2005a</a>)</span>, <span class="citation">Fader &amp; Hardie (<a href="referencias.html#ref-fader2010">2010</a>)</span>,
+<span class="citation">Fader et al. (<a href="referencias.html#ref-fader2005rfm">2005b</a>)</span>, <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span>.</p>
 </div>
 </div>
 <div id="prob-problemas" class="section level2 hasAnchor" number="2.10" data-en="Problems">
@@ -5034,9 +5058,9 @@ estimadores máximos verosímiles de la Tabla. Por inspección de
 la figura, provea una aproximación numérica a la probabilidad de
 que un cliente no avance al siguiente nivel sea mayor que 0.8
 (usando áreas de triángulos y rectángulos).</p>
-<div class="figure"><span style="display:block;" id="fig:prob-p3-posterior-es"></span>
-<img src="images/fig_beta_posterior_v2.png" fig-align="center" style="width:60.0%" alt="" />
-<p class="caption">Figure 2.1:  Distribución posterior de la probabilidad de no continuar</p>
+<div class="float"><span style="display:block;" id="fig:prob-p3-posterior-es"></span>
+<img src="images/fig_beta_posterior_v2.png" style="width:60.0%" fig-align="center" alt=" Distribución posterior de la probabilidad de no continuar" />
+<div class="figcaption">Figure 2.1:  Distribución posterior de la probabilidad de no continuar</div>
 </div></li>
 <li><p>Calcule el intervalo de confianza al 95% del segundo parámetro
 <span class="math inline">\(\beta\)</span>. Considere que el inverso del hessiano de la
@@ -5140,9 +5164,9 @@ figure, provide a numerical approximation to the probability
 that a customer does not advance to the next level with
 probability greater than 0.8 (using areas of triangles and
 rectangles).</p>
-<div class="figure"><span style="display:block;" id="fig:prob-p3-posterior-en"></span>
-<img src="images/fig_beta_posterior_v2.png" fig-align="center" style="width:60.0%" alt="" />
-<p class="caption">Figure 2.2:  Posterior distribution of the probability of not continuing</p>
+<div class="float"><span style="display:block;" id="fig:prob-p3-posterior-en"></span>
+<img src="images/fig_beta_posterior_v2.png" style="width:60.0%" fig-align="center" alt=" Posterior distribution of the probability of not continuing" />
+<div class="figcaption">Figure 2.2:  Posterior distribution of the probability of not continuing</div>
 </div></li>
 <li><p>Calculate the 95% confidence interval for the second parameter
 <span class="math inline">\(\beta\)</span>. Assume that the inverse of the Hessian of the
@@ -5205,9 +5229,9 @@ aproximarse como</p>
 <p><span class="math display">\[
 p \approx 0.2\cdot 2 + 0.2\cdot 2/2 = 0.6.
 \]</span></p>
-<div class="figure"><span style="display:block;" id="fig:prob-p3-sombreada-es"></span>
-<img src="images/fig_beta_posterior_shaded_08_1.png" fig-align="center" style="width:60.0%" alt="" />
-<p class="caption">Figure 2.3:  Distribución posterior con área sombreada</p>
+<div class="float"><span style="display:block;" id="fig:prob-p3-sombreada-es"></span>
+<img src="images/fig_beta_posterior_shaded_08_1.png" style="width:60.0%" fig-align="center" alt=" Distribución posterior con área sombreada" />
+<div class="figcaption">Figure 2.3:  Distribución posterior con área sombreada</div>
 </div></li>
 <li><p>Usando el inverso del hessiano, el ientervalo de confianza
 viene dado por <span class="math inline">\(4.001 \pm 1.96 \sqrt{0.36}\)</span>, donde el
@@ -5260,9 +5284,9 @@ which can be approximated as</p>
 <p><span class="math display">\[
 p \approx 0.2\cdot 2 + 0.2\cdot 2/2 = 0.6.
 \]</span></p>
-<div class="figure"><span style="display:block;" id="fig:prob-p3-sombreada-en"></span>
-<img src="images/fig_beta_posterior_shaded_08_1.png" fig-align="center" style="width:60.0%" alt="" />
-<p class="caption">Figure 2.4:  Posterior distribution with shaded area</p>
+<div class="float"><span style="display:block;" id="fig:prob-p3-sombreada-en"></span>
+<img src="images/fig_beta_posterior_shaded_08_1.png" style="width:60.0%" fig-align="center" alt=" Posterior distribution with shaded area" />
+<div class="figcaption">Figure 2.4:  Posterior distribution with shaded area</div>
 </div></li>
 <li><p>Using the inverse Hessian, the confidence interval is given by
 <span class="math inline">\(4.001 \pm 1.96 \sqrt{0.36}\)</span>, where the coefficient <span class="math inline">\(\beta\)</span>
@@ -5394,8 +5418,18 @@ shelf tag and the transactional system.</li>
 in Table <a href="cap-probabilisticos.html#tab:prob-p4-muestra">2.7</a>:</p>
 </div>
 <div class="lang-es">
-<table>
+<table style="width:100%;">
 <caption><span id="tab:prob-p4-muestra">Table 2.7: </span> Muestra de los primeros 6 registros de la base de discrepancias.</caption>
+<colgroup>
+<col width="7%" />
+<col width="7%" />
+<col width="8%" />
+<col width="16%" />
+<col width="14%" />
+<col width="16%" />
+<col width="17%" />
+<col width="10%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="right">Id</th>
@@ -5475,6 +5509,16 @@ in Table <a href="cap-probabilisticos.html#tab:prob-p4-muestra">2.7</a>:</p>
 <div class="lang-en">
 <table>
 <caption><span id="tab:prob-p4-muestra">Table 2.7: </span> Sample of supermarket price discrepancies.</caption>
+<colgroup>
+<col width="7%" />
+<col width="7%" />
+<col width="8%" />
+<col width="15%" />
+<col width="14%" />
+<col width="17%" />
+<col width="18%" />
+<col width="10%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="right">Id</th>
@@ -5784,6 +5828,12 @@ aplica la transformación</p>
 <p>Los estimadores máximo-verosímiles se muestran a continuación.</p>
 <table>
 <caption><span id="tab:prob-p4-duracion">Table 2.9: </span> Estimadores y criterios de información de tres modelos de duración.</caption>
+<colgroup>
+<col width="25%" />
+<col width="22%" />
+<col width="25%" />
+<col width="27%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Parámetros</th>
@@ -6049,12 +6099,12 @@ este es solo el primer paso.</p>
 <p>Todavía quedan dos semanas para que empiece la práctica, pero ya estás
 ansiosa, por lo que recibes con entusiasmo y sorpresa un correo
 electrónico de Kiara, quien será tu supervisora directa durante tu
-estadía en la compañía. <em>"¡Hola! Esperando que estés muy bien, te
+estadía en la compañía. <em>“¡Hola! Esperando que estés muy bien, te
 escribo para contarte los próximos desafíos en los que vamos a estar
 trabajando en el equipo en los próximos seis meses. Por supuesto que no
 es necesario que hagas absolutamente nada, pero como queremos que te
 sientas integrada te vamos a ir copiando en las</em> <em>comunicaciones
-internas del equipo".</em> Antes de cerrar el mensaje, te das el tiempo de
+internas del equipo”.</em> Antes de cerrar el mensaje, te das el tiempo de
 darle un vistazo rápido al diccionario de datos que viene adjunto:</p>
 </div>
 <div class="lang-en">
@@ -6073,17 +6123,22 @@ is only the first step.</p>
 <p>There are still two weeks left before the internship begins, but you are
 already anxious, so you receive with enthusiasm and surprise an email
 from Kiara, who will be your direct supervisor during your stay at the
-company. <em>"Hi! Hoping you’re very well, I’m writing to tell you about
+company. <em>“Hi! Hoping you’re very well, I’m writing to tell you about
 the upcoming challenges we will be working on in the team over the next
 six months. Of course, it is not necessary for you to do absolutely
 anything, but since we want you to feel integrated, we will start
-copying you on the team’s</em> <em>internal communications."</em> Before closing
+copying you on the team’s</em> <em>internal communications.”</em> Before closing
 the message, you take the time to quickly look over the attached data
 dictionary:</p>
 </div>
 <div class="lang-es">
 <table>
 <caption><span id="tab:prob-p5-variables">Table 2.10: </span> Variables del panel de compras de NotComida.</caption>
+<colgroup>
+<col width="17%" />
+<col width="71%" />
+<col width="11%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Variable</th>
@@ -6148,6 +6203,11 @@ dictionary:</p>
 <div class="lang-en">
 <table>
 <caption><span id="tab:prob-p5-variables">Table 2.10: </span> NotComida purchase panel variables.</caption>
+<colgroup>
+<col width="17%" />
+<col width="71%" />
+<col width="11%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Variable</th>
@@ -6266,8 +6326,20 @@ de los clientes de la base.</p>
 que describen todas las compras observadas por el cliente
 321045, escriba la log-verosimilitud del historial de compra de
 este cliente.</p>
-<table>
+<table style="width:100%;">
 <caption><span id="tab:prob-p5-historial">Table 2.11: </span> Historial resumido de compras del cliente 321045.</caption>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="center">IdCliente</th>
@@ -6367,8 +6439,20 @@ dataset.</p>
 <li><p>Considering the data in Table <a href="cap-probabilisticos.html#tab:prob-p5-historial">2.11</a>,
 which describe all purchases observed for customer 321045, write
 the log-likelihood of this customer’s purchase history.</p>
-<table>
+<table style="width:100%;">
 <caption><span id="tab:prob-p5-historial">Table 2.11: </span> Summary purchase history for customer 321045.</caption>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="center">IdCliente</th>
@@ -6498,7 +6582,7 @@ log(\lambda_{i2}) = 0.5 + \beta_1 \text{MUJER}_i = 0.5 + 0 \implies \lambda_{i1}
 \]</span></p>
 <p>Por tanto, la probabilidad de comprar una vez en cada segmento es:</p>
 <p><span class="math display">\[
-\mathbb{P}(n_i = 1 \mid s_1) = \lambda_{i1} e^{-\lambda_{i1}} = e^{-1}e^{-e^{-1}} 
+\mathbb{P}(n_i = 1 \mid s_1) = \lambda_{i1} e^{-\lambda_{i1}} = e^{-1}e^{-e^{-1}}
 \]</span></p>
 <p><span class="math display">\[
 \mathbb{P}(n_i = 0 \mid s_2) = \lambda_{i2} e^{-\lambda_{i2}} = e^{-0.5}e^{-e^{-0.5}}
@@ -6507,7 +6591,7 @@ log(\lambda_{i2}) = 0.5 + \beta_1 \text{MUJER}_i = 0.5 + 0 \implies \lambda_{i1}
 <p><span class="math display">\[
 \mathbb{P}(s_1 \mid n_i = 1) = \frac{\mathbb{P}(n_i = 0 \mid s_1)\mathbb{P}(s_1)}{\mathbb{P}(s_1 \mid n_i = 0) \mathbb{P}(s_1) + \mathbb{P}(s_2 \mid n_i = 0) \mathbb{P}(s_2)}
 \]</span></p>
-<p>Donde <span class="math inline">\(\mathbb{P}(s_1) \;=\; 0.4\)</span> y <span class="math inline">\(\mathbb{P}(s_2) \;=\; 0.6\)</span>.</p></li>
+<p>Donde <span class="math inline">\(\mathbb{P}(s_1) \;=\; 0.4\)</span> y <span class="math inline">\(\mathbb{P}(s_2)  \;=\; 0.6\)</span>.</p></li>
 </ol>
 </div>
 <div class="lang-en">
@@ -6521,7 +6605,7 @@ log(\lambda_{i2}) = 0.5 + \beta_1 \text{MUJER}_i = 0.5 + 0 \implies \lambda_{i1}
 \]</span></p>
 <p>Therefore, the probability of purchasing once in each segment is:</p>
 <p><span class="math display">\[
-\mathbb{P}(n_i = 1 \mid s_1) = \lambda_{i1} e^{-\lambda_{i1}} = e^{-1}e^{-e^{-1}} 
+\mathbb{P}(n_i = 1 \mid s_1) = \lambda_{i1} e^{-\lambda_{i1}} = e^{-1}e^{-e^{-1}}
 \]</span></p>
 <p><span class="math display">\[
 \mathbb{P}(n_i = 0 \mid s_2) = \lambda_{i2} e^{-\lambda_{i2}} = e^{-0.5}e^{-e^{-0.5}}
@@ -6530,7 +6614,7 @@ log(\lambda_{i2}) = 0.5 + \beta_1 \text{MUJER}_i = 0.5 + 0 \implies \lambda_{i1}
 <p><span class="math display">\[
 \mathbb{P}(s_1 \mid n_i = 1) = \frac{\mathbb{P}(n_i = 0 \mid s_1)\mathbb{P}(s_1)}{\mathbb{P}(s_1 \mid n_i = 0) \mathbb{P}(s_1) + \mathbb{P}(s_2 \mid n_i = 0) \mathbb{P}(s_2)}
 \]</span></p>
-<p>Where <span class="math inline">\(\mathbb{P}(s_1) \;=\; 0.4\)</span> and <span class="math inline">\(\mathbb{P}(s_2) \;=\; 0.6\)</span>.</p></li>
+<p>Where <span class="math inline">\(\mathbb{P}(s_1) \;=\; 0.4\)</span> and <span class="math inline">\(\mathbb{P}(s_2)  \;=\; 0.6\)</span>.</p></li>
 </ol>
 </div>
 <div class="lang-es">
@@ -6538,7 +6622,7 @@ log(\lambda_{i2}) = 0.5 + \beta_1 \text{MUJER}_i = 0.5 + 0 \implies \lambda_{i1}
 <li><p>La utilidad que deriva el cliente <span class="math inline">\(i\)</span> por comprar en la categoría
 <span class="math inline">\(c\)</span> en la tienda <span class="math inline">\(s\)</span> en el mes <span class="math inline">\(t\)</span> viene dado por:</p>
 <p><span class="math display">\[
-u_{icst} = \alpha_c + \alpha_c + (\beta_1 \text{MUJER}_i = 0) + (\beta_2 \text{MUJER}_i \text{ZORIENTE}_s = 0) + \sum_{a} \gamma_a \delta_{ta} + (\theta_1 \Delta_{ct}^1 = 0)+ \theta_2 \Delta_{ct}^2 
+u_{icst} = \alpha_c + \alpha_c + (\beta_1 \text{MUJER}_i = 0) + (\beta_2 \text{MUJER}_i \text{ZORIENTE}_s = 0) + \sum_{a} \gamma_a \delta_{ta} + (\theta_1 \Delta_{ct}^1 = 0)+ \theta_2 \Delta_{ct}^2
 \]</span></p>
 <p>Donde <span class="math inline">\(\text{MUJER}_i \;=\; 0\)</span> porque el registro es de un hombre, y
 <span class="math inline">\(\theta_1 \Delta_{ct}^1 = 0\)</span> porque aplica para helado y en los
@@ -6554,7 +6638,7 @@ LL(\hat{\theta}) = \sum_{icst} y_{icst} ln\left(\frac{e^{u_{icst}}}{1+e^{u_{icst
 <li><p>The utility derived by customer <span class="math inline">\(i\)</span> from purchasing in category <span class="math inline">\(c\)</span>
 at store <span class="math inline">\(s\)</span> in month <span class="math inline">\(t\)</span> is given by:</p>
 <p><span class="math display">\[
-u_{icst} = \alpha_c + \alpha_c + (\beta_1 \text{MUJER}_i = 0) + (\beta_2 \text{MUJER}_i \text{ZORIENTE}_s = 0) + \sum_{a} \gamma_a \delta_{ta} + (\theta_1 \Delta_{ct}^1 = 0)+ \theta_2 \Delta_{ct}^2 
+u_{icst} = \alpha_c + \alpha_c + (\beta_1 \text{MUJER}_i = 0) + (\beta_2 \text{MUJER}_i \text{ZORIENTE}_s = 0) + \sum_{a} \gamma_a \delta_{ta} + (\theta_1 \Delta_{ct}^1 = 0)+ \theta_2 \Delta_{ct}^2
 \]</span></p>
 <p>Where <span class="math inline">\(\text{MUJER}_i \;=\; 0\)</span> because the record corresponds to a
 man, and <span class="math inline">\(\theta_1 \Delta_{ct}^1 = 0\)</span> because it applies to ice
@@ -6605,6 +6689,11 @@ inteligencia artificial, se cuenta con el puntaje de cada contenido en
 tres dimensiones distintos: producción, contenido y novedad.</p>
 <table>
 <caption><span id="tab:prob-p6-base">Table 2.12: </span> Descripción base de contenidos en la plataforma de creadores.</caption>
+<colgroup>
+<col width="26%" />
+<col width="47%" />
+<col width="26%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Variable</th>
@@ -6742,6 +6831,11 @@ platform has a score for each post in three different dimensions:
 production, content, and novelty.</p>
 <table>
 <caption><span id="tab:prob-p6-base">Table 2.12: </span> Baseline description of content on the creator platform.</caption>
+<colgroup>
+<col width="26%" />
+<col width="47%" />
+<col width="26%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Variable</th>
@@ -6990,7 +7084,7 @@ one simply multiplies.</p></li>
 </details>
 </div>
 <div id="problema-7-hippi-parkas-para-alta-montaña" class="section level3 unnumbered hasAnchor">
-<h3>Problema 7: Hippi — Parkas para alta montaña<a href="cap-probabilisticos.html#problema-7-hippi-parkas-para-alta-montaña" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 7: Hippi — Parkas para alta montaña<a href="#problema-7-hippi-parkas-para-alta-monta%C3%B1a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Hippi es una empresa nacional dedicada a la fabricación de productos
 para alta montaña. La empresa cuenta con una base de datos que registra
@@ -7160,7 +7254,7 @@ L(\alpha,\beta,\pi |x) = \prod_{x=0}^{\infty} \mathbb{P}(X=x|\alpha,\beta,\pi)^{
 </details>
 </div>
 <div id="problema-8-pokémon-go" class="section level3 unnumbered hasAnchor">
-<h3>Problema 8: Pokémon Go<a href="cap-probabilisticos.html#problema-8-pokémon-go" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 8: Pokémon Go<a href="#problema-8-pok%C3%A9mon-go" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Para revitalizar el interés de los usuarios, Pokémon Go está pensando
 introducir 7 nuevos personajes Pokémon en las comunas de Melipilla,
@@ -7182,6 +7276,18 @@ the following table:</p>
 <div class="lang-es">
 <table>
 <caption><span id="tab:prob-p8-mostrados">Table 2.13: </span> Número de veces que un determinado pokemón fue mostrado a un jugador.</caption>
+<colgroup>
+<col width="14%" />
+<col width="13%" />
+<col width="13%" />
+<col width="9%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="7%" />
+<col width="8%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Pokémon</th>
@@ -7287,6 +7393,18 @@ the following table:</p>
 <div class="lang-en">
 <table>
 <caption><span id="tab:prob-p8-mostrados">Table 2.13: </span> Number of times each pokémon was shown per municipality.</caption>
+<colgroup>
+<col width="14%" />
+<col width="13%" />
+<col width="13%" />
+<col width="9%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="7%" />
+<col width="8%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Pokémon</th>
@@ -7424,6 +7542,18 @@ that are part of the pilot study:</p>
 <div class="lang-es">
 <table>
 <caption><span id="tab:prob-p8-capturas">Table 2.14: </span> Número de veces que un jugador intentó atrapar a un determinado pokemón.</caption>
+<colgroup>
+<col width="14%" />
+<col width="13%" />
+<col width="13%" />
+<col width="9%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="7%" />
+<col width="8%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Pokémon</th>
@@ -7540,6 +7670,18 @@ cada pokémon <span class="math inline">\(k\)</span> y comuna <span class="math 
 <div class="lang-en">
 <table>
 <caption><span id="tab:prob-p8-capturas">Table 2.14: </span> Number of times a player attempted to catch a given pokémon.</caption>
+<colgroup>
+<col width="14%" />
+<col width="13%" />
+<col width="13%" />
+<col width="9%" />
+<col width="9%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="7%" />
+<col width="8%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Pokémon</th>
@@ -7825,7 +7967,7 @@ expression found in the previous part is substituted.</p></li>
 </details>
 </div>
 <div id="problema-9-aplicación-móvil-con-promociones-georreferenciadas" class="section level3 unnumbered hasAnchor">
-<h3>Problema 9: Aplicación móvil con promociones georreferenciadas<a href="cap-probabilisticos.html#problema-9-aplicación-móvil-con-promociones-georreferenciadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 9: Aplicación móvil con promociones georreferenciadas<a href="#problema-9-aplicaci%C3%B3n-m%C3%B3vil-con-promociones-georreferenciadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Inmersos en la era digital, los consumidores están cada vez conectados
 en distintos dispositivos los cuales pueden ser usados como canales
@@ -8112,6 +8254,19 @@ in 2021 averaged 7.6 semesters.</p>
 <div class="lang-es">
 <table>
 <caption><span id="tab:prob-p10-duracion">Table 2.15: </span> Duración efectiva de las carreras de la educación superior en Chile.</caption>
+<colgroup>
+<col width="15%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -8147,6 +8302,19 @@ in 2021 averaged 7.6 semesters.</p>
 <div class="lang-en">
 <table>
 <caption><span id="tab:prob-p10-duracion">Table 2.15: </span> Effective duration of higher education programs in Chile.</caption>
+<colgroup>
+<col width="15%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -8518,7 +8686,7 @@ metrics.</li>
 </details>
 </div>
 <div id="problema-11-tasas-de-respuesta-en-encuestas-de-educación-superior" class="section level3 unnumbered hasAnchor">
-<h3>Problema 11: Tasas de respuesta en encuestas de educación superior<a href="cap-probabilisticos.html#problema-11-tasas-de-respuesta-en-encuestas-de-educación-superior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 11: Tasas de respuesta en encuestas de educación superior<a href="#problema-11-tasas-de-respuesta-en-encuestas-de-educaci%C3%B3n-superior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Los paneles de encuestas siguen siendo una herramienta importante para
 recoger la valoración que tienen los usuarios sobre sus experiencias en
@@ -8668,8 +8836,20 @@ student-survey combination is not recorded in the panel.</p>
 </table>
 </div>
 <div class="lang-en">
-<table>
+<table style="width:100%;">
 <caption><span id="tab:prob-p11-panel">Table 2.17: </span> Sample of the first six records from the survey panel.</caption>
+<colgroup>
+<col width="8%" />
+<col width="13%" />
+<col width="11%" />
+<col width="7%" />
+<col width="13%" />
+<col width="3%" />
+<col width="13%" />
+<col width="6%" />
+<col width="13%" />
+<col width="10%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">NMat</th>
@@ -8804,6 +8984,13 @@ homogéneos, como modelos que incorporan heterogeneidad observable y
 no observable.</p>
 <table>
 <caption><span id="tab:prob-p11-modelos">Table 2.18: </span> Estimadores máximos verosímiles de cuatro modelos de conteo.</caption>
+<colgroup>
+<col width="16%" />
+<col width="22%" />
+<col width="24%" />
+<col width="17%" />
+<col width="19%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Variable</th>
@@ -8935,6 +9122,13 @@ list includes both homogeneous models and models incorporating
 observable and unobservable heterogeneity.</p>
 <table>
 <caption><span id="tab:prob-p11-modelos">Table 2.18: </span> Maximum likelihood estimates of four count models.</caption>
+<colgroup>
+<col width="18%" />
+<col width="21%" />
+<col width="24%" />
+<col width="17%" />
+<col width="18%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Variable</th>

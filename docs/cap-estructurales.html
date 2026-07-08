@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-05-16" />
+<meta name="date" content="2026-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -92,7 +93,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +106,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -128,6 +129,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -162,17 +164,17 @@ div.csl-indent {
 <li><a href="./">Apunte de Marketing Engineering</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prólogo</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#pr%C3%B3logo"><i class="fa fa-check"></i>Prólogo</a></li>
 <li class="chapter" data-level="1" data-path="cap-regresion.html"><a href="cap-regresion.html"><i class="fa fa-check"></i><b>1</b> Modelos de Regresión</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="cap-regresion.html"><a href="cap-regresion.html#definiciones-clave"><i class="fa fa-check"></i><b>1.1</b> Definiciones clave</a></li>
-<li class="chapter" data-level="1.2" data-path="cap-regresion.html"><a href="cap-regresion.html#conceptos-básicos"><i class="fa fa-check"></i><b>1.2</b> Conceptos básicos</a>
+<li class="chapter" data-level="1.2" data-path="03-estructurales.html"><a href="#conceptos-b%C3%A1sicos"><i class="fa fa-check"></i><b>1.2</b> Conceptos básicos</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="cap-regresion.html"><a href="cap-regresion.html#notación"><i class="fa fa-check"></i><b>1.2.1</b> Notación</a></li>
+<li class="chapter" data-level="1.2.1" data-path="03-estructurales.html"><a href="#notaci%C3%B3n"><i class="fa fa-check"></i><b>1.2.1</b> Notación</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="cap-regresion.html"><a href="cap-regresion.html#mínimos-cuadrados-ordinarios-ols-y-supuestos"><i class="fa fa-check"></i><b>1.3</b> Mínimos Cuadrados Ordinarios (OLS) y supuestos</a>
+<li class="chapter" data-level="1.3" data-path="03-estructurales.html"><a href="#m%C3%ADnimos-cuadrados-ordinarios-ols-y-supuestos"><i class="fa fa-check"></i><b>1.3</b> Mínimos Cuadrados Ordinarios (OLS) y supuestos</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="cap-regresion.html"><a href="cap-regresion.html#estimación"><i class="fa fa-check"></i><b>1.3.1</b> Estimación</a></li>
+<li class="chapter" data-level="1.3.1" data-path="03-estructurales.html"><a href="#estimaci%C3%B3n"><i class="fa fa-check"></i><b>1.3.1</b> Estimación</a></li>
 <li class="chapter" data-level="1.3.2" data-path="cap-regresion.html"><a href="cap-regresion.html#propiedades"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="cap-regresion.html"><a href="cap-regresion.html#estrategias-de-modelamiento"><i class="fa fa-check"></i><b>1.4</b> Estrategias de Modelamiento</a>
@@ -180,29 +182,29 @@ div.csl-indent {
 <li class="chapter" data-level="1.4.1" data-path="cap-regresion.html"><a href="cap-regresion.html#arte-vs.-procedimiento"><i class="fa fa-check"></i><b>1.4.1</b> Arte vs. procedimiento</a></li>
 <li class="chapter" data-level="1.4.2" data-path="cap-regresion.html"><a href="cap-regresion.html#aprendizajes-preliminares"><i class="fa fa-check"></i><b>1.4.2</b> Aprendizajes Preliminares</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="cap-regresion.html"><a href="cap-regresion.html#evaluación-de-modelos"><i class="fa fa-check"></i><b>1.5</b> Evaluación de modelos</a>
+<li class="chapter" data-level="1.5" data-path="03-estructurales.html"><a href="#evaluaci%C3%B3n-de-modelos"><i class="fa fa-check"></i><b>1.5</b> Evaluación de modelos</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="cap-regresion.html"><a href="cap-regresion.html#qué-se-busca-en-un-modelo"><i class="fa fa-check"></i><b>1.5.1</b> ¿Qué se busca en un modelo?</a></li>
-<li class="chapter" data-level="1.5.2" data-path="cap-regresion.html"><a href="cap-regresion.html#ajuste-por-métricas-generales"><i class="fa fa-check"></i><b>1.5.2</b> Ajuste por métricas generales</a></li>
+<li class="chapter" data-level="1.5.1" data-path="03-estructurales.html"><a href="#qu%C3%A9-se-busca-en-un-modelo"><i class="fa fa-check"></i><b>1.5.1</b> ¿Qué se busca en un modelo?</a></li>
+<li class="chapter" data-level="1.5.2" data-path="03-estructurales.html"><a href="#ajuste-por-m%C3%A9tricas-generales"><i class="fa fa-check"></i><b>1.5.2</b> Ajuste por métricas generales</a></li>
 <li class="chapter" data-level="1.5.3" data-path="cap-regresion.html"><a href="cap-regresion.html#ajuste-basado-en-la-probabilidad"><i class="fa fa-check"></i><b>1.5.3</b> Ajuste basado en la probabilidad</a></li>
 <li class="chapter" data-level="1.5.4" data-path="cap-regresion.html"><a href="cap-regresion.html#errores-dentro-y-fuera-de-la-muestra"><i class="fa fa-check"></i><b>1.5.4</b> Errores dentro y fuera de la muestra</a></li>
-<li class="chapter" data-level="1.5.5" data-path="cap-regresion.html"><a href="cap-regresion.html#división-de-datos"><i class="fa fa-check"></i><b>1.5.5</b> División de datos</a></li>
-<li class="chapter" data-level="1.5.6" data-path="cap-regresion.html"><a href="cap-regresion.html#validación-cruzada"><i class="fa fa-check"></i><b>1.5.6</b> Validación cruzada</a></li>
-<li class="chapter" data-level="1.5.7" data-path="cap-regresion.html"><a href="cap-regresion.html#test-de-hipótesis"><i class="fa fa-check"></i><b>1.5.7</b> Test de hipótesis</a></li>
+<li class="chapter" data-level="1.5.5" data-path="03-estructurales.html"><a href="#divisi%C3%B3n-de-datos"><i class="fa fa-check"></i><b>1.5.5</b> División de datos</a></li>
+<li class="chapter" data-level="1.5.6" data-path="03-estructurales.html"><a href="#validaci%C3%B3n-cruzada"><i class="fa fa-check"></i><b>1.5.6</b> Validación cruzada</a></li>
+<li class="chapter" data-level="1.5.7" data-path="03-estructurales.html"><a href="#test-de-hip%C3%B3tesis"><i class="fa fa-check"></i><b>1.5.7</b> Test de hipótesis</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="cap-regresion.html"><a href="cap-regresion.html#usos-y-limitaciones-del-análisis-de-regresión"><i class="fa fa-check"></i><b>1.6</b> Usos y limitaciones del análisis de regresión</a>
+<li class="chapter" data-level="1.6" data-path="03-estructurales.html"><a href="#usos-y-limitaciones-del-an%C3%A1lisis-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.6</b> Usos y limitaciones del análisis de regresión</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="cap-regresion.html"><a href="cap-regresion.html#aprendizaje-de-los-parámetros"><i class="fa fa-check"></i><b>1.6.1</b> Aprendizaje de los parámetros</a></li>
-<li class="chapter" data-level="1.6.2" data-path="cap-regresion.html"><a href="cap-regresion.html#interpretación-de-los-coeficientes"><i class="fa fa-check"></i><b>1.6.2</b> Interpretación de los coeficientes</a></li>
-<li class="chapter" data-level="1.6.3" data-path="cap-regresion.html"><a href="cap-regresion.html#pronósticos-y-errores-de-pronóstico"><i class="fa fa-check"></i><b>1.6.3</b> Pronósticos y errores de pronóstico</a></li>
-<li class="chapter" data-level="1.6.4" data-path="cap-regresion.html"><a href="cap-regresion.html#principios-generales-de-pronóstico"><i class="fa fa-check"></i><b>1.6.4</b> Principios generales de pronóstico</a></li>
+<li class="chapter" data-level="1.6.1" data-path="03-estructurales.html"><a href="#aprendizaje-de-los-par%C3%A1metros"><i class="fa fa-check"></i><b>1.6.1</b> Aprendizaje de los parámetros</a></li>
+<li class="chapter" data-level="1.6.2" data-path="03-estructurales.html"><a href="#interpretaci%C3%B3n-de-los-coeficientes"><i class="fa fa-check"></i><b>1.6.2</b> Interpretación de los coeficientes</a></li>
+<li class="chapter" data-level="1.6.3" data-path="03-estructurales.html"><a href="#pron%C3%B3sticos-y-errores-de-pron%C3%B3stico"><i class="fa fa-check"></i><b>1.6.3</b> Pronósticos y errores de pronóstico</a></li>
+<li class="chapter" data-level="1.6.4" data-path="03-estructurales.html"><a href="#principios-generales-de-pron%C3%B3stico"><i class="fa fa-check"></i><b>1.6.4</b> Principios generales de pronóstico</a></li>
 <li class="chapter" data-level="1.6.5" data-path="cap-regresion.html"><a href="cap-regresion.html#modelos-lineales-generalizados"><i class="fa fa-check"></i><b>1.6.5</b> Modelos lineales generalizados</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="cap-regresion.html"><a href="cap-regresion.html#alternativas-de-machine-learning-para-la-regresión"><i class="fa fa-check"></i><b>1.7</b> Alternativas de Machine Learning para la regresión</a>
+<li class="chapter" data-level="1.7" data-path="03-estructurales.html"><a href="#alternativas-de-machine-learning-para-la-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7</b> Alternativas de Machine Learning para la regresión</a>
 <ul>
 <li class="chapter" data-level="1.7.1" data-path="cap-regresion.html"><a href="cap-regresion.html#multivariate-adaptive-regression-splines-mars"><i class="fa fa-check"></i><b>1.7.1</b> Multivariate Adaptive Regression Splines (MARS)</a></li>
 <li class="chapter" data-level="1.7.2" data-path="cap-regresion.html"><a href="cap-regresion.html#k-nearest-neighbors-regression-knn"><i class="fa fa-check"></i><b>1.7.2</b> K Nearest Neighbors Regression (KNN)</a></li>
-<li class="chapter" data-level="1.7.3" data-path="cap-regresion.html"><a href="cap-regresion.html#árboles-de-regresión"><i class="fa fa-check"></i><b>1.7.3</b> Árboles de regresión</a></li>
+<li class="chapter" data-level="1.7.3" data-path="03-estructurales.html"><a href="#%C3%A1rboles-de-regresi%C3%B3n"><i class="fa fa-check"></i><b>1.7.3</b> Árboles de regresión</a></li>
 <li class="chapter" data-level="1.7.4" data-path="cap-regresion.html"><a href="cap-regresion.html#bagging-y-random-forests"><i class="fa fa-check"></i><b>1.7.4</b> Bagging y Random Forests</a></li>
 </ul></li>
 <li class="chapter" data-level="1.8" data-path="cap-regresion.html"><a href="cap-regresion.html#resumen"><i class="fa fa-check"></i><b>1.8</b> Resumen</a></li>
@@ -212,7 +214,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-2-ventas-de-un-cine"><i class="fa fa-check"></i>Problema 2: Ventas de un cine</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-3-programa-de-recompensas"><i class="fa fa-check"></i>Problema 3: Programa de recompensas</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-4-precios-internacionales-de-arriendo"><i class="fa fa-check"></i>Problema 4: Precios internacionales de arriendo</a></li>
-<li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-5-búsqueda-visual-vs.-texto-en-e-commerce"><i class="fa fa-check"></i>Problema 5: Búsqueda visual vs. texto en e-commerce</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-5-b%C3%BAsqueda-visual-vs.-texto-en-e-commerce"><i class="fa fa-check"></i>Problema 5: Búsqueda visual vs. texto en e-commerce</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-6-retail-y-telecomunicaciones"><i class="fa fa-check"></i>Problema 6: Retail y telecomunicaciones</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-7-agentes-de-ia-para-servicio-al-cliente-bancario"><i class="fa fa-check"></i>Problema 7: Agentes de IA para servicio al cliente bancario</a></li>
 <li class="chapter" data-level="" data-path="cap-regresion.html"><a href="cap-regresion.html#problema-8-plataforma-de-streaming-musical"><i class="fa fa-check"></i>Problema 8: Plataforma de streaming musical</a></li>
@@ -234,19 +236,19 @@ div.csl-indent {
 <li class="chapter" data-level="2.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-eleccion"><i class="fa fa-check"></i><b>2.5</b> Modelos de elección binaria</a></li>
 <li class="chapter" data-level="2.6" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-het-observable"><i class="fa fa-check"></i><b>2.6</b> Heterogeneidad observable</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-discreto-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.1</b> Modelos de duración en tiempo discreto con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.2</b> Modelos de duración en tiempo continuo con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.3" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-duración-en-tiempo-continuo-con-dependencia-de-la-duración-y-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.3</b> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.1" data-path="03-estructurales.html"><a href="#modelos-de-duraci%C3%B3n-en-tiempo-discreto-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.1</b> Modelos de duración en tiempo discreto con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.2" data-path="03-estructurales.html"><a href="#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.2</b> Modelos de duración en tiempo continuo con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.3" data-path="03-estructurales.html"><a href="#modelos-de-duraci%C3%B3n-en-tiempo-continuo-con-dependencia-de-la-duraci%C3%B3n-y-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.3</b> Modelos de duración en tiempo continuo con dependencia de la duración y heterogeneidad observable</a></li>
 <li class="chapter" data-level="2.6.4" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-conteo-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.4</b> Modelos de conteo con heterogeneidad observable</a></li>
-<li class="chapter" data-level="2.6.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelos-de-elección-binaria-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.5</b> Modelos de elección binaria con heterogeneidad observable</a></li>
+<li class="chapter" data-level="2.6.5" data-path="03-estructurales.html"><a href="#modelos-de-elecci%C3%B3n-binaria-con-heterogeneidad-observable"><i class="fa fa-check"></i><b>2.6.5</b> Modelos de elección binaria con heterogeneidad observable</a></li>
 </ul></li>
 <li class="chapter" data-level="2.7" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-esperanzas"><i class="fa fa-check"></i><b>2.7</b> Esperanzas condicionales</a>
 <ul>
 <li class="chapter" data-level="2.7.1" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#esperanzas-de-las-distribuciones-de-mezcla"><i class="fa fa-check"></i><b>2.7.1</b> Esperanzas de las distribuciones de mezcla</a></li>
-<li class="chapter" data-level="2.7.2" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-tiempo-discreto-beta-geométrico"><i class="fa fa-check"></i><b>2.7.2</b> Modelo de tiempo discreto (Beta-Geométrico)</a></li>
+<li class="chapter" data-level="2.7.2" data-path="03-estructurales.html"><a href="#modelo-de-tiempo-discreto-beta-geom%C3%A9trico"><i class="fa fa-check"></i><b>2.7.2</b> Modelo de tiempo discreto (Beta-Geométrico)</a></li>
 <li class="chapter" data-level="2.7.3" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-tiempo-continuo-gamma-exponencial"><i class="fa fa-check"></i><b>2.7.3</b> Modelo de tiempo continuo (Gamma-Exponencial)</a></li>
 <li class="chapter" data-level="2.7.4" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-conteo-gamma-poisson"><i class="fa fa-check"></i><b>2.7.4</b> Modelo de conteo (Gamma-Poisson)</a></li>
-<li class="chapter" data-level="2.7.5" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#modelo-de-elección-binaria-beta-binomial"><i class="fa fa-check"></i><b>2.7.5</b> Modelo de elección binaria (Beta-Binomial)</a></li>
+<li class="chapter" data-level="2.7.5" data-path="03-estructurales.html"><a href="#modelo-de-elecci%C3%B3n-binaria-beta-binomial"><i class="fa fa-check"></i><b>2.7.5</b> Modelo de elección binaria (Beta-Binomial)</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#prob-clv"><i class="fa fa-check"></i><b>2.8</b> Customer Lifetime Value: caso contractual</a>
 <ul>
@@ -262,11 +264,11 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-4-discrepancias-de-precios-en-supermercados"><i class="fa fa-check"></i>Problema 4: Discrepancias de precios en supermercados</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-5-notcomida-panel-de-compras"><i class="fa fa-check"></i>Problema 5: NotComida — Panel de compras</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-6-creadores-de-contenido"><i class="fa fa-check"></i>Problema 6: Creadores de contenido</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-7-hippi-parkas-para-alta-montaña"><i class="fa fa-check"></i>Problema 7: Hippi — Parkas para alta montaña</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-8-pokémon-go"><i class="fa fa-check"></i>Problema 8: Pokémon Go</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-9-aplicación-móvil-con-promociones-georreferenciadas"><i class="fa fa-check"></i>Problema 9: Aplicación móvil con promociones georreferenciadas</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-7-hippi-parkas-para-alta-monta%C3%B1a"><i class="fa fa-check"></i>Problema 7: Hippi — Parkas para alta montaña</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-8-pok%C3%A9mon-go"><i class="fa fa-check"></i>Problema 8: Pokémon Go</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-9-aplicaci%C3%B3n-m%C3%B3vil-con-promociones-georreferenciadas"><i class="fa fa-check"></i>Problema 9: Aplicación móvil con promociones georreferenciadas</a></li>
 <li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-10-retraso-en-graduaciones-universitarias"><i class="fa fa-check"></i>Problema 10: Retraso en graduaciones universitarias</a></li>
-<li class="chapter" data-level="" data-path="cap-probabilisticos.html"><a href="cap-probabilisticos.html#problema-11-tasas-de-respuesta-en-encuestas-de-educación-superior"><i class="fa fa-check"></i>Problema 11: Tasas de respuesta en encuestas de educación superior</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-11-tasas-de-respuesta-en-encuestas-de-educaci%C3%B3n-superior"><i class="fa fa-check"></i>Problema 11: Tasas de respuesta en encuestas de educación superior</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cap-estructurales.html"><a href="cap-estructurales.html"><i class="fa fa-check"></i><b>3</b> Modelos Estructurales</a>
@@ -334,20 +336,21 @@ div.csl-indent {
 <li class="chapter" data-level="3.9" data-path="cap-estructurales.html"><a href="cap-estructurales.html#estr-aplicados"><i class="fa fa-check"></i><b>3.9</b> Problemas</a>
 <ul>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-1-stud-ia"><i class="fa fa-check"></i>Problema 1: STUD-IA</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-2-categoría-aceites"><i class="fa fa-check"></i>Problema 2: Categoría aceites</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-2-categor%C3%ADa-aceites"><i class="fa fa-check"></i>Problema 2: Categoría aceites</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-3-margarina-y-modelo-probit"><i class="fa fa-check"></i>Problema 3: Margarina y modelo probit</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-4-telefonía-móvil-en-redes-sociales"><i class="fa fa-check"></i>Problema 4: Telefonía móvil en redes sociales</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-5-multitienda-y-tarjeta-de-crédito"><i class="fa fa-check"></i>Problema 5: Multitienda y tarjeta de crédito</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-4-telefon%C3%ADa-m%C3%B3vil-en-redes-sociales"><i class="fa fa-check"></i>Problema 4: Telefonía móvil en redes sociales</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-5-multitienda-y-tarjeta-de-cr%C3%A9dito"><i class="fa fa-check"></i>Problema 5: Multitienda y tarjeta de crédito</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-6-preventa-de-tickets"><i class="fa fa-check"></i>Problema 6: Preventa de tickets</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-7-gasto-publicitario"><i class="fa fa-check"></i>Problema 7: Gasto publicitario</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-8-pizza-a-pieza"><i class="fa fa-check"></i>Problema 8: Pizza a Pieza</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-9-retail-online"><i class="fa fa-check"></i>Problema 9: Retail online</a></li>
-<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-10-copa-américa"><i class="fa fa-check"></i>Problema 10: Copa América</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#problema-10-copa-am%C3%A9rica"><i class="fa fa-check"></i>Problema 10: Copa América</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-11-agencia-de-medios"><i class="fa fa-check"></i>Problema 11: Agencia de medios</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-12-cupones-de-supermercado"><i class="fa fa-check"></i>Problema 12: Cupones de supermercado</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-13-viajesdii"><i class="fa fa-check"></i>Problema 13: ViajesDII</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-14-brebajes"><i class="fa fa-check"></i>Problema 14: Brebajes</a></li>
 <li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-15-toallas-absorbentes"><i class="fa fa-check"></i>Problema 15: Toallas absorbentes</a></li>
+<li class="chapter" data-level="" data-path="cap-estructurales.html"><a href="cap-estructurales.html#problema-16-agente-concierge-de-ia"><i class="fa fa-check"></i>Problema 16: Agente concierge de IA</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Anexos</b></span></li>
@@ -468,7 +471,7 @@ subyacente y que las firmas maximizan su rentabilidad esperada. Desde
 el marketing, se considera también en la definición aquellos que
 postulan hipótesis alternativas de comportamiento incluyendo así una
 variedad de teorías de comportamiento que nutren la disciplina tales
-como teoría de prospectos <span class="citation">(<a href="referencias.html#ref-kahneman1979" role="doc-biblioref">Kahneman &amp; Tversky, 1979</a>)</span>, contabilidad mental, elección sobre
+como teoría de prospectos <span class="citation">(<a href="referencias.html#ref-kahneman1979">Kahneman &amp; Tversky, 1979</a>)</span>, contabilidad mental, elección sobre
 conjuntos de consideración, etc. Como se discutirá más adelante, no
 existe un modelo estructural puro y la línea que los separa de los
 modelos de forma reducida es ciertamente difusa.</p>
@@ -481,7 +484,7 @@ interpretabilidad a los parámetros del modelo.</p>
 assuming that consumers maximize an underlying utility and that firms
 maximize expected profitability. In marketing, the definition also
 includes models that posit alternative behavioral hypotheses, thereby
-incorporating theories such as prospect theory <span class="citation">(<a href="referencias.html#ref-kahneman1979" role="doc-biblioref">Kahneman &amp; Tversky, 1979</a>)</span>, mental accounting,
+incorporating theories such as prospect theory <span class="citation">(<a href="referencias.html#ref-kahneman1979">Kahneman &amp; Tversky, 1979</a>)</span>, mental accounting,
 choice over consideration sets, and others. As will be discussed later,
 there is no purely structural model, and the line separating structural
 from reduced-form models is certainly blurred.</p>
@@ -584,7 +587,7 @@ stochastic frontier regression).</p>
 <p><em>Ejemplo 3.</em> Al describir la participación de mercado de distintas
 marcas, un enfoque de regresión flexible podría predecir
 participaciones fuera del rango <span class="math inline">\([0,1]\)</span>. Si en cambio se adopta el
-axioma de elección de Luce <span class="citation">(<a href="referencias.html#ref-luce1959" role="doc-biblioref">Luce, 1959</a>)</span> —la probabilidad de elección
+axioma de elección de Luce <span class="citation">(<a href="referencias.html#ref-luce1959">Luce, 1959</a>)</span> —la probabilidad de elección
 depende del ratio entre la atracción de la alternativa y el atractivo
 total del conjunto— las participaciones quedan restringidas al rango
 admisible.</p>
@@ -593,7 +596,7 @@ admisible.</p>
 <p><em>Example 3.</em> When describing the market shares of different
 brands, a flexible regression approach might predict shares outside
 the <span class="math inline">\([0,1]\)</span> range. If instead one adopts Luce’s choice axiom
-<span class="citation">(<a href="referencias.html#ref-luce1959" role="doc-biblioref">Luce, 1959</a>)</span> —the choice probability depends on the ratio between the
+<span class="citation">(<a href="referencias.html#ref-luce1959">Luce, 1959</a>)</span> —the choice probability depends on the ratio between the
 attraction of the alternative and the total attractiveness of the
 set— shares are constrained to the admissible range.</p>
 </div>
@@ -889,7 +892,7 @@ proponiendo nuevos diseños de productos, redefiniendo la cadena
 logística, etc. De esta forma se necesita disponer de modelos que
 describan la reacción de los consumidores ante dichos cambios del
 ambiente competitivo lo que, de acuerdo a la crítica de Lucas
-<span class="citation">(<a href="referencias.html#ref-lucas1976" role="doc-biblioref">Robert E. Lucas, 1976</a>)</span>, solo puede hacerse con un modelo estructural.</p></li>
+<span class="citation">(<a href="referencias.html#ref-lucas1976">Robert E. Lucas, 1976</a>)</span>, solo puede hacerse con un modelo estructural.</p></li>
 <li><p><em>Importancia de heterogeneidad</em>. En marketing se busca hacer
 inferencia desagregada a nivel de cliente o segmento para poder
 diseñar versiones especializadas del marketing mix que sean
@@ -929,7 +932,7 @@ improve the value proposition by changing prices, proposing new
 product designs, redefining the logistics chain, and so on. This
 requires models that describe consumers’ reactions to such changes
 in the competitive environment, which, according to Lucas’s
-critique <span class="citation">(<a href="referencias.html#ref-lucas1976" role="doc-biblioref">Robert E. Lucas, 1976</a>)</span>, can only be done with a structural model.</p></li>
+critique <span class="citation">(<a href="referencias.html#ref-lucas1976">Robert E. Lucas, 1976</a>)</span>, can only be done with a structural model.</p></li>
 <li><p><em>Importance of heterogeneity</em>. In marketing, one seeks
 disaggregated inference at the customer or segment level in order
 to design specialized versions of the marketing mix that are
@@ -976,7 +979,7 @@ considera la especificación de un modelo de heterogeneidad
 describiendo como se distribuyen los parámetros entre los clientes
 la que se integra sobre la población para generar las métricas
 agregadas. Esto es precisamente lo propuesto por el método BLP de
-Berry, Levinsohn y Pakes <span class="citation">(<a href="referencias.html#ref-berry1995" role="doc-biblioref">Berry et al., 1995</a>)</span>, que describe un método que,
+Berry, Levinsohn y Pakes <span class="citation">(<a href="referencias.html#ref-berry1995">Berry et al., 1995</a>)</span>, que describe un método que,
 basado en un modelo logit, permite estimar ofertas y demandas de un
 modelo oligopólico con información agregada. Por simplicidad, en
 esta versión se concentrará en modelos estimables directamente
@@ -1066,7 +1069,7 @@ aggregated. This mechanism typically involves specifying a model
 of heterogeneity that describes how parameters are distributed
 across customers and integrating over the population to generate
 aggregate metrics. This is precisely what the BLP method of Berry,
-Levinsohn, and Pakes <span class="citation">(<a href="referencias.html#ref-berry1995" role="doc-biblioref">Berry et al., 1995</a>)</span> does, using a logit-based
+Levinsohn, and Pakes <span class="citation">(<a href="referencias.html#ref-berry1995">Berry et al., 1995</a>)</span> does, using a logit-based
 framework to estimate supply and demand in oligopolies with
 aggregate information. For simplicity, this version concentrates on
 models estimable directly on disaggregated individual-level data.</p></li>
@@ -1133,8 +1136,8 @@ of discrete-choice models, which have a longer tradition in marketing.</p>
 que la naturaleza de las variables de decisión a las que se enfrenta el
 tomador de decisión son discretas. Para ilustrar la intuición de la
 diferencia con respecto a modelos de decisión continua, es útil pensar
-que mientras estos últimos buscan describir decisiones de “el cuánto,”
-los modelos de elección discreta se concentran en “el cuál.” La
+que mientras estos últimos buscan describir decisiones de “el cuánto”,
+los modelos de elección discreta se concentran en “el cuál”. La
 distinción además relevante desde un punto de vista metodológico. A
 diferencia de los modelos de elección continua en que la optimidad de
 la elección queda bien descrita por condiciones de primer orden, al
@@ -1151,7 +1154,7 @@ mercado.</p>
 nature of the decision variables faced by the decision maker is
 discrete. To build intuition relative to continuous decision models, it
 is useful to think that while the latter seek to describe decisions
-about “how much,” discrete choice models focus on “which one.” The
+about “how much”, discrete choice models focus on “which one”. The
 distinction is also relevant from a methodological standpoint. Unlike
 continuous-choice models, in which optimality is well described by
 first-order conditions, with discrete decisions optimality will be
@@ -1453,12 +1456,12 @@ the <em>logit</em> model, and normal, giving rise to the <em>probit</em> model.<
 <div class="lang-es">
 <p>El modelo logit resulta de asumir que cada <span class="math inline">\(\varepsilon_{nit}\)</span> es
 independientemente distribuido según una distribución Gumbel (valor
-extremo tipo I) <span class="citation">(<a href="referencias.html#ref-mcfadden1974" role="doc-biblioref">McFadden, 1974</a>)</span>:</p>
+extremo tipo I) <span class="citation">(<a href="referencias.html#ref-mcfadden1974">McFadden, 1974</a>)</span>:</p>
 </div>
 <div class="lang-en">
 <p>The logit model results from assuming that each <span class="math inline">\(\varepsilon_{nit}\)</span>
 is independently distributed according to a Gumbel (type I extreme
-value) distribution <span class="citation">(<a href="referencias.html#ref-mcfadden1974" role="doc-biblioref">McFadden, 1974</a>)</span>:</p>
+value) distribution <span class="citation">(<a href="referencias.html#ref-mcfadden1974">McFadden, 1974</a>)</span>:</p>
 </div>
 <p><span class="math display" id="eq:estr-gumbel">\[F(\varepsilon_{nit}) = e^{-e^{-\varepsilon_{nit}}},
 \qquad
@@ -1535,7 +1538,7 @@ arises when, instead of assuming an extreme-value error as required by
 the logit model, one assumes a normally distributed error as is
 traditional in other econometric models.</p>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="cap-estructurales.html#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;images/probabilidad_eleccion.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="cap-estructurales.html#cb1-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">rep</span>(<span class="st">&quot;images/probabilidad_eleccion.png&quot;</span>))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probelec"></span>
 <img src="images/probabilidad_eleccion.png" alt="Probabilidad de elección" width="50%" />
 <p class="caption">
@@ -1664,7 +1667,7 @@ dynamic components.</p>
 <div id="estr-logit-props" class="section level3 hasAnchor" number="3.2.4" data-en="Logit Model Properties">
 <h3><span class="header-section-number">3.2.4</span> Propiedades del modelo logit<a href="cap-estructurales.html#estr-logit-props" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="patrones-de-sustitución" class="section level4 unnumbered hasAnchor">
-<h4>Patrones de sustitución<a href="cap-estructurales.html#patrones-de-sustitución" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Patrones de sustitución<a href="#patrones-de-sustituci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
 <p>Los patrones de sustitución derivados de un modelo logit son bastante
 peculiares y, aunque desde un punto de vista econométrico puede
@@ -1838,7 +1841,8 @@ En efecto, se puede mostrar que
 <span class="math inline">\(\mathbb{V}ar(\xi_{nit}, \xi_{njt}) = \mathbb{Var}(\mu_n)p^2_{it}\)</span> que
 evidentemente varía entre alternativas. Más aún, también se puede
 mostrar que
-<span class="math inline">\(\mathbb{Cov}(\xi_{nit}, \xi_{njt}) = \mathbb{Var}(\mu_n)p_{it}p_{jt} \neq 0\)</span>, violando también el supuesto de independencia.</p>
+<span class="math inline">\(\mathbb{Cov}(\xi_{nit}, \xi_{njt}) = \mathbb{Var}(\mu_n)p_{it}p_{jt}
+\neq 0\)</span>, violando también el supuesto de independencia.</p>
 <p>Es importante notar que la incapacidad de capturar aleatoriedad aplica
 también a componentes dinámicas. Esto es, al observar compras
 repetidas en el tiempo, el modelo logit no permite capturar que hay
@@ -1898,7 +1902,8 @@ one can show that
 <span class="math inline">\(\mathbb{V}ar(\xi_{nit}, \xi_{njt}) = \mathbb{Var}(\mu_n)p^2_{it}\)</span>,
 which clearly varies across alternatives. Moreover, one can also show
 that
-<span class="math inline">\(\mathbb{Cov}(\xi_{nit}, \xi_{njt}) = \mathbb{Var}(\mu_n)p_{it}p_{jt} \neq 0\)</span>, thus violating the independence assumption as well.</p>
+<span class="math inline">\(\mathbb{Cov}(\xi_{nit}, \xi_{njt}) = \mathbb{Var}(\mu_n)p_{it}p_{jt}
+\neq 0\)</span>, thus violating the independence assumption as well.</p>
 <p>It is important to note that this inability to capture randomness also
 applies to dynamic components. That is, when repeated purchases are
 observed over time, the logit model does not allow one to capture
@@ -2024,7 +2029,8 @@ price sensitive (the total price penalty is reduced); if
 <p><em>Ejercicio guiado.</em> ¿Cómo se calcula el Akaike Information Criterion (AIC) para un
 modelo cuya verosimilitud <span class="math inline">\(f(\mathbf{X}|\boldsymbol{\theta})\)</span> es
 maximizada en un único valor
-<span class="math inline">\(\hat{\boldsymbol{\theta}} = (\hat{\theta}_1, \hat{\theta}_2)\)</span>?</p>
+<span class="math inline">\(\hat{\boldsymbol{\theta}}
+= (\hat{\theta}_1, \hat{\theta}_2)\)</span>?</p>
 <details>
 <summary>
 Ver solución
@@ -2040,7 +2046,8 @@ Ver solución
 <p><em>Guided exercise.</em> How is the Akaike Information Criterion (AIC) computed for a model
 whose likelihood <span class="math inline">\(f(\mathbf{X}|\boldsymbol{\theta})\)</span> is maximized
 at a single value
-<span class="math inline">\(\hat{\boldsymbol{\theta}} = (\hat{\theta}_1, \hat{\theta}_2)\)</span>?</p>
+<span class="math inline">\(\hat{\boldsymbol{\theta}}
+= (\hat{\theta}_1, \hat{\theta}_2)\)</span>?</p>
 <details>
 <summary>
 Ver solución
@@ -2064,7 +2071,7 @@ esperar que las elecciones de un individuo en diferentes períodos estén
 relacionadas. En contextos de marketing, esta dependencia temporal
 puede manifestarse de diversas formas, siendo dos de las más
 relevantes la <em>persistencia de elección</em> (o lealtad) y la formación
-de <em>precios de referencia</em> <span class="citation">(<a href="referencias.html#ref-guadagni1983" role="doc-biblioref">Guadagni &amp; Little, 1983</a>)</span>.</p>
+de <em>precios de referencia</em> <span class="citation">(<a href="referencias.html#ref-guadagni1983">Guadagni &amp; Little, 1983</a>)</span>.</p>
 </div>
 <div class="lang-en">
 <p>With panel data, it is natural to incorporate temporal dependence.
@@ -2249,7 +2256,7 @@ Los consumidores no evalúan los precios en términos absolutos, sino
 que los comparan con un precio de referencia interno formado a partir
 de precios observados en el pasado. Esta noción está bien
 fundamentada tanto en teoría económica (teoría de prospectos
-<span class="citation">(<a href="referencias.html#ref-kahneman1979" role="doc-biblioref">Kahneman &amp; Tversky, 1979</a>)</span>) como en evidencia empírica de marketing.</p>
+<span class="citation">(<a href="referencias.html#ref-kahneman1979">Kahneman &amp; Tversky, 1979</a>)</span>) como en evidencia empírica de marketing.</p>
 <p><em>Modelamiento de Precios de Referencia:</em></p>
 <p>La utilidad se especifica incorporando tanto el efecto del precio
 actual como de la desviación respecto al precio de referencia:</p>
@@ -2257,7 +2264,7 @@ actual como de la desviación respecto al precio de referencia:</p>
 <div class="lang-en">
 <p>Consumers do not evaluate prices in absolute terms but compare them
 to an internal reference price formed from previously observed
-prices. This notion is supported by prospect theory <span class="citation">(<a href="referencias.html#ref-kahneman1979" role="doc-biblioref">Kahneman &amp; Tversky, 1979</a>)</span> and extensive
+prices. This notion is supported by prospect theory <span class="citation">(<a href="referencias.html#ref-kahneman1979">Kahneman &amp; Tversky, 1979</a>)</span> and extensive
 empirical evidence in marketing. Utility incorporates both the
 effect of the current price and its deviation from the reference
 price:</p>
@@ -2294,7 +2301,7 @@ positivo adicional, “ganancia percibida”</li>
 </ul>
 <p>La especificación captura que los consumidores son <em>más sensibles a
 desviaciones del precio de referencia</em> que al nivel de precio
-absoluto, consistente con teoría de prospectos <span class="citation">(<a href="referencias.html#ref-kahneman1979" role="doc-biblioref">Kahneman &amp; Tversky, 1979</a>)</span> que postula mayor
+absoluto, consistente con teoría de prospectos <span class="citation">(<a href="referencias.html#ref-kahneman1979">Kahneman &amp; Tversky, 1979</a>)</span> que postula mayor
 sensibilidad a pérdidas que a ganancias.</p>
 <p><em>Construcción del Precio de Referencia:</em></p>
 <p>Similar a la lealtad, el precio de referencia se construye como
@@ -2317,14 +2324,14 @@ additional utility when the price is low and disutility when it is
 high).</p>
 </div>
 <div id="especificación-asimétrica" class="section level4 unnumbered hasAnchor">
-<h4>Especificación asimétrica<a href="cap-estructurales.html#especificación-asimétrica" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Especificación asimétrica<a href="#especificaci%C3%B3n-asim%C3%A9trica" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
-<p>La teoría de prospectos <span class="citation">(<a href="referencias.html#ref-kahneman1979" role="doc-biblioref">Kahneman &amp; Tversky, 1979</a>)</span> sugiere que las pérdidas (precios mayores que
+<p>La teoría de prospectos <span class="citation">(<a href="referencias.html#ref-kahneman1979">Kahneman &amp; Tversky, 1979</a>)</span> sugiere que las pérdidas (precios mayores que
 referencia) pesan más que las ganancias (precios menores). Esto motiva
 especificaciones asimétricas:</p>
 </div>
 <div class="lang-en">
-<p>Prospect theory <span class="citation">(<a href="referencias.html#ref-kahneman1979" role="doc-biblioref">Kahneman &amp; Tversky, 1979</a>)</span> suggests that losses loom larger than gains. This
+<p>Prospect theory <span class="citation">(<a href="referencias.html#ref-kahneman1979">Kahneman &amp; Tversky, 1979</a>)</span> suggests that losses loom larger than gains. This
 motivates an asymmetric specification:</p>
 </div>
 <p><span class="math display" id="eq:estr-asimetrica">\[u_{nit} = \alpha_i + \beta_1 P_{nit}
@@ -2473,12 +2480,12 @@ discusión con modelos <em>logit</em> derivados de asumir que la componente
 aleatoria de la utilidad se distribuía valor extremo tipo I. En este
 capítulo se volverá al caso de componentes aleatorias normales que dan
 origen al modelo probit. Formalmente, un modelo <em>probit</em> resulta de
-los siguientes supuestos de comportamiento <span class="citation">(<a href="referencias.html#ref-ben-akiva1985" role="doc-biblioref">Ben-Akiva &amp; Lerman, 1985</a>)</span>:</p>
+los siguientes supuestos de comportamiento <span class="citation">(<a href="referencias.html#ref-ben-akiva1985">Ben-Akiva &amp; Lerman, 1985</a>)</span>:</p>
 </div>
 <div class="lang-en">
 <p>The probit model results from assuming that the random component of
 utility follows a multivariate normal distribution centered at zero
-<span class="citation">(<a href="referencias.html#ref-ben-akiva1985" role="doc-biblioref">Ben-Akiva &amp; Lerman, 1985</a>)</span>:</p>
+<span class="citation">(<a href="referencias.html#ref-ben-akiva1985">Ben-Akiva &amp; Lerman, 1985</a>)</span>:</p>
 </div>
 <p><span class="math display" id="eq:estr-probit">\[u_{ni} = v_{ni} + \varepsilon_{ni},
 \qquad
@@ -2657,7 +2664,8 @@ que la componente determinística de la utilidad es lineal:</p>
 <div class="lang-en">
 <p>The probit model accommodates random preference heterogeneity
 without violating its basic assumptions. If utility is linear,
-<span class="math inline">\(u_{ni} = \boldsymbol{\beta}_n&#39;\mathbf{x}_{ni} + \varepsilon_{ni}\)</span>, and one assumes
+<span class="math inline">\(u_{ni} = \boldsymbol{\beta}_n&#39;\mathbf{x}_{ni}
++ \varepsilon_{ni}\)</span>, and one assumes
 <span class="math inline">\(\boldsymbol{\beta}_n \sim N(\mathbf{b}, \sigma_\beta^2)\)</span>, the
 model is equivalent to:</p>
 </div>
@@ -2928,7 +2936,7 @@ highest-utility alternative. In general, with <span class="math inline">\(I\)</s
 approaches are typically used to achieve identification.</p>
 </div>
 <div id="normalización-de-las-funciones-de-utilidad" class="section level4 unnumbered hasAnchor">
-<h4>Normalización de las funciones de utilidad<a href="cap-estructurales.html#normalización-de-las-funciones-de-utilidad" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Normalización de las funciones de utilidad<a href="#normalizaci%C3%B3n-de-las-funciones-de-utilidad" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
 <p>Motivados en las propiedades de la función de utilidad, este enfoque
 consiste en imponer directamente restricciones de escala y locación.
@@ -3064,7 +3072,7 @@ extensión del modelo logit estándar que permite relajar parcialmente la
 restricción de IIA al permitir que las alternativas se agrupen en
 conjuntos (o “nidos”) donde la correlación entre alternativas dentro
 del mismo nido puede diferir de la correlación entre alternativas de
-nidos diferentes <span class="citation">(<a href="referencias.html#ref-train2009" role="doc-biblioref">Train, 2009</a>)</span>.</p>
+nidos diferentes <span class="citation">(<a href="referencias.html#ref-train2009">Train, 2009</a>)</span>.</p>
 <p>La idea fundamental del nested logit es reconocer que en muchos
 problemas de elección existe una estructura jerárquica natural. Los
 tomadores de decisión primero eligen entre categorías generales de
@@ -3203,7 +3211,7 @@ zero.</p>
 pesar de permitir correlación entre errores, aún se pueden derivar
 fórmulas cerradas para las probabilidades de elección.</p>
 <div id="estructura-jerárquica-de-decisión" class="section level4 unnumbered hasAnchor">
-<h4>Estructura jerárquica de decisión<a href="cap-estructurales.html#estructura-jerárquica-de-decisión" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Estructura jerárquica de decisión<a href="#estructura-jer%C3%A1rquica-de-decisi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>El nested logit puede interpretarse como un proceso de decisión
 secuencial en dos etapas:</p>
 <ol style="list-style-type: decimal">
@@ -3493,7 +3501,7 @@ level, each with its own dissimilarity parameter:</p>
 <div id="estr-mixed-intro" class="section level3 hasAnchor" number="3.6.1" data-en="Motivation">
 <h3><span class="header-section-number">3.6.1</span> Motivación<a href="cap-estructurales.html#estr-mixed-intro" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
-<p>Como se ha discutido anteriormente, el modelo logit estándar, aunque computacionalmente conveniente gracias a su forma cerrada, presenta limitaciones importantes que pueden restringir su aplicabilidad en contextos reales de marketing. El modelo <em>mixed logit</em> (también conocido como <em>random parameters logit</em> o <em>error components logit</em>) surgió como una generalización flexible del modelo logit estándar que permite superar las limitaciones de <em>logit</em>. La idea fundamental es permitir que los parámetros de la función de utilidad varíen aleatoriamente en la población, capturando así heterogeneidad no observable en las preferencias <span class="citation">(<a href="referencias.html#ref-nevo2000" role="doc-biblioref">Nevo, 2000</a>; <a href="referencias.html#ref-train2009" role="doc-biblioref">Train, 2009</a>)</span>.</p>
+<p>Como se ha discutido anteriormente, el modelo logit estándar, aunque computacionalmente conveniente gracias a su forma cerrada, presenta limitaciones importantes que pueden restringir su aplicabilidad en contextos reales de marketing. El modelo <em>mixed logit</em> (también conocido como <em>random parameters logit</em> o <em>error components logit</em>) surgió como una generalización flexible del modelo logit estándar que permite superar las limitaciones de <em>logit</em>. La idea fundamental es permitir que los parámetros de la función de utilidad varíen aleatoriamente en la población, capturando así heterogeneidad no observable en las preferencias <span class="citation">(<a href="referencias.html#ref-nevo2000">Nevo, 2000</a>; <a href="referencias.html#ref-train2009">Train, 2009</a>)</span>.</p>
 <p><em>Intuición del modelo:</em> Supóngase que se está modelando la elección de medio de transporte (auto, bus, tren) y se sabe que la sensibilidad al tiempo de viaje varía sustancialmente entre individuos. Mientras que el logit estándar asumiría un único coeficiente de tiempo de viaje para toda la población, el mixed logit permite que este coeficiente siga una distribución en la población (por ejemplo, normal con cierta media y varianza), reflejando que algunos individuos son muy sensibles al tiempo mientras otros lo son menos.</p>
 </div>
 <div class="lang-en">
@@ -3600,13 +3608,13 @@ the conditional logit probabilities:</p>
 <span class="math inline">\(SLL(\boldsymbol{\theta})\)</span>:</p>
 <p><span class="math display">\[\hat{\boldsymbol{\theta}}_{MSL}
 = \arg\max_{\boldsymbol{\theta}} SLL(\boldsymbol{\theta})\]</span></p>
-<p>Este método de aproximación posee propiedades asintóticas. En particular, si <span class="math inline">\(R\)</span> crece más rápido que <span class="math inline">\(\sqrt{N}\)</span>, el MSLE es consistente, asintóticamente normal y asintóticamente eficiente. En la práctica, con un valor <span class="math inline">\(R = 200\)</span> suele ser computacionalmente liviano y suficiente <span class="citation">(<a href="referencias.html#ref-train2009" role="doc-biblioref">Train, 2009</a>)</span>.</p>
+<p>Este método de aproximación posee propiedades asintóticas. En particular, si <span class="math inline">\(R\)</span> crece más rápido que <span class="math inline">\(\sqrt{N}\)</span>, el MSLE es consistente, asintóticamente normal y asintóticamente eficiente. En la práctica, con un valor <span class="math inline">\(R = 200\)</span> suele ser computacionalmente liviano y suficiente <span class="citation">(<a href="referencias.html#ref-train2009">Train, 2009</a>)</span>.</p>
 </div>
 <div class="lang-en">
 <p>The simulated maximum likelihood estimator (MSLE) maximizes
 <span class="math inline">\(SLL(\boldsymbol{\theta})\)</span>. If <span class="math inline">\(R\)</span> grows faster than <span class="math inline">\(\sqrt{N}\)</span>,
 the estimator is consistent, asymptotically normal, and efficient.
-In practice, <span class="math inline">\(R = 200\)</span> is typically sufficient <span class="citation">(<a href="referencias.html#ref-train2009" role="doc-biblioref">Train, 2009</a>)</span>.</p>
+In practice, <span class="math inline">\(R = 200\)</span> is typically sufficient <span class="citation">(<a href="referencias.html#ref-train2009">Train, 2009</a>)</span>.</p>
 </div>
 </div>
 <div id="estr-mixed-dist" class="section level3 hasAnchor" number="3.6.4" data-en="Distribution Choice">
@@ -3624,7 +3632,8 @@ naturales; menos común en aplicaciones de marketing.</p></li>
 </ol>
 <p>Es posible especificar correlaciones entre coeficientes aleatorios
 usando distribuciones multivariadas:
-<span class="math inline">\(\boldsymbol{\beta}_n \sim N(\mathbf{b}, \boldsymbol{\Sigma}_\beta)\)</span>.</p>
+<span class="math inline">\(\boldsymbol{\beta}_n \sim N(\mathbf{b},
+\boldsymbol{\Sigma}_\beta)\)</span>.</p>
 </div>
 <div class="lang-en">
 <p>The choice of <span class="math inline">\(f(\boldsymbol{\beta}|\boldsymbol{\theta})\)</span> should be
@@ -3645,7 +3654,8 @@ known; less common in marketing applications.</p></li>
 </ol>
 <p>Correlations among random coefficients can be specified using
 multivariate distributions:
-<span class="math inline">\(\boldsymbol{\beta}_n \sim N(\mathbf{b}, \boldsymbol{\Sigma}_\beta)\)</span>.</p>
+<span class="math inline">\(\boldsymbol{\beta}_n \sim N(\mathbf{b},
+\boldsymbol{\Sigma}_\beta)\)</span>.</p>
 </div>
 <div class="lang-es">
 <div class="rmdnote">
@@ -3785,21 +3795,21 @@ alternative <span class="math inline">\(i\)</span>, evaluated at the <span class
 <div id="estr-mixed-props" class="section level3 hasAnchor" number="3.6.5" data-en="Properties">
 <h3><span class="header-section-number">3.6.5</span> Propiedades<a href="cap-estructurales.html#estr-mixed-props" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="aproximación-universal" class="section level4 unnumbered hasAnchor">
-<h4>Aproximación universal<a href="cap-estructurales.html#aproximación-universal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Aproximación universal<a href="#aproximaci%C3%B3n-universal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
-<p>Cualquier modelo de utilidad aleatoria puede ser aproximado arbitrariamente bien por un modelo mixed logit, siempre que se especifique apropiadamente la distribución de los coeficientes aleatorios <span class="citation">(<a href="referencias.html#ref-mcfaddentrain2000" role="doc-biblioref">McFadden &amp; Train, 2000</a>)</span>. Esto significa que el mixed logit puede aproximar patrones de sustitución arbitrarios, incluyendo aquellos del modelo probit multinomial, eliminando las restricciones del IIA cuando sea necesario.</p>
+<p>Cualquier modelo de utilidad aleatoria puede ser aproximado arbitrariamente bien por un modelo mixed logit, siempre que se especifique apropiadamente la distribución de los coeficientes aleatorios <span class="citation">(<a href="referencias.html#ref-mcfaddentrain2000">McFadden &amp; Train, 2000</a>)</span>. Esto significa que el mixed logit puede aproximar patrones de sustitución arbitrarios, incluyendo aquellos del modelo probit multinomial, eliminando las restricciones del IIA cuando sea necesario.</p>
 </div>
 <div class="lang-en">
 <p>Any random utility model can be approximated arbitrarily well by a
 mixed logit, provided the distribution of random coefficients is
 appropriately specified as in McFadden and Train
-<span class="citation">(<a href="referencias.html#ref-mcfaddentrain2000" role="doc-biblioref">McFadden &amp; Train, 2000</a>)</span>. This implies
+<span class="citation">(<a href="referencias.html#ref-mcfaddentrain2000">McFadden &amp; Train, 2000</a>)</span>. This implies
 that the mixed logit can reproduce arbitrary substitution patterns,
 including those of the multinomial probit.</p>
 </div>
 </div>
 <div id="patrones-de-sustitución-flexibles" class="section level4 unnumbered hasAnchor">
-<h4>Patrones de sustitución flexibles<a href="cap-estructurales.html#patrones-de-sustitución-flexibles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Patrones de sustitución flexibles<a href="#patrones-de-sustituci%C3%B3n-flexibles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
 <p>A diferencia del logit estándar, el mixed logit permite patrones de sustitución no proporcionales. La elasticidad cruzada entre alternativas depende de:</p>
 <ul>
@@ -3819,7 +3829,7 @@ random coefficients will be closer substitutes.</p>
 </div>
 </div>
 <div id="correlación-temporal" class="section level4 unnumbered hasAnchor">
-<h4>Correlación temporal<a href="cap-estructurales.html#correlación-temporal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4>Correlación temporal<a href="#correlaci%C3%B3n-temporal" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="lang-es">
 <p>Con datos de panel, <span class="math inline">\(\boldsymbol{\beta}_n\)</span> es constante para el
 individuo <span class="math inline">\(n\)</span> a lo largo de sus decisiones, lo que induce
@@ -3877,7 +3887,7 @@ attribute is:</p>
 <li>Calcular estadísticos como la DAP media, mediana y percentiles.</li>
 <li>Identificar segmentos con alta y baja DAP.</li>
 </ol>
-<p>Si ambos coeficientes son normales, la DAP sigue una distribución de Cauchy (que puede tener momentos no definidos). Esto ha llevado a usar especificaciones alternativas como log-normal para el coeficiente de precio <span class="citation">(<a href="referencias.html#ref-rossi2005" role="doc-biblioref">Rossi et al., 2005</a>)</span>.</p>
+<p>Si ambos coeficientes son normales, la DAP sigue una distribución de Cauchy (que puede tener momentos no definidos). Esto ha llevado a usar especificaciones alternativas como log-normal para el coeficiente de precio <span class="citation">(<a href="referencias.html#ref-rossi2005">Rossi et al., 2005</a>)</span>.</p>
 </div>
 <div class="lang-en">
 <p>Since both coefficients are random, the WTP has a distribution in
@@ -3886,7 +3896,7 @@ distribution, computing the mean, median, and percentiles, and
 identifying segments with high or low WTP. If both coefficients are
 normal, the WTP follows a Cauchy distribution (with potentially
 undefined moments), which motivates using log-normal distributions
-for the price coefficient <span class="citation">(<a href="referencias.html#ref-rossi2005" role="doc-biblioref">Rossi et al., 2005</a>)</span>.</p>
+for the price coefficient <span class="citation">(<a href="referencias.html#ref-rossi2005">Rossi et al., 2005</a>)</span>.</p>
 </div>
 </div>
 <div id="estr-mixed-bayes" class="section level3 hasAnchor" number="3.6.7" data-en="Individual Inference: Posterior Means">
@@ -3996,14 +4006,16 @@ approximately <span class="math inline">\(0.5/2.5 = 0.20\)</span> monetary units
 está compuesta por un número finito de segmentos, cada uno con
 parámetros homogéneos. La utilidad del individuo <span class="math inline">\(n\)</span> para la
 alternativa <span class="math inline">\(i\)</span> en la clase <span class="math inline">\(m\)</span> es
-<span class="math inline">\(u_{ni|m} = \boldsymbol{\beta}_m&#39;\mathbf{x}_{ni} + \varepsilon_{ni}\)</span>, y la probabilidad de elección resulta:</p>
+<span class="math inline">\(u_{ni|m} = \boldsymbol{\beta}_m&#39;\mathbf{x}_{ni}
++ \varepsilon_{ni}\)</span>, y la probabilidad de elección resulta:</p>
 </div>
 <div class="lang-en">
 <p>An alternative to the mixed logit assumes that the population
 consists of a finite number of segments, each with homogeneous
 parameters. The utility of individual <span class="math inline">\(n\)</span> for alternative <span class="math inline">\(i\)</span> in
 class <span class="math inline">\(m\)</span> is
-<span class="math inline">\(u_{ni|m} = \boldsymbol{\beta}_m&#39;\mathbf{x}_{ni} + \varepsilon_{ni}\)</span>, and the choice probability is:</p>
+<span class="math inline">\(u_{ni|m} = \boldsymbol{\beta}_m&#39;\mathbf{x}_{ni}
++ \varepsilon_{ni}\)</span>, and the choice probability is:</p>
 </div>
 <p><span class="math display" id="eq:estr-latentclass">\[P_{ni} = \sum_{m=1}^M s_m
   \frac{\exp(\boldsymbol{\beta}_m&#39;\mathbf{x}_{ni})}
@@ -4039,9 +4051,9 @@ ejemplo, cuando el gasto observado está truncado en cero, cuando el
 monto de descuento solo se observa para quienes usan un cupón o cuando
 el número de millas disponibles solo es relevante para quienes activan
 un programa de lealtad. La formulación original se debe a
-<span class="citation"><a href="referencias.html#ref-tobin1958" role="doc-biblioref">Tobin</a> (<a href="referencias.html#ref-tobin1958" role="doc-biblioref">1958</a>)</span>, mientras que la extensión más utilizada para selección
-muestral corresponde a <span class="citation"><a href="referencias.html#ref-heckman1979" role="doc-biblioref">Heckman</a> (<a href="referencias.html#ref-heckman1979" role="doc-biblioref">1979</a>)</span>; una exposición didáctica y moderna
-puede encontrarse en <span class="citation"><a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge</a> (<a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">2019</a>)</span> y <span class="citation"><a href="referencias.html#ref-greene2018" role="doc-biblioref">Greene</a> (<a href="referencias.html#ref-greene2018" role="doc-biblioref">2018</a>)</span>.</p>
+<span class="citation">Tobin (<a href="referencias.html#ref-tobin1958">1958</a>)</span>, mientras que la extensión más utilizada para selección
+muestral corresponde a <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span>; una exposición didáctica y moderna
+puede encontrarse en <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span> y <span class="citation">Greene (<a href="referencias.html#ref-greene2018">2018</a>)</span>.</p>
 </div>
 <div class="lang-en">
 <p>Tobit models are useful when the observed dependent variable is
@@ -4051,9 +4063,9 @@ example when observed spending is cornered at zero, when a discount
 amount is observed only for those who redeem a coupon, or when the
 number of available loyalty points is relevant only for those who
 activate a loyalty program. The original formulation is due to
-<span class="citation"><a href="referencias.html#ref-tobin1958" role="doc-biblioref">Tobin</a> (<a href="referencias.html#ref-tobin1958" role="doc-biblioref">1958</a>)</span>, while the extension most commonly used for sample
-selection is due to <span class="citation"><a href="referencias.html#ref-heckman1979" role="doc-biblioref">Heckman</a> (<a href="referencias.html#ref-heckman1979" role="doc-biblioref">1979</a>)</span>; a modern and pedagogical treatment
-can be found in <span class="citation"><a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge</a> (<a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">2019</a>)</span> and <span class="citation"><a href="referencias.html#ref-greene2018" role="doc-biblioref">Greene</a> (<a href="referencias.html#ref-greene2018" role="doc-biblioref">2018</a>)</span>.</p>
+<span class="citation">Tobin (<a href="referencias.html#ref-tobin1958">1958</a>)</span>, while the extension most commonly used for sample
+selection is due to <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span>; a modern and pedagogical treatment
+can be found in <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span> and <span class="citation">Greene (<a href="referencias.html#ref-greene2018">2018</a>)</span>.</p>
 </div>
 <div id="estr-tobit1" class="section level3 hasAnchor" number="3.7.1" data-en="Type I Tobit">
 <h3><span class="header-section-number">3.7.1</span> Tobit tipo I<a href="cap-estructurales.html#estr-tobit1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -4252,14 +4264,14 @@ N\!\left(
 las observaciones para las cuales <span class="math inline">\(y_i\)</span> es visible no constituyen una
 submuestra aleatoria. En consecuencia, estimar por OLS la ecuación de
 resultado solo con los casos observados genera sesgo de selección.</p>
-<p>El resultado central de <span class="citation"><a href="referencias.html#ref-heckman1979" role="doc-biblioref">Heckman</a> (<a href="referencias.html#ref-heckman1979" role="doc-biblioref">1979</a>)</span> muestra que:</p>
+<p>El resultado central de <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span> muestra que:</p>
 </div>
 <div class="lang-en">
 <p>The correlation parameter <span class="math inline">\(\rho\)</span> is crucial: if <span class="math inline">\(\rho \ne 0\)</span>, then the
 observations for which <span class="math inline">\(y_i\)</span> is visible do not form a random
 subsample. Consequently, estimating the outcome equation by OLS using
 only the observed cases generates selection bias.</p>
-<p>The central result of <span class="citation"><a href="referencias.html#ref-heckman1979" role="doc-biblioref">Heckman</a> (<a href="referencias.html#ref-heckman1979" role="doc-biblioref">1979</a>)</span> shows that:</p>
+<p>The central result of <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span> shows that:</p>
 </div>
 <p><span class="math display" id="eq:estr-tobit2-esperanza">\[E[y_i \mid \mathbf{x}_i,\mathbf{z}_i,s_i=1]
 = \mathbf{x}_i&#39;\boldsymbol{\beta}
@@ -4460,14 +4472,14 @@ Heckman-type or <em>Type II Tobit</em> approach is preferable.</li>
 </div>
 </div>
 <div class="lang-es">
-<p><em>Referencias principales:</em> <span class="citation"><a href="referencias.html#ref-mcfadden1974" role="doc-biblioref">McFadden</a> (<a href="referencias.html#ref-mcfadden1974" role="doc-biblioref">1974</a>)</span>, <span class="citation"><a href="referencias.html#ref-train2009" role="doc-biblioref">Train</a> (<a href="referencias.html#ref-train2009" role="doc-biblioref">2009</a>)</span>,
-<span class="citation"><a href="referencias.html#ref-ben-akiva1985" role="doc-biblioref">Ben-Akiva &amp; Lerman</a> (<a href="referencias.html#ref-ben-akiva1985" role="doc-biblioref">1985</a>)</span>, <span class="citation"><a href="referencias.html#ref-berry1995" role="doc-biblioref">Berry et al.</a> (<a href="referencias.html#ref-berry1995" role="doc-biblioref">1995</a>)</span>, <span class="citation"><a href="referencias.html#ref-guadagni1983" role="doc-biblioref">Guadagni &amp; Little</a> (<a href="referencias.html#ref-guadagni1983" role="doc-biblioref">1983</a>)</span>, <span class="citation"><a href="referencias.html#ref-nevo2000" role="doc-biblioref">Nevo</a> (<a href="referencias.html#ref-nevo2000" role="doc-biblioref">2000</a>)</span>, <span class="citation"><a href="referencias.html#ref-rossi2005" role="doc-biblioref">Rossi et al.</a> (<a href="referencias.html#ref-rossi2005" role="doc-biblioref">2005</a>)</span>,
-<span class="citation"><a href="referencias.html#ref-tobin1958" role="doc-biblioref">Tobin</a> (<a href="referencias.html#ref-tobin1958" role="doc-biblioref">1958</a>)</span>, <span class="citation"><a href="referencias.html#ref-heckman1979" role="doc-biblioref">Heckman</a> (<a href="referencias.html#ref-heckman1979" role="doc-biblioref">1979</a>)</span>, <span class="citation"><a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge</a> (<a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p><em>Referencias principales:</em> <span class="citation">McFadden (<a href="referencias.html#ref-mcfadden1974">1974</a>)</span>, <span class="citation">Train (<a href="referencias.html#ref-train2009">2009</a>)</span>,
+<span class="citation">Ben-Akiva &amp; Lerman (<a href="referencias.html#ref-ben-akiva1985">1985</a>)</span>, <span class="citation">Berry et al. (<a href="referencias.html#ref-berry1995">1995</a>)</span>, <span class="citation">Guadagni &amp; Little (<a href="referencias.html#ref-guadagni1983">1983</a>)</span>, <span class="citation">Nevo (<a href="referencias.html#ref-nevo2000">2000</a>)</span>, <span class="citation">Rossi et al. (<a href="referencias.html#ref-rossi2005">2005</a>)</span>,
+<span class="citation">Tobin (<a href="referencias.html#ref-tobin1958">1958</a>)</span>, <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span>, <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span>.</p>
 </div>
 <div class="lang-en">
-<p><em>Main references:</em> <span class="citation"><a href="referencias.html#ref-mcfadden1974" role="doc-biblioref">McFadden</a> (<a href="referencias.html#ref-mcfadden1974" role="doc-biblioref">1974</a>)</span>, <span class="citation"><a href="referencias.html#ref-train2009" role="doc-biblioref">Train</a> (<a href="referencias.html#ref-train2009" role="doc-biblioref">2009</a>)</span>,
-<span class="citation"><a href="referencias.html#ref-ben-akiva1985" role="doc-biblioref">Ben-Akiva &amp; Lerman</a> (<a href="referencias.html#ref-ben-akiva1985" role="doc-biblioref">1985</a>)</span>, <span class="citation"><a href="referencias.html#ref-berry1995" role="doc-biblioref">Berry et al.</a> (<a href="referencias.html#ref-berry1995" role="doc-biblioref">1995</a>)</span>, <span class="citation"><a href="referencias.html#ref-guadagni1983" role="doc-biblioref">Guadagni &amp; Little</a> (<a href="referencias.html#ref-guadagni1983" role="doc-biblioref">1983</a>)</span>, <span class="citation"><a href="referencias.html#ref-nevo2000" role="doc-biblioref">Nevo</a> (<a href="referencias.html#ref-nevo2000" role="doc-biblioref">2000</a>)</span>, <span class="citation"><a href="referencias.html#ref-rossi2005" role="doc-biblioref">Rossi et al.</a> (<a href="referencias.html#ref-rossi2005" role="doc-biblioref">2005</a>)</span>,
-<span class="citation"><a href="referencias.html#ref-tobin1958" role="doc-biblioref">Tobin</a> (<a href="referencias.html#ref-tobin1958" role="doc-biblioref">1958</a>)</span>, <span class="citation"><a href="referencias.html#ref-heckman1979" role="doc-biblioref">Heckman</a> (<a href="referencias.html#ref-heckman1979" role="doc-biblioref">1979</a>)</span>, <span class="citation"><a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">Wooldridge</a> (<a href="referencias.html#ref-wooldridge2019" role="doc-biblioref">2019</a>)</span>.</p>
+<p><em>Main references:</em> <span class="citation">McFadden (<a href="referencias.html#ref-mcfadden1974">1974</a>)</span>, <span class="citation">Train (<a href="referencias.html#ref-train2009">2009</a>)</span>,
+<span class="citation">Ben-Akiva &amp; Lerman (<a href="referencias.html#ref-ben-akiva1985">1985</a>)</span>, <span class="citation">Berry et al. (<a href="referencias.html#ref-berry1995">1995</a>)</span>, <span class="citation">Guadagni &amp; Little (<a href="referencias.html#ref-guadagni1983">1983</a>)</span>, <span class="citation">Nevo (<a href="referencias.html#ref-nevo2000">2000</a>)</span>, <span class="citation">Rossi et al. (<a href="referencias.html#ref-rossi2005">2005</a>)</span>,
+<span class="citation">Tobin (<a href="referencias.html#ref-tobin1958">1958</a>)</span>, <span class="citation">Heckman (<a href="referencias.html#ref-heckman1979">1979</a>)</span>, <span class="citation">Wooldridge (<a href="referencias.html#ref-wooldridge2019">2019</a>)</span>.</p>
 </div>
 </div>
 <div id="estr-aplicados" class="section level2 hasAnchor" number="3.9" data-en="Problems">
@@ -4498,6 +4510,18 @@ normal (normal) y no suscrito (inactivo), como indica la Tabla
 <a href="cap-estructurales.html#tab:estr-p1-studia">3.1</a>.</p>
 <table>
 <caption><span id="tab:estr-p1-studia">Table 3.1: </span> Muestra de la base de datos de STUD-IA</caption>
+<colgroup>
+<col width="8%" />
+<col width="8%" />
+<col width="10%" />
+<col width="13%" />
+<col width="10%" />
+<col width="7%" />
+<col width="12%" />
+<col width="8%" />
+<col width="10%" />
+<col width="8%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Idcust</th>
@@ -4646,6 +4670,18 @@ to the normal plan (normal), and unsubscribed (inactive), as shown in
 Table <a href="cap-estructurales.html#tab:estr-p1-studia">3.1</a>.</p>
 <table>
 <caption><span id="tab:estr-p1-studia">Table 3.1: </span> Sample of the STUD-IA database</caption>
+<colgroup>
+<col width="9%" />
+<col width="9%" />
+<col width="10%" />
+<col width="14%" />
+<col width="10%" />
+<col width="8%" />
+<col width="10%" />
+<col width="8%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Idcust</th>
@@ -4882,8 +4918,8 @@ a customer belongs to segment 1 is obtained.</li>
 postula correr un modelo logit heterogéneo a través del siguiente
 código computacional, cuyos resultados se despliegan en la Tabla
 <a href="cap-estructurales.html#tab:estr-p1-mixedlogit">3.2</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="cap-estructurales.html#cb2-1" aria-hidden="true" tabindex="-1"></a>stickers <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(subs <span class="sc">~</span> price <span class="sc">+</span> nsnoopy <span class="sc">+</span> ndragon <span class="sc">+</span> nsuperhero <span class="sc">+</span> nmemes, </span>
-<span id="cb2-2"><a href="cap-estructurales.html#cb2-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data=</span>datastickers, <span class="at">rpar=</span><span class="fu">c</span>(<span class="at">price=</span><span class="st">&#39;n&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="cap-estructurales.html#cb2-1" tabindex="-1"></a>stickers <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(subs <span class="sc">~</span> price <span class="sc">+</span> nsnoopy <span class="sc">+</span> ndragon <span class="sc">+</span> nsuperhero <span class="sc">+</span> nmemes, </span>
+<span id="cb2-2"><a href="cap-estructurales.html#cb2-2" tabindex="-1"></a>                   <span class="at">data=</span>datastickers, <span class="at">rpar=</span><span class="fu">c</span>(<span class="at">price=</span><span class="st">&#39;n&#39;</span>))</span></code></pre></div>
 <table>
 <caption><span id="tab:estr-p1-mixedlogit">Table 3.2: </span> Resultados de la estimación del modelo logit heterogéneo.</caption>
 <thead>
@@ -4953,8 +4989,8 @@ comportamiento de suscripción?</p></li>
 heterogeneous logit model is proposed through the following
 computational code, whose results are displayed in Table
 <a href="cap-estructurales.html#tab:estr-p1-mixedlogit">3.2</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="cap-estructurales.html#cb3-1" aria-hidden="true" tabindex="-1"></a>stickers <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(subs <span class="sc">~</span> price <span class="sc">+</span> nsnoopy <span class="sc">+</span> ndragon <span class="sc">+</span> nsuperhero <span class="sc">+</span> nmemes, </span>
-<span id="cb3-2"><a href="cap-estructurales.html#cb3-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data=</span>datastickers, <span class="at">rpar=</span><span class="fu">c</span>(<span class="at">price=</span><span class="st">&#39;n&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="cap-estructurales.html#cb3-1" tabindex="-1"></a>stickers <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(subs <span class="sc">~</span> price <span class="sc">+</span> nsnoopy <span class="sc">+</span> ndragon <span class="sc">+</span> nsuperhero <span class="sc">+</span> nmemes, </span>
+<span id="cb3-2"><a href="cap-estructurales.html#cb3-2" tabindex="-1"></a>                   <span class="at">data=</span>datastickers, <span class="at">rpar=</span><span class="fu">c</span>(<span class="at">price=</span><span class="st">&#39;n&#39;</span>))</span></code></pre></div>
 <table>
 <caption><span id="tab:estr-p1-mixedlogit">Table 3.2: </span> Results of the heterogeneous logit model estimation.</caption>
 <thead>
@@ -5238,7 +5274,7 @@ positive.</p></li>
 </details>
 </div>
 <div id="problema-2-categoría-aceites" class="section level3 unnumbered hasAnchor" data-en="Problem 2: Cooking Oil Category">
-<h3>Problema 2: Categoría aceites<a href="cap-estructurales.html#problema-2-categoría-aceites" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 2: Categoría aceites<a href="#problema-2-categor%C3%ADa-aceites" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Un administrador de la categoría aceites de una sala del centro de Santiago de una importante retailer nacional, se dispone a analizar datos de panel que reportan <span class="math inline">\(y_{ijt}\)</span> que toma el valor 1 si el hogar <span class="math inline">\(i\)</span> compra la marca-tamaño <span class="math inline">\(j\)</span> en la semana <span class="math inline">\(t\)</span> y 0 en caso contrario (<span class="math inline">\(i = 1, \ldots, N\)</span>, <span class="math inline">\(j = 1, \ldots, J\)</span>, <span class="math inline">\(t = 1, \ldots, T\)</span>). Junto con las elecciones semanales de cada hogar, el panel provee <span class="math inline">\(PRICE_{jt}\)</span> correspondiente al precio por centímetro cúbico de la alternativa <span class="math inline">\(j\)</span> en la semana <span class="math inline">\(t\)</span> y <span class="math inline">\(COUPON_{ijt}\)</span> que toma el valor 1 si el cliente <span class="math inline">\(i\)</span> dispone de un cupón de descuento para la alternativa <span class="math inline">\(j\)</span> en la semana <span class="math inline">\(t\)</span> (aunque el valor de descuento de los cupones varía entre alternativas y de semana a semana, los valores típicamente rondan el 10% del precio de lista).</p>
 <p>Después de una reunión de trabajo con administradores de categoría en otras salas se ha acordado que un buen punto de partida es usar un modelo estructural en que la componente determinística de la utilidad de compra viene dada por:</p>
@@ -5470,10 +5506,10 @@ los parámetros de un modelo logit que se aplica sobre una base de 324
 clientes que hacen 3615 compras en la categoría. En la rutina
 propuesta, los parámetros máximo verosímiles se obtienen usando el
 comando <code>mymle = optim(par=0.01*rep(1,3), fn=loglikel, hessian=TRUE, method="BFGS")</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="cap-estructurales.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>par</span>
-<span id="cb4-2"><a href="cap-estructurales.html#cb4-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.124</span> <span class="fl">0.486</span> <span class="sc">-</span><span class="fl">2.351</span></span>
-<span id="cb4-3"><a href="cap-estructurales.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>value</span>
-<span id="cb4-4"><a href="cap-estructurales.html#cb4-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1344.35</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="cap-estructurales.html#cb4-1" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>par</span>
+<span id="cb4-2"><a href="cap-estructurales.html#cb4-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.124</span> <span class="fl">0.486</span> <span class="sc">-</span><span class="fl">2.351</span></span>
+<span id="cb4-3"><a href="cap-estructurales.html#cb4-3" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>value</span>
+<span id="cb4-4"><a href="cap-estructurales.html#cb4-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1344.35</span></span></code></pre></div>
 <p>¿Cuál es el BIC del modelo estimado por la empresa consultora?</p></li>
 </ol>
 </div>
@@ -5486,10 +5522,10 @@ applied to a database of 324 customers making 3615 purchases in the
 category. In the proposed routine, the maximum likelihood parameters
 are obtained using the command
 <code>mymle = optim(par=0.01*rep(1,3), fn=loglikel, hessian=TRUE, method="BFGS")</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="cap-estructurales.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>par</span>
-<span id="cb5-2"><a href="cap-estructurales.html#cb5-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.124</span> <span class="fl">0.486</span> <span class="sc">-</span><span class="fl">2.351</span></span>
-<span id="cb5-3"><a href="cap-estructurales.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>value</span>
-<span id="cb5-4"><a href="cap-estructurales.html#cb5-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1344.35</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="cap-estructurales.html#cb5-1" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>par</span>
+<span id="cb5-2"><a href="cap-estructurales.html#cb5-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.124</span> <span class="fl">0.486</span> <span class="sc">-</span><span class="fl">2.351</span></span>
+<span id="cb5-3"><a href="cap-estructurales.html#cb5-3" tabindex="-1"></a><span class="sc">&gt;</span> mymle<span class="sc">$</span>value</span>
+<span id="cb5-4"><a href="cap-estructurales.html#cb5-4" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">1344.35</span></span></code></pre></div>
 <p>What is the BIC of the model estimated by the consulting firm?</p></li>
 </ol>
 </div>
@@ -5632,7 +5668,7 @@ Figure 3.3: Plot of logarithmically transformed variables.
 </details>
 </div>
 <div id="problema-4-telefonía-móvil-en-redes-sociales" class="section level3 unnumbered hasAnchor" data-en="Problem 4: Mobile Telephony on Social Media">
-<h3>Problema 4: Telefonía móvil en redes sociales<a href="cap-estructurales.html#problema-4-telefonía-móvil-en-redes-sociales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 4: Telefonía móvil en redes sociales<a href="#problema-4-telefon%C3%ADa-m%C3%B3vil-en-redes-sociales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Una compañía de telefonía móvil de reciente ingreso al país ha
 iniciado una fuerte campaña en algunas redes sociales y busca estudiar
@@ -5647,6 +5683,11 @@ tabla contiene una breve descripción de la información disponible en la
 base.</p>
 <table>
 <caption><span id="tab:estr-p4-variables">Table 3.5: </span> Descripción de variables de la base de datos.</caption>
+<colgroup>
+<col width="30%" />
+<col width="39%" />
+<col width="30%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Variable</th>
@@ -5739,17 +5780,17 @@ primer argumento el intercepto de la función de utilidad y los cuatro
 siguientes los otros parámetros de la utilidad en el orden antes
 planteado. Para encontrar los estimadores máximo verosímiles se ha
 ejecutado el siguiente comando:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="cap-estructurales.html#cb6-1" aria-hidden="true" tabindex="-1"></a>mymle <span class="ot">=</span> <span class="fu">optim</span>(<span class="at">par=</span><span class="fl">0.01</span><span class="sc">*</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">fn=</span>loglikel, <span class="at">hessian=</span><span class="cn">TRUE</span>, <span class="at">method=</span><span class="st">&quot;BFGS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="cap-estructurales.html#cb6-1" tabindex="-1"></a>mymle <span class="ot">=</span> <span class="fu">optim</span>(<span class="at">par=</span><span class="fl">0.01</span><span class="sc">*</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">fn=</span>loglikel, <span class="at">hessian=</span><span class="cn">TRUE</span>, <span class="at">method=</span><span class="st">&quot;BFGS&quot;</span>)</span></code></pre></div>
 <p>Al terminar la rutina, los analistas quieren hacer inferencia sobre los
 parámetros para lo que ejecutan el siguiente comandos en la consola
 generando los resultados correspondientes:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="cap-estructurales.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cbind</span>(mymle<span class="sc">$</span>par, <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">solve</span>(mymle<span class="sc">$</span>hessian))))</span>
-<span id="cb7-2"><a href="cap-estructurales.html#cb7-2" aria-hidden="true" tabindex="-1"></a>     [,<span class="dv">1</span>]      [,<span class="dv">2</span>]</span>
-<span id="cb7-3"><a href="cap-estructurales.html#cb7-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="sc">-</span><span class="fl">0.9623</span>  <span class="fl">0.2069</span></span>
-<span id="cb7-4"><a href="cap-estructurales.html#cb7-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">3.4340</span>  <span class="fl">0.0518</span></span>
-<span id="cb7-5"><a href="cap-estructurales.html#cb7-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.0047</span>  <span class="fl">0.0522</span></span>
-<span id="cb7-6"><a href="cap-estructurales.html#cb7-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.0365</span>  <span class="fl">0.0043</span></span>
-<span id="cb7-7"><a href="cap-estructurales.html#cb7-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>,] <span class="sc">-</span><span class="fl">0.0048</span>  <span class="fl">0.0025</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="cap-estructurales.html#cb7-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cbind</span>(mymle<span class="sc">$</span>par, <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">solve</span>(mymle<span class="sc">$</span>hessian))))</span>
+<span id="cb7-2"><a href="cap-estructurales.html#cb7-2" tabindex="-1"></a>     [,<span class="dv">1</span>]      [,<span class="dv">2</span>]</span>
+<span id="cb7-3"><a href="cap-estructurales.html#cb7-3" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="sc">-</span><span class="fl">0.9623</span>  <span class="fl">0.2069</span></span>
+<span id="cb7-4"><a href="cap-estructurales.html#cb7-4" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">3.4340</span>  <span class="fl">0.0518</span></span>
+<span id="cb7-5"><a href="cap-estructurales.html#cb7-5" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.0047</span>  <span class="fl">0.0522</span></span>
+<span id="cb7-6"><a href="cap-estructurales.html#cb7-6" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.0365</span>  <span class="fl">0.0043</span></span>
+<span id="cb7-7"><a href="cap-estructurales.html#cb7-7" tabindex="-1"></a>[<span class="dv">5</span>,] <span class="sc">-</span><span class="fl">0.0048</span>  <span class="fl">0.0025</span></span></code></pre></div>
 </div>
 <div class="lang-en">
 <p>Suppose that analysts within the company have coded the previous
@@ -5758,17 +5799,17 @@ argument the intercept of the utility function and the next four
 arguments the remaining utility parameters in the order stated above.
 To find the maximum likelihood estimators, the following command has
 been executed:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="cap-estructurales.html#cb8-1" aria-hidden="true" tabindex="-1"></a>mymle <span class="ot">=</span> <span class="fu">optim</span>(<span class="at">par=</span><span class="fl">0.01</span><span class="sc">*</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">fn=</span>loglikel, <span class="at">hessian=</span><span class="cn">TRUE</span>, <span class="at">method=</span><span class="st">&quot;BFGS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="cap-estructurales.html#cb8-1" tabindex="-1"></a>mymle <span class="ot">=</span> <span class="fu">optim</span>(<span class="at">par=</span><span class="fl">0.01</span><span class="sc">*</span><span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>), <span class="at">fn=</span>loglikel, <span class="at">hessian=</span><span class="cn">TRUE</span>, <span class="at">method=</span><span class="st">&quot;BFGS&quot;</span>)</span></code></pre></div>
 <p>At the end of the routine, the analysts want to make inference on the
 parameters, for which they execute the following command in the console,
 generating the corresponding results:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="cap-estructurales.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cbind</span>(mymle<span class="sc">$</span>par, <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">solve</span>(mymle<span class="sc">$</span>hessian))))</span>
-<span id="cb9-2"><a href="cap-estructurales.html#cb9-2" aria-hidden="true" tabindex="-1"></a>     [,<span class="dv">1</span>]      [,<span class="dv">2</span>]</span>
-<span id="cb9-3"><a href="cap-estructurales.html#cb9-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="sc">-</span><span class="fl">0.9623</span>  <span class="fl">0.2069</span></span>
-<span id="cb9-4"><a href="cap-estructurales.html#cb9-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">3.4340</span>  <span class="fl">0.0518</span></span>
-<span id="cb9-5"><a href="cap-estructurales.html#cb9-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.0047</span>  <span class="fl">0.0522</span></span>
-<span id="cb9-6"><a href="cap-estructurales.html#cb9-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.0365</span>  <span class="fl">0.0043</span></span>
-<span id="cb9-7"><a href="cap-estructurales.html#cb9-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">5</span>,] <span class="sc">-</span><span class="fl">0.0048</span>  <span class="fl">0.0025</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="cap-estructurales.html#cb9-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cbind</span>(mymle<span class="sc">$</span>par, <span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">solve</span>(mymle<span class="sc">$</span>hessian))))</span>
+<span id="cb9-2"><a href="cap-estructurales.html#cb9-2" tabindex="-1"></a>     [,<span class="dv">1</span>]      [,<span class="dv">2</span>]</span>
+<span id="cb9-3"><a href="cap-estructurales.html#cb9-3" tabindex="-1"></a>[<span class="dv">1</span>,] <span class="sc">-</span><span class="fl">0.9623</span>  <span class="fl">0.2069</span></span>
+<span id="cb9-4"><a href="cap-estructurales.html#cb9-4" tabindex="-1"></a>[<span class="dv">2</span>,]  <span class="fl">3.4340</span>  <span class="fl">0.0518</span></span>
+<span id="cb9-5"><a href="cap-estructurales.html#cb9-5" tabindex="-1"></a>[<span class="dv">3</span>,]  <span class="fl">0.0047</span>  <span class="fl">0.0522</span></span>
+<span id="cb9-6"><a href="cap-estructurales.html#cb9-6" tabindex="-1"></a>[<span class="dv">4</span>,]  <span class="fl">0.0365</span>  <span class="fl">0.0043</span></span>
+<span id="cb9-7"><a href="cap-estructurales.html#cb9-7" tabindex="-1"></a>[<span class="dv">5</span>,] <span class="sc">-</span><span class="fl">0.0048</span>  <span class="fl">0.0025</span></span></code></pre></div>
 </div>
 <div class="lang-es">
 <ol start="2" style="list-style-type: lower-alpha">
@@ -5861,7 +5902,7 @@ users’ gender and age.</p></li>
 </details>
 </div>
 <div id="problema-5-multitienda-y-tarjeta-de-crédito" class="section level3 unnumbered hasAnchor" data-en="Problem 5: Department Store and Credit Card">
-<h3>Problema 5: Multitienda y tarjeta de crédito<a href="cap-estructurales.html#problema-5-multitienda-y-tarjeta-de-crédito" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 5: Multitienda y tarjeta de crédito<a href="#problema-5-multitienda-y-tarjeta-de-cr%C3%A9dito" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>En el departamento de estudios de una importante multitienda buscan
 analizar simultáneamente los montos de compra en la tienda y el uso de
@@ -5871,6 +5912,11 @@ caracterizan su relación con la firma en el último año, como describe la
 siguiente tabla.</p>
 <table>
 <caption><span id="tab:estr-p5-variables">Table 3.6: </span> Descripción de variables de la base de datos.</caption>
+<colgroup>
+<col width="30%" />
+<col width="39%" />
+<col width="30%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Variable</th>
@@ -5984,6 +6030,17 @@ determine si la tenencia de tarjeta afecta los patrones de gasto en
 tienda.</p>
 <table>
 <caption><span id="tab:estr-p5-chicuadrado">Table 3.7: </span> Valores críticos de la distribución chi-cuadrado al 5%.</caption>
+<colgroup>
+<col width="22%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th><span class="math inline">\(\nu\)</span></th>
@@ -6035,6 +6092,17 @@ then another model is estimated imposing
 whether card ownership affects spending patterns in the store.</p>
 <table>
 <caption><span id="tab:estr-p5-chicuadrado">Table 3.7: </span> Chi-square critical values at 5%.</caption>
+<colgroup>
+<col width="22%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th><span class="math inline">\(\nu\)</span></th>
@@ -6961,7 +7029,7 @@ p_{nit} \approx \frac{1}{R} \sum_{r=1}^R \frac{\exp(v_{nit}(\theta^r))}{1 + \exp
 </details>
 </div>
 <div id="problema-10-copa-américa" class="section level3 unnumbered hasAnchor" data-en="Problem 10: Copa América">
-<h3>Problema 10: Copa América<a href="cap-estructurales.html#problema-10-copa-américa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Problema 10: Copa América<a href="#problema-10-copa-am%C3%A9rica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="lang-es">
 <p>Con el reciente sorteo de la Copa América Chile 2015 (cómo pasó tan
 rápido el tiempo), el comité organizador está interesado en estudiar
@@ -7012,6 +7080,10 @@ certain that your favorite team will reach the final. The data
 available are presented below.</p>
 <table>
 <caption><span id="tab:estr-p10-variables">Table 3.10: </span> Available variables for the attendance model.</caption>
+<colgroup>
+<col width="43%" />
+<col width="56%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Variable</th>
@@ -7106,10 +7178,10 @@ resultados.</p>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
 <li><p>Write the utility for a discrete choice model that considers that:
-((i)) each phase (groups, quarterfinals, semifinals, final) adds
-more attendance, ((ii)) distance affects attendance in a nonlinear
+<span class="math inline">\((i)\)</span> each phase (groups, quarterfinals, semifinals, final) adds
+more attendance, <span class="math inline">\((ii)\)</span> distance affects attendance in a nonlinear
 way (discuss what functional form could be appropriate), and
-((iii)) the rivals Brazil and Argentina attract more attendance
+<span class="math inline">\((iii)\)</span> the rivals Brazil and Argentina attract more attendance
 than the rest.</p></li>
 <li><p>The data shown in the following table correspond to a spectator who
 could have attended 2 matches, but attends only one. Explicitly
@@ -7710,22 +7782,22 @@ se describe como un modelo de regresión lineal. El segundo enfoque
 combina la decisión de usar el cupón y el monto descontado en un único
 modelo tobit en dos etapas. Los resultados de estos modelos se resumen
 en la Tabla <a href="cap-estructurales.html#tab:estr-p12-resultados">3.15</a>.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="cap-estructurales.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probit</span></span>
-<span id="cb10-2"><a href="cap-estructurales.html#cb10-2" aria-hidden="true" tabindex="-1"></a>rmodel.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(redemption <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
-<span id="cb10-3"><a href="cap-estructurales.html#cb10-3" aria-hidden="true" tabindex="-1"></a>                   brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb10-4"><a href="cap-estructurales.html#cb10-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">family =</span> <span class="fu">binomial</span>(<span class="st">&quot;probit&quot;</span>), <span class="at">data =</span> coupon.data)</span>
-<span id="cb10-5"><a href="cap-estructurales.html#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="cap-estructurales.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># linear regression</span></span>
-<span id="cb10-7"><a href="cap-estructurales.html#cb10-7" aria-hidden="true" tabindex="-1"></a>rmodel.ols <span class="ot">&lt;-</span> <span class="fu">lm</span>(coupon_discount <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
-<span id="cb10-8"><a href="cap-estructurales.html#cb10-8" aria-hidden="true" tabindex="-1"></a>                  brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb10-9"><a href="cap-estructurales.html#cb10-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> <span class="fu">subset</span>(coupon.data, redemption <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
-<span id="cb10-10"><a href="cap-estructurales.html#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="cap-estructurales.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># tobit</span></span>
-<span id="cb10-12"><a href="cap-estructurales.html#cb10-12" aria-hidden="true" tabindex="-1"></a>rmodel<span class="fl">.2</span>s <span class="ot">&lt;-</span> <span class="fu">selection</span>(redemption <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
-<span id="cb10-13"><a href="cap-estructurales.html#cb10-13" aria-hidden="true" tabindex="-1"></a>                        brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb10-14"><a href="cap-estructurales.html#cb10-14" aria-hidden="true" tabindex="-1"></a>                        coupon_discount <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span></span>
-<span id="cb10-15"><a href="cap-estructurales.html#cb10-15" aria-hidden="true" tabindex="-1"></a>                        family_size <span class="sc">+</span> brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb10-16"><a href="cap-estructurales.html#cb10-16" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> coupon.data, <span class="at">method =</span> <span class="st">&quot;2step&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="cap-estructurales.html#cb10-1" tabindex="-1"></a><span class="co"># probit</span></span>
+<span id="cb10-2"><a href="cap-estructurales.html#cb10-2" tabindex="-1"></a>rmodel.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(redemption <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
+<span id="cb10-3"><a href="cap-estructurales.html#cb10-3" tabindex="-1"></a>                   brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb10-4"><a href="cap-estructurales.html#cb10-4" tabindex="-1"></a>                   <span class="at">family =</span> <span class="fu">binomial</span>(<span class="st">&quot;probit&quot;</span>), <span class="at">data =</span> coupon.data)</span>
+<span id="cb10-5"><a href="cap-estructurales.html#cb10-5" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="cap-estructurales.html#cb10-6" tabindex="-1"></a><span class="co"># linear regression</span></span>
+<span id="cb10-7"><a href="cap-estructurales.html#cb10-7" tabindex="-1"></a>rmodel.ols <span class="ot">&lt;-</span> <span class="fu">lm</span>(coupon_discount <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
+<span id="cb10-8"><a href="cap-estructurales.html#cb10-8" tabindex="-1"></a>                  brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb10-9"><a href="cap-estructurales.html#cb10-9" tabindex="-1"></a>                  <span class="at">data =</span> <span class="fu">subset</span>(coupon.data, redemption <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb10-10"><a href="cap-estructurales.html#cb10-10" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="cap-estructurales.html#cb10-11" tabindex="-1"></a><span class="co"># tobit</span></span>
+<span id="cb10-12"><a href="cap-estructurales.html#cb10-12" tabindex="-1"></a>rmodel<span class="fl">.2</span>s <span class="ot">&lt;-</span> <span class="fu">selection</span>(redemption <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
+<span id="cb10-13"><a href="cap-estructurales.html#cb10-13" tabindex="-1"></a>                        brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb10-14"><a href="cap-estructurales.html#cb10-14" tabindex="-1"></a>                        coupon_discount <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span></span>
+<span id="cb10-15"><a href="cap-estructurales.html#cb10-15" tabindex="-1"></a>                        family_size <span class="sc">+</span> brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb10-16"><a href="cap-estructurales.html#cb10-16" tabindex="-1"></a>                        <span class="at">data =</span> coupon.data, <span class="at">method =</span> <span class="st">&quot;2step&quot;</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:estr-p12-resultados">Table 3.15: </span> Resultados Modelos Tobits e independientes</caption>
 <thead>
@@ -8178,22 +8250,22 @@ discount is described as a linear regression model. The second approach
 combines the decision to use the coupon and the discounted amount into a
 single two-step tobit model. The results of these models are summarized
 in Table <a href="cap-estructurales.html#tab:estr-p12-resultados">3.15</a>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="cap-estructurales.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># probit</span></span>
-<span id="cb11-2"><a href="cap-estructurales.html#cb11-2" aria-hidden="true" tabindex="-1"></a>rmodel.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(redemption <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
-<span id="cb11-3"><a href="cap-estructurales.html#cb11-3" aria-hidden="true" tabindex="-1"></a>                   brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb11-4"><a href="cap-estructurales.html#cb11-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">family =</span> <span class="fu">binomial</span>(<span class="st">&quot;probit&quot;</span>), <span class="at">data =</span> coupon.data)</span>
-<span id="cb11-5"><a href="cap-estructurales.html#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="cap-estructurales.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># linear regression</span></span>
-<span id="cb11-7"><a href="cap-estructurales.html#cb11-7" aria-hidden="true" tabindex="-1"></a>rmodel.ols <span class="ot">&lt;-</span> <span class="fu">lm</span>(coupon_discount <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
-<span id="cb11-8"><a href="cap-estructurales.html#cb11-8" aria-hidden="true" tabindex="-1"></a>                  brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb11-9"><a href="cap-estructurales.html#cb11-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> <span class="fu">subset</span>(coupon.data, redemption <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
-<span id="cb11-10"><a href="cap-estructurales.html#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="cap-estructurales.html#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># tobit</span></span>
-<span id="cb11-12"><a href="cap-estructurales.html#cb11-12" aria-hidden="true" tabindex="-1"></a>rmodel<span class="fl">.2</span>s <span class="ot">&lt;-</span> <span class="fu">selection</span>(redemption <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
-<span id="cb11-13"><a href="cap-estructurales.html#cb11-13" aria-hidden="true" tabindex="-1"></a>                        brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb11-14"><a href="cap-estructurales.html#cb11-14" aria-hidden="true" tabindex="-1"></a>                        coupon_discount <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span></span>
-<span id="cb11-15"><a href="cap-estructurales.html#cb11-15" aria-hidden="true" tabindex="-1"></a>                        family_size <span class="sc">+</span> brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb11-16"><a href="cap-estructurales.html#cb11-16" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> coupon.data, <span class="at">method =</span> <span class="st">&quot;2step&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="cap-estructurales.html#cb11-1" tabindex="-1"></a><span class="co"># probit</span></span>
+<span id="cb11-2"><a href="cap-estructurales.html#cb11-2" tabindex="-1"></a>rmodel.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(redemption <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
+<span id="cb11-3"><a href="cap-estructurales.html#cb11-3" tabindex="-1"></a>                   brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb11-4"><a href="cap-estructurales.html#cb11-4" tabindex="-1"></a>                   <span class="at">family =</span> <span class="fu">binomial</span>(<span class="st">&quot;probit&quot;</span>), <span class="at">data =</span> coupon.data)</span>
+<span id="cb11-5"><a href="cap-estructurales.html#cb11-5" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="cap-estructurales.html#cb11-6" tabindex="-1"></a><span class="co"># linear regression</span></span>
+<span id="cb11-7"><a href="cap-estructurales.html#cb11-7" tabindex="-1"></a>rmodel.ols <span class="ot">&lt;-</span> <span class="fu">lm</span>(coupon_discount <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
+<span id="cb11-8"><a href="cap-estructurales.html#cb11-8" tabindex="-1"></a>                  brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb11-9"><a href="cap-estructurales.html#cb11-9" tabindex="-1"></a>                  <span class="at">data =</span> <span class="fu">subset</span>(coupon.data, redemption <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb11-10"><a href="cap-estructurales.html#cb11-10" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="cap-estructurales.html#cb11-11" tabindex="-1"></a><span class="co"># tobit</span></span>
+<span id="cb11-12"><a href="cap-estructurales.html#cb11-12" tabindex="-1"></a>rmodel<span class="fl">.2</span>s <span class="ot">&lt;-</span> <span class="fu">selection</span>(redemption <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span> family_size <span class="sc">+</span></span>
+<span id="cb11-13"><a href="cap-estructurales.html#cb11-13" tabindex="-1"></a>                        brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb11-14"><a href="cap-estructurales.html#cb11-14" tabindex="-1"></a>                        coupon_discount <span class="sc">~</span> selling_price <span class="sc">+</span> age_range <span class="sc">+</span></span>
+<span id="cb11-15"><a href="cap-estructurales.html#cb11-15" tabindex="-1"></a>                        family_size <span class="sc">+</span> brand_type <span class="sc">+</span> other_discount <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb11-16"><a href="cap-estructurales.html#cb11-16" tabindex="-1"></a>                        <span class="at">data =</span> coupon.data, <span class="at">method =</span> <span class="st">&quot;2step&quot;</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:estr-p12-resultados">Table 3.15: </span> Tobit and independent model results</caption>
 <thead>
@@ -8572,7 +8644,7 @@ already controlled for, brand type probably does not contribute much.</p></li>
 <p>Suponga que tras una sucesión de confusos incidentes, usted termina
 siendo el presidente de la lista 1 y gana el centro de estudiantes del
 departamento. Una de sus primeras acciones como presidente fue la
-creación de “ViajesDII,” una iniciativa que ofrece paquetes de viajes a
+creación de “ViajesDII”, una iniciativa que ofrece paquetes de viajes a
 sus compañeros. Antes de lanzar oficialmente la agencia, desea entender
 cómo las características de los destinos podrían influir en las
 preferencias de sus compañeros y así poder elegir la oferta de
@@ -8588,7 +8660,7 @@ está dada por:</p>
 <p>Suppose that, after a succession of confusing incidents, you end up
 becoming the president of list 1 and win the department student
 association. One of your first actions as president is the creation of
-“ViajesDII,” an initiative that offers travel packages to your
+“ViajesDII”, an initiative that offers travel packages to your
 classmates. Before officially launching the agency, you want to
 understand how destination characteristics could influence your
 classmates’ preferences so as to choose the travel offering. To do so,
@@ -8610,12 +8682,20 @@ modelo.</p></li>
 de varianza-covarianza? ¿Cómo podría aproximarse la probabilidad de
 elección del destino <span class="math inline">\(i\)</span> para un individuo <span class="math inline">\(n\)</span> en el día <span class="math inline">\(t\)</span>?</p></li>
 <li><p>Suponga que la iniciativa ha sido tan exitosa que se definió el
-programa de lealtad “MillasDII,” donde los clientes acumulan puntos
+programa de lealtad “MillasDII”, donde los clientes acumulan puntos
 que luego pueden ser canjeados como viajes gratis. Para ello,
 suponga que tiene una base de datos de los clientes por año con la
 siguiente estructura:</p>
 <table>
 <caption><span id="tab:estr-p13-millas">Table 3.16: </span> Lista de datos de actividad de clientes.</caption>
+<colgroup>
+<col width="16%" />
+<col width="6%" />
+<col width="26%" />
+<col width="20%" />
+<col width="18%" />
+<col width="11%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>id_cliente</th>
@@ -8701,6 +8781,14 @@ suppose you have a customer-by-year database with the following
 structure:</p>
 <table>
 <caption><span id="tab:estr-p13-millas">Table 3.16: </span> Customer activity data list.</caption>
+<colgroup>
+<col width="17%" />
+<col width="8%" />
+<col width="25%" />
+<col width="20%" />
+<col width="17%" />
+<col width="12%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>customer_id</th>
@@ -9089,6 +9177,608 @@ Since <span class="math inline">\(0 \notin CI\)</span>, <span class="math inline
 <li><p>From the results we know that <span class="math inline">\(\beta_n \sim N(-3.7, 8.35)\)</span>. To compute <span class="math inline">\(\Pr(\beta_n \leq 0)\)</span> numerically we standardize (recall that the normal distribution is symmetric):
 <span class="math display">\[\Pr(\beta_n \geq 0) = 1 - \Pr(\beta_n \leq 0) = \Pr\!\left(\frac{\beta_n - (-3.7)}{\sqrt{8.35}} \leq \frac{0 - (-3.7)}{\sqrt{8.35}}\right) = \Pr(z \leq 1.28) = 0.90\]</span></p></li>
 </ol>
+</div>
+</details>
+</div>
+<div id="problema-16-agente-concierge-de-ia" class="section level3 unnumbered hasAnchor" data-en="Problem 16: AI Concierge Agent">
+<h3>Problema 16: Agente concierge de IA<a href="cap-estructurales.html#problema-16-agente-concierge-de-ia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="lang-es">
+<p>Los agentes de inteligencia artificial son sistemas que, apoyados en modelos de lenguaje, son capaces de interpretar una solicitud, razonar sobre ella y ejecutar acciones de manera autónoma para resolverla. En los últimos años, las empresas han comenzado a incorporarlos en la automatización de la atención y los servicios al cliente, donde permiten responder consultas, gestionar requerimientos y escalar los casos más complejos con una mínima intervención humana. Una empresa nacional, líder en el mercado de los seguros, ha implementado hace algunos meses un sistema basado en agentes de inteligencia artificial que ofrece atención automatizada al cliente. El sistema está implementado usando una arquitectura de agentes entrelazados, en la que distintos agentes especializados colaboran para resolver los requerimientos de los usuarios. En el centro de esta arquitectura se encuentra un <em>agente concierge</em>, encargado de recibir los requerimientos iniciales y decidir cómo procesarlos. Para cada requerimiento que recibe, este agente debe tomar una de tres decisiones posibles: responder directamente al cliente, derivar el caso a otro agente especializado, o derivar el caso a un agente humano.</p>
+<p>El equipo de diseño está interesado en describir el comportamiento del agente concierge, y así poder hacer ajustes al sistema para mejorar continuamente la evaluación que hacen los clientes de la calidad del servicio. Para eso, el equipo ha armado una base de datos que pueda servir de base para la estimación de modelos de elección discreta para caracterizar el comportamiento de los agentes. La base de datos registra cada atención junto con sus características, donde la decisión del agente puede tomar tres niveles: responder al cliente (responde), derivar a otro agente especializado (dagente) y derivar a un agente humano (dhumano), como indica la Tabla 1.</p>
+<table>
+<caption><span id="tab:estr-p16-muestra">Table 3.17: </span> Muestra de la base de datos para la calibración de modelos de elección discreta. La tabla considera un identificador del cliente (IDcust), un identificador de la interacción (IDinter), la fecha (date), el género y la edad del usuario (gender, edad), el número de interacciones anteriores (npastint), el texto completo con el diálogo (dialogue), el largo del diálogo en número de caracteres (length) y la decisión del agente (output).</caption>
+<colgroup>
+<col width="7%" />
+<col width="7%" />
+<col width="8%" />
+<col width="5%" />
+<col width="8%" />
+<col width="46%" />
+<col width="7%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>IDcust</th>
+<th>IDinter</th>
+<th>date</th>
+<th>edad</th>
+<th>npastint</th>
+<th>dialogue</th>
+<th>length</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>c001</td>
+<td>001</td>
+<td>01/03/26</td>
+<td>23</td>
+<td>0</td>
+<td>Hola, quiero saber qué pasó con el …</td>
+<td>145</td>
+<td>responde</td>
+</tr>
+<tr class="even">
+<td>c001</td>
+<td>002</td>
+<td>01/03/26</td>
+<td>23</td>
+<td>1</td>
+<td>Buen día, escribo para que me indiquen …</td>
+<td>1345</td>
+<td>responde</td>
+</tr>
+<tr class="odd">
+<td>c002</td>
+<td>001</td>
+<td>01/04/26</td>
+<td>56</td>
+<td>0</td>
+<td>Necesito entender dónde encuentro …</td>
+<td>845</td>
+<td>responde</td>
+</tr>
+<tr class="even">
+<td>c003</td>
+<td>001</td>
+<td>01/06/26</td>
+<td>49</td>
+<td>0</td>
+<td>Estoy muy molesto, llevo semanas esperando que…</td>
+<td>1820</td>
+<td>dhumano</td>
+</tr>
+<tr class="odd">
+<td>c004</td>
+<td>001</td>
+<td>01/03/26</td>
+<td>29</td>
+<td>0</td>
+<td>¿Cuál es el número de mi póliza de …</td>
+<td>210</td>
+<td>responde</td>
+</tr>
+<tr class="even">
+<td>c004</td>
+<td>002</td>
+<td>01/08/26</td>
+<td>29</td>
+<td>1</td>
+<td>Quisiera saber el estado de mi solicitud de …</td>
+<td>320</td>
+<td>responde</td>
+</tr>
+<tr class="odd">
+<td>c005</td>
+<td>001</td>
+<td>01/07/26</td>
+<td>62</td>
+<td>0</td>
+<td>Necesito hablar con alguien urgente porque…</td>
+<td>95</td>
+<td>dhumano</td>
+</tr>
+<tr class="even">
+<td>c005</td>
+<td>002</td>
+<td>01/09/26</td>
+<td>62</td>
+<td>1</td>
+<td>Quiero cotizar un seguro automotriz adicional …</td>
+<td>540</td>
+<td>dagente</td>
+</tr>
+</tbody>
+</table>
+<p>Al explorar la base de datos, aparecen algunas regularidades que se ilustran en la Tabla 2. Por ejemplo, vemos que el agente concierge es capaz de resolver autónomamente la mayoría (83%) de los requerimientos. Más aún, si miramos qué pasa con el largo de los diálogos, en general los requerimientos que responde el agente tienden a ser más cortos y con menos dispersión en el largo. Estos elementos nos sugieren que un modelo de elección discreta podría tener bastante capacidad explicativa incluso considerando solo unas pocas covariables.</p>
+<table style="width:100%;">
+<caption><span id="tab:estr-p16-descriptivas">Table 3.18: </span> Estadísticas descriptivas de las interacciones según la decisión del agente.</caption>
+<colgroup>
+<col width="9%" />
+<col width="10%" />
+<col width="14%" />
+<col width="13%" />
+<col width="26%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>output</th>
+<th>porcentaje</th>
+<th>Largo (prom.)</th>
+<th>Largo (s.d.)</th>
+<th>Interacc. previas (prom.)</th>
+<th>Interacc. previas (s.d.)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>responde</td>
+<td>83%</td>
+<td>318</td>
+<td>176</td>
+<td>0.8</td>
+<td>1.1</td>
+</tr>
+<tr class="even">
+<td>dagente</td>
+<td>11%</td>
+<td>742</td>
+<td>351</td>
+<td>1.6</td>
+<td>1.4</td>
+</tr>
+<tr class="odd">
+<td>dhumano</td>
+<td>6%</td>
+<td>1146</td>
+<td>603</td>
+<td>2.3</td>
+<td>1.8</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li><p>Proponga una función de utilidad para describir el comportamiento del agente concierge en su interacción <span class="math inline">\(i\)</span> con un cliente <span class="math inline">\(n\)</span>, que considere los siguientes elementos:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Hay efectos fijos por alternativa (responde, deriva a otro agente o a un humano).</li>
+<li>El largo de la conversación con el agente importa. Se espera que, si el texto es corto, la probabilidad de derivar sea relativamente alta, que luego disminuya y que, si la conversación se alarga, la probabilidad de derivar vuelva a aumentar.</li>
+<li>La edad y el número de interacciones previas del usuario también influyen en el comportamiento del agente.</li>
+<li>La presencia de ciertas palabras clave podría ser un indicador de una alta probabilidad de derivación. Suponga que dispone de un algoritmo de procesamiento de texto que permite crear variables dummy para indicar la presencia de cada una de esas palabras.</li>
+</ol></li>
+<li><p>Suponga que en la ecuación de utilidad se incluyen efectos fijos por alternativa (un intercepto por cada decisión del agente) y se fija el intercepto de la alternativa responder en cero como categoría base (<span class="math inline">\(\alpha_{\text{responde}} = 0\)</span>). ¿Qué signo espera observar para los interceptos de las otras dos alternativas, derivar a agente y derivar a humano? Justifique su respuesta.</p></li>
+<li><p>Suponga que en un instante <span class="math inline">\(t^*\)</span> se modificó el prompt de orquestación del agente para sugerir que “si necesitas derivar a los clientes con mayor historial de interacciones, derívalos siempre a un humano”. ¿Cómo cambia el modelo propuesto en la pregunta anterior para incorporar este cambio?</p></li>
+<li><p>Suponga que se introduce heterogeneidad mediante un modelo muy sencillo con dos clases latentes de igual tamaño y funciones de utilidad que solo tienen efectos fijos por alternativa de decisión. Suponga además que se estima el modelo y, manteniendo responder como el nivel base, se encuentra que para la primera clase <span class="math inline">\((\alpha^1_{\text{dagente}}, \alpha^1_{\text{dhumano}}) = (0,1)\)</span> mientras que para la segunda clase <span class="math inline">\((\alpha^2_{\text{dagente}}, \alpha^2_{\text{dhumano}}) = (1,0)\)</span>. Demuestre que la verosimilitud de observar dos observaciones en que la decisión del agente sea responder viene dada por <span class="math inline">\(p = \left(\frac{1}{2+e}\right)^2\)</span>.</p></li>
+<li><p>Disconforme con la solución de clases latentes, se postula correr un modelo logit heterogéneo a través del siguiente código computacional, cuyos resultados se despliegan en la Tabla 3.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="cap-estructurales.html#cb12-1" tabindex="-1"></a>agente <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(decision <span class="sc">~</span> length <span class="sc">+</span> keyword1 <span class="sc">+</span> keyword2, <span class="at">data =</span> dataconcierge,</span>
+<span id="cb12-2"><a href="cap-estructurales.html#cb12-2" tabindex="-1"></a>                 <span class="at">rpar =</span> <span class="fu">c</span>(<span class="at">keyword1 =</span> <span class="st">&#39;n&#39;</span>, <span class="at">keyword2 =</span> <span class="st">&#39;n&#39;</span>), <span class="at">correlation =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:estr-p16-mixedlogit">Table 3.19: </span> Resultados de la estimación del modelo logit heterogéneo.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th>Mixed Logit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Deriva agente</td>
+<td>-1.245 **</td>
+</tr>
+<tr class="even">
+<td>Deriva humano</td>
+<td>-2.876 ***</td>
+</tr>
+<tr class="odd">
+<td>Length</td>
+<td>0.532 ***</td>
+</tr>
+<tr class="even">
+<td>Keyword1</td>
+<td>1.234 ***</td>
+</tr>
+<tr class="odd">
+<td>Keyword2</td>
+<td>0.876 **</td>
+</tr>
+<tr class="even">
+<td>Sd(keyword1)</td>
+<td>1.645 ***</td>
+</tr>
+<tr class="odd">
+<td>Sd(keyword2)</td>
+<td>0.312 *</td>
+</tr>
+<tr class="even">
+<td>Num. Obs.</td>
+<td>24137</td>
+</tr>
+<tr class="odd">
+<td>AIC</td>
+<td>41082</td>
+</tr>
+<tr class="even">
+<td>RMSE</td>
+<td>0.318</td>
+</tr>
+<tr class="odd">
+<td>McFadden R2</td>
+<td>0.0241</td>
+</tr>
+</tbody>
+</table>
+<p>¿Cómo interpreta que la desviación estándar estimada del parámetro de keyword1 sea mayor que la de keyword2?</p></li>
+<li><p>Si quisiera usar modelos de machine learning en este contexto, ¿qué haría para intentar reducir los errores de pronóstico de este tipo de enfoque en este contexto específico?</p></li>
+</ol>
+<p><strong>Bonus.</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>¿Qué debiera hacer un algoritmo de árbol de clasificación si una hoja del árbol tiene una alta pureza de clase?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Seguir dividiendo el nodo hasta alcanzar la profundidad máxima permitida, pues una hoja pura todavía puede subdividirse para mejorar el ajuste.</li>
+<li>Fusionar esa hoja con la hoja vecina de menor pureza para equilibrar la distribución de clases del árbol.</li>
+<li>Detenerse y declarar el nodo como hoja terminal, asignándole la clase predominante, ya que no hay ganancia de información al seguir dividiendo.</li>
+<li>Descartar las observaciones de esa hoja por considerarse redundantes y reentrenar el árbol con el resto de los datos.</li>
+<li>Agregar ruido artificial a la hoja para aumentar su impureza y así evitar el sobreajuste del árbol.</li>
+</ol></li>
+<li><p>¿Qué significa que un modelo mixed logit permita que las componentes de error puedan estar correlacionadas entre alternativas?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Que el modelo mantiene el supuesto de errores independientes (i.i.d.) del logit estándar, pero estima los parámetros más rápido.</li>
+<li>Que los parámetros aleatorios crean un error compuesto que induce covarianza entre alternativas, evitando la sustitución proporcional.</li>
+<li>Que las variables de los datos están altamente correlacionadas, lo que provoca errores de estimación en el modelo.</li>
+<li>Que se elimina la componente aleatoria de la utilidad, haciendo que el modelo sea completamente determinístico.</li>
+<li>Que las alternativas se vuelven sustitutos perfectos, forzando al modelo a cumplir estrictamente el supuesto IIA.</li>
+</ol></li>
+<li><p>¿Por qué decimos que un modelo de regresión podría estar sesgado al aplicarlo sobre un modelo truncado?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Porque al estimar el modelo solo con la parte observada de la muestra dejamos fuera sistemáticamente cierto tipo de casos, de modo que la submuestra deja de ser representativa de la población completa.</li>
+<li>Porque al truncar la muestra se incrementa artificialmente el tamaño muestral, lo que infla los errores estándar pero no afecta a los coeficientes.</li>
+<li>Porque los datos truncados siempre cumplen el supuesto de homocedasticidad, lo que sesga únicamente la varianza estimada y no los parámetros.</li>
+<li>Porque la truncación garantiza la disponibilidad de variables instrumentales, eliminando todo sesgo de la estimación.</li>
+<li>Porque al truncar la muestra el modelo se convierte automáticamente en uno de elección discreta, invalidando cualquier regresión lineal.</li>
+</ol></li>
+</ol>
+</div>
+<div class="lang-en">
+<p>AI agents are systems that, supported by language models, are able to interpret a request, reason about it, and autonomously execute actions to resolve it. In recent years, firms have begun incorporating them into the automation of customer care and service, where they can answer queries, handle requests, and escalate the most complex cases with minimal human intervention. A national firm, a leader in the insurance market, implemented a few months ago a system based on AI agents that offers automated customer service. The system is implemented using an interlinked-agent architecture, in which different specialized agents collaborate to resolve users’ requests. At the center of this architecture is a <em>concierge agent</em>, in charge of receiving the initial requests and deciding how to process them. For each request it receives, this agent must make one of three possible decisions: respond directly to the customer, route the case to another specialized agent, or route the case to a human agent.</p>
+<p>The design team is interested in describing the behavior of the concierge agent in order to adjust the system and continuously improve customers’ evaluation of service quality. For this, the team has assembled a database to serve as a basis for estimating discrete choice models that characterize the agents’ behavior. The database records each service interaction along with its characteristics, where the agent’s decision can take three levels: respond to the customer (responde), route to another specialized agent (dagente), and route to a human agent (dhumano), as shown in Table 1.</p>
+<table>
+<caption><span id="tab:estr-p16-muestra">Table 3.17: </span> Sample of the database for calibrating discrete choice models. The table considers a customer identifier (IDcust), an interaction identifier (IDinter), the date (date), the user’s gender and age (gender, edad), the number of previous interactions (npastint), the full dialogue text (dialogue), the dialogue length in number of characters (length), and the agent’s decision (output).</caption>
+<colgroup>
+<col width="7%" />
+<col width="7%" />
+<col width="8%" />
+<col width="5%" />
+<col width="8%" />
+<col width="46%" />
+<col width="7%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>IDcust</th>
+<th>IDinter</th>
+<th>date</th>
+<th>edad</th>
+<th>npastint</th>
+<th>dialogue</th>
+<th>length</th>
+<th>output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>c001</td>
+<td>001</td>
+<td>01/03/26</td>
+<td>23</td>
+<td>0</td>
+<td>Hi, I want to know what happened with the …</td>
+<td>145</td>
+<td>responde</td>
+</tr>
+<tr class="even">
+<td>c001</td>
+<td>002</td>
+<td>01/03/26</td>
+<td>23</td>
+<td>1</td>
+<td>Good morning, I’m writing so you can tell me …</td>
+<td>1345</td>
+<td>responde</td>
+</tr>
+<tr class="odd">
+<td>c002</td>
+<td>001</td>
+<td>01/04/26</td>
+<td>56</td>
+<td>0</td>
+<td>I need to understand where I can find …</td>
+<td>845</td>
+<td>responde</td>
+</tr>
+<tr class="even">
+<td>c003</td>
+<td>001</td>
+<td>01/06/26</td>
+<td>49</td>
+<td>0</td>
+<td>I’m very upset, I’ve been waiting for weeks for…</td>
+<td>1820</td>
+<td>dhumano</td>
+</tr>
+<tr class="odd">
+<td>c004</td>
+<td>001</td>
+<td>01/03/26</td>
+<td>29</td>
+<td>0</td>
+<td>What is my policy number for …</td>
+<td>210</td>
+<td>responde</td>
+</tr>
+<tr class="even">
+<td>c004</td>
+<td>002</td>
+<td>01/08/26</td>
+<td>29</td>
+<td>1</td>
+<td>I would like to know the status of my request for …</td>
+<td>320</td>
+<td>responde</td>
+</tr>
+<tr class="odd">
+<td>c005</td>
+<td>001</td>
+<td>01/07/26</td>
+<td>62</td>
+<td>0</td>
+<td>I need to speak with someone urgently because…</td>
+<td>95</td>
+<td>dhumano</td>
+</tr>
+<tr class="even">
+<td>c005</td>
+<td>002</td>
+<td>01/09/26</td>
+<td>62</td>
+<td>1</td>
+<td>I want to quote an additional car insurance …</td>
+<td>540</td>
+<td>dagente</td>
+</tr>
+</tbody>
+</table>
+<p>Exploring the database, some regularities appear, illustrated in Table 2. For instance, we see that the concierge agent is able to autonomously resolve the majority (83%) of requests. Moreover, looking at the length of the dialogues, in general the requests the agent responds to tend to be shorter and with less dispersion in length. These elements suggest that a discrete choice model could have substantial explanatory power even considering only a few covariates.</p>
+<table>
+<caption><span id="tab:estr-p16-descriptivas">Table 3.18: </span> Descriptive statistics of the interactions by agent decision.</caption>
+<colgroup>
+<col width="9%" />
+<col width="10%" />
+<col width="14%" />
+<col width="14%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>output</th>
+<th>percentage</th>
+<th>Length (mean)</th>
+<th>Length (s.d.)</th>
+<th>Prev. interactions (mean)</th>
+<th>Prev. interactions (s.d.)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>responde</td>
+<td>83%</td>
+<td>318</td>
+<td>176</td>
+<td>0.8</td>
+<td>1.1</td>
+</tr>
+<tr class="even">
+<td>dagente</td>
+<td>11%</td>
+<td>742</td>
+<td>351</td>
+<td>1.6</td>
+<td>1.4</td>
+</tr>
+<tr class="odd">
+<td>dhumano</td>
+<td>6%</td>
+<td>1146</td>
+<td>603</td>
+<td>2.3</td>
+<td>1.8</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li><p>Propose a utility function to describe the behavior of the concierge agent in its interaction <span class="math inline">\(i\)</span> with a customer <span class="math inline">\(n\)</span>, considering the following elements:</p>
+<ol style="list-style-type: lower-alpha">
+<li>There are alternative-specific fixed effects (respond, route to another agent, or to a human).</li>
+<li>The length of the conversation with the agent matters. It is expected that, if the text is short, the probability of routing is relatively high, then decreases, and that, if the conversation grows long, the probability of routing rises again.</li>
+<li>The customer’s age and number of previous interactions also influence the agent’s behavior.</li>
+<li>The presence of certain keywords could indicate a high probability of routing. Assume a text-processing algorithm is available that creates dummy variables indicating the presence of each of those words.</li>
+</ol></li>
+<li><p>Suppose the utility equation includes alternative-specific fixed effects (one intercept per agent decision) and the intercept of the respond alternative is set to zero as the base category (<span class="math inline">\(\alpha_{\text{responde}} = 0\)</span>). What sign do you expect for the intercepts of the other two alternatives, route-to-agent and route-to-human? Justify your answer.</p></li>
+<li><p>Suppose that at an instant <span class="math inline">\(t^*\)</span> the agent’s orchestration prompt was modified to suggest that “if you need to route customers with a longer interaction history, always route them to a human”. How does the model proposed in the previous question change to incorporate this change?</p></li>
+<li><p>Suppose heterogeneity is introduced through a very simple model with two equally-sized latent classes and utility functions that only have alternative-specific fixed effects. Suppose further that the model is estimated and, keeping respond as the base level, it is found that for the first class <span class="math inline">\((\alpha^1_{\text{dagente}}, \alpha^1_{\text{dhumano}}) = (0,1)\)</span> while for the second class <span class="math inline">\((\alpha^2_{\text{dagente}}, \alpha^2_{\text{dhumano}}) = (1,0)\)</span>. Show that the likelihood of observing two observations in which the agent’s decision is respond is given by <span class="math inline">\(p = \left(\frac{1}{2+e}\right)^2\)</span>.</p></li>
+<li><p>Unsatisfied with the latent-class solution, a heterogeneous logit model is proposed, run with the following code, whose results are shown in Table 3.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="cap-estructurales.html#cb13-1" tabindex="-1"></a>agente <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(decision <span class="sc">~</span> length <span class="sc">+</span> keyword1 <span class="sc">+</span> keyword2, <span class="at">data =</span> dataconcierge,</span>
+<span id="cb13-2"><a href="cap-estructurales.html#cb13-2" tabindex="-1"></a>                 <span class="at">rpar =</span> <span class="fu">c</span>(<span class="at">keyword1 =</span> <span class="st">&#39;n&#39;</span>, <span class="at">keyword2 =</span> <span class="st">&#39;n&#39;</span>), <span class="at">correlation =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:estr-p16-mixedlogit">Table 3.19: </span> Estimation results of the heterogeneous logit model.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th>Mixed Logit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Deriva agente</td>
+<td>-1.245 **</td>
+</tr>
+<tr class="even">
+<td>Deriva humano</td>
+<td>-2.876 ***</td>
+</tr>
+<tr class="odd">
+<td>Length</td>
+<td>0.532 ***</td>
+</tr>
+<tr class="even">
+<td>Keyword1</td>
+<td>1.234 ***</td>
+</tr>
+<tr class="odd">
+<td>Keyword2</td>
+<td>0.876 **</td>
+</tr>
+<tr class="even">
+<td>Sd(keyword1)</td>
+<td>1.645 ***</td>
+</tr>
+<tr class="odd">
+<td>Sd(keyword2)</td>
+<td>0.312 *</td>
+</tr>
+<tr class="even">
+<td>Num. Obs.</td>
+<td>24137</td>
+</tr>
+<tr class="odd">
+<td>AIC</td>
+<td>41082</td>
+</tr>
+<tr class="even">
+<td>RMSE</td>
+<td>0.318</td>
+</tr>
+<tr class="odd">
+<td>McFadden R2</td>
+<td>0.0241</td>
+</tr>
+</tbody>
+</table>
+<p>How do you interpret that the estimated standard deviation of the keyword1 parameter is larger than that of keyword2?</p></li>
+<li><p>If you wanted to use machine learning models in this context, what would you do to try to reduce the forecast errors of this type of approach in this specific setting?</p></li>
+</ol>
+<p><strong>Bonus.</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>What should a classification-tree algorithm do if a leaf of the tree has high class purity?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Keep splitting the node until reaching the maximum allowed depth, since a pure leaf can still be subdivided to improve fit.</li>
+<li>Merge that leaf with the neighboring leaf of lowest purity to balance the tree’s class distribution.</li>
+<li>Stop and declare the node a terminal leaf, assigning it the predominant class, since there is no information gain from further splitting.</li>
+<li>Discard the observations of that leaf as redundant and retrain the tree with the remaining data.</li>
+<li>Add artificial noise to the leaf to increase its impurity and thus avoid overfitting the tree.</li>
+</ol></li>
+<li><p>What does it mean for a mixed logit model to allow the error components to be correlated across alternatives?</p>
+<ol style="list-style-type: lower-alpha">
+<li>That the model keeps the independent-errors (i.i.d.) assumption of the standard logit, but estimates the parameters faster.</li>
+<li>That the random parameters create a composite error that induces covariance across alternatives, avoiding proportional substitution.</li>
+<li>That the data variables are highly correlated, which causes estimation errors in the model.</li>
+<li>That the random component of utility is removed, making the model fully deterministic.</li>
+<li>That the alternatives become perfect substitutes, forcing the model to strictly satisfy the IIA assumption.</li>
+</ol></li>
+<li><p>Why do we say that a regression model could be biased when applied to a truncated model?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Because estimating the model only with the observed part of the sample systematically leaves out certain types of cases, so the subsample is no longer representative of the full population.</li>
+<li>Because truncating the sample artificially increases the sample size, which inflates the standard errors but does not affect the coefficients.</li>
+<li>Because truncated data always satisfy the homoskedasticity assumption, which biases only the estimated variance and not the parameters.</li>
+<li>Because truncation guarantees the availability of instrumental variables, eliminating all bias from the estimation.</li>
+<li>Because truncating the sample automatically turns the model into a discrete choice one, invalidating any linear regression.</li>
+</ol></li>
+</ol>
+</div>
+<details>
+<summary>
+Ver solución
+</summary>
+<div class="lang-es">
+<ol style="list-style-type: decimal">
+<li><p>Sea <span class="math inline">\(K\)</span> el conjunto de keywords y <span class="math inline">\(\delta_{nik}\)</span> una variable dummy que toma el valor 1 si la keyword <span class="math inline">\(k \in K\)</span> está incluida en el texto de la interacción <span class="math inline">\(i\)</span> del cliente <span class="math inline">\(n\)</span>. Entonces la función de utilidad del agente con respecto a la decisión <span class="math inline">\(d\)</span>, en la interacción <span class="math inline">\(n\)</span> del cliente <span class="math inline">\(i\)</span>, puede escribirse como:</p>
+<p><span class="math display">\[
+u_{nid} = \alpha_d + \beta_1 \text{length}_{ni} + \beta_2 \text{length}_{ni}^2 + \beta_3 \text{edad}_i + \beta_4 \text{npastint}_{in} + \sum_{k \in K} \gamma_k \delta_{nik}
+\]</span></p>
+<p>Acá, el largo del texto considera un término cuadrático para capturar la no linealidad del efecto del largo (de acuerdo a la descripción debiéramos esperar <span class="math inline">\(\beta_1 &lt; 0\)</span> y <span class="math inline">\(\beta_2 &gt; 0\)</span>).</p>
+<p><em>Nota:</em> En esta especificación, <span class="math inline">\(\beta_1\)</span> y <span class="math inline">\(\beta_2\)</span> no dependen de la alternativa. De acuerdo a la descripción del problema es perfectamente esperable que algunos puedan proponer que el largo afecta de forma distinta para cada alternativa y por tanto hacer que los coeficientes dependan de la alternativa (<span class="math inline">\(\beta_{1d}\)</span> y <span class="math inline">\(\beta_{2d}\)</span>).</p></li>
+<li><p>Responder es por lejos la decisión más frecuente y por tanto debiéramos esperar que <span class="math inline">\(\alpha_{\text{dagente}}, \alpha_{\text{dhumano}} &lt; 0\)</span>.</p></li>
+<li><p>Habría que definir un indicador <span class="math inline">\(\text{post}_{ni}\)</span> que tome el valor 1 si la fecha de la interacción ocurre después de <span class="math inline">\(t^*\)</span> y agregarlo al modelo.</p>
+<p><span class="math display">\[
+u_{nid} = \cdots + \beta_5 \text{post}_{ni} + \beta_6 \, \text{post}_{ni} \cdot \text{npastint}_{in}
+\]</span></p>
+<p><em>Nota 1:</em> Como en el problema anterior, también podríamos hacer depender el parámetro de la decisión (<span class="math inline">\(\beta_{6d}\)</span>).</p>
+<p><em>Nota 2:</em> La pregunta se debía haber formulado como “cambia el modelo propuesto en la primera pregunta”. En el fraseo impreso, se puede interpretar que se hace referencia a la segunda pregunta. Si lo consideraran así, entonces dos respuestas admisibles son:</p>
+<ul>
+<li>Después del cambio la probabilidad de derivar a los humanos debiera aumentar y por tanto <span class="math inline">\(\alpha_{\text{dhumano}}\)</span> debiera hacerse menos negativa (o incluso positiva).</li>
+<li>Hay una probabilidad intrínseca distinta antes que después del cambio y por tanto habría que tener interceptos distintos para el periodo antes y después.</li>
+</ul></li>
+<li><p>La probabilidad de responder puede escribirse como:</p>
+<p><span class="math display">\[
+\Pr(\text{responder}) = \frac{1}{2}\left(\frac{1}{1 + e^{\alpha^1_{\text{dagente}}} + e^{\alpha^1_{\text{dhumano}}}}\right) + \frac{1}{2}\left(\frac{1}{1 + e^{\alpha^2_{\text{dagente}}} + e^{\alpha^2_{\text{dhumano}}}}\right) = \frac{1}{2 + e}
+\]</span></p>
+<p>Entonces la verosimilitud (<span class="math inline">\(L\)</span>) viene dada por:</p>
+<p><span class="math display">\[
+\begin{aligned}
+L &amp;= \Pr(\text{responder})^1 \Pr(\text{dagente})^0 \Pr(\text{dhumano})^0 \cdot \Pr(\text{responder})^1 \Pr(\text{dagente})^0 \Pr(\text{dhumano})^0 \\
+&amp;= \left(\frac{1}{2+e}\right)^2
+\end{aligned}
+\]</span></p></li>
+<li><p>Las desviaciones reportadas corresponden a la variación de la distribución normal subyacente que describe la heterogeneidad en la valoración/importancia que tienen esas dos keywords. Que <span class="math inline">\(\text{sd}(\text{keyword1}) &gt; \text{sd}(\text{keyword2})\)</span> implica que la primera keyword tiene más variabilidad en su influencia que la segunda keyword. En otras palabras, keyword2 parece tener una influencia relativamente homogénea para todas las conversaciones mientras la keyword1 puede significar distintas cosas en distintas conversaciones.</p></li>
+<li><p>La respuesta es abierta pero la idea principal es que los modelos de ML funcionan mejor en capturar efectos no lineales complejos cuando hay muchos datos. En este caso, el texto del diálogo tiene información potencialmente muy rica que no estamos usando (más allá de la longitud y la aparición de algunas palabras clave). Para sacar el mayor provecho a un modelo de ML habría que hacer <em>feature engineering</em> para generar más variables a partir de los textos. Otras ideas que podrían aparecer y que podrían tener mérito:</p>
+<ul>
+<li>Definir correctamente los conjuntos de entrenamiento y de testeo para evitar el sobreajuste.</li>
+<li>Hacerse cargo del desbalance de clases que favorece la alternativa de responder.</li>
+</ul></li>
+</ol>
+<p><strong>Bonus:</strong> 1-c, 2-b, 3-a.</p>
+</div>
+<div class="lang-en">
+<ol style="list-style-type: decimal">
+<li><p>Let <span class="math inline">\(K\)</span> be the set of keywords and <span class="math inline">\(\delta_{nik}\)</span> a dummy variable that takes the value 1 if keyword <span class="math inline">\(k \in K\)</span> is included in the text of interaction <span class="math inline">\(i\)</span> of customer <span class="math inline">\(n\)</span>. Then the agent’s utility with respect to decision <span class="math inline">\(d\)</span>, in interaction <span class="math inline">\(n\)</span> of customer <span class="math inline">\(i\)</span>, can be written as:</p>
+<p><span class="math display">\[
+u_{nid} = \alpha_d + \beta_1 \text{length}_{ni} + \beta_2 \text{length}_{ni}^2 + \beta_3 \text{edad}_i + \beta_4 \text{npastint}_{in} + \sum_{k \in K} \gamma_k \delta_{nik}
+\]</span></p>
+<p>Here, the text length includes a quadratic term to capture the non-linearity of the length effect (according to the description we should expect <span class="math inline">\(\beta_1 &lt; 0\)</span> and <span class="math inline">\(\beta_2 &gt; 0\)</span>).</p>
+<p><em>Note:</em> In this specification, <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_2\)</span> do not depend on the alternative. Given the problem description, it is perfectly reasonable that some may propose that length affects each alternative differently and therefore make the coefficients alternative-specific (<span class="math inline">\(\beta_{1d}\)</span> and <span class="math inline">\(\beta_{2d}\)</span>).</p></li>
+<li><p>Respond is by far the most frequent decision, so we should expect <span class="math inline">\(\alpha_{\text{dagente}}, \alpha_{\text{dhumano}} &lt; 0\)</span>.</p></li>
+<li><p>One would define an indicator <span class="math inline">\(\text{post}_{ni}\)</span> that takes the value 1 if the interaction date occurs after <span class="math inline">\(t^*\)</span> and add it to the model.</p>
+<p><span class="math display">\[
+u_{nid} = \cdots + \beta_5 \text{post}_{ni} + \beta_6 \, \text{post}_{ni} \cdot \text{npastint}_{in}
+\]</span></p>
+<p><em>Note 1:</em> As in the previous problem, we could also make the decision parameter alternative-specific (<span class="math inline">\(\beta_{6d}\)</span>).</p>
+<p><em>Note 2:</em> The question should have been phrased as “how does the model proposed in the first question change”. In the printed wording, it can be interpreted as referring to the second question. If interpreted that way, two admissible answers are:</p>
+<ul>
+<li>After the change, the probability of routing to humans should increase and therefore <span class="math inline">\(\alpha_{\text{dhumano}}\)</span> should become less negative (or even positive).</li>
+<li>There is a different intrinsic probability before versus after the change and therefore one would need different intercepts for the before and after periods.</li>
+</ul></li>
+<li><p>The probability of responding can be written as:</p>
+<p><span class="math display">\[
+\Pr(\text{responder}) = \frac{1}{2}\left(\frac{1}{1 + e^{\alpha^1_{\text{dagente}}} + e^{\alpha^1_{\text{dhumano}}}}\right) + \frac{1}{2}\left(\frac{1}{1 + e^{\alpha^2_{\text{dagente}}} + e^{\alpha^2_{\text{dhumano}}}}\right) = \frac{1}{2 + e}
+\]</span></p>
+<p>Then the likelihood (<span class="math inline">\(L\)</span>) is given by:</p>
+<p><span class="math display">\[
+\begin{aligned}
+L &amp;= \Pr(\text{responder})^1 \Pr(\text{dagente})^0 \Pr(\text{dhumano})^0 \cdot \Pr(\text{responder})^1 \Pr(\text{dagente})^0 \Pr(\text{dhumano})^0 \\
+&amp;= \left(\frac{1}{2+e}\right)^2
+\end{aligned}
+\]</span></p></li>
+<li><p>The reported deviations correspond to the variation of the underlying normal distribution that describes the heterogeneity in the valuation/importance of these two keywords. That <span class="math inline">\(\text{sd}(\text{keyword1}) &gt; \text{sd}(\text{keyword2})\)</span> implies the first keyword has more variability in its influence than the second keyword. In other words, keyword2 seems to have a relatively homogeneous influence across all conversations while keyword1 may mean different things in different conversations.</p></li>
+<li><p>The answer is open but the main idea is that ML models perform better at capturing complex non-linear effects when there is a lot of data. In this case, the dialogue text has potentially very rich information that we are not using (beyond length and the appearance of a few keywords). To get the most out of an ML model, one would need to do <em>feature engineering</em> to generate more variables from the texts. Other ideas that could come up and could have merit:</p>
+<ul>
+<li>Properly defining the training and test sets to avoid overfitting.</li>
+<li>Addressing the class imbalance that favors the respond alternative.</li>
+</ul></li>
+</ol>
+<p><strong>Bonus:</strong> 1-c, 2-b, 3-a.</p>
 </div>
 </details>
 
