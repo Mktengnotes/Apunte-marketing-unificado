@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Goic" />
 
 
-<meta name="date" content="2026-07-08" />
+<meta name="date" content="2026-08-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -5054,72 +5054,6 @@ computational code, whose results are displayed in Table
 behavior?</p></li>
 </ol>
 </div>
-<div class="lang-es">
-<p><em>Bonus</em></p>
-<ol style="list-style-type: decimal">
-<li><p>En un enfoque de Support Vector Machines (SVM),
-buscamos un hiperplano separador entre las etiquetas de clase, en el
-que imponemos que todos los puntos queden bien clasificados. En la
-práctica, es posible que no exista un hiperplano que separe
-perfectamente a todos los casos. ¿Qué hace un algoritmo de SVM en una
-situación como esta?</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>No puede usarse y se necesita aplicar un enfoque diferente de
-estimación.</p></li>
-<li><p>Eliminar iterativamente los puntos que no pueden separarse hasta
-alcanzar una solución factible.</p></li>
-<li><p>Se aplica una transformación del espacio de variables
-predictoras.</p></li>
-<li><p>Se rota el plano separador para aumentar el soporte de los
-vectores.</p></li>
-<li><p>Ninguna de las anteriores.</p></li>
-</ol></li>
-<li><p>¿En qué sentido un modelo logit anidado podría
-ayudar a aliviar las dificultades derivadas de la paradoja de los
-buses azules y rojos?</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Hace que un problema que es difícil de identificar ahora sea
-identificable.</p></li>
-<li><p>Genera parámetros distintos para el segmento de clientes que usa
-cada tipo de transporte.</p></li>
-<li><p>Rompe con la autocorrelación temporal de las decisiones.</p></li>
-<li><p>Permite que haya distintos grados de sustitución entre
-alternativas dentro y fuera de un nido.</p></li>
-<li><p>Ninguna de las anteriores.</p></li>
-</ol></li>
-</ol>
-</div>
-<div class="lang-en">
-<p><em>Bonus</em></p>
-<ol style="list-style-type: decimal">
-<li><p>In a Support Vector Machines (SVM) approach, we seek
-a separating hyperplane between the class labels, imposing that all
-points be correctly classified. In practice, a hyperplane may not
-exist that perfectly separates all cases. What does an SVM algorithm
-do in such a situation?</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>It cannot be used and a different estimation approach is needed.</p></li>
-<li><p>Iteratively eliminate points that cannot be separated until a
-feasible solution is reached.</p></li>
-<li><p>A transformation of the predictor-variable space is applied.</p></li>
-<li><p>The separating plane is rotated to increase the support of the
-vectors.</p></li>
-<li><p>None of the above.</p></li>
-</ol></li>
-<li><p>In what sense could a nested logit model help
-alleviate the difficulties derived from the red bus/blue bus paradox?</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>It makes a problem that was previously difficult to identify now
-identifiable.</p></li>
-<li><p>It generates different parameters for the segment of customers
-using each type of transport.</p></li>
-<li><p>It breaks the temporal autocorrelation of decisions.</p></li>
-<li><p>It allows different degrees of substitution among alternatives
-inside and outside a nest.</p></li>
-<li><p>None of the above.</p></li>
-</ol></li>
-</ol>
-</div>
 <details>
 <summary>
 Ver solución
@@ -5196,7 +5130,6 @@ usuarios que tienen elasticidades de
 <span class="math inline">\(2.121 + 1.96 \times 2.456 = 2.693\)</span> o más positivas.</p></li>
 </ol></li>
 </ol>
-<p><em>Bonus:</em> P1-c, P2-d.</p>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
@@ -5269,7 +5202,6 @@ elasticities of <span class="math inline">\(2.121 + 1.96 \times 2.456 = 2.693\)<
 positive.</p></li>
 </ol></li>
 </ol>
-<p><em>Bonus:</em> P1-c, P2-d.</p>
 </div>
 </details>
 </div>
@@ -9412,33 +9344,6 @@ Since <span class="math inline">\(0 \notin CI\)</span>, <span class="math inline
 <p>¿Cómo interpreta que la desviación estándar estimada del parámetro de keyword1 sea mayor que la de keyword2?</p></li>
 <li><p>Si quisiera usar modelos de machine learning en este contexto, ¿qué haría para intentar reducir los errores de pronóstico de este tipo de enfoque en este contexto específico?</p></li>
 </ol>
-<p><strong>Bonus.</strong></p>
-<ol style="list-style-type: decimal">
-<li><p>¿Qué debiera hacer un algoritmo de árbol de clasificación si una hoja del árbol tiene una alta pureza de clase?</p>
-<ol style="list-style-type: lower-alpha">
-<li>Seguir dividiendo el nodo hasta alcanzar la profundidad máxima permitida, pues una hoja pura todavía puede subdividirse para mejorar el ajuste.</li>
-<li>Fusionar esa hoja con la hoja vecina de menor pureza para equilibrar la distribución de clases del árbol.</li>
-<li>Detenerse y declarar el nodo como hoja terminal, asignándole la clase predominante, ya que no hay ganancia de información al seguir dividiendo.</li>
-<li>Descartar las observaciones de esa hoja por considerarse redundantes y reentrenar el árbol con el resto de los datos.</li>
-<li>Agregar ruido artificial a la hoja para aumentar su impureza y así evitar el sobreajuste del árbol.</li>
-</ol></li>
-<li><p>¿Qué significa que un modelo mixed logit permita que las componentes de error puedan estar correlacionadas entre alternativas?</p>
-<ol style="list-style-type: lower-alpha">
-<li>Que el modelo mantiene el supuesto de errores independientes (i.i.d.) del logit estándar, pero estima los parámetros más rápido.</li>
-<li>Que los parámetros aleatorios crean un error compuesto que induce covarianza entre alternativas, evitando la sustitución proporcional.</li>
-<li>Que las variables de los datos están altamente correlacionadas, lo que provoca errores de estimación en el modelo.</li>
-<li>Que se elimina la componente aleatoria de la utilidad, haciendo que el modelo sea completamente determinístico.</li>
-<li>Que las alternativas se vuelven sustitutos perfectos, forzando al modelo a cumplir estrictamente el supuesto IIA.</li>
-</ol></li>
-<li><p>¿Por qué decimos que un modelo de regresión podría estar sesgado al aplicarlo sobre un modelo truncado?</p>
-<ol style="list-style-type: lower-alpha">
-<li>Porque al estimar el modelo solo con la parte observada de la muestra dejamos fuera sistemáticamente cierto tipo de casos, de modo que la submuestra deja de ser representativa de la población completa.</li>
-<li>Porque al truncar la muestra se incrementa artificialmente el tamaño muestral, lo que infla los errores estándar pero no afecta a los coeficientes.</li>
-<li>Porque los datos truncados siempre cumplen el supuesto de homocedasticidad, lo que sesga únicamente la varianza estimada y no los parámetros.</li>
-<li>Porque la truncación garantiza la disponibilidad de variables instrumentales, eliminando todo sesgo de la estimación.</li>
-<li>Porque al truncar la muestra el modelo se convierte automáticamente en uno de elección discreta, invalidando cualquier regresión lineal.</li>
-</ol></li>
-</ol>
 </div>
 <div class="lang-en">
 <p>AI agents are systems that, supported by language models, are able to interpret a request, reason about it, and autonomously execute actions to resolve it. In recent years, firms have begun incorporating them into the automation of customer care and service, where they can answer queries, handle requests, and escalate the most complex cases with minimal human intervention. A national firm, a leader in the insurance market, implemented a few months ago a system based on AI agents that offers automated customer service. The system is implemented using an interlinked-agent architecture, in which different specialized agents collaborate to resolve users’ requests. At the center of this architecture is a <em>concierge agent</em>, in charge of receiving the initial requests and deciding how to process them. For each request it receives, this agent must make one of three possible decisions: respond directly to the customer, route the case to another specialized agent, or route the case to a human agent.</p>
@@ -9670,33 +9575,6 @@ Since <span class="math inline">\(0 \notin CI\)</span>, <span class="math inline
 <p>How do you interpret that the estimated standard deviation of the keyword1 parameter is larger than that of keyword2?</p></li>
 <li><p>If you wanted to use machine learning models in this context, what would you do to try to reduce the forecast errors of this type of approach in this specific setting?</p></li>
 </ol>
-<p><strong>Bonus.</strong></p>
-<ol style="list-style-type: decimal">
-<li><p>What should a classification-tree algorithm do if a leaf of the tree has high class purity?</p>
-<ol style="list-style-type: lower-alpha">
-<li>Keep splitting the node until reaching the maximum allowed depth, since a pure leaf can still be subdivided to improve fit.</li>
-<li>Merge that leaf with the neighboring leaf of lowest purity to balance the tree’s class distribution.</li>
-<li>Stop and declare the node a terminal leaf, assigning it the predominant class, since there is no information gain from further splitting.</li>
-<li>Discard the observations of that leaf as redundant and retrain the tree with the remaining data.</li>
-<li>Add artificial noise to the leaf to increase its impurity and thus avoid overfitting the tree.</li>
-</ol></li>
-<li><p>What does it mean for a mixed logit model to allow the error components to be correlated across alternatives?</p>
-<ol style="list-style-type: lower-alpha">
-<li>That the model keeps the independent-errors (i.i.d.) assumption of the standard logit, but estimates the parameters faster.</li>
-<li>That the random parameters create a composite error that induces covariance across alternatives, avoiding proportional substitution.</li>
-<li>That the data variables are highly correlated, which causes estimation errors in the model.</li>
-<li>That the random component of utility is removed, making the model fully deterministic.</li>
-<li>That the alternatives become perfect substitutes, forcing the model to strictly satisfy the IIA assumption.</li>
-</ol></li>
-<li><p>Why do we say that a regression model could be biased when applied to a truncated model?</p>
-<ol style="list-style-type: lower-alpha">
-<li>Because estimating the model only with the observed part of the sample systematically leaves out certain types of cases, so the subsample is no longer representative of the full population.</li>
-<li>Because truncating the sample artificially increases the sample size, which inflates the standard errors but does not affect the coefficients.</li>
-<li>Because truncated data always satisfy the homoskedasticity assumption, which biases only the estimated variance and not the parameters.</li>
-<li>Because truncation guarantees the availability of instrumental variables, eliminating all bias from the estimation.</li>
-<li>Because truncating the sample automatically turns the model into a discrete choice one, invalidating any linear regression.</li>
-</ol></li>
-</ol>
 </div>
 <details>
 <summary>
@@ -9739,7 +9617,6 @@ L &amp;= \Pr(\text{responder})^1 \Pr(\text{dagente})^0 \Pr(\text{dhumano})^0 \cd
 <li>Hacerse cargo del desbalance de clases que favorece la alternativa de responder.</li>
 </ul></li>
 </ol>
-<p><strong>Bonus:</strong> 1-c, 2-b, 3-a.</p>
 </div>
 <div class="lang-en">
 <ol style="list-style-type: decimal">
@@ -9778,7 +9655,6 @@ L &amp;= \Pr(\text{responder})^1 \Pr(\text{dagente})^0 \Pr(\text{dhumano})^0 \cd
 <li>Addressing the class imbalance that favors the respond alternative.</li>
 </ul></li>
 </ol>
-<p><strong>Bonus:</strong> 1-c, 2-b, 3-a.</p>
 </div>
 </details>
 

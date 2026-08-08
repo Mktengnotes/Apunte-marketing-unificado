@@ -5403,90 +5403,6 @@ Table: (\#tab:estr-p1-studia) Sample of the STUD-IA database
 
 :::
 
-::: {.lang-es}
-
-*Bonus*
-
-1. En un enfoque de Support Vector Machines (SVM),
-   buscamos un hiperplano separador entre las etiquetas de clase, en el
-   que imponemos que todos los puntos queden bien clasificados. En la
-   práctica, es posible que no exista un hiperplano que separe
-   perfectamente a todos los casos. ¿Qué hace un algoritmo de SVM en una
-   situación como esta?
-
-   a) No puede usarse y se necesita aplicar un enfoque diferente de
-   estimación.
-
-   b) Eliminar iterativamente los puntos que no pueden separarse hasta
-   alcanzar una solución factible.
-
-   c) Se aplica una transformación del espacio de variables
-   predictoras.
-
-   d) Se rota el plano separador para aumentar el soporte de los
-   vectores.
-
-   e) Ninguna de las anteriores.
-
-2. ¿En qué sentido un modelo logit anidado podría
-   ayudar a aliviar las dificultades derivadas de la paradoja de los
-   buses azules y rojos?
-
-   a) Hace que un problema que es difícil de identificar ahora sea
-   identificable.
-
-   b) Genera parámetros distintos para el segmento de clientes que usa
-   cada tipo de transporte.
-
-   c) Rompe con la autocorrelación temporal de las decisiones.
-
-   d) Permite que haya distintos grados de sustitución entre
-   alternativas dentro y fuera de un nido.
-
-   e) Ninguna de las anteriores.
-
-:::
-
-::: {.lang-en}
-
-*Bonus*
-
-1. In a Support Vector Machines (SVM) approach, we seek
-   a separating hyperplane between the class labels, imposing that all
-   points be correctly classified. In practice, a hyperplane may not
-   exist that perfectly separates all cases. What does an SVM algorithm
-   do in such a situation?
-
-   a) It cannot be used and a different estimation approach is needed.
-
-   b) Iteratively eliminate points that cannot be separated until a
-   feasible solution is reached.
-
-   c) A transformation of the predictor-variable space is applied.
-
-   d) The separating plane is rotated to increase the support of the
-   vectors.
-
-   e) None of the above.
-
-2. In what sense could a nested logit model help
-   alleviate the difficulties derived from the red bus/blue bus paradox?
-
-   a) It makes a problem that was previously difficult to identify now
-   identifiable.
-
-   b) It generates different parameters for the segment of customers
-   using each type of transport.
-
-   c) It breaks the temporal autocorrelation of decisions.
-
-   d) It allows different degrees of substitution among alternatives
-   inside and outside a nest.
-
-   e) None of the above.
-
-:::
-
 <details>
 <summary>Ver solución</summary>
 
@@ -5573,8 +5489,6 @@ Table: (\#tab:estr-p1-studia) Sample of the STUD-IA database
    usuarios que tienen elasticidades de
    $2.121 + 1.96 \times 2.456 = 2.693$ o más positivas.
 
-*Bonus:* P1-c, P2-d.
-
 :::
 
 ::: {.lang-en}
@@ -5658,8 +5572,6 @@ Table: (\#tab:estr-p1-studia) Sample of the STUD-IA database
    2.456. For example, we should expect that 2.5% of users have
    elasticities of $2.121 + 1.96 \times 2.456 = 2.693$ or more
    positive.
-
-*Bonus:* P1-c, P2-d.
 
 :::
 
@@ -8792,32 +8704,6 @@ Table: (\#tab:estr-p16-descriptivas) Estadísticas descriptivas de las interacci
 
 6. Si quisiera usar modelos de machine learning en este contexto, ¿qué haría para intentar reducir los errores de pronóstico de este tipo de enfoque en este contexto específico?
 
-**Bonus.**
-
-1. ¿Qué debiera hacer un algoritmo de árbol de clasificación si una hoja del árbol tiene una alta pureza de clase?
-
-    a. Seguir dividiendo el nodo hasta alcanzar la profundidad máxima permitida, pues una hoja pura todavía puede subdividirse para mejorar el ajuste.
-    b. Fusionar esa hoja con la hoja vecina de menor pureza para equilibrar la distribución de clases del árbol.
-    c. Detenerse y declarar el nodo como hoja terminal, asignándole la clase predominante, ya que no hay ganancia de información al seguir dividiendo.
-    d. Descartar las observaciones de esa hoja por considerarse redundantes y reentrenar el árbol con el resto de los datos.
-    e. Agregar ruido artificial a la hoja para aumentar su impureza y así evitar el sobreajuste del árbol.
-
-2. ¿Qué significa que un modelo mixed logit permita que las componentes de error puedan estar correlacionadas entre alternativas?
-
-    a. Que el modelo mantiene el supuesto de errores independientes (i.i.d.) del logit estándar, pero estima los parámetros más rápido.
-    b. Que los parámetros aleatorios crean un error compuesto que induce covarianza entre alternativas, evitando la sustitución proporcional.
-    c. Que las variables de los datos están altamente correlacionadas, lo que provoca errores de estimación en el modelo.
-    d. Que se elimina la componente aleatoria de la utilidad, haciendo que el modelo sea completamente determinístico.
-    e. Que las alternativas se vuelven sustitutos perfectos, forzando al modelo a cumplir estrictamente el supuesto IIA.
-
-3. ¿Por qué decimos que un modelo de regresión podría estar sesgado al aplicarlo sobre un modelo truncado?
-
-    a. Porque al estimar el modelo solo con la parte observada de la muestra dejamos fuera sistemáticamente cierto tipo de casos, de modo que la submuestra deja de ser representativa de la población completa.
-    b. Porque al truncar la muestra se incrementa artificialmente el tamaño muestral, lo que infla los errores estándar pero no afecta a los coeficientes.
-    c. Porque los datos truncados siempre cumplen el supuesto de homocedasticidad, lo que sesga únicamente la varianza estimada y no los parámetros.
-    d. Porque la truncación garantiza la disponibilidad de variables instrumentales, eliminando todo sesgo de la estimación.
-    e. Porque al truncar la muestra el modelo se convierte automáticamente en uno de elección discreta, invalidando cualquier regresión lineal.
-
 :::
 
 ::: {.lang-en}
@@ -8889,32 +8775,6 @@ Table: (\#tab:estr-p16-descriptivas) Descriptive statistics of the interactions 
 
 6. If you wanted to use machine learning models in this context, what would you do to try to reduce the forecast errors of this type of approach in this specific setting?
 
-**Bonus.**
-
-1. What should a classification-tree algorithm do if a leaf of the tree has high class purity?
-
-    a. Keep splitting the node until reaching the maximum allowed depth, since a pure leaf can still be subdivided to improve fit.
-    b. Merge that leaf with the neighboring leaf of lowest purity to balance the tree's class distribution.
-    c. Stop and declare the node a terminal leaf, assigning it the predominant class, since there is no information gain from further splitting.
-    d. Discard the observations of that leaf as redundant and retrain the tree with the remaining data.
-    e. Add artificial noise to the leaf to increase its impurity and thus avoid overfitting the tree.
-
-2. What does it mean for a mixed logit model to allow the error components to be correlated across alternatives?
-
-    a. That the model keeps the independent-errors (i.i.d.) assumption of the standard logit, but estimates the parameters faster.
-    b. That the random parameters create a composite error that induces covariance across alternatives, avoiding proportional substitution.
-    c. That the data variables are highly correlated, which causes estimation errors in the model.
-    d. That the random component of utility is removed, making the model fully deterministic.
-    e. That the alternatives become perfect substitutes, forcing the model to strictly satisfy the IIA assumption.
-
-3. Why do we say that a regression model could be biased when applied to a truncated model?
-
-    a. Because estimating the model only with the observed part of the sample systematically leaves out certain types of cases, so the subsample is no longer representative of the full population.
-    b. Because truncating the sample artificially increases the sample size, which inflates the standard errors but does not affect the coefficients.
-    c. Because truncated data always satisfy the homoskedasticity assumption, which biases only the estimated variance and not the parameters.
-    d. Because truncation guarantees the availability of instrumental variables, eliminating all bias from the estimation.
-    e. Because truncating the sample automatically turns the model into a discrete choice one, invalidating any linear regression.
-
 :::
 
 <details>
@@ -8969,8 +8829,6 @@ Table: (\#tab:estr-p16-descriptivas) Descriptive statistics of the interactions 
    - Definir correctamente los conjuntos de entrenamiento y de testeo para evitar el sobreajuste.
    - Hacerse cargo del desbalance de clases que favorece la alternativa de responder.
 
-**Bonus:** 1-c, 2-b, 3-a.
-
 :::
 
 ::: {.lang-en}
@@ -9021,8 +8879,6 @@ Table: (\#tab:estr-p16-descriptivas) Descriptive statistics of the interactions 
 
    - Properly defining the training and test sets to avoid overfitting.
    - Addressing the class imbalance that favors the respond alternative.
-
-**Bonus:** 1-c, 2-b, 3-a.
 
 :::
 
